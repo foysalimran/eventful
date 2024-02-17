@@ -1208,7 +1208,7 @@ class EFP_Functions
 	public static function efp_locate_template($template_name, $template_path = '', $default_path = '')
 	{
 		if (!$template_path) {
-			$template_path = 'eventful-pro/templates';
+			$template_path = 'eventful/templates';
 		}
 
 		if (!$default_path) {

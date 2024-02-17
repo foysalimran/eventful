@@ -50,7 +50,7 @@ class Eventful_Admin
 
 		$active_plugins = get_option('active_plugins');
 		foreach ($active_plugins as $active_plugin) {
-			$_temp = strpos($active_plugin, 'eventful-pro.php');
+			$_temp = strpos($active_plugin, 'eventful.php');
 			if (false != $_temp) {
 				add_filter('plugin_action_links_' . $active_plugin, array($this, 'add_plugin_action_links'));
 			}
