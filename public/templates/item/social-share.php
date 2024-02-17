@@ -2,7 +2,7 @@
 /**
  * Social share
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro-pro/templates/item/social-share.php
+ * This template can be overridden by copying it to yourtheme/eventful-pro/templates/item/social-share.php
  *
  * @package    Eventful
  * @subpackage Eventful/public

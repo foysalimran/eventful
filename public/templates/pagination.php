@@ -2,7 +2,7 @@
 /**
  * Pagination display provider
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/pagination.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/pagination.php
  *
  * @package    Eventful
  * @subpackage Eventful/public

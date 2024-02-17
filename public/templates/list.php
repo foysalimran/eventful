@@ -3,7 +3,7 @@
 /**
  *  List view file
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/list.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/list.php
  *
  * @package    Eventful
  * @subpackage Eventful/public/template

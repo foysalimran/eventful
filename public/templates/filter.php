@@ -3,7 +3,7 @@
 /**
  *  Shuffle filter view file
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/filter.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/filter.php
  *
  * @package    Eventful
  * @subpackage Eventful/public/template

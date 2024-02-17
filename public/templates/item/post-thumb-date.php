@@ -3,7 +3,7 @@
 /**
  * Thumb taxonomy
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/item/over-thumb-taxonomy.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/item/over-thumb-taxonomy.php
  *
  * @package    Eventful
  * @subpackage Eventful/public

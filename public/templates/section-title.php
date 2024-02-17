@@ -2,7 +2,7 @@
 /**
  * Section title
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/section-title.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/section-title.php
  *
  * @package    Eventful
  * @subpackage Eventful/public/template
