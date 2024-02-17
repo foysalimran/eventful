@@ -9,7 +9,7 @@
  */
 if ( ! class_exists( 'WP_Customize_Panel_EFP' ) && class_exists( 'WP_Customize_Panel' ) ) {
 	class WP_Customize_Panel_EFP extends WP_Customize_Panel {
-		public $type = 'taf';
+		public $type = 'efp';
 	}
 }
 
@@ -22,7 +22,7 @@ if ( ! class_exists( 'WP_Customize_Panel_EFP' ) && class_exists( 'WP_Customize_P
  */
 if ( ! class_exists( 'WP_Customize_Section_EFP' ) && class_exists( 'WP_Customize_Section' ) ) {
 	class WP_Customize_Section_EFP extends WP_Customize_Section {
-		public $type = 'taf';
+		public $type = 'efp';
 	}
 }
 
@@ -36,7 +36,7 @@ if ( ! class_exists( 'WP_Customize_Section_EFP' ) && class_exists( 'WP_Customize
 if ( ! class_exists( 'WP_Customize_Control_EFP' ) && class_exists( 'WP_Customize_Control' ) ) {
 	class WP_Customize_Control_EFP extends WP_Customize_Control {
 
-		public $type   = 'taf';
+		public $type   = 'efp';
 		public $field  = '';
 		public $unique = '';
 
@@ -73,8 +73,8 @@ if ( ! class_exists( 'WP_Customize_Control_EFP' ) && class_exists( 'WP_Customize
 				$depend .= ' data-value="' . esc_attr( $data_value ) . '"';
 				$depend .= ( ! empty( $data_global ) ) ? ' data-depend-global="true"' : '';
 
-				$visible  = ' taf-dependency-control';
-				$visible .= ( ! empty( $depend_visible ) ) ? ' taf-depend-visible' : ' taf-depend-hidden';
+				$visible  = ' efp-dependency-control';
+				$visible .= ( ! empty( $depend_visible ) ) ? ' efp-depend-visible' : ' efp-depend-hidden';
 
 			}
 
@@ -89,7 +89,7 @@ if ( ! class_exists( 'WP_Customize_Control_EFP' ) && class_exists( 'WP_Customize
 		public function render_field_content() {
 
 			$complex = apply_filters(
-				'taf_customize_complex_fields',
+				'efp_customize_complex_fields',
 				array(
 					'accordion',
 					'background',
@@ -119,7 +119,7 @@ if ( ! class_exists( 'WP_Customize_Control_EFP' ) && class_exists( 'WP_Customize
 			$field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
 			$custom     = ( ! empty( $this->field['customizer'] ) ) ? true : false;
 			$is_complex = ( in_array( $this->field['type'], $complex ) ) ? true : false;
-			$class      = ( $is_complex || $custom ) ? ' taf-customize-complex' : '';
+			$class      = ( $is_complex || $custom ) ? ' efp-customize-complex' : '';
 			$atts       = ( $is_complex || $custom ) ? ' data-unique-id="' . esc_attr( $this->unique ) . '" data-option-id="' . esc_attr( $field_id ) . '"' : '';
 
 			if ( ! $is_complex && ! $custom ) {
@@ -130,7 +130,7 @@ if ( ! class_exists( 'WP_Customize_Control_EFP' ) && class_exists( 'WP_Customize
 
 			$this->field['dependency'] = array();
 
-			echo '<div class="taf-customize-field' . esc_attr( $class ) . '"' . wp_kses_post( $atts ) . '>';
+			echo '<div class="efp-customize-field' . esc_attr( $class ) . '"' . wp_kses_post( $atts ) . '>';
 
 			EFP::field( $this->field, $this->value(), $this->unique, 'customize' );
 

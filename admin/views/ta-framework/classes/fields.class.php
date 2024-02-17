@@ -65,15 +65,15 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
     }
 
     public function field_before() {
-      return ( ! empty( $this->field['before'] ) ) ? '<div class="taf-before-text">'. $this->field['before'] .'</div>' : '';
+      return ( ! empty( $this->field['before'] ) ) ? '<div class="efp-before-text">'. $this->field['before'] .'</div>' : '';
     }
 
     public function field_after() {
 
-      $output  = ( ! empty( $this->field['after'] ) ) ? '<div class="taf-after-text">'. $this->field['after'] .'</div>' : '';
-      $output .= ( ! empty( $this->field['desc'] ) ) ? '<div class="clear"></div><div class="taf-desc-text">'. $this->field['desc'] .'</div>' : '';
-      $output .= ( ! empty( $this->field['help'] ) ) ? '<div class="taf-help"><span class="taf-help-text">'. $this->field['help'] .'</span><i class="fas fa-question-circle"></i></div>' : '';
-      $output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="taf-error-text">'. $this->field['_error'] .'</div>' : '';
+      $output  = ( ! empty( $this->field['after'] ) ) ? '<div class="efp-after-text">'. $this->field['after'] .'</div>' : '';
+      $output .= ( ! empty( $this->field['desc'] ) ) ? '<div class="clear"></div><div class="efp-desc-text">'. $this->field['desc'] .'</div>' : '';
+      $output .= ( ! empty( $this->field['help'] ) ) ? '<div class="efp-help"><span class="efp-help-text">'. $this->field['help'] .'</span><i class="fas fa-question-circle"></i></div>' : '';
+      $output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="efp-error-text">'. $this->field['_error'] .'</div>' : '';
 
       return $output;
 

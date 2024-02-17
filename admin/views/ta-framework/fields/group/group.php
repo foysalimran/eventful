@@ -41,29 +41,29 @@ if ( ! class_exists( 'EFP_Field_group' ) ) {
 
 			if ( preg_match( '/' . preg_quote( '[' . $this->field['id'] . ']' ) . '/', $this->unique ) ) {
 
-				echo '<div class="taf-notice taf-notice-danger">' . esc_html__( 'Error: Field ID conflict.', 'ta-framework' ) . '</div>';
+				echo '<div class="efp-notice efp-notice-danger">' . esc_html__( 'Error: Field ID conflict.', 'ta-framework' ) . '</div>';
 
 			} else {
 
 				echo wp_kses_post( $this->field_before() );
 
-				echo '<div class="taf-cloneable-item taf-cloneable-hidden" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
+				echo '<div class="efp-cloneable-item efp-cloneable-hidden" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 
-				echo '<div class="taf-cloneable-helper">';
-				echo '<i class="taf-cloneable-sort fas fa-arrows-alt"></i>';
-				echo '<i class="taf-cloneable-clone far fa-clone"></i>';
-				echo '<i class="taf-cloneable-remove taf-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'ta-framework' ) . '"></i>';
+				echo '<div class="efp-cloneable-helper">';
+				echo '<i class="efp-cloneable-sort fas fa-arrows-alt"></i>';
+				echo '<i class="efp-cloneable-clone far fa-clone"></i>';
+				echo '<i class="efp-cloneable-remove efp-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'ta-framework' ) . '"></i>';
 				echo '</div>';
 
-				echo '<h4 class="taf-cloneable-title">';
-				echo '<span class="taf-cloneable-text">';
-				echo ( $title_number ) ? '<span class="taf-cloneable-title-number"></span>' : '';
-				echo ( $title_prefix ) ? '<span class="taf-cloneable-title-prefix">' . esc_attr( $title_prefix ) . '</span>' : '';
-				echo ( $title_auto ) ? '<span class="taf-cloneable-value"><span class="taf-cloneable-placeholder"></span></span>' : '';
+				echo '<h4 class="efp-cloneable-title">';
+				echo '<span class="efp-cloneable-text">';
+				echo ( $title_number ) ? '<span class="efp-cloneable-title-number"></span>' : '';
+				echo ( $title_prefix ) ? '<span class="efp-cloneable-title-prefix">' . esc_attr( $title_prefix ) . '</span>' : '';
+				echo ( $title_auto ) ? '<span class="efp-cloneable-value"><span class="efp-cloneable-placeholder"></span></span>' : '';
 				echo '</span>';
 				echo '</h4>';
 
-				echo '<div class="taf-cloneable-content">';
+				echo '<div class="efp-cloneable-content">';
 				foreach ( $this->field['fields'] as $field ) {
 
 					$field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
@@ -76,7 +76,7 @@ if ( ! class_exists( 'EFP_Field_group' ) ) {
 
 				echo '</div>';
 
-				echo '<div class="taf-cloneable-wrapper taf-data-wrapper" data-title-by="' . esc_attr( json_encode( $title_by ) ) . '" data-title-by-prefix="' . esc_attr( $title_by_prefix ) . '" data-title-number="' . esc_attr( $title_number ) . '" data-field-id="[' . esc_attr( $this->field['id'] ) . ']" data-max="' . esc_attr( $args['max'] ) . '" data-min="' . esc_attr( $args['min'] ) . '">';
+				echo '<div class="efp-cloneable-wrapper efp-data-wrapper" data-title-by="' . esc_attr( json_encode( $title_by ) ) . '" data-title-by-prefix="' . esc_attr( $title_by_prefix ) . '" data-title-number="' . esc_attr( $title_number ) . '" data-field-id="[' . esc_attr( $this->field['id'] ) . ']" data-max="' . esc_attr( $args['max'] ) . '" data-min="' . esc_attr( $args['min'] ) . '">';
 
 				if ( ! empty( $this->value ) ) {
 
@@ -102,23 +102,23 @@ if ( ! class_exists( 'EFP_Field_group' ) ) {
 
 						$title = ( is_array( $title ) ) ? reset( $title ) : $title;
 
-						echo '<div class="taf-cloneable-item">';
+						echo '<div class="efp-cloneable-item">';
 
-						echo '<div class="taf-cloneable-helper">';
-						echo '<i class="taf-cloneable-sort fas fa-arrows-alt"></i>';
-						echo '<i class="taf-cloneable-clone far fa-clone"></i>';
-						echo '<i class="taf-cloneable-remove taf-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'ta-framework' ) . '"></i>';
+						echo '<div class="efp-cloneable-helper">';
+						echo '<i class="efp-cloneable-sort fas fa-arrows-alt"></i>';
+						echo '<i class="efp-cloneable-clone far fa-clone"></i>';
+						echo '<i class="efp-cloneable-remove efp-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'ta-framework' ) . '"></i>';
 						echo '</div>';
 
-						echo '<h4 class="taf-cloneable-title">';
-						echo '<span class="taf-cloneable-text">';
-						echo ( $title_number ) ? '<span class="taf-cloneable-title-number">' . esc_attr( $num + 1 ) . '.</span>' : '';
-						echo ( $title_prefix ) ? '<span class="taf-cloneable-title-prefix">' . esc_attr( $title_prefix ) . '</span>' : '';
-						echo ( $title_auto ) ? '<span class="taf-cloneable-value">' . esc_attr( $title ) . '</span>' : '';
+						echo '<h4 class="efp-cloneable-title">';
+						echo '<span class="efp-cloneable-text">';
+						echo ( $title_number ) ? '<span class="efp-cloneable-title-number">' . esc_attr( $num + 1 ) . '.</span>' : '';
+						echo ( $title_prefix ) ? '<span class="efp-cloneable-title-prefix">' . esc_attr( $title_prefix ) . '</span>' : '';
+						echo ( $title_auto ) ? '<span class="efp-cloneable-value">' . esc_attr( $title ) . '</span>' : '';
 						echo '</span>';
 						echo '</h4>';
 
-						echo '<div class="taf-cloneable-content">';
+						echo '<div class="efp-cloneable-content">';
 
 						foreach ( $this->field['fields'] as $field ) {
 
@@ -140,9 +140,9 @@ if ( ! class_exists( 'EFP_Field_group' ) ) {
 
 				echo '</div>';
 
-				echo '<div class="taf-cloneable-alert taf-cloneable-max">' . esc_html__( 'You cannot add more.', 'ta-framework' ) . '</div>';
-				echo '<div class="taf-cloneable-alert taf-cloneable-min">' . esc_html__( 'You cannot remove more.', 'ta-framework' ) . '</div>';
-				echo '<a href="#" class="button button-primary taf-cloneable-add">' . esc_html( $args['button_title'] ) . '</a>';
+				echo '<div class="efp-cloneable-alert efp-cloneable-max">' . esc_html__( 'You cannot add more.', 'ta-framework' ) . '</div>';
+				echo '<div class="efp-cloneable-alert efp-cloneable-min">' . esc_html__( 'You cannot remove more.', 'ta-framework' ) . '</div>';
+				echo '<a href="#" class="button button-primary efp-cloneable-add">' . esc_html( $args['button_title'] ) . '</a>';
 
 				echo wp_kses_post( $this->field_after() );
 

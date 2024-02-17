@@ -85,18 +85,18 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			$default_value    = ( ! empty( $this->field['default'] ) ) ? wp_parse_args( $this->field['default'], $default_value ) : $default_value;
 			$this->value      = wp_parse_args( $this->value, $default_value );
 			$this->chosen     = $args['chosen'];
-			$chosen_class     = ( $this->chosen ) ? ' taf--chosen' : '';
+			$chosen_class     = ( $this->chosen ) ? ' efp--chosen' : '';
 			$line_height_unit = ( ! empty( $args['line_height_unit'] ) ) ? $args['line_height_unit'] : $args['unit'];
 
-			echo '<div class="taf--typography' . esc_attr( $chosen_class ) . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '" data-unit="' . esc_attr( $args['unit'] ) . '" data-line-height-unit="' . esc_attr( $line_height_unit ) . '" data-exclude="' . esc_attr( $args['exclude'] ) . '">';
+			echo '<div class="efp--typography' . esc_attr( $chosen_class ) . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '" data-unit="' . esc_attr( $args['unit'] ) . '" data-line-height-unit="' . esc_attr( $line_height_unit ) . '" data-exclude="' . esc_attr( $args['exclude'] ) . '">';
 
-			echo '<div class="taf--blocks taf--blocks-selects">';
+			echo '<div class="efp--blocks efp--blocks-selects">';
 
 			//
 			// Font Family
 			if ( ! empty( $args['font_family'] ) ) {	
-				echo '<div class="taf--block">';
-				echo '<div class="taf--title">' . esc_html__( 'Font Family', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--block">';
+				echo '<div class="efp--title">' . esc_html__( 'Font Family', 'ta-framework' ) . '</div>';
 				echo $this->create_select( array( $this->value['font-family'] => $this->value['font-family'] ), 'font-family', esc_html__( 'Select a font', 'ta-framework' ) );
 				echo '</div>';
 			}
@@ -104,11 +104,11 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Backup Font Family
 			if ( ! empty( $args['backup_font_family'] ) ) {
-				echo '<div class="taf--block taf--block-backup-font-family hidden">';
-				echo '<div class="taf--title">' . esc_html__( 'Backup Font Family', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--block efp--block-backup-font-family hidden">';
+				echo '<div class="efp--title">' . esc_html__( 'Backup Font Family', 'ta-framework' ) . '</div>';
 				echo $this->create_select(
 					apply_filters(
-						'taf_field_typography_backup_font_family',
+						'efp_field_typography_backup_font_family',
 						array(
 							'Arial, Helvetica, sans-serif',
 							"'Arial Black', Gadget, sans-serif",
@@ -136,22 +136,22 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 
 				//
 				// Font Style Select
-				echo '<div class="taf--block taf--block-font-style hidden">';
-				echo '<div class="taf--title">' . esc_html__( 'Font Style', 'ta-framework' ) . '</div>';
-				echo '<select class="taf--font-style-select" data-placeholder="Default">';
+				echo '<div class="efp--block efp--block-font-style hidden">';
+				echo '<div class="efp--title">' . esc_html__( 'Font Style', 'ta-framework' ) . '</div>';
+				echo '<select class="efp--font-style-select" data-placeholder="Default">';
 				echo '<option value="">' . ( ! $this->chosen ? esc_html__( 'Default', 'ta-framework' ) : '' ) . '</option>';
 				if ( ! empty( $this->value['font-weight'] ) || ! empty( $this->value['font-style'] ) ) {
 					echo '<option value="' . esc_attr( strtolower( $this->value['font-weight'] . $this->value['font-style'] ) ) . '" selected></option>';
 				}
 				echo '</select>';
-				echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[font-weight]' ) ) . '" class="taf--font-weight" value="' . esc_attr( $this->value['font-weight'] ) . '" />';
-				echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[font-style]' ) ) . '" class="taf--font-style" value="' . esc_attr( $this->value['font-style'] ) . '" />';
+				echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[font-weight]' ) ) . '" class="efp--font-weight" value="' . esc_attr( $this->value['font-weight'] ) . '" />';
+				echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[font-style]' ) ) . '" class="efp--font-style" value="' . esc_attr( $this->value['font-style'] ) . '" />';
 
 				//
 				// Extra Font Style Select
 				if ( ! empty( $args['extra_styles'] ) ) {
-					echo '<div class="taf--block-extra-styles hidden">';
-					echo ( ! $this->chosen ) ? '<div class="taf--title">' . esc_html__( 'Load Extra Styles', 'ta-framework' ) . '</div>' : '';
+					echo '<div class="efp--block-extra-styles hidden">';
+					echo ( ! $this->chosen ) ? '<div class="efp--title">' . esc_html__( 'Load Extra Styles', 'ta-framework' ) . '</div>' : '';
 					$placeholder = ( $this->chosen ) ? esc_html__( 'Load Extra Styles', 'ta-framework' ) : esc_html__( 'Default', 'ta-framework' );
 					echo $this->create_select( $this->value['extra-styles'], 'extra-styles', $placeholder, true );
 					echo '</div>';
@@ -164,8 +164,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Subset
 			if ( ! empty( $args['subset'] ) ) {
-				echo '<div class="taf--block taf--block-subset hidden">';
-				echo '<div class="taf--title">' . esc_html__( 'Subset', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--block efp--block-subset hidden">';
+				echo '<div class="efp--title">' . esc_html__( 'Subset', 'ta-framework' ) . '</div>';
 				$subset = ( is_array( $this->value['subset'] ) ) ? $this->value['subset'] : array_filter( (array) $this->value['subset'] );
 				echo $this->create_select( $subset, 'subset', esc_html__( 'Default', 'ta-framework' ), $args['multi_subset'] );
 				echo '</div>';
@@ -174,8 +174,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Text Align
 			if ( ! empty( $args['text_align'] ) ) {
-				echo '<div class="taf--block">';
-				echo '<div class="taf--title">' . esc_html__( 'Text Align', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--block">';
+				echo '<div class="efp--title">' . esc_html__( 'Text Align', 'ta-framework' ) . '</div>';
 				echo $this->create_select(
 					array(
 						'inherit' => esc_html__( 'Inherit', 'ta-framework' ),
@@ -194,8 +194,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Font Variant
 			if ( ! empty( $args['font_variant'] ) ) {
-				echo '<div class="taf--block">';
-				echo '<div class="taf--title">' . esc_html__( 'Font Variant', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--block">';
+				echo '<div class="efp--title">' . esc_html__( 'Font Variant', 'ta-framework' ) . '</div>';
 				echo $this->create_select(
 					array(
 						'normal'         => esc_html__( 'Normal', 'ta-framework' ),
@@ -211,8 +211,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Text Transform
 			if ( ! empty( $args['text_transform'] ) ) {
-				echo '<div class="taf--block">';
-				echo '<div class="taf--title">' . esc_html__( 'Text Transform', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--block">';
+				echo '<div class="efp--title">' . esc_html__( 'Text Transform', 'ta-framework' ) . '</div>';
 				echo $this->create_select(
 					array(
 						'none'       => esc_html__( 'None', 'ta-framework' ),
@@ -229,8 +229,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Text Decoration
 			if ( ! empty( $args['text_decoration'] ) ) {
-				echo '<div class="taf--block">';
-				echo '<div class="taf--title">' . esc_html__( 'Text Decoration', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--block">';
+				echo '<div class="efp--title">' . esc_html__( 'Text Decoration', 'ta-framework' ) . '</div>';
 				echo $this->create_select(
 					array(
 						'none'               => esc_html__( 'None', 'ta-framework' ),
@@ -250,16 +250,16 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 
 			echo '</div>';
 
-			echo '<div class="taf--blocks taf--blocks-inputs">';
+			echo '<div class="efp--blocks efp--blocks-inputs">';
 
 			//
 			// Font Size
 			if ( ! empty( $args['font_size'] ) ) {
-				echo '<div class="taf--block">';
-				echo '<div class="taf--title">' . esc_html__( 'Font Size', 'ta-framework' ) . '</div>';
-				echo '<div class="taf--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[font-size]' ) ) . '" class="taf--font-size taf--input taf-input-number" value="' . esc_attr( $this->value['font-size'] ) . '" step="any" />';
-				echo '<span class="taf--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="efp--block">';
+				echo '<div class="efp--title">' . esc_html__( 'Font Size', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[font-size]' ) ) . '" class="efp--font-size efp--input efp-input-number" value="' . esc_attr( $this->value['font-size'] ) . '" step="any" />';
+				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
@@ -267,11 +267,11 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Line Height
 			if ( ! empty( $args['line_height'] ) ) {
-				echo '<div class="taf--block">';
-				echo '<div class="taf--title">' . esc_html__( 'Line Height', 'ta-framework' ) . '</div>';
-				echo '<div class="taf--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[line-height]' ) ) . '" class="taf--line-height taf--input taf-input-number" value="' . esc_attr( $this->value['line-height'] ) . '" step="any" />';
-				echo '<span class="taf--unit">' . esc_attr( $line_height_unit ) . '</span>';
+				echo '<div class="efp--block">';
+				echo '<div class="efp--title">' . esc_html__( 'Line Height', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[line-height]' ) ) . '" class="efp--line-height efp--input efp-input-number" value="' . esc_attr( $this->value['line-height'] ) . '" step="any" />';
+				echo '<span class="efp--unit">' . esc_attr( $line_height_unit ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
@@ -279,11 +279,11 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Letter Spacing
 			if ( ! empty( $args['letter_spacing'] ) ) {
-				echo '<div class="taf--block">';
-				echo '<div class="taf--title">' . esc_html__( 'Letter Spacing', 'ta-framework' ) . '</div>';
-				echo '<div class="taf--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[letter-spacing]' ) ) . '" class="taf--letter-spacing taf--input taf-input-number" value="' . esc_attr( $this->value['letter-spacing'] ) . '" step="any" />';
-				echo '<span class="taf--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="efp--block">';
+				echo '<div class="efp--title">' . esc_html__( 'Letter Spacing', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[letter-spacing]' ) ) . '" class="efp--letter-spacing efp--input efp-input-number" value="' . esc_attr( $this->value['letter-spacing'] ) . '" step="any" />';
+				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
@@ -291,11 +291,11 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Word Spacing
 			if ( ! empty( $args['word_spacing'] ) ) {
-				echo '<div class="taf--block">';
-				echo '<div class="taf--title">' . esc_html__( 'Word Spacing', 'ta-framework' ) . '</div>';
-				echo '<div class="taf--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[word-spacing]' ) ) . '" class="taf--word-spacing taf--input taf-input-number" value="' . esc_attr( $this->value['word-spacing'] ) . '" step="any" />';
-				echo '<span class="taf--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="efp--block">';
+				echo '<div class="efp--title">' . esc_html__( 'Word Spacing', 'ta-framework' ) . '</div>';
+				echo '<div class="efp--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[word-spacing]' ) ) . '" class="efp--word-spacing efp--input efp-input-number" value="' . esc_attr( $this->value['word-spacing'] ) . '" step="any" />';
+				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
@@ -306,10 +306,10 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			// Font Color
 			if ( ! empty( $args['color'] ) ) {
 				$default_color_attr = ( ! empty( $default_value['color'] ) ) ? ' data-default-color="' . esc_attr( $default_value['color'] ) . '"' : '';
-				echo '<div class="taf--block taf--block-font-color">';
-				echo '<div class="taf--title">' . esc_html__( 'Font Color', 'ta-framework' ) . '</div>';
-				echo '<div class="taf-field-color">';
-				echo '<input type="text" name="' . esc_attr( $this->field_name( '[color]' ) ) . '" class="taf-color taf--color" value="' . esc_attr( $this->value['color'] ) . '"' . wp_kses_post($default_color_attr) . ' />';
+				echo '<div class="efp--block efp--block-font-color">';
+				echo '<div class="efp--title">' . esc_html__( 'Font Color', 'ta-framework' ) . '</div>';
+				echo '<div class="efp-field-color">';
+				echo '<input type="text" name="' . esc_attr( $this->field_name( '[color]' ) ) . '" class="efp-color efp--color" value="' . esc_attr( $this->value['color'] ) . '"' . wp_kses_post($default_color_attr) . ' />';
 				echo '</div>';
 				echo '</div>';
 			}
@@ -317,9 +317,9 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Custom style
 			if ( ! empty( $args['custom_style'] ) ) {
-				echo '<div class="taf--block taf--block-custom-style">';
-				echo '<div class="taf--title">' . esc_html__( 'Custom Style', 'ta-framework' ) . '</div>';
-				echo '<textarea name="' . esc_attr( $this->field_name( '[custom-style]' ) ) . '" class="taf--custom-style">' . esc_attr( $this->value['custom-style'] ) . '</textarea>';
+				echo '<div class="efp--block efp--block-custom-style">';
+				echo '<div class="efp--title">' . esc_html__( 'Custom Style', 'ta-framework' ) . '</div>';
+				echo '<textarea name="' . esc_attr( $this->field_name( '[custom-style]' ) ) . '" class="efp--custom-style">' . esc_attr( $this->value['custom-style'] ) . '</textarea>';
 				echo '</div>';
 			}
 
@@ -328,14 +328,14 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			$always_preview = ( $args['preview'] !== 'always' ) ? ' hidden' : '';
 
 			if ( ! empty( $args['preview'] ) ) {
-				echo '<div class="taf--block taf--block-preview' . esc_attr( $always_preview ) . '">';
-				echo '<div class="taf--toggle fas fa-toggle-off"></div>';
-				echo '<div class="taf--preview">' . esc_attr( $args['preview_text'] ) . '</div>';
+				echo '<div class="efp--block efp--block-preview' . esc_attr( $always_preview ) . '">';
+				echo '<div class="efp--toggle fas fa-toggle-off"></div>';
+				echo '<div class="efp--preview">' . esc_attr( $args['preview_text'] ) . '</div>';
 				echo '</div>';
 			}
 
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[type]' ) ) . '" class="taf--type" value="' . esc_attr( $this->value['type'] ) . '" />';
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[unit]' ) ) . '" class="taf--unit-save" value="' . esc_attr( $args['unit'] ) . '" />';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[type]' ) ) . '" class="efp--type" value="' . esc_attr( $this->value['type'] ) . '" />';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[unit]' ) ) . '" class="efp--unit-save" value="' . esc_attr( $args['unit'] ) . '" />';
 
 			echo '</div>';
 
@@ -348,7 +348,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			$multiple_attr = ( $is_multiple ) ? ' multiple data-multiple="true"' : '';
 			$chosen_rtl    = ( $this->chosen && is_rtl() ) ? ' chosen-rtl' : '';
 
-			$output  = '<select name="' . esc_attr( $this->field_name( '[' . $name . ']' . $multiple_name ) ) . '" class="taf--' . esc_attr( $name ) . esc_attr( $chosen_rtl ) . '" data-placeholder="' . esc_attr( $placeholder ) . '"' . wp_kses_post($multiple_attr) . '>';
+			$output  = '<select name="' . esc_attr( $this->field_name( '[' . $name . ']' . $multiple_name ) ) . '" class="efp--' . esc_attr( $name ) . esc_attr( $chosen_rtl ) . '" data-placeholder="' . esc_attr( $placeholder ) . '"' . wp_kses_post($multiple_attr) . '>';
 			$output .= ( ! empty( $placeholder ) ) ? '<option value="">' . esc_attr( ( ! $this->chosen ) ? $placeholder : '' ) . '</option>' : '';
 
 			if ( ! empty( $options ) ) {
@@ -371,7 +371,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 
 		public function enqueue() {
 
-			if ( ! wp_script_is( 'taf-webfontloader' ) ) {
+			if ( ! wp_script_is( 'efp-webfontloader' ) ) {
 
 				EFP::include_plugin_file( 'fields/typography/google-fonts.php' );
 
@@ -379,7 +379,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 
 				$webfonts = array();
 
-				$customwebfonts = apply_filters( 'taf_field_typography_customwebfonts', array() );
+				$customwebfonts = apply_filters( 'efp_field_typography_customwebfonts', array() );
 
 				if ( ! empty( $customwebfonts ) ) {
 					$webfonts['custom'] = array(
@@ -391,7 +391,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 				$webfonts['safe'] = array(
 					'label' => esc_html__( 'Safe Web Fonts', 'ta-framework' ),
 					'fonts' => apply_filters(
-						'taf_field_typography_safewebfonts',
+						'efp_field_typography_safewebfonts',
 						array(
 							'Arial',
 							'Arial Black',
@@ -414,15 +414,15 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 				$webfonts['google'] = array(
 					'label' => esc_html__( 'Google Web Fonts', 'ta-framework' ),
 					'fonts' => apply_filters(
-						'taf_field_typography_googlewebfonts',
-						taf_get_google_fonts()
+						'efp_field_typography_googlewebfonts',
+						efp_get_google_fonts()
 					),
 				);
 
-				$defaultstyles = apply_filters( 'taf_field_typography_defaultstyles', array( 'normal', 'italic', '700', '700italic' ) );
+				$defaultstyles = apply_filters( 'efp_field_typography_defaultstyles', array( 'normal', 'italic', '700', '700italic' ) );
 
 				$googlestyles = apply_filters(
-					'taf_field_typography_googlestyles',
+					'efp_field_typography_googlestyles',
 					array(
 						'100'       => __('Thin 100', 'ta-framework'),
 						'100italic' => __('Thin 100 Italic', 'ta-framework'),
@@ -445,11 +445,11 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 					)
 				);
 
-				$webfonts = apply_filters( 'taf_field_typography_webfonts', $webfonts );
+				$webfonts = apply_filters( 'efp_field_typography_webfonts', $webfonts );
 
 				wp_localize_script(
-					'taf',
-					'taf_typography_json',
+					'efp',
+					'efp_typography_json',
 					array(
 						'webfonts'      => $webfonts,
 						'defaultstyles' => $defaultstyles,
@@ -468,7 +468,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 				$is_google = ( $this->value['type'] === 'google' ) ? true : false;
 			} else {
 				EFP::include_plugin_file( 'fields/typography/google-fonts.php' );
-				$is_google = ( array_key_exists( $this->value['font-family'], taf_get_google_fonts() ) ) ? true : false;
+				$is_google = ( array_key_exists( $this->value['font-family'], efp_get_google_fonts() ) ) ? true : false;
 			}
 
 			if ( $is_google ) {

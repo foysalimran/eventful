@@ -69,27 +69,27 @@ if ( ! class_exists( 'EFP_Field_media' ) ) {
 				$preview_height = ( ! empty( $args['preview_height'] ) ) ? 'max-height:' . esc_attr( $args['preview_height'] ) . 'px;' : '';
 				$preview_style  = ( ! empty( $preview_width ) || ! empty( $preview_height ) ) ? ' style="' . esc_attr( $preview_width . $preview_height ) . '"' : '';
 
-				echo '<div class="taf--preview' . esc_attr( $hidden_auto ) . '">';
-				echo '<div class="taf-image-preview"' . wp_kses_post($preview_style) . '>';
-				echo '<i class="taf--remove fas fa-times"></i><span><img src="' . esc_url( $preview_src ) . '" class="taf--src" /></span>';
+				echo '<div class="efp--preview' . esc_attr( $hidden_auto ) . '">';
+				echo '<div class="efp-image-preview"' . wp_kses_post($preview_style) . '>';
+				echo '<i class="efp--remove fas fa-times"></i><span><img src="' . esc_url( $preview_src ) . '" class="efp--src" /></span>';
 				echo '</div>';
 				echo '</div>';
 
 			}
 
-			echo '<div class="taf--placeholder">';
-			echo '<input type="text" name="' . esc_attr( $this->field_name( '[url]' ) ) . '" value="' . esc_attr( $this->value['url'] ) . '" class="taf--url' . esc_attr( $hidden_url ) . '" readonly="readonly"' . wp_kses_post( $this->field_attributes() ) . wp_kses_post($placeholder) . ' />';
-			echo '<a href="#" class="button button-primary taf--button" data-library="' . esc_attr( $library ) . '" data-preview-size="' . esc_attr( $args['preview_size'] ) . '">' . esc_html( $args['button_title'] ) . '</a>';
-			echo ( empty( $args['preview'] ) ) ? '<a href="#" class="button button-secondary taf-warning-primary taf--remove' . esc_attr( $hidden_auto ) . '">' . esc_html( $args['remove_title'] ) . '</a>' : '';
+			echo '<div class="efp--placeholder">';
+			echo '<input type="text" name="' . esc_attr( $this->field_name( '[url]' ) ) . '" value="' . esc_attr( $this->value['url'] ) . '" class="efp--url' . esc_attr( $hidden_url ) . '" readonly="readonly"' . wp_kses_post( $this->field_attributes() ) . wp_kses_post($placeholder) . ' />';
+			echo '<a href="#" class="button button-primary efp--button" data-library="' . esc_attr( $library ) . '" data-preview-size="' . esc_attr( $args['preview_size'] ) . '">' . esc_html( $args['button_title'] ) . '</a>';
+			echo ( empty( $args['preview'] ) ) ? '<a href="#" class="button button-secondary efp-warning-primary efp--remove' . esc_attr( $hidden_auto ) . '">' . esc_html( $args['remove_title'] ) . '</a>' : '';
 			echo '</div>';
 
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[id]' ) ) . '" value="' . esc_attr( $this->value['id'] ) . '" class="taf--id"/>';
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[width]' ) ) . '" value="' . esc_attr( $this->value['width'] ) . '" class="taf--width"/>';
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[height]' ) ) . '" value="' . esc_attr( $this->value['height'] ) . '" class="taf--height"/>';
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[thumbnail]' ) ) . '" value="' . esc_attr( $this->value['thumbnail'] ) . '" class="taf--thumbnail"/>';
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[alt]' ) ) . '" value="' . esc_attr( $this->value['alt'] ) . '" class="taf--alt"/>';
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[title]' ) ) . '" value="' . esc_attr( $this->value['title'] ) . '" class="taf--title"/>';
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[description]' ) ) . '" value="' . esc_attr( $this->value['description'] ) . '" class="taf--description"/>';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[id]' ) ) . '" value="' . esc_attr( $this->value['id'] ) . '" class="efp--id"/>';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[width]' ) ) . '" value="' . esc_attr( $this->value['width'] ) . '" class="efp--width"/>';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[height]' ) ) . '" value="' . esc_attr( $this->value['height'] ) . '" class="efp--height"/>';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[thumbnail]' ) ) . '" value="' . esc_attr( $this->value['thumbnail'] ) . '" class="efp--thumbnail"/>';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[alt]' ) ) . '" value="' . esc_attr( $this->value['alt'] ) . '" class="efp--alt"/>';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[title]' ) ) . '" value="' . esc_attr( $this->value['title'] ) . '" class="efp--title"/>';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[description]' ) ) . '" value="' . esc_attr( $this->value['description'] ) . '" class="efp--description"/>';
 
 			echo wp_kses_post( $this->field_after() );
 		}

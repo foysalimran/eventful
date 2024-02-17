@@ -20,23 +20,23 @@ if ( ! class_exists( 'EFP_Field_tabbed' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo '<div class="taf-tabbed-nav" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
+			echo '<div class="efp-tabbed-nav" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 			foreach ( $this->field['tabs'] as $key => $tab ) {
 
-				$tabbed_icon   = ( ! empty( $tab['icon'] ) ) ? '<i class="taf--icon ' . esc_attr( $tab['icon'] ) . '"></i>' : '';
-				$tabbed_active = ( empty( $key ) ) ? 'taf-tabbed-active' : '';
+				$tabbed_icon   = ( ! empty( $tab['icon'] ) ) ? '<i class="efp--icon ' . esc_attr( $tab['icon'] ) . '"></i>' : '';
+				$tabbed_active = ( empty( $key ) ) ? 'efp-tabbed-active' : '';
 
 				echo '<a href="#" class="' . esc_attr( $tabbed_active ) . '"">' . $tabbed_icon . esc_attr( $tab['title'] ) . '</a>';
 
 			}
 			echo '</div>';
 
-			echo '<div class="taf-tabbed-contents">';
+			echo '<div class="efp-tabbed-contents">';
 			foreach ( $this->field['tabs'] as $key => $tab ) {
 
 				$tabbed_hidden = ( ! empty( $key ) ) ? ' hidden' : '';
 
-				echo '<div class="taf-tabbed-content' . esc_attr( $tabbed_hidden ) . '">';
+				echo '<div class="efp-tabbed-content' . esc_attr( $tabbed_hidden ) . '">';
 
 				foreach ( $tab['fields'] as $field ) {
 

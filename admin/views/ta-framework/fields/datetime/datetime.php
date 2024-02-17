@@ -48,8 +48,8 @@ if ( ! class_exists( 'EFP_Field_datetime' ) ) {
 					)
 				);
 
-				echo '<label class="taf--from">' . esc_attr( $args['text_from'] ) . ' <input type="text" name="' . esc_attr( $this->field_name( '[from]' ) ) . '" value="' . esc_attr( $value['from'] ) . '"' . wp_kses_post( $this->field_attributes() ) . ' data-type="from" /></label>';
-				echo '<label class="taf--to">' . esc_attr( $args['text_to'] ) . ' <input type="text" name="' . esc_attr( $this->field_name( '[to]' ) ) . '" value="' . esc_attr( $value['to'] ) . '"' . wp_kses_post( $this->field_attributes() ) . ' data-type="to" /></label>';
+				echo '<label class="efp--from">' . esc_attr( $args['text_from'] ) . ' <input type="text" name="' . esc_attr( $this->field_name( '[from]' ) ) . '" value="' . esc_attr( $value['from'] ) . '"' . wp_kses_post( $this->field_attributes() ) . ' data-type="from" /></label>';
+				echo '<label class="efp--to">' . esc_attr( $args['text_to'] ) . ' <input type="text" name="' . esc_attr( $this->field_name( '[to]' ) ) . '" value="' . esc_attr( $value['to'] ) . '"' . wp_kses_post( $this->field_attributes() ) . ' data-type="to" /></label>';
 
 			} else {
 
@@ -57,7 +57,7 @@ if ( ! class_exists( 'EFP_Field_datetime' ) ) {
 
 			}
 
-			echo '<div class="taf-datetime-settings" data-settings="' . esc_attr( json_encode( $settings ) ) . '"></div>';
+			echo '<div class="efp-datetime-settings" data-settings="' . esc_attr( json_encode( $settings ) ) . '"></div>';
 
 			echo wp_kses_post( $this->field_after() );
 		}

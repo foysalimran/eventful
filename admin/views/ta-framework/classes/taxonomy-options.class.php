@@ -31,8 +31,8 @@ if ( ! class_exists( 'EFP_Taxonomy_Options' ) ) {
     public function __construct( $key, $params ) {
 
       $this->unique     = $key;
-      $this->args       = apply_filters( "taf_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections   = apply_filters( "taf_{$this->unique}_sections", $params['sections'], $this );
+      $this->args       = apply_filters( "efp_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections   = apply_filters( "efp_{$this->unique}_sections", $params['sections'], $this );
       $this->taxonomies = ( is_array( $this->args['taxonomy'] ) ) ? $this->args['taxonomy'] : array_filter( (array) $this->args['taxonomy'] );
       $this->taxonomy   = ( ! empty( $_REQUEST[ 'taxonomy' ] ) ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'taxonomy' ] ) ) : '';
       $this->pre_fields = $this->pre_fields( $this->sections );
@@ -105,27 +105,27 @@ if ( ! class_exists( 'EFP_Taxonomy_Options' ) ) {
       $term_id   = ( $is_term ) ? $term->term_id : 0;
       $taxonomy  = ( $is_term ) ? $term->taxonomy : $term;
       $classname = ( $is_term ) ? 'edit' : 'add';
-      $errors    = ( ! empty( $term_id ) ) ? get_term_meta( $term_id, '_taf_errors_'. $this->unique, true ) : array();
+      $errors    = ( ! empty( $term_id ) ) ? get_term_meta( $term_id, '_efp_errors_'. $this->unique, true ) : array();
       $errors    = ( ! empty( $errors ) ) ? $errors : array();
       $class     = ( $this->args['class'] ) ? ' '. $this->args['class'] : '';
 
       if ( ! empty( $errors ) ) {
-        delete_term_meta( $term_id, '_taf_errors_'. $this->unique );
+        delete_term_meta( $term_id, '_efp_errors_'. $this->unique );
       }
 
-      wp_nonce_field( 'taf_taxonomy_nonce', 'taf_taxonomy_nonce'. $this->unique );
+      wp_nonce_field( 'efp_taxonomy_nonce', 'efp_taxonomy_nonce'. $this->unique );
 
-      echo '<div class="taf taf-taxonomy taf-show-all taf-onload taf-taxonomy-'. esc_attr( $classname ) .'-fields '. esc_attr( $class ) .'">';
+      echo '<div class="efp efp-taxonomy efp-show-all efp-onload efp-taxonomy-'. esc_attr( $classname ) .'-fields '. esc_attr( $class ) .'">';
 
       foreach ( $this->sections as $section ) {
 
         if ( $taxonomy === $this->taxonomy ) {
 
-          $section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="taf-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
+          $section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="efp-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
           $section_title = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
 
-          echo ( $section_title || $section_icon ) ? '<div class="taf-section-title"><h3>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h3></div>' : '';
-          echo ( ! empty( $section['description'] ) ) ? '<div class="taf-field taf-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
+          echo ( $section_title || $section_icon ) ? '<div class="efp-section-title"><h3>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h3></div>' : '';
+          echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
 
           if ( ! empty( $section['fields'] ) ) {
             foreach ( $section['fields'] as $field ) {
@@ -156,11 +156,11 @@ if ( ! class_exists( 'EFP_Taxonomy_Options' ) ) {
       $count    = 1;
       $data     = array();
       $errors   = array();
-      $noncekey = 'taf_taxonomy_nonce'. $this->unique;
+      $noncekey = 'efp_taxonomy_nonce'. $this->unique;
       $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
       $taxonomy = ( ! empty( $_POST[ 'taxonomy' ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ 'taxonomy' ] ) ) : '';
 
-      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'taf_taxonomy_nonce' ) ) {
+      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'efp_taxonomy_nonce' ) ) {
         return $term_id;
       }
 
@@ -227,9 +227,9 @@ if ( ! class_exists( 'EFP_Taxonomy_Options' ) ) {
 
       }
 
-      $data = apply_filters( "taf_{$this->unique}_save", $data, $term_id, $this );
+      $data = apply_filters( "efp_{$this->unique}_save", $data, $term_id, $this );
 
-      do_action( "taf_{$this->unique}_save_before", $data, $term_id, $this );
+      do_action( "efp_{$this->unique}_save_before", $data, $term_id, $this );
 
       if ( empty( $data ) ) {
 
@@ -254,14 +254,14 @@ if ( ! class_exists( 'EFP_Taxonomy_Options' ) ) {
         }
 
         if ( ! empty( $errors ) ) {
-          update_term_meta( $term_id, '_taf_errors_'. $this->unique, $errors );
+          update_term_meta( $term_id, '_efp_errors_'. $this->unique, $errors );
         }
 
       }
 
-      do_action( "taf_{$this->unique}_saved", $data, $term_id, $this );
+      do_action( "efp_{$this->unique}_saved", $data, $term_id, $this );
 
-      do_action( "taf_{$this->unique}_save_after", $data, $term_id, $this );
+      do_action( "efp_{$this->unique}_save_after", $data, $term_id, $this );
 
     }
   }

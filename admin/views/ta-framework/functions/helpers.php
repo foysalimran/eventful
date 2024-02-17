@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! function_exists( 'taf_array_search' ) ) {
-	function taf_array_search( $array, $key, $value ) {
+if ( ! function_exists( 'efp_array_search' ) ) {
+	function efp_array_search( $array, $key, $value ) {
 
 		$results = array();
 
@@ -18,7 +18,7 @@ if ( ! function_exists( 'taf_array_search' ) ) {
 			}
 
 			foreach ( $array as $sub_array ) {
-				$results = array_merge( $results, taf_array_search( $sub_array, $key, $value ) );
+				$results = array_merge( $results, efp_array_search( $sub_array, $key, $value ) );
 			}
 		}
 
@@ -33,8 +33,8 @@ if ( ! function_exists( 'taf_array_search' ) ) {
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! function_exists( 'taf_timeout' ) ) {
-	function taf_timeout( $timenow, $starttime, $timeout = 30 ) {
+if ( ! function_exists( 'efp_timeout' ) ) {
+	function efp_timeout( $timenow, $starttime, $timeout = 30 ) {
 		return ( ( $timenow - $starttime ) < $timeout ) ? true : false;
 	}
 }
@@ -46,8 +46,8 @@ if ( ! function_exists( 'taf_timeout' ) ) {
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! function_exists( 'taf_wp_editor_api' ) ) {
-	function taf_wp_editor_api() {
+if ( ! function_exists( 'efp_wp_editor_api' ) ) {
+	function efp_wp_editor_api() {
 		global $wp_version;
 		return version_compare( $wp_version, '4.8', '>=' );
 	}

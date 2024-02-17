@@ -40,7 +40,7 @@ if ( ! class_exists( 'EFP_Field_textarea' ) ) {
 								$id    = $instance['modal_id'];
 								$title = $instance['button_title'];
 
-								echo '<a href="#" class="button button-primary taf-shortcode-button" data-modal-id="' . esc_attr( $id ) . '">' . esc_html( $title ) . '</a>';
+								echo '<a href="#" class="button button-primary efp-shortcode-button" data-modal-id="' . esc_attr( $id ) . '">' . esc_html( $title ) . '</a>';
 
 							}
 						}

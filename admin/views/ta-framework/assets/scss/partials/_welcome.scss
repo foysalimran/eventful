@@ -1,7 +1,7 @@
 /**
  * 11. Welcome Page
  */
-.taf-welcome-wrap{
+.efp-welcome-wrap{
   position: relative;
   margin: 25px 40px 0 20px;
   font-size: 15px;
@@ -21,7 +21,7 @@
     font-weight: 400;
   }
 
-  .taf-logo{
+  .efp-logo{
     position: absolute;
     overflow: hidden;
     top: 0;
@@ -31,7 +31,7 @@
     background-image: linear-gradient( 45deg, #2d67cb, #ad19f3);
     box-shadow: 0 1px 4px rgba(0,0,0,0.25), inset 0 0 0 4px rgba(0,0,0,0.25);
 
-    .taf--effects i{
+    .efp--effects i{
       position: absolute;
       width: 200px;
       height: 100px;
@@ -39,33 +39,33 @@
       transform: rotate(-45deg);
     }
 
-    .taf--effects i:nth-child(1){
+    .efp--effects i:nth-child(1){
       bottom: -20px;
       right: -70px;
     }
 
-    .taf--effects i:nth-child(2){
+    .efp--effects i:nth-child(2){
       bottom: -35px;
       right: -80px;
     }
 
-    .taf--effects i:nth-child(3){
+    .efp--effects i:nth-child(3){
       bottom: -50px;
       right: -90px;
     }
 
-    .taf--effects i:nth-child(4){
+    .efp--effects i:nth-child(4){
       bottom: -65px;
       right: -100px;
     }
 
-    .taf--wp-logos{
+    .efp--wp-logos{
       position: relative;
       padding-top: 25px;
       text-align: center;
     }
 
-    .taf--wp-logo{
+    .efp--wp-logo{
       position: absolute;
       left: 20px;
       width: 20px;
@@ -75,7 +75,7 @@
       background-image: url(../images/wp-logo.svg);
     }
 
-    .taf--wp-plugin-logo{
+    .efp--wp-plugin-logo{
       display: inline-block;
       width: 50px;
       height: 50px;
@@ -88,7 +88,7 @@
       vertical-align: middle;
     }
 
-    .taf--text{
+    .efp--text{
       position: absolute;
       left: 0;
       right: 0;
@@ -102,7 +102,7 @@
       text-shadow: 1px 1px 0 rgba(0,0,0,0.25);
     }
 
-    .taf--version{
+    .efp--version{
       top: auto;
       left: auto;
       right: 8px;
@@ -112,7 +112,7 @@
     }
   }
 
-  .taf-about-text{
+  .efp-about-text{
     font-weight: 400;
     line-height: 1.6em;
     font-size: 19px;
@@ -120,7 +120,7 @@
     color: #555d66;
   }
 
-  .taf-demo-button{
+  .efp-demo-button{
     margin: 1em 200px 2em 0;
   }
 
@@ -133,40 +133,40 @@
     padding-left: 15px;
   }
 
-  .taf--col{
+  .efp--col{
     float: left;
     padding-right: 20px;
     box-sizing: border-box;
   }
 
-  .taf--col-2{
+  .efp--col-2{
     width: 50%;
   }
 
-  .taf--col-3{
+  .efp--col-3{
     width: 33.333%;
   }
 
-  .taf--col-4{
+  .efp--col-4{
     width: 25%;
   }
 
-  .taf--col-5{
+  .efp--col-5{
     width: 20%;
   }
 
-  .taf--col-last{
+  .efp--col-last{
     padding-right: 0;
   }
 
-  .taf--col-upgrade{
+  .efp--col-upgrade{
     padding: 10px 0;
     text-align: center;
     border-top: 1px solid #e5e5e5;
   }
 }
 
-.taf--table-compare{
+.efp--table-compare{
 
   thead,
   tfoot{
@@ -205,7 +205,7 @@
   }
 }
 
-.taf-welcome-cols{
+.efp-welcome-cols{
   clear: both;
   margin: 20px 0;
   background-color: #fff;
@@ -213,7 +213,7 @@
   border-radius: 2px;
   border: 1px solid #e5e5e5;
 
-  .taf--col{
+  .efp--col{
     width: 33.333%;
     float: left;
     padding: 20px;
@@ -223,8 +223,8 @@
     border-right: 1px solid #e5e5e5;
   }
 
-  .taf--left,
-  .taf--block{
+  .efp--left,
+  .efp--block{
     float: left;
     width: 20%;
     padding: 0 30px;
@@ -232,23 +232,23 @@
     box-sizing: border-box;
   }
 
-  .taf--block{
+  .efp--block{
     width: 80%;
   }
 
-  .taf--col-first{
+  .efp--col-first{
     border-bottom: 1px solid #e5e5e5;
   }
 
-  .taf--last{
+  .efp--last{
     border-right: none;
   }
 
-  .taf--space{
+  .efp--space{
     height: 20px;
   }
 
-  .taf--icon{
+  .efp--icon{
     display: inline-block;
     font-size: 20px;
     width: 30px;
@@ -261,15 +261,15 @@
     border-radius: 30px;
   }
 
-  .taf--active{
+  .efp--active{
     background-color: #5cb85c;
   }
 
-  .taf--deactive{
+  .efp--deactive{
     background-color: #e14d43;
   }
 
-  .taf--title{
+  .efp--title{
     font-weight: bold;
     display: block;
   }
@@ -279,17 +279,17 @@
   }
 }
 
-.taf-features-cols{
+.efp-features-cols{
 
-  .taf--key-features{
+  .efp--key-features{
     width: 30%;
   }
-  .taf--available-fields{
+  .efp--available-fields{
     width: 70%;
   }
 }
 
-.taf-code-block{
+.efp-code-block{
   margin: 20px 0;
   padding: 5px 20px;
   background-color: #fff;
@@ -306,13 +306,13 @@
   }
 }
 
-.taf--table-fields{
+.efp--table-fields{
   td{
     font-size: 14px;
   }
 }
 
-.taf--upgrade a{
+.efp--upgrade a{
   color: #5cb85c;
   font-weight: bold;
 
@@ -326,8 +326,8 @@
 
 @media only screen and (max-width:782px){
 
-  .taf-welcome-cols{
-    .taf--col{
+  .efp-welcome-cols{
+    .efp--col{
       width: 100%;
       min-height: auto;
       border-right: none;
@@ -335,11 +335,11 @@
     }
   }
 
-  .taf-features-cols{
-    .taf--key-features{
+  .efp-features-cols{
+    .efp--key-features{
       width: 100%;
     }
-    .taf--available-fields{
+    .efp--available-fields{
       width: 100%;
     }
   }

@@ -55,7 +55,7 @@
 /**
  * 01. Base
  */
-.taf-options {
+.efp-options {
   margin-left: 20px;
   margin-right: 0;
 }
@@ -63,66 +63,66 @@
 /**
  * 01. 01. Header
  */
-.taf-header h1 {
+.efp-header h1 {
   float: right;
 }
-.taf-header fieldset {
+.efp-header fieldset {
   float: left;
 }
 
 /**
  * 01. 02. Header Buttons
  */
-.taf-buttons {
+.efp-buttons {
   float: left;
   direction: ltr;
 }
 
-.taf-header-left {
+.efp-header-left {
   float: right;
 }
 
-.taf-header-right {
+.efp-header-right {
   float: left;
 }
 
 /**
  * 01. 03. Navigation
  */
-.taf-nav {
+.efp-nav {
   float: right;
 }
-.taf-nav ul {
+.efp-nav ul {
   clear: right;
 }
-.taf-nav ul li .taf-active:after {
+.efp-nav ul li .efp-active:after {
   right: auto;
   left: 0;
   border-left-color: #fff;
   border-right-color: transparent;
 }
-.taf-nav ul li .taf-arrow:after {
+.efp-nav ul li .efp-arrow:after {
   content: "\f053";
   right: auto;
   left: 10px;
 }
-.taf-nav ul li.taf-tab-expanded .taf-arrow:after {
+.efp-nav ul li.efp-tab-expanded .efp-arrow:after {
   transform: rotate(-90deg);
 }
-.taf-nav ul ul li a {
+.efp-nav ul ul li a {
   padding-right: 25px;
   padding-left: 15px;
 }
-.taf-nav ul ul:before {
+.efp-nav ul ul:before {
   left: auto;
   right: 15px;
 }
-.taf-nav .taf-tab-icon {
+.efp-nav .efp-tab-icon {
   margin-left: 5px;
   margin-right: 0;
 }
 
-.taf-nav-background {
+.efp-nav-background {
   left: auto;
   right: 0;
 }
@@ -130,7 +130,7 @@
 /**
  * 01. 04. Content
  */
-.taf-content {
+.efp-content {
   margin-left: 0;
   margin-right: 225px;
 }
@@ -138,19 +138,19 @@
 /**
  * 01. 05. Section
  */
-.taf-sections {
+.efp-sections {
   float: right;
 }
 
 /**
  * 01. 06. Show all options
  */
-.taf-show-all .taf-content {
+.efp-show-all .efp-content {
   margin-right: 0;
   overflow: hidden;
 }
 
-.taf-expand-all {
+.efp-expand-all {
   float: right;
   right: auto;
   left: 40px;
@@ -161,31 +161,31 @@
 /**
  * 01. 07. Search Input
  */
-.taf-search {
+.efp-search {
   float: right;
 }
-.taf-search input {
+.efp-search input {
   margin: 0 0 0 5px;
 }
 
 /**
  * 01. 08. Copyright
  */
-.taf-copyright {
+.efp-copyright {
   float: right;
 }
 
 /**
  * 01. 09. Metabox
  */
-.taf-metabox {
+.efp-metabox {
   margin: -6px -12px -12px -12px;
 }
-.taf-metabox .taf-section-title {
+.efp-metabox .efp-section-title {
   padding: 20px;
 }
 
-.taf-section-title .taf-section-icon {
+.efp-section-title .efp-section-icon {
   margin-left: 5px;
   margin-right: 0;
 }
@@ -193,28 +193,28 @@
 /**
  * 02. Fields
  */
-.taf-field .taf-title {
+.efp-field .efp-title {
   float: right;
 }
-.taf-field .taf-fieldset {
+.efp-field .efp-fieldset {
   float: left;
 }
 
-.taf-pseudo-field {
+.efp-pseudo-field {
   padding: 0 0 0 5px !important;
 }
 
 /**
  * 02. 01. Field: typography
  */
-.taf-field-typography select {
+.efp-field-typography select {
   margin: 0;
   width: 100%;
 }
-.taf-field-typography .taf--blocks-inputs .taf--blocks {
+.efp-field-typography .efp--blocks-inputs .efp--blocks {
   flex-direction: row-reverse;
 }
-.taf-field-typography .taf--unit {
+.efp-field-typography .efp--unit {
   left: 4px;
   right: auto;
 }
@@ -222,22 +222,22 @@
 /**
  * 02. 02. Field: checkbox, radio
  */
-.taf-field-checkbox ul ul li,
-.taf-field-radio ul ul li {
+.efp-field-checkbox ul ul li,
+.efp-field-radio ul ul li {
   margin-left: 0;
   margin-right: 8px;
 }
-.taf-field-checkbox ul ul li:first-child,
-.taf-field-radio ul ul li:first-child {
+.efp-field-checkbox ul ul li:first-child,
+.efp-field-radio ul ul li:first-child {
   margin-right: 0;
 }
-.taf-field-checkbox .taf--inline-list li,
-.taf-field-radio .taf--inline-list li {
+.efp-field-checkbox .efp--inline-list li,
+.efp-field-radio .efp--inline-list li {
   margin-right: 0;
   margin-left: 15px;
 }
-.taf-field-checkbox .taf--text,
-.taf-field-radio .taf--text {
+.efp-field-checkbox .efp--text,
+.efp-field-radio .efp--text {
   margin-left: 0;
   margin-right: 5px;
 }
@@ -245,10 +245,10 @@
 /**
  * 02. 03. Field: switcher
  */
-.taf-field-switcher .taf--switcher {
+.efp-field-switcher .efp--switcher {
   float: right;
 }
-.taf-field-switcher .taf--label {
+.efp-field-switcher .efp--label {
   float: right;
   margin-left: 0;
   margin-right: 5px;
@@ -257,8 +257,8 @@
 /**
  * 02. 04. Field: upload
  */
-.taf-field-upload .taf--remove,
-.taf-field-upload .taf--button {
+.efp-field-upload .efp--remove,
+.efp-field-upload .efp--button {
   margin-left: 0;
   margin-right: 5px;
 }
@@ -266,10 +266,10 @@
 /**
  * 02. 05. Field: group
  */
-.taf-field-group .taf-cloneable-title {
+.efp-field-group .efp-cloneable-title {
   padding: 15px 10px 15px 65px;
 }
-.taf-field-group .taf-cloneable-helper {
+.efp-field-group .efp-cloneable-helper {
   right: auto;
   left: 10px;
 }
@@ -277,7 +277,7 @@
 /**
  * 02. 06. Field: repeater
  */
-.taf-field-repeater .taf-repeater-helper {
+.efp-field-repeater .efp-repeater-helper {
   border-left: 0;
   border-right: 1px solid #eee;
 }
@@ -285,7 +285,7 @@
 /**
  * 02. 07. Field: help
  */
-.taf-help {
+.efp-help {
   right: auto;
   left: 5px;
 }
@@ -293,11 +293,11 @@
 /**
  * 02. 08. Field: icon
  */
-.taf-field-icon .button {
+.efp-field-icon .button {
   margin-right: 0;
   margin-left: 5px;
 }
-.taf-field-icon .taf-icon-preview i {
+.efp-field-icon .efp-icon-preview i {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -305,11 +305,11 @@
 /**
  * 02. 09. Field: gallery
  */
-.taf-field-gallery ul li {
+.efp-field-gallery ul li {
   margin-right: 0;
   margin-left: 5px;
 }
-.taf-field-gallery .button {
+.efp-field-gallery .button {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -317,11 +317,11 @@
 /**
  * 02. 11. Field: tabbed
  */
-.taf-field-tabbed .taf-tabbed-nav .taf--icon {
+.efp-field-tabbed .efp-tabbed-nav .efp--icon {
   padding-right: 0;
   padding-left: 5px;
 }
-.taf-field-tabbed .taf-tabbed-nav a {
+.efp-field-tabbed .efp-tabbed-nav a {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -329,18 +329,18 @@
 /**
  * 02. 12. Field: media
  */
-.taf-field-media .button {
+.efp-field-media .button {
   margin-left: 0;
   margin-right: 7px;
 }
-.taf-field-media .hidden + .button {
+.efp-field-media .hidden + .button {
   margin-right: 0;
 }
 
 /**
  * 02. 13. Field: notice
  */
-.taf-notice {
+.efp-notice {
   border-left: none;
   border-right-style: solid;
   border-right-width: 4px;
@@ -349,25 +349,25 @@
 /**
  * 02. 14. Field: border, spacing, dimensions
  */
-.taf-field-dimensions .taf--input,
-.taf-field-dimensions .taf-fieldset,
-.taf-field-spacing .taf--input,
-.taf-field-spacing .taf-fieldset,
-.taf-field-border .taf--input,
-.taf-field-border .taf-fieldset {
+.efp-field-dimensions .efp--input,
+.efp-field-dimensions .efp-fieldset,
+.efp-field-spacing .efp--input,
+.efp-field-spacing .efp-fieldset,
+.efp-field-border .efp--input,
+.efp-field-border .efp-fieldset {
   direction: ltr;
 }
-.taf-field-dimensions .taf--inputs,
-.taf-field-dimensions .taf--color,
-.taf-field-spacing .taf--inputs,
-.taf-field-spacing .taf--color,
-.taf-field-border .taf--inputs,
-.taf-field-border .taf--color {
+.efp-field-dimensions .efp--inputs,
+.efp-field-dimensions .efp--color,
+.efp-field-spacing .efp--inputs,
+.efp-field-spacing .efp--color,
+.efp-field-border .efp--inputs,
+.efp-field-border .efp--color {
   float: right;
 }
-.taf-field-dimensions .taf--color,
-.taf-field-spacing .taf--color,
-.taf-field-border .taf--color {
+.efp-field-dimensions .efp--color,
+.efp-field-spacing .efp--color,
+.efp-field-border .efp--color {
   margin-right: 4px;
   direction: rtl;
 }
@@ -375,14 +375,14 @@
 /**
  * 02. 15. Field: background
  */
-.taf-field-background .taf--block {
+.efp-field-background .efp--block {
   float: right;
 }
-.taf-field-background .taf--select,
-.taf-field-background .taf--media {
+.efp-field-background .efp--select,
+.efp-field-background .efp--media {
   padding-right: 0;
 }
-.taf-field-background .taf--title {
+.efp-field-background .efp--title {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -390,7 +390,7 @@
 /**
  * 02. 16. Field: spinner
  */
-.taf-field-spinner .taf--spin {
+.efp-field-spinner .efp--spin {
   float: right;
   direction: ltr;
 }
@@ -398,26 +398,26 @@
 /**
  * 02. 17. Field: slider
  */
-.taf-field-slider .taf-slider-ui {
+.efp-field-slider .efp-slider-ui {
   direction: ltr;
   margin-right: 0;
   margin-left: 15px;
 }
-.taf-field-slider .taf--input {
+.efp-field-slider .efp--input {
   direction: ltr;
 }
 
 /**
  * 02. 18. Field: button_set
  */
-.taf-field-button_set .taf--button-group {
+.efp-field-button_set .efp--button-group {
   float: right;
 }
 
 /**
  * 02. 19. Field: link_color
  */
-.taf-field-link_color .taf--left {
+.efp-field-link_color .efp--left {
   float: right;
   margin-right: 0;
   margin-left: 10px;
@@ -426,7 +426,7 @@
 /**
  * 02. 20. Field: color_group
  */
-.taf-field-color_group .taf--left {
+.efp-field-color_group .efp--left {
   float: right;
   margin-right: 0;
   margin-left: 10px;
@@ -435,7 +435,7 @@
 /**
  * 02. 21. Field: palette
  */
-.taf-field-palette .taf--palette {
+.efp-field-palette .efp--palette {
   margin-right: 0;
   margin-left: 10px;
 }
@@ -443,7 +443,7 @@
 /**
  * 02. 22. Field: accordion
  */
-.taf-field-accordion .taf--icon {
+.efp-field-accordion .efp--icon {
   margin-right: 0;
   margin-left: 2px;
 }
@@ -451,7 +451,7 @@
 /**
  * 02. 23. Field: date
  */
-.taf-field-date .taf--to {
+.efp-field-date .efp--to {
   margin-left: 0;
   margin-right: 7px;
 }
@@ -459,7 +459,7 @@
 /**
  * 02. 24. Field: map
  */
-.taf-field-map .taf--map-input:last-child {
+.efp-field-map .efp--map-input:last-child {
   padding-left: 0;
   padding-right: 10px;
 }
@@ -467,7 +467,7 @@
 /**
  * 02. 25. Field: sortable
  */
-.taf-field-sortable .taf-sortable-helper {
+.efp-field-sortable .efp-sortable-helper {
   border-left: none;
   border-right: 1px solid #eee;
 }
@@ -475,10 +475,10 @@
 /**
  * 02. 26. Field: number
  */
-.taf-field-number .taf--wrap {
+.efp-field-number .efp--wrap {
   float: right;
 }
-.taf-field-number .taf--unit {
+.efp-field-number .efp--unit {
   left: 4px;
   right: auto;
 }
@@ -486,20 +486,20 @@
 /**
  * 03. Taxonomy
  */
-.taf-taxonomy-add-fields {
+.efp-taxonomy-add-fields {
   margin-right: 0;
   margin-left: 30px;
 }
-.taf-taxonomy-add-fields .taf-field > .taf-fieldset > .taf-help {
+.efp-taxonomy-add-fields .efp-field > .efp-fieldset > .efp-help {
   left: -5px;
   right: auto;
 }
 
-.taf-taxonomy-edit-fields {
+.efp-taxonomy-edit-fields {
   margin-right: 0;
   margin-left: 35px;
 }
-.taf-taxonomy-edit-fields .taf-field > .taf-fieldset > .taf-help {
+.efp-taxonomy-edit-fields .efp-field > .efp-fieldset > .efp-help {
   right: auto;
   left: -5px;
 }
@@ -507,11 +507,11 @@
 /**
  * 04. Profile
  */
-.taf-profile-options > h2 > .fa {
+.efp-profile-options > h2 > .fa {
   padding-right: 0;
   padding-left: 7px;
 }
-.taf-profile-options > .taf-field > .taf-fieldset > .taf-help {
+.efp-profile-options > .efp-field > .efp-fieldset > .efp-help {
   left: -5px;
   right: auto;
 }
@@ -519,17 +519,17 @@
 /**
  * 05. Nav Menu
  */
-.taf-nav-menu-options > .taf-fields {
+.efp-nav-menu-options > .efp-fields {
   margin-left: 0;
   margin-right: -10px;
 }
 
-.taf-nav-menu-title {
+.efp-nav-menu-title {
   padding-left: 14px;
   padding-right: 12px;
 }
 
-.taf-nav-menu-icon {
+.efp-nav-menu-icon {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -537,15 +537,15 @@
 /**
  * 06. Modal
  */
-.taf-modal-content .taf-field {
+.efp-modal-content .efp-field {
   padding: 15px 15px 15px 30px;
 }
 
-.taf-modal-title {
+.efp-modal-title {
   padding: 0 16px 0 36px;
 }
 
-.taf-modal-close {
+.efp-modal-close {
   right: auto;
   left: 0;
 }
@@ -553,7 +553,7 @@
 /**
  * 07. Customizer
  */
-.control-section .taf-field .taf-fieldset {
+.control-section .efp-field .efp-fieldset {
   margin-right: 0;
 }
 
@@ -561,30 +561,30 @@
  * 08. Responsive
  */
 @media only screen and (max-width: 1200px) {
-  .taf-metabox .taf-field .taf-fieldset {
+  .efp-metabox .efp-field .efp-fieldset {
     margin-left: 0;
   }
 }
 @media only screen and (max-width: 782px) {
-  .taf .taf-fieldset,
-  .taf .taf-content {
+  .efp .efp-fieldset,
+  .efp .efp-content {
     margin-right: 0;
   }
 }
 /**
  * 09. Others
  */
-.taf-field .taf--transparent-slider {
+.efp-field .efp--transparent-slider {
   margin-left: 0;
   margin-right: 2px;
 }
-.taf-field .taf--transparent-slider .ui-slider-handle {
+.efp-field .efp--transparent-slider .ui-slider-handle {
   margin: 0 -11px;
 }
-.taf-field .taf--transparent-offset {
+.efp-field .efp--transparent-offset {
   background-position: center right;
 }
-.taf-field .taf--transparent-text {
+.efp-field .efp--transparent-text {
   right: auto;
   left: 10px;
 }

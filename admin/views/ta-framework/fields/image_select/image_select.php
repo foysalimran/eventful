@@ -25,7 +25,7 @@ if ( ! class_exists( 'EFP_Field_image_select' ) ) {
 				)
 			);
 
-			$inline = ( $args['inline'] ) ? ' taf--inline-list' : '';
+			$inline = ( $args['inline'] ) ? ' efp--inline-list' : '';
 
 			$value = ( is_array( $this->value ) ) ? $this->value : array_filter( (array) $this->value );
 
@@ -33,7 +33,7 @@ if ( ! class_exists( 'EFP_Field_image_select' ) ) {
 
 			if ( ! empty( $args['options'] ) ) {
 
-				echo '<div class="taf-siblings taf--image-group' . esc_attr( $inline ) . '" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
+				echo '<div class="efp-siblings efp--image-group' . esc_attr( $inline ) . '" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
 
 				$num = 1;
 
@@ -41,10 +41,10 @@ if ( ! class_exists( 'EFP_Field_image_select' ) ) {
 
 					$type    = ( $args['multiple'] ) ? 'checkbox' : 'radio';
 					$extra   = ( $args['multiple'] ) ? '[]' : '';
-					$active  = ( in_array( $key, $value ) ) ? ' taf--active' : '';
+					$active  = ( in_array( $key, $value ) ) ? ' efp--active' : '';
 					$checked = ( in_array( $key, $value ) ) ? ' checked' : '';
 
-					echo '<div class="taf--sibling taf--image' . esc_attr( $active ) . '">';
+					echo '<div class="efp--sibling efp--image' . esc_attr( $active ) . '">';
 					echo '<figure>';
 						echo '<img src="' . esc_url( $option ) . '" alt="img-' . esc_attr( $num++ ) . '" />';
 						echo '<input type="' . esc_attr( $type ) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr( $key ) . '"' . wp_kses_post( $this->field_attributes() ) . esc_attr( $checked ) . '/>';

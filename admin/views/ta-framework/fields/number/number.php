@@ -27,9 +27,9 @@ if ( ! class_exists( 'EFP_Field_number' ) ) {
 			);
 
 			echo wp_kses_post( $this->field_before() );
-			echo '<div class="taf--wrap">';
+			echo '<div class="efp--wrap">';
 			echo '<input type="number" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $this->value ) . '"' . wp_kses_post( $this->field_attributes() ) . ' min="' . esc_attr( $args['min'] ) . '" max="' . esc_attr( $args['max'] ) . '" step="' . esc_attr( $args['step'] ) . '"/>';
-			echo ( ! empty( $args['unit'] ) ) ? '<span class="taf--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
+			echo ( ! empty( $args['unit'] ) ) ? '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
 			echo '</div>';
 			echo wp_kses_post( $this->field_after() );
 		}

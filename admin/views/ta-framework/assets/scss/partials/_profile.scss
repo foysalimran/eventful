@@ -1,18 +1,18 @@
 /**
  * 06. Profile
  */
-.taf-profile-options{
+.efp-profile-options{
 
   > h2 > .fa {
     padding-right: 7px;
   }
 
-  > .taf-field{
+  > .efp-field{
     max-width: 750px;
     padding: 15px 0;
     border-top: none !important;
 
-    > .taf-title{
+    > .efp-title{
       width: 200px;
 
       h4{
@@ -24,35 +24,35 @@
       }
     }
 
-    > .taf-fieldset{
+    > .efp-fieldset{
       width: calc(100% - 220px);
 
-      > .taf-help{
+      > .efp-help{
         top: -15px;
         right: -5px;
       }
     }
   }
 
-  > .taf-field-heading{
+  > .efp-field-heading{
     font-size: 1.1em;
   }
 
-  > .taf-field-subheading{
+  > .efp-field-subheading{
     font-size: 12px;
   }
 
-  > .taf-field-subheading,
-  > .taf-field-heading{
+  > .efp-field-subheading,
+  > .efp-field-heading{
     margin: 10px 0;
     padding: 15px !important;
     border: 1px solid #ddd;
   }
 
-  > .taf-field-submessage{
+  > .efp-field-submessage{
     margin: 20px 0;
 
-    .taf-submessage{
+    .efp-submessage{
       padding: 10px;
       border-left-width: 1px;
       border-left-style: solid;
@@ -61,7 +61,7 @@
     }
   }
 
-  > .taf-field-notice{
+  > .efp-field-notice{
     background-color: transparent;
   }
 }

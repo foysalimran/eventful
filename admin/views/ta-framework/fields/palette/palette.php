@@ -22,14 +22,14 @@ if ( ! class_exists( 'EFP_Field_palette' ) ) {
 
 			if ( ! empty( $palette ) ) {
 
-				echo '<div class="taf-siblings taf--palettes">';
+				echo '<div class="efp-siblings efp--palettes">';
 
 				foreach ( $palette as $key => $colors ) {
 
-					$active  = ( $key === $this->value ) ? ' taf--active' : '';
+					$active  = ( $key === $this->value ) ? ' efp--active' : '';
 					$checked = ( $key === $this->value ) ? ' checked' : '';
 
-					echo '<div class="taf--sibling taf--palette' . esc_attr( $active ) . '">';
+					echo '<div class="efp--sibling efp--palette' . esc_attr( $active ) . '">';
 
 					if ( ! empty( $colors ) ) {
 

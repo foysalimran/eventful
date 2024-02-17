@@ -18,7 +18,7 @@ if ( ! class_exists( 'EFP_Field_sortable' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo '<div class="taf-sortable" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
+			echo '<div class="efp-sortable" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 
 			$pre_sortby = array();
 			$pre_fields = array();
@@ -49,9 +49,9 @@ if ( ! class_exists( 'EFP_Field_sortable' ) ) {
 
 			foreach ( $pre_sortby as $key => $field ) {
 
-				echo '<div class="taf-sortable-item">';
+				echo '<div class="efp-sortable-item">';
 
-				echo '<div class="taf-sortable-content">';
+				echo '<div class="efp-sortable-content">';
 
 				$field_default = ( isset( $this->field['default'][ $key ] ) ) ? $this->field['default'][ $key ] : '';
 				$field_value   = ( isset( $this->value[ $key ] ) ) ? $this->value[ $key ] : $field_default;
@@ -61,7 +61,7 @@ if ( ! class_exists( 'EFP_Field_sortable' ) ) {
 
 				echo '</div>';
 
-				echo '<div class="taf-sortable-helper"><i class="fas fa-arrows-alt"></i></div>';
+				echo '<div class="efp-sortable-helper"><i class="fas fa-arrows-alt"></i></div>';
 
 				echo '</div>';
 

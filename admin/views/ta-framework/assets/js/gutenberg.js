@@ -10,9 +10,9 @@
  */
 ( function( blocks, blockEditor, element, components ) {
 
-  if ( !window.taf_gutenberg_blocks ) { return; }
+  if ( !window.efp_gutenberg_blocks ) { return; }
 
-  Object.values(window.taf_gutenberg_blocks).forEach( function( block ) {
+  Object.values(window.efp_gutenberg_blocks).forEach( function( block ) {
 
     var registerBlockType = blocks.registerBlockType;
     var PlainText         = blockEditor.PlainText;
@@ -39,14 +39,14 @@
       },
       edit: function (props) {
         return (
-          createElement('div', {className: 'taf-shortcode-block'},
+          createElement('div', {className: 'efp-shortcode-block'},
 
             createElement(Button, {
               'data-modal-id': block.modal_id,
               'data-gutenberg-id': block.name,
-              className: 'is-secondary taf-shortcode-button',
+              className: 'is-secondary efp-shortcode-button',
               onClick: function () {
-                window.taf_gutenberg_props = props;
+                window.efp_gutenberg_props = props;
               },
             }, block.button_title ),
 

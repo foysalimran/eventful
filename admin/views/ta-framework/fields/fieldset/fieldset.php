@@ -18,7 +18,7 @@ if ( ! class_exists( 'EFP_Field_fieldset' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo '<div class="taf-fieldset-content" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
+			echo '<div class="efp-fieldset-content" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 
 			foreach ( $this->field['fields'] as $field ) {
 

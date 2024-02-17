@@ -1,28 +1,28 @@
 /**
  * 06. Taxonomy
  */
-.taf-taxonomy{
+.efp-taxonomy{
   max-width: 95%;
 
-  > .taf-field{
+  > .efp-field{
     border-top: none !important;
   }
 
-  > .taf-field-heading{
+  > .efp-field-heading{
     font-size: 1.1em;
     padding: 20px !important;
     border: 1px solid #ddd;
   }
 
-  > .taf-field-subheading{
+  > .efp-field-subheading{
     font-size: 12px;
     padding: 15px !important;
     border: 1px solid #ddd;
   }
 
-  > .taf-field-submessage{
+  > .efp-field-submessage{
 
-    .taf-submessage{
+    .efp-submessage{
       padding: 15px;
       border-left-width: 1px;
       border-left-style: solid;
@@ -31,11 +31,11 @@
     }
   }
 
-  > .taf-field-notice{
+  > .efp-field-notice{
     background-color: transparent;
   }
 
-  .taf-section-title{
+  .efp-section-title{
     display: block;
     padding: 15px ;
     background-color: #f9f9f9;
@@ -44,12 +44,12 @@
   }
 }
 
-.taf-taxonomy-add-fields{
+.efp-taxonomy-add-fields{
 
-  > .taf-field{
+  > .efp-field{
     padding: 8px 0;
 
-    > .taf-title{
+    > .efp-title{
       float: none;
       width: 100%;
       padding: 2px 2px 4px 0;
@@ -60,11 +60,11 @@
       }
     }
 
-    > .taf-fieldset{
+    > .efp-fieldset{
       float: none;
       width: 100%;
 
-      > .taf-help{
+      > .efp-help{
         right: -5px;
       }
     }
@@ -75,12 +75,12 @@
   }
 }
 
-.taf-taxonomy-edit-fields{
+.efp-taxonomy-edit-fields{
 
-  > .taf-field{
+  > .efp-field{
     padding: 20px 0;
 
-    > .taf-title{
+    > .efp-title{
       width: 200px;
 
       h4{
@@ -92,22 +92,22 @@
       }
     }
 
-    > .taf-fieldset{
+    > .efp-fieldset{
       width: calc(100% - 220px);
 
-      > .taf-help{
+      > .efp-help{
         top: -5px;
         right: -5px;
       }
     }
   }
 
-  > .taf-field-submessage{
+  > .efp-field-submessage{
     margin: 20px 0;
   }
 
-  > .taf-field-subheading,
-  > .taf-field-heading{
+  > .efp-field-subheading,
+  > .efp-field-heading{
     margin: 20px 0;
     border: 1px solid #ddd;
   }

@@ -28,7 +28,7 @@ if ( ! class_exists( 'EFP_Widget' ) ) {
       $control_ops = array();
 
       $this->unique = $key;
-      $this->args   = apply_filters( "taf_{$this->unique}_args", wp_parse_args( $params, $this->args ), $this );
+      $this->args   = apply_filters( "efp_{$this->unique}_args", wp_parse_args( $params, $this->args ), $this );
 
       // Set control options
       if ( ! empty( $this->args['width'] ) ) {
@@ -45,8 +45,8 @@ if ( ! class_exists( 'EFP_Widget' ) ) {
       }
 
       // Set filters
-      $widget_ops  = apply_filters( "taf_{$this->unique}_widget_ops", $widget_ops, $this );
-      $control_ops = apply_filters( "taf_{$this->unique}_control_ops", $control_ops, $this );
+      $widget_ops  = apply_filters( "efp_{$this->unique}_widget_ops", $widget_ops, $this );
+      $control_ops = apply_filters( "efp_{$this->unique}_control_ops", $control_ops, $this );
 
       parent::__construct( $this->unique, esc_attr( $this->args['title'] ), $widget_ops, $control_ops );
 
@@ -89,7 +89,7 @@ if ( ! class_exists( 'EFP_Widget' ) ) {
 
         $class = ( $this->args['class'] ) ? ' '. $this->args['class'] : '';
 
-        echo '<div class="taf taf-widgets taf-fields'. esc_attr( $class ) .'">';
+        echo '<div class="efp efp-widgets efp-fields'. esc_attr( $class ) .'">';
 
         foreach ( $this->args['fields'] as $field ) {
 
@@ -127,9 +127,9 @@ if ( ! class_exists( 'EFP_Widget' ) ) {
         }
       }
 
-      $new_instance = apply_filters( "taf_{$this->unique}_save", $new_instance, $this->args, $this );
+      $new_instance = apply_filters( "efp_{$this->unique}_save", $new_instance, $this->args, $this );
 
-      do_action( "taf_{$this->unique}_save_before", $new_instance, $this->args, $this );
+      do_action( "efp_{$this->unique}_save_before", $new_instance, $this->args, $this );
 
       return $new_instance;
 

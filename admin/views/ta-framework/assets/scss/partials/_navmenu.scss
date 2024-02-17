@@ -1,42 +1,42 @@
 /**
  * 08. Nav Menu
  */
-.taf-nav-menu-options{
+.efp-nav-menu-options{
   clear: both;
   float: left;
   width: 100%;
 
-  > .taf-fields{
+  > .efp-fields{
     margin: 10px -10px;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
 
-    > .taf-field{
+    > .efp-field{
       padding: 12px;
 
-      .taf-title{
+      .efp-title{
         float: none;
         width: 100%;
         margin-bottom: 5px;
       }
 
-      .taf-fieldset{
+      .efp-fieldset{
         float: none;
         width: 100%;
       }
     }
   }
 
-  .taf-field-text input{
+  .efp-field-text input{
     width: 100%;
   }
 
-  .taf-field-notice .taf-notice{
+  .efp-field-notice .efp-notice{
     padding: 15px;
   }
 }
 
-.taf-nav-menu-title{
+.efp-nav-menu-title{
   padding: 12px;
   background-color: #f5f5f5;
   border-top: 1px solid #eee;
@@ -53,6 +53,6 @@
   }
 }
 
-.taf-nav-menu-icon{
+.efp-nav-menu-icon{
   margin-right: 5px;
 }
