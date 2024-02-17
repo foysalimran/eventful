@@ -95,11 +95,11 @@ class EFP_Display
 						'class'    => 'efp-content-orientation',
 						'options'  => array(
 							'default'     => array(
-								'image' => EFP_URL . 'admin/views/ta-framework/assets/img/default.png',
+								'image' => EFP_URL . 'admin/views/ta-framework/assets/images/default.png',
 								'text'  => esc_html__('Default', 'eventful-pro'),
 							),
 							'overlay'     => array(
-								'image'    => EFP_URL . 'admin/views/ta-framework/assets/img/overlay.png',
+								'image'    => EFP_URL . 'admin/views/ta-framework/assets/images/overlay.png',
 								'text'     => esc_html__('Overlay', 'eventful-pro'),
 								'pro_only' => true,
 							),

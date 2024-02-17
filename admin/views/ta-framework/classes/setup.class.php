@@ -412,6 +412,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         'code_editor',
         'color',
         'color_group',
+        'column',
         'content',
         'date',
         'datetime',
@@ -420,8 +421,12 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         'gallery',
         'group',
         'heading',
+        'metabox_branding',
         'icon',
         'image_select',
+        'image_sizes',
+        'dimensions_advanced',
+        'layout_preset',
         'link',
         'link_color',
         'map',
@@ -437,6 +442,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         'sorter',
         'spacing',
         'spinner',
+        'box_shadow',
         'subheading',
         'submessage',
         'switcher',
@@ -587,9 +593,18 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         wp_enqueue_style( 'efp-rtl', self::include_plugin_url( 'assets/css/style-rtl'. $min .'.css' ), array(), self::$version, 'all' );
       }
 
+      // Main style
+      wp_enqueue_style( 'taf-custom', self::include_plugin_url( 'assets/css/taf-custom'. $min .'.css' ), array(), self::$version, 'all' );
+
+      // Main RTL styles
+      if ( is_rtl() ) {
+        wp_enqueue_style( 'taf-custom-rtl', self::include_plugin_url( 'assets/css/taf-custom'. $min .'.css' ), array(), self::$version, 'all' );
+      }
+
       // Main scripts
       wp_enqueue_script( 'efp-plugins', self::include_plugin_url( 'assets/js/plugins'. $min .'.js' ), array(), self::$version, true );
       wp_enqueue_script( 'efp', self::include_plugin_url( 'assets/js/main'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
+      wp_enqueue_script( 'efp-custom', self::include_plugin_url( 'assets/js/taf-custom'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
 
       // Main variables
       wp_localize_script( 'efp', 'efp_vars', array(

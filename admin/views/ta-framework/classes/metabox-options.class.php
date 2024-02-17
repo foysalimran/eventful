@@ -222,7 +222,7 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
 
             echo '<div class="efp-sections">';
 
-            $section_key = 0;
+            $section_key = 1;
 
             foreach ( $this->sections as $section ) {
 
@@ -235,7 +235,7 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
               $section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
               $section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="efp-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
 
-              echo '<div class="efp-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
+              echo '<div id="efp-section-' . $this->unique . '_' . $section_key . '" class="efp-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
 
               echo ( $section_title || $section_icon ) ? '<div class="efp-section-title"><h3>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h3></div>' : '';
               echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
