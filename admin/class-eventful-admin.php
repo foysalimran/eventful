@@ -109,7 +109,7 @@ class Eventful_Admin
 		$current_screen        = get_current_screen();
 		$the_current_post_type = $current_screen->post_type;
 		if ('eventful' == $the_current_post_type) {
-			wp_enqueue_style('eventful-admin', EFP_URL . 'admin/assets/css/eventful-pro-admin' . $this->suffix . '.css', array(), $this->version, 'all');
+			wp_enqueue_style('eventful-admin', EFP_URL . 'admin/assets/css/eventful-admin' . $this->suffix . '.css', array(), $this->version, 'all');
 		}
 	}
 
@@ -132,10 +132,10 @@ class Eventful_Admin
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		$current_screen        = get_current_screen();
-		$the_current_post_type = $current_screen->post_type;
+		$current_screen        	= get_current_screen();
+		$the_current_post_type 	= $current_screen->post_type;
 		if ('eventful' == $the_current_post_type) {
-			wp_enqueue_script('eventful-admin', EFP_URL . 'admin/assets/js/eventful-pro-admin' . $this->suffix . '.js', array('jquery'), $this->version, false);
+			wp_enqueue_script('eventful-admin', EFP_URL . 'admin/assets/js/eventful-admin' . $this->suffix . '.js', array('jquery'), $this->version, false);
 		}
 	}
 

@@ -40,19 +40,19 @@ define('EVENTFUL_BASENAME', plugin_basename(__FILE__));
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-eventful-pro-activator.php
+ * This action is documented in includes/class-eventful-activator.php
  */
 function eventful_pro_activate() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-eventful-pro-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-eventful-activator.php';
 	Eventful_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-eventful-pro-deactivator.php
+ * This action is documented in includes/class-eventful-deactivator.php
  */
 function eventful_pro_deactivate() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-eventful-pro-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-eventful-deactivator.php';
 	Eventful_Deactivator::deactivate();
 }
 
@@ -63,7 +63,7 @@ register_deactivation_hook( __FILE__, 'eventful_pro_deactivate' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-eventful-pro.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-eventful.php';
 
 /**
  * Begins execution of the plugin.

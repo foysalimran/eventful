@@ -131,37 +131,37 @@ class Eventful
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once EFP_PATH . 'includes/class-eventful-pro-loader.php';
+		require_once EFP_PATH . 'includes/class-eventful-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once EFP_PATH . 'includes/class-eventful-pro-post-types.php';
+		require_once EFP_PATH . 'includes/class-eventful-post-types.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once EFP_PATH . 'includes/class-eventful-pro-i18n.php';
+		require_once EFP_PATH . 'includes/class-eventful-i18n.php';
 
 		require_once EFP_PATH . 'admin/views/ta-framework/classes/setup.class.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once EFP_PATH . 'admin/class-eventful-pro-admin.php';
+		require_once EFP_PATH . 'admin/class-eventful-admin.php';
 
 		/**
 		 * The class responsible for defining metabox config that occur in the admin area.
 		 */
-		require_once EFP_PATH . 'admin/helpers/class-eventful-pro-image-resizer.php';
+		require_once EFP_PATH . 'admin/helpers/class-eventful-image-resizer.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once EFP_PATH . 'public/class-eventful-pro-public.php';
+		require_once EFP_PATH . 'public/class-eventful-public.php';
 
 		$this->loader = new Eventful_Loader();
 	}
