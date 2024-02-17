@@ -371,7 +371,7 @@ class EFP_Carousel
 							'mobile'     => '1',
 						),
 						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
-						'help'       => wp_kses(esc_html__('<i class="fas fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fas fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fas fa-tablet-alt"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile </b> - size is smaller than 576px.', 'eventful-pro'), array('i' => array('class' => array()), 'br' => array()) ),
+						'help'       => wp_kses(esc_html__('<i class="fas fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fas fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fas fa-tablet-alt"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile </b> - size is smaller than 576px.', 'eventful'), array('i' => array('class' => array()), 'br' => array()) ),
 					),
 					// Miscellaneous Settings.
 					array(

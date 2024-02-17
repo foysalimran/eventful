@@ -62,28 +62,28 @@ class Eventful_Post_Type
 		$labels = apply_filters(
 			'eventful_post_type_labels',
 			array(
-				'name'               => esc_html__('Eventful Shortcode', 'eventful-pro'),
-				'singular_name'      => esc_html__('Shortcode', 'eventful-pro'),
-				'menu_name'          => esc_html__('Eventful', 'eventful-pro'),
-				'all_items'          => esc_html__('All Layouts', 'eventful-pro'),
-				'add_new'            => esc_html__('Add Layout', 'eventful-pro'),
-				'add_new_item'       => esc_html__('Generate New Shortcode', 'eventful-pro'),
-				'new_item'           => esc_html__('Generate New Shortcode', 'eventful-pro'),
-				'edit_item'          => esc_html__('Edit Generated Shortcode', 'eventful-pro'),
-				'view_item'          => esc_html__('View Generated Shortcode', 'eventful-pro'),
-				'name_admin_bar'     => esc_html__('Eventful Generator', 'eventful-pro'),
-				'search_items'       => esc_html__('Search Generated Shortcode', 'eventful-pro'),
-				'parent_item_colon'  => esc_html__('Parent Generated Shortcode:', 'eventful-pro'),
-				'not_found'          => esc_html__('No Shortcode found.', 'eventful-pro'),
-				'not_found_in_trash' => esc_html__('No Shortcode found in Trash.', 'eventful-pro')
+				'name'               => esc_html__('Eventful Shortcode', 'eventful'),
+				'singular_name'      => esc_html__('Shortcode', 'eventful'),
+				'menu_name'          => esc_html__('Eventful', 'eventful'),
+				'all_items'          => esc_html__('All Layouts', 'eventful'),
+				'add_new'            => esc_html__('Add Layout', 'eventful'),
+				'add_new_item'       => esc_html__('Generate New Shortcode', 'eventful'),
+				'new_item'           => esc_html__('Generate New Shortcode', 'eventful'),
+				'edit_item'          => esc_html__('Edit Generated Shortcode', 'eventful'),
+				'view_item'          => esc_html__('View Generated Shortcode', 'eventful'),
+				'name_admin_bar'     => esc_html__('Eventful Generator', 'eventful'),
+				'search_items'       => esc_html__('Search Generated Shortcode', 'eventful'),
+				'parent_item_colon'  => esc_html__('Parent Generated Shortcode:', 'eventful'),
+				'not_found'          => esc_html__('No Shortcode found.', 'eventful'),
+				'not_found_in_trash' => esc_html__('No Shortcode found in Trash.', 'eventful')
 			)
 		);
 
 		$args      = apply_filters(
 			'eventful_post_type_args',
 			array(
-				'label'           => esc_html__('Eventful Shortcode', 'eventful-pro'),
-				'description'     => esc_html__('Eventful Shortcode', 'eventful-pro'),
+				'label'           => esc_html__('Eventful Shortcode', 'eventful'),
+				'description'     => esc_html__('Eventful Shortcode', 'eventful'),
 				'public'          => false,
 				'show_ui'         => true,
 				'show_in_menu'    => true,
