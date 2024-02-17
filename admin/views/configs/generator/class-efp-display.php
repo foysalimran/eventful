@@ -732,11 +732,11 @@ class EFP_Display
 											array(
 												'id'      => 'post_meta_alignment',
 												'type'    => 'button_set',
-												'title'   => esc_html__( 'Alignment', 'eventful-pro' ),
+												'title'   => esc_html__( 'Alignment', 'eventful' ),
 												'options' => array(
-													'left' => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'eventful-pro' ), array( 'i' => array( 'class' => array() ) ) ),
-													'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'eventful-pro' ), array( 'i' => array( 'class' => array() ) ) ),
-													'right' => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'eventful-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+													'left' => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
+													'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
+													'right' => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
 												),
 												'default' => 'left',
 												'dependency' => array( 'show_post_meta', '==', 'true' ),
@@ -945,11 +945,11 @@ class EFP_Display
 											array(
 												'id'      => 'event_meta_alignment',
 												'type'    => 'button_set',
-												'title'   => esc_html__( 'Alignment', 'eventful-pro' ),
+												'title'   => esc_html__( 'Alignment', 'eventful' ),
 												'options' => array(
-													'left' => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'eventful-pro' ), array( 'i' => array( 'class' => array() ) ) ),
-													'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'eventful-pro' ), array( 'i' => array( 'class' => array() ) ) ),
-													'right' => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'eventful-pro' ), array( 'i' => array( 'class' => array() ) ) ),
+													'left' => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
+													'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
+													'right' => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
 												),
 												'default' => 'left',
 												'dependency' => array( 'show_event_fildes', '==', 'true' ),

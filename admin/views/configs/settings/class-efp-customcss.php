@@ -14,13 +14,13 @@ class EFP_CustomCSS {
 		EFP::createSection(
 			$prefix,
 			array(
-				'title'  => esc_html__( 'Custom CSS & JS', 'eventful-pro' ),
+				'title'  => esc_html__( 'Custom CSS & JS', 'eventful' ),
 				'icon'   => 'fas fa-css3',
 				'fields' => array(
 					array(
 						'id'       => 'efp_custom_css',
 						'type'     => 'code_editor',
-						'title'    => esc_html__( 'Custom CSS', 'eventful-pro' ),
+						'title'    => esc_html__( 'Custom CSS', 'eventful' ),
 						'settings' => array(
 							'icon'  => 'fas fa-sliders',
 							'theme' => 'mbo',
@@ -30,7 +30,7 @@ class EFP_CustomCSS {
 					array(
 						'id'       => 'efp_custom_js',
 						'type'     => 'code_editor',
-						'title'    => esc_html__( 'Custom JS', 'eventful-pro' ),
+						'title'    => esc_html__( 'Custom JS', 'eventful' ),
 						'settings' => array(
 							'icon'  => 'fas fa-sliders',
 							'theme' => 'monokai',

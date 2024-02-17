@@ -79,8 +79,8 @@ if ( ! class_exists( 'EFP_Field_image_sizes' ) ) {
 			$sizes = array_merge(
 				$sizes,
 				array(
-					'full'   => esc_html__( 'Original uploaded image', 'eventful-pro' ),
-					'custom' => esc_html__( 'Set custom size', 'eventful-pro' ),
+					'full'   => esc_html__( 'Original uploaded image', 'eventful' ),
+					'custom' => esc_html__( 'Set custom size', 'eventful' ),
 				)
 			);
 
@@ -127,7 +127,7 @@ if ( ! class_exists( 'EFP_Field_image_sizes' ) ) {
 
 				} else {
 
-					echo ! empty( $this->field['empty_message'] ) ? esc_html( $this->field['empty_message'] ) : esc_html__( 'No image sizes found.', 'eventful-pro' );
+					echo ! empty( $this->field['empty_message'] ) ? esc_html( $this->field['empty_message'] ) : esc_html__( 'No image sizes found.', 'eventful' );
 
 				}
 			}

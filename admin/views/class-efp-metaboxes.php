@@ -13,7 +13,7 @@ class EFP_Metaboxes {
 		EFP::createMetabox(
 			$prefix,
 			array(
-				'title'        => esc_html__( 'Eventful', 'eventful-pro' ),
+				'title'        => esc_html__( 'Eventful', 'eventful' ),
 				'post_type'    => 'eventful',
 				'show_restore' => false,
 				'context'      => 'normal',
@@ -34,7 +34,7 @@ class EFP_Metaboxes {
 		EFP::createMetabox(
 			$prefix,
 			array(
-				'title'        => esc_html__( 'View Options', 'eventful-pro' ),
+				'title'        => esc_html__( 'View Options', 'eventful' ),
 				'post_type'    => 'eventful',
 				'show_restore' => false,
 				'nav'        => 'inline',
@@ -58,7 +58,7 @@ class EFP_Metaboxes {
 		EFP::createMetabox(
 			$prefix,
 			array(
-				'title'        => esc_html__( 'Eventful', 'eventful-pro' ),
+				'title'        => esc_html__( 'Eventful', 'eventful' ),
 				'post_type'    => 'eventful',
 				'context'      => 'side',
 				'show_restore' => false,
