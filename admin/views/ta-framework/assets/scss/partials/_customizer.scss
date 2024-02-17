@@ -1,0 +1,185 @@
+/**
+ * 05. Widget
+ */
+.control-section{
+
+  .efp-field{
+    padding: 0;
+
+    .efp-title{
+      float: none;
+      width: 100%;
+      margin-bottom: 6px;
+
+      h4{
+        display: block;
+        font-size: 13px;
+        line-height: 1;
+        font-weight: 600;
+        color: inherit;
+      }
+    }
+
+    .efp-fieldset{
+      float: none;
+      width: 100%;
+    }
+  }
+
+  .efp-help{
+    top: -5px;
+    right: -5px;
+  }
+
+  .efp-field-select select{
+    width: 100%;
+  }
+
+  .efp-field-heading{
+    color: inherit;
+    font-size: 14px;
+    line-height: 1em;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 15px;
+  }
+
+  .efp-field-subheading{
+    color: inherit;
+    font-size: 11px;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 10px 15px;
+  }
+
+  .efp-subtitle-text{
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
+  .efp-field-submessage .efp-submessage{
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 15px;
+  }
+
+  .efp-fieldset{
+
+    .efp-field-submessage .efp-submessage,
+    .efp-field-heading,
+    .efp-field-subheading{
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .efp-field-date,
+  .efp-field-datetime{
+
+    label{
+      display: block;
+    }
+
+    .efp--to{
+      margin-top: 4px;
+      margin-left: 0;
+    }
+  }
+
+  .efp-field-sorter{
+
+    ul li{
+      padding: 5px;
+    }
+
+    .efp-modules{
+      float: none;
+      width: 100%;
+    }
+
+    .efp-modules:first-child{
+      padding-right: 0;
+      padding-bottom: 15px;
+    }
+  }
+
+  .efp-field-background{
+
+    .efp--background-attributes{
+      flex-direction: column;
+    }
+  }
+
+  .efp-field-spacing{
+    input{
+      width: 90px;
+    }
+  }
+
+  .efp-field-border{
+
+    .efp--input{
+      flex: 1 50%;
+    }
+
+    input,
+    select{
+      width: 100%;
+    }
+  }
+
+  .efp-field-spinner{
+    input{
+      width: 50px;
+    }
+  }
+
+  .efp-field-number{
+
+    .efp--wrap{
+      width: 100%;
+    }
+  }
+
+  .efp-field-backup{
+
+    .efp-export-data{
+      display: none;
+    }
+  }
+
+  .efp-field-fieldset{
+
+    .efp-fieldset-content{
+      border-color: #e5e5e5;
+    }
+  }
+
+  .efp-tabbed-content,
+  .efp-sortable-content,
+  .efp-repeater-content,
+  .efp-fieldset-content,
+  .efp-cloneable-content,
+  .efp-accordion-content{
+
+    > .efp-field{
+      padding: 10px;
+
+      .efp-title{
+        margin-bottom: 5px;
+      }
+
+      h4{
+        font-size: 12px;
+      }
+    }
+  }
+
+  .efp-depend-hidden.efp-depend-on{
+    display: none !important;
+  }
+
+  .efp-depend-visible.efp-depend-on{
+    border-top: 0 !important;
+  }
+}

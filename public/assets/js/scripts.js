@@ -1,0 +1,1582 @@
+jQuery(document).ready(function ($) {
+  "use strict";
+  var efp_myScript = function () {
+    if ($(".ta-container").length > 0) {
+      $(".ta-container").each(function () {
+        var efp_container = $(this),
+          efp_container_id = efp_container.attr("id"),
+          efp_Wrapper_ID = "#" + efp_container_id,
+          pc_sid = $(efp_Wrapper_ID).data("sid"), // The Shortcode ID.
+          efpCarousel = $("#" + efp_container_id + " .ta-efp-carousel"),
+          efpAccordion = $("#" + efp_container_id + " .ta-collapse"),
+          efpfilter = $("#" + efp_container_id + ".efp-filter-wrapper"),
+          ajaxurl = spefp.ajaxurl,
+          nonce = spefp.nonce,
+          efpCarouselDir = efpCarousel.attr("dir"),
+          efpSwiper,
+          efpCarouselData = efpCarousel.data("carousel");
+       
+        if (efpCarousel.length > 0) {
+          var mobile_land = parseInt(
+              efpCarouselData.responsive.mobile_landscape
+            ),
+            tablet_size = parseInt(efpCarouselData.responsive.tablet),
+            desktop_size = parseInt(efpCarouselData.responsive.desktop),
+            lg_desktop_size = parseInt(efpCarouselData.responsive.lg_desktop);
+        }
+
+        // Carousel Init function.
+        function efp_carousel_init() {
+          // Carousel ticker mode.
+          if (efpCarouselData.mode == "ticker") {
+            var item = efpCarousel.find(".swiper-wrapper .swiper-slide").length;
+            efpSwiper = efpCarousel.find(".swiper-wrapper").bxSlider({
+              mode: "horizontal",
+              moveSlides: 1,
+              slideMargin: efpCarouselData.spaceBetween,
+              infiniteLoop: efpCarouselData.loop,
+              slideWidth: efpCarouselData.ticker_width,
+              minSlides: efpCarouselData.slidesPerView.mobile,
+              maxSlides: efpCarouselData.slidesPerView.lg_desktop,
+              speed: efpCarouselData.ticker_speed * item,
+              ticker: true,
+              tickerHover: efpCarouselData.stop_onHover,
+              autoDirection: efpCarouselDir,
+            });
+          }
+
+          // Carousel Swiper for Standard & Center mode.
+          if (
+            efpCarouselData.mode == "standard" ||
+            efpCarouselData.mode == "center"
+          ) {
+            if (
+              efpCarouselData.effect == "fade" ||
+              efpCarouselData.effect == "cube" ||
+              efpCarouselData.effect == "flip"
+            ) {
+              if ($(window).width() > lg_desktop_size) {
+                slidePerView = efpCarouselData.slidesPerView.lg_desktop;
+              } else if ($(window).width() > desktop_size) {
+                slidePerView = efpCarouselData.slidesPerView.desktop;
+              } else if ($(window).width() > tablet_size) {
+                slidePerView = efpCarouselData.slidesPerView.tablet;
+              } else if ($(window).width() > 0) {
+                slidePerView = efpCarouselData.slidesPerView.mobile_landscape;
+              }
+              $(
+                efp_Wrapper_ID +
+                  " .ta-efp-carousel .swiper-wrapper > .ta-eventful-pro-item"
+              )
+                .css("width", 100 / slidePerView + "%")
+                .removeClass("swiper-slide");
+              var fade_items = $(
+                efp_Wrapper_ID +
+                  " .ta-efp-carousel .swiper-wrapper > .ta-eventful-pro-item"
+              );
+              var style =
+                efpCarouselDir == "rtl" ? "marginLeft" : "marginRight";
+              for (var i = 0; i < fade_items.length; i += slidePerView) {
+                fade_items
+                  .slice(i, i + slidePerView)
+                  .wrapAll('<div class="swiper-slide"></div>');
+                fade_items.eq(i - 1).css(style, 0);
+              }
+              efpSwiper = new Swiper(
+                "#" + efp_container_id + " .ta-efp-carousel",
+                {
+                  speed: efpCarouselData.speed,
+                  slidesPerView: 1,
+                  spaceBetween: efpCarouselData.spaceBetween,
+                  loop:
+                    efpCarouselData.slidesRow.lg_desktop > "1" ||
+                    efpCarouselData.slidesRow.desktop > "1" ||
+                    efpCarouselData.slidesRow.tablet > "1" ||
+                    efpCarouselData.slidesRow.mobile_landscape > "1" ||
+                    efpCarouselData.slidesRow.mobile > "1"
+                      ? false
+                      : efpCarouselData.loop,
+                  effect: efpCarouselData.effect,
+                  slidesPerGroup: efpCarouselData.slideToScroll.mobile,
+                  preloadImages: false,
+                  observer: true,
+                  runCallbacksOnInit: false,
+                  initialSlide: 0,
+                  slidesPerColumn: efpCarouselData.slidesRow.mobile,
+                  slidesPerColumnFill: "row",
+                  autoHeight:
+                    efpCarouselData.slidesRow.lg_desktop > "1" ||
+                    efpCarouselData.slidesRow.desktop > "1" ||
+                    efpCarouselData.slidesRow.tablet > "1" ||
+                    efpCarouselData.slidesRow.mobile_landscape > "1" ||
+                    efpCarouselData.slidesRow.mobile > "1"
+                      ? false
+                      : efpCarouselData.autoHeight,
+                  simulateTouch: efpCarouselData.simulateTouch,
+                  allowTouchMove: efpCarouselData.allowTouchMove,
+                  mousewheel: efpCarouselData.slider_mouse_wheel,
+                  centeredSlides: efpCarouselData.center_mode,
+                  lazy: efpCarouselData.lazy,
+                  pagination:
+                    efpCarouselData.pagination == true
+                      ? {
+                          el: ".swiper-pagination",
+                          clickable: true,
+                          dynamicBullets: efpCarouselData.dynamicBullets,
+                          renderBullet: function (index, className) {
+                            if (efpCarouselData.bullet_types == "number") {
+                              return (
+                                '<span class="' +
+                                className +
+                                '">' +
+                                (index + 1) +
+                                "</span>"
+                              );
+                            } else {
+                              return '<span class="' + className + '"></span>';
+                            }
+                          },
+                        }
+                      : false,
+                  autoplay: {
+                    delay: efpCarouselData.autoplay_speed,
+                  },
+                  navigation:
+                    efpCarouselData.navigation == true
+                      ? {
+                          nextEl: ".efp-button-next",
+                          prevEl: ".efp-button-prev",
+                        }
+                      : false,
+                  fadeEffect: {
+                    crossFade: true,
+                  },
+                  ally: {
+                    enabled: efpCarouselData.enabled,
+                    prevSlideMessage: efpCarouselData.prevSlideMessage,
+                    nextSlideMessage: efpCarouselData.nextSlideMessage,
+                    firstSlideMessage: efpCarouselData.firstSlideMessage,
+                    lastSlideMessage: efpCarouselData.lastSlideMessage,
+                    paginationBulletMessage:
+                      efpCarouselData.paginationBulletMessage,
+                  },
+                  keyboard: {
+                    enabled: efpCarouselData.keyboard === "true" ? true : false,
+                  },
+                }
+              );
+            } else {
+              efpSwiper = new Swiper(
+                "#" + efp_container_id + " .ta-efp-carousel",
+                {
+                  speed: efpCarouselData.speed,
+                  slidesPerView: efpCarouselData.slidesPerView.mobile,
+                  spaceBetween: efpCarouselData.spaceBetween,
+                  loop:
+                    efpCarouselData.slidesRow.lg_desktop > "1" ||
+                    efpCarouselData.slidesRow.desktop > "1" ||
+                    efpCarouselData.slidesRow.tablet > "1" ||
+                    efpCarouselData.slidesRow.mobile_landscape > "1" ||
+                    efpCarouselData.slidesRow.mobile > "1"
+                      ? false
+                      : efpCarouselData.loop,
+                  effect: efpCarouselData.effect,
+                  slidesPerGroup: efpCarouselData.slideToScroll.mobile,
+                  preloadImages: false,
+                  observer: true,
+                  runCallbacksOnInit: false,
+                  initialSlide: 0,
+                  slidesPerColumn: efpCarouselData.slidesRow.mobile,
+                  slidesPerColumnFill: "row",
+                  autoHeight:
+                    efpCarouselData.slidesRow.lg_desktop > "1" ||
+                    efpCarouselData.slidesRow.desktop > "1" ||
+                    efpCarouselData.slidesRow.tablet > "1" ||
+                    efpCarouselData.slidesRow.mobile_landscape > "1" ||
+                    efpCarouselData.slidesRow.mobile > "1"
+                      ? false
+                      : efpCarouselData.autoHeight,
+                  simulateTouch: efpCarouselData.simulateTouch,
+                  allowTouchMove: efpCarouselData.allowTouchMove,
+                  mousewheel: efpCarouselData.slider_mouse_wheel,
+                  centeredSlides: efpCarouselData.center_mode,
+                  lazy: efpCarouselData.lazy,
+                  pagination:
+                    efpCarouselData.pagination == true
+                      ? {
+                          el: ".swiper-pagination",
+                          clickable: true,
+                          dynamicBullets: efpCarouselData.dynamicBullets,
+                          renderBullet: function (index, className) {
+                            if (efpCarouselData.bullet_types == "number") {
+                              return (
+                                '<span class="' +
+                                className +
+                                '">' +
+                                (index + 1) +
+                                "</span>"
+                              );
+                            } else {
+                              return '<span class="' + className + '"></span>';
+                            }
+                          },
+                        }
+                      : false,
+                  autoplay: {
+                    delay: efpCarouselData.autoplay_speed,
+                  },
+                  navigation:
+                    efpCarouselData.navigation == true
+                      ? {
+                          nextEl: ".efp-button-next",
+                          prevEl: ".efp-button-prev",
+                        }
+                      : false,
+                  breakpoints: {
+                    [mobile_land]: {
+                      slidesPerView:
+                        efpCarouselData.slidesPerView.mobile_landscape,
+                      slidesPerGroup:
+                        efpCarouselData.slideToScroll.mobile_landscape,
+                      slidesPerColumn:
+                        efpCarouselData.slidesRow.mobile_landscape,
+                      navigation:
+                        efpCarouselData.navigation_mobile == true
+                          ? {
+                              nextEl: ".efp-button-next",
+                              prevEl: ".efp-button-prev",
+                            }
+                          : false,
+                      pagination:
+                        efpCarouselData.pagination_mobile == true
+                          ? {
+                              el: ".swiper-pagination",
+                              clickable: true,
+                              dynamicBullets: efpCarouselData.dynamicBullets,
+                              renderBullet: function (index, className) {
+                                if (efpCarouselData.bullet_types == "number") {
+                                  return (
+                                    '<span class="' +
+                                    className +
+                                    '">' +
+                                    (index + 1) +
+                                    "</span>"
+                                  );
+                                } else {
+                                  return (
+                                    '<span class="' + className + '"></span>'
+                                  );
+                                }
+                              },
+                            }
+                          : false,
+                    },
+                    [tablet_size]: {
+                      slidesPerView: efpCarouselData.slidesPerView.tablet,
+                      slidesPerGroup: efpCarouselData.slideToScroll.tablet,
+                      slidesPerColumn: efpCarouselData.slidesRow.tablet,
+                    },
+                    [desktop_size]: {
+                      slidesPerView: efpCarouselData.slidesPerView.desktop,
+                      slidesPerGroup: efpCarouselData.slideToScroll.desktop,
+                      slidesPerColumn: efpCarouselData.slidesRow.desktop,
+                    },
+                    [lg_desktop_size]: {
+                      slidesPerView: efpCarouselData.slidesPerView.lg_desktop,
+                      slidesPerGroup: efpCarouselData.slideToScroll.lg_desktop,
+                      slidesPerColumn: efpCarouselData.slidesRow.lg_desktop,
+                    },
+                  },
+                  fadeEffect: {
+                    crossFade: true,
+                  },
+                  ally: {
+                    enabled: efpCarouselData.enabled,
+                    prevSlideMessage: efpCarouselData.prevSlideMessage,
+                    nextSlideMessage: efpCarouselData.nextSlideMessage,
+                    firstSlideMessage: efpCarouselData.firstSlideMessage,
+                    lastSlideMessage: efpCarouselData.lastSlideMessage,
+                    paginationBulletMessage:
+                      efpCarouselData.paginationBulletMessage,
+                  },
+                  keyboard: {
+                    enabled: efpCarouselData.keyboard === "true" ? true : false,
+                  },
+                }
+              );
+            }
+            if (efpCarouselData.autoplay === false) {
+              efpSwiper.autoplay.stop();
+            }
+            if (efpCarouselData.stop_onHover && efpCarouselData.autoplay) {
+              $(efpCarousel).on({
+                mouseenter: function () {
+                  efpSwiper.autoplay.stop();
+                },
+                mouseleave: function () {
+                  efpSwiper.autoplay.start();
+                },
+              });
+            }
+            $(window).on("resize", function () {
+              efpSwiper.update();
+            });
+            $(window).trigger("resize");
+          }
+        }
+        if (efpCarousel.length > 0) {
+          efp_carousel_init();
+        }
+        $(
+          ".ta-overlay.ta-efp-post,.ta-content-box.ta-efp-post",
+          efp_Wrapper_ID
+        ).on("mouseover", function () {
+          $(this)
+            .find(".eventful__item__content.animated:not(.efp_hover)")
+            .addClass("efp_hover");
+        });
+
+        
+        /**
+         *  Isotope Filter layout.
+         */
+        if (efpfilter.length > 0) {
+          if (efpfilter.data("grid") == "masonry") {
+            var layoutMode = "masonry";
+          } else {
+            var layoutMode = "fitRows";
+          }
+          var $grid = $(".grid", efp_Wrapper_ID).isotope({
+            itemSelector: ".item",
+            //layoutMode: 'fitRows'
+            layoutMode: layoutMode,
+          });
+          $grid.imagesLoaded().progress(function () {
+            $grid.isotope("layout");
+          });
+
+          // This function added for efp-Lazyload.
+          function efp_lazyload() {
+            $is_find = $(".ta-efp-post-thumb-area img").hasClass(
+              "efp-lazyload"
+            );
+            if ($is_find) {
+              $("img.efp-lazyload")
+                .efp_lazyload({ effect: "fadeIn", effectTime: 2000 })
+                .removeClass("efp-lazyload")
+                .addClass("efp-lazyloaded");
+            }
+            $grid.isotope("layout");
+          }
+
+          // Store filter for each group.
+          var filters = {};
+          $(".efp-shuffle-filter .taxonomy-group", efp_Wrapper_ID).on(
+            "change",
+            function (event) {
+              var $select = $(event.target);
+              // get group key
+              var filterGroup = $select.attr("data-filter-group");
+              // set filter for group
+              filters[filterGroup] = event.target.value;
+              // combine filters
+              var filterValue = concatValues(filters);
+              // set filter for Isotope
+              $grid.isotope({ filter: filterValue });
+              $grid.on("layoutComplete", function () {
+                $(window).trigger("scroll");
+              });
+            }
+          );
+
+          $(".efp-shuffle-filter", efp_Wrapper_ID).on(
+            "click",
+            ".efp-button",
+            function (event) {
+              var $button = $(event.currentTarget);
+              // get group key
+              var $taxonomyGroup = $button.parents(".taxonomy-group");
+              var filterGroup = $taxonomyGroup.attr("data-filter-group");
+              // taxonomy = $taxonomyGroup.attr('data-filter-group');
+              // set filter for group
+              filters[filterGroup] = $button.attr("data-filter");
+              //  term_id = $button.attr('data-termid');
+              // combine filters
+              var filterValue = concatValues(filters);
+              // set filter for Isotope
+              $grid.isotope({ filter: filterValue });
+              $grid.on("layoutComplete", function () {
+                $(window).trigger("scroll");
+              });
+            }
+          );
+          // Change is-active class on buttons.
+          $(".taxonomy-group", efp_Wrapper_ID).each(function (
+            i,
+            taxonomyGroup
+          ) {
+            var $taxonomyGroup = $(taxonomyGroup);
+            var $find_active_button = $taxonomyGroup.find(".is-active");
+            if ($find_active_button.length == 0) {
+              $taxonomyGroup
+                .find("button:nth-child(1)")
+                .addClass("is-active")
+                .click();
+            }
+            $taxonomyGroup.on("click", "button", function (event) {
+              $taxonomyGroup.find(".is-active").removeClass("is-active");
+              var $button = $(event.currentTarget);
+              $button.addClass("is-active");
+            });
+          });
+          // Flatten object by concatenation values.
+          function concatValues(obj) {
+            var value = "";
+            for (var prop in obj) {
+              value += obj[prop];
+            }
+            return value;
+          }
+        }
+
+        function efp_item_same_height() {
+          var maxHeight = 0;
+          $(efp_Wrapper_ID + ".efp_same_height .item").each(function () {
+            if ($(this).find(".ta-efp-post").height() > maxHeight) {
+              maxHeight = $(this).find(".ta-efp-post").height();
+            }
+          });
+          $(efp_Wrapper_ID + ".efp_same_height .ta-efp-post").height(maxHeight);
+        }
+        if (
+          $(efp_Wrapper_ID + ".efp_same_height").hasClass("efp-filter-wrapper")
+        ) {
+          efp_item_same_height();
+        }
+
+        // Ajax Action for Live filter.
+        var keyword = "",
+          orderby = "",
+          taxonomy = "",
+          order = "",
+          term_id = "",
+          page = "",
+          spsp_lang = $(efp_Wrapper_ID).data("lang");
+          var author_id = "",
+          custom_field_key = "",
+          custom_field_value = "",
+          efp_hash_url = Array(),
+          efp_last_filter = "",
+          custom_fields_array = Array(),
+          is_pagination_url_change = true;
+        function efp_ajax_action(selected_term_list = null) {
+          jQuery.ajax({
+            url: ajaxurl,
+            type: "POST",
+            data: {
+              action: "efp_post_order",
+              id: pc_sid,
+              lang: spsp_lang,
+              order: order,
+              keyword: keyword,
+              orderby: orderby,
+              taxonomy: taxonomy,
+              term_id: term_id,
+              author_id: author_id,
+              nonce: nonce,
+              term_list: selected_term_list,
+              custom_fields_array: custom_fields_array,
+            },
+            success: function (data) {
+              var $data = $(data);
+              var $newElements = $data;
+
+              if ($(efp_Wrapper_ID).hasClass("efp-masonry")) {
+                var $post_wrapper = $(".ta-row", efp_Wrapper_ID);
+                $post_wrapper.masonry("destroy");
+                $post_wrapper.html($newElements).imagesLoaded(function () {
+                  $post_wrapper.masonry();
+                });
+              } else if ($(efp_Wrapper_ID).hasClass("efp-filter-wrapper")) {
+                $(
+                  ".ta-row, .efp-timeline-grid, .ta-collapse, .table-responsive tbody",
+                  efp_Wrapper_ID
+                ).html($newElements);
+                $grid
+                  .append($newElements)
+                  .isotope("appended", $newElements)
+                  .imagesLoaded(function () {
+                    $grid.isotope("layout");
+                  });
+                efp_item_same_height();
+              } else if (efpCarousel.length > 0) {
+                if (efpCarouselData.mode == "ticker") {
+                  efpSwiper.destroySlider();
+                  $(".swiper-wrapper", efp_Wrapper_ID).html($newElements);
+                  efp_carousel_init();
+                  efpSwiper.reloadSlider();
+                } else {
+                  efpSwiper.destroy(true, true);
+                  $(".swiper-wrapper", efp_Wrapper_ID).html($newElements);
+                  efp_carousel_init();
+                }
+              } else {
+                var $newElements = $data.css({
+                  opacity: 0,
+                });
+                $(
+                  ".ta-row, .efp-timeline-grid, .ta-collapse, .table-responsive tbody",
+                  efp_Wrapper_ID
+                ).html($newElements);
+                if (efpAccordion.length > 0) {
+                  efpAccordion.accordion("refresh");
+                  if (accordion_mode === "multi-open") {
+                    efpAccordion
+                      .find(".efp-collapse-header")
+                      .next()
+                      .slideDown();
+                    efpAccordion
+                      .find(".efp-collapse-header .fa")
+                      .removeClass("fa-plus")
+                      .addClass("fa-minus");
+                  }
+                }
+                var $newElements = $data.css({
+                  opacity: 1,
+                });
+              }
+              efp_lazyload();
+            },
+          });
+        }
+
+        // Pagination.
+        function efp_pagination_action(selected_term_list = null) {
+          var LoadMoreText = $(".ta-efp-pagination-data", efp_Wrapper_ID).data(
+            "loadmoretext"
+          );
+          var EndingMessage = $(".ta-efp-pagination-data", efp_Wrapper_ID).data(
+            "endingtext"
+          );
+          jQuery.ajax({
+            url: ajaxurl,
+            type: "POST",
+            data: {
+              action: "post_pagination_bar_mobile",
+              id: pc_sid,
+              order: order,
+              lang: spsp_lang,
+              keyword: keyword,
+              orderby: orderby,
+              taxonomy: taxonomy,
+              author_id: author_id,
+              term_id: term_id,
+              page: page,
+              nonce: nonce,
+              term_list: selected_term_list,
+              custom_fields_array: custom_fields_array,
+            },
+            success: function (data) {
+              var $data = $(data);
+              var $newElements = $data;
+              $(
+                ".efp-post-pagination.efp-on-mobile:not(.no_ajax)",
+                efp_Wrapper_ID
+              ).html($newElements);
+              if (
+                Pagination_Type == "infinite_scroll" ||
+                Pagination_Type == "ajax_load_more"
+              ) {
+                $(".efp-load-more", efp_Wrapper_ID)
+                  .removeClass("finished")
+                  .removeClass("efp-hide")
+                  .html(
+                    '<button efp-processing="0">' + LoadMoreText + "</button>"
+                  );
+                if (!$(".efp-post-pagination a", efp_Wrapper_ID).length) {
+                  $(".efp-load-more", efp_Wrapper_ID)
+                    .show()
+                    .html(EndingMessage);
+                }
+              }
+              if (Pagination_Type == "infinite_scroll") {
+                $(".efp-load-more", efp_Wrapper_ID).addClass("efp-hide");
+              }
+            },
+          });
+          jQuery.ajax({
+            url: ajaxurl,
+            type: "POST",
+            data: {
+              action: "post_pagination_bar",
+              id: pc_sid,
+              order: order,
+              lang: spsp_lang,
+              keyword: keyword,
+              orderby: orderby,
+              taxonomy: taxonomy,
+              author_id: author_id,
+              term_id: term_id,
+              page: page,
+              nonce: nonce,
+              term_list: selected_term_list,
+              custom_fields_array: custom_fields_array,
+            },
+            success: function (data) {
+              var $data = $(data);
+              var $newElements = $data;
+              $(
+                ".efp-post-pagination.efp-on-desktop:not(.no_ajax)",
+                efp_Wrapper_ID
+              ).html($newElements);
+              if (
+                Pagination_Type == "infinite_scroll" ||
+                Pagination_Type == "ajax_load_more"
+              ) {
+                $(".efp-load-more", efp_Wrapper_ID)
+                  .removeClass("finished")
+                  .removeClass("efp-hide")
+                  .html(
+                    '<button efp-processing="0">' + LoadMoreText + "</button>"
+                  );
+              }
+              if (Pagination_Type == "infinite_scroll") {
+                $(".efp-load-more", efp_Wrapper_ID).addClass("efp-hide");
+              }
+              if (!$(".efp-post-pagination a", efp_Wrapper_ID).length) {
+                $(".efp-load-more", efp_Wrapper_ID).show().html(EndingMessage);
+              }
+              efp_lazyload();
+            },
+          });
+        }
+        // Live filter button reset on ajax call.
+        function efp_live_filter_reset(selected_term_list = null) {
+          jQuery.ajax({
+            url: ajaxurl,
+            type: "POST",
+            data: {
+              action: "efp_live_filter_reset",
+              id: pc_sid,
+              order: order,
+              lang: spsp_lang,
+              keyword: keyword,
+              orderby: orderby,
+              taxonomy: taxonomy,
+              term_id: term_id,
+              author_id: author_id,
+              nonce: nonce,
+              term_list: selected_term_list,
+              last_filter: efp_last_filter,
+              custom_fields_array: custom_fields_array,
+            },
+            success: function (data) {
+              var $data = $(data);
+              var $newElements = $data.animate({
+                opacity: 0.5,
+              });
+              $(".efp-filter-bar", efp_Wrapper_ID).html($newElements);
+              custom_field_filter_slider();
+              $newElements.animate({
+                opacity: 1,
+              });
+            },
+          });
+        }
+        // Update Hash url array.
+        function efp_hash_update_arr(efp_filter_keyword, filter_arr, key) {
+          if (efp_hash_url.length > 0) {
+            efp_hash_url.forEach(function (row) {
+              if ($.inArray(efp_filter_keyword, row.efp_filter_keyword)) {
+                row[key] = efp_filter_keyword;
+              } else {
+                efp_hash_url.push(filter_arr);
+              }
+            });
+          } else {
+            efp_hash_url.push(filter_arr);
+          }
+          return efp_hash_url;
+        }
+        // On normal pagination go to current shortcode.
+        var url_hash = window.location.search;
+        if (url_hash.indexOf("paged") >= 0) {
+          var s_id = /paged(\d+)/.exec(url_hash)[1];
+          var spscurrent_id = document.getElementById("efp_wrapper-" + s_id);
+          spscurrent_id.scrollIntoView();
+        }
+        // Update url.
+        var selected_term_list = Array();
+        function efp_update_url() {
+          var p_search = window.location.search;
+          if (p_search.indexOf("page_id") >= 0) {
+            var efp_page = /page_id\=(\d+)/.exec(p_search)[1];
+            var efp_url = "?page_id=" + efp_page + "&";
+          } else {
+            var efp_url = "&";
+          }
+          if (efp_hash_url.length > 0) {
+            $.map(efp_hash_url, function (value, index) {
+              $.map(value, function (value2, index2) {
+                if (
+                  value2 == "all" ||
+                  value2 == "none" ||
+                  value2 == "" ||
+                  value2 == "page"
+                ) {
+                  efp_url += "";
+                } else {
+                  efp_url += "efp_" + index2 + "=" + value2 + "&";
+                }
+              });
+            });
+          }
+          if (selected_term_list.length > 0) {
+            var term_total_length = selected_term_list.length;
+            $.map(selected_term_list, function (value, index) {
+              if (value.term_id == "all" || value.term_id == "") {
+                efp_url += "";
+              } else {
+                if (index == term_total_length - 1) {
+                  efp_url += "tx_" + value.taxonomy + "=" + value.term_id + "";
+                } else {
+                  efp_url += "tx_" + value.taxonomy + "=" + value.term_id + "&";
+                }
+              }
+            });
+          }
+          if (custom_fields_array.length > 0) {
+            var meta_field_total_length = custom_fields_array.length;
+            $.map(custom_fields_array, function (value, index) {
+              //  if (index == meta_field_total_length - 1) {
+              efp_url +=
+                "cf" +
+                value.custom_field_key +
+                "=" +
+                value.custom_field_value +
+                "&";
+              // }
+            });
+          }
+          if (efp_hash_url.length < 0 || selected_term_list.length < 0) {
+            efp_url = "";
+          }
+          if (efp_url.length > 1) {
+            var slf = "";
+            if (efp_last_filter.length > 0) {
+              var slf = "&slf=" + efp_last_filter;
+            }
+
+            efp_url = "?efp=" + pc_sid + slf + efp_url;
+            history.pushState(null, null, encodeURI(efp_url));
+          } else {
+            var uri = window.location.toString();
+            if (uri.indexOf("?") > 0) {
+              var clean_uri = uri.substring(0, uri.indexOf("?"));
+              window.history.replaceState({}, document.title, clean_uri);
+            }
+          }
+        }
+
+        function custom_field_filter_slider() {
+          $(efp_Wrapper_ID + " .efp-custom-field-filter-slider").each(
+            function () {
+              var _that = $(this);
+              var _input = _that.find(".efp-input");
+              var custom_field_key = _input.attr("name");
+              var _min = _input.data("min");
+              var _crmin = _input.data("crmin");
+              var _crmax = _input.data("crmax");
+              var _max = _input.data("max");
+              _that.find(".efp-slider").slider({
+                range: true,
+                min: _crmin,
+                max: _crmax,
+                values: [_min, _max],
+                slide: function (event, ui) {
+                  _input.val(ui.values[0] + " - " + ui.values[1]);
+                },
+                stop: function (event, ui) {
+                  _input.data("max", ui.values[1]);
+
+                  custom_field_value = ui.values[0] + " " + ui.values[1];
+                  custom_fields_array.push({
+                    custom_field_key,
+                    custom_field_value,
+                  });
+                  custom_fields_array.map(function (person) {
+                    if (person.custom_field_key === custom_field_key) {
+                      person.custom_field_value = custom_field_value;
+                    }
+                  });
+                  custom_fields_array = $.grep(
+                    custom_fields_array,
+                    function (e, i) {
+                      return e.custom_field_value.length;
+                    }
+                  );
+                  custom_fields_array = custom_fields_array
+                    .map(JSON.stringify)
+                    .reverse() // convert to JSON string the array content, then reverse it (to check from end to beginning)
+                    .filter(function (item, index, arr) {
+                      return arr.indexOf(item, index + 1) === -1;
+                    }) // check if there is any occurrence of the item in whole array
+                    .reverse()
+                    .map(JSON.parse);
+                  efp_update_url();
+                  efp_last_filter = custom_field_key;
+                  efp_ajax_action(selected_term_list);
+                  efp_live_filter_reset(selected_term_list);
+                },
+              });
+            }
+          );
+        }
+        custom_field_filter_slider();
+        // Ajax post search.
+        $("input.efp-search-field", efp_Wrapper_ID).on("keyup", function () {
+          var that = $(this);
+          keyword = that.val();
+          efp_last_filter = "keyword";
+          var efp_search_arr = { keyword, keyword };
+          efp_live_filter_reset(selected_term_list);
+          efp_hash_update_arr(keyword, efp_search_arr, "keyword");
+          efp_update_url();
+          efp_ajax_action(selected_term_list);
+          efp_pagination_action();
+          is_pagination_url_change = false;
+          efp_hash_update_arr("page", { page: "" }, "page");
+          efp_update_url();
+        });
+
+        // Post order by.
+        $(".efp-order-by", efp_Wrapper_ID).on("change", function () {
+          var that;
+          $(this)
+            .find("option:selected, input:radio:checked")
+            .each(function () {
+              that = $(this);
+              orderby = that.val();
+            });
+          var orerbyarr = { orderby, orderby };
+          efp_hash_update_arr(orderby, orerbyarr, "orderby");
+          efp_update_url();
+          efp_ajax_action();
+          efp_pagination_action();
+          efp_hash_update_arr("page", { page: "" }, "page");
+          efp_update_url();
+        });
+
+        function efp_filter_push(myarr, item) {
+          var found = false;
+          var i = 0;
+          while (i < myarr.length) {
+            if (myarr[i] === item) {
+              // Do the logic (delete or replace)
+              found = true;
+              break;
+            }
+            i++;
+          }
+          // Add the item
+          if (!found) myarr.push(item);
+          return myarr;
+        }
+
+        // Pre Filter Init.
+        var tax_list = Array();
+        $(".efp-filter-by", efp_Wrapper_ID)
+          .find("option:selected, input:radio:checked")
+          .each(function () {
+            term_id = $(this).val();
+            taxonomy = $(this).data("taxonomy");
+            var selected_tax_length = selected_term_list.length;
+            if (selected_tax_length > 0) {
+              var selected_tax =
+                selected_term_list[selected_tax_length - 1]["taxonomy"];
+              selected_term_list.map(function (person) {
+                if (person.taxonomy === taxonomy) {
+                  person.term_id = term_id;
+                }
+              });
+              // if ($.inArray(taxonomy, tax_list) == -1) {
+              selected_term_list.push({
+                taxonomy,
+                term_id,
+              });
+              //  }
+              if (
+                selected_term_list[selected_tax_length - 1]["term_id"] ==
+                  "all" &&
+                selected_tax === taxonomy
+              ) {
+                tax_list = tax_list.filter(function (val) {
+                  return val !== taxonomy;
+                });
+              } else {
+                tax_list = efp_filter_push(tax_list, taxonomy);
+              }
+              selected_term_list = $.grep(selected_term_list, function (e, i) {
+                return e.term_id != "all";
+              });
+            } else {
+              selected_term_list.push({
+                taxonomy,
+                term_id,
+              });
+              selected_term_list = $.grep(selected_term_list, function (e, i) {
+                return e.term_id != "all";
+              });
+              tax_list = Array(taxonomy);
+            }
+          });
+        $(".efp-author-filter", efp_Wrapper_ID)
+          .find("option:selected, input:radio:checked")
+          .each(function () {
+            that = $(this);
+            author_id = that.val();
+          });
+        $(".efp-order", efp_Wrapper_ID)
+          .find("option:selected, input:radio:checked")
+          .each(function () {
+            that = $(this);
+            order = $(this).val();
+          });
+        $(".efp-order-by", efp_Wrapper_ID)
+          .find("option:selected, input:radio:checked")
+          .each(function () {
+            that = $(this);
+            orderby = that.val();
+          });
+        $("input.efp-search-field", efp_Wrapper_ID).each(function () {
+          var that = $(this);
+          keyword = that.val();
+        });
+        $(".efp-filter-by-checkbox", efp_Wrapper_ID).each(function () {
+          var current_tax = $(this).data("taxonomy");
+          var term_ids = "";
+          $(this)
+            .find("input[name='" + current_tax + "']:checkbox:checked")
+            .each(function () {
+              term_ids += $(this).val() + ",";
+              taxonomy = $(this).data("taxonomy");
+            });
+          term_id = term_ids.replace(/,(?=\s*$)/, "");
+          selected_term_list.map(function (person) {
+            if (person.taxonomy === current_tax) {
+              person.term_id = term_id;
+            }
+          });
+          selected_term_list.push({
+            taxonomy,
+            term_id,
+          });
+        });
+        selected_term_list = $.grep(selected_term_list, function (e, i) {
+          return e.term_id.length;
+        });
+        selected_term_list = selected_term_list
+          .map(JSON.stringify)
+          .reverse() // convert to JSON string the array content, then reverse it (to check from end to beginning)
+          .filter(function (item, index, arr) {
+            return arr.indexOf(item, index + 1) === -1;
+          }) // check if there is any occurence of the item in whole array
+          .reverse()
+          .map(JSON.parse);
+        // Filter by checkbox.
+        $(efp_Wrapper_ID).on("change", ".efp-filter-by-checkbox", function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          $(".efp-filter-by-checkbox", efp_Wrapper_ID).each(function () {
+            var current_tax = $(this).data("taxonomy");
+            var term_ids = "";
+            $(this)
+              .find("input[name='" + current_tax + "']:checkbox:checked")
+              .each(function () {
+                term_ids += $(this).val() + ",";
+                taxonomy = $(this).data("taxonomy");
+              });
+            term_id = term_ids.replace(/,(?=\s*$)/, "");
+            selected_term_list.map(function (person) {
+              if (person.taxonomy === current_tax) {
+                person.term_id = term_id;
+              }
+            });
+            selected_term_list.push({
+              taxonomy,
+              term_id,
+            });
+          });
+          selected_term_list = $.grep(selected_term_list, function (e, i) {
+            return e.term_id.length;
+          });
+          selected_term_list = selected_term_list
+            .map(JSON.stringify)
+            .reverse() // convert to JSON string the array content, then reverse it (to check from end to beginning)
+            .filter(function (item, index, arr) {
+              return arr.indexOf(item, index + 1) === -1;
+            }) // check if there is any occurence of the item in whole array
+            .reverse()
+            .map(JSON.parse);
+          var term_ids = "";
+          $(this)
+            .find("input:checkbox:checked")
+            .each(function () {
+              term_ids += $(this).val() + ",";
+              taxonomy = $(this).data("taxonomy");
+            });
+          taxonomy = $(this).data("taxonomy");
+          term_id = term_ids.replace(/,(?=\s*$)/, "");
+          if (term_id.length > 0) {
+            efp_last_filter = taxonomy;
+          } else {
+            efp_last_filter = efp_last_filter;
+          }
+          efp_hash_update_arr("page", { page: "" }, "page");
+          efp_update_url();
+          efp_live_filter_reset(selected_term_list);
+          efp_ajax_action(selected_term_list);
+          efp_pagination_action(selected_term_list);
+        });
+
+        // Filter by taxonomy.
+        $(efp_Wrapper_ID).on("change", ".efp-filter-by", function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          $(this)
+            .find("option:selected, input:radio:checked")
+            .each(function () {
+              term_id = $(this).val();
+              taxonomy = $(this).data("taxonomy");
+              var selected_tax_length = selected_term_list.length;
+              if (selected_tax_length > 0) {
+                var selected_tax =
+                  selected_term_list[selected_tax_length - 1]["taxonomy"];
+                selected_term_list.map(function (person) {
+                  if (person.taxonomy === taxonomy) {
+                    person.term_id = term_id;
+                  }
+                });
+                // if ($.inArray(taxonomy, tax_list) == -1) {
+                selected_term_list.push({
+                  taxonomy,
+                  term_id,
+                });
+                //  }
+                if (
+                  selected_term_list[selected_tax_length - 1]["term_id"] ==
+                    "all" &&
+                  selected_tax === taxonomy
+                ) {
+                  tax_list = tax_list.filter(function (val) {
+                    return val !== taxonomy;
+                  });
+                } else {
+                  tax_list = efp_filter_push(tax_list, taxonomy);
+                }
+                selected_term_list = $.grep(
+                  selected_term_list,
+                  function (e, i) {
+                    return e.term_id != "all";
+                  }
+                );
+              } else {
+                selected_term_list.push({
+                  taxonomy,
+                  term_id,
+                });
+                tax_list = Array(taxonomy);
+              }
+            });
+          if (term_id == "all") {
+            efp_last_filter = efp_last_filter;
+          } else {
+            efp_last_filter = taxonomy;
+          }
+          selected_term_list = selected_term_list
+            .map(JSON.stringify)
+            .reverse()
+            .filter(function (item, index, selected_term_list) {
+              return selected_term_list.indexOf(item, index + 1) === -1;
+            })
+            .reverse()
+            .map(JSON.parse);
+          efp_hash_update_arr("page", { page: "" }, "page");
+          efp_update_url();
+          // if ($('.efp-filter-by', efp_Wrapper_ID).length > 1) {
+          efp_live_filter_reset(selected_term_list);
+          //}
+          efp_ajax_action(selected_term_list);
+          efp_pagination_action(selected_term_list);
+        });
+        // Author filter.
+        $(efp_Wrapper_ID).on("change", ".efp-author-filter", function (e) {
+          var that;
+          $(this)
+            .find("option:selected, input:radio:checked")
+            .each(function () {
+              that = $(this);
+              author_id = that.val();
+            });
+          var author_arr = { author_id, author_id };
+          if (author_id == "all") {
+            efp_last_filter = efp_last_filter;
+          } else {
+            efp_last_filter = "author_id";
+          }
+          efp_hash_update_arr(author_id, author_arr, "author_id");
+          efp_update_url();
+          efp_live_filter_reset(selected_term_list);
+          efp_ajax_action();
+          efp_pagination_action();
+        });
+
+        // Post order asc/dsc.
+        $(efp_Wrapper_ID).on("change", ".efp-order", function (e) {
+          var that;
+          $(this)
+            .find("option:selected, input:radio:checked")
+            .each(function () {
+              that = $(this);
+              order = $(this).val();
+            });
+          var order_arr = { order, order };
+          efp_hash_update_arr(order, order_arr, "order");
+          efp_update_url();
+          efp_ajax_action();
+          efp_pagination_action();
+          efp_hash_update_arr("page", { page: "" }, "page");
+          efp_update_url();
+        });
+        /**
+         * Grid masonry.
+         */
+        if ($(efp_Wrapper_ID).hasClass("efp-masonry")) {
+          var $post_wrapper = $(".ta-row", efp_Wrapper_ID);
+          $post_wrapper.imagesLoaded(function () {
+            $post_wrapper.masonry(/* {
+                itemSelector: 'div[class*=ta-col-]',
+                //fitWidth: true,
+                percentPosition: true
+              } */);
+          });
+        }
+
+        /**
+         * The Pagination effects.
+         *
+         * The effects for pagination to work for both mobile and other screens.
+         */
+        var Pagination_Type = $(efp_Wrapper_ID).data("pagination");
+        if ($(window).width() <= 480) {
+          var Pagination_Type = $(efp_Wrapper_ID).data("pagination_mobile");
+        }
+        // Ajax number pagination
+        if (Pagination_Type == "ajax_pagination") {
+          $(efp_Wrapper_ID).on("click", ".efp-post-pagination a", function (e) {
+            e.preventDefault();
+            var that = $(this);
+            var totalPage = $(
+                ".efp-post-pagination.efp-on-desktop a:not(.efp_next, .efp_prev)",
+                efp_Wrapper_ID
+              ).length,
+              currentPage = parseInt(
+                $(
+                  ".efp-post-pagination.efp-on-desktop .active:not(.efp_next, .efp_prev)",
+                  efp_Wrapper_ID
+                ).data("page")
+              );
+            if ($(window).width() <= 480) {
+              var totalPage = $(
+                  ".efp-post-pagination.efp-on-mobile a:not(.efp_next, .efp_prev)",
+                  efp_Wrapper_ID
+                ).length,
+                currentPage = parseInt(
+                  $(
+                    ".efp-post-pagination.efp-on-mobile .active:not(.efp_next, .efp_prev)",
+                    efp_Wrapper_ID
+                  ).data("page")
+                );
+            }
+            page = parseInt(that.data("page"));
+            if (that.hasClass("efp_next")) {
+              if (totalPage > currentPage) {
+                var page = currentPage + 1;
+              } else {
+                return;
+              }
+            }
+            if (that.hasClass("efp_prev")) {
+              if (currentPage > 1) {
+                var page = currentPage - 1;
+              } else {
+                return;
+              }
+            }
+            var efp_paged = { page, page };
+            $.ajax({
+              url: ajaxurl,
+              type: "post",
+              data: {
+                page: page,
+                id: pc_sid,
+                action: "post_grid_ajax",
+                order: order,
+                lang: spsp_lang,
+                keyword: keyword,
+                orderby: orderby,
+                taxonomy: taxonomy,
+                term_id: term_id,
+                author_id: author_id,
+                term_list: selected_term_list,
+                custom_fields_array: custom_fields_array,
+                nonce: nonce,
+              },
+              error: function (response) {
+              },
+              success: function (response) {
+                var $data = $(response);
+                var $newElements = $data;
+                if ($(efp_Wrapper_ID).hasClass("efp-masonry")) {
+                  var $post_wrapper = $(".ta-row", efp_Wrapper_ID);
+                  $post_wrapper.masonry("destroy");
+                  $post_wrapper.html($newElements).imagesLoaded(function () {
+                    $post_wrapper.masonry();
+                  });
+                } else if ($(efp_Wrapper_ID).hasClass("efp-filter-wrapper")) {
+                  $grid
+                    .html($newElements)
+                    .isotope("appended", $newElements)
+                    .imagesLoaded(function () {
+                      $grid.isotope("layout");
+                    });
+                  efp_item_same_height();
+                } else {
+                  $(
+                    ".ta-row, .efp-timeline-grid, .ta-collapse, .table-responsive tbody",
+                    efp_Wrapper_ID
+                  ).html($newElements);
+                  if (efpAccordion.length > 0) {
+                    efpAccordion.accordion("refresh");
+                    if (accordion_mode === "multi-open") {
+                      efpAccordion
+                        .find(".efp-collapse-header")
+                        .next()
+                        .slideDown();
+                      efpAccordion
+                        .find(".efp-collapse-header .fa")
+                        .removeClass("fa-plus")
+                        .addClass("fa-minus");
+                    }
+                  }
+                  var $newElements = $data.css({
+                    opacity: 1,
+                  });
+                }
+                $(".page-numbers", efp_Wrapper_ID).removeClass("active");
+                $(".page-numbers", efp_Wrapper_ID).each(function () {
+                  // if (parseInt($('.efp-post-pagination a').data('page')) === page) {
+                  $(
+                    ".efp-post-pagination a[data-page=" + page + "]",
+                    efp_Wrapper_ID
+                  ).addClass("active");
+                  // }
+                });
+                $(".efp_next", efp_Wrapper_ID).removeClass("active");
+                $(".efp_prev", efp_Wrapper_ID).removeClass("active");
+                $(".efp-post-pagination a.active", efp_Wrapper_ID).each(
+                  function () {
+                    if (parseInt($(this).data("page")) === totalPage) {
+                      $(".efp_next", efp_Wrapper_ID).addClass("active");
+                    }
+                    if (parseInt($(this).data("page")) === 1) {
+                      $(".efp_prev", efp_Wrapper_ID).addClass("active");
+                    }
+                  }
+                );
+                if (efpAccordion.length > 0) {
+                  efpAccordion.accordion("refresh");
+                  if (accordion_mode === "multi-open") {
+                    efpAccordion
+                      .find(".efp-collapse-header")
+                      .next()
+                      .slideDown();
+                    efpAccordion
+                      .find(".efp-collapse-header .fa")
+                      .removeClass("fa-plus")
+                      .addClass("fa-minus");
+                  }
+                }
+                $newElements.animate({
+                  opacity: 1,
+                });
+                efp_lazyload();
+                // Ajax Number pagination go to current shortcode top.
+                var url_hash = window.location.search;
+                if (url_hash.indexOf("efp_page") >= 0) {
+                  var current_screen_id =
+                    document.querySelector(efp_Wrapper_ID);
+                  current_screen_id.scrollIntoView();
+                }
+              },
+            });
+            efp_hash_update_arr(page, efp_paged, "page");
+            efp_update_url();
+          });
+        }
+
+        /**
+         * Ajax load on click and Infinite scroll.
+         */
+        if (
+          Pagination_Type == "infinite_scroll" ||
+          Pagination_Type == "ajax_load_more"
+        ) {
+          $(efp_Wrapper_ID).each(function () {
+            var EndingMessage = $(this)
+              .find(".ta-efp-pagination-data")
+              .data("endingtext");
+            var LoadMoreText = $(this)
+              .find(".ta-efp-pagination-data")
+              .data("loadmoretext");
+            if (
+              !$(this)
+                .find(".efp-load-more")
+                .hasClass("efp-load-more-initialize")
+            ) {
+              if ($(".efp-post-pagination a", efp_Wrapper_ID).length) {
+                $(".efp-post-pagination", efp_Wrapper_ID)
+                  .eq(0)
+                  .before(
+                    '<div class="efp-load-more"><button efp-processing="0">' +
+                      LoadMoreText +
+                      "</button></div>"
+                  );
+              }
+              if (Pagination_Type == "infinite_scroll") {
+                $(".efp-load-more", efp_Wrapper_ID).addClass("efp-hide");
+              }
+              $(".efp-post-pagination", efp_Wrapper_ID).addClass("efp-hide");
+              $(".ta-row div[class*=ta-col-]", efp_Wrapper_ID).addClass(
+                "efp-added"
+              );
+              $(this)
+                .find(".efp-load-more")
+                .addClass("efp-load-more-initialize");
+              $(this).on("click", ".efp-load-more button", function (e) {
+                e.preventDefault();
+                if (
+                  $(
+                    ".efp-post-pagination a.active:not(.efp_next, .efp_prev)",
+                    efp_Wrapper_ID
+                  ).length
+                ) {
+                  $(".efp-load-more button").attr("efp-processing", 1);
+                  var current_page = parseInt(
+                    $(
+                      ".efp-post-pagination a.active:not(.efp_next, .efp_prev)",
+                      efp_Wrapper_ID
+                    ).data("page")
+                  );
+                  current_page = current_page + 1;
+                  $(".efp-load-more", efp_Wrapper_ID).hide();
+                  $(".efp-post-pagination", efp_Wrapper_ID)
+                    .eq(0)
+                    .before(
+                      '<div class="efp-infinite-scroll-loader"><svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#444"><g fill="none" fill-rule="evenodd" stroke-width="2"><circle cx="22" cy="22" r="1"><animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" /> <animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite" /> </circle> <circle cx="22" cy="22" r="1"> <animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" /> <animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"/></circle></g></svg></div>'
+                    );
+                  var totalPage = $(
+                    ".efp-post-pagination.efp-on-desktop.infinite_scroll a:not(.efp_next, .efp_prev), .efp-post-pagination.efp-on-desktop.ajax_load_more a:not(.efp_next, .efp_prev)",
+                    efp_Wrapper_ID
+                  ).length;
+                  if ($(window).width() <= 480) {
+                    var totalPage = $(
+                      ".efp-post-pagination.efp-on-mobile.infinite_scroll a:not(.efp_next, .efp_prev), .efp-post-pagination.ajax_load_more.efp-on-mobile  a:not(.efp_next, .efp_prev)",
+                      efp_Wrapper_ID
+                    ).length;
+                  }
+                  page = current_page;
+                  $.ajax({
+                    url: ajaxurl,
+                    type: "post",
+                    data: {
+                      page: page,
+                      id: pc_sid,
+                      action: "post_grid_ajax",
+                      order: order,
+                      lang: spsp_lang,
+                      keyword: keyword,
+                      orderby: orderby,
+                      taxonomy: taxonomy,
+                      term_id: term_id,
+                      author_id: author_id,
+                      term_list: selected_term_list,
+                      custom_fields_array: custom_fields_array,
+                      nonce: nonce,
+                    },
+                    error: function (response) {
+                    },
+                    success: function (response) {
+                      var $data = $(response);
+                      var $newElements = $data;
+                      if ($(efp_Wrapper_ID).hasClass("efp-masonry")) {
+                        var $post_wrapper = $(".ta-row", efp_Wrapper_ID);
+                        $post_wrapper.masonry("destroy");
+                        $post_wrapper
+                          .append($newElements)
+                          .imagesLoaded(function () {
+                            $post_wrapper.masonry();
+                          });
+                      } else if (
+                        $(efp_Wrapper_ID).hasClass("efp-filter-wrapper")
+                      ) {
+                        $grid
+                          .append($newElements)
+                          .isotope("appended", $newElements)
+                          .imagesLoaded(function () {
+                            $grid.isotope("layout");
+                          });
+                        efp_item_same_height();
+                      } else {
+                        var $newElements = $data.css({
+                          opacity: 0,
+                        });
+                        $(
+                          ".ta-row, .efp-timeline-grid, .ta-collapse, .table-responsive tbody",
+                          efp_Wrapper_ID
+                        ).append($newElements);
+                        if (efpAccordion.length > 0) {
+                          efpAccordion.accordion("refresh");
+                          if (accordion_mode === "multi-open") {
+                            efpAccordion
+                              .find(".efp-collapse-header")
+                              .next()
+                              .slideDown();
+                            efpAccordion
+                              .find(".efp-collapse-header .fa")
+                              .removeClass("fa-plus")
+                              .addClass("fa-minus");
+                          }
+                        }
+                        var $newElements = $data.css({
+                          opacity: 1,
+                        });
+                      }
+                      $(".page-numbers", efp_Wrapper_ID).removeClass("active");
+                      $(".page-numbers", efp_Wrapper_ID).each(function () {
+                        $(
+                          ".efp-post-pagination a[data-page=" + page + "]",
+                          efp_Wrapper_ID
+                        ).addClass("active");
+                      });
+                      $(".efp-infinite-scroll-loader", efp_Wrapper_ID).remove();
+                      if (Pagination_Type == "ajax_load_more") {
+                        $(".efp-load-more").show();
+                      }
+                      $(".efp-load-more button").attr("efp-processing", 0);
+                      $(".ta-row div[class*=ta-col-]", efp_Wrapper_ID)
+                        .not(".efp-added")
+                        .addClass("animated efpFadeIn")
+                        .one("webkitAnimationEnd animationEnd", function () {
+                          $(this)
+                            .removeClass("animated efpFadeIn")
+                            .addClass("efp-added");
+                        });
+                      if (totalPage == current_page) {
+                        $(".efp-load-more", efp_Wrapper_ID)
+                          .addClass("finished")
+                          .removeClass("efp-hide");
+                        $(".efp-load-more", efp_Wrapper_ID)
+                          .show()
+                          .html(EndingMessage);
+                      }
+                      efp_lazyload();
+                    },
+                  });
+                } else {
+                  $(".efp-load-more", efp_Wrapper_ID)
+                    .addClass("finished")
+                    .removeClass("efp-hide");
+                  $(".efp-load-more", efp_Wrapper_ID)
+                    .show()
+                    .html(EndingMessage);
+                }
+              });
+            }
+            if (Pagination_Type == "infinite_scroll") {
+              var bufferBefore = Math.abs(20);
+              $(window).scroll(function () {
+                if (
+                  $(
+                    ".ta-row, .ta-collapse, .efp-timeline-grid, .table-responsive tbody",
+                    efp_Wrapper_ID
+                  ).length
+                ) {
+                  var TopAndContent =
+                    $(
+                      ".ta-row, .ta-collapse, .efp-timeline-grid, .table-responsive tbody",
+                      efp_Wrapper_ID
+                    ).offset().top +
+                    $(
+                      ".ta-row, .ta-collapse, .efp-timeline-grid, .table-responsive tbody",
+                      efp_Wrapper_ID
+                    ).outerHeight();
+                  var areaLeft = TopAndContent - $(window).scrollTop();
+                  if (areaLeft - bufferBefore < $(window).height()) {
+                    if (
+                      $(".efp-load-more button", efp_Wrapper_ID).attr(
+                        "efp-processing"
+                      ) == 0
+                    ) {
+                      $(".efp-load-more button", efp_Wrapper_ID).trigger(
+                        "click"
+                      );
+                    }
+                  }
+                }
+              });
+            }
+          });
+        }
+
+        /* This code added for divi-builder ticker mode compatibility. */
+        if (efpCarousel.length > 0 && efpCarouselData.mode == "ticker") {
+          $(".ta-efp-carousel img").removeAttr("loading");
+          $(window).on("load", function () {
+            $(".ta-efp-carousel").each(function () {
+              var thisdfd = $(this);
+              var thisCSS = thisdfd.attr("style");
+              $(this).removeAttr("style");
+              setTimeout(function () {
+                thisdfd.attr("style", thisCSS);
+              }, 0);
+            });
+          });
+        }
+
+        /* Preloader js */
+        $(document).ready(function () {
+          $(".efp-preloader", efp_Wrapper_ID).css({
+            backgroundImage: "none",
+            visibility: "hidden",
+          });
+        });
+        // This function added for efp-Lazyload.
+        function efp_lazyload() {
+          var $is_find = $(".eventful__item--thumbnail img").hasClass(
+            "efp-lazyload"
+          );
+          if ($is_find) {
+            $("img.efp-lazyload")
+              .efp_lazyload({ effect: "fadeIn", effectTime: 2000 })
+              .removeClass("efp-lazyload")
+              .addClass("efp-lazyloaded");
+          }
+          // efp_item_same_height();
+        }
+        efp_lazyload();
+      });
+    }
+  };
+  efp_myScript();
+});

@@ -1,0 +1,157 @@
+/**
+ * 12. Responsive
+ */
+@media only screen and (max-width:1200px){
+
+  .efp-metabox{
+
+    .efp-field{
+
+      .efp-title{
+        float: none;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .efp-fieldset{
+        float: none;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:782px){
+
+  .efp-header-inner{
+    text-align: center;
+
+    h1{
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  .efp-form-result{
+    float: none;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .efp-search,
+  .efp-header-right,
+  .efp-header-left{
+    width: 100%;
+  }
+
+  .efp-search{
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .efp-footer{
+    text-align: center;
+  }
+
+  .efp-buttons{
+    float: none;
+  }
+
+  .efp-copyright{
+    float: none;
+    margin-top: 10px;
+  }
+
+  .efp-nav,
+  .efp-expand-all,
+  .efp-reset-section,
+  .efp-nav-background{
+    display: none !important;
+  }
+
+  .efp-nav-normal + .efp-content{
+    margin-left: 0;
+  }
+
+  .efp-section-title,
+  .efp-section{
+    display: block !important;
+  }
+
+  .efp-field{
+
+    .efp-title{
+      float: none;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .efp-fieldset{
+      float: none;
+      width: 100%;
+    }
+  }
+
+  .efp-field-color{
+
+    .button.wp-picker-clear{
+      padding: 0 8px;
+      line-height: 2.14285714;
+      min-height: 32px;
+    }
+  }
+
+  .efp-profile-options,
+  .efp-taxonomy-edit-fields{
+
+    > .efp-field{
+
+      > .efp-title{
+        float: none;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      > .efp-fieldset{
+        float: none;
+        width: 100%;
+      }
+    }
+  }
+
+  .efp-nav-menu-options{
+
+    > .efp-fields{
+      margin-left: -10px;
+      margin-right: -10px;
+
+      > .efp-field{
+        padding: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 782px) {
+
+  .efp-modal{
+
+    .efp-modal-inner{
+      width: 90%;
+    }
+  }
+}
+
+@media only screen and (max-height: 750px) {
+
+  .efp-modal{
+
+    .efp-modal-inner{
+      height: auto;
+    }
+
+    .efp-modal-content{
+      height: calc(100vh - 200px);
+    }
+  }
+}
