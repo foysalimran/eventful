@@ -65,10 +65,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
     public function __construct() {
 
       // Init action
-      do_action( 'efp_init' );
-
-      // Setup textdomain
-      self::textdomain();
+      do_action( 'taf_init' );
 
       add_action( 'after_setup_theme', array( 'EFP', 'setup' ) );
       add_action( 'init', array( 'EFP', 'setup' ) );
@@ -247,7 +244,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       }
 
-      do_action( 'efp_loaded' );
+      do_action( 'taf_loaded' );
 
     }
 
@@ -328,7 +325,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       $path     = '';
       $file     = ltrim( $file, '/' );
-      $override = apply_filters( 'efp_override', 'efp-override' );
+      $override = apply_filters( 'taf_override', 'taf-override' );
 
       if ( file_exists( get_parent_theme_file_path( $override .'/'. $file ) ) ) {
         $path = get_parent_theme_file_path( $override .'/'. $file );
@@ -404,7 +401,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       }
 
       // Include all framework fields
-      $fields = apply_filters( 'efp_fields', array(
+      $fields = apply_filters( 'taf_fields', array(
         'accordion',
         'background',
         'backup',
@@ -415,7 +412,6 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         'code_editor',
         'color',
         'color_group',
-        'column',
         'content',
         'date',
         'datetime',
@@ -424,12 +420,8 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         'gallery',
         'group',
         'heading',
-        'metabox_branding',
         'icon',
         'image_select',
-        'image_sizes',
-        'dimensions_advanced',
-        'layout_preset',
         'link',
         'link_color',
         'map',
@@ -440,13 +432,11 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         'radio',
         'repeater',
         'select',
-        'shortcode',
         'slider',
         'sortable',
         'sorter',
         'spacing',
         'spinner',
-        'box_shadow',
         'subheading',
         'submessage',
         'switcher',
@@ -466,11 +456,6 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         }
       }
 
-    }
-
-    // Setup textdomain
-    public static function textdomain() {
-      load_textdomain( 'efp', self::$dir .'/languages/'. get_locale() .'.mo' );
     }
 
     // Set all of used fields
@@ -508,9 +493,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
     // Enqueue admin and fields styles and scripts
     public static function add_admin_enqueue_scripts() {
-      $current_screen        = get_current_screen();
-			$the_current_post_type = $current_screen->post_type;
-      if ( 'eventful' === $the_current_post_type ) {
+
       if ( ! self::$enqueue ) {
 
         // Loads scripts and styles only when needed
@@ -568,13 +551,13 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
           self::$enqueue = true;
         }
 
-        if ( $wpscreen->id === 'tools_page_efp-welcome' ) {
+        if ( $wpscreen->id === 'tools_page_taf-welcome' ) {
           self::$enqueue = true;
         }
 
       }
 
-      if ( ! apply_filters( 'efp_enqueue_assets', self::$enqueue ) ) {
+      if ( ! apply_filters( 'taf_enqueue_assets', self::$enqueue ) ) {
         return;
       }
 
@@ -586,45 +569,36 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       wp_enqueue_script( 'wp-color-picker' );
 
       // Font awesome 4 and 5 loader
-      if ( apply_filters( 'efp_fa4', false ) ) {
-        wp_enqueue_style( 'efp-fa', 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css', array(), '4.7.0', 'all' );
+      if ( apply_filters( 'taf_fa4', false ) ) {
+        wp_enqueue_style( 'font-awesome_v4-fa', EFP_URL . 'admin/views/ta-framework/assets/css/font-awesome_v4.min.css', array(), '4.7.0', 'all' );
       } else {
-        wp_enqueue_style( 'efp-fa5', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css', array(), '5.15.5', 'all' );
-        wp_enqueue_style( 'efp-fa5-v4-shims', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/v4-shims.min.css', array(), '5.15.5', 'all' );
+        wp_enqueue_style( 'font-awesome_v5-fa5', EFP_URL .'admin/views/ta-framework/assets/css/font-awesome_v5.min.css', array(), '5.15.5', 'all' );
+        wp_enqueue_style( 'font-awesome_v4-v4-shims', EFP_URL .'admin/views/ta-framework/assets/css/font-awesome_v4-shims.min.css', array(), '5.15.5', 'all' );
       }
 
       // Check for developer mode
       $min = ( self::$premium && SCRIPT_DEBUG ) ? '' : '.min';
 
       // Main style
-      wp_enqueue_style( 'efp', self::include_plugin_url( 'assets/css/style'. $min .'.css' ), array(), self::$version, 'all' );
+      wp_enqueue_style( 'taf', self::include_plugin_url( 'assets/css/style'. $min .'.css' ), array(), self::$version, 'all' );
 
       // Main RTL styles
       if ( is_rtl() ) {
-        wp_enqueue_style( 'efp-rtl', self::include_plugin_url( 'assets/css/style-rtl'. $min .'.css' ), array(), self::$version, 'all' );
-      }
-
-      // Main style
-      wp_enqueue_style( 'taf-custom', self::include_plugin_url( 'assets/css/taf-custom'. $min .'.css' ), array(), self::$version, 'all' );
-
-      // Main RTL styles
-      if ( is_rtl() ) {
-        wp_enqueue_style( 'taf-custom-rtl', self::include_plugin_url( 'assets/css/taf-custom'. $min .'.css' ), array(), self::$version, 'all' );
+        wp_enqueue_style( 'taf-rtl', self::include_plugin_url( 'assets/css/style-rtl'. $min .'.css' ), array(), self::$version, 'all' );
       }
 
       // Main scripts
-      wp_enqueue_script( 'efp-plugins', self::include_plugin_url( 'assets/js/plugins'. $min .'.js' ), array(), self::$version, true );
-      wp_enqueue_script( 'efp', self::include_plugin_url( 'assets/js/main'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
-      wp_enqueue_script( 'efp-custom', self::include_plugin_url( 'assets/js/taf-custom'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
+      wp_enqueue_script( 'taf-plugins', self::include_plugin_url( 'assets/js/plugins'. $min .'.js' ), array(), self::$version, true );
+      wp_enqueue_script( 'taf', self::include_plugin_url( 'assets/js/main'. $min .'.js' ), array( 'taf-plugins' ), self::$version, true );
 
       // Main variables
-      wp_localize_script( 'efp', 'efp_vars', array(
-        'color_palette'     => apply_filters( 'efp_color_palette', array() ),
+      wp_localize_script( 'taf', 'taf_vars', array(
+        'color_palette'     => apply_filters( 'taf_color_palette', array() ),
         'i18n'              => array(
-          'confirm'         => esc_html__( 'Are you sure?', 'eventful-pro' ),
-          'typing_text'     => esc_html__( 'Please enter %s or more characters', 'eventful-pro' ),
-          'searching_text'  => esc_html__( 'Searching...', 'eventful-pro' ),
-          'no_results_text' => esc_html__( 'No results found.', 'eventful-pro' ),
+          'confirm'         => esc_html__( 'Are you sure?', 'ta-framework' ),
+          'typing_text'     => esc_html__( 'Please enter %s or more characters', 'ta-framework' ),
+          'searching_text'  => esc_html__( 'Searching...', 'ta-framework' ),
+          'no_results_text' => esc_html__( 'No results found.', 'ta-framework' ),
         ),
       ) );
 
@@ -646,8 +620,8 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         }
       }
 
-      do_action( 'efp_enqueue' );
-    }
+      do_action( 'taf_enqueue' );
+
     }
 
     // Add typography enqueue styles to front page
@@ -674,7 +648,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
           $query['display'] = 'swap';
 
-          wp_enqueue_style( 'efp-google-web-fonts', esc_url( add_query_arg( $query, '//fonts.googleapis.com/css' ) ), array(), null );
+          wp_enqueue_style( 'taf-google-web-fonts', esc_url( add_query_arg( $query, '//fonts.googleapis.com/css' ) ), array(), null );
 
         }
 
@@ -686,9 +660,9 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $fonts[] = $family . ( ( ! empty( $styles ) ) ? ':'. implode( ',', $styles ) : '' );
           }
 
-          wp_enqueue_script( 'efp-google-web-fonts', esc_url( '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' ), array(), null );
+          wp_enqueue_script( 'taf-google-web-fonts', esc_url( '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' ), array(), null );
 
-          wp_localize_script( 'efp-google-web-fonts', 'WebFontConfig', array( 'google' => array( 'families' => $fonts ) ) );
+          wp_localize_script( 'taf-google-web-fonts', 'WebFontConfig', array( 'google' => array( 'families' => $fonts ) ) );
 
         }
 
@@ -699,8 +673,8 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
     // Add admin body class
     public static function add_admin_body_class( $classes ) {
 
-      if ( apply_filters( 'efp_fa4', false ) ) {
-        $classes .= 'efp-fa5-shims';
+      if ( apply_filters( 'taf_fa4', false ) ) {
+        $classes .= 'taf-fa5-shims';
       }
 
       return $classes;
@@ -725,7 +699,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         $field_type = $field['type'];
 
         $field            = array();
-        $field['content'] = esc_html__( 'Oops! Not allowed.', 'eventful-pro' ) .' <strong>('. $field_type .')</strong>';
+        $field['content'] = esc_html__( 'Oops! Not allowed.', 'ta-framework' ) .' <strong>('. $field_type .')</strong>';
         $field['type']    = 'notice';
         $field['style']   = 'danger';
 
@@ -735,7 +709,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       $visible    = '';
       $unique     = ( ! empty( $unique ) ) ? $unique : '';
       $class      = ( ! empty( $field['class'] ) ) ? ' ' . esc_attr( $field['class'] ) : '';
-      $is_pseudo  = ( ! empty( $field['pseudo'] ) ) ? ' efp-pseudo-field' : '';
+      $is_pseudo  = ( ! empty( $field['pseudo'] ) ) ? ' taf-pseudo-field' : '';
       $field_type = ( ! empty( $field['type'] ) ) ? esc_attr( $field['type'] ) : '';
 
       if ( ! empty( $field['dependency'] ) ) {
@@ -766,23 +740,23 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         $depend .= ' data-value="'. esc_attr( $data_value ) .'"';
         $depend .= ( ! empty( $data_global ) ) ? ' data-depend-global="true"' : '';
 
-        $visible = ( ! empty( $depend_visible ) ) ? ' efp-depend-visible' : ' efp-depend-hidden';
+        $visible = ( ! empty( $depend_visible ) ) ? ' taf-depend-visible' : ' taf-depend-hidden';
 
       }
 
       // These attributes has been sanitized above.
-      echo '<div class="efp-field efp-field-'. $field_type . $is_pseudo . $class . $visible .'"'. $depend .'>';
+      echo '<div class="taf-field taf-field-'. $field_type . $is_pseudo . $class . $visible .'"'. $depend .'>';
 
       if ( ! empty( $field_type ) ) {
 
         if ( ! empty( $field['title'] ) ) {
-          echo '<div class="efp-title">';
+          echo '<div class="taf-title">';
           echo '<h4>'. $field['title'] .'</h4>';
-          echo ( ! empty( $field['subtitle'] ) ) ? '<div class="efp-subtitle-text">'. $field['subtitle'] .'</div>' : '';
+          echo ( ! empty( $field['subtitle'] ) ) ? '<div class="taf-subtitle-text">'. $field['subtitle'] .'</div>' : '';
           echo '</div>';
         }
 
-        echo ( ! empty( $field['title'] ) ) ? '<div class="efp-fieldset">' : '';
+        echo ( ! empty( $field['title'] ) ) ? '<div class="taf-fieldset">' : '';
 
         $value = ( ! isset( $value ) && isset( $field['default'] ) ) ? $field['default'] : $value;
         $value = ( isset( $field['value'] ) ) ? $field['value'] : $value;
@@ -793,11 +767,11 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
           $instance = new $classname( $field, $value, $unique, $where, $parent );
           $instance->render();
         } else {
-          echo '<p>'. esc_html__( 'Field not found!', 'eventful-pro' ) .'</p>';
+          echo '<p>'. esc_html__( 'Field not found!', 'ta-framework' ) .'</p>';
         }
 
       } else {
-        echo '<p>'. esc_html__( 'Field not found!', 'eventful-pro' ) .'</p>';
+        echo '<p>'. esc_html__( 'Field not found!', 'ta-framework' ) .'</p>';
       }
 
       echo ( ! empty( $field['title'] ) ) ? '</div>' : '';
@@ -820,6 +794,6 @@ EFP_Setup::init( __FILE__, true );
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'eventful-pro' ) ) {
+if ( ! class_exists( 'ta-framework' ) ) {
   class EFP extends EFP_Setup{}
 }

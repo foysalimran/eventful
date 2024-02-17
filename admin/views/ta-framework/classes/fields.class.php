@@ -8,25 +8,8 @@
  *
  */
 if ( ! class_exists( 'EFP_Fields' ) ) {
-  /**
-	 *
-	 * Fields Class
-	 *
-	 * @since 1.0.0
-	 * @version 1.0.0
-	 */
   abstract class EFP_Fields extends EFP_Abstract {
 
-    /**
-		 * __Construct
-		 *
-		 * @param  mixed $field fields.
-		 * @param  mixed $value value.
-		 * @param  mixed $unique unique id.
-		 * @param  mixed $where where.
-		 * @param  mixed $parent parent.
-		 * @return void
-		 */
     public function __construct( $field = array(), $value = '', $unique = '', $where = '', $parent = '' ) {
       $this->field  = $field;
       $this->value  = $value;
@@ -35,12 +18,6 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
       $this->parent = $parent;
     }
 
-    /**
-		 * Field name method.
-		 *
-		 * @param string $nested_name Nested field name.
-		 * @return string
-		 */
     public function field_name( $nested_name = '' ) {
 
       $field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
@@ -56,12 +33,6 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
 
     }
 
-    /**
-		 * Field attributes.
-		 *
-		 * @param array $custom_atts Custom attributes.
-		 * @return mixed
-		 */
     public function field_attributes( $custom_atts = array() ) {
 
       $field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
@@ -93,43 +64,22 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
 
     }
 
-    /**
-		 * Field before.
-		 *
-		 * @return mixed
-		 */
     public function field_before() {
-      return ( ! empty( $this->field['before'] ) ) ? '<div class="efp-before-text">'. $this->field['before'] .'</div>' : '';
+      return ( ! empty( $this->field['before'] ) ) ? '<div class="taf-before-text">'. $this->field['before'] .'</div>' : '';
     }
 
-    /**
-		 * Field after.
-		 *
-		 * @return mixed
-		 */
     public function field_after() {
 
-      $output  = ( ! empty( $this->field['after'] ) ) ? '<div class="efp-after-text">'. $this->field['after'] .'</div>' : '';
-      $output .= ( ! empty( $this->field['desc'] ) ) ? '<div class="clear"></div><div class="efp-desc-text">'. $this->field['desc'] .'</div>' : '';
-      $output .= ( ! empty( $this->field['help'] ) ) ? '<div class="efp-help"><span class="efp-help-text">'. $this->field['help'] .'</span><i class="fas fa-question-circle"></i></div>' : '';
-      $output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="efp-error-text">'. $this->field['_error'] .'</div>' : '';
+      $output  = ( ! empty( $this->field['after'] ) ) ? '<div class="taf-after-text">'. $this->field['after'] .'</div>' : '';
+      $output .= ( ! empty( $this->field['desc'] ) ) ? '<div class="clear"></div><div class="taf-desc-text">'. $this->field['desc'] .'</div>' : '';
+      $output .= ( ! empty( $this->field['help'] ) ) ? '<div class="taf-help"><span class="taf-help-text">'. $this->field['help'] .'</span><i class="fas fa-question-circle"></i></div>' : '';
+      $output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="taf-error-text">'. $this->field['_error'] .'</div>' : '';
 
       return $output;
 
     }
 
-    
-		/**
-		 * Field Data.
-		 *
-		 * @param array   $type       post types.
-		 * @param boolean $term      post term.
-		 * @param object  $query_args post term.
-		 * @param array   $field_unique unique id.
-		 *
-		 * @return array
-		 */
-    public static function field_data( $type = '', $term = false, $query_args = array(), $field_unique = null ) {
+    public static function field_data( $type = '', $term = false, $query_args = array() ) {
 
       $options = array();
       $array_search = false;
@@ -291,77 +241,6 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
 
         break;
 
-        case 'taxonomies':
-          case 'taxonomy':
-            global $post;
-            $view_options       = get_post_meta( $post->ID, 'ta_efp_view_options', true );
-            $efp_post_types     = 'tribe_events';
-              $taxonomy_names = get_object_taxonomies( $efp_post_types, 'names' );
-            if ( ! is_wp_error( $taxonomy_names ) && ! empty( $taxonomy_names ) ) {
-              $options[''] =esc_html__( 'Select Taxonomy', 'eventful-pro' );
-              foreach ( $taxonomy_names as $taxonomy => $label ) {
-                $options[ $label ] = $label;
-              }
-            }
-            break;
-  
-          case 'terms':
-          case 'term':
-            global $post;
-            $view_options   = get_post_meta( $post->ID, 'ta_efp_view_options', true );
-            $efp_post_types = 'tribe_events';
-  
-            $field_index = preg_replace( '/[^0-9]/', '', $field_unique );
-            $efp_taxonomy = isset( $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'][ $field_index ]['efp_select_taxonomy'] ) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'][ $field_index ]['efp_select_taxonomy'] : get_object_taxonomies( $efp_post_types, 'names' );
-            if ( version_compare( get_bloginfo( 'version' ), '4.5', '>=' ) ) {
-              $terms = get_terms( array( 'taxonomy' => $efp_taxonomy ) );
-            } else {
-              $terms = get_terms( array( $efp_taxonomy ) );
-            }
-  
-            if ( ! is_wp_error( $terms ) && ! empty( $terms ) && ! isset( $terms['errors'] ) ) {
-              foreach ( $terms as $key => $value ) {
-                $options[ $value->term_id ] = $value->name;
-              }
-            }
-  
-            break;
-  
-          case 'post_status':
-          case 'post_statuses':
-            $statuses = get_post_stati( null, 'objects' );
-            foreach ( $statuses as $status => $object ) {
-              $options[ $status ] = ucfirst( $object->label );
-            }
-  
-            break;
-          case 'custom_field':
-          case 'custom_fields':
-            global $wpdb;
-            $keys = $wpdb->get_col(
-              "SELECT meta_key
-            FROM $wpdb->postmeta
-            GROUP BY meta_key
-            ORDER BY meta_key"
-            );
-            if ( $keys ) {
-              natcasesort( $keys );
-            }
-            // Remove empty custom field.
-            $keys = array_filter( $keys );
-            foreach ( $keys as $key ) {
-              /**
-               * Don't hide protected meta fields, to able to select data of The Events Calendar...
-               *
-               * @since 2.0.0
-               * if ( is_protected_meta( $key, 'post' ) ) {
-               * continue;
-               * }
-               */
-              $options[ esc_attr( $key ) ] = esc_html( $key );
-            }
-  
-            break;
         case 'location':
         case 'locations':
 

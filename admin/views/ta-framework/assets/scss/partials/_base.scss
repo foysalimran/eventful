@@ -1,7 +1,7 @@
 /**
  * 01. Base
  */
-.efp{
+.taf{
   position: relative;
 
   label{
@@ -11,15 +11,15 @@
   }
 }
 
-.efp-ab-icon{
+.taf-ab-icon{
   top: 2px;
 }
 
-#screen-meta-links + .efp-options{
+#screen-meta-links + .taf-options{
   margin-top: 40px;
 }
 
-.efp-options{
+.taf-options{
   margin-top: 20px;
   margin-right: 20px;
 }
@@ -27,11 +27,11 @@
 /**
  * 01. 01. Header
  */
-.efp-header{
+.taf-header{
   position: relative;
 }
 
-.efp-header-inner{
+.taf-header-inner{
   padding: 25px;
   transition: box-shadow .3s ease;
 
@@ -52,11 +52,11 @@
 /**
  * 01. 02. Sticky
  */
-.efp-sticky{
+.taf-sticky{
 
-  .efp-header-inner{
+  .taf-header-inner{
     position: fixed;
-    z-index: 2;
+    z-index: 99;
     top: 32px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   }
@@ -65,7 +65,7 @@
 /**
  * 01. 03. Header Buttons
  */
-.efp-buttons{
+.taf-buttons{
   float: right;
 
   .button{
@@ -78,23 +78,23 @@
     }
   }
 
-  .efp-save{
+  .taf-save{
     min-width: 72px;
   }
 }
 
-.efp-header-left{
+.taf-header-left{
   float: left;
 }
 
-.efp-header-right{
+.taf-header-right{
   float: right;
 }
 
 /**
  * 01. 04. Navigation
  */
-.efp-nav{
+.taf-nav{
   display: block;
   position: relative;
   z-index: 10;
@@ -124,7 +124,7 @@
         }
       }
 
-      .efp-arrow:after{
+      .taf-arrow:after{
         content: "\f054";
         display: inline-block;
         font-family: "Font Awesome 5 Pro", "Font Awesome 5 Free", "FontAwesome";
@@ -137,9 +137,9 @@
         margin-top: -4px;
       }
 
-      &.efp-tab-expanded{
+      &.taf-tab-expanded{
 
-        .efp-arrow:after{
+        .taf-arrow:after{
           transform: rotate(90deg);
         }
 
@@ -163,28 +163,28 @@
     }
   }
 
-  .efp-tab-icon{
+  .taf-tab-icon{
     width: 20px;
     margin-right: 5px;
     font-size: 13px;
     text-align: center;
   }
 
-  .efp-label-error{
+  .taf-label-error{
     margin-left: 4px;
     vertical-align: top;
   }
 }
 
-.efp-nav-normal{
+.taf-nav-normal{
   width: 225px;
 
-  + .efp-content{
+  + .taf-content{
     margin-left: 225px;
   }
 }
 
-.efp-nav-inline{
+.taf-nav-inline{
   width: 100%;
 
   ul{
@@ -196,7 +196,7 @@
   }
 }
 
-.efp-nav-background{
+.taf-nav-background{
   position: absolute;
   top: 0;
   left: 0;
@@ -208,14 +208,14 @@
 /**
  * 01. 05. Wrapper
  */
-.efp-wrapper{
+.taf-wrapper{
   position: relative;
 }
 
 /**
  * 01. 06. Content
  */
-.efp-content{
+.taf-content{
   position: relative;
   background-color: #fff;
 }
@@ -223,12 +223,12 @@
 /**
  * 01. 07. Section
  */
-.efp-sections{
+.taf-sections{
   float: left;
   width: 100%;
 }
 
-.efp-section-title{
+.taf-section-title{
   display: none;
   padding: 20px 30px;
   background-color: #f5f5f5;
@@ -243,7 +243,7 @@
     text-transform: uppercase;
   }
 
-  .efp-section-icon{
+  .taf-section-icon{
     margin-right: 5px;
   }
 }
@@ -251,7 +251,7 @@
 /**
  * 01. 08. Footer
  */
-.efp-footer{
+.taf-footer{
   padding: 20px;
   font-size: 11px;
 }
@@ -259,7 +259,7 @@
 /**
  * 01. 09. Copyright
  */
-.efp-copyright{
+.taf-copyright{
   float: left;
   margin-top: 5px;
 }
@@ -267,25 +267,25 @@
 /**
  * 01. 10. Show All Settings
  */
-.efp-search-all,
-.efp-show-all{
-  .efp-nav-background,
-  .efp-nav{
+.taf-search-all,
+.taf-show-all{
+  .taf-nav-background,
+  .taf-nav{
     display: none;
   }
 
-  .efp-content{
+  .taf-content{
     margin-left: 0;
   }
 
-  .efp-section-title,
-  .efp-section{
+  .taf-section-title,
+  .taf-section{
     display: block !important;
   }
 }
 
-.efp-search-all{
-  .efp-section-title{
+.taf-search-all{
+  .taf-section-title{
     display: none !important;
   }
 }
@@ -293,7 +293,7 @@
 //
 // Expand
 //
-.efp-expand-all{
+.taf-expand-all{
   float: left;
   padding: 0 8px;
   margin-right: 4px;
@@ -314,7 +314,7 @@
 /**
  * 01. 11. Search Input
  */
-.efp-search{
+.taf-search{
   float: left;
 
   input{
@@ -334,10 +334,10 @@
   }
 }
 
-.efp-saving{
+.taf-saving{
 
-  .efp-buttons,
-  .efp-content{
+  .taf-buttons,
+  .taf-content{
     cursor: default;
     pointer-events: none;
     opacity: 0.5;
@@ -347,40 +347,40 @@
 /**
  * 01. 12. Metabox
  */
-.efp-metabox{
+.taf-metabox{
   margin: -6px -12px -12px -12px;
 
-  .efp-field{
+  .taf-field{
     padding: 20px;
   }
 
-  .efp-section-title{
+  .taf-section-title{
     padding: 20px;
   }
 }
 
 .block-editor-page{
 
-  .efp-metabox{
+  .taf-metabox{
     margin: -6px -14px -14px -14px;
   }
 }
 
 .block-editor-editor-skeleton__content{
 
-  .efp-metabox{
+  .taf-metabox{
     border-left: 1px solid #e2e4e7;
     border-right: 1px solid #e2e4e7;
   }
 }
 
-.efp-sections-reset{
+.taf-sections-reset{
   float: left;
   width: 100%;
   text-align: right;
   border-top: 1px solid #eee;
 
-  .efp-button-cancel,
+  .taf-button-cancel,
   input{
     display: none;
   }
@@ -395,11 +395,11 @@
   }
 
 
-  input:checked ~ .efp-button-reset{
+  input:checked ~ .taf-button-reset{
     display: none;
   }
 
-  input:checked ~ .efp-button-cancel{
+  input:checked ~ .taf-button-cancel{
     display: inline-block;
   }
 
@@ -407,30 +407,30 @@
 
 #side-sortables{
 
-  .efp-section-title{
+  .taf-section-title{
     padding: 12px;
   }
 
-  .efp-field{
+  .taf-field{
     padding: 10px 15px;
 
-    .efp-title{
+    .taf-title{
       float: none;
       width: 100%;
       margin-bottom: 6px;
     }
 
-    .efp-fieldset{
+    .taf-fieldset{
       float: none;
       width: 100%;
     }
   }
 
-  .efp-field-text input{
+  .taf-field-text input{
     width: 100%;
   }
 
-  .efp-notice{
+  .taf-notice{
     padding: 10px 15px;
   }
 }
@@ -438,14 +438,14 @@
 /**
  * 01. 13. Comment Metabox
  */
-.efp-comment-metabox{
+.taf-comment-metabox{
   margin: -6px -12px -12px -12px;
 
-  .efp-field{
+  .taf-field{
     padding: 20px;
   }
 
-  .efp-section-title{
+  .taf-section-title{
     padding: 20px;
   }
 }
@@ -454,7 +454,7 @@
 /**
  * 01. 14. Help Tooltip
  */
-.efp-tooltip{
+.taf-tooltip{
   position: absolute;
   z-index: 5000001;
   font-size: 12px;

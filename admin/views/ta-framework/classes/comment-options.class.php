@@ -31,8 +31,8 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
     public function __construct( $key, $params = array() ) {
 
       $this->unique     = $key;
-      $this->args       = apply_filters( "efp_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections   = apply_filters( "efp_{$this->unique}_sections", $params['sections'], $this );
+      $this->args       = apply_filters( "taf_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections   = apply_filters( "taf_{$this->unique}_sections", $params['sections'], $this );
       $this->pre_fields = $this->pre_fields( $this->sections );
 
       add_action( 'add_meta_boxes_comment', array( $this, 'add_comment_meta_box' ) );
@@ -104,25 +104,25 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
     public function add_comment_meta_box_content( $comment, $callback ) {
 
       $has_nav  = ( count( $this->sections ) > 1 ) ? true : false;
-      $show_all = ( ! $has_nav ) ? ' efp-show-all' : '';
-      $errors   = ( is_object ( $comment ) ) ? get_comment_meta( $comment->comment_ID, '_efp_errors_'. $this->unique, true ) : array();
+      $show_all = ( ! $has_nav ) ? ' taf-show-all' : '';
+      $errors   = ( is_object ( $comment ) ) ? get_comment_meta( $comment->comment_ID, '_taf_errors_'. $this->unique, true ) : array();
       $errors   = ( ! empty( $errors ) ) ? $errors : array();
-      $theme    = ( $this->args['theme'] ) ? ' efp-theme-'. $this->args['theme'] : '';
+      $theme    = ( $this->args['theme'] ) ? ' taf-theme-'. $this->args['theme'] : '';
       $nav_type = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 
       if ( is_object( $comment ) && ! empty( $errors ) ) {
-        delete_comment_meta( $comment->comment_ID, '_efp_errors_'. $this->unique );
+        delete_comment_meta( $comment->comment_ID, '_taf_errors_'. $this->unique );
       }
 
-      wp_nonce_field( 'efp_comment_metabox_nonce', 'efp_comment_metabox_nonce'. $this->unique );
+      wp_nonce_field( 'taf_comment_metabox_nonce', 'taf_comment_metabox_nonce'. $this->unique );
 
-      echo '<div class="efp efp-comment-metabox'. esc_attr( $theme ) .'">';
+      echo '<div class="taf taf-comment-metabox'. esc_attr( $theme ) .'">';
 
-        echo '<div class="efp-wrapper'. esc_attr( $show_all ) .'">';
+        echo '<div class="taf-wrapper'. esc_attr( $show_all ) .'">';
 
           if ( $has_nav ) {
 
-            echo '<div class="efp-nav efp-nav-'. esc_attr( $nav_type ) .' efp-nav-metabox">';
+            echo '<div class="taf-nav taf-nav-'. esc_attr( $nav_type ) .' taf-nav-metabox">';
 
               echo '<ul>';
 
@@ -130,10 +130,10 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
 
               foreach ( $this->sections as $section ) {
 
-                $tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="efp-tab-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
-                $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="efp-label-error efp-error">!</i>' : '';
+                $tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="taf-tab-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
+                $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="taf-label-error taf-error">!</i>' : '';
 
-                echo '<li><a href="#">'. $tab_icon . $section['title'] . $tab_error .'</a></li>';
+                echo '<li><a href="#">'. wp_kses_post($tab_icon) . esc_html($tab['title']) . esc_html($tab_error) .'</a></li>';
 
                 $tab_key++;
 
@@ -145,23 +145,23 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
 
           }
 
-          echo '<div class="efp-content">';
+          echo '<div class="taf-content">';
 
-            echo '<div class="efp-sections">';
+            echo '<div class="taf-sections">';
 
             $section_key = 1;
 
             foreach ( $this->sections as $section ) {
 
-              $section_onload = ( ! $has_nav ) ? ' efp-onload' : '';
+              $section_onload = ( ! $has_nav ) ? ' taf-onload' : '';
               $section_class  = ( ! empty( $section['class'] ) ) ? ' '. $section['class'] : '';
               $section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
-              $section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="efp-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
+              $section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="taf-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
 
-              echo '<div class="efp-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
+              echo '<div class="taf-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
 
-              echo ( $section_title || $section_icon ) ? '<div class="efp-section-title"><h3>'. $section_icon . $section_title .'</h3></div>' : '';
-              echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. $section['description'] .'</div>' : '';
+              echo ( $section_title || $section_icon ) ? '<div class="taf-section-title"><h3>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h3></div>' : '';
+              echo ( ! empty( $section['description'] ) ) ? '<div class="taf-field taf-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
 
               if ( ! empty( $section['fields'] ) ) {
 
@@ -181,7 +181,7 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
 
               } else {
 
-                echo '<div class="efp-no-option">'. esc_html__( 'No data available.', 'eventful-pro' ) .'</div>';
+                echo '<div class="taf-no-option">'. esc_html__( 'No data available.', 'ta-framework' ) .'</div>';
 
               }
 
@@ -195,11 +195,11 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
 
             if ( ! empty( $this->args['show_restore'] ) || ! empty( $this->args['show_reset'] ) ) {
 
-              echo '<div class="efp-sections-reset">';
+              echo '<div class="taf-sections-reset">';
               echo '<label>';
               echo '<input type="checkbox" name="'. esc_attr( $this->unique ) .'[_reset]" />';
-              echo '<span class="button efp-button-reset">'. esc_html__( 'Reset', 'eventful-pro' ) .'</span>';
-              echo '<span class="button efp-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'eventful-pro' ), esc_html__( 'Cancel', 'eventful-pro' ) ) .'</span>';
+              echo '<span class="button taf-button-reset">'. esc_html__( 'Reset', 'ta-framework' ) .'</span>';
+              echo '<span class="button taf-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'ta-framework' ), esc_html__( 'Cancel', 'ta-framework' ) ) .'</span>';
               echo '</label>';
               echo '</div>';
 
@@ -207,7 +207,7 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
 
           echo '</div>';
 
-          echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="efp-nav-background"></div>' : '';
+          echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="taf-nav-background"></div>' : '';
 
           echo '<div class="clear"></div>';
 
@@ -223,10 +223,10 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
       $count    = 1;
       $data     = array();
       $errors   = array();
-      $noncekey = 'efp_comment_metabox_nonce'. $this->unique;
+      $noncekey = 'taf_comment_metabox_nonce'. $this->unique;
       $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
 
-      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'efp_comment_metabox_nonce' ) ) {
+      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'taf_comment_metabox_nonce' ) ) {
         return $comment_id;
       }
 
@@ -293,9 +293,9 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
 
       }
 
-      $data = apply_filters( "efp_{$this->unique}_save", $data, $comment_id, $this );
+      $data = apply_filters( "taf_{$this->unique}_save", $data, $comment_id, $this );
 
-      do_action( "efp_{$this->unique}_save_before", $data, $comment_id, $this );
+      do_action( "taf_{$this->unique}_save_before", $data, $comment_id, $this );
 
       if ( empty( $data ) || ! empty( $request['_reset'] ) ) {
 
@@ -320,14 +320,14 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
         }
 
         if ( ! empty( $errors ) ) {
-          update_comment_meta( $comment_id, '_efp_errors_'. $this->unique, $errors );
+          update_comment_meta( $comment_id, '_taf_errors_'. $this->unique, $errors );
         }
 
       }
 
-      do_action( "efp_{$this->unique}_saved", $data, $comment_id, $this );
+      do_action( "taf_{$this->unique}_saved", $data, $comment_id, $this );
 
-      do_action( "efp_{$this->unique}_save_after", $data, $comment_id, $this );
+      do_action( "taf_{$this->unique}_save_after", $data, $comment_id, $this );
 
     }
   }

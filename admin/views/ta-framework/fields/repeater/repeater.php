@@ -1,108 +1,107 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die; } // Cannot access directly.
 /**
  *
  * Field: repeater
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'EFP_Field_repeater' ) ) {
-  class EFP_Field_repeater extends EFP_Fields {
+	class EFP_Field_repeater extends EFP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-    public function render() {
+		public function render() {
 
-      $args = wp_parse_args( $this->field, array(
-        'max'          => 0,
-        'min'          => 0,
-        'button_title' => '<i class="fas fa-plus-circle"></i>',
-      ) );
+			$args = wp_parse_args(
+				$this->field,
+				array(
+					'max'          => 0,
+					'min'          => 0,
+					'button_title' => '<i class="fas fa-plus-circle"></i>',
+				)
+			);
 
-      if ( preg_match( '/'. preg_quote( '['. $this->field['id'] .']' ) .'/', $this->unique ) ) {
+			if ( preg_match( '/' . preg_quote( '[' . $this->field['id'] . ']' ) . '/', $this->unique ) ) {
 
-        echo '<div class="efp-notice efp-notice-danger">'. esc_html__( 'Error: Field ID conflict.', 'eventful-pro' ) .'</div>';
+				echo '<div class="taf-notice taf-notice-danger">' . esc_html__( 'Error: Field ID conflict.', 'ta-framework' ) . '</div>';
 
-      } else {
+			} else {
 
-        echo wp_kses_post( $this->field_before() );
+				echo wp_kses_post( $this->field_before() );
 
-        echo '<div class="efp-repeater-item efp-repeater-hidden" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
-        echo '<div class="efp-repeater-content">';
-        foreach ( $this->field['fields'] as $field ) {
+				echo '<div class="taf-repeater-item taf-repeater-hidden" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
+				echo '<div class="taf-repeater-content">';
+				foreach ( $this->field['fields'] as $field ) {
 
-          $field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
-          $field_unique  = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .'][0]' : $this->field['id'] .'[0]';
+					$field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
+					$field_unique  = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $this->field['id'] . '][0]' : $this->field['id'] . '[0]';
 
-          EFP::field( $field, $field_default, '___'. $field_unique, 'field/repeater' );
+					EFP::field( $field, $field_default, '___' . $field_unique, 'field/repeater' );
 
-        }
-        echo '</div>';
-        echo '<div class="efp-repeater-helper">';
-        echo '<div class="efp-repeater-helper-inner">';
-        echo '<i class="efp-repeater-sort fas fa-arrows-alt"></i>';
-        echo '<i class="efp-repeater-clone far fa-clone"></i>';
-        echo '<i class="efp-repeater-remove efp-confirm fas fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'eventful-pro' ) .'"></i>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
+				}
+				echo '</div>';
+				echo '<div class="taf-repeater-helper">';
+				echo '<div class="taf-repeater-helper-inner">';
+				echo '<i class="taf-repeater-sort fas fa-arrows-alt"></i>';
+				echo '<i class="taf-repeater-clone far fa-clone"></i>';
+				echo '<i class="taf-repeater-remove taf-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'ta-framework' ) . '"></i>';
+				echo '</div>';
+				echo '</div>';
+				echo '</div>';
 
-        echo '<div class="efp-repeater-wrapper efp-data-wrapper" data-field-id="['. esc_attr( $this->field['id'] ) .']" data-max="'. esc_attr( $args['max'] ) .'" data-min="'. esc_attr( $args['min'] ) .'">';
+				echo '<div class="taf-repeater-wrapper taf-data-wrapper" data-field-id="[' . esc_attr( $this->field['id'] ) . ']" data-max="' . esc_attr( $args['max'] ) . '" data-min="' . esc_attr( $args['min'] ) . '">';
 
-        if ( ! empty( $this->value ) && is_array( $this->value ) ) {
+				if ( ! empty( $this->value ) && is_array( $this->value ) ) {
 
-          $num = 0;
+					$num = 0;
 
-          foreach ( $this->value as $key => $value ) {
+					foreach ( $this->value as $key => $value ) {
 
-            echo '<div class="efp-repeater-item">';
-            echo '<div class="efp-repeater-content">';
-            foreach ( $this->field['fields'] as $field ) {
+						echo '<div class="taf-repeater-item">';
+						echo '<div class="taf-repeater-content">';
+						foreach ( $this->field['fields'] as $field ) {
 
-              $field_unique = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .']['. $num .']' : $this->field['id'] .'['. $num .']';
-              $field_value  = ( isset( $field['id'] ) && isset( $this->value[$key][$field['id']] ) ) ? $this->value[$key][$field['id']] : '';
+								$field_unique = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $this->field['id'] . '][' . $num . ']' : $this->field['id'] . '[' . $num . ']';
+								$field_value  = ( isset( $field['id'] ) && isset( $this->value[ $key ][ $field['id'] ] ) ) ? $this->value[ $key ][ $field['id'] ] : '';
 
-              EFP::field( $field, $field_value, $field_unique, 'field/repeater' );
+								EFP::field( $field, $field_value, $field_unique, 'field/repeater' );
 
-            }
-            echo '</div>';
-            echo '<div class="efp-repeater-helper">';
-            echo '<div class="efp-repeater-helper-inner">';
-            echo '<i class="efp-repeater-sort fas fa-arrows-alt"></i>';
-            echo '<i class="efp-repeater-clone far fa-clone"></i>';
-            echo '<i class="efp-repeater-remove efp-confirm fas fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'eventful-pro' ) .'"></i>';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
+						}
+						echo '</div>';
+						echo '<div class="taf-repeater-helper">';
+						echo '<div class="taf-repeater-helper-inner">';
+						echo '<i class="taf-repeater-sort fas fa-arrows-alt"></i>';
+						echo '<i class="taf-repeater-clone far fa-clone"></i>';
+						echo '<i class="taf-repeater-remove taf-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'ta-framework' ) . '"></i>';
+						echo '</div>';
+						echo '</div>';
+						echo '</div>';
 
-            $num++;
+						++$num;
 
-          }
+					}
+				}
 
-        }
+				echo '</div>';
 
-        echo '</div>';
+				echo '<div class="taf-repeater-alert taf-repeater-max">' . esc_html__( 'You cannot add more.', 'ta-framework' ) . '</div>';
+				echo '<div class="taf-repeater-alert taf-repeater-min">' . esc_html__( 'You cannot remove more.', 'ta-framework' ) . '</div>';
+				echo '<a href="#" class="button button-primary taf-repeater-add">' . esc_html( $args['button_title'] ) . '</a>';
 
-        echo '<div class="efp-repeater-alert efp-repeater-max">'. esc_html__( 'You cannot add more.', 'eventful-pro' ) .'</div>';
-        echo '<div class="efp-repeater-alert efp-repeater-min">'. esc_html__( 'You cannot remove more.', 'eventful-pro' ) .'</div>';
-        echo '<a href="#" class="button button-primary efp-repeater-add">'. $args['button_title'] .'</a>';
+				echo wp_kses_post( $this->field_after() );
 
-        echo wp_kses_post( $this->field_after() );
+			}
+		}
 
-      }
+		public function enqueue() {
 
-    }
-
-    public function enqueue() {
-
-      if ( ! wp_script_is( 'jquery-ui-sortable' ) ) {
-        wp_enqueue_script( 'jquery-ui-sortable' );
-      }
-
-    }
-
-  }
+			if ( ! wp_script_is( 'jquery-ui-sortable' ) ) {
+				wp_enqueue_script( 'jquery-ui-sortable' );
+			}
+		}
+	}
 }

@@ -56,7 +56,7 @@
 /**
  * 01. Base
  */
-.efp-options{
+.taf-options{
   margin-left: 20px;
   margin-right: 0;
 }
@@ -64,7 +64,7 @@
 /**
  * 01. 01. Header
  */
-.efp-header{
+.taf-header{
   h1{
     float: right;
   }
@@ -77,43 +77,43 @@
 /**
  * 01. 02. Header Buttons
  */
-.efp-buttons{
+.taf-buttons{
   float: left;
   direction: ltr;
 }
 
-.efp-header-left{
+.taf-header-left{
   float: right;
 }
 
-.efp-header-right{
+.taf-header-right{
   float: left;
 }
 
 /**
  * 01. 03. Navigation
  */
-.efp-nav{
+.taf-nav{
   float: right;
 
   ul{
     clear: right;
 
     li{
-      .efp-active:after{
+      .taf-active:after{
         right: auto;
         left: 0;
         border-left-color: #fff;
         border-right-color: transparent;
       }
 
-      .efp-arrow:after{
+      .taf-arrow:after{
         content: "\f053";
         right: auto;
         left: 10px;
       }
 
-      &.efp-tab-expanded .efp-arrow:after{
+      &.taf-tab-expanded .taf-arrow:after{
         transform: rotate(-90deg);
       }
     }
@@ -133,13 +133,13 @@
     }
   }
 
-  .efp-tab-icon{
+  .taf-tab-icon{
     margin-left: 5px;
     margin-right: 0;
   }
 }
 
-.efp-nav-background{
+.taf-nav-background{
   left: auto;
   right: 0;
 }
@@ -147,7 +147,7 @@
 /**
  * 01. 04. Content
  */
-.efp-content{
+.taf-content{
   margin-left: 0;
   margin-right: 225px;
 }
@@ -155,19 +155,19 @@
 /**
  * 01. 05. Section
  */
-.efp-sections{
+.taf-sections{
   float: right;
 }
 
 /**
  * 01. 06. Show all options
  */
-.efp-show-all .efp-content{
+.taf-show-all .taf-content{
   margin-right: 0;
   overflow: hidden;
 }
 
-.efp-expand-all{
+.taf-expand-all{
   float: right;
   right: auto;
   left: 40px;
@@ -178,7 +178,7 @@
 /**
  * 01. 07. Search Input
  */
-.efp-search{
+.taf-search{
   float: right;
 
   input{
@@ -189,24 +189,24 @@
 /**
  * 01. 08. Copyright
  */
-.efp-copyright{
+.taf-copyright{
   float: right;
 }
 
 /**
  * 01. 09. Metabox
  */
-.efp-metabox{
+.taf-metabox{
   margin: -6px -12px -12px -12px;
 
-  .efp-section-title{
+  .taf-section-title{
     padding: 20px;
   }
 }
 
-.efp-section-title{
+.taf-section-title{
 
-  .efp-section-icon{
+  .taf-section-icon{
     margin-left: 5px;
     margin-right: 0;
   }
@@ -215,38 +215,38 @@
 /**
  * 02. Fields
  */
-.efp-field{
+.taf-field{
 
-  .efp-title{
+  .taf-title{
     float: right;
   }
 
-  .efp-fieldset{
+  .taf-fieldset{
     float: left;
   }
 }
 
-.efp-pseudo-field{
+.taf-pseudo-field{
   padding: 0 0 0 5px !important;
 }
 
 /**
  * 02. 01. Field: typography
  */
-.efp-field-typography{
+.taf-field-typography{
 
   select{
     margin: 0;
     width: 100%;
   }
 
-  .efp--blocks-inputs{
-    .efp--blocks{
+  .taf--blocks-inputs{
+    .taf--blocks{
       flex-direction: row-reverse;
     }
   }
 
-  .efp--unit{
+  .taf--unit{
     left: 4px;
     right: auto;
   }
@@ -255,8 +255,8 @@
 /**
  * 02. 02. Field: checkbox, radio
  */
-.efp-field-checkbox,
-.efp-field-radio{
+.taf-field-checkbox,
+.taf-field-radio{
 
   ul ul li{
     margin-left: 0;
@@ -267,12 +267,12 @@
     }
   }
 
-  .efp--inline-list li{
+  .taf--inline-list li{
     margin-right: 0;
     margin-left: 15px;
   }
 
-  .efp--text{
+  .taf--text{
     margin-left: 0;
     margin-right: 5px;
   }
@@ -281,13 +281,13 @@
 /**
  * 02. 03. Field: switcher
  */
-.efp-field-switcher{
+.taf-field-switcher{
 
-  .efp--switcher{
+  .taf--switcher{
     float: right;
   }
 
-  .efp--label{
+  .taf--label{
     float: right;
     margin-left: 0;
     margin-right: 5px;
@@ -297,10 +297,10 @@
 /**
  * 02. 04. Field: upload
  */
-.efp-field-upload{
+.taf-field-upload{
 
-  .efp--remove,
-  .efp--button{
+  .taf--remove,
+  .taf--button{
     margin-left: 0;
     margin-right: 5px;
   }
@@ -309,13 +309,13 @@
 /**
  * 02. 05. Field: group
  */
-.efp-field-group{
+.taf-field-group{
 
-  .efp-cloneable-title{
+  .taf-cloneable-title{
     padding: 15px 10px 15px 65px;
   }
 
-  .efp-cloneable-helper{
+  .taf-cloneable-helper{
     right: auto;
     left: 10px;
   }
@@ -324,9 +324,9 @@
 /**
  * 02. 06. Field: repeater
  */
-.efp-field-repeater{
+.taf-field-repeater{
 
-  .efp-repeater-helper{
+  .taf-repeater-helper{
     border-left: 0;
     border-right: 1px solid #eee;
   }
@@ -335,7 +335,7 @@
 /**
  * 02. 07. Field: help
  */
-.efp-help{
+.taf-help{
   right: auto;
   left: 5px;
 }
@@ -343,14 +343,14 @@
 /**
  * 02. 08. Field: icon
  */
-.efp-field-icon{
+.taf-field-icon{
 
   .button{
     margin-right: 0;
     margin-left: 5px;
   }
 
-  .efp-icon-preview i{
+  .taf-icon-preview i{
     margin-right: 0;
     margin-left: 5px;
   }
@@ -359,7 +359,7 @@
 /**
  * 02. 09. Field: gallery
  */
-.efp-field-gallery{
+.taf-field-gallery{
 
   ul li{
     margin-right: 0;
@@ -375,11 +375,11 @@
 /**
  * 02. 11. Field: tabbed
  */
-.efp-field-tabbed{
+.taf-field-tabbed{
 
-  .efp-tabbed-nav{
+  .taf-tabbed-nav{
 
-    .efp--icon{
+    .taf--icon{
       padding-right: 0;
       padding-left: 5px;
     }
@@ -394,7 +394,7 @@
 /**
  * 02. 12. Field: media
  */
-.efp-field-media{
+.taf-field-media{
 
   .button{
     margin-left: 0;
@@ -409,7 +409,7 @@
 /**
  * 02. 13. Field: notice
  */
-.efp-notice{
+.taf-notice{
   border-left: none;
   border-right-style: solid;
   border-right-width: 4px;
@@ -418,21 +418,21 @@
 /**
  * 02. 14. Field: border, spacing, dimensions
  */
-.efp-field-dimensions,
-.efp-field-spacing,
-.efp-field-border{
+.taf-field-dimensions,
+.taf-field-spacing,
+.taf-field-border{
 
-  .efp--input,
-  .efp-fieldset{
+  .taf--input,
+  .taf-fieldset{
     direction: ltr;
   }
 
-  .efp--inputs,
-  .efp--color{
+  .taf--inputs,
+  .taf--color{
     float: right;
   }
 
-  .efp--color{
+  .taf--color{
     margin-right: 4px;
     direction: rtl;
   }
@@ -441,18 +441,18 @@
 /**
  * 02. 15. Field: background
  */
-.efp-field-background{
+.taf-field-background{
 
-  .efp--block{
+  .taf--block{
     float: right;
   }
 
-  .efp--select,
-  .efp--media{
+  .taf--select,
+  .taf--media{
     padding-right: 0;
   }
 
-  .efp--title{
+  .taf--title{
     margin-right: 0;
     margin-left: 5px;
   }
@@ -461,9 +461,9 @@
 /**
  * 02. 16. Field: spinner
  */
-.efp-field-spinner{
+.taf-field-spinner{
 
-  .efp--spin{
+  .taf--spin{
     float: right;
     direction: ltr;
   }
@@ -472,15 +472,15 @@
 /**
  * 02. 17. Field: slider
  */
-.efp-field-slider{
+.taf-field-slider{
 
-  .efp-slider-ui{
+  .taf-slider-ui{
     direction: ltr;
     margin-right: 0;
     margin-left: 15px;
   }
 
-  .efp--input{
+  .taf--input{
     direction: ltr;
   }
 }
@@ -488,9 +488,9 @@
 /**
  * 02. 18. Field: button_set
  */
-.efp-field-button_set{
+.taf-field-button_set{
 
-  .efp--button-group{
+  .taf--button-group{
     float: right;
   }
 }
@@ -498,9 +498,9 @@
 /**
  * 02. 19. Field: link_color
  */
-.efp-field-link_color{
+.taf-field-link_color{
 
-  .efp--left{
+  .taf--left{
     float: right;
     margin-right: 0;
     margin-left: 10px;
@@ -510,9 +510,9 @@
 /**
  * 02. 20. Field: color_group
  */
-.efp-field-color_group{
+.taf-field-color_group{
 
-  .efp--left{
+  .taf--left{
     float: right;
     margin-right: 0;
     margin-left: 10px;
@@ -522,9 +522,9 @@
 /**
  * 02. 21. Field: palette
  */
-.efp-field-palette{
+.taf-field-palette{
 
-  .efp--palette{
+  .taf--palette{
     margin-right: 0;
     margin-left: 10px;
   }
@@ -533,9 +533,9 @@
 /**
  * 02. 22. Field: accordion
  */
-.efp-field-accordion{
+.taf-field-accordion{
 
-  .efp--icon{
+  .taf--icon{
     margin-right: 0;
     margin-left: 2px;
   }
@@ -544,9 +544,9 @@
 /**
  * 02. 23. Field: date
  */
-.efp-field-date{
+.taf-field-date{
 
-  .efp--to {
+  .taf--to {
     margin-left: 0;
     margin-right: 7px;
   }
@@ -555,9 +555,9 @@
 /**
  * 02. 24. Field: map
  */
-.efp-field-map{
+.taf-field-map{
 
-  .efp--map-input:last-child {
+  .taf--map-input:last-child {
     padding-left: 0;
     padding-right: 10px;
   }
@@ -566,9 +566,9 @@
 /**
  * 02. 25. Field: sortable
  */
-.efp-field-sortable{
+.taf-field-sortable{
 
-  .efp-sortable-helper{
+  .taf-sortable-helper{
     border-left: none;
     border-right: 1px solid #eee;
   }
@@ -577,13 +577,13 @@
 /**
  * 02. 26. Field: number
  */
-.efp-field-number{
+.taf-field-number{
 
-  .efp--wrap{
+  .taf--wrap{
     float: right;
   }
 
-  .efp--unit{
+  .taf--unit{
     left: 4px;
     right: auto;
   }
@@ -592,21 +592,21 @@
 /**
  * 03. Taxonomy
  */
-.efp-taxonomy-add-fields{
+.taf-taxonomy-add-fields{
   margin-right: 0;
   margin-left: 30px;
 
-  .efp-field > .efp-fieldset > .efp-help{
+  .taf-field > .taf-fieldset > .taf-help{
     left: -5px;
     right: auto;
   }
 }
 
-.efp-taxonomy-edit-fields{
+.taf-taxonomy-edit-fields{
   margin-right: 0;
   margin-left: 35px;
 
-  .efp-field > .efp-fieldset > .efp-help{
+  .taf-field > .taf-fieldset > .taf-help{
     right: auto;
     left: -5px;
   }
@@ -615,18 +615,18 @@
 /**
  * 04. Profile
  */
-.efp-profile-options{
+.taf-profile-options{
 
   > h2 > .fa{
     padding-right: 0;
     padding-left: 7px;
   }
 
-  > .efp-field{
+  > .taf-field{
 
-    > .efp-fieldset{
+    > .taf-fieldset{
 
-      > .efp-help{
+      > .taf-help{
         left: -5px;
         right: auto;
       }
@@ -637,20 +637,20 @@
 /**
  * 05. Nav Menu
  */
-.efp-nav-menu-options{
+.taf-nav-menu-options{
 
-  > .efp-fields{
+  > .taf-fields{
     margin-left: 0;
     margin-right: -10px;
   }
 }
 
-.efp-nav-menu-title {
+.taf-nav-menu-title {
   padding-left: 14px;
   padding-right: 12px;
 }
 
-.efp-nav-menu-icon{
+.taf-nav-menu-icon{
   margin-right: 0;
   margin-left: 5px;
 }
@@ -658,18 +658,18 @@
 /**
  * 06. Modal
  */
-.efp-modal-content{
+.taf-modal-content{
 
-  .efp-field{
+  .taf-field{
     padding: 15px 15px 15px 30px;
   }
 }
 
-.efp-modal-title{
+.taf-modal-title{
   padding: 0 16px 0 36px;
 }
 
-.efp-modal-close{
+.taf-modal-close{
   right: auto;
   left: 0;
 }
@@ -679,9 +679,9 @@
  */
 .control-section{
 
-  .efp-field{
+  .taf-field{
 
-    .efp-fieldset{
+    .taf-fieldset{
       margin-right: 0;
     }
   }
@@ -691,14 +691,14 @@
  * 08. Responsive
  */
 @media only screen and (max-width:1200px){
-  .efp-metabox .efp-field .efp-fieldset{
+  .taf-metabox .taf-field .taf-fieldset{
     margin-left: 0;
   }
 }
 
 @media only screen and (max-width:782px){
-  .efp .efp-fieldset,
-  .efp .efp-content{
+  .taf .taf-fieldset,
+  .taf .taf-content{
     margin-right: 0;
   }
 }
@@ -706,9 +706,9 @@
 /**
  * 09. Others
  */
-.efp-field{
+.taf-field{
 
-  .efp--transparent-slider{
+  .taf--transparent-slider{
     margin-left: 0;
     margin-right: 2px;
 
@@ -717,11 +717,11 @@
     }
   }
 
-  .efp--transparent-offset{
+  .taf--transparent-offset{
     background-position: center right;
   }
 
-  .efp--transparent-text{
+  .taf--transparent-text{
     right: auto;
     left: 10px;
   }

@@ -3,10 +3,10 @@
  */
 .control-section{
 
-  .efp-field{
+  .taf-field{
     padding: 0;
 
-    .efp-title{
+    .taf-title{
       float: none;
       width: 100%;
       margin-bottom: 6px;
@@ -20,22 +20,22 @@
       }
     }
 
-    .efp-fieldset{
+    .taf-fieldset{
       float: none;
       width: 100%;
     }
   }
 
-  .efp-help{
+  .taf-help{
     top: -5px;
     right: -5px;
   }
 
-  .efp-field-select select{
+  .taf-field-select select{
     width: 100%;
   }
 
-  .efp-field-heading{
+  .taf-field-heading{
     color: inherit;
     font-size: 14px;
     line-height: 1em;
@@ -44,7 +44,7 @@
     padding: 15px;
   }
 
-  .efp-field-subheading{
+  .taf-field-subheading{
     color: inherit;
     font-size: 11px;
     margin-right: -15px;
@@ -52,73 +52,73 @@
     padding: 10px 15px;
   }
 
-  .efp-subtitle-text{
+  .taf-subtitle-text{
     margin-top: 4px;
     font-size: 12px;
   }
 
-  .efp-field-submessage .efp-submessage{
+  .taf-field-submessage .taf-submessage{
     margin-right: -15px;
     margin-left: -15px;
     padding: 15px;
   }
 
-  .efp-fieldset{
+  .taf-fieldset{
 
-    .efp-field-submessage .efp-submessage,
-    .efp-field-heading,
-    .efp-field-subheading{
+    .taf-field-submessage .taf-submessage,
+    .taf-field-heading,
+    .taf-field-subheading{
       margin-left: 0;
       margin-right: 0;
     }
   }
 
-  .efp-field-date,
-  .efp-field-datetime{
+  .taf-field-date,
+  .taf-field-datetime{
 
     label{
       display: block;
     }
 
-    .efp--to{
+    .taf--to{
       margin-top: 4px;
       margin-left: 0;
     }
   }
 
-  .efp-field-sorter{
+  .taf-field-sorter{
 
     ul li{
       padding: 5px;
     }
 
-    .efp-modules{
+    .taf-modules{
       float: none;
       width: 100%;
     }
 
-    .efp-modules:first-child{
+    .taf-modules:first-child{
       padding-right: 0;
       padding-bottom: 15px;
     }
   }
 
-  .efp-field-background{
+  .taf-field-background{
 
-    .efp--background-attributes{
+    .taf--background-attributes{
       flex-direction: column;
     }
   }
 
-  .efp-field-spacing{
+  .taf-field-spacing{
     input{
       width: 90px;
     }
   }
 
-  .efp-field-border{
+  .taf-field-border{
 
-    .efp--input{
+    .taf--input{
       flex: 1 50%;
     }
 
@@ -128,44 +128,44 @@
     }
   }
 
-  .efp-field-spinner{
+  .taf-field-spinner{
     input{
       width: 50px;
     }
   }
 
-  .efp-field-number{
+  .taf-field-number{
 
-    .efp--wrap{
+    .taf--wrap{
       width: 100%;
     }
   }
 
-  .efp-field-backup{
+  .taf-field-backup{
 
-    .efp-export-data{
+    .taf-export-data{
       display: none;
     }
   }
 
-  .efp-field-fieldset{
+  .taf-field-fieldset{
 
-    .efp-fieldset-content{
+    .taf-fieldset-content{
       border-color: #e5e5e5;
     }
   }
 
-  .efp-tabbed-content,
-  .efp-sortable-content,
-  .efp-repeater-content,
-  .efp-fieldset-content,
-  .efp-cloneable-content,
-  .efp-accordion-content{
+  .taf-tabbed-content,
+  .taf-sortable-content,
+  .taf-repeater-content,
+  .taf-fieldset-content,
+  .taf-cloneable-content,
+  .taf-accordion-content{
 
-    > .efp-field{
+    > .taf-field{
       padding: 10px;
 
-      .efp-title{
+      .taf-title{
         margin-bottom: 5px;
       }
 
@@ -175,11 +175,11 @@
     }
   }
 
-  .efp-depend-hidden.efp-depend-on{
+  .taf-depend-hidden.taf-depend-on{
     display: none !important;
   }
 
-  .efp-depend-visible.efp-depend-on{
+  .taf-depend-visible.taf-depend-on{
     border-top: 0 !important;
   }
 }

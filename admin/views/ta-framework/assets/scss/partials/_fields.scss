@@ -1,11 +1,11 @@
 /**
  * 03. Fields
  */
-.efp-field{
+.taf-field{
   position: relative;
   padding: 30px;
 
-  + .efp-field{
+  + .taf-field{
     border-top: 1px solid #eee;
   }
 
@@ -31,7 +31,7 @@
     margin-top: 0;
   }
 
-  .efp-title{
+  .taf-title{
     position: relative;
     width: 20%;
     float: left;
@@ -42,17 +42,17 @@
     }
   }
 
-  .efp-fieldset{
+  .taf-fieldset{
     float: right;
     width: calc(80% - 20px);
   }
 }
 
-.efp-pseudo-field{
+.taf-pseudo-field{
   padding: 0 5px 0 0 !important;
   display: inline-block;
 
-  + .efp-pseudo-field{
+  + .taf-pseudo-field{
     border: 0;
   }
 
@@ -64,9 +64,9 @@
 /**
  * 03. 02. Field: accordion
  */
-.efp-field-accordion{
+.taf-field-accordion{
 
-  .efp-accordion-item{
+  .taf-accordion-item{
     position: relative;
     margin-bottom: 5px;
 
@@ -79,7 +79,7 @@
     }
   }
 
-  .efp-accordion-title{
+  .taf-accordion-title{
     display: block;
     cursor: pointer;
     position: relative;
@@ -100,19 +100,19 @@
       border-color: #999;
     }
 
-    .efp--icon{
+    .taf--icon{
       width: 20px;
       text-align: center;
       margin-right: 2px;
     }
   }
 
-  .efp-accordion-icon{
+  .taf-accordion-icon{
     width: 16px;
     text-align: center;
   }
 
-  .efp-accordion-content{
+  .taf-accordion-content{
     display: none;
     padding: 0;
     border: 1px solid #ccd0d4;
@@ -120,12 +120,12 @@
     background-color: #fff;
     box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 
-    > .efp-field{
+    > .taf-field{
       padding: 15px;
     }
   }
 
-  .efp-accordion-open{
+  .taf-accordion-open{
     display: block;
   }
 }
@@ -133,26 +133,26 @@
 /**
  * 03. 03. Field: background
  */
-.efp-field-background{
+.taf-field-background{
 
-  .efp-field{
+  .taf-field{
     border: 0 !important;
     padding: 0;
     margin-bottom: 6px;
     margin-right: 6px;
   }
 
-  .efp--title{
+  .taf--title{
     color: #777;
     font-size: 12px;
   }
 
-  .efp--background-colors{
+  .taf--background-colors{
     display: flex;
     flex-wrap: wrap;
   }
 
-  .efp--background-attributes{
+  .taf--background-attributes{
     display: flex;
     flex-wrap: wrap;
 
@@ -161,12 +161,12 @@
       margin: 0;
     }
 
-    .efp-field{
+    .taf-field{
       flex: 1;
     }
   }
 
-  .efp--attributes-hidden{
+  .taf--attributes-hidden{
     display: none;
   }
 }
@@ -174,7 +174,7 @@
 /**
  * 03. 04. Field: backup
  */
-.efp-field-backup{
+.taf-field-backup{
 
   textarea{
     width: 100%;
@@ -197,17 +197,17 @@
 /**
  * 03. 05. Field: border, spacing, dimensions
  */
-.efp-field-border,
-.efp-field-spacing,
-.efp-field-dimensions{
+.taf-field-border,
+.taf-field-spacing,
+.taf-field-dimensions{
 
-  .efp--inputs{
+  .taf--inputs{
     float: left;
     display: flex;
     flex-wrap: wrap;
   }
 
-  .efp--input{
+  .taf--input{
     display: flex;
     padding-right: 6px;
     padding-bottom: 4px;
@@ -227,11 +227,11 @@
     }
   }
 
-  .efp--color{
+  .taf--color{
     float: left;
   }
 
-  .efp--label{
+  .taf--label{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -246,22 +246,22 @@
     background-color: #f5f5f5;
   }
 
-  .efp--icon{
+  .taf--icon{
     border-right: 0;
     border-radius: 4px 0 0 4px;
   }
 
-  .efp--icon + input{
+  .taf--icon + input{
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
   }
 
-  .efp--unit{
+  .taf--unit{
     border-left: 0;
     border-radius: 0 4px 4px 0;
   }
 
-  .efp--is-unit{
+  .taf--is-unit{
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
   }
@@ -270,13 +270,13 @@
 /**
  * 03. 06. Field: button_set
  */
-.efp-field-button_set{
+.taf-field-button_set{
 
-  .efp--buttons{
+  .taf--buttons{
     display: inline-block;
   }
 
-  .efp--button{
+  .taf--button{
     position: relative;
     z-index: 1;
     float: left;
@@ -307,8 +307,8 @@
     }
   }
 
-  .efp--active:hover,
-  .efp--active{
+  .taf--active:hover,
+  .taf--active{
     z-index: 2;
     color: #fff;
     border-color: #006799;
@@ -323,8 +323,8 @@
 /**
  * 03. 07. Field: checkbox, radio
  */
-.efp-field-checkbox,
-.efp-field-radio{
+.taf-field-checkbox,
+.taf-field-radio{
 
   ul{
     margin: 0;
@@ -354,21 +354,21 @@
     margin: 0 1px;
   }
 
-  .efp--inline-list li{
+  .taf--inline-list li{
     display: inline-block;
     margin-right: 15px;
   }
 
-  .efp--text{
+  .taf--text{
     margin-left: 5px;
     vertical-align: middle;
   }
 
-  .efp-checker{
+  .taf-checker{
     cursor: pointer;
   }
 
-  .efp-checkbox-all{
+  .taf-checkbox-all{
     user-select: none;
     cursor: pointer;
     margin-top: 5px;
@@ -380,7 +380,7 @@
 /**
  * 03. 08. Field: code_editor
  */
-.efp-field-code_editor{
+.taf-field-code_editor{
 
   .CodeMirror{
     width: 100%;
@@ -400,7 +400,7 @@
 /**
  * 03. 09. Field: color
  */
-.efp-field-color{
+.taf-field-color{
 
   > input{
     opacity: 0.75;
@@ -419,15 +419,15 @@
 /**
  * 03. 10. Field: color_group
  */
-.efp-field-color_group{
+.taf-field-color_group{
 
-  .efp--left{
+  .taf--left{
     float: left;
     margin-right: 10px;
     margin-bottom: 5px;
   }
 
-  .efp--title{
+  .taf--title{
     color: #999;
     margin-bottom: 5px;
   }
@@ -436,19 +436,19 @@
 /**
  * 03. 11. Field: fieldset
  */
-.efp-field-fieldset{
+.taf-field-fieldset{
 
-  .efp-fieldset-content{
+  .taf-fieldset-content{
     border: 1px solid #ccd0d4;
     background-color: #fff;
     box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 
-    > .efp-field{
+    > .taf-field{
       padding: 15px;
     }
   }
 
-  .efp-field-subheading{
+  .taf-field-subheading{
     font-size: 13px;
   }
 }
@@ -456,18 +456,18 @@
 /**
  * 03. 12. Field: date
  */
-.efp-field-date{
+.taf-field-date{
 
   input{
     margin: 0;
   }
 
-  .efp--to{
+  .taf--to{
     margin-left: 7px;
   }
 }
 
-.efp-datepicker-wrapper{
+.taf-datepicker-wrapper{
   margin-top: 5px;
   width: auto;
   background-color: #fff;
@@ -622,18 +622,18 @@
 /**
  * 03. 13. Field: datetime
  */
-.efp-field-datetime{
+.taf-field-datetime{
 
   input{
     margin: 0;
   }
 
-  .efp--to{
+  .taf--to{
     margin-left: 7px;
   }
 }
 
-.efp-flatpickr{
+.taf-flatpickr{
 
   select,
   input{
@@ -652,7 +652,7 @@
 /**
  * 03. 14. Field: gallery
  */
-.efp-field-gallery{
+.taf-field-gallery{
 
   ul{
     margin: 0;
@@ -686,17 +686,17 @@
 /**
  * 03. 15. Field: group
  */
-.efp-field-group{
+.taf-field-group{
 
-  .efp-cloneable-hidden{
+  .taf-cloneable-hidden{
     display: none !important;
   }
 
-  .efp-cloneable-wrapper{
+  .taf-cloneable-wrapper{
     position: relative;
   }
 
-  .efp-cloneable-item{
+  .taf-cloneable-item{
     display: none;
     position: relative;
     margin-bottom: 5px;
@@ -706,21 +706,21 @@
     }
   }
 
-  .ui-accordion .efp-cloneable-item{
+  .ui-accordion .taf-cloneable-item{
     display: block;
   }
 
-  .efp-cloneable-content{
+  .taf-cloneable-content{
     border: 1px solid #ccd0d4;
     background-color: #fff;
     box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 
-    > .efp-field{
+    > .taf-field{
       padding: 15px;
     }
   }
 
-  .efp-cloneable-title{
+  .taf-cloneable-title{
     display: block;
     cursor: pointer;
     position: relative;
@@ -742,7 +742,7 @@
     }
   }
 
-  .efp-cloneable-helper{
+  .taf-cloneable-helper{
     position: absolute;
     top: 12px;
     right: 10px;
@@ -762,17 +762,17 @@
     }
   }
 
-  .efp-cloneable-content{
+  .taf-cloneable-content{
     padding: 0;
     border-top: 0;
   }
 
-  .efp-cloneable-title-prefix,
-  .efp-cloneable-title-number{
+  .taf-cloneable-title-prefix,
+  .taf-cloneable-title-number{
     margin-right: 5px;
   }
 
-  .efp-cloneable-alert{
+  .taf-cloneable-alert{
     display: none;
     margin-bottom: 5px;
     padding: 10px 20px;
@@ -787,7 +787,7 @@
     background-color: #fffae4;
   }
 
-  .efp-cloneable-header-icon{
+  .taf-cloneable-header-icon{
     display: inline-block;
     text-align: center;
     font-size: 14px;
@@ -796,7 +796,7 @@
     vertical-align: text-top;
   }
 
-  .efp-cloneable-placeholder{
+  .taf-cloneable-placeholder{
     background-color: #ddd;
     margin-top: 4px;
     width: 100px;
@@ -812,18 +812,18 @@
 /**
  * 03. 16. Field: icon
  */
-.efp-field-icon{
+.taf-field-icon{
 
-  .efp-icon-select{
+  .taf-icon-select{
     display: flex;
     grid-gap: 5px;
   }
 
-  .efp-icon-preview:not(.hidden){
+  .taf-icon-preview:not(.hidden){
     display: flex;
   }
 
-  .efp-icon-preview{
+  .taf-icon-preview{
 
     i{
       display: flex;
@@ -845,14 +845,14 @@
 /**
  * 03. 17. Field: image_select
  */
-.efp-field-image_select{
+.taf-field-image_select{
 
-  .efp--image{
+  .taf--image{
     display: inline-block;
     margin: 0 5px 5px 0;
   }
 
-  .efp--inline-list .efp--image{
+  .taf--inline-list .taf--image{
     display: block;
   }
 
@@ -887,7 +887,7 @@
     }
   }
 
-  .efp--active figure{
+  .taf--active figure{
     border-color: #222;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
 
@@ -910,15 +910,15 @@
 /**
  * 03. 18. Field: link_color
  */
-.efp-field-link_color{
+.taf-field-link_color{
 
-  .efp--left{
+  .taf--left{
     float: left;
     margin-right: 10px;
     margin-bottom: 5px;
   }
 
-  .efp--title{
+  .taf--title{
     color: #777;
     margin-bottom: 5px;
   }
@@ -927,7 +927,7 @@
 /**
  * 03. 19. Field: map
  */
-.efp-field-map{
+.taf-field-map{
 
   input{
     width: 100%;
@@ -937,11 +937,11 @@
     background-position-x: calc(100% - 5px);
   }
 
-  .efp--map-search + .efp--map-osm-wrap{
+  .taf--map-search + .taf--map-osm-wrap{
     margin-top: 10px;
   }
 
-  .efp--map-osm-wrap{
+  .taf--map-osm-wrap{
     position: relative;
     padding: 5px;
     border: 1px solid #eee;
@@ -949,19 +949,19 @@
     box-shadow: 0 1px 1px rgba(0,0,0,.04);
   }
 
-  .efp--map-osm{
+  .taf--map-osm{
     position: relative;
     z-index: 1;
     min-height: 250px;
   }
 
-  .efp--map-inputs{
+  .taf--map-inputs{
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
   }
 
-  .efp--map-input{
+  .taf--map-input{
     flex: 1;
 
     &:last-child{
@@ -977,7 +977,7 @@
   }
 }
 
-.efp-map-ui-autocomplate{
+.taf-map-ui-autocomplate{
   z-index: 999999;
   border-radius: 4px;
   overflow: hidden;
@@ -987,9 +987,9 @@
 /**
  * 03. 20. Field: media
  */
-.efp-field-media{
+.taf-field-media{
 
-  .efp--placeholder{
+  .taf--placeholder{
     display: flex;
     align-items: flex-start;
 
@@ -1007,7 +1007,7 @@
     margin-left: 0;
   }
 
-  .efp--preview{
+  .taf--preview{
     position: relative;
   }
 }
@@ -1015,9 +1015,9 @@
 /**
  * 03. 21. Field: palette
  */
-.efp-field-palette{
+.taf-field-palette{
 
-  .efp--palette{
+  .taf--palette{
     position: relative;
     display: inline-block;
     cursor: pointer;
@@ -1057,7 +1057,7 @@
     }
   }
 
-  .efp--active{
+  .taf--active{
     border-color: #222;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
 
@@ -1074,19 +1074,19 @@
 /**
  * 03. 22. Field: repeater
  */
-.efp-field-repeater{
+.taf-field-repeater{
 
-  .efp-field-text input{
+  .taf-field-text input{
     width: 100%;
   }
 
-  .efp-repeater-hidden{
+  .taf-repeater-hidden{
     display: none !important;
   }
 
-  .efp-repeater-wrapper{
+  .taf-repeater-wrapper{
 
-    .efp-repeater-item{
+    .taf-repeater-item{
       display: table;
       width: 100%;
       margin-bottom: 5px;
@@ -1098,18 +1098,18 @@
     }
   }
 
-  .efp-repeater-content{
+  .taf-repeater-content{
     width: 100%;
     display: table-cell;
     vertical-align: middle;
     background-color: #fff;
 
-    > .efp-field{
+    > .taf-field{
       padding: 15px;
     }
   }
 
-  .efp-repeater-helper{
+  .taf-repeater-helper{
     width: 100%;
     display: table-cell;
     vertical-align: middle;
@@ -1131,11 +1131,11 @@
     }
   }
 
-  .efp-repeater-helper-inner{
+  .taf-repeater-helper-inner{
     width: 75px;
   }
 
-  .efp-repeater-alert{
+  .taf-repeater-alert{
     display: none;
     margin-bottom: 5px;
     padding: 10px 20px;
@@ -1158,8 +1158,8 @@
     background-color: #eee !important;
     opacity: 0.5;
 
-    .efp-repeater-helper,
-    .efp-repeater-content{
+    .taf-repeater-helper,
+    .taf-repeater-content{
       display: none;
     }
   }
@@ -1168,13 +1168,13 @@
 /**
  * 03. 23. Field: select
  */
-.efp-field-select{
+.taf-field-select{
 
-  .efp-fieldset{
+  .taf-fieldset{
     min-height: 30px;
   }
 
-  .efp-chosen{
+  .taf-chosen{
     display: none;
   }
 
@@ -1183,7 +1183,7 @@
     margin: 0;
   }
 
-  .efp-hide-select{
+  .taf-hide-select{
     display: none !important;
   }
 }
@@ -1191,18 +1191,18 @@
 /**
  * 03. 24. Field: slider
  */
-.efp-field-slider{
+.taf-field-slider{
 
-  .efp--wrap{
+  .taf--wrap{
     display: flex;
     align-items: center;
   }
 
-  .efp--input{
+  .taf--input{
     display: flex;
   }
 
-  .efp--unit{
+  .taf--unit{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -1217,7 +1217,7 @@
     background-color: #f5f5f5;
   }
 
-  .efp-slider-ui{
+  .taf-slider-ui{
     margin-right: 15px;
   }
 
@@ -1229,7 +1229,7 @@
     text-align: center;
   }
 
-  .efp--is-unit{
+  .taf--is-unit{
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
   }
@@ -1271,9 +1271,9 @@
 /**
  * 03. 25. Field: sortable
  */
-.efp-field-sortable{
+.taf-field-sortable{
 
-  .efp-field-text{
+  .taf-field-text{
 
     input{
       width: 100%;
@@ -1281,9 +1281,9 @@
     }
   }
 
-  .efp-sortable{
+  .taf-sortable{
 
-    .efp-sortable-item{
+    .taf-sortable-item{
       display: table;
       width: 100%;
       margin-bottom: 5px;
@@ -1295,18 +1295,18 @@
     }
   }
 
-  .efp-sortable-content{
+  .taf-sortable-content{
     width: 100%;
     display: table-cell;
     vertical-align: middle;
     background-color: #fff;
 
-    > .efp-field{
+    > .taf-field{
       padding: 15px;
     }
   }
 
-  .efp-sortable-helper{
+  .taf-sortable-helper{
     width: 100%;
     display: table-cell;
     vertical-align: middle;
@@ -1342,8 +1342,8 @@
     background-color: #eee !important;
     opacity: 0.5;
 
-    .efp-sortable-helper,
-    .efp-sortable-content{
+    .taf-sortable-helper,
+    .taf-sortable-content{
       display: none;
     }
   }
@@ -1352,7 +1352,7 @@
 /**
  * 03. 26. Field: sorter
  */
-.efp-field-sorter{
+.taf-field-sorter{
 
   .ui-sortable-placeholder{
     height: 20px;
@@ -1360,7 +1360,7 @@
     background-color: #fffae4;
   }
 
-  .efp-modules{
+  .taf-modules{
     float: left;
     width: 50%;
     box-sizing: border-box;
@@ -1374,14 +1374,14 @@
     }
   }
 
-  .efp-disabled,
-  .efp-enabled{
+  .taf-disabled,
+  .taf-enabled{
     padding: 5px 15px;
     border: 1px dashed #ddd;
     background-color: #fff;
   }
 
-  .efp-disabled{
+  .taf-disabled{
     li{
       opacity: 0.5;
       transition: opacity .15s;
@@ -1392,7 +1392,7 @@
     }
   }
 
-  .efp-sorter-title{
+  .taf-sorter-title{
     font-size: 13px;
     font-weight: 600;
     padding: 10px;
@@ -1429,9 +1429,9 @@
 /**
  * 03. 27. Field: spinner
  */
-.efp-field-spinner{
+.taf-field-spinner{
 
-  .efp--spin{
+  .taf--spin{
     display: flex;
   }
 
@@ -1499,7 +1499,7 @@
       }
     }
 
-    .efp--unit{
+    .taf--unit{
       border-left: 0;
       user-select: none;
     }
@@ -1531,7 +1531,7 @@
     order: 2;
   }
 
-  .efp--unit{
+  .taf--unit{
     order: 3;
   }
 
@@ -1543,9 +1543,9 @@
 /**
  * 03. 28. Field: switcher
  */
-.efp-field-switcher{
+.taf-field-switcher{
 
-  .efp--switcher{
+  .taf--switcher{
     float: left;
     cursor: pointer;
     position: relative;
@@ -1560,7 +1560,7 @@
     -webkit-user-select: none;
   }
 
-  .efp--ball{
+  .taf--ball{
     position: absolute;
     top: 4px;
     left: 4px;
@@ -1572,8 +1572,8 @@
     box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
   }
 
-  .efp--on,
-  .efp--off{
+  .taf--on,
+  .taf--off{
     position: absolute;
     top: 0;
     left: 0;
@@ -1590,30 +1590,30 @@
     transition: all .1s;
   }
 
-  .efp--off{
+  .taf--off{
     padding-right: 0;
     padding-left: 28px;
     opacity: 1;
   }
 
-  .efp--active{
+  .taf--active{
     background: #4fb845;
 
-    .efp--on{
+    .taf--on{
       opacity: 1;
     }
 
-    .efp--off{
+    .taf--off{
       opacity: 0;
     }
 
-    .efp--ball{
+    .taf--ball{
       left: 100%;
       margin-left: -28px;
     }
   }
 
-  .efp--label{
+  .taf--label{
     float: left;
     margin-top: 4px;
     margin-left: 8px;
@@ -1625,21 +1625,21 @@
 /**
  * 03. 29. Field: tabbed
  */
-.efp-field-tabbed{
+.taf-field-tabbed{
 
-  .efp-tabbed-content{
+  .taf-tabbed-content{
     border: 1px solid #ccd0d4;
     background-color: #fff;
     box-shadow: 0 1px 1px rgba(0,0,0,.04);
 
-    > .efp-field{
+    > .taf-field{
       padding: 15px;
     }
   }
 
-  .efp-tabbed-nav{
+  .taf-tabbed-nav{
 
-    .efp--icon{
+    .taf--icon{
       padding-right: 5px;
     }
 
@@ -1661,7 +1661,7 @@
         background-color: #f9f9f9;
       }
 
-      &.efp-tabbed-active{
+      &.taf-tabbed-active{
         background-color: #fff;
         border-bottom-color: #fff;
       }
@@ -1677,7 +1677,7 @@
 /**
  * 03. 30. Field: text
  */
-.efp-field-text{
+.taf-field-text{
 
   input{
     width: 50%;
@@ -1689,7 +1689,7 @@
 /**
  * 03. 31. Field: textarea
  */
-.efp-field-textarea{
+.taf-field-textarea{
 
   textarea{
     width: 100%;
@@ -1697,7 +1697,7 @@
     min-height: 125px;
   }
 
-  .efp-shortcode-button{
+  .taf-shortcode-button{
     margin-bottom: 10px;
     margin-right: 5px;
   }
@@ -1706,7 +1706,7 @@
 /**
  * 03. 32. Field: typography
  */
-.efp-field-typography{
+.taf-field-typography{
 
   textarea,
   select{
@@ -1715,7 +1715,7 @@
     max-width: 100%;
   }
 
-  .efp--title{
+  .taf--title{
     color: #777;
     margin: 0 0 2px 0;
     font-size: 12px;
@@ -1725,28 +1725,28 @@
     }
   }
 
-  .efp--blocks{
+  .taf--blocks{
     display: flex;
     flex-wrap: wrap;
   }
 
-  .efp--block{
+  .taf--block{
     flex: 1;
     max-width: 100%;
     padding-right: 6px;
     padding-bottom: 6px;
   }
 
-  .efp--input{
+  .taf--input{
     margin: 0;
     min-width: 100%;
   }
 
-  .efp--input-wrap{
+  .taf--input-wrap{
     position: relative;
   }
 
-  .efp--unit{
+  .taf--unit{
     position: absolute;
     z-index: 1;
     right: 4px;
@@ -1764,7 +1764,7 @@
     flex-direction: column;
   }
 
-  .efp--preview{
+  .taf--preview{
     font-size: 16px;
     line-height: 20px;
     padding: 20px;
@@ -1777,7 +1777,7 @@
     transition: background-color .2s, border-color .2s;
   }
 
-  .efp--block-preview{
+  .taf--block-preview{
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -1785,19 +1785,19 @@
     max-width: 100%;
   }
 
-  .efp--black-background{
+  .taf--black-background{
     border-color: #000;
     background-color: #000;
   }
 
-  .efp--toggle{
+  .taf--toggle{
     position: absolute;
     top: 5px;
     right: 10px;
     color: #999;
   }
 
-  .efp--block-extra-styles{
+  .taf--block-extra-styles{
     margin-top: 5px;
   }
 }
@@ -1805,14 +1805,14 @@
 /**
  * 03. 33. Field: upload
  */
-.efp-field-upload{
+.taf-field-upload{
 
   input{
     width: 100%;
     margin: 0;
   }
 
-  .efp--wrap{
+  .taf--wrap{
     display: flex;
     align-items: flex-start;
   }
@@ -1821,7 +1821,7 @@
     margin-left: 5px;
   }
 
-  .efp--preview{
+  .taf--preview{
     position: relative;
   }
 }
@@ -1829,9 +1829,9 @@
 /**
  * 03. 34. Field: wp_editor
  */
-.efp-field-wp_editor{
+.taf-field-wp_editor{
 
-  .efp-wp-editor{
+  .taf-wp-editor{
     float: left;
     width: 100%;
   }
@@ -1858,11 +1858,11 @@
     z-index: 1;
   }
 
-  .efp-no-tinymce{
+  .taf-no-tinymce{
     border: 1px solid #e5e5e5;
   }
 
-  .efp-no-quicktags{
+  .taf-no-quicktags{
 
     .wp-media-buttons{
       float: none;
@@ -1886,7 +1886,7 @@
 /**
  * 03. 35. Field: heading
  */
-.efp-field-heading{
+.taf-field-heading{
   font-size: 1.5em;
   font-weight: bold;
   color: #23282d;
@@ -1896,7 +1896,7 @@
 /**
  * 03. 36. Field: subheading
  */
-.efp-field-subheading{
+.taf-field-subheading{
   font-size: 14px;
   font-weight: bold;
   padding-top: 17px;
@@ -1908,47 +1908,47 @@
 /**
  * 03. 37. Field: submessage
  */
-.efp-field-submessage{
+.taf-field-submessage{
   padding: 0 !important;
   border: 0 !important;
 
-  + .efp-field{
+  + .taf-field{
     border-top: 0 !important;
   }
 }
 
-.efp-submessage{
+.taf-submessage{
   font-size: 12px;
   padding: 17px 30px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
 }
 
-.efp-submessage-success{
+.taf-submessage-success{
   color: #3c763d;
   border-color: #d6e9c6;
   background-color: #dff0d8;
 }
 
-.efp-submessage-info{
+.taf-submessage-info{
   color: #31708f;
   border-color: #bce8f1;
   background-color: #d9edf7;
 }
 
-.efp-submessage-warning{
+.taf-submessage-warning{
   color: #8a6d3b;
   border-color: #faebcc;
   background-color: #fcf8e3;
 }
 
-.efp-submessage-danger{
+.taf-submessage-danger{
   color: #a94442;
   border-color: #ebccd1;
   background-color: #f2dede;
 }
 
-.efp-submessage-normal{
+.taf-submessage-normal{
   color: #23282d;
   border-color: #eee;
   background-color: #f7f7f7;
@@ -1957,11 +1957,11 @@
 /**
  * 03. 38. Field: notice
  */
-.efp-field-notice{
+.taf-field-notice{
   background-color: #f7f7f7;
 }
 
-.efp-notice{
+.taf-notice{
   padding: 12px;
   background-color: #fff;
   border-left-style: solid;
@@ -1969,43 +1969,43 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.efp-notice-success{
+.taf-notice-success{
   border-color: #46b450;
 }
 
-.efp-notice-info{
+.taf-notice-info{
   border-color: #339fd4;
 }
 
-.efp-notice-warning{
+.taf-notice-warning{
   border-color: #ffbc00;
 }
 
-.efp-notice-danger{
+.taf-notice-danger{
   border-color: #dc3232;
 }
 
-.efp-notice-normal{
+.taf-notice-normal{
   border-color: #222;
 }
 
 /**
  * 03. 39. Field: number
  */
-.efp-field-number{
+.taf-field-number{
 
   input{
     width: 100%;
     margin: 0;
   }
 
-  .efp--wrap{
+  .taf--wrap{
     position: relative;
     float: left;
     width: 100px;
   }
 
-  .efp--unit{
+  .taf--unit{
     position: absolute;
     z-index: 1;
     right: 4px;
@@ -2027,9 +2027,9 @@
 /**
  * 03. 40. Field: link
  */
-.efp-field-link{
+.taf-field-link{
 
-  .efp--result{
+  .taf--result{
     display: inline-block;
     font-size: 12px;
     line-height: 16px;
@@ -2042,13 +2042,13 @@
     world-break: break-word;
   }
 
-  .efp--wrap{
+  .taf--wrap{
     position: relative;
     float: left;
     width: 100px;
   }
 
-  .efp--unit{
+  .taf--unit{
     position: absolute;
     z-index: 1;
     right: 4px;
@@ -2070,7 +2070,7 @@
 /**
  * 03. 41. others
  */
-.efp-help{
+.taf-help{
   cursor: help;
   position: absolute;
   top: 0;
@@ -2079,16 +2079,16 @@
   font-size: 13px;
   color: #aaa;
 
-  .efp-help-text{
+  .taf-help-text{
     display: none;
   }
 }
 
-.efp--preview{
+.taf--preview{
   max-width: 100%;
 }
 
-.efp-image-preview{
+.taf-image-preview{
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2148,14 +2148,14 @@
   }
 }
 
-.efp-field-custom{
+.taf-field-custom{
 
-  .efp-field{
+  .taf-field{
     padding: 0;
   }
 }
 
-.efp-field{
+.taf-field{
 
   .chosen-container-single .chosen-single{
     height: 28px;
@@ -2266,7 +2266,7 @@
     }
   }
 
-  .efp--transparent-wrap{
+  .taf--transparent-wrap{
     display: none;
     position: relative;
     top: -1px;
@@ -2277,11 +2277,11 @@
     background-color: #fff;
   }
 
-  .wp-picker-active .efp--transparent-wrap{
+  .wp-picker-active .taf--transparent-wrap{
     display: block;
   }
 
-  .efp--transparent-slider{
+  .taf--transparent-slider{
     position: absolute;
     width: 190px;
     margin-left: 2px;
@@ -2317,7 +2317,7 @@
     }
   }
 
-  .efp--transparent-offset{
+  .taf--transparent-offset{
     height: 18px;
     width: 200px;
     background: url(../images/checkerboard.png) repeat-y center left scroll #fff;
@@ -2325,7 +2325,7 @@
     box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
   }
 
-  .efp--transparent-text{
+  .taf--transparent-text{
     position: absolute;
     top: 12px;
     right: 10px;
@@ -2336,7 +2336,7 @@
     color: #999;
   }
 
-  .efp--transparent-button{
+  .taf--transparent-button{
     cursor: pointer;
     user-select: none;
     margin-top: 10px;
@@ -2352,7 +2352,7 @@
     transition: background-color .2s, border-color .2s, color .2s;
   }
 
-  .efp--transparent-active{
+  .taf--transparent-active{
 
     .wp-color-result{
       background-image: url(../images/checkerboard.png);
@@ -2361,7 +2361,7 @@
       background-color: transparent !important;
     }
 
-    .efp--transparent-button{
+    .taf--transparent-button{
       color: #fff;
       border-color: #3ea032;
       background-color: #4fb845;

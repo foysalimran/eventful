@@ -100,7 +100,7 @@
   //
   // Custom clone for textarea and select clone() bug
   //
-  $.fn.efp_clone = function() {
+  $.fn.taf_clone = function() {
 
     var base   = $.fn.clone.apply(this, arguments),
         clone  = this.find('select').add(this.filter('select')),
@@ -127,13 +127,13 @@
   //
   // Expand All Options
   //
-  $.fn.efp_expand_all = function() {
+  $.fn.taf_expand_all = function() {
     return this.each( function() {
       $(this).on('click', function( e ) {
 
         e.preventDefault();
-        $('.efp-wrapper').toggleClass('efp-show-all');
-        $('.efp-section').efp_reload_script();
+        $('.taf-wrapper').toggleClass('taf-show-all');
+        $('.taf-section').taf_reload_script();
         $(this).find('.fa').toggleClass('fa-indent').toggleClass('fa-outdent');
 
       });
@@ -143,7 +143,7 @@
   //
   // Options Navigation
   //
-  $.fn.efp_nav_options = function() {
+  $.fn.taf_nav_options = function() {
     return this.each( function() {
 
       var $nav    = $(this),
@@ -152,7 +152,7 @@
           $links  = $nav.find('a'),
           $last;
 
-      $window.on('hashchange efp.hashchange', function() {
+      $window.on('hashchange taf.hashchange', function() {
 
         var hash  = window.location.hash.replace('#tab=', '');
         var slug  = hash ? hash : $links.first().attr('href').replace('#tab=', '');
@@ -160,7 +160,7 @@
 
         if ( $link.length ) {
 
-          $link.closest('.efp-tab-item').addClass('efp-tab-expanded').siblings().removeClass('efp-tab-expanded');
+          $link.closest('.taf-tab-item').addClass('taf-tab-expanded').siblings().removeClass('taf-tab-expanded');
 
           if( $link.next().is('ul') ) {
 
@@ -169,8 +169,8 @@
 
           }
 
-          $links.removeClass('efp-active');
-          $link.addClass('efp-active');
+          $links.removeClass('taf-active');
+          $link.addClass('taf-active');
 
           if ( $last ) {
             $last.addClass('hidden');
@@ -179,9 +179,9 @@
           var $section = $('[data-section-id="'+slug+'"]');
 
           $section.removeClass('hidden');
-          $section.efp_reload_script();
+          $section.taf_reload_script();
 
-          $('.efp-section-id').val( $section.index()+1 );
+          $('.taf-section-id').val( $section.index()+1 );
 
           $last = $section;
 
@@ -192,7 +192,7 @@
 
         }
 
-      }).trigger('efp.hashchange');
+      }).trigger('taf.hashchange');
 
     });
   };
@@ -200,12 +200,12 @@
   //
   // Metabox Tabs
   //
-  $.fn.efp_nav_metabox = function() {
+  $.fn.taf_nav_metabox = function() {
     return this.each( function() {
 
       var $nav      = $(this),
           $links    = $nav.find('a'),
-          $sections = $nav.parent().find('.efp-section'),
+          $sections = $nav.parent().find('.taf-section'),
           $last;
 
       $links.each( function( index ) {
@@ -216,8 +216,8 @@
 
           var $link = $(this);
 
-          $links.removeClass('efp-active');
-          $link.addClass('efp-active');
+          $links.removeClass('taf-active');
+          $link.addClass('taf-active');
 
           if ( $last !== undefined ) {
             $last.addClass('hidden');
@@ -226,7 +226,7 @@
           var $section = $sections.eq(index);
 
           $section.removeClass('hidden');
-          $section.efp_reload_script();
+          $section.taf_reload_script();
 
           $last = $section;
 
@@ -242,15 +242,15 @@
   //
   // Metabox Page Templates Listener
   //
-  $.fn.efp_page_templates = function() {
+  $.fn.taf_page_templates = function() {
     if ( this.length ) {
 
       $(document).on('change', '.editor-page-attributes__template select, #page_template, .edit-post-post-status + div select', function() {
 
         var maybe_value = $(this).val() || 'default';
 
-        $('.efp-page-templates').removeClass('efp-metabox-show').addClass('efp-metabox-hide');
-        $('.efp-page-'+maybe_value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-')).removeClass('efp-metabox-hide').addClass('efp-metabox-show');
+        $('.taf-page-templates').removeClass('taf-metabox-show').addClass('taf-metabox-hide');
+        $('.taf-page-'+maybe_value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-')).removeClass('taf-metabox-hide').addClass('taf-metabox-show');
 
       });
 
@@ -260,7 +260,7 @@
   //
   // Metabox Post Formats Listener
   //
-  $.fn.efp_post_formats = function() {
+  $.fn.taf_post_formats = function() {
     if ( this.length ) {
 
       $(document).on('change', '.editor-post-format select, #formatdiv input[name="post_format"]', function() {
@@ -270,8 +270,8 @@
         // Fallback for classic editor version
         maybe_value = ( maybe_value === '0' ) ? 'default' : maybe_value;
 
-        $('.efp-post-formats').removeClass('efp-metabox-show').addClass('efp-metabox-hide');
-        $('.efp-post-format-'+maybe_value).removeClass('efp-metabox-hide').addClass('efp-metabox-show');
+        $('.taf-post-formats').removeClass('taf-metabox-show').addClass('taf-metabox-hide');
+        $('.taf-post-format-'+maybe_value).removeClass('taf-metabox-hide').addClass('taf-metabox-show');
 
       });
 
@@ -281,7 +281,7 @@
   //
   // Search
   //
-  $.fn.efp_search = function() {
+  $.fn.taf_search = function() {
     return this.each( function() {
 
       var $this  = $(this),
@@ -290,15 +290,15 @@
       $input.on('change keyup', function() {
 
         var value    = $(this).val(),
-            $wrapper = $('.efp-wrapper'),
-            $section = $wrapper.find('.efp-section'),
-            $fields  = $section.find('> .efp-field:not(.efp-depend-on)'),
-            $titles  = $fields.find('> .efp-title, .efp-search-tags');
+            $wrapper = $('.taf-wrapper'),
+            $section = $wrapper.find('.taf-section'),
+            $fields  = $section.find('> .taf-field:not(.taf-depend-on)'),
+            $titles  = $fields.find('> .taf-title, .taf-search-tags');
 
         if ( value.length > 3 ) {
 
-          $fields.addClass('efp-metabox-hide');
-          $wrapper.addClass('efp-search-all');
+          $fields.addClass('taf-metabox-hide');
+          $wrapper.addClass('taf-search-all');
 
           $titles.each( function() {
 
@@ -306,10 +306,10 @@
 
             if ( $title.text().match( new RegExp('.*?' + value + '.*?', 'i') ) ) {
 
-              var $field = $title.closest('.efp-field');
+              var $field = $title.closest('.taf-field');
 
-              $field.removeClass('efp-metabox-hide');
-              $field.parent().efp_reload_script();
+              $field.removeClass('taf-metabox-hide');
+              $field.parent().taf_reload_script();
 
             }
 
@@ -317,8 +317,8 @@
 
         } else {
 
-          $fields.removeClass('efp-metabox-hide');
-          $wrapper.removeClass('efp-search-all');
+          $fields.removeClass('taf-metabox-hide');
+          $wrapper.removeClass('taf-search-all');
 
         }
 
@@ -330,12 +330,12 @@
   //
   // Sticky Header
   //
-  $.fn.efp_sticky = function() {
+  $.fn.taf_sticky = function() {
     return this.each( function() {
 
       var $this     = $(this),
           $window   = $(window),
-          $inner    = $this.find('.efp-header-inner'),
+          $inner    = $this.find('.taf-header-inner'),
           padding   = parseInt( $inner.css('padding-left') ) + parseInt( $inner.css('padding-right') ),
           offset    = 32,
           scrollTop = 0,
@@ -349,10 +349,10 @@
 
             if ( stickyTop <= offset && winWidth > 782 ) {
               $inner.css({width: $this.outerWidth()-padding});
-              $this.css({height: $this.outerHeight()}).addClass( 'efp-sticky' );
+              $this.css({height: $this.outerHeight()}).addClass( 'taf-sticky' );
             } else {
               $inner.removeAttr('style');
-              $this.removeAttr('style').removeClass( 'efp-sticky' );
+              $this.removeAttr('style').removeClass( 'taf-sticky' );
             }
 
           },
@@ -385,7 +385,7 @@
   //
   // Dependency System
   //
-  $.fn.efp_dependency = function() {
+  $.fn.taf_dependency = function() {
     return this.each( function() {
 
       var $this   = $(this),
@@ -393,8 +393,8 @@
 
       if( $fields.length ) {
 
-        var normal_ruleset = $.efp_deps.createRuleset(),
-            global_ruleset = $.efp_deps.createRuleset(),
+        var normal_ruleset = $.taf_deps.createRuleset(),
+            global_ruleset = $.taf_deps.createRuleset(),
             normal_depends = [],
             global_depends = [];
 
@@ -427,11 +427,11 @@
         });
 
         if ( normal_depends.length ) {
-          $.efp_deps.enable($this, normal_ruleset, normal_depends);
+          $.taf_deps.enable($this, normal_ruleset, normal_depends);
         }
 
         if ( global_depends.length ) {
-          $.efp_deps.enable(EFP.vars.$body, global_ruleset, global_depends);
+          $.taf_deps.enable(EFP.vars.$body, global_ruleset, global_depends);
         }
 
       }
@@ -442,15 +442,15 @@
   //
   // Field: accordion
   //
-  $.fn.efp_field_accordion = function() {
+  $.fn.taf_field_accordion = function() {
     return this.each( function() {
 
-      var $titles = $(this).find('.efp-accordion-title');
+      var $titles = $(this).find('.taf-accordion-title');
 
       $titles.on('click', function() {
 
         var $title   = $(this),
-            $icon    = $title.find('.efp-accordion-icon'),
+            $icon    = $title.find('.taf-accordion-icon'),
             $content = $title.next();
 
         if ( $icon.hasClass('fa-angle-right') ) {
@@ -461,12 +461,12 @@
 
         if ( !$content.data( 'opened' ) ) {
 
-          $content.efp_reload_script();
+          $content.taf_reload_script();
           $content.data( 'opened', true );
 
         }
 
-        $content.toggleClass('efp-accordion-open');
+        $content.toggleClass('taf-accordion-open');
 
       });
 
@@ -476,7 +476,7 @@
   //
   // Field: backup
   //
-  $.fn.efp_field_backup = function() {
+  $.fn.taf_field_backup = function() {
     return this.each( function() {
 
       if ( window.wp.customize === undefined ) { return; }
@@ -484,8 +484,8 @@
       var base    = this,
           $this   = $(this),
           $body   = $('body'),
-          $import = $this.find('.efp-import'),
-          $reset  = $this.find('.efp-reset');
+          $import = $this.find('.taf-import'),
+          $reset  = $this.find('.taf-reset');
 
       base.notificationOverlay = function() {
 
@@ -499,7 +499,7 @@
           }
 
           // then show a notification overlay
-          wp.customize.notifications.add( new wp.customize.OverlayNotification('efp_field_backup_notification', {
+          wp.customize.notifications.add( new wp.customize.OverlayNotification('taf_field_backup_notification', {
             type: 'default',
             message: '&nbsp;',
             loading: true
@@ -517,7 +517,7 @@
 
           base.notificationOverlay();
 
-          window.wp.ajax.post('efp-reset', {
+          window.wp.ajax.post('taf-reset', {
             unique: $reset.data('unique'),
             nonce: $reset.data('nonce')
           })
@@ -526,7 +526,7 @@
           })
           .fail( function( response ) {
             alert( response.error );
-            wp.customize.notifications.remove('efp_field_backup_notification');
+            wp.customize.notifications.remove('taf_field_backup_notification');
           });
 
         }
@@ -541,15 +541,15 @@
 
           base.notificationOverlay();
 
-          window.wp.ajax.post( 'efp-import', {
+          window.wp.ajax.post( 'taf-import', {
             unique: $import.data('unique'),
             nonce: $import.data('nonce'),
-            data: $this.find('.efp-import-data').val()
+            data: $this.find('.taf-import-data').val()
           }).done( function( response ) {
             window.location.reload(true);
           }).fail( function( response ) {
             alert( response.error );
-            wp.customize.notifications.remove('efp_field_backup_notification');
+            wp.customize.notifications.remove('taf_field_backup_notification');
           });
 
         }
@@ -562,16 +562,16 @@
   //
   // Field: background
   //
-  $.fn.efp_field_background = function() {
+  $.fn.taf_field_background = function() {
     return this.each( function() {
-      $(this).find('.efp--background-image').efp_reload_script();
+      $(this).find('.taf--background-image').taf_reload_script();
     });
   };
 
   //
   // Field: code_editor
   //
-  $.fn.efp_field_code_editor = function() {
+  $.fn.taf_field_code_editor = function() {
     return this.each( function() {
 
       if ( typeof CodeMirror !== 'function' ) { return; }
@@ -595,11 +595,11 @@
 
             var $cssLink = $('<link>');
 
-            $('#efp-codemirror-css').after( $cssLink );
+            $('#taf-codemirror-css').after( $cssLink );
 
             $cssLink.attr({
               rel: 'stylesheet',
-              id: 'efp-codemirror-'+ data_editor.theme +'-css',
+              id: 'taf-codemirror-'+ data_editor.theme +'-css',
               href: data_editor.cdnURL +'/theme/'+ data_editor.theme +'.min.css',
               type: 'text/css',
               media: 'all'
@@ -627,21 +627,21 @@
   //
   // Field: date
   //
-  $.fn.efp_field_date = function() {
+  $.fn.taf_field_date = function() {
     return this.each( function() {
 
       var $this    = $(this),
           $inputs  = $this.find('input'),
-          settings = $this.find('.efp-date-settings').data('settings'),
-          wrapper  = '<div class="efp-datepicker-wrapper"></div>';
+          settings = $this.find('.taf-date-settings').data('settings'),
+          wrapper  = '<div class="taf-datepicker-wrapper"></div>';
 
       var defaults = {
         showAnim: '',
         beforeShow: function(input, inst) {
-          $(inst.dpDiv).addClass('efp-datepicker-wrapper');
+          $(inst.dpDiv).addClass('taf-datepicker-wrapper');
         },
         onClose: function( input, inst ) {
-          $(inst.dpDiv).removeClass('efp-datepicker-wrapper');
+          $(inst.dpDiv).removeClass('taf-datepicker-wrapper');
         },
       };
 
@@ -682,16 +682,16 @@
   //
   // Field: datetime
   //
-  $.fn.efp_field_datetime = function() {
+  $.fn.taf_field_datetime = function() {
     return this.each( function() {
 
       var $this    = $(this),
           $inputs  = $this.find('input'),
-          settings = $this.find('.efp-datetime-settings').data('settings');
+          settings = $this.find('.taf-datetime-settings').data('settings');
 
       settings = $.extend({}, settings, {
         onReady: function( selectedDates, dateStr, instance) {
-          $(instance.calendarContainer).addClass('efp-flatpickr');
+          $(instance.calendarContainer).addClass('taf-flatpickr');
         },
       });
 
@@ -717,31 +717,31 @@
   //
   // Field: fieldset
   //
-  $.fn.efp_field_fieldset = function() {
+  $.fn.taf_field_fieldset = function() {
     return this.each( function() {
-      $(this).find('.efp-fieldset-content').efp_reload_script();
+      $(this).find('.taf-fieldset-content').taf_reload_script();
     });
   };
 
   //
   // Field: gallery
   //
-  $.fn.efp_field_gallery = function() {
+  $.fn.taf_field_gallery = function() {
     return this.each( function() {
 
       var $this  = $(this),
-          $edit  = $this.find('.efp-edit-gallery'),
-          $clear = $this.find('.efp-clear-gallery'),
+          $edit  = $this.find('.taf-edit-gallery'),
+          $clear = $this.find('.taf-clear-gallery'),
           $list  = $this.find('ul'),
           $input = $this.find('input'),
           $img   = $this.find('img'),
           wp_media_frame;
 
-      $this.on('click', '.efp-button, .efp-edit-gallery', function( e ) {
+      $this.on('click', '.taf-button, .taf-edit-gallery', function( e ) {
 
         var $el   = $(this),
             ids   = $input.val(),
-            what  = ( $el.hasClass('efp-edit-gallery') ) ? 'edit' : 'add',
+            what  = ( $el.hasClass('taf-edit-gallery') ) ? 'edit' : 'add',
             state = ( what === 'add' && !ids.length ) ? 'gallery' : 'gallery-edit';
 
         e.preventDefault();
@@ -811,16 +811,16 @@
   //
   // Field: group
   //
-  $.fn.efp_field_group = function() {
+  $.fn.taf_field_group = function() {
     return this.each( function() {
 
       var $this           = $(this),
-          $fieldset    = $this.children('.efp-fieldset'),
+          $fieldset    = $this.children('.taf-fieldset'),
           $group       = $fieldset.length ? $fieldset : $this,
-          $wrapper     = $group.children('.efp-cloneable-wrapper'),
-          $hidden      = $group.children('.efp-cloneable-hidden'),
-          $max         = $group.children('.efp-cloneable-max'),
-          $min         = $group.children('.efp-cloneable-min'),
+          $wrapper     = $group.children('.taf-cloneable-wrapper'),
+          $hidden      = $group.children('.taf-cloneable-hidden'),
+          $max         = $group.children('.taf-cloneable-max'),
+          $min         = $group.children('.taf-cloneable-min'),
           title_by     = $wrapper.data('title-by'),
           title_prefix = $wrapper.data('title-by-prefix'),
           field_id     = $wrapper.data('field-id'),
@@ -834,20 +834,20 @@
       }
 
       var update_title_numbers = function( $selector ) {
-        $selector.find('.efp-cloneable-title-number').each( function( index ) {
-          $(this).html( ( $(this).closest('.efp-cloneable-item').index()+1 ) + '.' );
+        $selector.find('.taf-cloneable-title-number').each( function( index ) {
+          $(this).html( ( $(this).closest('.taf-cloneable-item').index()+1 ) + '.' );
         });
       };
 
       $wrapper.accordion({
-        header: '> .efp-cloneable-item > .efp-cloneable-title',
+        header: '> .taf-cloneable-item > .taf-cloneable-title',
         collapsible : true,
         active: false,
         animate: false,
         heightStyle: 'content',
         icons: {
-          'header': 'efp-cloneable-header-icon fas fa-angle-right',
-          'activeHeader': 'efp-cloneable-header-icon fas fa-angle-down'
+          'header': 'taf-cloneable-header-icon fas fa-angle-right',
+          'activeHeader': 'taf-cloneable-header-icon fas fa-angle-down'
         },
         activate: function( event, ui ) {
 
@@ -856,7 +856,7 @@
 
           if ( $panel.length && !$panel.data( 'opened' ) ) {
 
-            var $title = $header.find('.efp-cloneable-value');
+            var $title = $header.find('.taf-cloneable-value');
             var inputs = [];
 
             $.each(title_by, function( key, title_key ) {
@@ -865,7 +865,7 @@
 
             $.each(inputs, function( key, $input ) {
 
-              $input.on('change keyup efp.keyup', function() {
+              $input.on('change keyup taf.keyup', function() {
 
                 var titles = [];
 
@@ -883,17 +883,17 @@
                   $title.text( titles.join( title_prefix ) );
                 }
 
-              }).trigger('efp.keyup');
+              }).trigger('taf.keyup');
 
             });
 
-            $panel.efp_reload_script();
+            $panel.taf_reload_script();
             $panel.data( 'opened', true );
             $panel.data( 'retry', false );
 
           } else if ( $panel.data( 'retry' ) ) {
 
-            $panel.efp_reload_script_retry();
+            $panel.taf_reload_script_retry();
             $panel.data( 'retry', false );
 
           }
@@ -903,7 +903,7 @@
 
       $wrapper.sortable({
         axis: 'y',
-        handle: '.efp-cloneable-title,.efp-cloneable-sort',
+        handle: '.taf-cloneable-title,.taf-cloneable-sort',
         helper: 'original',
         cursor: 'move',
         placeholder: 'widget-placeholder',
@@ -911,13 +911,13 @@
 
           $wrapper.accordion({ active:false });
           $wrapper.sortable('refreshPositions');
-          ui.item.children('.efp-cloneable-content').data('retry', true);
+          ui.item.children('.taf-cloneable-content').data('retry', true);
 
         },
         update: function( event, ui ) {
 
-          EFP.helper.name_nested_replace( $wrapper.children('.efp-cloneable-item'), field_id );
-          $wrapper.efp_customizer_refresh();
+          EFP.helper.name_nested_replace( $wrapper.children('.taf-cloneable-item'), field_id );
+          $wrapper.taf_customizer_refresh();
 
           if ( is_number ) {
             update_title_numbers($wrapper);
@@ -926,11 +926,11 @@
         },
       });
 
-      $group.children('.efp-cloneable-add').on('click', function( e ) {
+      $group.children('.taf-cloneable-add').on('click', function( e ) {
 
         e.preventDefault();
 
-        var count = $wrapper.children('.efp-cloneable-item').length;
+        var count = $wrapper.children('.taf-cloneable-item').length;
 
         $min.hide();
 
@@ -939,9 +939,9 @@
           return;
         }
 
-        var $cloned_item = $hidden.efp_clone(true);
+        var $cloned_item = $hidden.taf_clone(true);
 
-        $cloned_item.removeClass('efp-cloneable-hidden');
+        $cloned_item.removeClass('taf-cloneable-hidden');
 
         $cloned_item.find(':input[name!="_pseudo"]').each( function() {
           this.name = this.name.replace( '___', '' ).replace( field_id +'[0]', field_id +'['+ count +']' );
@@ -950,8 +950,8 @@
         $wrapper.append($cloned_item);
         $wrapper.accordion('refresh');
         $wrapper.accordion({active: count});
-        $wrapper.efp_customizer_refresh();
-        $wrapper.efp_customizer_listen({closest: true});
+        $wrapper.taf_customizer_refresh();
+        $wrapper.taf_customizer_listen({closest: true});
 
         if ( is_number ) {
           update_title_numbers($wrapper);
@@ -963,7 +963,7 @@
 
         e.preventDefault();
 
-        var count = $wrapper.children('.efp-cloneable-item').length;
+        var count = $wrapper.children('.taf-cloneable-item').length;
 
         $min.hide();
 
@@ -974,10 +974,10 @@
 
         var $this           = $(this),
             $parent         = $this.parent().parent(),
-            $cloned_helper  = $parent.children('.efp-cloneable-helper').efp_clone(true),
-            $cloned_title   = $parent.children('.efp-cloneable-title').efp_clone(),
-            $cloned_content = $parent.children('.efp-cloneable-content').efp_clone(),
-            $cloned_item    = $('<div class="efp-cloneable-item" />');
+            $cloned_helper  = $parent.children('.taf-cloneable-helper').taf_clone(true),
+            $cloned_title   = $parent.children('.taf-cloneable-title').taf_clone(),
+            $cloned_content = $parent.children('.taf-cloneable-content').taf_clone(),
+            $cloned_item    = $('<div class="taf-cloneable-item" />');
 
         $cloned_item.append($cloned_helper);
         $cloned_item.append($cloned_title);
@@ -985,11 +985,11 @@
 
         $wrapper.children().eq($parent.index()).after($cloned_item);
 
-        EFP.helper.name_nested_replace( $wrapper.children('.efp-cloneable-item'), field_id );
+        EFP.helper.name_nested_replace( $wrapper.children('.taf-cloneable-item'), field_id );
 
         $wrapper.accordion('refresh');
-        $wrapper.efp_customizer_refresh();
-        $wrapper.efp_customizer_listen({closest: true});
+        $wrapper.taf_customizer_refresh();
+        $wrapper.taf_customizer_listen({closest: true});
 
         if ( is_number ) {
           update_title_numbers($wrapper);
@@ -997,14 +997,14 @@
 
       };
 
-      $wrapper.children('.efp-cloneable-item').children('.efp-cloneable-helper').on('click', '.efp-cloneable-clone', event_clone);
-      $group.children('.efp-cloneable-hidden').children('.efp-cloneable-helper').on('click', '.efp-cloneable-clone', event_clone);
+      $wrapper.children('.taf-cloneable-item').children('.taf-cloneable-helper').on('click', '.taf-cloneable-clone', event_clone);
+      $group.children('.taf-cloneable-hidden').children('.taf-cloneable-helper').on('click', '.taf-cloneable-clone', event_clone);
 
       var event_remove = function( e ) {
 
         e.preventDefault();
 
-        var count = $wrapper.children('.efp-cloneable-item').length;
+        var count = $wrapper.children('.taf-cloneable-item').length;
 
         $max.hide();
         $min.hide();
@@ -1014,11 +1014,11 @@
           return;
         }
 
-        $(this).closest('.efp-cloneable-item').remove();
+        $(this).closest('.taf-cloneable-item').remove();
 
-        EFP.helper.name_nested_replace( $wrapper.children('.efp-cloneable-item'), field_id );
+        EFP.helper.name_nested_replace( $wrapper.children('.taf-cloneable-item'), field_id );
 
-        $wrapper.efp_customizer_refresh();
+        $wrapper.taf_customizer_refresh();
 
         if ( is_number ) {
           update_title_numbers($wrapper);
@@ -1026,8 +1026,8 @@
 
       };
 
-      $wrapper.children('.efp-cloneable-item').children('.efp-cloneable-helper').on('click', '.efp-cloneable-remove', event_remove);
-      $group.children('.efp-cloneable-hidden').children('.efp-cloneable-helper').on('click', '.efp-cloneable-remove', event_remove);
+      $wrapper.children('.taf-cloneable-item').children('.taf-cloneable-helper').on('click', '.taf-cloneable-remove', event_remove);
+      $group.children('.taf-cloneable-hidden').children('.taf-cloneable-helper').on('click', '.taf-cloneable-remove', event_remove);
 
     });
   };
@@ -1035,17 +1035,17 @@
   //
   // Field: icon
   //
-  $.fn.efp_field_icon = function() {
+  $.fn.taf_field_icon = function() {
     return this.each( function() {
 
       var $this = $(this);
 
-      $this.on('click', '.efp-icon-add', function( e ) {
+      $this.on('click', '.taf-icon-add', function( e ) {
 
         e.preventDefault();
 
         var $button = $(this);
-        var $modal  = $('#efp-modal-icon');
+        var $modal  = $('#taf-modal-icon');
 
         $modal.removeClass('hidden');
 
@@ -1053,17 +1053,17 @@
 
         if ( !EFP.vars.icon_modal_loaded ) {
 
-          $modal.find('.efp-modal-loading').show();
+          $modal.find('.taf-modal-loading').show();
 
-          window.wp.ajax.post( 'efp-get-icons', {
+          window.wp.ajax.post( 'taf-get-icons', {
             nonce: $button.data('nonce')
           }).done( function( response ) {
 
-            $modal.find('.efp-modal-loading').hide();
+            $modal.find('.taf-modal-loading').hide();
 
             EFP.vars.icon_modal_loaded = true;
 
-            var $load = $modal.find('.efp-modal-load').html( response.content );
+            var $load = $modal.find('.taf-modal-load').html( response.content );
 
             $load.on('click', 'i', function( e ) {
 
@@ -1071,16 +1071,16 @@
 
               var icon = $(this).attr('title');
 
-              EFP.vars.$icon_target.find('.efp-icon-preview i').removeAttr('class').addClass(icon);
-              EFP.vars.$icon_target.find('.efp-icon-preview').removeClass('hidden');
-              EFP.vars.$icon_target.find('.efp-icon-remove').removeClass('hidden');
+              EFP.vars.$icon_target.find('.taf-icon-preview i').removeAttr('class').addClass(icon);
+              EFP.vars.$icon_target.find('.taf-icon-preview').removeClass('hidden');
+              EFP.vars.$icon_target.find('.taf-icon-remove').removeClass('hidden');
               EFP.vars.$icon_target.find('input').val(icon).trigger('change');
 
               $modal.addClass('hidden');
 
             });
 
-            $modal.on('change keyup', '.efp-icon-search', function() {
+            $modal.on('change keyup', '.taf-icon-search', function() {
 
               var value  = $(this).val(),
                   $icons = $load.find('i');
@@ -1099,13 +1099,13 @@
 
             });
 
-            $modal.on('click', '.efp-modal-close, .efp-modal-overlay', function() {
+            $modal.on('click', '.taf-modal-close, .taf-modal-overlay', function() {
               $modal.addClass('hidden');
             });
 
           }).fail( function( response ) {
-            $modal.find('.efp-modal-loading').hide();
-            $modal.find('.efp-modal-load').html( response.error );
+            $modal.find('.taf-modal-loading').hide();
+            $modal.find('.taf-modal-load').html( response.error );
             $modal.on('click', function() {
               $modal.addClass('hidden');
             });
@@ -1114,9 +1114,9 @@
 
       });
 
-      $this.on('click', '.efp-icon-remove', function( e ) {
+      $this.on('click', '.taf-icon-remove', function( e ) {
         e.preventDefault();
-        $this.find('.efp-icon-preview').addClass('hidden');
+        $this.find('.taf-icon-preview').addClass('hidden');
         $this.find('input').val('').trigger('change');
         $(this).addClass('hidden');
       });
@@ -1127,17 +1127,17 @@
   //
   // Field: map
   //
-  $.fn.efp_field_map = function() {
+  $.fn.taf_field_map = function() {
     return this.each( function() {
 
       if ( typeof L === 'undefined' ) { return; }
 
       var $this         = $(this),
-          $map          = $this.find('.efp--map-osm'),
-          $search_input = $this.find('.efp--map-search input'),
-          $latitude     = $this.find('.efp--latitude'),
-          $longitude    = $this.find('.efp--longitude'),
-          $zoom         = $this.find('.efp--zoom'),
+          $map          = $this.find('.taf--map-osm'),
+          $search_input = $this.find('.taf--map-search input'),
+          $latitude     = $this.find('.taf--latitude'),
+          $longitude    = $this.find('.taf--longitude'),
+          $zoom         = $this.find('.taf--zoom'),
           map_data      = $map.data( 'map' );
 
       var mapInit = L.map( $map.get(0), map_data);
@@ -1168,7 +1168,7 @@
       });
 
       if ( ! $search_input.length ) {
-        $search_input = $( '[data-depend-id="'+ $this.find('.efp--address-field').data( 'address-field' ) +'"]' );
+        $search_input = $( '[data-depend-id="'+ $this.find('.taf--address-field').data( 'address-field' ) +'"]' );
       }
 
       var cache = {};
@@ -1224,7 +1224,7 @@
 
         },
         create: function (event, ui) {
-          $(this).autocomplete('widget').addClass('efp-map-ui-autocomplate');
+          $(this).autocomplete('widget').addClass('taf-map-ui-autocomplate');
         }
       });
 
@@ -1246,16 +1246,16 @@
   //
   // Field: link
   //
-  $.fn.efp_field_link = function() {
+  $.fn.taf_field_link = function() {
     return this.each( function() {
 
       var $this   = $(this),
-          $link   = $this.find('.efp--link'),
-          $add    = $this.find('.efp--add'),
-          $edit   = $this.find('.efp--edit'),
-          $remove = $this.find('.efp--remove'),
-          $result = $this.find('.efp--result'),
-          uniqid  = EFP.helper.uid('efp-wplink-textarea-');
+          $link   = $this.find('.taf--link'),
+          $add    = $this.find('.taf--add'),
+          $edit   = $this.find('.taf--edit'),
+          $remove = $this.find('.taf--remove'),
+          $result = $this.find('.taf--result'),
+          uniqid  = EFP.helper.uid('taf-wplink-textarea-');
 
       $add.on('click', function( e ) {
 
@@ -1271,9 +1271,9 @@
 
         $add.trigger('click');
 
-        $('#wp-link-url').val($this.find('.efp--url').val());
-        $('#wp-link-text').val($this.find('.efp--text').val());
-        $('#wp-link-target').prop('checked', ($this.find('.efp--target').val() === '_blank'));
+        $('#wp-link-url').val($this.find('.taf--url').val());
+        $('#wp-link-text').val($this.find('.taf--text').val());
+        $('#wp-link-target').prop('checked', ($this.find('.taf--target').val() === '_blank'));
 
       });
 
@@ -1281,9 +1281,9 @@
 
         e.preventDefault();
 
-        $this.find('.efp--url').val('').trigger('change');
-        $this.find('.efp--text').val('');
-        $this.find('.efp--target').val('');
+        $this.find('.taf--url').val('').trigger('change');
+        $this.find('.taf--text').val('');
+        $this.find('.taf--target').val('');
 
         $add.removeClass('hidden');
         $edit.addClass('hidden');
@@ -1299,9 +1299,9 @@
             text   = $('#wp-link-text').val(),
             target = ( atts.target ) ? atts.target : '';
 
-        $this.find('.efp--url').val(href).trigger('change');
-        $this.find('.efp--text').val(text);
-        $this.find('.efp--target').val(target);
+        $this.find('.taf--url').val(href).trigger('change');
+        $this.find('.taf--text').val(text);
+        $this.find('.taf--target').val(target);
 
         $result.html('{url:"'+href+'", text:"'+text+'", target:"'+target+'"}');
 
@@ -1319,14 +1319,14 @@
   //
   // Field: media
   //
-  $.fn.efp_field_media = function() {
+  $.fn.taf_field_media = function() {
     return this.each( function() {
 
       var $this            = $(this),
-          $upload_button   = $this.find('.efp--button'),
-          $remove_button   = $this.find('.efp--remove'),
+          $upload_button   = $this.find('.taf--button'),
+          $remove_button   = $this.find('.taf--remove'),
           $library         = $upload_button.data('library') && $upload_button.data('library').split(',') || '',
-          $auto_attributes = ( $this.hasClass('efp-assign-field-background') ) ? $this.closest('.efp-field-background').find('.efp--auto-attributes') : false,
+          $auto_attributes = ( $this.hasClass('taf-assign-field-background') ) ? $this.closest('.taf-field-background').find('.taf--auto-attributes') : false,
           wp_media_frame;
 
       $upload_button.on('click', function( e ) {
@@ -1358,12 +1358,12 @@
             return;
           }
 
-          $this.find('.efp--id').val( attributes.id );
-          $this.find('.efp--width').val( attributes.width );
-          $this.find('.efp--height').val( attributes.height );
-          $this.find('.efp--alt').val( attributes.alt );
-          $this.find('.efp--title').val( attributes.title );
-          $this.find('.efp--description').val( attributes.description );
+          $this.find('.taf--id').val( attributes.id );
+          $this.find('.taf--width').val( attributes.width );
+          $this.find('.taf--height').val( attributes.height );
+          $this.find('.taf--alt').val( attributes.alt );
+          $this.find('.taf--title').val( attributes.title );
+          $this.find('.taf--description').val( attributes.description );
 
           if ( typeof attributes.sizes !== 'undefined' && typeof attributes.sizes.thumbnail !== 'undefined' && preview_size === 'thumbnail' ) {
             thumbnail = attributes.sizes.thumbnail.url;
@@ -1376,15 +1376,15 @@
           }
 
           if ( $auto_attributes ) {
-            $auto_attributes.removeClass('efp--attributes-hidden');
+            $auto_attributes.removeClass('taf--attributes-hidden');
           }
 
           $remove_button.removeClass('hidden');
 
-          $this.find('.efp--preview').removeClass('hidden');
-          $this.find('.efp--src').attr('src', thumbnail);
-          $this.find('.efp--thumbnail').val( thumbnail );
-          $this.find('.efp--url').val( attributes.url ).trigger('change');
+          $this.find('.taf--preview').removeClass('hidden');
+          $this.find('.taf--src').attr('src', thumbnail);
+          $this.find('.taf--thumbnail').val( thumbnail );
+          $this.find('.taf--url').val( attributes.url ).trigger('change');
 
         });
 
@@ -1397,13 +1397,13 @@
         e.preventDefault();
 
         if ( $auto_attributes ) {
-          $auto_attributes.addClass('efp--attributes-hidden');
+          $auto_attributes.addClass('taf--attributes-hidden');
         }
 
         $remove_button.addClass('hidden');
         $this.find('input').val('');
-        $this.find('.efp--preview').addClass('hidden');
-        $this.find('.efp--url').trigger('change');
+        $this.find('.taf--preview').addClass('hidden');
+        $this.find('.taf--url').trigger('change');
 
       });
 
@@ -1414,42 +1414,42 @@
   //
   // Field: repeater
   //
-  $.fn.efp_field_repeater = function() {
+  $.fn.taf_field_repeater = function() {
     return this.each( function() {
 
       var $this     = $(this),
-          $fieldset = $this.children('.efp-fieldset'),
+          $fieldset = $this.children('.taf-fieldset'),
           $repeater = $fieldset.length ? $fieldset : $this,
-          $wrapper  = $repeater.children('.efp-repeater-wrapper'),
-          $hidden   = $repeater.children('.efp-repeater-hidden'),
-          $max      = $repeater.children('.efp-repeater-max'),
-          $min      = $repeater.children('.efp-repeater-min'),
+          $wrapper  = $repeater.children('.taf-repeater-wrapper'),
+          $hidden   = $repeater.children('.taf-repeater-hidden'),
+          $max      = $repeater.children('.taf-repeater-max'),
+          $min      = $repeater.children('.taf-repeater-min'),
           field_id  = $wrapper.data('field-id'),
           max       = parseInt( $wrapper.data('max') ),
           min       = parseInt( $wrapper.data('min') );
 
-      $wrapper.children('.efp-repeater-item').children('.efp-repeater-content').efp_reload_script();
+      $wrapper.children('.taf-repeater-item').children('.taf-repeater-content').taf_reload_script();
 
       $wrapper.sortable({
         axis: 'y',
-        handle: '.efp-repeater-sort',
+        handle: '.taf-repeater-sort',
         helper: 'original',
         cursor: 'move',
         placeholder: 'widget-placeholder',
         update: function( event, ui ) {
 
-          EFP.helper.name_nested_replace( $wrapper.children('.efp-repeater-item'), field_id );
-          $wrapper.efp_customizer_refresh();
-          ui.item.efp_reload_script_retry();
+          EFP.helper.name_nested_replace( $wrapper.children('.taf-repeater-item'), field_id );
+          $wrapper.taf_customizer_refresh();
+          ui.item.taf_reload_script_retry();
 
         }
       });
 
-      $repeater.children('.efp-repeater-add').on('click', function( e ) {
+      $repeater.children('.taf-repeater-add').on('click', function( e ) {
 
         e.preventDefault();
 
-        var count = $wrapper.children('.efp-repeater-item').length;
+        var count = $wrapper.children('.taf-repeater-item').length;
 
         $min.hide();
 
@@ -1458,18 +1458,18 @@
           return;
         }
 
-        var $cloned_item = $hidden.efp_clone(true);
+        var $cloned_item = $hidden.taf_clone(true);
 
-        $cloned_item.removeClass('efp-repeater-hidden');
+        $cloned_item.removeClass('taf-repeater-hidden');
 
         $cloned_item.find(':input[name!="_pseudo"]').each( function() {
           this.name = this.name.replace( '___', '' ).replace( field_id +'[0]', field_id +'['+ count +']' );
         });
 
         $wrapper.append($cloned_item);
-        $cloned_item.children('.efp-repeater-content').efp_reload_script();
-        $wrapper.efp_customizer_refresh();
-        $wrapper.efp_customizer_listen({closest: true});
+        $cloned_item.children('.taf-repeater-content').taf_reload_script();
+        $wrapper.taf_customizer_refresh();
+        $wrapper.taf_customizer_listen({closest: true});
 
       });
 
@@ -1477,7 +1477,7 @@
 
         e.preventDefault();
 
-        var count = $wrapper.children('.efp-repeater-item').length;
+        var count = $wrapper.children('.taf-repeater-item').length;
 
         $min.hide();
 
@@ -1488,32 +1488,32 @@
 
         var $this           = $(this),
             $parent         = $this.parent().parent().parent(),
-            $cloned_content = $parent.children('.efp-repeater-content').efp_clone(),
-            $cloned_helper  = $parent.children('.efp-repeater-helper').efp_clone(true),
-            $cloned_item    = $('<div class="efp-repeater-item" />');
+            $cloned_content = $parent.children('.taf-repeater-content').taf_clone(),
+            $cloned_helper  = $parent.children('.taf-repeater-helper').taf_clone(true),
+            $cloned_item    = $('<div class="taf-repeater-item" />');
 
         $cloned_item.append($cloned_content);
         $cloned_item.append($cloned_helper);
 
         $wrapper.children().eq($parent.index()).after($cloned_item);
 
-        $cloned_item.children('.efp-repeater-content').efp_reload_script();
+        $cloned_item.children('.taf-repeater-content').taf_reload_script();
 
-        EFP.helper.name_nested_replace( $wrapper.children('.efp-repeater-item'), field_id );
+        EFP.helper.name_nested_replace( $wrapper.children('.taf-repeater-item'), field_id );
 
-        $wrapper.efp_customizer_refresh();
-        $wrapper.efp_customizer_listen({closest: true});
+        $wrapper.taf_customizer_refresh();
+        $wrapper.taf_customizer_listen({closest: true});
 
       };
 
-      $wrapper.children('.efp-repeater-item').children('.efp-repeater-helper').on('click', '.efp-repeater-clone', event_clone);
-      $repeater.children('.efp-repeater-hidden').children('.efp-repeater-helper').on('click', '.efp-repeater-clone', event_clone);
+      $wrapper.children('.taf-repeater-item').children('.taf-repeater-helper').on('click', '.taf-repeater-clone', event_clone);
+      $repeater.children('.taf-repeater-hidden').children('.taf-repeater-helper').on('click', '.taf-repeater-clone', event_clone);
 
       var event_remove = function( e ) {
 
         e.preventDefault();
 
-        var count = $wrapper.children('.efp-repeater-item').length;
+        var count = $wrapper.children('.taf-repeater-item').length;
 
         $max.hide();
         $min.hide();
@@ -1523,16 +1523,16 @@
           return;
         }
 
-        $(this).closest('.efp-repeater-item').remove();
+        $(this).closest('.taf-repeater-item').remove();
 
-        EFP.helper.name_nested_replace( $wrapper.children('.efp-repeater-item'), field_id );
+        EFP.helper.name_nested_replace( $wrapper.children('.taf-repeater-item'), field_id );
 
-        $wrapper.efp_customizer_refresh();
+        $wrapper.taf_customizer_refresh();
 
       };
 
-      $wrapper.children('.efp-repeater-item').children('.efp-repeater-helper').on('click', '.efp-repeater-remove', event_remove);
-      $repeater.children('.efp-repeater-hidden').children('.efp-repeater-helper').on('click', '.efp-repeater-remove', event_remove);
+      $wrapper.children('.taf-repeater-item').children('.taf-repeater-helper').on('click', '.taf-repeater-remove', event_remove);
+      $repeater.children('.taf-repeater-hidden').children('.taf-repeater-helper').on('click', '.taf-repeater-remove', event_remove);
 
     });
   };
@@ -1540,12 +1540,12 @@
   //
   // Field: slider
   //
-  $.fn.efp_field_slider = function() {
+  $.fn.taf_field_slider = function() {
     return this.each( function() {
 
       var $this   = $(this),
           $input  = $this.find('input'),
-          $slider = $this.find('.efp-slider-ui'),
+          $slider = $this.find('.taf-slider-ui'),
           data    = $input.data(),
           value   = $input.val() || 0;
 
@@ -1574,10 +1574,10 @@
   //
   // Field: sortable
   //
-  $.fn.efp_field_sortable = function() {
+  $.fn.taf_field_sortable = function() {
     return this.each( function() {
 
-      var $sortable = $(this).find('.efp-sortable');
+      var $sortable = $(this).find('.taf-sortable');
 
       $sortable.sortable({
         axis: 'y',
@@ -1585,11 +1585,11 @@
         cursor: 'move',
         placeholder: 'widget-placeholder',
         update: function( event, ui ) {
-          $sortable.efp_customizer_refresh();
+          $sortable.taf_customizer_refresh();
         }
       });
 
-      $sortable.find('.efp-sortable-content').efp_reload_script();
+      $sortable.find('.taf-sortable-content').taf_reload_script();
 
     });
   };
@@ -1597,12 +1597,12 @@
   //
   // Field: sorter
   //
-  $.fn.efp_field_sorter = function() {
+  $.fn.taf_field_sorter = function() {
     return this.each( function() {
 
       var $this         = $(this),
-          $enabled      = $this.find('.efp-enabled'),
-          $has_disabled = $this.find('.efp-disabled'),
+          $enabled      = $this.find('.taf-enabled'),
+          $has_disabled = $this.find('.taf-disabled'),
           $disabled     = ( $has_disabled.length ) ? $has_disabled : false;
 
       $enabled.sortable({
@@ -1612,13 +1612,13 @@
 
           var $el = ui.item.find('input');
 
-          if ( ui.item.parent().hasClass('efp-enabled') ) {
+          if ( ui.item.parent().hasClass('taf-enabled') ) {
             $el.attr('name', $el.attr('name').replace('disabled', 'enabled'));
           } else {
             $el.attr('name', $el.attr('name').replace('enabled', 'disabled'));
           }
 
-          $this.efp_customizer_refresh();
+          $this.taf_customizer_refresh();
 
         }
       });
@@ -1629,7 +1629,7 @@
           connectWith: $enabled,
           placeholder: 'ui-sortable-placeholder',
           update: function( event, ui ) {
-            $this.efp_customizer_refresh();
+            $this.taf_customizer_refresh();
           }
         });
 
@@ -1641,7 +1641,7 @@
   //
   // Field: spinner
   //
-  $.fn.efp_field_spinner = function() {
+  $.fn.taf_field_spinner = function() {
     return this.each( function() {
 
       var $this   = $(this),
@@ -1659,7 +1659,7 @@
         step: data.step || 1,
         create: function( event, ui ) {
           if ( data.unit ) {
-            $input.after('<span class="ui-button efp--unit">'+ data.unit +'</span>');
+            $input.after('<span class="ui-button taf--unit">'+ data.unit +'</span>');
           }
         },
         spin: function (event, ui ) {
@@ -1673,21 +1673,21 @@
   //
   // Field: switcher
   //
-  $.fn.efp_field_switcher = function() {
+  $.fn.taf_field_switcher = function() {
     return this.each( function() {
 
-      var $switcher = $(this).find('.efp--switcher');
+      var $switcher = $(this).find('.taf--switcher');
 
       $switcher.on('click', function() {
 
         var value  = 0;
         var $input = $switcher.find('input');
 
-        if ( $switcher.hasClass('efp--active') ) {
-          $switcher.removeClass('efp--active');
+        if ( $switcher.hasClass('taf--active') ) {
+          $switcher.removeClass('taf--active');
         } else {
           value = 1;
-          $switcher.addClass('efp--active');
+          $switcher.addClass('taf--active');
         }
 
         $input.val(value).trigger('change');
@@ -1700,14 +1700,14 @@
   //
   // Field: tabbed
   //
-  $.fn.efp_field_tabbed = function() {
+  $.fn.taf_field_tabbed = function() {
     return this.each( function() {
 
       var $this     = $(this),
-          $links    = $this.find('.efp-tabbed-nav a'),
-          $contents = $this.find('.efp-tabbed-content');
+          $links    = $this.find('.taf-tabbed-nav a'),
+          $contents = $this.find('.taf-tabbed-content');
 
-      $contents.eq(0).efp_reload_script();
+      $contents.eq(0).taf_reload_script();
 
       $links.on( 'click', function( e ) {
 
@@ -1717,8 +1717,8 @@
             index    = $link.index(),
             $content = $contents.eq(index);
 
-        $link.addClass('efp-tabbed-active').siblings().removeClass('efp-tabbed-active');
-        $content.efp_reload_script();
+        $link.addClass('taf-tabbed-active').siblings().removeClass('taf-tabbed-active');
+        $content.taf_reload_script();
         $content.removeClass('hidden').siblings().addClass('hidden');
 
       });
@@ -1729,15 +1729,15 @@
   //
   // Field: typography
   //
-  $.fn.efp_field_typography = function() {
+  $.fn.taf_field_typography = function() {
     return this.each(function () {
 
       var base          = this;
       var $this         = $(this);
       var loaded_fonts  = [];
-      var webfonts      = efp_typography_json.webfonts;
-      var googlestyles  = efp_typography_json.googlestyles;
-      var defaultstyles = efp_typography_json.defaultstyles;
+      var webfonts      = taf_typography_json.webfonts;
+      var googlestyles  = taf_typography_json.googlestyles;
+      var defaultstyles = taf_typography_json.defaultstyles;
 
       //
       //
@@ -1810,7 +1810,7 @@
 
         });
 
-        $select.append(opts).trigger('efp.change').trigger('chosen:updated');
+        $select.append(opts).trigger('taf.change').trigger('chosen:updated');
 
       };
 
@@ -1820,9 +1820,9 @@
         //
         // Constants
         var selected_styles  = [];
-        var $typography      = $this.find('.efp--typography');
-        var $type            = $this.find('.efp--type');
-        var $styles          = $this.find('.efp--block-font-style');
+        var $typography      = $this.find('.taf--typography');
+        var $type            = $this.find('.taf--type');
+        var $styles          = $this.find('.taf--block-font-style');
         var unit             = $typography.data('unit');
         var line_height_unit = $typography.data('line-height-unit');
         var exclude_fonts    = $typography.data('exclude') ? $typography.data('exclude').split(',') : [];
@@ -1830,7 +1830,7 @@
         //
         //
         // Chosen init
-        if ( $this.find('.efp--chosen').length ) {
+        if ( $this.find('.taf--chosen').length ) {
 
           var $chosen_selects = $this.find('select');
 
@@ -1856,7 +1856,7 @@
         //
         //
         // Font family select
-        var $font_family_select = $this.find('.efp--font-family');
+        var $font_family_select = $this.find('.taf--font-family');
         var first_font_family   = $font_family_select.val();
 
         // Clear default font family select options
@@ -1890,16 +1890,16 @@
         //
         //
         // Font style select
-        var $font_style_block = $this.find('.efp--block-font-style');
+        var $font_style_block = $this.find('.taf--block-font-style');
 
         if ( $font_style_block.length ) {
 
-          var $font_style_select = $this.find('.efp--font-style-select');
+          var $font_style_select = $this.find('.taf--font-style-select');
           var first_style_value  = $font_style_select.val() ? $font_style_select.val().replace(/normal/g, '' ) : '';
 
           //
           // Font Style on on change listener
-          $font_style_select.on('change efp.change', function( event ) {
+          $font_style_select.on('change taf.change', function( event ) {
 
             var style_value = $font_style_select.val();
 
@@ -1913,18 +1913,18 @@
             var font_weight = ( style_value && style_value !== 'italic' && style_value !== 'normal' ) ? style_value.replace('italic', '') : font_normal;
             var font_style  = ( style_value && style_value.substr(-6) === 'italic' ) ? 'italic' : '';
 
-            $this.find('.efp--font-weight').val( font_weight );
-            $this.find('.efp--font-style').val( font_style );
+            $this.find('.taf--font-weight').val( font_weight );
+            $this.find('.taf--font-style').val( font_style );
 
           });
 
           //
           //
           // Extra font style select
-          var $extra_font_style_block = $this.find('.efp--block-extra-styles');
+          var $extra_font_style_block = $this.find('.taf--block-extra-styles');
 
           if ( $extra_font_style_block.length ) {
-            var $extra_font_style_select = $this.find('.efp--extra-styles');
+            var $extra_font_style_select = $this.find('.taf--extra-styles');
             var first_extra_style_value  = $extra_font_style_select.val();
           }
 
@@ -1933,9 +1933,9 @@
         //
         //
         // Subsets select
-        var $subset_block = $this.find('.efp--block-subset');
+        var $subset_block = $this.find('.taf--block-subset');
         if ( $subset_block.length ) {
-          var $subset_select = $this.find('.efp--subset');
+          var $subset_select = $this.find('.taf--subset');
           var first_subset_select_value = $subset_select.val();
           var subset_multi_select = $subset_select.data('multiple') || false;
         }
@@ -1943,12 +1943,12 @@
         //
         //
         // Backup font family
-        var $backup_font_family_block = $this.find('.efp--block-backup-font-family');
+        var $backup_font_family_block = $this.find('.taf--block-backup-font-family');
 
         //
         //
         // Font Family on Change Listener
-        $font_family_select.on('change efp.change', function( event ) {
+        $font_family_select.on('change taf.change', function( event ) {
 
           // Hide subsets on change
           if ( $subset_block.length ) {
@@ -2060,16 +2060,16 @@
           // Update font type input value
           $type.val(type);
 
-        }).trigger('efp.change');
+        }).trigger('taf.change');
 
         //
         //
         // Preview
-        var $preview_block = $this.find('.efp--block-preview');
+        var $preview_block = $this.find('.taf--block-preview');
 
         if ( $preview_block.length ) {
 
-          var $preview = $this.find('.efp--preview');
+          var $preview = $this.find('.taf--preview');
 
           // Set preview styles on change
           $this.on('change', EFP.helper.debounce( function( event ) {
@@ -2077,19 +2077,19 @@
             $preview_block.removeClass('hidden');
 
             var font_family       = $font_family_select.val(),
-                font_weight       = $this.find('.efp--font-weight').val(),
-                font_style        = $this.find('.efp--font-style').val(),
-                font_size         = $this.find('.efp--font-size').val(),
-                font_variant      = $this.find('.efp--font-variant').val(),
-                line_height       = $this.find('.efp--line-height').val(),
-                text_align        = $this.find('.efp--text-align').val(),
-                text_transform    = $this.find('.efp--text-transform').val(),
-                text_decoration   = $this.find('.efp--text-decoration').val(),
-                text_color        = $this.find('.efp--color').val(),
-                word_spacing      = $this.find('.efp--word-spacing').val(),
-                letter_spacing    = $this.find('.efp--letter-spacing').val(),
-                custom_style      = $this.find('.efp--custom-style').val(),
-                type              = $this.find('.efp--type').val();
+                font_weight       = $this.find('.taf--font-weight').val(),
+                font_style        = $this.find('.taf--font-style').val(),
+                font_size         = $this.find('.taf--font-size').val(),
+                font_variant      = $this.find('.taf--font-variant').val(),
+                line_height       = $this.find('.taf--line-height').val(),
+                text_align        = $this.find('.taf--text-align').val(),
+                text_transform    = $this.find('.taf--text-transform').val(),
+                text_decoration   = $this.find('.taf--text-decoration').val(),
+                text_color        = $this.find('.taf--color').val(),
+                word_spacing      = $this.find('.taf--word-spacing').val(),
+                letter_spacing    = $this.find('.taf--letter-spacing').val(),
+                custom_style      = $this.find('.taf--custom-style').val(),
+                type              = $this.find('.taf--type').val();
 
             if ( type === 'google' ) {
               base.load_google_font(font_family, font_weight, font_style);
@@ -2122,9 +2122,9 @@
           // Preview black and white backgrounds trigger
           $preview_block.on('click', function() {
 
-            $preview.toggleClass('efp--black-background');
+            $preview.toggleClass('taf--black-background');
 
-            var $toggle = $preview_block.find('.efp--toggle');
+            var $toggle = $preview_block.find('.taf--toggle');
 
             if ( $toggle.hasClass('fa-toggle-off') ) {
               $toggle.removeClass('fa-toggle-off').addClass('fa-toggle-on');
@@ -2150,15 +2150,15 @@
   //
   // Field: upload
   //
-  $.fn.efp_field_upload = function() {
+  $.fn.taf_field_upload = function() {
     return this.each( function() {
 
       var $this          = $(this),
           $input         = $this.find('input'),
-          $upload_button = $this.find('.efp--button'),
-          $remove_button = $this.find('.efp--remove'),
-          $preview_wrap  = $this.find('.efp--preview'),
-          $preview_src   = $this.find('.efp--src'),
+          $upload_button = $this.find('.taf--button'),
+          $remove_button = $this.find('.taf--remove'),
+          $preview_wrap  = $this.find('.taf--preview'),
+          $preview_src   = $this.find('.taf--src'),
           $library       = $upload_button.data('library') && $upload_button.data('library').split(',') || '',
           wp_media_frame;
 
@@ -2215,7 +2215,7 @@
 
         if ( $preview_wrap.length ) {
 
-          if ( $.inArray( $value.split('.').efp().toLowerCase(), ['jpg', 'jpeg', 'gif', 'png', 'svg', 'webp'] ) !== -1 ) {
+          if ( $.inArray( $value.split('.').pop().toLowerCase(), ['jpg', 'jpeg', 'gif', 'png', 'svg', 'webp'] ) !== -1 ) {
             $preview_wrap.removeClass('hidden');
             $preview_src.attr('src', $value);
           } else {
@@ -2233,15 +2233,15 @@
   //
   // Field: wp_editor
   //
-  $.fn.efp_field_wp_editor = function() {
+  $.fn.taf_field_wp_editor = function() {
     return this.each( function() {
 
-      if ( typeof window.wp.editor === 'undefined' || typeof window.tinyMCEPreInit === 'undefined' || typeof window.tinyMCEPreInit.mceInit.efp_wp_editor === 'undefined' ) {
+      if ( typeof window.wp.editor === 'undefined' || typeof window.tinyMCEPreInit === 'undefined' || typeof window.tinyMCEPreInit.mceInit.taf_wp_editor === 'undefined' ) {
         return;
       }
 
       var $this     = $(this),
-          $editor   = $this.find('.efp-wp-editor'),
+          $editor   = $this.find('.taf-wp-editor'),
           $textarea = $this.find('textarea');
 
       // If there is wp-editor remove it for avoid dupliated wp-editor conflicts.
@@ -2254,14 +2254,14 @@
       }
 
       // Generate a unique id
-      var uid = EFP.helper.uid('efp-editor-');
+      var uid = EFP.helper.uid('taf-editor-');
 
       $textarea.attr('id', uid);
 
       // Get default editor settings
       var default_editor_settings = {
-        tinymce: window.tinyMCEPreInit.mceInit.efp_wp_editor,
-        quicktags: window.tinyMCEPreInit.qtInit.efp_wp_editor
+        tinymce: window.tinyMCEPreInit.mceInit.taf_wp_editor,
+        quicktags: window.tinyMCEPreInit.qtInit.taf_wp_editor
       };
 
       // Get default editor settings
@@ -2290,13 +2290,13 @@
       // Override editor tinymce settings
       if ( field_editor_settings.tinymce === false ) {
         default_editor_settings.tinymce = false;
-        $editor.addClass('efp-no-tinymce');
+        $editor.addClass('taf-no-tinymce');
       }
 
       // Override editor quicktags settings
       if ( field_editor_settings.quicktags === false ) {
         default_editor_settings.quicktags = false;
-        $editor.addClass('efp-no-quicktags');
+        $editor.addClass('taf-no-quicktags');
       }
 
       // Wait until :visible
@@ -2308,19 +2308,19 @@
       });
 
       // Add Media buttons
-      if ( field_editor_settings.media_buttons && window.efp_media_buttons ) {
+      if ( field_editor_settings.media_buttons && window.taf_media_buttons ) {
 
         var $editor_buttons = $editor.find('.wp-media-buttons');
 
         if ( $editor_buttons.length ) {
 
-          $editor_buttons.find('.efp-shortcode-button').data('editor-id', uid);
+          $editor_buttons.find('.taf-shortcode-button').data('editor-id', uid);
 
         } else {
 
-          var $media_buttons = $(window.efp_media_buttons);
+          var $media_buttons = $(window.taf_media_buttons);
 
-          $media_buttons.find('.efp-shortcode-button').data('editor-id', uid);
+          $media_buttons.find('.taf-shortcode-button').data('editor-id', uid);
 
           $editor.prepend( $media_buttons );
 
@@ -2335,11 +2335,11 @@
   //
   // Confirm
   //
-  $.fn.efp_confirm = function() {
+  $.fn.taf_confirm = function() {
     return this.each( function() {
       $(this).on('click', function( e ) {
 
-        var confirm_text   = $(this).data('confirm') || window.efp_vars.i18n.confirm;
+        var confirm_text   = $(this).data('confirm') || window.taf_vars.i18n.confirm;
         var confirm_answer = confirm( confirm_text );
 
         if ( confirm_answer ) {
@@ -2374,12 +2374,12 @@
   //
   // Options Save
   //
-  $.fn.efp_save = function() {
+  $.fn.taf_save = function() {
     return this.each( function() {
 
       var $this    = $(this),
-          $buttons = $('.efp-save'),
-          $panel   = $('.efp-options'),
+          $buttons = $('.taf-save'),
+          $panel   = $('.taf-options'),
           flooding = false,
           timeout;
 
@@ -2392,46 +2392,46 @@
 
           $buttons.attr('value', $text);
 
-          if ( $this.hasClass('efp-save-ajax') ) {
+          if ( $this.hasClass('taf-save-ajax') ) {
 
             e.preventDefault();
 
-            $panel.addClass('efp-saving');
+            $panel.addClass('taf-saving');
             $buttons.prop('disabled', true);
 
-            window.wp.ajax.post( 'efp_'+ $panel.data('unique') +'_ajax_save', {
-              data: $('#efp-form').serializeJSONEFP()
+            window.wp.ajax.post( 'taf_'+ $panel.data('unique') +'_ajax_save', {
+              data: $('#taf-form').serializeJSONEFP()
             })
             .done( function( response ) {
 
               // clear errors
-              $('.efp-error').remove();
+              $('.taf-error').remove();
 
               if ( Object.keys( response.errors ).length ) {
 
-                var error_icon = '<i class="efp-label-error efp-error">!</i>';
+                var error_icon = '<i class="taf-label-error taf-error">!</i>';
 
                 $.each(response.errors, function( key, error_message ) {
 
                   var $field = $('[data-depend-id="'+ key +'"]'),
-                      $link  = $('a[href="#tab='+ $field.closest('.efp-section').data('section-id') +'"]' ),
-                      $tab   = $link.closest('.efp-tab-item');
+                      $link  = $('a[href="#tab='+ $field.closest('.taf-section').data('section-id') +'"]' ),
+                      $tab   = $link.closest('.taf-tab-item');
 
-                  $field.closest('.efp-fieldset').append( '<p class="efp-error efp-error-text">'+ error_message +'</p>' );
+                  $field.closest('.taf-fieldset').append( '<p class="taf-error taf-error-text">'+ error_message +'</p>' );
 
-                  if ( !$link.find('.efp-error').length ) {
+                  if ( !$link.find('.taf-error').length ) {
                     $link.append( error_icon );
                   }
 
-                  if ( !$tab.find('.efp-arrow .efp-error').length ) {
-                    $tab.find('.efp-arrow').append( error_icon );
+                  if ( !$tab.find('.taf-arrow .taf-error').length ) {
+                    $tab.find('.taf-arrow').append( error_icon );
                   }
 
                 });
 
               }
 
-              $panel.removeClass('efp-saving');
+              $panel.removeClass('taf-saving');
               $buttons.prop('disabled', false).attr('value', $value);
               flooding = false;
 
@@ -2440,7 +2440,7 @@
 
               clearTimeout(timeout);
 
-              var $result_success = $('.efp-form-success');
+              var $result_success = $('.taf-form-success');
               $result_success.empty().append(response.notice).fadeIn('fast', function() {
                 timeout = setTimeout( function() {
                   $result_success.fadeOut('fast');
@@ -2470,14 +2470,14 @@
   //
   // Option Framework
   //
-  $.fn.efp_options = function() {
+  $.fn.taf_options = function() {
     return this.each( function() {
 
       var $this         = $(this),
-          $content      = $this.find('.efp-content'),
-          $form_success = $this.find('.efp-form-success'),
-          $form_warning = $this.find('.efp-form-warning'),
-          $save_button  = $this.find('.efp-header .efp-save');
+          $content      = $this.find('.taf-content'),
+          $form_success = $this.find('.taf-form-success'),
+          $form_warning = $this.find('.taf-form-warning'),
+          $save_button  = $this.find('.taf-header .taf-save');
 
       EFP.vars.$form_warning = $form_warning;
 
@@ -2498,7 +2498,7 @@
 
       }
 
-      if ( $form_success.hasClass('efp-form-show') ) {
+      if ( $form_success.hasClass('taf-form-show') ) {
         setTimeout( function() {
           $form_success.fadeOut('fast');
         }, 1000);
@@ -2518,7 +2518,7 @@
   //
   // Taxonomy Framework
   //
-  $.fn.efp_taxonomy = function() {
+  $.fn.taf_taxonomy = function() {
     return this.each( function() {
 
       var $this = $(this),
@@ -2527,7 +2527,7 @@
       if ( $form.attr('id') === 'addtag' ) {
 
         var $submit = $form.find('#submit'),
-            $cloned = $this.children('.efp-field').efp_clone();
+            $cloned = $this.children('.taf-field').taf_clone();
 
         $submit.on( 'click', function() {
 
@@ -2539,9 +2539,9 @@
 
             $this.html( $cloned );
 
-            $cloned = $cloned.efp_clone();
+            $cloned = $cloned.taf_clone();
 
-            $this.efp_reload_script();
+            $this.taf_reload_script();
 
           }
 
@@ -2555,7 +2555,7 @@
   //
   // Shortcode Framework
   //
-  $.fn.efp_shortcode = function() {
+  $.fn.taf_shortcode = function() {
 
     var base = this;
 
@@ -2664,10 +2664,10 @@
     return this.each( function() {
 
       var $modal   = $(this),
-          $load    = $modal.find('.efp-modal-load'),
-          $content = $modal.find('.efp-modal-content'),
-          $insert  = $modal.find('.efp-modal-insert'),
-          $loading = $modal.find('.efp-modal-loading'),
+          $load    = $modal.find('.taf-modal-load'),
+          $content = $modal.find('.taf-modal-content'),
+          $insert  = $modal.find('.taf-modal-insert'),
+          $loading = $modal.find('.taf-modal-loading'),
           $select  = $modal.find('select'),
           modal_id = $modal.data('modal-id'),
           nonce    = $modal.data('nonce'),
@@ -2681,7 +2681,7 @@
           $cloned,
           $button;
 
-      $(document).on('click', '.efp-shortcode-button[data-modal-id="'+ modal_id +'"]', function( e ) {
+      $(document).on('click', '.taf-shortcode-button[data-modal-id="'+ modal_id +'"]', function( e ) {
 
         e.preventDefault();
 
@@ -2693,7 +2693,7 @@
         $modal.removeClass('hidden');
 
         // single usage trigger first shortcode
-        if ( $modal.hasClass('efp-shortcode-single') && sc_name === undefined ) {
+        if ( $modal.hasClass('taf-shortcode-single') && sc_name === undefined ) {
           $select.trigger('change');
         }
 
@@ -2715,7 +2715,7 @@
 
           $loading.show();
 
-          window.wp.ajax.post( 'efp-get-shortcode-'+ modal_id, {
+          window.wp.ajax.post( 'taf-get-shortcode-'+ modal_id, {
             shortcode_key: sc_key,
             nonce: nonce
           })
@@ -2727,10 +2727,10 @@
 
             $insert.parent().removeClass('hidden');
 
-            $cloned = $appended.find('.efp--repeat-shortcode').efp_clone();
+            $cloned = $appended.find('.taf--repeat-shortcode').taf_clone();
 
-            $appended.efp_reload_script();
-            $appended.find('.efp-fields').efp_reload_script();
+            $appended.taf_reload_script();
+            $appended.find('.taf-fields').taf_reload_script();
 
           });
 
@@ -2749,7 +2749,7 @@
         if ( $insert.prop('disabled') || $insert.attr('disabled') ) { return; }
 
         var shortcode = '';
-        var serialize = $modal.find('.efp-field:not(.efp-depend-on)').find(':input:not(.ignore)').serializeObjectEFP();
+        var serialize = $modal.find('.taf-field:not(.taf-depend-on)').find(':input:not(.ignore)').serializeObjectEFP();
 
         switch ( sc_view ) {
 
@@ -2787,8 +2787,8 @@
 
         if ( gutenberg_id ) {
 
-          var content = window.efp_gutenberg_props.attributes.hasOwnProperty('shortcode') ? window.efp_gutenberg_props.attributes.shortcode : '';
-          window.efp_gutenberg_props.setAttributes({shortcode: content + shortcode});
+          var content = window.taf_gutenberg_props.attributes.hasOwnProperty('shortcode') ? window.taf_gutenberg_props.attributes.shortcode : '';
+          window.taf_gutenberg_props.setAttributes({shortcode: content + shortcode});
 
         } else if ( editor_id ) {
 
@@ -2805,31 +2805,31 @@
 
       });
 
-      $modal.on('click', '.efp--repeat-button', function( e ) {
+      $modal.on('click', '.taf--repeat-button', function( e ) {
 
         e.preventDefault();
 
-        var $repeatable = $modal.find('.efp--repeatable');
-        var $new_clone  = $cloned.efp_clone();
-        var $remove_btn = $new_clone.find('.efp-repeat-remove');
+        var $repeatable = $modal.find('.taf--repeatable');
+        var $new_clone  = $cloned.taf_clone();
+        var $remove_btn = $new_clone.find('.taf-repeat-remove');
 
         var $appended = $new_clone.appendTo( $repeatable );
 
-        $new_clone.find('.efp-fields').efp_reload_script();
+        $new_clone.find('.taf-fields').taf_reload_script();
 
-        EFP.helper.name_nested_replace( $modal.find('.efp--repeat-shortcode'), sc_group );
+        EFP.helper.name_nested_replace( $modal.find('.taf--repeat-shortcode'), sc_group );
 
         $remove_btn.on('click', function() {
 
           $new_clone.remove();
 
-          EFP.helper.name_nested_replace( $modal.find('.efp--repeat-shortcode'), sc_group );
+          EFP.helper.name_nested_replace( $modal.find('.taf--repeat-shortcode'), sc_group );
 
         });
 
       });
 
-      $modal.on('click', '.efp-modal-close, .efp-modal-overlay', function() {
+      $modal.on('click', '.taf-modal-close, .taf-modal-overlay', function() {
         $modal.addClass('hidden');
       });
 
@@ -2873,12 +2873,12 @@
 
   };
 
-  $.fn.efp_color = function() {
+  $.fn.taf_color = function() {
     return this.each( function() {
 
       var $input        = $(this),
           picker_color  = EFP.funcs.parse_color( $input.val() ),
-          palette_color = window.efp_vars.color_palette.length ? window.efp_vars.color_palette : true,
+          palette_color = window.taf_vars.color_palette.length ? window.taf_vars.color_palette : true,
           $container;
 
       // Destroy and Reinit
@@ -2892,8 +2892,8 @@
 
           var ui_color_value = ui.color.toString();
 
-          $container.removeClass('efp--transparent-active');
-          $container.find('.efp--transparent-offset').css('background-color', ui_color_value);
+          $container.removeClass('taf--transparent-active');
+          $container.find('.taf--transparent-offset').css('background-color', ui_color_value);
           $input.val(ui_color_value).trigger('change');
 
         },
@@ -2902,28 +2902,28 @@
           $container = $input.closest('.wp-picker-container');
 
           var a8cIris = $input.data('a8cIris'),
-              $transparent_wrap = $('<div class="efp--transparent-wrap">' +
-                                '<div class="efp--transparent-slider"></div>' +
-                                '<div class="efp--transparent-offset"></div>' +
-                                '<div class="efp--transparent-text"></div>' +
-                                '<div class="efp--transparent-button">transparent <i class="fas fa-toggle-off"></i></div>' +
+              $transparent_wrap = $('<div class="taf--transparent-wrap">' +
+                                '<div class="taf--transparent-slider"></div>' +
+                                '<div class="taf--transparent-offset"></div>' +
+                                '<div class="taf--transparent-text"></div>' +
+                                '<div class="taf--transparent-button">transparent <i class="fas fa-toggle-off"></i></div>' +
                                 '</div>').appendTo( $container.find('.wp-picker-holder') ),
-              $transparent_slider = $transparent_wrap.find('.efp--transparent-slider'),
-              $transparent_text   = $transparent_wrap.find('.efp--transparent-text'),
-              $transparent_offset = $transparent_wrap.find('.efp--transparent-offset'),
-              $transparent_button = $transparent_wrap.find('.efp--transparent-button');
+              $transparent_slider = $transparent_wrap.find('.taf--transparent-slider'),
+              $transparent_text   = $transparent_wrap.find('.taf--transparent-text'),
+              $transparent_offset = $transparent_wrap.find('.taf--transparent-offset'),
+              $transparent_button = $transparent_wrap.find('.taf--transparent-button');
 
           if ( $input.val() === 'transparent' ) {
-            $container.addClass('efp--transparent-active');
+            $container.addClass('taf--transparent-active');
           }
 
           $transparent_button.on('click', function() {
             if ( $input.val() !== 'transparent' ) {
               $input.val('transparent').trigger('change').removeClass('iris-error');
-              $container.addClass('efp--transparent-active');
+              $container.addClass('taf--transparent-active');
             } else {
               $input.val( a8cIris._color.toString() ).trigger('change');
-              $container.removeClass('efp--transparent-active');
+              $container.removeClass('taf--transparent-active');
             }
           });
 
@@ -2953,7 +2953,7 @@
                 a8cIris._color._alpha = 1;
                 $transparent_text.text('');
                 $transparent_slider.slider('option', 'value', 100);
-                $container.removeClass('efp--transparent-active');
+                $container.removeClass('taf--transparent-active');
                 $input.trigger('change');
 
               });
@@ -2970,7 +2970,7 @@
 
                 if ( default_color.value === 'transparent' ) {
                   $input.removeClass('iris-error');
-                  $container.addClass('efp--transparent-active');
+                  $container.addClass('taf--transparent-active');
                 }
 
               });
@@ -2986,20 +2986,20 @@
   //
   // ChosenJS
   //
-  $.fn.efp_chosen = function() {
+  $.fn.taf_chosen = function() {
     return this.each( function() {
 
       var $this       = $(this),
           $inited     = $this.parent().find('.chosen-container'),
-          is_sortable = $this.hasClass('efp-chosen-sortable') || false,
-          is_ajax     = $this.hasClass('efp-chosen-ajax') || false,
+          is_sortable = $this.hasClass('taf-chosen-sortable') || false,
+          is_ajax     = $this.hasClass('taf-chosen-ajax') || false,
           is_multiple = $this.attr('multiple') || false,
           set_width   = is_multiple ? '100%' : 'auto',
           set_options = $.extend({
             allow_single_deselect: true,
             disable_search_threshold: 10,
             width: set_width,
-            no_results_text: window.efp_vars.i18n.no_results_text,
+            no_results_text: window.taf_vars.i18n.no_results_text,
           }, $this.data('chosen-settings'));
 
       if ( $inited.length ) {
@@ -3019,9 +3019,9 @@
           width: '100%',
           min_length: 3,
           type_delay: 500,
-          typing_text: window.efp_vars.i18n.typing_text,
-          searching_text: window.efp_vars.i18n.searching_text,
-          no_results_text: window.efp_vars.i18n.no_results_text,
+          typing_text: window.taf_vars.i18n.typing_text,
+          searching_text: window.taf_vars.i18n.searching_text,
+          no_results_text: window.taf_vars.i18n.no_results_text,
         }, $this.data('chosen-settings'));
 
         $this.EFPAjaxChosen(set_ajax_options);
@@ -3035,7 +3035,7 @@
       // Chosen keep options order
       if ( is_multiple ) {
 
-        var $hidden_select = $this.parent().find('.efp-hide-select');
+        var $hidden_select = $this.parent().find('.taf-hide-select');
         var $hidden_value  = $hidden_select.val() || [];
 
         $this.on('change', function(obj, result) {
@@ -3085,7 +3085,7 @@
 
             var select_options = '';
             var chosen_object  = $this.data('chosen');
-            var $prev_select   = $this.parent().find('.efp-hide-select');
+            var $prev_select   = $this.parent().find('.taf-hide-select');
 
             $chosen_choices.find('.search-choice-close').each( function() {
               var option_array_index = $(this).data('option-array-index');
@@ -3111,12 +3111,12 @@
   //
   // Helper Checkbox Checker
   //
-  $.fn.efp_checkbox = function() {
+  $.fn.taf_checkbox = function() {
     return this.each( function() {
 
       var $this     = $(this),
-          $input    = $this.find('.efp--input'),
-          $checkbox = $this.find('.efp--checkbox');
+          $input    = $this.find('.taf--input'),
+          $checkbox = $this.find('.taf--checkbox');
 
       $checkbox.on('click', function() {
         $input.val( Number( $checkbox.prop('checked') ) ).trigger('change');
@@ -3128,14 +3128,14 @@
   //
   // Helper Check/Uncheck All
   //
-  $.fn.efp_checkbox_all = function() {
+  $.fn.taf_checkbox_all = function() {
     return this.each( function() {
 
       var $this = $(this);
 
       $this.on('click', function() {
 
-        var $inputs = $this.closest('.efp-field-checkbox').find(':input'),
+        var $inputs = $this.closest('.taf-field-checkbox').find(':input'),
             uncheck = false;
 
         $inputs.each(function() {
@@ -3162,11 +3162,11 @@
   //
   // Siblings
   //
-  $.fn.efp_siblings = function() {
+  $.fn.taf_siblings = function() {
     return this.each( function() {
 
       var $this     = $(this),
-          $siblings = $this.find('.efp--sibling'),
+          $siblings = $this.find('.taf--sibling'),
           multiple  = $this.data('multiple') || false;
 
       $siblings.on('click', function() {
@@ -3175,11 +3175,11 @@
 
         if ( multiple ) {
 
-          if ( $sibling.hasClass('efp--active') ) {
-            $sibling.removeClass('efp--active');
+          if ( $sibling.hasClass('taf--active') ) {
+            $sibling.removeClass('taf--active');
             $sibling.find('input').prop('checked', false).trigger('change');
           } else {
-            $sibling.addClass('efp--active');
+            $sibling.addClass('taf--active');
             $sibling.find('input').prop('checked', true).trigger('change');
           }
 
@@ -3187,7 +3187,7 @@
 
           $this.find('input').prop('checked', false);
           $sibling.find('input').prop('checked', true).trigger('change');
-          $sibling.addClass('efp--active').siblings().removeClass('efp--active');
+          $sibling.addClass('taf--active').siblings().removeClass('taf--active');
 
         }
 
@@ -3199,7 +3199,7 @@
   //
   // Help Tooltip
   //
-  $.fn.efp_help = function() {
+  $.fn.taf_help = function() {
     return this.each( function() {
 
       var $this = $(this),
@@ -3209,7 +3209,7 @@
       $this.on({
         mouseenter: function() {
 
-          $tooltip = $( '<div class="efp-tooltip"></div>' ).html( $this.find('.efp-help-text').html() ).appendTo('body');
+          $tooltip = $( '<div class="taf-tooltip"></div>' ).html( $this.find('.taf-help-text').html() ).appendTo('body');
           offset_left = ( EFP.vars.is_rtl ) ? ( $this.offset().left + 24 ) : ( $this.offset().left - $tooltip.outerWidth() );
 
           $tooltip.css({
@@ -3234,11 +3234,11 @@
   //
   // Customize Refresh
   //
-  $.fn.efp_customizer_refresh = function() {
+  $.fn.taf_customizer_refresh = function() {
     return this.each( function() {
 
       var $this    = $(this),
-          $complex = $this.closest('.efp-customize-complex');
+          $complex = $this.closest('.taf-customize-complex');
 
       if ( $complex.length ) {
 
@@ -3265,7 +3265,7 @@
 
       }
 
-      $(document).trigger('efp-customizer-refresh', $this);
+      $(document).trigger('taf-customizer-refresh', $this);
 
     });
   };
@@ -3273,7 +3273,7 @@
   //
   // Customize Listen Form Elements
   //
-  $.fn.efp_customizer_listen = function( options ) {
+  $.fn.taf_customizer_listen = function( options ) {
 
     var settings = $.extend({
       closest: false,
@@ -3283,7 +3283,7 @@
 
       if ( window.wp.customize === undefined ) { return; }
 
-      var $this     = ( settings.closest ) ? $(this).closest('.efp-customize-complex') : $(this),
+      var $this     = ( settings.closest ) ? $(this).closest('.taf-customize-complex') : $(this),
           $input    = $this.find(':input'),
           unique_id = $this.data('unique-id'),
           option_id = $this.data('option-id');
@@ -3292,7 +3292,7 @@
         return;
       }
 
-      $input.on('change keyup efp.change', function() {
+      $input.on('change keyup taf.change', function() {
 
         var obj = $this.find(':input').serializeObjectEFP();
         var val = ( !$.isEmptyObject(obj) && obj[unique_id] && obj[unique_id][option_id] ) ? obj[unique_id][option_id] : '';
@@ -3313,13 +3313,13 @@
 
     if ( $this.hasClass('open') && !$this.data('inited') ) {
 
-      var $fields  = $this.find('.efp-customize-field');
-      var $complex = $this.find('.efp-customize-complex');
+      var $fields  = $this.find('.taf-customize-field');
+      var $complex = $this.find('.taf-customize-complex');
 
       if ( $fields.length ) {
-        $this.efp_dependency();
-        $fields.efp_reload_script({dependency: false});
-        $complex.efp_customizer_listen();
+        $this.taf_dependency();
+        $fields.taf_reload_script({dependency: false});
+        $complex.taf_customizer_listen();
       }
 
       $this.data('inited', true);
@@ -3331,45 +3331,45 @@
   //
   // Window on resize
   //
-  EFP.vars.$window.on('resize efp.resize', EFP.helper.debounce( function( event ) {
+  EFP.vars.$window.on('resize taf.resize', EFP.helper.debounce( function( event ) {
 
     var window_width = navigator.userAgent.indexOf('AppleWebKit/') > -1 ? EFP.vars.$window.width() : window.innerWidth;
 
     if ( window_width <= 782 && !EFP.vars.onloaded ) {
-      $('.efp-section').efp_reload_script();
+      $('.taf-section').taf_reload_script();
       EFP.vars.onloaded  = true;
     }
 
-  }, 200)).trigger('efp.resize');
+  }, 200)).trigger('taf.resize');
 
   //
   // Widgets Framework
   //
-  $.fn.efp_widgets = function() {
+  $.fn.taf_widgets = function() {
     return this.each( function() {
 
       $(document).on('widget-added widget-updated', function( event, $widget ) {
 
-        var $fields = $widget.find('.efp-fields');
+        var $fields = $widget.find('.taf-fields');
 
         if ( $fields.length ) {
-          $fields.efp_reload_script();
+          $fields.taf_reload_script();
         }
 
       });
 
       $(document).on('click', '.widget-top', function( event ) {
 
-        var $fields = $(this).parent().find('.efp-fields');
+        var $fields = $(this).parent().find('.taf-fields');
 
         if ( $fields.length ) {
-          $fields.efp_reload_script();
+          $fields.taf_reload_script();
         }
 
       });
 
       $('.widgets-sortables, .control-section-sidebar').on('sortstop', function( event, ui ) {
-        ui.item.find('.efp-fields').efp_reload_script_retry();
+        ui.item.find('.taf-fields').taf_reload_script_retry();
       });
 
     });
@@ -3378,17 +3378,17 @@
   //
   // Nav Menu Options Framework
   //
-  $.fn.efp_nav_menu = function() {
+  $.fn.taf_nav_menu = function() {
     return this.each( function() {
 
       var $navmenu = $(this);
 
       $navmenu.on('click', 'a.item-edit', function() {
-        $(this).closest('li.menu-item').find('.efp-fields').efp_reload_script();
+        $(this).closest('li.menu-item').find('.taf-fields').taf_reload_script();
       });
 
       $navmenu.on('sortstop', function( event, ui ) {
-        ui.item.find('.efp-fields').efp_reload_script_retry();
+        ui.item.find('.taf-fields').taf_reload_script_retry();
       });
 
     });
@@ -3397,13 +3397,13 @@
   //
   // Retry Plugins
   //
-  $.fn.efp_reload_script_retry = function() {
+  $.fn.taf_reload_script_retry = function() {
     return this.each( function() {
 
       var $this = $(this);
 
       if ( $this.data('inited') ) {
-        $this.children('.efp-field-wp_editor').efp_field_wp_editor();
+        $this.children('.taf-field-wp_editor').taf_field_wp_editor();
       }
 
     });
@@ -3412,7 +3412,7 @@
   //
   // Reload Plugins
   //
-  $.fn.efp_reload_script = function( options ) {
+  $.fn.taf_reload_script = function( options ) {
 
     var settings = $.extend({
       dependency: true,
@@ -3426,62 +3426,60 @@
       if ( !$this.data('inited') ) {
 
         // Field plugins
-        $this.children('.efp-field-accordion').efp_field_accordion();
-        $this.children('.efp-field-backup').efp_field_backup();
-        $this.children('.efp-field-background').efp_field_background();
-        $this.children('.efp-field-code_editor').efp_field_code_editor();
-        $this.children('.efp-field-date').efp_field_date();
-        $this.children('.efp-field-datetime').efp_field_datetime();
-        $this.children('.efp-field-fieldset').efp_field_fieldset();
-        $this.children('.efp-field-gallery').efp_field_gallery();
-        $this.children('.efp-field-group').efp_field_group();
-        $this.children('.efp-field-icon').efp_field_icon();
-        $this.children('.efp-field-link').efp_field_link();
-        $this.children('.efp-field-media').efp_field_media();
-        $this.children('.efp-field-map').efp_field_map();
-        $this.children('.efp-field-repeater').efp_field_repeater();
-        $this.children('.efp-field-slider').efp_field_slider();
-        $this.children('.efp-field-sortable').efp_field_sortable();
-        $this.children('.efp-field-sorter').efp_field_sorter();
-        $this.children('.efp-field-spinner').efp_field_spinner();
-        $this.children('.efp-field-switcher').efp_field_switcher();
-        $this.children('.efp-field-tabbed').efp_field_tabbed();
-        $this.children('.efp-field-typography').efp_field_typography();
-        $this.children('.efp-field-upload').efp_field_upload();
-        $this.children('.efp-field-wp_editor').efp_field_wp_editor();
+        $this.children('.taf-field-accordion').taf_field_accordion();
+        $this.children('.taf-field-backup').taf_field_backup();
+        $this.children('.taf-field-background').taf_field_background();
+        $this.children('.taf-field-code_editor').taf_field_code_editor();
+        $this.children('.taf-field-date').taf_field_date();
+        $this.children('.taf-field-datetime').taf_field_datetime();
+        $this.children('.taf-field-fieldset').taf_field_fieldset();
+        $this.children('.taf-field-gallery').taf_field_gallery();
+        $this.children('.taf-field-group').taf_field_group();
+        $this.children('.taf-field-icon').taf_field_icon();
+        $this.children('.taf-field-link').taf_field_link();
+        $this.children('.taf-field-media').taf_field_media();
+        $this.children('.taf-field-map').taf_field_map();
+        $this.children('.taf-field-repeater').taf_field_repeater();
+        $this.children('.taf-field-slider').taf_field_slider();
+        $this.children('.taf-field-sortable').taf_field_sortable();
+        $this.children('.taf-field-sorter').taf_field_sorter();
+        $this.children('.taf-field-spinner').taf_field_spinner();
+        $this.children('.taf-field-switcher').taf_field_switcher();
+        $this.children('.taf-field-tabbed').taf_field_tabbed();
+        $this.children('.taf-field-typography').taf_field_typography();
+        $this.children('.taf-field-upload').taf_field_upload();
+        $this.children('.taf-field-wp_editor').taf_field_wp_editor();
 
         // Field colors
-        $this.children('.efp-field-box_shadow').find('.efp-color').efp_color();
-        $this.children('.efp-field-border').find('.efp-color').efp_color();
-        $this.children('.efp-field-background').find('.efp-color').efp_color();
-        $this.children('.efp-field-color').find('.efp-color').efp_color();
-        $this.children('.efp-field-color_group').find('.efp-color').efp_color();
-        $this.children('.efp-field-link_color').find('.efp-color').efp_color();
-        $this.children('.efp-field-typography').find('.efp-color').efp_color();
+        $this.children('.taf-field-border').find('.taf-color').taf_color();
+        $this.children('.taf-field-background').find('.taf-color').taf_color();
+        $this.children('.taf-field-color').find('.taf-color').taf_color();
+        $this.children('.taf-field-color_group').find('.taf-color').taf_color();
+        $this.children('.taf-field-link_color').find('.taf-color').taf_color();
+        $this.children('.taf-field-typography').find('.taf-color').taf_color();
 
         // Field chosenjs
-        $this.children('.efp-field-select').find('.efp-chosen').efp_chosen();
+        $this.children('.taf-field-select').find('.taf-chosen').taf_chosen();
 
         // Field Checkbox
-        $this.children('.efp-field-checkbox').find('.efp-checkbox').efp_checkbox();
-        $this.children('.efp-field-checkbox').find('.efp-checkbox-all').efp_checkbox_all();
+        $this.children('.taf-field-checkbox').find('.taf-checkbox').taf_checkbox();
+        $this.children('.taf-field-checkbox').find('.taf-checkbox-all').taf_checkbox_all();
 
         // Field Siblings
-        $this.children('.efp-field-button_set').find('.efp-siblings').efp_siblings();
-        $this.children('.efp-field-image_select').find('.efp-siblings').efp_siblings();
-        $this.children('.efp-field-layout_preset').find('.efp-siblings').efp_siblings();
-        $this.children('.efp-field-palette').find('.efp-siblings').efp_siblings();
+        $this.children('.taf-field-button_set').find('.taf-siblings').taf_siblings();
+        $this.children('.taf-field-image_select').find('.taf-siblings').taf_siblings();
+        $this.children('.taf-field-palette').find('.taf-siblings').taf_siblings();
 
         // Help Tooptip
-        $this.children('.efp-field').find('.efp-help').efp_help();
+        $this.children('.taf-field').find('.taf-help').taf_help();
 
         if ( settings.dependency ) {
-          $this.efp_dependency();
+          $this.taf_dependency();
         }
 
         $this.data('inited', true);
 
-        $(document).trigger('efp-reload-script', $this);
+        $(document).trigger('taf-reload-script', $this);
 
       }
 
@@ -3493,22 +3491,22 @@
   //
   $(document).ready( function() {
 
-    $('.efp-save').efp_save();
-    $('.efp-options').efp_options();
-    $('.efp-sticky-header').efp_sticky();
-    $('.efp-nav-options').efp_nav_options();
-    $('.efp-nav-metabox').efp_nav_metabox();
-    $('.efp-taxonomy').efp_taxonomy();
-    $('.efp-page-templates').efp_page_templates();
-    $('.efp-post-formats').efp_post_formats();
-    $('.efp-shortcode').efp_shortcode();
-    $('.efp-search').efp_search();
-    $('.efp-confirm').efp_confirm();
-    $('.efp-expand-all').efp_expand_all();
-    $('.efp-onload').efp_reload_script();
-    $('#widgets-editor').efp_widgets();
-    $('#widgets-right').efp_widgets();
-    $('#menu-to-edit').efp_nav_menu();
+    $('.taf-save').taf_save();
+    $('.taf-options').taf_options();
+    $('.taf-sticky-header').taf_sticky();
+    $('.taf-nav-options').taf_nav_options();
+    $('.taf-nav-metabox').taf_nav_metabox();
+    $('.taf-taxonomy').taf_taxonomy();
+    $('.taf-page-templates').taf_page_templates();
+    $('.taf-post-formats').taf_post_formats();
+    $('.taf-shortcode').taf_shortcode();
+    $('.taf-search').taf_search();
+    $('.taf-confirm').taf_confirm();
+    $('.taf-expand-all').taf_expand_all();
+    $('.taf-onload').taf_reload_script();
+    $('#widgets-editor').taf_widgets();
+    $('#widgets-right').taf_widgets();
+    $('#menu-to-edit').taf_nav_menu();
 
   });
 

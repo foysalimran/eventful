@@ -1,7 +1,7 @@
 /**
  * 09. Modal
  */
-.efp-modal{
+.taf-modal{
   position: fixed;
   z-index: 100101;
   top: 0;
@@ -14,23 +14,23 @@
   }
 }
 
-.efp-modal-icon{
+.taf-modal-icon{
   z-index: 100102;
 }
 
-.efp-modal-table{
+.taf-modal-table{
   display: table;
   width: 100%;
   height: 100%;
 }
 
-.efp-modal-table-cell{
+.taf-modal-table-cell{
   display: table-cell;
   vertical-align: middle;
   margin: 100px 0;
 }
 
-.efp-modal-inner{
+.taf-modal-inner{
   position: relative;
   z-index: 10;
   width: 760px;
@@ -39,17 +39,17 @@
   background-color: #fff;
 }
 
-.efp-modal-content{
+.taf-modal-content{
   position: relative;
   overflow: hidden;
   overflow-y: auto;
   height: 595px;
 
-  .efp-shortcode-button{
+  .taf-shortcode-button{
     display: none;
   }
 
-  .efp-field{
+  .taf-field{
     padding: 15px 30px 15px 15px;
   }
 
@@ -72,7 +72,7 @@
   }
 }
 
-.efp-modal-title{
+.taf-modal-title{
   position: relative;
   background-color: #fcfcfc;
   border-bottom: 1px solid #ddd;
@@ -84,7 +84,7 @@
   padding: 0 36px 0 16px;
 }
 
-.efp-modal-header{
+.taf-modal-header{
   width: 100%;
   padding: 14px 0;
   background-color: #f5f5f5;
@@ -102,7 +102,7 @@
   }
 }
 
-.efp-modal-close{
+.taf-modal-close{
   color: #666;
   padding: 0;
   position: absolute;
@@ -128,7 +128,7 @@
   }
 }
 
-.efp-modal-insert-wrapper{
+.taf-modal-insert-wrapper{
   text-align: center;
   width: 100%;
   padding: 15px 0;
@@ -136,7 +136,7 @@
   border-top: 1px solid #ddd;
 }
 
-.efp-modal-overlay{
+.taf-modal-overlay{
   position: absolute;
   top: 0;
   left: 0;
@@ -149,28 +149,28 @@
 /**
  * 09. 01. Shortcode Modal
  */
-.efp--repeatable{
+.taf--repeatable{
   padding: 15px 15px 0 15px;
 }
 
-.efp--repeat-button-block{
+.taf--repeat-button-block{
   text-align: center;
   padding-bottom: 15px;
 }
 
-.efp--repeat-shortcode{
+.taf--repeat-shortcode{
   position: relative;
   margin-bottom: 15px;
   border: 1px dashed #ddd;
 
   &:first-child{
 
-    .efp-repeat-remove{
+    .taf-repeat-remove{
       display: none;
     }
   }
 
-  .efp-repeat-remove{
+  .taf-repeat-remove{
     position: absolute;
     right: 10px;
     top: 10px;
@@ -193,24 +193,24 @@
   }
 }
 
-.efp-shortcode-single{
+.taf-shortcode-single{
 
-  .efp-modal-inner{
+  .taf-modal-inner{
     height: 750px;
   }
 
-  .efp-modal-content{
+  .taf-modal-content{
     height: 652px;
   }
 }
 
 .elementor-editor-active{
 
-  .efp-shortcode-button{
+  .taf-shortcode-button{
     margin-left: 5px;
   }
 
-  .efp-modal .hidden{
+  .taf-modal .hidden{
     display: none !important;
   }
 }
@@ -218,7 +218,7 @@
 /**
  * 09. 02. Gutenberg Modal
  */
-.efp-shortcode-block{
+.taf-shortcode-block{
   text-align: center;
   padding: 14px;
   font-size: 13px;
@@ -226,16 +226,16 @@
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 
-.efp-shortcode-block .components-button{
+.taf-shortcode-block .components-button{
   margin-bottom: 10px;
 }
 
 /**
  * 09. 03. Icon Modal
  */
-.efp-modal-icon{
+.taf-modal-icon{
 
-  .efp-icon-title{
+  .taf-icon-title{
     padding: 15px 0;
     margin: 4px;
     font-size: 14px;
@@ -245,11 +245,11 @@
     background-color: #f7f7f7;
   }
 
-  .efp-modal-header{
+  .taf-modal-header{
     text-align: center;
   }
 
-  .efp-icon-search{
+  .taf-icon-search{
     width: 50%;
     height: 40px;
     line-height: 40px;
@@ -277,24 +277,24 @@
     }
   }
 
-  .efp-modal-content{
+  .taf-modal-content{
     padding: 10px;
     height: 618px;
   }
 
-  .efp-error-text{
+  .taf-error-text{
     padding: 10px;
   }
 }
 
-.efp-modal-loading{
+.taf-modal-loading{
   display: none;
   position: absolute;
   left: 15px;
   top: 15px;
 }
 
-.efp-loading{
+.taf-loading{
   position: relative;
   width: 20px;
   height: 20px;
@@ -315,12 +315,12 @@
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    animation-name: efpLoader;
+    animation-name: tafLoader;
     border-radius: 4px;
   }
 }
 
-@keyframes efpLoader {
+@keyframes tafLoader {
   0% {
     transform: rotate(0deg) translateX(-6px) rotate(0deg);
   }

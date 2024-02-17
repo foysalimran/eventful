@@ -1,58 +1,55 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die; } // Cannot access directly.
 /**
  *
  * Field: palette
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'EFP_Field_palette' ) ) {
-  class EFP_Field_palette extends EFP_Fields {
+	class EFP_Field_palette extends EFP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-    public function render() {
+		public function render() {
 
-      $palette = ( ! empty( $this->field['options'] ) ) ? $this->field['options'] : array();
+			$palette = ( ! empty( $this->field['options'] ) ) ? $this->field['options'] : array();
 
-      echo wp_kses_post( $this->field_before() );
+			echo wp_kses_post( $this->field_before() );
 
-      if ( ! empty( $palette ) ) {
+			if ( ! empty( $palette ) ) {
 
-        echo '<div class="efp-siblings efp--palettes">';
+				echo '<div class="taf-siblings taf--palettes">';
 
-        foreach ( $palette as $key => $colors ) {
+				foreach ( $palette as $key => $colors ) {
 
-          $active  = ( $key === $this->value ) ? ' efp--active' : '';
-          $checked = ( $key === $this->value ) ? ' checked' : '';
+					$active  = ( $key === $this->value ) ? ' taf--active' : '';
+					$checked = ( $key === $this->value ) ? ' checked' : '';
 
-          echo '<div class="efp--sibling efp--palette'. esc_attr( $active ) .'">';
+					echo '<div class="taf--sibling taf--palette' . esc_attr( $active ) . '">';
 
-          if ( ! empty( $colors ) ) {
+					if ( ! empty( $colors ) ) {
 
-            foreach ( $colors as $color ) {
+						foreach ( $colors as $color ) {
 
-              echo '<span style="background-color: '. esc_attr( $color ) .';"></span>';
+								echo '<span style="background-color: ' . esc_attr( $color ) . ';"></span>';
 
-            }
+						}
+					}
 
-          }
+					echo '<input type="radio" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $key ) . '"' . wp_kses_post( $this->field_attributes() ) . esc_attr( $checked ) . '/>';
+					echo '</div>';
 
-          echo '<input type="radio" name="'. esc_attr( $this->field_name() ) .'" value="'. esc_attr( $key ) .'"'. $this->field_attributes() . esc_attr( $checked ) .'/>';
-          echo '</div>';
+				}
 
-        }
+				echo '</div>';
 
-        echo '</div>';
+			}
 
-      }
-
-      echo wp_kses_post( $this->field_after() );
-
-    }
-
-  }
+			echo wp_kses_post( $this->field_after() );
+		}
+	}
 }
