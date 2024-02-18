@@ -9,7 +9,7 @@
  */
 if ( ! class_exists( 'WP_Customize_Panel_EFP' ) && class_exists( 'WP_Customize_Panel' ) ) {
 	class WP_Customize_Panel_EFP extends WP_Customize_Panel {
-		public $type = 'efp';
+		public $type = 'eventful';
 	}
 }
 
@@ -22,7 +22,7 @@ if ( ! class_exists( 'WP_Customize_Panel_EFP' ) && class_exists( 'WP_Customize_P
  */
 if ( ! class_exists( 'WP_Customize_Section_EFP' ) && class_exists( 'WP_Customize_Section' ) ) {
 	class WP_Customize_Section_EFP extends WP_Customize_Section {
-		public $type = 'efp';
+		public $type = 'eventful';
 	}
 }
 
@@ -36,7 +36,7 @@ if ( ! class_exists( 'WP_Customize_Section_EFP' ) && class_exists( 'WP_Customize
 if ( ! class_exists( 'WP_Customize_Control_EFP' ) && class_exists( 'WP_Customize_Control' ) ) {
 	class WP_Customize_Control_EFP extends WP_Customize_Control {
 
-		public $type   = 'efp';
+		public $type   = 'eventful';
 		public $field  = '';
 		public $unique = '';
 

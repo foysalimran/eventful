@@ -30,7 +30,7 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
         'description'    => 'EFP Shortcode Block',
         'icon'           => 'screenoptions',
         'category'       => 'widgets',
-        'keywords'       => array( 'shortcode', 'efp', 'insert' ),
+        'keywords'       => array( 'shortcode', 'eventful', 'insert' ),
         'placeholder'    => 'Write shortcode here...',
       ),
     );

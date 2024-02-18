@@ -587,7 +587,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       $min = ( self::$premium && SCRIPT_DEBUG ) ? '' : '.min';
 
       // Main style
-      wp_enqueue_style( 'efp', self::include_plugin_url( 'assets/css/style'. $min .'.css' ), array(), self::$version, 'all' );
+      wp_enqueue_style( 'eventful', self::include_plugin_url( 'assets/css/style'. $min .'.css' ), array(), self::$version, 'all' );
 
       // Main RTL styles
       if ( is_rtl() ) {
@@ -604,11 +604,11 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Main scripts
       wp_enqueue_script( 'efp-plugins', self::include_plugin_url( 'assets/js/plugins'. $min .'.js' ), array(), self::$version, true );
-      wp_enqueue_script( 'efp', self::include_plugin_url( 'assets/js/main'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
+      wp_enqueue_script( 'eventful', self::include_plugin_url( 'assets/js/main'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
       wp_enqueue_script( 'efp-custom', self::include_plugin_url( 'assets/js/taf-custom'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
 
       // Main variables
-      wp_localize_script( 'efp', 'efp_vars', array(
+      wp_localize_script( 'eventful', 'efp_vars', array(
         'color_palette'     => apply_filters( 'efp_color_palette', array() ),
         'i18n'              => array(
           'confirm'         => esc_html__( 'Are you sure?', 'ta-framework' ),

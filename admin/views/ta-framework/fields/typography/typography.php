@@ -475,7 +475,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 
 				EFP::include_plugin_file( 'fields/typography/google-fonts.php' );
 
-				wp_enqueue_script( 'efp-webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array( 'efp' ), '1.6.28', true );
+				wp_enqueue_script( 'efp-webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array( 'eventful' ), '1.6.28', true );
 
 				$webfonts = array();
 
@@ -548,7 +548,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 				$webfonts = apply_filters( 'efp_field_typography_webfonts', $webfonts );
 
 				wp_localize_script(
-					'efp',
+					'eventful',
 					'efp_typography_json',
 					array(
 						'webfonts'      => $webfonts,

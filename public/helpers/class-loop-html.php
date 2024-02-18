@@ -429,7 +429,7 @@ class EFP_HTML
 			$page_current     = max(1, get_query_var('paged'));
 			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : ''; //phpcs:ignore
 			if (!empty($filter_url_value)) {
-				$shortcode_id = isset($_GET['efp']) ? wp_unslash(sanitize_text_field($_GET['efp'])) : ''; //phpcs:ignore
+				$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : ''; //phpcs:ignore
 				if ($shortcode_id == $views_id) {
 					$efp_page = isset($_GET['efp_page']) ? wp_unslash(sanitize_text_field($_GET['efp_page'])) : ''; //phpcs:ignore
 					if (!empty($efp_page)) {
