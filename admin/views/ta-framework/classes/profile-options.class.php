@@ -98,7 +98,7 @@ if ( ! class_exists( 'EFUL_Profile_Options' ) ) {
 
       echo '<div class="eventful eventfulfile-options eventful-onload'. esc_attr( $class ) .'">';
 
-      wp_nonce_field( 'eventful_profile_nonce', 'eventful_profile_nonce'. $this->unique );
+      wp_nonce_field( 'eventfulfile_nonce', 'eventfulfile_nonce'. $this->unique );
 
       foreach ( $this->sections as $section ) {
 
@@ -138,10 +138,10 @@ if ( ! class_exists( 'EFUL_Profile_Options' ) ) {
       $count    = 1;
       $data     = array();
       $errors   = array();
-      $noncekey = 'eventful_profile_nonce'. $this->unique;
+      $noncekey = 'eventfulfile_nonce'. $this->unique;
       $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
 
-      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'eventful_profile_nonce' ) ) {
+      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'eventfulfile_nonce' ) ) {
         return $user_id;
       }
 
