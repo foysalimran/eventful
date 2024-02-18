@@ -2,7 +2,7 @@
   die;
 } // Cannot access directly.
 
-class EFP_Metaboxes {
+class EFUL_Metaboxes {
     /**
 	 * Layout Metabox function.
 	 *
@@ -10,7 +10,7 @@ class EFP_Metaboxes {
 	 * @return void
 	 */
 	public static function layout_metabox( $prefix ) {
-		EFP::createMetabox(
+		EFUL::createMetabox(
 			$prefix,
 			array(
 				'title'        => esc_html__( 'Eventful', 'eventful' ),
@@ -20,7 +20,7 @@ class EFP_Metaboxes {
 			)
 		);
 
-		EFP_Layout::section( $prefix );
+		EFUL_Layout::section( $prefix );
 
 	}
 
@@ -31,7 +31,7 @@ class EFP_Metaboxes {
 	 * @return void
 	 */
 	public static function option_metabox( $prefix ) {
-		EFP::createMetabox(
+		EFUL::createMetabox(
 			$prefix,
 			array(
 				'title'        => esc_html__( 'View Options', 'eventful' ),
@@ -42,11 +42,11 @@ class EFP_Metaboxes {
 			)
 		);
 
-		EFP_FilterPost::section( $prefix );
-		EFP_Display::section( $prefix );
-		EFP_Carousel::section( $prefix );
-		EFP_DetailSettings::section( $prefix );
-		EFP_Typography::section( $prefix );
+		EFUL_FilterPost::section( $prefix );
+		EFUL_Display::section( $prefix );
+		EFUL_Carousel::section( $prefix );
+		EFUL_DetailSettings::section( $prefix );
+		EFUL_Typography::section( $prefix );
 	}
 	/**
 	 * Shortcode Metabox function
@@ -55,7 +55,7 @@ class EFP_Metaboxes {
 	 * @return void
 	 */
 	public static function shortcode_metabox( $prefix ) {
-		EFP::createMetabox(
+		EFUL::createMetabox(
 			$prefix,
 			array(
 				'title'        => esc_html__( 'Eventful', 'eventful' ),
@@ -65,7 +65,7 @@ class EFP_Metaboxes {
 			)
 		);
 
-		EFP_Shortcode::section( $prefix );
+		EFUL_Shortcode::section( $prefix );
 
 	}
 }

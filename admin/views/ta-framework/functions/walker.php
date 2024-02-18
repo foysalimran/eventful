@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Walker_Nav_Menu_Edit' ) && class_exists( 'Walker_Nav_Menu_Edit' ) ) {
-	class EFP_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
+if ( ! class_exists( 'EFUL_Walker_Nav_Menu_Edit' ) && class_exists( 'Walker_Nav_Menu_Edit' ) ) {
+	class EFUL_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 
 		public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 

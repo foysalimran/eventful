@@ -1,7 +1,7 @@
 /**
  * 11. Welcome Page
  */
-.efp-welcome-wrap{
+.eventful-welcome-wrap{
   position: relative;
   margin: 25px 40px 0 20px;
   font-size: 15px;
@@ -21,7 +21,7 @@
     font-weight: 400;
   }
 
-  .efp-logo{
+  .eventful-logo{
     position: absolute;
     overflow: hidden;
     top: 0;
@@ -31,7 +31,7 @@
     background-image: linear-gradient( 45deg, #2d67cb, #ad19f3);
     box-shadow: 0 1px 4px rgba(0,0,0,0.25), inset 0 0 0 4px rgba(0,0,0,0.25);
 
-    .efp--effects i{
+    .eventful--effects i{
       position: absolute;
       width: 200px;
       height: 100px;
@@ -39,33 +39,33 @@
       transform: rotate(-45deg);
     }
 
-    .efp--effects i:nth-child(1){
+    .eventful--effects i:nth-child(1){
       bottom: -20px;
       right: -70px;
     }
 
-    .efp--effects i:nth-child(2){
+    .eventful--effects i:nth-child(2){
       bottom: -35px;
       right: -80px;
     }
 
-    .efp--effects i:nth-child(3){
+    .eventful--effects i:nth-child(3){
       bottom: -50px;
       right: -90px;
     }
 
-    .efp--effects i:nth-child(4){
+    .eventful--effects i:nth-child(4){
       bottom: -65px;
       right: -100px;
     }
 
-    .efp--wp-logos{
+    .eventful--wp-logos{
       position: relative;
       padding-top: 25px;
       text-align: center;
     }
 
-    .efp--wp-logo{
+    .eventful--wp-logo{
       position: absolute;
       left: 20px;
       width: 20px;
@@ -75,7 +75,7 @@
       background-image: url(../images/wp-logo.svg);
     }
 
-    .efp--wp-plugin-logo{
+    .eventful--wp-plugin-logo{
       display: inline-block;
       width: 50px;
       height: 50px;
@@ -88,7 +88,7 @@
       vertical-align: middle;
     }
 
-    .efp--text{
+    .eventful--text{
       position: absolute;
       left: 0;
       right: 0;
@@ -102,7 +102,7 @@
       text-shadow: 1px 1px 0 rgba(0,0,0,0.25);
     }
 
-    .efp--version{
+    .eventful--version{
       top: auto;
       left: auto;
       right: 8px;
@@ -112,7 +112,7 @@
     }
   }
 
-  .efp-about-text{
+  .eventful-about-text{
     font-weight: 400;
     line-height: 1.6em;
     font-size: 19px;
@@ -120,7 +120,7 @@
     color: #555d66;
   }
 
-  .efp-demo-button{
+  .eventful-demo-button{
     margin: 1em 200px 2em 0;
   }
 
@@ -133,40 +133,40 @@
     padding-left: 15px;
   }
 
-  .efp--col{
+  .eventful--col{
     float: left;
     padding-right: 20px;
     box-sizing: border-box;
   }
 
-  .efp--col-2{
+  .eventful--col-2{
     width: 50%;
   }
 
-  .efp--col-3{
+  .eventful--col-3{
     width: 33.333%;
   }
 
-  .efp--col-4{
+  .eventful--col-4{
     width: 25%;
   }
 
-  .efp--col-5{
+  .eventful--col-5{
     width: 20%;
   }
 
-  .efp--col-last{
+  .eventful--col-last{
     padding-right: 0;
   }
 
-  .efp--col-upgrade{
+  .eventful--col-upgrade{
     padding: 10px 0;
     text-align: center;
     border-top: 1px solid #e5e5e5;
   }
 }
 
-.efp--table-compare{
+.eventful--table-compare{
 
   thead,
   tfoot{
@@ -205,7 +205,7 @@
   }
 }
 
-.efp-welcome-cols{
+.eventful-welcome-cols{
   clear: both;
   margin: 20px 0;
   background-color: #fff;
@@ -213,7 +213,7 @@
   border-radius: 2px;
   border: 1px solid #e5e5e5;
 
-  .efp--col{
+  .eventful--col{
     width: 33.333%;
     float: left;
     padding: 20px;
@@ -223,8 +223,8 @@
     border-right: 1px solid #e5e5e5;
   }
 
-  .efp--left,
-  .efp--block{
+  .eventful--left,
+  .eventful--block{
     float: left;
     width: 20%;
     padding: 0 30px;
@@ -232,23 +232,23 @@
     box-sizing: border-box;
   }
 
-  .efp--block{
+  .eventful--block{
     width: 80%;
   }
 
-  .efp--col-first{
+  .eventful--col-first{
     border-bottom: 1px solid #e5e5e5;
   }
 
-  .efp--last{
+  .eventful--last{
     border-right: none;
   }
 
-  .efp--space{
+  .eventful--space{
     height: 20px;
   }
 
-  .efp--icon{
+  .eventful--icon{
     display: inline-block;
     font-size: 20px;
     width: 30px;
@@ -261,15 +261,15 @@
     border-radius: 30px;
   }
 
-  .efp--active{
+  .eventful--active{
     background-color: #5cb85c;
   }
 
-  .efp--deactive{
+  .eventful--deactive{
     background-color: #e14d43;
   }
 
-  .efp--title{
+  .eventful--title{
     font-weight: bold;
     display: block;
   }
@@ -279,17 +279,17 @@
   }
 }
 
-.efp-features-cols{
+.eventful-features-cols{
 
-  .efp--key-features{
+  .eventful--key-features{
     width: 30%;
   }
-  .efp--available-fields{
+  .eventful--available-fields{
     width: 70%;
   }
 }
 
-.efp-code-block{
+.eventful-code-block{
   margin: 20px 0;
   padding: 5px 20px;
   background-color: #fff;
@@ -306,13 +306,13 @@
   }
 }
 
-.efp--table-fields{
+.eventful--table-fields{
   td{
     font-size: 14px;
   }
 }
 
-.efp--upgrade a{
+.eventful--upgrade a{
   color: #5cb85c;
   font-weight: bold;
 
@@ -326,8 +326,8 @@
 
 @media only screen and (max-width:782px){
 
-  .efp-welcome-cols{
-    .efp--col{
+  .eventful-welcome-cols{
+    .eventful--col{
       width: 100%;
       min-height: auto;
       border-right: none;
@@ -335,11 +335,11 @@
     }
   }
 
-  .efp-features-cols{
-    .efp--key-features{
+  .eventful-features-cols{
+    .eventful--key-features{
       width: 100%;
     }
-    .efp--available-fields{
+    .eventful--available-fields{
       width: 100%;
     }
   }

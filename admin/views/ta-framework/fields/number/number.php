@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_number' ) ) {
-	class EFP_Field_number extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_number' ) ) {
+	class EFUL_Field_number extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -27,9 +27,9 @@ if ( ! class_exists( 'EFP_Field_number' ) ) {
 			);
 
 			echo wp_kses_post( $this->field_before() );
-			echo '<div class="efp--wrap">';
+			echo '<div class="eventful--wrap">';
 			echo '<input type="number" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $this->value ) . '"' . wp_kses_post( $this->field_attributes() ) . ' min="' . esc_attr( $args['min'] ) . '" max="' . esc_attr( $args['max'] ) . '" step="' . esc_attr( $args['step'] ) . '"/>';
-			echo ( ! empty( $args['unit'] ) ) ? '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
+			echo ( ! empty( $args['unit'] ) ) ? '<span class="eventful--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
 			echo '</div>';
 			echo wp_kses_post( $this->field_after() );
 		}

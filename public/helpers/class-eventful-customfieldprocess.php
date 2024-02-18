@@ -13,7 +13,7 @@
  *
  * @since 2.0.0
  */
-class EFP_CustomFieldProcess {
+class EFUL_CustomFieldProcess {
 
 	/**
 	 * The key of the custom field.
@@ -93,7 +93,7 @@ class EFP_CustomFieldProcess {
 		} elseif ( 'auto' !== $this->cf_by_plugin ) {
 			$this->select_plugin( $this->cf_by_plugin );
 		} else {
-			foreach ( array_keys( ta_efp_cf_supported_plugins() ) as $_supported_plugin ) {
+			foreach ( array_keys( ta_eventful_cf_supported_plugins() ) as $_supported_plugin ) {
 				$this->select_plugin( $_supported_plugin, empty( $this->field_value ) );
 			}
 		}
@@ -134,7 +134,7 @@ class EFP_CustomFieldProcess {
 		if ( function_exists( 'get_field_object' ) ) {
 			$field_object = get_field_object( $this->key, $this->object );
 			if ( $field_object ) {
-				$this->field_value = EFP_ACF::show_acf_output( $field_object );
+				$this->field_value = EFUL_ACF::show_acf_output( $field_object );
 				$this->field_type  = $field_object['type'];
 				$this->field_name  = $field_object['label'];
 			}
@@ -191,7 +191,7 @@ class EFP_CustomFieldProcess {
 	private function cf_from_toolset_plugin() {
 		if ( shortcode_exists( 'types' ) ) {
 			$wpcf_key   = str_replace( 'wpcf-', '', $this->key );
-			$shortcode  = apply_filters( 'spefp_toolset_sc', "[types field='$wpcf_key' separator=', ']", $wpcf_key, $this->object );
+			$shortcode  = apply_filters( 'speventful_toolset_sc', "[types field='$wpcf_key' separator=', ']", $wpcf_key, $this->object );
 			$wpcf_value = do_shortcode( $shortcode );
 			if ( 0 !== strcmp( $wpcf_value, $shortcode ) ) {
 				$this->field_value = $wpcf_value;
@@ -209,33 +209,33 @@ class EFP_CustomFieldProcess {
  * @param boolean $is_post Check whether it is a post or not.
  * @param boolean $is_table Check table layout or not.
  */
-function efp_custom_field_html(  $object, $post_content_sorter, $is_post = true, $is_table = false ) {
+function eventful_custom_field_html(  $object, $post_content_sorter, $is_post = true, $is_table = false ) {
 
-	$efp_custom_fields = $post_content_sorter['efp_custom_fields'];
+	$eventful_custom_fields = $post_content_sorter['eventful_custom_fields'];
 
-	$plugin_used = EFP_Functions::efp_metabox_value( 'which_plugin_used', $efp_custom_fields );
+	$plugin_used = EFUL_Functions::eventful_metabox_value( 'which_plugin_used', $eventful_custom_fields );
 
-	$set_oembed = EFP_Functions::efp_metabox_value( 'efp_embed_cf_content', $efp_custom_fields );
+	$set_oembed = EFUL_Functions::eventful_metabox_value( 'eventful_embed_cf_content', $eventful_custom_fields );
 
-	$cf_by_plugin        = ta_efp_cf_multiple_plugins() && 'auto' !== $plugin_used ? $plugin_used : 'auto';
-	$custom_field_groups = EFP_Functions::efp_metabox_value( 'efp_custom_fields_group', $efp_custom_fields );
+	$cf_by_plugin        = ta_eventful_cf_multiple_plugins() && 'auto' !== $plugin_used ? $plugin_used : 'auto';
+	$custom_field_groups = EFUL_Functions::eventful_metabox_value( 'eventful_custom_fields_group', $eventful_custom_fields );
 	
 	// Get all meta data of this post.
 	$metadata = $is_post ? get_metadata( 'post', $object->ID ) : array();
 
-	$efp_cf_html = '';
+	$eventful_cf_html = '';
 	if ( ! empty( $custom_field_groups ) ) {
 		$the_cfields_html = array();
 		foreach ( $custom_field_groups as $cf_group ) {
-			$key               = $cf_group['efp_select_custom_field_key'];
+			$key               = $cf_group['eventful_select_custom_field_key'];
 			$show_field_name   = $cf_group['show_custom_field_name'];
-			$custom_meta_icon  = $cf_group['efp_custom_meta_icon'];
+			$custom_meta_icon  = $cf_group['eventful_custom_meta_icon'];
 			$colon_after_name  = $cf_group['colon_after_custom_field_name'];
 			$cf_arbitrary_name = $cf_group['customize_custom_field_name'];
-			$key               = apply_filters( 'ta_efp_cf_common_key', $is_post ) && in_array( $key, array_keys( $metadata ), true ) ? $key : '';
+			$key               = apply_filters( 'ta_eventful_cf_common_key', $is_post ) && in_array( $key, array_keys( $metadata ), true ) ? $key : '';
 
 			if ( ! empty( $key ) ) {
-				$cf_process_obj = new EFP_CustomFieldProcess( $key, $object, $is_post, $cf_by_plugin );
+				$cf_process_obj = new EFUL_CustomFieldProcess( $key, $object, $is_post, $cf_by_plugin );
 
 				$cf_value = $cf_process_obj->field_value;
 				$cf_name  = $cf_process_obj->field_name;
@@ -244,34 +244,34 @@ function efp_custom_field_html(  $object, $post_content_sorter, $is_post = true,
 				$meta_icon = ! empty( $custom_meta_icon ) ? '<i class="' . $custom_meta_icon . '"></i>' : '';
 
 				if ( ! empty( $cf_value ) ) :
-					$cf_value  = apply_filters( 'ta_efp_custom_meta_value', $cf_value, $key, $cf_type );
+					$cf_value  = apply_filters( 'ta_eventful_custom_meta_value', $cf_value, $key, $cf_type );
 					$name_html = '';
 					if ( $show_field_name ) {
 						// Field name.
 						$cf_name   = $cf_name ? $cf_name : esc_html( $key );
-						$name_text = ! empty( $cf_arbitrary_name ) ? $cf_arbitrary_name : EFP_Functions::slug_string_to_name( $cf_name );
+						$name_text = ! empty( $cf_arbitrary_name ) ? $cf_arbitrary_name : EFUL_Functions::slug_string_to_name( $cf_name );
 						// Colon after CF name.
 						$meta_colon = $colon_after_name ? ' :' : '';
-						$name_html  = sprintf( '<span class="%s">%s%s</span>', 'ta-efp-cf-name', $name_text, $meta_colon );
+						$name_html  = sprintf( '<span class="%s">%s%s</span>', 'ta-eventful-cf-name', $name_text, $meta_colon );
 					}
 					if ( in_array( $cf_type, array( 'text', 'oembed', 'url', 'email' ), true ) ) {
-						$cf_value = ta_efp_cf_data( $cf_value, $key, $set_oembed );
+						$cf_value = ta_eventful_cf_data( $cf_value, $key, $set_oembed );
 					}
 
-					$the_cfields_html[] = sprintf( '<div class="%1$s">%2$s%3$s%4$s</div>', 'ta_efp_ctf-' . sanitize_html_class( $key ), $meta_icon, $name_html, $cf_value );
+					$the_cfields_html[] = sprintf( '<div class="%1$s">%2$s%3$s%4$s</div>', 'ta_eventful_ctf-' . sanitize_html_class( $key ), $meta_icon, $name_html, $cf_value );
 				endif;
 			}
 		} // End of foreach.
 		if ( ! empty( $the_cfields_html ) ) {
-			$efp_cf_html = sprintf( '<div class="%s">%s</div>', 'ta_efp_cf_list', implode( '', $the_cfields_html ) );
+			$eventful_cf_html = sprintf( '<div class="%s">%s</div>', 'ta_eventful_cf_list', implode( '', $the_cfields_html ) );
 		}
 	}
 	$td_before = $is_table ? '<td>' : '';
 	$td_after  = $is_table ? '</td>' : '';
 
-	if ( $efp_cf_html ) {
+	if ( $eventful_cf_html ) {
 		echo $td_before;
-		echo $efp_cf_html;
+		echo $eventful_cf_html;
 		echo $td_after;
 	}
 
@@ -286,7 +286,7 @@ function efp_custom_field_html(  $object, $post_content_sorter, $is_post = true,
  * @param boolean $set_oembed Set oEmbed to the url or not.
  * @return statement
  */
-function ta_efp_cf_data( $cf_value, $key, $set_oembed ) {
+function ta_eventful_cf_data( $cf_value, $key, $set_oembed ) {
 
 	$output = false;
 	if ( $set_oembed && false !== filter_var( $cf_value, FILTER_VALIDATE_URL ) ) {
@@ -299,14 +299,14 @@ function ta_efp_cf_data( $cf_value, $key, $set_oembed ) {
 		if ( is_email( $cf_value ) ) {
 			$output = sprintf( '<a target="_blank" href="mailto:%1$s">%1$s</a>', antispambot( $cf_value ) );
 		} elseif ( preg_match( '/(gif|png|jp(e|g|eg)|bmp|ico|webp|jxr|svg)/i', $extension ) ) {
-			$output = ta_efp_cf_output_image( $cf_value, $path_info['filename'] );
+			$output = ta_eventful_cf_output_image( $cf_value, $path_info['filename'] );
 		} elseif ( 'mp3' === $extension ) {
-			$output = ta_efp_cf_output_audio( $cf_value );
+			$output = ta_eventful_cf_output_audio( $cf_value );
 		} elseif ( 'mp4' === $extension ) {
-			$output = ta_efp_cf_output_video( $cf_value );
+			$output = ta_eventful_cf_output_video( $cf_value );
 		} elseif ( false === ! filter_var( $cf_value, FILTER_VALIDATE_URL ) ) {
 			// } else {
-			$html   = apply_filters( 'ta_efp_cf_url_output', $cf_value, $key );
+			$html   = apply_filters( 'ta_eventful_cf_url_output', $cf_value, $key );
 			$output = sprintf( '<a target="_blank" href="%s">%s</a>', esc_url( $cf_value ), esc_html( $html ) );
 		}
 	}
@@ -319,7 +319,7 @@ function ta_efp_cf_data( $cf_value, $key, $set_oembed ) {
  *
  * @return statement
  */
-function ta_efp_cf_multiple_plugins() {
+function ta_eventful_cf_multiple_plugins() {
 	$count = 0;
 
 	$count += (int) function_exists( 'pods' );
@@ -334,7 +334,7 @@ function ta_efp_cf_multiple_plugins() {
  *
  * @return array
  */
-function ta_efp_cf_supported_plugins() {
+function ta_eventful_cf_supported_plugins() {
 	return array(
 		'_pods'    => esc_html__( 'Pods', 'eventful' ),
 		'_toolset' => esc_html__( 'Toolset', 'eventful' ),
@@ -349,8 +349,8 @@ function ta_efp_cf_supported_plugins() {
  * @param string $name The name of the image file.
  * @return statement
  */
-function ta_efp_cf_output_image( $value, $name ) {
-	return sprintf( '<img class="%1$s" src="%2$s" title="%3$s" style="width: 100%;">', 'sp-efp-cf-image', esc_url( $value ), esc_attr( $name ) );
+function ta_eventful_cf_output_image( $value, $name ) {
+	return sprintf( '<img class="%1$s" src="%2$s" title="%3$s" style="width: 100%;">', 'sp-eventful-cf-image', esc_url( $value ), esc_attr( $name ) );
 }
 
 /**
@@ -359,7 +359,7 @@ function ta_efp_cf_output_image( $value, $name ) {
  * @param string $value The value of the custom field.
  * @return statement
  */
-function ta_efp_cf_output_audio( $value ) {
+function ta_eventful_cf_output_audio( $value ) {
 	return '<audio controls><source src="' . esc_url( $value ) . '" type="audio/mpeg">The Browser does not support the audio format.</audio>';
 }
 
@@ -369,6 +369,6 @@ function ta_efp_cf_output_audio( $value ) {
  * @param string $value The value of the custom field.
  * @return statement
  */
-function ta_efp_cf_output_video( $value ) {
+function ta_eventful_cf_output_video( $value ) {
 	return '<video controls><source src="' . esc_url( $value ) . '" type="video/mp4">The browser does not support HTML5 video.</video>';
 }

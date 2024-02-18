@@ -8,8 +8,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! function_exists( 'efp_sanitize_replace_a_to_b' ) ) {
-	function efp_sanitize_replace_a_to_b( $value ) {
+if ( ! function_exists( 'eventful_sanitize_replace_a_to_b' ) ) {
+	function eventful_sanitize_replace_a_to_b( $value ) {
 		return str_replace( 'a', 'b', $value );
 	}
 }
@@ -21,8 +21,8 @@ if ( ! function_exists( 'efp_sanitize_replace_a_to_b' ) ) {
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! function_exists( 'efp_sanitize_title' ) ) {
-	function efp_sanitize_title( $value ) {
+if ( ! function_exists( 'eventful_sanitize_title' ) ) {
+	function eventful_sanitize_title( $value ) {
 		return sanitize_title( $value );
 	}
 }

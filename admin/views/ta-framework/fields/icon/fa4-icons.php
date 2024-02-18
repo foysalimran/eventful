@@ -3,8 +3,8 @@
 //
 // Font Awesome 4 Icons
 //
-if ( ! function_exists( 'efp_get_default_icons' ) ) {
-	function efp_get_default_icons() {
+if ( ! function_exists( 'eventful_get_default_icons' ) ) {
+	function eventful_get_default_icons() {
 		return array(
 			array(
 				'title' => 'Font Awesome',

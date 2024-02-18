@@ -1,18 +1,18 @@
 /**
  * 06. Profile
  */
-.efp-profile-options{
+.eventful-profile-options{
 
   > h2 > .fa {
     padding-right: 7px;
   }
 
-  > .efp-field{
+  > .eventful-field{
     max-width: 750px;
     padding: 15px 0;
     border-top: none !important;
 
-    > .efp-title{
+    > .eventful-title{
       width: 200px;
 
       h4{
@@ -24,35 +24,35 @@
       }
     }
 
-    > .efp-fieldset{
+    > .eventful-fieldset{
       width: calc(100% - 220px);
 
-      > .efp-help{
+      > .eventful-help{
         top: -15px;
         right: -5px;
       }
     }
   }
 
-  > .efp-field-heading{
+  > .eventful-field-heading{
     font-size: 1.1em;
   }
 
-  > .efp-field-subheading{
+  > .eventful-field-subheading{
     font-size: 12px;
   }
 
-  > .efp-field-subheading,
-  > .efp-field-heading{
+  > .eventful-field-subheading,
+  > .eventful-field-heading{
     margin: 10px 0;
     padding: 15px !important;
     border: 1px solid #ddd;
   }
 
-  > .efp-field-submessage{
+  > .eventful-field-submessage{
     margin: 20px 0;
 
-    .efp-submessage{
+    .eventful-submessage{
       padding: 10px;
       border-left-width: 1px;
       border-left-style: solid;
@@ -61,7 +61,7 @@
     }
   }
 
-  > .efp-field-notice{
+  > .eventful-field-notice{
     background-color: transparent;
   }
 }

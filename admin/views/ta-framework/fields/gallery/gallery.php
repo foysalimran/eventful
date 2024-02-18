@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_gallery' ) ) {
-	class EFP_Field_gallery extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_gallery' ) ) {
+	class EFUL_Field_gallery extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -41,9 +41,9 @@ if ( ! class_exists( 'EFP_Field_gallery' ) ) {
 			}
 			echo '</ul>';
 
-			echo '<a href="#" class="button button-primary efp-button">' . esc_html($args['add_title']) . '</a>';
-			echo '<a href="#" class="button efp-edit-gallery' . esc_attr( $hidden ) . '">' . esc_html($args['edit_title']) . '</a>';
-			echo '<a href="#" class="button efp-warning-primary efp-clear-gallery' . esc_attr( $hidden ) . '">' . esc_html($args['clear_title']) . '</a>';
+			echo '<a href="#" class="button button-primary eventful-button">' . esc_html($args['add_title']) . '</a>';
+			echo '<a href="#" class="button eventful-edit-gallery' . esc_attr( $hidden ) . '">' . esc_html($args['edit_title']) . '</a>';
+			echo '<a href="#" class="button eventful-warning-primary eventful-clear-gallery' . esc_attr( $hidden ) . '">' . esc_html($args['clear_title']) . '</a>';
 			echo '<input type="hidden" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $this->value ) . '"' . wp_kses_post( $this->field_attributes() ) . '/>';
 
 			echo wp_kses_post( $this->field_after() );

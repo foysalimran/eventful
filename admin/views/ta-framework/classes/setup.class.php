@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Setup' ) ) {
-  class EFP_Setup {
+if ( ! class_exists( 'EFUL_Setup' ) ) {
+  class EFUL_Setup {
 
     // Default constants
     public static $premium  = true;
@@ -65,15 +65,15 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
     public function __construct() {
 
       // Init action
-      do_action( 'efp_init' );
+      do_action( 'eventful_init' );
 
-      add_action( 'after_setup_theme', array( 'EFP', 'setup' ) );
-      add_action( 'init', array( 'EFP', 'setup' ) );
-      add_action( 'switch_theme', array( 'EFP', 'setup' ) );
-      add_action( 'admin_enqueue_scripts', array( 'EFP', 'add_admin_enqueue_scripts' ) );
-      add_action( 'wp_enqueue_scripts', array( 'EFP', 'add_typography_enqueue_styles' ), 80 );
-      add_action( 'wp_head', array( 'EFP', 'add_custom_css' ), 80 );
-      add_filter( 'admin_body_class', array( 'EFP', 'add_admin_body_class' ) );
+      add_action( 'after_setup_theme', array( 'EFUL', 'setup' ) );
+      add_action( 'init', array( 'EFUL', 'setup' ) );
+      add_action( 'switch_theme', array( 'EFUL', 'setup' ) );
+      add_action( 'admin_enqueue_scripts', array( 'EFUL', 'add_admin_enqueue_scripts' ) );
+      add_action( 'wp_enqueue_scripts', array( 'EFUL', 'add_typography_enqueue_styles' ), 80 );
+      add_action( 'wp_head', array( 'EFUL', 'add_custom_css' ), 80 );
+      add_filter( 'admin_body_class', array( 'EFUL', 'add_admin_body_class' ) );
 
     }
 
@@ -85,7 +85,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Setup admin option framework
       $params = array();
-      if ( class_exists( 'EFP_Options' ) && ! empty( self::$args['admin_options'] ) ) {
+      if ( class_exists( 'EFUL_Options' ) && ! empty( self::$args['admin_options'] ) ) {
         foreach ( self::$args['admin_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -93,7 +93,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            EFP_Options::instance( $key, $params );
+            EFUL_Options::instance( $key, $params );
 
             if ( ! empty( $value['show_in_customizer'] ) ) {
               $value['output_css'] = false;
@@ -108,7 +108,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Setup customize option framework
       $params = array();
-      if ( class_exists( 'EFP_Customize_Options' ) && ! empty( self::$args['customize_options'] ) ) {
+      if ( class_exists( 'EFUL_Customize_Options' ) && ! empty( self::$args['customize_options'] ) ) {
         foreach ( self::$args['customize_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -116,7 +116,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            EFP_Customize_Options::instance( $key, $params );
+            EFUL_Customize_Options::instance( $key, $params );
 
           }
         }
@@ -124,7 +124,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Setup metabox option framework
       $params = array();
-      if ( class_exists( 'EFP_Metabox' ) && ! empty( self::$args['metabox_options'] ) ) {
+      if ( class_exists( 'EFUL_Metabox' ) && ! empty( self::$args['metabox_options'] ) ) {
         foreach ( self::$args['metabox_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -132,7 +132,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            EFP_Metabox::instance( $key, $params );
+            EFUL_Metabox::instance( $key, $params );
 
           }
         }
@@ -140,7 +140,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Setup nav menu option framework
       $params = array();
-      if ( class_exists( 'EFP_Nav_Menu_Options' ) && ! empty( self::$args['nav_menu_options'] ) ) {
+      if ( class_exists( 'EFUL_Nav_Menu_Options' ) && ! empty( self::$args['nav_menu_options'] ) ) {
         foreach ( self::$args['nav_menu_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -148,7 +148,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            EFP_Nav_Menu_Options::instance( $key, $params );
+            EFUL_Nav_Menu_Options::instance( $key, $params );
 
           }
         }
@@ -156,7 +156,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Setup profile option framework
       $params = array();
-      if ( class_exists( 'EFP_Profile_Options' ) && ! empty( self::$args['profile_options'] ) ) {
+      if ( class_exists( 'EFUL_Profile_Options' ) && ! empty( self::$args['profile_options'] ) ) {
         foreach ( self::$args['profile_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -164,7 +164,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            EFP_Profile_Options::instance( $key, $params );
+            EFUL_Profile_Options::instance( $key, $params );
 
           }
         }
@@ -172,7 +172,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Setup taxonomy option framework
       $params = array();
-      if ( class_exists( 'EFP_Taxonomy_Options' ) && ! empty( self::$args['taxonomy_options'] ) ) {
+      if ( class_exists( 'EFUL_Taxonomy_Options' ) && ! empty( self::$args['taxonomy_options'] ) ) {
         $taxonomy = ( isset( $_GET['taxonomy'] ) ) ? sanitize_text_field( wp_unslash( $_GET['taxonomy'] ) ) : '';
         foreach ( self::$args['taxonomy_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
@@ -181,21 +181,21 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            EFP_Taxonomy_Options::instance( $key, $params );
+            EFUL_Taxonomy_Options::instance( $key, $params );
 
           }
         }
       }
 
       // Setup widget option framework
-      if ( class_exists( 'EFP_Widget' ) && class_exists( 'WP_Widget_Factory' ) && ! empty( self::$args['widget_options'] ) ) {
+      if ( class_exists( 'EFUL_Widget' ) && class_exists( 'WP_Widget_Factory' ) && ! empty( self::$args['widget_options'] ) ) {
         $wp_widget_factory = new WP_Widget_Factory();
         global $wp_widget_factory;
         foreach ( self::$args['widget_options'] as $key => $value ) {
           if ( ! isset( self::$inited[$key] ) ) {
 
             self::$inited[$key] = true;
-            $wp_widget_factory->register( EFP_Widget::instance( $key, $value ) );
+            $wp_widget_factory->register( EFUL_Widget::instance( $key, $value ) );
 
           }
         }
@@ -203,7 +203,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Setup comment option framework
       $params = array();
-      if ( class_exists( 'EFP_Comment_Metabox' ) && ! empty( self::$args['comment_options'] ) ) {
+      if ( class_exists( 'EFUL_Comment_Metabox' ) && ! empty( self::$args['comment_options'] ) ) {
         foreach ( self::$args['comment_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -211,7 +211,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            EFP_Comment_Metabox::instance( $key, $params );
+            EFUL_Comment_Metabox::instance( $key, $params );
 
           }
         }
@@ -219,7 +219,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Setup shortcode option framework
       $params = array();
-      if ( class_exists( 'EFP_Shortcoder' ) && ! empty( self::$args['shortcode_options'] ) ) {
+      if ( class_exists( 'EFUL_Shortcoder' ) && ! empty( self::$args['shortcode_options'] ) ) {
         foreach ( self::$args['shortcode_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -227,16 +227,16 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            EFP_Shortcoder::instance( $key, $params );
+            EFUL_Shortcoder::instance( $key, $params );
 
           }
         }
 
         // Once editor setup for gutenberg and media buttons
-        if ( class_exists( 'EFP_Shortcoder' ) && ! empty( self::$shortcode_instances ) ) {
+        if ( class_exists( 'EFUL_Shortcoder' ) && ! empty( self::$shortcode_instances ) ) {
           foreach ( self::$shortcode_instances as $instance ) {
             if ( ! empty( $instance['show_in_editor'] ) ) {
-              EFP_Shortcoder::once_editor_setup();
+              EFUL_Shortcoder::once_editor_setup();
               break;
             }
           }
@@ -244,7 +244,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       }
 
-      do_action( 'efp_loaded' );
+      do_action( 'eventful_loaded' );
 
     }
 
@@ -325,7 +325,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       $path     = '';
       $file     = ltrim( $file, '/' );
-      $override = apply_filters( 'efp_override', 'efp-override' );
+      $override = apply_filters( 'eventful_override', 'eventful-override' );
 
       if ( file_exists( get_parent_theme_file_path( $override .'/'. $file ) ) ) {
         $path = get_parent_theme_file_path( $override .'/'. $file );
@@ -401,7 +401,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       }
 
       // Include all framework fields
-      $fields = apply_filters( 'efp_fields', array(
+      $fields = apply_filters( 'eventful_fields', array(
         'accordion',
         'background',
         'backup',
@@ -457,7 +457,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       if ( ! empty( $fields ) ) {
         foreach ( $fields as $field ) {
-          if ( ! class_exists( 'EFP_Field_'. $field ) && class_exists( 'EFP_Fields' ) ) {
+          if ( ! class_exists( 'EFUL_Field_'. $field ) && class_exists( 'EFUL_Fields' ) ) {
             self::include_plugin_file( 'fields/'. $field .'/'. $field .'.php' );
           }
         }
@@ -558,13 +558,13 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
           self::$enqueue = true;
         }
 
-        if ( $wpscreen->id === 'tools_page_efp-welcome' ) {
+        if ( $wpscreen->id === 'tools_page_eventful-welcome' ) {
           self::$enqueue = true;
         }
 
       }
 
-      if ( ! apply_filters( 'efp_enqueue_assets', self::$enqueue ) ) {
+      if ( ! apply_filters( 'eventful_enqueue_assets', self::$enqueue ) ) {
         return;
       }
 
@@ -576,22 +576,22 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       wp_enqueue_script( 'wp-color-picker' );
 
       // Font awesome 4 and 5 loader
-      if ( apply_filters( 'efp_fa4', false ) ) {
-        wp_enqueue_style( 'font-awesome_v4-fa', EFP_URL . 'admin/views/ta-framework/assets/css/font-awesome_v4.min.css', array(), '4.7.0', 'all' );
+      if ( apply_filters( 'eventful_fa4', false ) ) {
+        wp_enqueue_style( 'font-awesome_v4-fa', EFUL_URL . 'admin/views/ta-framework/assets/css/font-awesome_v4.min.css', array(), '4.7.0', 'all' );
       } else {
-        wp_enqueue_style( 'font-awesome_v5-fa5', EFP_URL .'admin/views/ta-framework/assets/css/font-awesome_v5.min.css', array(), '5.15.5', 'all' );
-        wp_enqueue_style( 'font-awesome_v4-v4-shims', EFP_URL .'admin/views/ta-framework/assets/css/font-awesome_v4-shims.min.css', array(), '5.15.5', 'all' );
+        wp_enqueue_style( 'font-awesome_v5-fa5', EFUL_URL .'admin/views/ta-framework/assets/css/font-awesome_v5.min.css', array(), '5.15.5', 'all' );
+        wp_enqueue_style( 'font-awesome_v4-v4-shims', EFUL_URL .'admin/views/ta-framework/assets/css/font-awesome_v4-shims.min.css', array(), '5.15.5', 'all' );
       }
 
       // Check for developer mode
       $min = ( self::$premium && SCRIPT_DEBUG ) ? '' : '.min';
 
       // Main style
-      wp_enqueue_style( 'efp', self::include_plugin_url( 'assets/css/style'. $min .'.css' ), array(), self::$version, 'all' );
+      wp_enqueue_style( 'eventful', self::include_plugin_url( 'assets/css/style'. $min .'.css' ), array(), self::$version, 'all' );
 
       // Main RTL styles
       if ( is_rtl() ) {
-        wp_enqueue_style( 'efp-rtl', self::include_plugin_url( 'assets/css/style-rtl'. $min .'.css' ), array(), self::$version, 'all' );
+        wp_enqueue_style( 'eventful-rtl', self::include_plugin_url( 'assets/css/style-rtl'. $min .'.css' ), array(), self::$version, 'all' );
       }
 
       // Main style
@@ -603,13 +603,13 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       }
 
       // Main scripts
-      wp_enqueue_script( 'efp-plugins', self::include_plugin_url( 'assets/js/plugins'. $min .'.js' ), array(), self::$version, true );
-      wp_enqueue_script( 'efp', self::include_plugin_url( 'assets/js/main'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
-      wp_enqueue_script( 'efp-custom', self::include_plugin_url( 'assets/js/taf-custom'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
+      wp_enqueue_script( 'eventful-plugins', self::include_plugin_url( 'assets/js/plugins'. $min .'.js' ), array(), self::$version, true );
+      wp_enqueue_script( 'eventful', self::include_plugin_url( 'assets/js/main'. $min .'.js' ), array( 'eventful-plugins' ), self::$version, true );
+      wp_enqueue_script( 'eventful-custom', self::include_plugin_url( 'assets/js/taf-custom'. $min .'.js' ), array( 'eventful-plugins' ), self::$version, true );
 
       // Main variables
-      wp_localize_script( 'efp', 'efp_vars', array(
-        'color_palette'     => apply_filters( 'efp_color_palette', array() ),
+      wp_localize_script( 'eventful', 'eventful_vars', array(
+        'color_palette'     => apply_filters( 'eventful_color_palette', array() ),
         'i18n'              => array(
           'confirm'         => esc_html__( 'Are you sure?', 'ta-framework' ),
           'typing_text'     => esc_html__( 'Please enter %s or more characters', 'ta-framework' ),
@@ -624,7 +624,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       if ( ! empty( self::$fields ) ) {
         foreach ( self::$fields as $field ) {
           if ( ! empty( $field['type'] ) ) {
-            $classname = 'EFP_Field_' . $field['type'];
+            $classname = 'EFUL_Field_' . $field['type'];
             if ( class_exists( $classname ) && method_exists( $classname, 'enqueue' ) ) {
               $instance = new $classname( $field );
               if ( method_exists( $classname, 'enqueue' ) ) {
@@ -636,7 +636,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         }
       }
 
-      do_action( 'efp_enqueue' );
+      do_action( 'eventful_enqueue' );
 
     }
 
@@ -664,7 +664,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
           $query['display'] = 'swap';
 
-          wp_enqueue_style( 'efp-google-web-fonts', esc_url( add_query_arg( $query, '//fonts.googleapis.com/css' ) ), array(), null );
+          wp_enqueue_style( 'eventful-google-web-fonts', esc_url( add_query_arg( $query, '//fonts.googleapis.com/css' ) ), array(), null );
 
         }
 
@@ -676,9 +676,9 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $fonts[] = $family . ( ( ! empty( $styles ) ) ? ':'. implode( ',', $styles ) : '' );
           }
 
-          wp_enqueue_script( 'efp-google-web-fonts', esc_url( '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' ), array(), null );
+          wp_enqueue_script( 'eventful-google-web-fonts', esc_url( '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' ), array(), null );
 
-          wp_localize_script( 'efp-google-web-fonts', 'WebFontConfig', array( 'google' => array( 'families' => $fonts ) ) );
+          wp_localize_script( 'eventful-google-web-fonts', 'WebFontConfig', array( 'google' => array( 'families' => $fonts ) ) );
 
         }
 
@@ -689,8 +689,8 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
     // Add admin body class
     public static function add_admin_body_class( $classes ) {
 
-      if ( apply_filters( 'efp_fa4', false ) ) {
-        $classes .= 'efp-fa5-shims';
+      if ( apply_filters( 'eventful_fa4', false ) ) {
+        $classes .= 'eventful-fa5-shims';
       }
 
       return $classes;
@@ -725,7 +725,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       $visible    = '';
       $unique     = ( ! empty( $unique ) ) ? $unique : '';
       $class      = ( ! empty( $field['class'] ) ) ? ' ' . esc_attr( $field['class'] ) : '';
-      $is_pseudo  = ( ! empty( $field['pseudo'] ) ) ? ' efp-pseudo-field' : '';
+      $is_pseudo  = ( ! empty( $field['pseudo'] ) ) ? ' eventful-pseudo-field' : '';
       $field_type = ( ! empty( $field['type'] ) ) ? esc_attr( $field['type'] ) : '';
 
       if ( ! empty( $field['dependency'] ) ) {
@@ -756,28 +756,28 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         $depend .= ' data-value="'. esc_attr( $data_value ) .'"';
         $depend .= ( ! empty( $data_global ) ) ? ' data-depend-global="true"' : '';
 
-        $visible = ( ! empty( $depend_visible ) ) ? ' efp-depend-visible' : ' efp-depend-hidden';
+        $visible = ( ! empty( $depend_visible ) ) ? ' eventful-depend-visible' : ' eventful-depend-hidden';
 
       }
 
       // These attributes has been sanitized above.
-      echo '<div class="efp-field efp-field-'. $field_type . $is_pseudo . $class . $visible .'"'. $depend .'>';
+      echo '<div class="eventful-field eventful-field-'. $field_type . $is_pseudo . $class . $visible .'"'. $depend .'>';
 
       if ( ! empty( $field_type ) ) {
 
         if ( ! empty( $field['title'] ) ) {
-          echo '<div class="efp-title">';
+          echo '<div class="eventful-title">';
           echo '<h4>'. $field['title'] .'</h4>';
-          echo ( ! empty( $field['subtitle'] ) ) ? '<div class="efp-subtitle-text">'. $field['subtitle'] .'</div>' : '';
+          echo ( ! empty( $field['subtitle'] ) ) ? '<div class="eventful-subtitle-text">'. $field['subtitle'] .'</div>' : '';
           echo '</div>';
         }
 
-        echo ( ! empty( $field['title'] ) ) ? '<div class="efp-fieldset">' : '';
+        echo ( ! empty( $field['title'] ) ) ? '<div class="eventful-fieldset">' : '';
 
         $value = ( ! isset( $value ) && isset( $field['default'] ) ) ? $field['default'] : $value;
         $value = ( isset( $field['value'] ) ) ? $field['value'] : $value;
 
-        $classname = 'EFP_Field_'. $field_type;
+        $classname = 'EFUL_Field_'. $field_type;
 
         if ( class_exists( $classname ) ) {
           $instance = new $classname( $field, $value, $unique, $where, $parent );
@@ -800,7 +800,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
 }
 
-EFP_Setup::init( __FILE__, true );
+EFUL_Setup::init( __FILE__, true );
 
 /**
  *
@@ -811,5 +811,5 @@ EFP_Setup::init( __FILE__, true );
  *
  */
 if ( ! class_exists( 'ta-framework' ) ) {
-  class EFP extends EFP_Setup{}
+  class EFUL extends EFUL_Setup{}
 }

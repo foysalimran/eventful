@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_link_color' ) ) {
-	class EFP_Field_link_color extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_link_color' ) ) {
+	class EFUL_Field_link_color extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -53,9 +53,9 @@ if ( ! class_exists( 'EFP_Field_link_color' ) ) {
 
 					$default_attr = ( ! empty( $this->field['default'][ $color_prop_key ] ) ) ? ' data-default-color="' . esc_attr( $this->field['default'][ $color_prop_key ] ) . '"' : '';
 
-					echo '<div class="efp--left efp-field-color">';
-					echo '<div class="efp--title">' . esc_attr( $color_prop_value ) . '</div>';
-					echo '<input type="text" name="' . esc_attr( $this->field_name( '[' . $color_prop_key . ']' ) ) . '" value="' . esc_attr( $value[ $color_prop_key ] ) . '" class="efp-color"' . wp_kses_post($default_attr) . wp_kses_post( $this->field_attributes() ) . '/>';
+					echo '<div class="eventful--left eventful-field-color">';
+					echo '<div class="eventful--title">' . esc_attr( $color_prop_value ) . '</div>';
+					echo '<input type="text" name="' . esc_attr( $this->field_name( '[' . $color_prop_key . ']' ) ) . '" value="' . esc_attr( $value[ $color_prop_key ] ) . '" class="eventful-color"' . wp_kses_post($default_attr) . wp_kses_post( $this->field_attributes() ) . '/>';
 					echo '</div>';
 
 				}

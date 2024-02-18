@@ -47,7 +47,7 @@ class Eventful
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
-	protected $plugin_name = EVENTFUL_BASENAME;
+	protected $plugin_name = EFUL_BASENAME;
 
 	/**
 	 * The current version of the plugin.
@@ -99,12 +99,12 @@ class Eventful
 	 */
 	public function define_constants()
 	{
-		$this->define('EFP_VERSION', $this->version);
-		$this->define('EFP_PLUGIN_NAME', $this->plugin_name);
-		$this->define('EFP_PATH', plugin_dir_path(dirname(__FILE__)));
-		$this->define('EFP_TEMPLATE_PATH', plugin_dir_path(dirname(__FILE__)) . 'public/templates/');
-		$this->define('EFP_URL', plugin_dir_url(dirname(__FILE__)));
-		$this->define('EVENTFUL_BASENAME', EVENTFUL_BASENAME);
+		$this->define('EFUL_VERSION', $this->version);
+		$this->define('EFUL_PLUGIN_NAME', $this->plugin_name);
+		$this->define('EFUL_PATH', plugin_dir_path(dirname(__FILE__)));
+		$this->define('EFUL_TEMPLATE_PATH', plugin_dir_path(dirname(__FILE__)) . 'public/templates/');
+		$this->define('EFUL_URL', plugin_dir_url(dirname(__FILE__)));
+		$this->define('EFUL_BASENAME', EFUL_BASENAME);
 	}
 
 
@@ -131,37 +131,37 @@ class Eventful
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once EFP_PATH . 'includes/class-eventful-loader.php';
+		require_once EFUL_PATH . 'includes/class-eventful-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once EFP_PATH . 'includes/class-eventful-post-types.php';
+		require_once EFUL_PATH . 'includes/class-eventful-post-types.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once EFP_PATH . 'includes/class-eventful-i18n.php';
+		require_once EFUL_PATH . 'includes/class-eventful-i18n.php';
 
-		require_once EFP_PATH . 'admin/views/ta-framework/classes/setup.class.php';
+		require_once EFUL_PATH . 'admin/views/ta-framework/classes/setup.class.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once EFP_PATH . 'admin/class-eventful-admin.php';
+		require_once EFUL_PATH . 'admin/class-eventful-admin.php';
 
 		/**
 		 * The class responsible for defining metabox config that occur in the admin area.
 		 */
-		require_once EFP_PATH . 'admin/helpers/class-eventful-image-resizer.php';
+		require_once EFUL_PATH . 'admin/helpers/class-eventful-image-resizer.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once EFP_PATH . 'public/class-eventful-public.php';
+		require_once EFUL_PATH . 'public/class-eventful-public.php';
 
 		$this->loader = new Eventful_Loader();
 	}
@@ -191,7 +191,7 @@ class Eventful
 	 */
 	private function define_common_hooks()
 	{
-		$common_hooks = new Eventful_Post_Type(EFP_PLUGIN_NAME, EFP_VERSION);
+		$common_hooks = new Eventful_Post_Type(EFUL_PLUGIN_NAME, EFUL_VERSION);
 		$this->loader->add_action('init', $common_hooks, 'register_eventful_post_type', 10);
 	}
 
@@ -205,7 +205,7 @@ class Eventful
 	private function define_admin_hooks()
 	{
 
-		$plugin_admin = new Eventful_Admin(EFP_PLUGIN_NAME, EFP_VERSION);
+		$plugin_admin = new Eventful_Admin(EFUL_PLUGIN_NAME, EFUL_VERSION);
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
@@ -224,7 +224,7 @@ class Eventful
 	private function define_public_hooks()
 	{
 
-		$plugin_public = new Eventful_Public(EFP_PLUGIN_NAME, EFP_VERSION);
+		$plugin_public = new Eventful_Public(EFUL_PLUGIN_NAME, EFUL_VERSION);
 
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');

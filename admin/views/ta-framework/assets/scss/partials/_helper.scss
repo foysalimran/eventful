@@ -1,13 +1,13 @@
 /**
  * 10. Helper
  */
-.efp-subtitle-text{
+.eventful-subtitle-text{
   margin-top: 6px;
   font-weight: 400;
   color: #999;
 }
 
-.efp-desc-text{
+.eventful-desc-text{
   clear: both;
   float: left;
   width: 100%;
@@ -16,32 +16,32 @@
   color: #999;
 }
 
-.efp-error-text{
+.eventful-error-text{
   margin-top: 6px;
   color: #d02c21;
 }
 
-.efp-before-text{
+.eventful-before-text{
   margin-bottom: 6px;
 }
 
-.efp-after-text{
+.eventful-after-text{
   margin-top: 6px;
 }
 
-.efp-metabox-hide{
+.eventful-metabox-hide{
   display: none !important;
 }
 
-.efp-metabox-show{
+.eventful-metabox-show{
   display: block !important;
 }
 
-.efp-depend-hidden.efp-depend-on{
+.eventful-depend-hidden.eventful-depend-on{
   display: none;
 }
 
-.efp-depend-visible.efp-depend-on{
+.eventful-depend-visible.eventful-depend-on{
   display: block;
   opacity: 0.75;
   filter: grayscale(1);
@@ -61,7 +61,7 @@
   }
 }
 
-.efp-warning-primary{
+.eventful-warning-primary{
   color: #fff !important;
   border-color: #dc3545 !important;
   background: #dc3545 !important;
@@ -82,7 +82,7 @@
   }
 }
 
-.efp-form-result{
+.eventful-form-result{
   display: none;
   float: left;
   padding: 0 8px;
@@ -93,21 +93,21 @@
   border-radius: 2px;
 }
 
-.efp-form-show{
+.eventful-form-show{
   display: block;
 }
 
-.efp-form-success{
+.eventful-form-success{
   color: #fff;
   background-color: #46b450;
 }
 
-.efp-form-warning{
+.eventful-form-warning{
   color: #8a6d3b;
   background-color: #faebcc;
 }
 
-.efp-label-error{
+.eventful-label-error{
   position: relative;
   top: -2px;
   display: inline-block;
@@ -124,23 +124,23 @@
   border-radius: 2px;
 }
 
-.efp-no-option{
+.eventful-no-option{
   padding: 30px;
 }
 
-.efp-input-number{
+.eventful-input-number{
   -moz-appearance:textfield;
 }
 
-.efp-input-number::-webkit-inner-spin-button,
-.efp-input-number::-webkit-outer-spin-button{
+.eventful-input-number::-webkit-inner-spin-button,
+.eventful-input-number::-webkit-outer-spin-button{
   -webkit-appearance: none;
   margin: 0;
 }
 
-.efp-fa5-shims{
+.eventful-fa5-shims{
 
-  .efp{
+  .eventful{
 
     .fas,
     .far,

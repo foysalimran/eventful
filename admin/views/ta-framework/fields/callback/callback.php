@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_callback' ) ) {
-	class EFP_Field_callback extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_callback' ) ) {
+	class EFUL_Field_callback extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );

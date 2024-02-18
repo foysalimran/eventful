@@ -8,7 +8,7 @@
     "use strict";
     var $window = $(window);
 
-    $.fn.efp_lazyload = function(options) {
+    $.fn.eventful_lazyload = function(options) {
         var elements = this;
         var $container;
         var settings = {
@@ -17,7 +17,7 @@
             event           : "scroll",
             effect          : "show",
             container       : window,
-            data_attribute  : "efp_src",
+            data_attribute  : "eventful_src",
             skip_invisible  : true,
             appear          : null,
             load            : null,

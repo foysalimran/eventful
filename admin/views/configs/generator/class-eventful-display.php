@@ -5,7 +5,7 @@
 /**
  * The Layout building class.
  */
-class EFP_Display
+class EFUL_Display
 {
 
 	/**
@@ -16,7 +16,7 @@ class EFP_Display
 	 */
 	public static function section($prefix)
 	{
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'  => esc_html__('DISPLAY OPTIONS', 'eventful'),
@@ -56,7 +56,7 @@ class EFP_Display
 						),
 					),
 					array(
-						'id'       => 'efp_number_of_columns',
+						'id'       => 'eventful_number_of_columns',
 						'type'     => 'column',
 						'title'    => esc_html__('Column(s)', 'eventful'),
 						'subtitle' => esc_html__('Set number of column(s) in different devices for responsive view.', 'eventful'),
@@ -68,7 +68,7 @@ class EFP_Display
 							'mobile'           => '1',
 						),
 						'min'      => '1',
-						'dependency' => array('efp_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
+						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 						'help'       => wp_kses(esc_html__('<i class="fa fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fa fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fa fa-tablet"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fa fa-mobile"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fa fa-mobile"></i> <b> Mobile </b> - size is smaller than 576px.', 'eventful'), array('i' => array('class' => array()), 'br' => array())),
 					),
 					array(
@@ -92,20 +92,20 @@ class EFP_Display
 						'title'    => esc_html__('Content Orientation ', 'eventful'),
 						'subtitle' => esc_html__('Set a position for the item content.', 'eventful'),
 						'desc'     => esc_html__('More amazing Content Orientation and Layout', 'eventful'),
-						'class'    => 'efp-content-orientation',
+						'class'    => 'eventful-content-orientation',
 						'options'  => array(
 							'default'     => array(
-								'image' => EFP_URL . 'admin/views/ta-framework/assets/images/default.png',
+								'image' => EFUL_URL . 'admin/views/ta-framework/assets/images/default.png',
 								'text'  => esc_html__('Default', 'eventful'),
 							),
 							'overlay'     => array(
-								'image'    => EFP_URL . 'admin/views/ta-framework/assets/images/overlay.png',
+								'image'    => EFUL_URL . 'admin/views/ta-framework/assets/images/overlay.png',
 								'text'     => esc_html__('Overlay', 'eventful'),
 								'pro_only' => true,
 							),
 						),
 						'default'  => 'default',
-						'dependency' => array('efp_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
+						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 					),
 					array(
 						'id'         => 'item_same_height',
@@ -113,7 +113,7 @@ class EFP_Display
 						'title'      => esc_html__('Same Height', 'eventful'),
 						'subtitle'   => esc_html__('Check to make all items/slides the same height as the tallest one.', 'eventful'),
 						'default'    => false,
-						'dependency' => array('efp_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
+						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 					),
 					
 					array(
@@ -200,7 +200,7 @@ class EFP_Display
 							'left'   => '0',
 							'unit'   => 'px',
 						),
-						'help'     => "<img src='" . EFP_URL . "/admin/assets/img/inner_padding.jpg'>",
+						'help'     => "<img src='" . EFUL_URL . "/admin/assets/img/inner_padding.jpg'>",
 					),
 					array(
 						'id'       => 'post_content_sorter',
@@ -210,7 +210,7 @@ class EFP_Display
 						'class'    => 'post_content_sorter',
 						'fields'   => array(
 							array(
-								'id'         => 'efp_post_thumb',
+								'id'         => 'eventful_post_thumb',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -226,14 +226,14 @@ class EFP_Display
 												'text_width' => 80,
 											),
 											array(
-												'id'      => 'efp_thumb_sizes',
+												'id'      => 'eventful_thumb_sizes',
 												'type'    => 'image_sizes',
 												'title'   => esc_html__('Size', 'eventful'),
 												'default' => 'full',
 												'dependency' => array('post_thumb_show', '==', 'true', true),
 											),
 											array(
-												'id'       => 'efp_image_crop_size',
+												'id'       => 'eventful_image_crop_size',
 												'type'     => 'dimensions_advanced',
 												'title'    => esc_html__('Custom Size', 'eventful'),
 												'chosen'   => true,
@@ -257,7 +257,7 @@ class EFP_Display
 												'attributes' => array(
 													'min' => 0,
 												),
-												'dependency' => array('post_thumb_show|efp_thumb_sizes', '==|==', 'true|custom'),
+												'dependency' => array('post_thumb_show|eventful_thumb_sizes', '==|==', 'true|custom'),
 											),
 											array(
 												'id'       => 'load_2x_image',
@@ -267,13 +267,13 @@ class EFP_Display
 												'text_off' => esc_html__('Disabled', 'eventful'),
 												'text_width' => 94,
 												'default'  => false,
-												'dependency' => array('post_thumb_show|efp_thumb_sizes', '==|==', 'true|custom'),
+												'dependency' => array('post_thumb_show|eventful_thumb_sizes', '==|==', 'true|custom'),
 											),
 											array(
 												'id'       => 'post_thumb_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'default'  => array(
@@ -285,7 +285,7 @@ class EFP_Display
 												'dependency' => array('post_thumb_show', '==', 'true'),
 											),
 											array(
-												'id'      => 'efp_thumb_src_replace',
+												'id'      => 'eventful_thumb_src_replace',
 												'type'    => 'checkbox',
 												'title'   => esc_html__('Replace With', 'eventful'),
 												'class'   => 'custom_help_text',
@@ -306,11 +306,11 @@ class EFP_Display
 													'even_featured_img_found' => esc_html__('Even featured image was found', 'eventful'),
 												),
 												'default' => 'no_featured_img_found',
-												'dependency' => array('post_thumb_show|efp_thumb_src_replace', '==|any', 'true|image,video,audio'),
+												'dependency' => array('post_thumb_show|eventful_thumb_src_replace', '==|any', 'true|image,video,audio'),
 											),
 
 											array(
-												'id'      => 'efp_thumb_border',
+												'id'      => 'eventful_thumb_border',
 												'type'    => 'border',
 												'title'   => esc_html__('Border', 'eventful'),
 												'all'     => true,
@@ -325,7 +325,7 @@ class EFP_Display
 												'id'       => 'post_thumb_border_radius',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Border Radius', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'default'  => array(
 													'top'    => '0',
 													'right'  => '0',
@@ -362,7 +362,7 @@ class EFP_Display
 												'dependency' => array('post_thumb_show', '==', 'true'),
 											),
 											array(
-												'id'       => 'efp_img_lazy_load',
+												'id'       => 'eventful_img_lazy_load',
 												'type'     => 'switcher',
 												'class'    => 'custom_help_text',
 												'title'    => esc_html__('Lazy Load', 'eventful'),
@@ -371,7 +371,7 @@ class EFP_Display
 												'text_on'  => esc_html__('Enabled', 'eventful'),
 												'text_off' => esc_html__('Disabled', 'eventful'),
 												'text_width' => 100,
-												'dependency' => array('post_thumb_show|efp_layout_preset', '==|!=', 'true|carousel_layout', true),
+												'dependency' => array('post_thumb_show|eventful_layout_preset', '==|!=', 'true|carousel_layout', true),
 											),
 											array(
 												'id'       => 'post_thumb_meta',
@@ -455,7 +455,7 @@ class EFP_Display
 								),
 							),
 							array(
-								'id'         => 'efp_post_title',
+								'id'         => 'eventful_post_title',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -496,11 +496,11 @@ class EFP_Display
 												'dependency' => array('show_post_title', '==', 'true'),
 											),
 											array(
-												'id'       => 'efp_title_length',
+												'id'       => 'eventful_title_length',
 												'type'     => 'spinner',
 												'title'    => esc_html__('Length', 'eventful'),
 												'default'  => '30',
-												'sanitize' => 'efp_sanitize_number_field',
+												'sanitize' => 'eventful_sanitize_number_field',
 												'unit'     => esc_html__('chars', 'eventful'),
 												'dependency' => array('post_title_limit|show_post_title', '==|==', 'true|true'),
 											),
@@ -508,7 +508,7 @@ class EFP_Display
 												'id'       => 'post_title_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'min'      => -100,
 												'units'    => array('px'),
 												'default'  => array(
@@ -525,8 +525,8 @@ class EFP_Display
 							),
 
 							array(
-								'id'         => 'efp_post_meta',
-								'class'      => 'efp_post_meta ta-product-not-fields',
+								'id'         => 'eventful_post_meta',
+								'class'      => 'eventful_post_meta ta-product-not-fields',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -542,8 +542,8 @@ class EFP_Display
 												'text_width' => 80,
 											),
 											array(
-												'id'      => 'efp_post_meta_group',
-												'class'   => 'efp_custom_group_design',
+												'id'      => 'eventful_post_meta_group',
+												'class'   => 'eventful_custom_group_design',
 												'type'    => 'group',
 												'button_title' => esc_html__('Add New Meta', 'eventful'),
 												'dependency' => array('show_post_meta', '==', 'true'),
@@ -594,10 +594,10 @@ class EFP_Display
 														'dependency' => array('select_post_meta', '==', 'date'),
 													),
 													array(
-														'id'    => 'efp_custom_meta_date_format',
+														'id'    => 'eventful_custom_meta_date_format',
 														'type'  => 'text',
 														'title' => ' ',
-														'class' => 'efp_custom_meta_date_format',
+														'class' => 'eventful_custom_meta_date_format',
 														'placeholder' => esc_html__('F j, Y', 'eventful'),
 														'default'   => esc_html__('F j, Y', 'eventful'),
 														'desc' => __('To define format, check <a href="https://wordpress.org/support/article/formatting-date-and-time/" target="_blank" rel="noopener noreferrer nofollow"><em>this doc</em></a>.', 'eventful'),
@@ -619,8 +619,8 @@ class EFP_Display
 														'dependency' => array('select_post_meta', '==', 'taxonomy'),
 													),
 													array(
-														'id'      => 'efp_meta_position',
-														'class'      => 'efp_meta_position',
+														'id'      => 'eventful_meta_position',
+														'class'      => 'eventful_meta_position',
 														'type'    => 'button_set',
 														'title'   => esc_html__('Position', 'eventful'),
 														'options' => array(
@@ -633,7 +633,7 @@ class EFP_Display
 														'dependency' => array('select_post_meta', '==', 'taxonomy'),
 													),
 													array(
-														'id'      => 'efp_meta_over_thump_position',
+														'id'      => 'eventful_meta_over_thump_position',
 														'type'    => 'select',
 														'title'   => esc_html__('Over Thumbnail Position', 'eventful'),
 														'options' => array(
@@ -643,10 +643,10 @@ class EFP_Display
 															'bottom_right' => esc_html__('Bottom Right', 'eventful'),
 														),
 														'default' => 'top_left',
-														'dependency' => array('select_post_meta|efp_meta_position', '==|==', 'taxonomy|over_thumb'),
+														'dependency' => array('select_post_meta|eventful_meta_position', '==|==', 'taxonomy|over_thumb'),
 													),
 													array(
-														'id'      => 'efp_meta_pill_color',
+														'id'      => 'eventful_meta_pill_color',
 														'type'    => 'color_group',
 														'title'   => esc_html__('Meta Color', 'eventful'),
 														'options' => array(
@@ -657,15 +657,15 @@ class EFP_Display
 															'text' => '#fff',
 															'bg' => '#e53935',
 														),
-														'dependency' => array('select_post_meta|efp_meta_position', '==|!=', 'taxonomy|beside_meta'),
+														'dependency' => array('select_post_meta|eventful_meta_position', '==|!=', 'taxonomy|beside_meta'),
 													),
 													array(
-														'id'      => 'efp_word_per_minute',
+														'id'      => 'eventful_word_per_minute',
 														'type'    => 'number',
 														'title'   => esc_html__('Per Minute', 'eventful'),
-														'class'   => 'efp_reading_time_meta',
+														'class'   => 'eventful_reading_time_meta',
 														'title_help'   => esc_html__('Default 300 words, the average reading speed for adults.', 'eventful'),
-														'sanitize'        => 'efp_sanitize_number_field',
+														'sanitize'        => 'eventful_sanitize_number_field',
 														'unit'   => esc_html__('words', 'eventful'),
 														'default' => '300',
 														'dependency' => array('select_post_meta', '==', 'reading_time'),
@@ -677,13 +677,13 @@ class EFP_Display
 														'type'    => 'icon',
 														'title'   => esc_html__('Meta Icon', 'eventful'),
 														'default' => 'far fa-folder',
-														'dependency' => array('efp_meta_position|select_post_meta', '==|!=', 'beside_meta|like'),
+														'dependency' => array('eventful_meta_position|select_post_meta', '==|!=', 'beside_meta|like'),
 													),
 													array(
 														'id'      => 'reading_time_postfix',
 														'type'    => 'text',
 														'title'   => esc_html__('Reading Time Postfix', 'eventful'),
-														'class'   => 'efp_reading_time_postfix',
+														'class'   => 'eventful_reading_time_postfix',
 														'title_help'   => esc_html__('Text after time. Leave empty for nothing.', 'eventful'),
 														'default' => esc_html(' Min Read', 'eventful'),
 														'dependency' => array('select_post_meta', '==', 'reading_time'),
@@ -694,17 +694,17 @@ class EFP_Display
 														'select_post_meta'    => 'author',
 														'post_meta_author_avatar'    => 'name_with_icon',
 														'select_meta_icon'    => 'fas fa-user',
-														'efp_meta_position'     => 'beside_meta',
+														'eventful_meta_position'     => 'beside_meta',
 													),
 													array(
 														'select_post_meta'     => 'date',
 														'select_meta_icon'    => 'fas fa-calendar',
-														'efp_meta_position'     => 'beside_meta',
+														'eventful_meta_position'     => 'beside_meta',
 													),
 													array(
 														'select_post_meta'     => 'comment_count',
 														'select_meta_icon'    => 'fas fa-calendar-alt',
-														'efp_meta_position'     => 'beside_meta',
+														'eventful_meta_position'     => 'beside_meta',
 													),
 												),
 											),
@@ -745,7 +745,7 @@ class EFP_Display
 												'id'       => 'post_meta_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'dependency' => array('show_post_meta', '==', 'true'),
@@ -760,7 +760,7 @@ class EFP_Display
 												'id'       => 'post_meta_between_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin Between Post Meta', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -5,
 												'dependency' => array('show_post_meta', '==', 'true'),
@@ -776,8 +776,8 @@ class EFP_Display
 								),
 							),
 							array(
-								'id'         => 'efp_event_fildes',
-								'class'      => 'efp_event_fildes ta-product-not-fields',
+								'id'         => 'eventful_event_fildes',
+								'class'      => 'eventful_event_fildes ta-product-not-fields',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -793,8 +793,8 @@ class EFP_Display
 												'text_width' => 80,
 											),
 											array(
-												'id'      => 'efp_event_fildes_group',
-												'class'   => 'efp_custom_group_design',
+												'id'      => 'eventful_event_fildes_group',
+												'class'   => 'eventful_custom_group_design',
 												'type'    => 'group',
 												'button_title' => esc_html__('Add New Meta', 'eventful'),
 												'dependency' => array('show_event_fildes', '==', 'true'),
@@ -894,10 +894,10 @@ class EFP_Display
 														'dependency' => array('select_event_fildes', '==', 'event_time'),
 													),
 													array(
-														'id'    => 'efp_custom_event_date_format',
+														'id'    => 'eventful_custom_event_date_format',
 														'type'  => 'text',
 														'title' => ' ',
-														'class' => 'efp_custom_event_date_format',
+														'class' => 'eventful_custom_event_date_format',
 														'placeholder' => esc_html__('j F, Y g:i A', 'eventful'),
 														'default'   => esc_html__('j F, Y g:i A', 'eventful'),
 														'desc' => __('To define format, check <a href="https://wordpress.org/support/article/formatting-date-and-time/" target="_blank" rel="noopener noreferrer nofollow"><em>this doc</em></a>.', 'eventful'),
@@ -958,7 +958,7 @@ class EFP_Display
 												'id'       => 'event_fildes_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'dependency' => array('show_event_fildes', '==', 'true'),
@@ -973,7 +973,7 @@ class EFP_Display
 												'id'       => 'event_fildes_between_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin Between Post Meta', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -5,
 												'dependency' => array('show_event_fildes', '==', 'true'),
@@ -989,7 +989,7 @@ class EFP_Display
 								),
 							),
 							array(
-								'id'         => 'efp_post_content',
+								'id'         => 'eventful_post_content',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -1017,7 +1017,7 @@ class EFP_Display
 												'dependency' => array('show_post_content', '==', 'true'),
 											),
 											array(
-												'id'      => 'efp_content_length_type',
+												'id'      => 'eventful_content_length_type',
 												'type'    => 'button_set',
 												'title'   => esc_html__('Content Length Type', 'eventful'),
 												'options' => array(
@@ -1028,28 +1028,28 @@ class EFP_Display
 												'dependency' => array('show_post_content|post_content_type', '==|==', 'true|limit_content'),
 											),
 											array(
-												'id'       => 'efp_content_limit',
+												'id'       => 'eventful_content_limit',
 												'type'     => 'spinner',
 												'title'    => esc_html__('Words Length', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_field',
+												'sanitize' => 'eventful_sanitize_number_field',
 												'default'  => 30,
 												'max'      => 10000,
-												'dependency' => array('show_post_content|post_content_type|efp_content_length_type', '==|==|==', 'true|limit_content|words'),
+												'dependency' => array('show_post_content|post_content_type|eventful_content_length_type', '==|==|==', 'true|limit_content|words'),
 											),
 											array(
-												'id'       => 'efp_content_characters_limit',
+												'id'       => 'eventful_content_characters_limit',
 												'type'     => 'spinner',
 												'title'    => esc_html__('Characters Length', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_field',
+												'sanitize' => 'eventful_sanitize_number_field',
 												'default'  => 300,
 												'max'      => 10000,
-												'dependency' => array('show_post_content|post_content_type|efp_content_length_type', '==|==|==', 'true|limit_content|characters'),
+												'dependency' => array('show_post_content|post_content_type|eventful_content_length_type', '==|==|==', 'true|limit_content|characters'),
 											),
 											array(
 												'id'       => 'post_content_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'default'  => array(
@@ -1061,7 +1061,7 @@ class EFP_Display
 												'dependency' => array('show_post_content', '==', 'true'),
 											),
 											array(
-												'id'      => 'efp_strip_tags',
+												'id'      => 'eventful_strip_tags',
 												'type'    => 'radio',
 												'title'   => esc_html__('HTML Tags', 'eventful'),
 												'options' => array(
@@ -1073,11 +1073,11 @@ class EFP_Display
 												'dependency' => array('show_post_content|post_content_type', '==|!=', 'true|excerpt'),
 											),
 											array(
-												'id'    => 'efp_allow_tag_name',
+												'id'    => 'eventful_allow_tag_name',
 												'type'  => 'text',
 												'title' => esc_html__('Allow HTML Tags Names', 'eventful'),
 												'title_help' => esc_html__('Separate multiple tags by comma, e.g. h1,h2', 'eventful'),
-												'dependency' => array('show_post_content|efp_strip_tags', '==|==', 'true|allow_some'),
+												'dependency' => array('show_post_content|eventful_strip_tags', '==|==', 'true|allow_some'),
 											),
 											array(
 												'id'      => 'post_content_ellipsis',
@@ -1091,7 +1091,7 @@ class EFP_Display
 								),
 							),
 							array(
-								'id'         => 'efp_post_content_readmore',
+								'id'         => 'eventful_post_content_readmore',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -1119,7 +1119,7 @@ class EFP_Display
 												'dependency' => array('show_read_more', '==', 'true'),
 											),
 											array(
-												'id'      => 'efp_read_label',
+												'id'      => 'eventful_read_label',
 												'type'    => 'text',
 												'title'   => esc_html__('Read More Label', 'eventful'),
 												'default' => 'Read More',
@@ -1151,7 +1151,7 @@ class EFP_Display
 												'id'       => 'readmore_padding',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Padding', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'default'  => array(
@@ -1166,7 +1166,7 @@ class EFP_Display
 												'id'       => 'readmore_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'default'  => array(
@@ -1181,7 +1181,7 @@ class EFP_Display
 												'id'       => 'readmore_button_radius',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Border Radius', 'eventful'),
-												'sanitize' => 'efp_sanitize_number_array_field',
+												'sanitize' => 'eventful_sanitize_number_array_field',
 												'all'      => true,
 												'default'  => array(
 													'all'  => '0',
@@ -1220,7 +1220,7 @@ class EFP_Display
 						'title'      => esc_html__('Pagination', 'eventful'),
 						'subtitle'   => esc_html__('Enabled/Disabled item pagination.', 'eventful'),
 						'default'    => true,
-						'dependency' => array('efp_layout_preset', '!=', 'carousel_layout', true),
+						'dependency' => array('eventful_layout_preset', '!=', 'carousel_layout', true),
 					),
 					array(
 						'id'         => 'post_pagination_type',
@@ -1234,7 +1234,7 @@ class EFP_Display
 							'no_ajax'         => esc_html__('No Ajax (Normal Pagination)', 'eventful'),
 						),
 						'default'    => 'ajax_load_more',
-						'dependency' => array('efp_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
 					),
 					array(
 						'id'         => 'filter_pagination_type',
@@ -1246,7 +1246,7 @@ class EFP_Display
 							'infinite_scroll' => esc_html__('Infinite Scroll (Ajax)', 'eventful'),
 						),
 						'default'    => 'ajax_load_more',
-						'dependency' => array('efp_layout_preset|show_post_pagination', '==|==', 'filter_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', '==|==', 'filter_layout|true', true),
 					),
 					array(
 						'id'         => 'post_pagination_type_mobile',
@@ -1260,7 +1260,7 @@ class EFP_Display
 							'no_ajax'         => esc_html__('No Ajax (Normal Pagination)', 'eventful'),
 						),
 						'default'    => 'infinite_scroll',
-						'dependency' => array('efp_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
 					),
 					array(
 						'id'         => 'load_more_button_text',
@@ -1268,7 +1268,7 @@ class EFP_Display
 						'title'      => esc_html__('Load More Button Label', 'eventful'),
 						'subtitle'   => esc_html__('Set the label for load more button.', 'eventful'),
 						'default'    => esc_html__('Load More', 'eventful'),
-						'dependency' => array('efp_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
 						'id'         => 'load_more_ending_message',
@@ -1276,10 +1276,10 @@ class EFP_Display
 						'title'      => esc_html__('Ending Message', 'eventful'),
 						'subtitle'   => esc_html__('Set ending message for load more/infinite scroll.', 'eventful'),
 						'default'    => esc_html__('No more events available', 'eventful'),
-						'dependency' => array('efp_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
-						'id'         => 'efp_pagination_btn_color',
+						'id'         => 'eventful_pagination_btn_color',
 						'type'       => 'color_group',
 						'title'      => esc_html__('Pagination  Color', 'eventful'),
 						'subtitle'   => esc_html__('Set Pagination color', 'eventful'),
@@ -1299,10 +1299,10 @@ class EFP_Display
 							'background'        => '#ffffff',
 							'active_background' => '#0015b5',
 						),
-						'dependency' => array('efp_layout_preset|show_post_pagination|post_pagination_type', '!=|==|any', 'carousel_layout|true|ajax_pagination,no_ajax', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination|post_pagination_type', '!=|==|any', 'carousel_layout|true|ajax_pagination,no_ajax', true),
 					),
 					array(
-						'id'         => 'efp_loadmore_btn_color',
+						'id'         => 'eventful_loadmore_btn_color',
 						'type'       => 'color_group',
 						'title'      => esc_html__('Load More Button Color', 'eventful'),
 						'subtitle'   => esc_html__('Set load more button color.', 'eventful'),
@@ -1318,7 +1318,7 @@ class EFP_Display
 							'background'        => '#0015b5',
 							'active_background' => '#ffffff',
 						),
-						'dependency' => array('efp_layout_preset|show_post_pagination|post_pagination_type', '!=|==|==', 'carousel_layout|true|ajax_load_more', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination|post_pagination_type', '!=|==|==', 'carousel_layout|true|ajax_load_more', true),
 					),
 					array(
 						'id'         => 'pagination_alignment',
@@ -1331,7 +1331,7 @@ class EFP_Display
 							'right'  => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'eventful'), array('i' => array('class' => array()))),
 						),
 						'default'    => 'left',
-						'dependency' => array('efp_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
 						'id'         => 'post_per_page',
@@ -1339,9 +1339,9 @@ class EFP_Display
 						'title'      => esc_html__('Items Per Page', 'eventful'),
 						'subtitle'   => esc_html__('Set number of items to show per page.', 'eventful'),
 						'title_help' => esc_html__('This value should be lesser than that <strong> Limit </strong> from <strong>Filter Content  </strong> tab.', 'eventful'),
-						'sanitize'   => 'efp_sanitize_number_field',
+						'sanitize'   => 'eventful_sanitize_number_field',
 						'default'    => 12,
-						'dependency' => array('efp_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
 						'id'         => 'show_preloader',
@@ -1355,7 +1355,7 @@ class EFP_Display
 					),
 					array(
 						'type'    => 'subheading',
-						'class'   => 'efp_filter_btn_color hidden',
+						'class'   => 'eventful_filter_btn_color hidden',
 						'content' => esc_html__('Live Filter Button', 'eventful'),
 					),
 				), // End of fields array.

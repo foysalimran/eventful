@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_spacing' ) ) {
-	class EFP_Field_spacing extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_spacing' ) ) {
+	class EFUL_Field_spacing extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -51,20 +51,20 @@ if ( ! class_exists( 'EFP_Field_spacing' ) ) {
 
 			$value   = wp_parse_args( $this->value, $default_values );
 			$unit    = ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? $args['units'][0] : '';
-			$is_unit = ( ! empty( $unit ) ) ? ' efp--is-unit' : '';
+			$is_unit = ( ! empty( $unit ) ) ? ' eventful--is-unit' : '';
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo '<div class="efp--inputs" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
+			echo '<div class="eventful--inputs" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 
 			if ( ! empty( $args['all'] ) ) {
 
 				$placeholder = ( ! empty( $args['all_placeholder'] ) ) ? ' placeholder="' . esc_attr( $args['all_placeholder'] ) . '"' : '';
 
-				echo '<div class="efp--input">';
-				echo ( ! empty( $args['all_icon'] ) ) ? '<span class="efp--label efp--icon">' . wp_kses_post($args['all_icon']) . '</span>' : '';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[all]' ) ) . '" value="' . esc_attr( $value['all'] ) . '"' . wp_kses_post($placeholder) . ' class="efp-input-number' . esc_attr( $is_unit ) . '" step="any" />';
-				echo ( $unit ) ? '<span class="efp--label efp--unit">' . esc_attr( $args['units'][0] ) . '</span>' : '';
+				echo '<div class="eventful--input">';
+				echo ( ! empty( $args['all_icon'] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post($args['all_icon']) . '</span>' : '';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[all]' ) ) . '" value="' . esc_attr( $value['all'] ) . '"' . wp_kses_post($placeholder) . ' class="eventful-input-number' . esc_attr( $is_unit ) . '" step="any" />';
+				echo ( $unit ) ? '<span class="eventful--label eventful--unit">' . esc_attr( $args['units'][0] ) . '</span>' : '';
 				echo '</div>';
 
 			} else {
@@ -83,17 +83,17 @@ if ( ! class_exists( 'EFP_Field_spacing' ) ) {
 
 					$placeholder = ( ! empty( $args[ $property . '_placeholder' ] ) ) ? ' placeholder="' . esc_attr( $args[ $property . '_placeholder' ] ) . '"' : '';
 
-					echo '<div class="efp--input">';
-					echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="efp--label efp--icon">' . wp_kses_post($args[ $property . '_icon' ]) . '</span>' : '';
-					echo '<input type="number" name="' . esc_attr( $this->field_name( '[' . $property . ']' ) ) . '" value="' . esc_attr( $value[ $property ] ) . '"' . wp_kses_post($placeholder) . ' class="efp-input-number' . esc_attr( $is_unit ) . '" step="any" />';
-					echo ( $unit ) ? '<span class="efp--label efp--unit">' . esc_attr( $args['units'][0] ) . '</span>' : '';
+					echo '<div class="eventful--input">';
+					echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post($args[ $property . '_icon' ]) . '</span>' : '';
+					echo '<input type="number" name="' . esc_attr( $this->field_name( '[' . $property . ']' ) ) . '" value="' . esc_attr( $value[ $property ] ) . '"' . wp_kses_post($placeholder) . ' class="eventful-input-number' . esc_attr( $is_unit ) . '" step="any" />';
+					echo ( $unit ) ? '<span class="eventful--label eventful--unit">' . esc_attr( $args['units'][0] ) . '</span>' : '';
 					echo '</div>';
 
 				}
 			}
 
 			if ( ! empty( $args['unit'] ) && ! empty( $args['show_units'] ) && count( $args['units'] ) > 1 ) {
-				echo '<div class="efp--input">';
+				echo '<div class="eventful--input">';
 				echo '<select name="' . esc_attr( $this->field_name( '[unit]' ) ) . '">';
 				foreach ( $args['units'] as $unit ) {
 					$selected = ( $value['unit'] === $unit ) ? ' selected' : '';

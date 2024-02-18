@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_button_set' ) ) {
-	class EFP_Field_button_set extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_button_set' ) ) {
+	class EFUL_Field_button_set extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -36,16 +36,16 @@ if ( ! class_exists( 'EFP_Field_button_set' ) ) {
 
 				if ( is_array( $options ) && ! empty( $options ) ) {
 
-					echo '<div class="efp-siblings efp--button-group" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
+					echo '<div class="eventful-siblings eventful--button-group" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
 
 					foreach ( $options as $key => $option ) {
 
 						$type    = ( $args['multiple'] ) ? 'checkbox' : 'radio';
 						$extra   = ( $args['multiple'] ) ? '[]' : '';
-						$active  = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' efp--active' : '';
+						$active  = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' eventful--active' : '';
 						$checked = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' checked' : '';
 
-						echo '<div class="efp--sibling efp--button' . esc_attr( $active ) . '">';
+						echo '<div class="eventful--sibling eventful--button' . esc_attr( $active ) . '">';
 						echo '<input type="' . esc_attr( $type ) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr( $key ) . '"' . wp_kses_post( $this->field_attributes() ) . esc_attr( $checked ) . '/>';
 						echo wp_kses_post($option);
 						echo '</div>';

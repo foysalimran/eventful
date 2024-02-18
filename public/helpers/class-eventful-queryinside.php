@@ -14,7 +14,7 @@
  *
  * @since 2.2.0
  */
-class EFP_QueryInside
+class EFUL_QueryInside
 {
 
 	/**
@@ -26,17 +26,17 @@ class EFP_QueryInside
 	/**
 	 * Filtered content.
 	 *
-	 * @param integer $efp_gl_id Shortcode ID.
+	 * @param integer $eventful_gl_id Shortcode ID.
 	 * @return statement
 	 */
 	public static function get_filtered_content($view_options, $id = '', $layout_preset = 'default', $on_screen = null)
 	{
-		$efp_post_type                 = 'tribe_events';
+		$eventful_post_type                 = 'tribe_events';
 
-		$post_limit      = isset($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
+		$post_limit      = isset($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$post_per_page   = isset($view_options['post_per_page']) ? $view_options['post_per_page'] : 12;
-		$post_offset     = isset($view_options['efp_post_offset']) ? $view_options['efp_post_offset'] : 0;
-		$efp_sticky_post = isset($view_options['efp_sticky_post']) ? $view_options['efp_sticky_post'] : 0;
+		$post_offset     = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
+		$eventful_sticky_post = isset($view_options['eventful_sticky_post']) ? $view_options['eventful_sticky_post'] : 0;
 		$show_pagination = isset($view_options['show_post_pagination']) ? $view_options['show_post_pagination'] : false;
 		$post_per_page   = ($post_per_page > $post_limit) ? $post_limit : $post_per_page;
 		$post_per_page   = (!$show_pagination) ? $post_limit : $post_per_page;
@@ -57,26 +57,26 @@ class EFP_QueryInside
 			$paged            = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
 			if (!empty($filter_url_value)) {
-				$shortcode_id = isset($_GET['efp']) ? wp_unslash(sanitize_text_field($_GET['efp'])) : '';
+				$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 				if ($shortcode_id == $id) {
-					$efp_page = isset($_GET['efp_page']) ? wp_unslash(sanitize_text_field($_GET['efp_page'])) : '1';
-					if (!empty($efp_page)) {
-						$paged = $efp_page;
+					$eventful_page = isset($_GET['eventful_page']) ? wp_unslash(sanitize_text_field($_GET['eventful_page'])) : '1';
+					if (!empty($eventful_page)) {
+						$paged = $eventful_page;
 					}
 				}
 			}
 		}
 
-		$post_per_page = EFP_Functions::efp_post_per_page($post_limit, $post_per_page, $paged);
+		$post_per_page = EFUL_Functions::eventful_post_per_page($post_limit, $post_per_page, $paged);
 		if ($post_per_page < 1) {
 			$post_per_page = isset($view_options['post_per_page']) ? $view_options['post_per_page'] : 12;
 		}
 		$offset               = (int) $post_per_page * ($paged - 1);
-		$sticky_post_position = 'top_list' === $efp_sticky_post ? 0 : 1;
+		$sticky_post_position = 'top_list' === $eventful_sticky_post ? 0 : 1;
 		if ('carousel_layout' === $layout_preset) {
 			$post_per_page = ($post_limit > 0) ? $post_limit : 999999;
 			$args          = array(
-				'post_type'           => $efp_post_type,
+				'post_type'           => $eventful_post_type,
 				'suppress_filters'    => false,
 				'ignore_sticky_posts' => $sticky_post_position,
 				'posts_per_page'      => $post_per_page,
@@ -84,7 +84,7 @@ class EFP_QueryInside
 			);
 		} else {
 			$args = array(
-				'post_type'           => $efp_post_type,
+				'post_type'           => $eventful_post_type,
 				'suppress_filters'    => false,
 				'ignore_sticky_posts' => $sticky_post_position,
 				'posts_per_page'      => $post_per_page,
@@ -94,18 +94,18 @@ class EFP_QueryInside
 
 		}
 		// Include specific posts.
-		$include_posts = isset($view_options['efp_include_only_posts']) ? $view_options['efp_include_only_posts'] : '';
+		$include_posts = isset($view_options['eventful_include_only_posts']) ? $view_options['eventful_include_only_posts'] : '';
 	
 		// Exclude posts.
-		$exclude_post_set  = isset($view_options['efp_exclude_post_set']) ? $view_options['efp_exclude_post_set'] : '';
-		// Array ( [efp_exclude_posts] => Array ( [0] => 1263 ) )
+		$exclude_post_set  = isset($view_options['eventful_exclude_post_set']) ? $view_options['eventful_exclude_post_set'] : '';
+		// Array ( [eventful_exclude_posts] => Array ( [0] => 1263 ) )
 
-		$exclude_too       = !empty($exclude_post_set['efp_exclude_too']) ? $exclude_post_set['efp_exclude_too'] : array();
+		$exclude_too       = !empty($exclude_post_set['eventful_exclude_too']) ? $exclude_post_set['eventful_exclude_too'] : array();
 		$current_post_id   = in_array('current', $exclude_too, true) ? array(get_the_ID()) : array();
 
 		
 
-		$exclude_posts     = !empty($exclude_post_set['efp_exclude_posts']) && isset($exclude_post_set['efp_exclude_posts']) ? $exclude_post_set['efp_exclude_posts'] : '';
+		$exclude_posts     = !empty($exclude_post_set['eventful_exclude_posts']) && isset($exclude_post_set['eventful_exclude_posts']) ? $exclude_post_set['eventful_exclude_posts'] : '';
 		$exclude_posts_int = array();
 		if (!empty($exclude_posts)) {
 			foreach ($exclude_posts as $exclude_post) {
@@ -135,28 +135,28 @@ class EFP_QueryInside
 			$args['post_parent'] = 0;
 		}
 		$args['post_status'] = 'publish';
-		$advanced_filters    = isset($view_options['efp_advanced_filter']) && !empty($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : '';
+		$advanced_filters    = isset($view_options['eventful_advanced_filter']) && !empty($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : '';
 		if ($advanced_filters) {
 			foreach ($advanced_filters as $advanced_filter) {
 
 				switch ($advanced_filter) {
 					case 'taxonomy':
-						$taxonomy_types = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms']) && !empty($view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'] : '';
+						$taxonomy_types = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) && !empty($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms'] : '';
 						if (!$taxonomy_types) {
 							break;
 						}
 						$tax_settings = array();
 						foreach ($taxonomy_types as $tax_type) {
-							$taxonomy         = isset($tax_type['efp_select_taxonomy']) ? $tax_type['efp_select_taxonomy'] : '';
+							$taxonomy         = isset($tax_type['eventful_select_taxonomy']) ? $tax_type['eventful_select_taxonomy'] : '';
 							$all_terms = get_terms($taxonomy);
 							$all_terms = wp_list_pluck($all_terms, 'term_id');
 							
-							$terms            = isset($tax_type['efp_select_terms']) && !empty($tax_type['efp_select_terms']) ? $tax_type['efp_select_terms'] : $all_terms;
+							$terms            = isset($tax_type['eventful_select_terms']) && !empty($tax_type['eventful_select_terms']) ? $tax_type['eventful_select_terms'] : $all_terms;
 							$all_button_label = isset($tax_type['ajax_filter_options']['ajax_rename_all_text']) ? $tax_type['ajax_filter_options']['ajax_rename_all_text'] : '';
 
 							if ($taxonomy) {
 								if ($terms) {
-									$operator = isset($tax_type['efp_taxonomy_term_operator']) ? $tax_type['efp_taxonomy_term_operator'] : '';
+									$operator = isset($tax_type['eventful_taxonomy_term_operator']) ? $tax_type['eventful_taxonomy_term_operator'] : '';
 									if ('AND' === $operator && 1 == count($terms)) {
 										$operator = 'IN';
 									}
@@ -171,14 +171,14 @@ class EFP_QueryInside
 							}
 						}
 						if (count($tax_settings) > 1) {
-							$tax_settings['relation'] = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation'] : 'AND';
+							$tax_settings['relation'] = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 						}
 						$args = array_merge($args, array('tax_query' => $tax_settings));
 						break;
 					case 'author':
-						$author_include = isset($view_options['efp_filter_by_author']['efp_select_author_by']) ? $view_options['efp_filter_by_author']['efp_select_author_by'] : '';
-						$author_exclude = isset($view_options['efp_filter_by_author']['efp_select_author_not_by']) ? $view_options['efp_filter_by_author']['efp_select_author_not_by'] : '';
-						$wp37           = EFP_Functions::wp_version_compare('3.7');
+						$author_include = isset($view_options['eventful_filter_by_author']['eventful_select_author_by']) ? $view_options['eventful_filter_by_author']['eventful_select_author_by'] : '';
+						$author_exclude = isset($view_options['eventful_filter_by_author']['eventful_select_author_not_by']) ? $view_options['eventful_filter_by_author']['eventful_select_author_not_by'] : '';
+						$wp37           = EFUL_Functions::wp_version_compare('3.7');
 						if ($author_include) {
 							$args = array_merge(
 								$args,
@@ -193,13 +193,13 @@ class EFP_QueryInside
 						}
 						break;
 					case 'sortby':
-						$orderby = isset($view_options['efp_filter_by_order']['efp_select_filter_orderby']) ? $view_options['efp_filter_by_order']['efp_select_filter_orderby'] : '';
-						$order   = isset($view_options['efp_filter_by_order']['efp_select_filter_order']) ? $view_options['efp_filter_by_order']['efp_select_filter_order'] : '';
+						$orderby = isset($view_options['eventful_filter_by_order']['eventful_select_filter_orderby']) ? $view_options['eventful_filter_by_order']['eventful_select_filter_orderby'] : '';
+						$order   = isset($view_options['eventful_filter_by_order']['eventful_select_filter_order']) ? $view_options['eventful_filter_by_order']['eventful_select_filter_order'] : '';
 
 						if ('custom_field' === $orderby) {
-							$order_custom_field_option = isset( $view_options['efp_filter_by_order']['orderby_custom_field_options'] ) ? $view_options['efp_filter_by_order']['orderby_custom_field_options'] : '';
-							$order_field_key           = isset( $order_custom_field_option['efp_select_custom_field_key'] ) ? $order_custom_field_option['efp_select_custom_field_key'] : '';
-							$field_value_type          = isset( $order_custom_field_option['efp_select_custom_field_value_type'] ) ? $order_custom_field_option['efp_select_custom_field_value_type'] : '';
+							$order_custom_field_option = isset( $view_options['eventful_filter_by_order']['orderby_custom_field_options'] ) ? $view_options['eventful_filter_by_order']['orderby_custom_field_options'] : '';
+							$order_field_key           = isset( $order_custom_field_option['eventful_select_custom_field_key'] ) ? $order_custom_field_option['eventful_select_custom_field_key'] : '';
+							$field_value_type          = isset( $order_custom_field_option['eventful_select_custom_field_value_type'] ) ? $order_custom_field_option['eventful_select_custom_field_value_type'] : '';
 							$order_settings            = array(
 								'meta_key'  => $order_field_key,
 								'orderby'   => 'meta_value',
@@ -210,11 +210,11 @@ class EFP_QueryInside
 						} else {
 							if ('rand' === $orderby) {
 								if ($paged && get_query_var('paged') === 0 && get_query_var('paged') !== null) {
-									set_transient('efp_rand', wp_rand());
+									set_transient('eventful_rand', wp_rand());
 								}
 							}
 							$order_settings = array(
-								'orderby' => ('rand' === $orderby) ? 'rand(' . get_transient('efp_rand') . ')' : $orderby,
+								'orderby' => ('rand' === $orderby) ? 'rand(' . get_transient('eventful_rand') . ')' : $orderby,
 								'order'   => $orderby ? $order : '',
 							);
 							$args           = array_merge($args, $order_settings);
@@ -222,14 +222,14 @@ class EFP_QueryInside
 
 						break;
 					case 'status':
-						$efp_post_status = isset($view_options['efp_filter_by_status']['efp_select_post_status']) && !empty($view_options['efp_filter_by_status']['efp_select_post_status']) ? $view_options['efp_filter_by_status']['efp_select_post_status'] : 'publish';
-						$args            = array_merge($args, array('post_status' => $efp_post_status));
+						$eventful_post_status = isset($view_options['eventful_filter_by_status']['eventful_select_post_status']) && !empty($view_options['eventful_filter_by_status']['eventful_select_post_status']) ? $view_options['eventful_filter_by_status']['eventful_select_post_status'] : 'publish';
+						$args            = array_merge($args, array('post_status' => $eventful_post_status));
 						break;
 					case 'date':
-						self::efp_filter_by_date($args, $view_options);
+						self::eventful_filter_by_date($args, $view_options);
 						break;
 					case 'keyword':
-						$keyword_value = isset($view_options['efp_filter_by_keyword']['efp_set_post_keyword']) && !empty($view_options['efp_filter_by_keyword']['efp_set_post_keyword']) ? $view_options['efp_filter_by_keyword']['efp_set_post_keyword'] : '';
+						$keyword_value = isset($view_options['eventful_filter_by_keyword']['eventful_set_post_keyword']) && !empty($view_options['eventful_filter_by_keyword']['eventful_set_post_keyword']) ? $view_options['eventful_filter_by_keyword']['eventful_set_post_keyword'] : '';
 						if ($keyword_value) {
 							$args = array_merge(
 								$args,
@@ -246,13 +246,13 @@ class EFP_QueryInside
 
 		$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
 		if (!empty($filter_url_value)) {
-			$shortcode_id = isset($_GET['efp']) ? wp_unslash(sanitize_text_field($_GET['efp'])) : '';
+			$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 			if ($shortcode_id == $id) {
 				$url_args           = $args;
 				$url_args['fields'] = 'ids';
-				$relation           = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation'] : 'AND';
+				$relation           = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 
-				$taxonomies          = get_object_taxonomies($efp_post_type);
+				$taxonomies          = get_object_taxonomies($eventful_post_type);
 				$tax_settings_by_url = array();
 				foreach ($taxonomies as $taxonomy) {
 					$filter_url_value = isset($_GET["tx_$taxonomy"]) ? wp_unslash(sanitize_text_field($_GET["tx_$taxonomy"])) : '';
@@ -280,19 +280,19 @@ class EFP_QueryInside
 					$args             = array_merge($args, array('tax_query' => $tax_settings_by_url));
 					$args['post__in'] = $url_post_ids;
 				}
-				$final_author_url_value = isset($_GET['efp_author_id']) ? sanitize_text_field(wp_unslash($_GET['efp_author_id'])) : '';
+				$final_author_url_value = isset($_GET['eventful_author_id']) ? sanitize_text_field(wp_unslash($_GET['eventful_author_id'])) : '';
 				if (!empty($final_author_url_value)) {
 					$args['author__in'] = $final_author_url_value;
 				}
-				$final_orderby_url_value = isset($_GET['efp_orderby']) ? sanitize_text_field(wp_unslash($_GET['efp_orderby'])) : '';
+				$final_orderby_url_value = isset($_GET['eventful_orderby']) ? sanitize_text_field(wp_unslash($_GET['eventful_orderby'])) : '';
 				if (!empty($final_orderby_url_value)) {
 					$args['orderby'] = $final_orderby_url_value;
 				}
-				$final_order_url_value = isset($_GET['efp_order']) ? sanitize_text_field(wp_unslash($_GET['efp_order'])) : '';
+				$final_order_url_value = isset($_GET['eventful_order']) ? sanitize_text_field(wp_unslash($_GET['eventful_order'])) : '';
 				if (!empty($final_order_url_value)) {
 					$args['order'] = $final_order_url_value;
 				}
-				$final_search_url_value = isset($_GET['efp_keyword']) ? sanitize_text_field(wp_unslash($_GET['efp_keyword'])) : '';
+				$final_search_url_value = isset($_GET['eventful_keyword']) ? sanitize_text_field(wp_unslash($_GET['eventful_keyword'])) : '';
 				if (!empty($final_search_url_value)) {
 					$args['s'] = $final_search_url_value;
 				}
@@ -308,13 +308,13 @@ class EFP_QueryInside
 	 * @param array $view_options The Array of the Metabox fields.
 	 * @return void
 	 */
-	public static function efp_filter_by_date(&$args, $view_options)
+	public static function eventful_filter_by_date(&$args, $view_options)
 	{
 
-		$advanced_filters = isset($view_options['efp_advanced_filter']) && !empty($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : '';
+		$advanced_filters = isset($view_options['eventful_advanced_filter']) && !empty($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : '';
 
 		if (in_array('date', $advanced_filters, true)) {
-			$_date_type_to_filter = isset($view_options['efp_filter_by_date']['efp_select_post_date_type']) && !empty($view_options['efp_filter_by_date']['efp_select_post_date_type']) ? $view_options['efp_filter_by_date']['efp_select_post_date_type'] : '';
+			$_date_type_to_filter = isset($view_options['eventful_filter_by_date']['eventful_select_post_date_type']) && !empty($view_options['eventful_filter_by_date']['eventful_select_post_date_type']) ? $view_options['eventful_filter_by_date']['eventful_select_post_date_type'] : '';
 			$now                  = new \DateTime('now');
 			$today                = $now->format('j'); // A numeric representation of a month without 0.
 			$this_month           = $now->format('n'); // A numeric representation of a month without 0.
@@ -378,7 +378,7 @@ class EFP_QueryInside
 						break;
 
 					case 'specific_date':
-						$_specific_date = isset($view_options['efp_filter_by_date']['efp_select_post_specific_date']) && !empty($view_options['efp_filter_by_date']['efp_select_post_specific_date']) ? $view_options['efp_filter_by_date']['efp_select_post_specific_date'] : '';
+						$_specific_date = isset($view_options['eventful_filter_by_date']['eventful_select_post_specific_date']) && !empty($view_options['eventful_filter_by_date']['eventful_select_post_specific_date']) ? $view_options['eventful_filter_by_date']['eventful_select_post_specific_date'] : '';
 						$specific_date  = date_parse($_specific_date);
 						$date_query     = array(
 							'year'  => $specific_date['year'],
@@ -388,14 +388,14 @@ class EFP_QueryInside
 						break;
 
 					case 'specific_month':
-						$post_published_in_month = isset($view_options['efp_filter_by_date']['efp_select_specific_month']) && !empty($view_options['efp_filter_by_date']['efp_select_specific_month']) ? $view_options['efp_filter_by_date']['efp_select_specific_month'] : '';
+						$post_published_in_month = isset($view_options['eventful_filter_by_date']['eventful_select_specific_month']) && !empty($view_options['eventful_filter_by_date']['eventful_select_specific_month']) ? $view_options['eventful_filter_by_date']['eventful_select_specific_month'] : '';
 						$date_query              = array(
 							'month' => $post_published_in_month,
 						);
 						break;
 
 					case 'specific_year':
-						$post_published_in_year = isset($view_options['efp_filter_by_date']['efp_select_post_specific_year']['all']) && !empty($view_options['efp_filter_by_date']['efp_select_post_specific_year']['all']) ? $view_options['efp_filter_by_date']['efp_select_post_specific_year']['all'] : '';
+						$post_published_in_year = isset($view_options['eventful_filter_by_date']['eventful_select_post_specific_year']['all']) && !empty($view_options['eventful_filter_by_date']['eventful_select_post_specific_year']['all']) ? $view_options['eventful_filter_by_date']['eventful_select_post_specific_year']['all'] : '';
 
 						$date_query = array(
 							'year' => $post_published_in_year,
@@ -403,7 +403,7 @@ class EFP_QueryInside
 						break;
 
 					case 'specific_period':
-						$_date_from_to = isset($view_options['efp_filter_by_date']['efp_select_post_date_from_to']) && !empty($view_options['efp_filter_by_date']['efp_select_post_date_from_to']) ? $view_options['efp_filter_by_date']['efp_select_post_date_from_to'] : '';
+						$_date_from_to = isset($view_options['eventful_filter_by_date']['eventful_select_post_date_from_to']) && !empty($view_options['eventful_filter_by_date']['eventful_select_post_date_from_to']) ? $view_options['eventful_filter_by_date']['eventful_select_post_date_from_to'] : '';
 						$_date_from    = isset($_date_from_to) ? $_date_from_to['from'] : $today;
 						$_date_to      = isset($_date_from_to) ? $_date_from_to['to'] : $today;
 						$date_from     = date_parse($_date_from);

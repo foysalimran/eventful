@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_map' ) ) {
-	class EFP_Field_map extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_map' ) ) {
+	class EFUL_Field_map extends EFUL_Fields {
 
 		public $version = '1.9.2';
 
@@ -54,42 +54,42 @@ if ( ! class_exists( 'EFP_Field_map' ) ) {
 			echo wp_kses_post( $this->field_before() );
 
 			if ( empty( $args['address_field'] ) ) {
-				echo '<div class="efp--map-search">';
+				echo '<div class="eventful--map-search">';
 				echo '<input type="text" name="' . esc_attr( $this->field_name( '[address]' ) ) . '" value="' . esc_attr( $value['address'] ) . '"' . wp_kses_post($this->field_attributes( $placeholder )) . ' />';
 				echo '</div>';
 			} else {
-				echo '<div class="efp--address-field" data-address-field="' . esc_attr( $args['address_field'] ) . '"></div>';
+				echo '<div class="eventful--address-field" data-address-field="' . esc_attr( $args['address_field'] ) . '"></div>';
 			}
 
-			echo '<div class="efp--map-osm-wrap"><div class="efp--map-osm" data-map="' . esc_attr( wp_json_encode( $settings ) ) . '"' . wp_kses_post($style_attr) . '></div></div>';
+			echo '<div class="eventful--map-osm-wrap"><div class="eventful--map-osm" data-map="' . esc_attr( wp_json_encode( $settings ) ) . '"' . wp_kses_post($style_attr) . '></div></div>';
 
-			echo '<div class="efp--map-inputs">';
+			echo '<div class="eventful--map-inputs">';
 
-			echo '<div class="efp--map-input">';
+			echo '<div class="eventful--map-input">';
 			echo '<label>' . esc_attr( $args['latitude_text'] ) . '</label>';
-			echo '<input type="text" name="' . esc_attr( $this->field_name( '[latitude]' ) ) . '" value="' . esc_attr( $value['latitude'] ) . '" class="efp--latitude" />';
+			echo '<input type="text" name="' . esc_attr( $this->field_name( '[latitude]' ) ) . '" value="' . esc_attr( $value['latitude'] ) . '" class="eventful--latitude" />';
 			echo '</div>';
 
-			echo '<div class="efp--map-input">';
+			echo '<div class="eventful--map-input">';
 			echo '<label>' . esc_attr( $args['longitude_text'] ) . '</label>';
-			echo '<input type="text" name="' . esc_attr( $this->field_name( '[longitude]' ) ) . '" value="' . esc_attr( $value['longitude'] ) . '" class="efp--longitude" />';
+			echo '<input type="text" name="' . esc_attr( $this->field_name( '[longitude]' ) ) . '" value="' . esc_attr( $value['longitude'] ) . '" class="eventful--longitude" />';
 			echo '</div>';
 
 			echo '</div>';
 
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[zoom]' ) ) . '" value="' . esc_attr( $value['zoom'] ) . '" class="efp--zoom" />';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[zoom]' ) ) . '" value="' . esc_attr( $value['zoom'] ) . '" class="eventful--zoom" />';
 
 			echo wp_kses_post( $this->field_after() );
 		}
 
 		public function enqueue() {
 
-			if ( ! wp_script_is( 'efp-leaflet' ) ) {
-				wp_enqueue_script( 'leaflet', EFP_URL . 'admin/views/ta-framework/assets/js/leaflet.js', array( 'ta-framework' ), $this->version, true );
+			if ( ! wp_script_is( 'eventful-leaflet' ) ) {
+				wp_enqueue_script( 'leaflet', EFUL_URL . 'admin/views/ta-framework/assets/js/leaflet.js', array( 'ta-framework' ), $this->version, true );
 			}
 
-			if ( ! wp_style_is( 'efp-leaflet' ) ) {
-				wp_enqueue_style( 'leaflet', EFP_URL . 'admin/views/ta-framework/assets/css/leaflet.css', array(), $this->version );
+			if ( ! wp_style_is( 'eventful-leaflet' ) ) {
+				wp_enqueue_style( 'leaflet', EFUL_URL . 'admin/views/ta-framework/assets/css/leaflet.css', array(), $this->version );
 			}
 
 			if ( ! wp_script_is( 'jquery-ui-autocomplete' ) ) {

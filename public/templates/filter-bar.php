@@ -8,26 +8,26 @@
  * @subpackage Eventful/public/template
  */
 
-if ( is_array( $advanced_filter ) && ! $efp_query->is_main_query() ) {
+if ( is_array( $advanced_filter ) && ! $eventful_query->is_main_query() ) {
 	ob_start();
-		EFP_Live_Filter::efp_live_filter( $view_options, $query_args, $efp_gl_id );
-		EFP_Live_Filter::efp_author_filter( $view_options, $query_args );
-		EFP_Live_Filter::efp_custom_filter_filter( $view_options, $query_args, $efp_gl_id );
+		EFUL_Live_Filter::eventful_live_filter( $view_options, $query_args, $eventful_gl_id );
+		EFUL_Live_Filter::eventful_author_filter( $view_options, $query_args );
+		EFUL_Live_Filter::eventful_custom_filter_filter( $view_options, $query_args, $eventful_gl_id );
 	$filter_bar = ob_get_clean();
 
 	ob_start();
-		EFP_Live_Filter::efp_orderby_filter_bar( $view_options, $efp_query, $efp_gl_id );
-		EFP_Live_Filter::efp_order_filter_bar( $view_options, $efp_gl_id );
-		EFP_Live_Filter::efp_live_search_bar( $view_options, $efp_gl_id );
+		EFUL_Live_Filter::eventful_orderby_filter_bar( $view_options, $eventful_query, $eventful_gl_id );
+		EFUL_Live_Filter::eventful_order_filter_bar( $view_options, $eventful_gl_id );
+		EFUL_Live_Filter::eventful_live_search_bar( $view_options, $eventful_gl_id );
 	$ex_filter_bar = ob_get_clean();
 
 
 	if ( ! empty( $filter_bar ) ) { ?>
-		<div class="efp-filter-bar">
+		<div class="eventful-filter-bar">
 			<?php echo $filter_bar; ?>
 		</div>
 	<?php } if ( ! empty( $ex_filter_bar ) ) { ?>
-			<div class="efp_ex_filter_bar">
+			<div class="eventful_ex_filter_bar">
 			<?php echo $ex_filter_bar; ?>
 			</div>
 	<?php }

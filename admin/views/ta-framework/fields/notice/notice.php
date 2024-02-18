@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_notice' ) ) {
-	class EFP_Field_notice extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_notice' ) ) {
+	class EFUL_Field_notice extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -18,7 +18,7 @@ if ( ! class_exists( 'EFP_Field_notice' ) ) {
 
 			$style = ( ! empty( $this->field['style'] ) ) ? $this->field['style'] : 'normal';
 
-			echo ( ! empty( $this->field['content'] ) ) ? '<div class="efp-notice efp-notice-' . esc_attr( $style ) . '">' . wp_kses_post($this->field['content']) . '</div>' : '';
+			echo ( ! empty( $this->field['content'] ) ) ? '<div class="eventful-notice eventful-notice-' . esc_attr( $style ) . '">' . wp_kses_post($this->field['content']) . '</div>' : '';
 		}
 	}
 }

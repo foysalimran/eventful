@@ -35,10 +35,10 @@ class Eventful_Shuffle_Filter
 
 	 * @return array
 	 */
-	public static function efp_filter_style($filter_type, $taxonomy, $all_text, $show_count = false, $term = null, $name = null, $slug = null, $p_count = null, $selected_term = null, $selected_taxs = null, $selected_term_id = null)
+	public static function eventful_filter_style($filter_type, $taxonomy, $all_text, $show_count = false, $term = null, $name = null, $slug = null, $p_count = null, $selected_term = null, $selected_taxs = null, $selected_term_id = null)
 	{
 		if ($show_count) {
-			$post_count_markup = '<span class="efp-count">(' . $p_count . ')</span>';
+			$post_count_markup = '<span class="eventful-count">(' . $p_count . ')</span>';
 		} else {
 			$post_count_markup = '';
 		}
@@ -47,8 +47,8 @@ class Eventful_Shuffle_Filter
 		$slug          = trim(sanitize_html_class($slug, $term), '-') ? sanitize_html_class($slug, $term) : $term;
 		// Shuffle Filter.
 		if ('button' === $filter_type) {
-			$first_item = $all_text ? '<button class="efp-button is-active" data-termid="all" data-filter="">' . $all_text . '</button>' : '';
-			$push_item  = '<button class="efp-button" data-termid="' . $term . '" data-filter=".' . $taxonomy_name . '-' . $slug . '">' . $name . $post_count_markup . '</button>';
+			$first_item = $all_text ? '<button class="eventful-button is-active" data-termid="all" data-filter="">' . $all_text . '</button>' : '';
+			$push_item  = '<button class="eventful-button" data-termid="' . $term . '" data-filter=".' . $taxonomy_name . '-' . $slug . '">' . $name . $post_count_markup . '</button>';
 		} else {
 			$all_item_text = $all_text ? '<option value="*">' . $all_text . '</option>' : '';
 			$first_item    = '<select>' . $all_item_text;
@@ -67,23 +67,23 @@ class Eventful_Shuffle_Filter
 	 *
 	 * @param array  $view_options Shortcode options.
 	 * @param array  $layout_preset layout preset.
-	 * @param object $efp_query wp query object.
+	 * @param object $eventful_query wp query object.
 	 * @param string $filter_type Filter type.
 	 * @return void
 	 */
-	public static function efp_shuffle_filter($view_options, $layout_preset, $efp_query, $filter_type)
+	public static function eventful_shuffle_filter($view_options, $layout_preset, $eventful_query, $filter_type)
 	{
-		$filter_by    = isset($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : '';
-		$filter_type  = isset($view_options['efp_filter_type']) ? $view_options['efp_filter_type'] : '';
-		$filer_align  = isset($view_options['efp_filer_align']) ? $view_options['efp_filer_align'] : 'efp-align-center';
-		$all_text_btn = isset($view_options['efp_filter_all_btn_switch']) ? $view_options['efp_filter_all_btn_switch'] : true;
-		$all_text     = isset($view_options['efp_rename_all_text']) ? $view_options['efp_rename_all_text'] : 'All';
+		$filter_by    = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : '';
+		$filter_type  = isset($view_options['eventful_filter_type']) ? $view_options['eventful_filter_type'] : '';
+		$filer_align  = isset($view_options['eventful_filer_align']) ? $view_options['eventful_filer_align'] : 'eventful-align-center';
+		$all_text_btn = isset($view_options['eventful_filter_all_btn_switch']) ? $view_options['eventful_filter_all_btn_switch'] : true;
+		$all_text     = isset($view_options['eventful_rename_all_text']) ? $view_options['eventful_rename_all_text'] : 'All';
 		$all_text     = $all_text_btn ? $all_text : '';
-		$show_count   = isset($view_options['efp_post_count']) ? $view_options['efp_post_count'] : '';
-		$post_limit   = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
+		$show_count   = isset($view_options['eventful_post_count']) ? $view_options['eventful_post_count'] : '';
+		$post_limit   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		if ('filter_layout' === $layout_preset && in_array('taxonomy', $filter_by, true)) {
-			$taxonomy_types   = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms']) && !empty($view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'] : '';
-			$total_post_count = $efp_query->post_count;
+			$taxonomy_types   = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) && !empty($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms'] : '';
+			$total_post_count = $eventful_query->post_count;
 			if (!empty($taxonomy_types)) {
 				$output         = '';
 				$newterm_array  = array();
@@ -91,21 +91,21 @@ class Eventful_Shuffle_Filter
 				$taxonomies     = array();
 				$taxonomy_count = count($taxonomy_types);
 				while ($count < $taxonomy_count) {
-					$taxonomy = isset($taxonomy_types[$count]['efp_select_taxonomy']) ? $taxonomy_types[$count]['efp_select_taxonomy'] : '';
+					$taxonomy = isset($taxonomy_types[$count]['eventful_select_taxonomy']) ? $taxonomy_types[$count]['eventful_select_taxonomy'] : '';
 
 					$all_terms = get_terms($taxonomy);
 					$all_terms = wp_list_pluck($all_terms, 'term_id');
-					$terms     = isset($taxonomy_types[$count]['efp_select_terms']) ? $taxonomy_types[$count]['efp_select_terms'] : $all_terms;
+					$terms     = isset($taxonomy_types[$count]['eventful_select_terms']) ? $taxonomy_types[$count]['eventful_select_terms'] : $all_terms;
 
 					if (!empty($terms)) {
-						$filter_item             = self::efp_filter_style($filter_type, $taxonomy, $all_text);
+						$filter_item             = self::eventful_filter_style($filter_type, $taxonomy, $all_text);
 						$newterm_array[$count] = array($filter_item['first_item']);
 						foreach ($terms as $term) {
 							$p_term          = get_term($term, $taxonomy);
 							$term_post_count = $p_term->count;
 							$term_post_count = $term_post_count > $post_limit ? $post_limit : $term_post_count;
 							if ($term_post_count) {
-								$push_item = self::efp_filter_style($filter_type, $taxonomy, $all_text, $show_count, $term, $p_term->name, $p_term->slug, $term_post_count)['push_item'];
+								$push_item = self::eventful_filter_style($filter_type, $taxonomy, $all_text, $show_count, $term, $p_term->name, $p_term->slug, $term_post_count)['push_item'];
 								array_push($newterm_array[$count], $push_item);
 							}
 						}

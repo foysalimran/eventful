@@ -5,7 +5,7 @@
 /**
  * The Carousel building class.
  */
-class EFP_Carousel
+class EFUL_Carousel
 {
 
 	/**
@@ -16,14 +16,14 @@ class EFP_Carousel
 	 */
 	public static function section($prefix)
 	{
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'  => esc_html__( 'Carousel Controls', 'eventful' ),
 				'icon'   => 'fas fa-sliders-h',
 				'fields' => array(
 					array(
-						'id'       => 'efp_carousel_mode',
+						'id'       => 'eventful_carousel_mode',
 						'type'     => 'button_set',
 						'title'    => esc_html__( 'Carousel Mode', 'eventful' ),
 						'subtitle' => esc_html__( 'Choose a mode for the carousel.', 'eventful' ),
@@ -35,34 +35,34 @@ class EFP_Carousel
 						'default'  => 'standard',
 					),
 					array(
-						'id'         => 'efp_ticker_speed',
+						'id'         => 'eventful_ticker_speed',
 						'type'       => 'spinner',
 						'title'      => esc_html__( 'Carousel Speed', 'eventful' ),
 						'subtitle'   => esc_html__( 'Set carousel speed in millisecond.', 'eventful' ),
-						'sanitize'   => 'efp_sanitize_number_field',
+						'sanitize'   => 'eventful_sanitize_number_field',
 						'default'    => '3000',
 						'min'        => 0,
 						'max'        => 50000,
 						'step'       => 100,
 						'unit'       => 'ms',
-						'dependency' => array( 'efp_carousel_mode', '==', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '==', 'ticker' ),
 					),
 
 					array(
-						'id'         => 'efp_ticker_slide_width',
+						'id'         => 'eventful_ticker_slide_width',
 						'type'       => 'spinner',
 						'title'      => esc_html__( 'Column Width', 'eventful' ),
 						'subtitle'   => esc_html__( 'Set a width for the column.', 'eventful' ),
-						'sanitize'   => 'efp_sanitize_number_field',
+						'sanitize'   => 'eventful_sanitize_number_field',
 						'default'    => '250',
 						'min'        => 0,
 						'max'        => 1000,
 						'step'       => 10,
 						'unit'       => 'px',
-						'dependency' => array( 'efp_carousel_mode', '==', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '==', 'ticker' ),
 					),
 					array(
-						'id'         => 'efp_autoplay',
+						'id'         => 'eventful_autoplay',
 						'type'       => 'switcher',
 						'title'      => esc_html__( 'AutoPlay', 'eventful' ),
 						'subtitle'   => esc_html__( 'Enable/Disable carousel autoplay.', 'eventful' ),
@@ -70,36 +70,36 @@ class EFP_Carousel
 						'text_off'   => esc_html__( 'Disabled', 'eventful' ),
 						'text_width' => 94,
 						'default'    => true,
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
-						'id'         => 'efp_autoplay_speed',
+						'id'         => 'eventful_autoplay_speed',
 						'type'       => 'spinner',
 						'title'      => esc_html__( 'AutoPlay Speed', 'eventful' ),
 						'subtitle'   => esc_html__( 'Set autoplay speed in millisecond.', 'eventful' ),
-						'sanitize'   => 'efp_sanitize_number_field',
+						'sanitize'   => 'eventful_sanitize_number_field',
 						'default'    => '2000',
 						'min'        => 0,
 						'max'        => 10000,
 						'step'       => 100,
 						'unit'       => 'ms',
-						'dependency' => array( 'efp_autoplay|efp_carousel_mode', '==|!=', 'true|ticker' ),
+						'dependency' => array( 'eventful_autoplay|eventful_carousel_mode', '==|!=', 'true|ticker' ),
 					),
 					array(
-						'id'         => 'efp_carousel_speed',
+						'id'         => 'eventful_carousel_speed',
 						'type'       => 'spinner',
 						'title'      => esc_html__( 'Carousel Speed', 'eventful' ),
 						'subtitle'   => esc_html__( 'Set carousel speed in millisecond.', 'eventful' ),
-						'sanitize'   => 'efp_sanitize_number_field',
+						'sanitize'   => 'eventful_sanitize_number_field',
 						'default'    => '600',
 						'min'        => 0,
 						'max'        => 20000,
 						'step'       => 100,
 						'unit'       => 'ms',
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
-						'id'         => 'efp_pause_hover',
+						'id'         => 'eventful_pause_hover',
 						'type'       => 'switcher',
 						'title'      => esc_html__( 'Pause on Hover', 'eventful' ),
 						'subtitle'   => esc_html__( 'Enable/Disable carousel stop on hover.', 'eventful' ),
@@ -107,10 +107,10 @@ class EFP_Carousel
 						'text_off'   => esc_html__( 'Disabled', 'eventful' ),
 						'text_width' => 94,
 						'default'    => true,
-						'dependency' => array( 'efp_autoplay', '==', 'true' ),
+						'dependency' => array( 'eventful_autoplay', '==', 'true' ),
 					),
 					array(
-						'id'         => 'efp_infinite_loop',
+						'id'         => 'eventful_infinite_loop',
 						'type'       => 'switcher',
 						'title'      => esc_html__( 'Infinite Loop', 'eventful' ),
 						'subtitle'   => esc_html__( 'Enable/Disable carousel infinite loop.', 'eventful' ),
@@ -118,10 +118,10 @@ class EFP_Carousel
 						'text_off'   => esc_html__( 'Disabled', 'eventful' ),
 						'text_width' => 94,
 						'default'    => true,
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
-						'id'         => 'efp_lazy_load',
+						'id'         => 'eventful_lazy_load',
 						'type'       => 'switcher',
 						'title'      => esc_html__( 'Lazy Load', 'eventful' ),
 						'subtitle'   => esc_html__( 'Enable/Disable lazy load.', 'eventful' ),
@@ -129,10 +129,10 @@ class EFP_Carousel
 						'text_off'   => esc_html__( 'Disabled', 'eventful' ),
 						'text_width' => 94,
 						'default'    => true,
-						'dependency' => array( 'efp_carousel_mode|efp_slide_effect', '!=|not-any', 'ticker|cube,flip' ),
+						'dependency' => array( 'eventful_carousel_mode|eventful_slide_effect', '!=|not-any', 'ticker|cube,flip' ),
 					),
 					array(
-						'id'       => 'efp_carousel_direction',
+						'id'       => 'eventful_carousel_direction',
 						'type'     => 'button_set',
 						'title'    => esc_html__( 'Carousel Direction', 'eventful' ),
 						'subtitle' => esc_html__( 'Choose a carousel direction.', 'eventful' ),
@@ -143,7 +143,7 @@ class EFP_Carousel
 						'default'  => 'ltr',
 					),
 					array(
-						'id'         => 'efp_slide_effect',
+						'id'         => 'eventful_slide_effect',
 						'type'       => 'select',
 						'title'      => esc_html__( 'Transition Effect', 'eventful' ),
 						'subtitle'   => esc_html__( 'Select a slide transition effect.', 'eventful' ),
@@ -156,10 +156,10 @@ class EFP_Carousel
 							'flip'      => esc_html__( 'Flip', 'eventful' ),
 						),
 						'default'    => 'slide',
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
-						'id'         => 'efp_number_of_row',
+						'id'         => 'eventful_number_of_row',
 						'type'       => 'column',
 						'title'      => esc_html__( 'Row', 'eventful' ),
 						'subtitle'   => esc_html__( 'Set number of row in different devices for responsive view.', 'eventful' ),
@@ -171,17 +171,17 @@ class EFP_Carousel
 							'mobile'           => '1',
 						),
 						'min'        => '1',
-						'dependency' => array( 'efp_carousel_mode', '==', 'standard', true ),
+						'dependency' => array( 'eventful_carousel_mode', '==', 'standard', true ),
 						'help'       => esc_html__( 'When multiple <b>Row</b> is set, the above two options <b>Infinite Loop</b> and <b>Auto Height</b> won\'t work properly.', 'eventful' ),
 					),
 					array(
 						'type'       => 'subheading',
 						'content'    => esc_html__( 'Navigation', 'eventful' ),
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					// Navigation Settings.
 					array(
-						'id'         => 'efp_navigation',
+						'id'         => 'eventful_navigation',
 						'type'       => 'button_set',
 						'title'      => esc_html__( 'Navigation', 'eventful' ),
 						'subtitle'   => esc_html__( 'Show/Hide carousel navigation.', 'eventful' ),
@@ -191,10 +191,10 @@ class EFP_Carousel
 							'hide_on_mobile' => esc_html__( 'Hide on Mobile', 'eventful' ),
 						),
 						'default'    => 'show',
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
-						'id'         => 'efp_carousel_nav_position',
+						'id'         => 'eventful_carousel_nav_position',
 						'type'       => 'select',
 						'title'      => esc_html__( 'Select Position', 'eventful' ),
 						'subtitle'   => esc_html__( 'Select a position for the navigation arrows.', 'eventful' ),
@@ -210,7 +210,7 @@ class EFP_Carousel
 							'vertical_center_inner_hover' => esc_html__( 'Vertically center inner on hover', 'eventful' ),
 						),
 						'default'    => 'top_right',
-						'dependency' => array( 'efp_navigation|efp_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'eventful_navigation|eventful_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
 						'id'         => 'navigation_icons',
@@ -225,26 +225,26 @@ class EFP_Carousel
 							'fa-chevron'      => '<i class="fas fa-chevron-right"></i>',
 						),
 						'default'    => 'fa-angle',
-						'dependency' => array( 'efp_navigation|efp_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'eventful_navigation|eventful_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
-						'id'         => 'efp_nav_icon_size',
+						'id'         => 'eventful_nav_icon_size',
 						'type'       => 'spinner',
 						'title'      => esc_html__( 'Arrow Icon Size', 'eventful' ),
 						'subtitle'   => esc_html__( 'Set a size for arrow icon.', 'eventful' ),
-						'sanitize'   => 'efp_sanitize_number_field',
+						'sanitize'   => 'eventful_sanitize_number_field',
 						'default'    => '18',
 						'min'        => 0,
 						'max'        => 100,
 						'unit'       => 'px',
-						'dependency' => array( 'efp_navigation|efp_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'eventful_navigation|eventful_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
 						'id'         => 'navigation_icons_border_radius',
 						'type'       => 'spacing',
 						'title'      => esc_html__( 'Navigation Border Radius', 'eventful' ),
 						'subtitle'   => esc_html__( 'Set border radius for the navigation icons.', 'eventful' ),
-						'sanitize'   => 'efp_sanitize_number_array_field',
+						'sanitize'   => 'eventful_sanitize_number_array_field',
 						'all'        => true,
 						'min'        => 0,
 						'max'        => 100,
@@ -252,10 +252,10 @@ class EFP_Carousel
 						'default'    => array(
 							'all' => '0',
 						),
-						'dependency' => array( 'efp_navigation|efp_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'eventful_navigation|eventful_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
-						'id'         => 'efp_nav_colors',
+						'id'         => 'eventful_nav_colors',
 						'type'       => 'color_group',
 						'title'      => esc_html__( 'Navigation Color', 'eventful' ),
 						'subtitle'   => esc_html__( 'Set color for the carousel navigation.', 'eventful' ),
@@ -275,17 +275,17 @@ class EFP_Carousel
 							'border-color'       => '#aaa',
 							'hover-border-color' => '#263ad0',
 						),
-						'dependency' => array( 'efp_navigation|efp_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'eventful_navigation|eventful_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 
 					// Pagination Settings.
 					array(
 						'type'       => 'subheading',
 						'content'    => esc_html__( 'Pagination', 'eventful' ),
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
-						'id'         => 'efp_pagination',
+						'id'         => 'eventful_pagination',
 						'type'       => 'button_set',
 						'title'      => esc_html__( 'Pagination', 'eventful' ),
 						'subtitle'   => esc_html__( 'Show/Hide carousel pagination.', 'eventful' ),
@@ -295,7 +295,7 @@ class EFP_Carousel
 							'hide_on_mobile' => esc_html__( 'Hide on Mobile', 'eventful' ),
 						),
 						'default'    => 'show',
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
 						'id'         => 'bullet_types',
@@ -307,17 +307,17 @@ class EFP_Carousel
 							'number' => esc_html__( 'Number', 'eventful' ),
 						),
 						'default'    => 'dots',
-						'dependency' => array( 'efp_pagination|efp_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'eventful_pagination|eventful_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
-						'id'         => 'efp_pagination_color_set',
+						'id'         => 'eventful_pagination_color_set',
 						'type'       => 'fieldset',
-						'class'      => 'efp-pagination-color-set',
+						'class'      => 'eventful-pagination-color-set',
 						'title'      => esc_html__( 'Pagination Color', 'eventful' ),
 						'subtitle'   => esc_html__( 'Set color for the carousel pagination.', 'eventful' ),
 						'fields'     => array(
 							array(
-								'id'         => 'efp_pagination_color',
+								'id'         => 'eventful_pagination_color',
 								'type'       => 'color_group',
 								'options'    => array(
 									'color'        => esc_html__( 'Color', 'eventful' ),
@@ -330,7 +330,7 @@ class EFP_Carousel
 								'dependency' => array( 'bullet_types', '==', 'dots', true ),
 							),
 							array(
-								'id'         => 'efp_pagination_number_color',
+								'id'         => 'eventful_pagination_number_color',
 								'type'       => 'color_group',
 								'options'    => array(
 									'color'       => esc_html__( 'Color', 'eventful' ),
@@ -347,18 +347,18 @@ class EFP_Carousel
 								'dependency' => array( 'bullet_types', '==', 'number', true ),
 							),
 						),
-						'dependency' => array( 'efp_pagination|efp_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'eventful_pagination|eventful_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
-						'id'         => 'efp_dynamicBullets',
+						'id'         => 'eventful_dynamicBullets',
 						'type'       => 'checkbox',
 						'title'      => esc_html__( 'Dynamic Pagination', 'eventful' ),
 						'subtitle'   => esc_html__( 'Check to show dynamic pagination.', 'eventful' ),
 						'default'    => false,
-						'dependency' => array( 'efp_pagination|efp_carousel_mode', '!=|!=', 'hide|ticker' ),
+						'dependency' => array( 'eventful_pagination|eventful_carousel_mode', '!=|!=', 'hide|ticker' ),
 					),
 					array(
-						'id'         => 'efp_slides_to_scroll',
+						'id'         => 'eventful_slides_to_scroll',
 						'type'       => 'column',
 						'title'      => esc_html__( 'Slide To Scroll', 'eventful' ),
 						'subtitle'   => esc_html__( 'Number of post(s) to scroll at a time.', 'eventful' ),
@@ -370,17 +370,17 @@ class EFP_Carousel
 							'tablet'     => '1',
 							'mobile'     => '1',
 						),
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 						'help'       => wp_kses(esc_html__('<i class="fas fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fas fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fas fa-tablet-alt"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile </b> - size is smaller than 576px.', 'eventful'), array('i' => array('class' => array()), 'br' => array()) ),
 					),
 					// Miscellaneous Settings.
 					array(
 						'type'       => 'subheading',
 						'content'    => esc_html__( 'Miscellaneous', 'eventful' ),
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
-						'id'         => 'efp_adaptive_height',
+						'id'         => 'eventful_adaptive_height',
 						'type'       => 'switcher',
 						'title'      => esc_html__( 'Adaptive Carousel Height', 'eventful' ),
 						'subtitle'   => esc_html__( 'Dynamically adjust post carousel height based on each slide\'s height.', 'eventful' ),
@@ -388,10 +388,10 @@ class EFP_Carousel
 						'text_on'    => esc_html__( 'Enabled', 'eventful' ),
 						'text_off'   => esc_html__( 'Disabled', 'eventful' ),
 						'text_width' => 94,
-						'dependency' => array( 'efp_carousel_mode|efp_slide_effect', '!=|not-any', 'ticker|flip,cube' ),
+						'dependency' => array( 'eventful_carousel_mode|eventful_slide_effect', '!=|not-any', 'ticker|flip,cube' ),
 					),
 					array(
-						'id'         => 'efp_accessibility',
+						'id'         => 'eventful_accessibility',
 						'type'       => 'switcher',
 						'title'      => esc_html__( 'Tab and Key Navigation', 'eventful' ),
 						'subtitle'   => esc_html__( 'Enable/Disable carousel scroll with tab and keyboard.', 'eventful' ),
@@ -400,7 +400,7 @@ class EFP_Carousel
 						'text_off'   => esc_html__( 'Disabled', 'eventful' ),
 						'text_width' => 94,
 
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
 						'id'         => 'touch_swipe',
@@ -411,7 +411,7 @@ class EFP_Carousel
 						'text_off'   => esc_html__( 'Disabled', 'eventful' ),
 						'text_width' => 94,
 						'default'    => true,
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
 						'id'         => 'slider_draggable',
@@ -422,7 +422,7 @@ class EFP_Carousel
 						'text_off'   => esc_html__( 'Disabled', 'eventful' ),
 						'text_width' => 94,
 						'default'    => true,
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 					array(
 						'id'         => 'slider_mouse_wheel',
@@ -433,7 +433,7 @@ class EFP_Carousel
 						'text_off'   => esc_html__( 'Disabled', 'eventful' ),
 						'text_width' => 94,
 						'default'    => false,
-						'dependency' => array( 'efp_carousel_mode', '!=', 'ticker' ),
+						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
 					),
 				), // End of fields array.
 			)

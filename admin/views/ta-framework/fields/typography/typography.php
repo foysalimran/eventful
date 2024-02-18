@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
 
-if ( ! class_exists( 'EFP_Field_typography' ) ) {
+if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 	/**
 	 *
 	 * Field: typography
@@ -21,7 +21,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 	 * @since 1.0.0
 	 * @version 1.0.0
 	 */
-	class EFP_Field_typography extends EFP_Fields {
+	class EFUL_Field_typography extends EFUL_Fields {
 
 		/**
 		 * Chosen
@@ -118,17 +118,17 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			$default_value = ( ! empty( $this->field['default'] ) ) ? wp_parse_args( $this->field['default'], $default_value ) : $default_value;
 			$this->value   = wp_parse_args( $this->value, $default_value );
 			$this->chosen  = $args['chosen'];
-			$chosen_class  = ( $this->chosen ) ? ' efp--chosen' : '';
+			$chosen_class  = ( $this->chosen ) ? ' eventful--chosen' : '';
 
-			echo '<div class="efp--typography' . esc_attr( $chosen_class ) . '" data-unit="' . esc_attr( $args['unit'] ) . '" data-exclude="' . esc_attr( $args['exclude'] ) . '">';
+			echo '<div class="eventful--typography' . esc_attr( $chosen_class ) . '" data-unit="' . esc_attr( $args['unit'] ) . '" data-exclude="' . esc_attr( $args['exclude'] ) . '">';
 
-			echo '<div class="efp--blocks efp--blocks-selects">';
+			echo '<div class="eventful--blocks eventful--blocks-selects">';
 
 			//
 			// Font Family.
 			if ( ! empty( $args['font_family'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Font Family', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Font Family', 'eventful-pro' ) . '</div>';
 				echo $this->create_select( array( $this->value['font-family'] => $this->value['font-family'] ), 'font-family', esc_html__( 'Select a font', 'eventful-pro' ) );// phpcs:ignore
 				echo '</div>';
 			}
@@ -136,12 +136,12 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Backup Font Family.
 			if ( ! empty( $args['backup_font_family'] ) ) {
-				echo '<div class="efp--block efp--block-backup-font-family hidden">';
-				echo '<div class="efp--title">' . esc_html__( 'Backup Font Family', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--block eventful--block-backup-font-family hidden">';
+				echo '<div class="eventful--title">' . esc_html__( 'Backup Font Family', 'eventful-pro' ) . '</div>';
 				// phpcs:ignore
 				echo $this->create_select(
 					apply_filters(
-						'efp_field_typography_backup_font_family',
+						'eventful_field_typography_backup_font_family',
 						array(
 							'Arial, Helvetica, sans-serif',
 							"'Arial Black', Gadget, sans-serif",
@@ -169,22 +169,22 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 
 				//
 				// Font Style Select.
-				echo '<div class="efp--block efp--block-font-style hidden">';
-				echo '<div class="efp--title">' . esc_html__( 'Font Style', 'eventful-pro' ) . '</div>';
-				echo '<select class="efp--font-style-select" data-placeholder="Default">';
+				echo '<div class="eventful--block eventful--block-font-style hidden">';
+				echo '<div class="eventful--title">' . esc_html__( 'Font Style', 'eventful-pro' ) . '</div>';
+				echo '<select class="eventful--font-style-select" data-placeholder="Default">';
 				echo '<option value="">' . ( ! $this->chosen ? esc_html__( 'Default', 'eventful-pro' ) : '' ) . '</option>';// phpcs:ignore
 				if ( ! empty( $this->value['font-weight'] ) || ! empty( $this->value['font-style'] ) ) {
 					echo '<option value="' . strtolower( $this->value['font-weight'] . $this->value['font-style'] ) . '" selected></option>';// phpcs:ignore
 				}
 				echo '</select>';
-				echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[font-weight]' ) ) . '" class="efp--font-weight" value="' . esc_attr( $this->value['font-weight'] ) . '" />';
-				echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[font-style]' ) ) . '" class="efp--font-style" value="' . esc_attr( $this->value['font-style'] ) . '" />';
+				echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[font-weight]' ) ) . '" class="eventful--font-weight" value="' . esc_attr( $this->value['font-weight'] ) . '" />';
+				echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[font-style]' ) ) . '" class="eventful--font-style" value="' . esc_attr( $this->value['font-style'] ) . '" />';
 
 				//
 				// Extra Font Style Select.
 				if ( ! empty( $args['extra_styles'] ) ) {
-					echo '<div class="efp--block-extra-styles hidden">';
-					echo ( ! $this->chosen ) ? '<div class="efp--title">' . esc_html__( 'Load Extra Styles', 'eventful-pro' ) . '</div>' : '';
+					echo '<div class="eventful--block-extra-styles hidden">';
+					echo ( ! $this->chosen ) ? '<div class="eventful--title">' . esc_html__( 'Load Extra Styles', 'eventful-pro' ) . '</div>' : '';
 					$placeholder = ( $this->chosen ) ? esc_html__( 'Load Extra Styles', 'eventful-pro' ) : esc_html__( 'Default', 'eventful-pro' );
 					echo $this->create_select( $this->value['extra-styles'], 'extra-styles', $placeholder, true );// phpcs:ignore
 					echo '</div>';
@@ -197,8 +197,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Subset.
 			if ( ! empty( $args['subset'] ) ) {
-				echo '<div class="efp--block efp--block-subset hidden">';
-				echo '<div class="efp--title">' . esc_html__( 'Subset', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--block eventful--block-subset hidden">';
+				echo '<div class="eventful--title">' . esc_html__( 'Subset', 'eventful-pro' ) . '</div>';
 				$subset = ( is_array( $this->value['subset'] ) ) ? $this->value['subset'] : array_filter( (array) $this->value['subset'] );
 				echo $this->create_select( $subset, 'subset', esc_html__( 'Default', 'eventful-pro' ), $args['multi_subset'] );// phpcs:ignore
 				echo '</div>';
@@ -207,8 +207,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Text Align.
 			if ( ! empty( $args['text_align'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Text Align', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Text Align', 'eventful-pro' ) . '</div>';
 				// phpcs:ignore
 				echo $this->create_select(
 					array(
@@ -228,8 +228,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Font Variant.
 			if ( ! empty( $args['font_variant'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Font Variant', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Font Variant', 'eventful-pro' ) . '</div>';
 				// phpcs:ignore
 				echo $this->create_select(
 					array(
@@ -246,8 +246,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Text Transform.
 			if ( ! empty( $args['text_transform'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Text Transform', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Text Transform', 'eventful-pro' ) . '</div>';
 				// phpcs:ignore
 				echo $this->create_select(
 					array(
@@ -265,8 +265,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Text Decoration.
 			if ( ! empty( $args['text_decoration'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Text Decoration', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Text Decoration', 'eventful-pro' ) . '</div>';
 				// phpcs:ignore
 				echo $this->create_select(
 					array(
@@ -285,63 +285,63 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 				echo '</div>';
 			}
 
-			echo '</div>'; // End of .efp--blocks-selects.
+			echo '</div>'; // End of .eventful--blocks-selects.
 
-			echo '<div class="efp--blocks efp--blocks-inputs">';
+			echo '<div class="eventful--blocks eventful--blocks-inputs">';
 
 			//
 			// Font Size and Line Height.
 			if ( ! empty( $args['font_size'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Font Size', 'eventful-pro' ) . '</div>';
-				echo '<div class="efp--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[font-size]' ) ) . '" class="efp--font-size efp--input efp-input-number" value="' . esc_attr( $this->value['font-size'] ) . '" />';
-				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Font Size', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[font-size]' ) ) . '" class="eventful--font-size eventful--input eventful-input-number" value="' . esc_attr( $this->value['font-size'] ) . '" />';
+				echo '<span class="eventful--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
 			if ( ! empty( $args['line_height'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Line Height', 'eventful-pro' ) . '</div>';
-				echo '<div class="efp--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[line-height]' ) ) . '" class="efp--line-height efp--input efp-input-number" value="' . esc_attr( $this->value['line-height'] ) . '" />';
-				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Line Height', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[line-height]' ) ) . '" class="eventful--line-height eventful--input eventful-input-number" value="' . esc_attr( $this->value['line-height'] ) . '" />';
+				echo '<span class="eventful--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
 			if ( ! empty( $args['tablet_font_size'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Font Size (Tablet)', 'eventful-pro' ) . '</div>';
-				echo '<div class="efp--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[tablet-font-size]' ) ) . '" class="efp--font-size efp--input efp-input-number" value="' . esc_attr( $this->value['tablet-font-size'] ) . '" />';
-				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Font Size (Tablet)', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[tablet-font-size]' ) ) . '" class="eventful--font-size eventful--input eventful-input-number" value="' . esc_attr( $this->value['tablet-font-size'] ) . '" />';
+				echo '<span class="eventful--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
 			if ( ! empty( $args['tablet_line_height'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Line Height (Tablet)', 'eventful-pro' ) . '</div>';
-				echo '<div class="efp--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[tablet-line-height]' ) ) . '" class="efp--line-height efp--input efp-input-number" value="' . esc_attr( $this->value['tablet-line-height'] ) . '" />';
-				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Line Height (Tablet)', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[tablet-line-height]' ) ) . '" class="eventful--line-height eventful--input eventful-input-number" value="' . esc_attr( $this->value['tablet-line-height'] ) . '" />';
+				echo '<span class="eventful--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
 			if ( ! empty( $args['mobile_font_size'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Font Size (Mobile)', 'eventful-pro' ) . '</div>';
-				echo '<div class="efp--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[mobile-font-size]' ) ) . '" class="efp--font-size efp--input efp-input-number" value="' . esc_attr( $this->value['mobile-font-size'] ) . '" />';
-				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Font Size (Mobile)', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[mobile-font-size]' ) ) . '" class="eventful--font-size eventful--input eventful-input-number" value="' . esc_attr( $this->value['mobile-font-size'] ) . '" />';
+				echo '<span class="eventful--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
 			if ( ! empty( $args['mobile_line_height'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Line Height (Mobile)', 'eventful-pro' ) . '</div>';
-				echo '<div class="efp--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[mobile-line-height]' ) ) . '" class="efp--line-height efp--input efp-input-number" value="' . esc_attr( $this->value['mobile-line-height'] ) . '" />';
-				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Line Height (Mobile)', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[mobile-line-height]' ) ) . '" class="eventful--line-height eventful--input eventful-input-number" value="' . esc_attr( $this->value['mobile-line-height'] ) . '" />';
+				echo '<span class="eventful--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
@@ -349,11 +349,11 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Letter Spacing.
 			if ( ! empty( $args['letter_spacing'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Letter Spacing', 'eventful-pro' ) . '</div>';
-				echo '<div class="efp--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[letter-spacing]' ) ) . '" class="efp--letter-spacing efp--input efp-input-number" value="' . esc_attr( $this->value['letter-spacing'] ) . '" />';
-				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Letter Spacing', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[letter-spacing]' ) ) . '" class="eventful--letter-spacing eventful--input eventful-input-number" value="' . esc_attr( $this->value['letter-spacing'] ) . '" />';
+				echo '<span class="eventful--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
@@ -361,26 +361,26 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			//
 			// Word Spacing.
 			if ( ! empty( $args['word_spacing'] ) ) {
-				echo '<div class="efp--block">';
-				echo '<div class="efp--title">' . esc_html__( 'Word Spacing', 'eventful-pro' ) . '</div>';
-				echo '<div class="efp--input-wrap">';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[word-spacing]' ) ) . '" class="efp--word-spacing efp--input efp-input-number" value="' . esc_attr( $this->value['word-spacing'] ) . '" />';
-				echo '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>';
+				echo '<div class="eventful--block">';
+				echo '<div class="eventful--title">' . esc_html__( 'Word Spacing', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful--input-wrap">';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[word-spacing]' ) ) . '" class="eventful--word-spacing eventful--input eventful-input-number" value="' . esc_attr( $this->value['word-spacing'] ) . '" />';
+				echo '<span class="eventful--unit">' . esc_attr( $args['unit'] ) . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
 
-			echo '</div>'; // End of efp--blocks-inputs.
+			echo '</div>'; // End of eventful--blocks-inputs.
 
 			//
 			// Font Color.
 			if ( ! empty( $args['color'] ) ) {
-				echo '<div class="efp--blocks efp--blocks-color">';
+				echo '<div class="eventful--blocks eventful--blocks-color">';
 				$default_color_attr = ( ! empty( $default_value['color'] ) ) ? ' data-default-color="' . $default_value['color'] . '"' : '';
-				echo '<div class="efp--block efp--block-font-color">';
-				echo '<div class="efp--title">' . esc_html__( 'Font Color', 'eventful-pro' ) . '</div>';
-				echo '<div class="efp-field-color">';
-				echo '<input type="text" name="' . esc_attr( $this->field_name( '[color]' ) ) . '" class="efp-color efp--color" value="' . esc_attr( $this->value['color'] ) . '"' . wp_kses_post( $default_color_attr ) . ' />';
+				echo '<div class="eventful--block eventful--block-font-color">';
+				echo '<div class="eventful--title">' . esc_html__( 'Font Color', 'eventful-pro' ) . '</div>';
+				echo '<div class="eventful-field-color">';
+				echo '<input type="text" name="' . esc_attr( $this->field_name( '[color]' ) ) . '" class="eventful-color eventful--color" value="' . esc_attr( $this->value['color'] ) . '"' . wp_kses_post( $default_color_attr ) . ' />';
 				echo '</div>';
 				echo '</div>';
 
@@ -388,22 +388,22 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 				// Font Hover Color.
 				if ( ! empty( $args['hover_color'] ) ) {
 					$default_hover_color_attr = ( ! empty( $default_value['hover_color'] ) ) ? ' data-default-color="' . $default_value['hover_color'] . '"' : '';
-					echo '<div class="efp--block efp--block-font-color">';
-					echo '<div class="efp--title">' . esc_html__( 'Hover Color', 'eventful-pro' ) . '</div>';
-					echo '<div class="efp-field-color">';
-					echo '<input type="text" name="' . esc_attr( $this->field_name( '[hover_color]' ) ) . '" class="efp-color efp--color" value="' . esc_attr( $this->value['hover_color'] ) . '"' . wp_kses_post( $default_hover_color_attr ) . ' />';
+					echo '<div class="eventful--block eventful--block-font-color">';
+					echo '<div class="eventful--title">' . esc_html__( 'Hover Color', 'eventful-pro' ) . '</div>';
+					echo '<div class="eventful-field-color">';
+					echo '<input type="text" name="' . esc_attr( $this->field_name( '[hover_color]' ) ) . '" class="eventful-color eventful--color" value="' . esc_attr( $this->value['hover_color'] ) . '"' . wp_kses_post( $default_hover_color_attr ) . ' />';
 					echo '</div>';
 					echo '</div>';
 				}
-				echo '</div>'; // End of efp--blocks-color.
+				echo '</div>'; // End of eventful--blocks-color.
 			}
 
 			//
 			// Custom style.
 			if ( ! empty( $args['custom_style'] ) ) {
-				echo '<div class="efp--block efp--block-custom-style">';
-				echo '<div class="efp--title">' . esc_html__( 'Custom Style', 'eventful-pro' ) . '</div>';
-				echo '<textarea name="' . esc_attr( $this->field_name( '[custom-style]' ) ) . '" class="efp--custom-style">' . esc_attr( $this->value['custom-style'] ) . '</textarea>';
+				echo '<div class="eventful--block eventful--block-custom-style">';
+				echo '<div class="eventful--title">' . esc_html__( 'Custom Style', 'eventful-pro' ) . '</div>';
+				echo '<textarea name="' . esc_attr( $this->field_name( '[custom-style]' ) ) . '" class="eventful--custom-style">' . esc_attr( $this->value['custom-style'] ) . '</textarea>';
 				echo '</div>';
 			}
 
@@ -412,14 +412,14 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			$always_preview = ( 'always' !== $args['preview'] ) ? ' hidden' : '';
 
 			if ( ! empty( $args['preview'] ) ) {
-				echo '<div class="efp--block efp--block-preview' . esc_attr( $always_preview ) . '">';
-				echo '<div class="efp--toggle fas fa-toggle-off"></div>';
-				echo '<div class="efp--preview">' . esc_html( $args['preview_text'] ) . '</div>';
+				echo '<div class="eventful--block eventful--block-preview' . esc_attr( $always_preview ) . '">';
+				echo '<div class="eventful--toggle fas fa-toggle-off"></div>';
+				echo '<div class="eventful--preview">' . esc_html( $args['preview_text'] ) . '</div>';
 				echo '</div>';
 			}
 
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[type]' ) ) . '" class="efp--type" value="' . esc_attr( $this->value['type'] ) . '" />';
-			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[unit]' ) ) . '" class="efp--unit-save" value="' . esc_attr( $args['unit'] ) . '" />';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[type]' ) ) . '" class="eventful--type" value="' . esc_attr( $this->value['type'] ) . '" />';
+			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[unit]' ) ) . '" class="eventful--unit-save" value="' . esc_attr( $args['unit'] ) . '" />';
 
 			echo '</div>';
 
@@ -442,18 +442,18 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			$multiple_attr = ( $is_multiple ) ? ' multiple data-multiple="true"' : '';
 			$chosen_rtl    = ( $this->chosen && is_rtl() ) ? ' chosen-rtl' : '';
 
-			$output  = '<select name="' . $this->field_name( '[' . $name . ']' . $multiple_name ) . '" class="efp--' . $name . $chosen_rtl . '" data-placeholder="' . $placeholder . '"' . $multiple_attr . '>';
+			$output  = '<select name="' . $this->field_name( '[' . $name . ']' . $multiple_name ) . '" class="eventful--' . $name . $chosen_rtl . '" data-placeholder="' . $placeholder . '"' . $multiple_attr . '>';
 			$output .= ( ! empty( $placeholder ) ) ? '<option value="">' . ( ( ! $this->chosen ) ? $placeholder : '' ) . '</option>' : '';
 
 			if ( ! empty( $options ) ) {
-				foreach ( $options as $option_key => $efp_metabox_value ) {
+				foreach ( $options as $option_key => $eventful_metabox_value ) {
 					if ( $is_multiple ) {
-						$selected = ( in_array( $efp_metabox_value, $this->value[ $name ] ) ) ? ' selected' : '';
-						$output  .= '<option value="' . $efp_metabox_value . '"' . $selected . '>' . $efp_metabox_value . '</option>';
+						$selected = ( in_array( $eventful_metabox_value, $this->value[ $name ] ) ) ? ' selected' : '';
+						$output  .= '<option value="' . $eventful_metabox_value . '"' . $selected . '>' . $eventful_metabox_value . '</option>';
 					} else {
-						$option_key = ( is_numeric( $option_key ) ) ? $efp_metabox_value : $option_key;
+						$option_key = ( is_numeric( $option_key ) ) ? $eventful_metabox_value : $option_key;
 						$selected   = ( $option_key === $this->value[ $name ] ) ? ' selected' : '';
-						$output    .= '<option value="' . $option_key . '"' . $selected . '>' . $efp_metabox_value . '</option>';
+						$output    .= '<option value="' . $option_key . '"' . $selected . '>' . $eventful_metabox_value . '</option>';
 					}
 				}
 			}
@@ -471,15 +471,15 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 		 */
 		public function enqueue() {
 
-			if ( ! wp_style_is( 'efp-webfont-loader' ) ) {
+			if ( ! wp_style_is( 'eventful-webfont-loader' ) ) {
 
-				EFP::include_plugin_file( 'fields/typography/google-fonts.php' );
+				EFUL::include_plugin_file( 'fields/typography/google-fonts.php' );
 
-				wp_enqueue_script( 'efp-webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array( 'efp' ), '1.6.28', true );
+				wp_enqueue_script( 'eventful-webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array( 'eventful' ), '1.6.28', true );
 
 				$webfonts = array();
 
-				$customwebfonts = apply_filters( 'efp_field_typography_customwebfonts', array() );
+				$customwebfonts = apply_filters( 'eventful_field_typography_customwebfonts', array() );
 
 				if ( ! empty( $customwebfonts ) ) {
 					$webfonts['custom'] = array(
@@ -491,7 +491,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 				$webfonts['safe'] = array(
 					'label' => esc_html__( 'Safe Web Fonts', 'eventful-pro' ),
 					'fonts' => apply_filters(
-						'efp_field_typography_safewebfonts',
+						'eventful_field_typography_safewebfonts',
 						array(
 							'Arial',
 							'Arial Black',
@@ -514,15 +514,15 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 				$webfonts['google'] = array(
 					'label' => esc_html__( 'Google Web Fonts', 'eventful-pro' ),
 					'fonts' => apply_filters(
-						'efp_field_typography_googlewebfonts',
-						efp_get_google_fonts()
+						'eventful_field_typography_googlewebfonts',
+						eventful_get_google_fonts()
 					),
 				);
 
-				$defaultstyles = apply_filters( 'efp_field_typography_defaultstyles', array( 'normal', 'italic', '700', '700italic' ) );
+				$defaultstyles = apply_filters( 'eventful_field_typography_defaultstyles', array( 'normal', 'italic', '700', '700italic' ) );
 
 				$googlestyles = apply_filters(
-					'efp_field_typography_googlestyles',
+					'eventful_field_typography_googlestyles',
 					array(
 						'100'       => 'Thin 100',
 						'100italic' => 'Thin 100 Italic',
@@ -545,11 +545,11 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 					)
 				);
 
-				$webfonts = apply_filters( 'efp_field_typography_webfonts', $webfonts );
+				$webfonts = apply_filters( 'eventful_field_typography_webfonts', $webfonts );
 
 				wp_localize_script(
-					'efp',
-					'efp_typography_json',
+					'eventful',
+					'eventful_typography_json',
 					array(
 						'webfonts'      => $webfonts,
 						'defaultstyles' => $defaultstyles,
@@ -575,8 +575,8 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			if ( ! empty( $this->value['type'] ) ) {
 				$is_google = ( 'google' === $this->value['type'] ) ? true : false;
 			} else {
-				EFP::include_plugin_file( 'fields/typography/google-fonts.php' );
-				$is_google = ( array_key_exists( $this->value['font-family'], efp_get_google_fonts() ) ) ? true : false;
+				EFUL::include_plugin_file( 'fields/typography/google-fonts.php' );
+				$is_google = ( array_key_exists( $this->value['font-family'], eventful_get_google_fonts() ) ) ? true : false;
 			}
 
 			if ( $is_google ) {

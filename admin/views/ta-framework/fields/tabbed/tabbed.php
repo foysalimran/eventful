@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_tabbed' ) ) {
-	class EFP_Field_tabbed extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_tabbed' ) ) {
+	class EFUL_Field_tabbed extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -20,23 +20,23 @@ if ( ! class_exists( 'EFP_Field_tabbed' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo '<div class="efp-tabbed-nav" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
+			echo '<div class="eventful-tabbed-nav" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 			foreach ( $this->field['tabs'] as $key => $tab ) {
 
-				$tabbed_icon   = ( ! empty( $tab['icon'] ) ) ? '<i class="efp--icon ' . esc_attr( $tab['icon'] ) . '"></i>' : '';
-				$tabbed_active = ( empty( $key ) ) ? 'efp-tabbed-active' : '';
+				$tabbed_icon   = ( ! empty( $tab['icon'] ) ) ? '<i class="eventful--icon ' . esc_attr( $tab['icon'] ) . '"></i>' : '';
+				$tabbed_active = ( empty( $key ) ) ? 'eventful-tabbed-active' : '';
 
 				echo '<a href="#" class="' . esc_attr( $tabbed_active ) . '"">' . $tabbed_icon . esc_attr( $tab['title'] ) . '</a>';
 
 			}
 			echo '</div>';
 
-			echo '<div class="efp-tabbed-contents">';
+			echo '<div class="eventful-tabbed-contents">';
 			foreach ( $this->field['tabs'] as $key => $tab ) {
 
 				$tabbed_hidden = ( ! empty( $key ) ) ? ' hidden' : '';
 
-				echo '<div class="efp-tabbed-content' . esc_attr( $tabbed_hidden ) . '">';
+				echo '<div class="eventful-tabbed-content' . esc_attr( $tabbed_hidden ) . '">';
 
 				foreach ( $tab['fields'] as $field ) {
 
@@ -48,7 +48,7 @@ if ( ! class_exists( 'EFP_Field_tabbed' ) ) {
 					$field_value   = ( isset( $this->value[ $field_id ] ) ) ? $this->value[ $field_id ] : $field_default;
 					$unique_id     = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $this->field['id'] . ']' : $this->field['id'];
 
-					EFP::field( $field, $field_value, $unique_id, 'field/tabbed' );
+					EFUL::field( $field, $field_value, $unique_id, 'field/tabbed' );
 
 				}
 

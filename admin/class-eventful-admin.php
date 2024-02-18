@@ -43,10 +43,10 @@ class Eventful_Admin
 		// Autoload system.
 		spl_autoload_register(array($this, 'autoload'));
 
-		EFP_Metaboxes::layout_metabox('ta_efp_layouts');
-		EFP_Metaboxes::option_metabox('ta_efp_view_options');
-		EFP_Metaboxes::shortcode_metabox('ta_efp_display_shortcode');
-		EFP_Settings::settings('ta_eventful_settings');
+		EFUL_Metaboxes::layout_metabox('ta_eventful_layouts');
+		EFUL_Metaboxes::option_metabox('ta_eventful_view_options');
+		EFUL_Metaboxes::shortcode_metabox('ta_eventful_display_shortcode');
+		EFUL_Settings::settings('ta_eventful_settings');
 
 		$active_plugins = get_option('active_plugins');
 		foreach ($active_plugins as $active_plugin) {
@@ -77,9 +77,9 @@ class Eventful_Admin
 		$name = explode('_', $class);
 		if (isset($name[1])) {
 			$class_name       = strtolower($name[1]);
-			$efp_config_paths = array('views/', 'views/configs/settings/', 'views/configs/generator/');
-			foreach ($efp_config_paths as $ta_efp_path) {
-				$filename = plugin_dir_path(__FILE__) . '/' . $ta_efp_path . 'class-efp-' . $class_name . '.php';
+			$eventful_config_paths = array('views/', 'views/configs/settings/', 'views/configs/generator/');
+			foreach ($eventful_config_paths as $ta_eventful_path) {
+				$filename = plugin_dir_path(__FILE__) . '/' . $ta_eventful_path . 'class-eventful-' . $class_name . '.php';
 				if (file_exists($filename)) {
 					require_once $filename;
 				}
@@ -109,7 +109,7 @@ class Eventful_Admin
 		$current_screen        = get_current_screen();
 		$the_current_post_type = $current_screen->post_type;
 		if ('eventful' == $the_current_post_type) {
-			wp_enqueue_style('eventful-admin', EFP_URL . 'admin/assets/css/eventful-admin' . $this->suffix . '.css', array(), $this->version, 'all');
+			wp_enqueue_style('eventful-admin', EFUL_URL . 'admin/assets/css/eventful-admin' . $this->suffix . '.css', array(), $this->version, 'all');
 		}
 	}
 
@@ -135,7 +135,7 @@ class Eventful_Admin
 		$current_screen        	= get_current_screen();
 		$the_current_post_type 	= $current_screen->post_type;
 		if ('eventful' == $the_current_post_type) {
-			wp_enqueue_script('eventful-admin', EFP_URL . 'admin/assets/js/eventful-admin' . $this->suffix . '.js', array('jquery'), $this->version, false);
+			wp_enqueue_script('eventful-admin', EFUL_URL . 'admin/assets/js/eventful-admin' . $this->suffix . '.js', array('jquery'), $this->version, false);
 		}
 	}
 
@@ -151,7 +151,7 @@ class Eventful_Admin
 		$admin_columns['cb']         = '<input type="checkbox" />';
 		$admin_columns['title']      = esc_html__('Title', 'eventful');
 		$admin_columns['shortcode']  = esc_html__('Shortcode', 'eventful');
-		$admin_columns['efp_layout'] = esc_html__('Layout', 'eventful');
+		$admin_columns['eventful_layout'] = esc_html__('Layout', 'eventful');
 		$admin_columns['date']       = esc_html__('Date', 'eventful');
 
 		return $admin_columns;
@@ -167,14 +167,14 @@ class Eventful_Admin
 	public function display_eventful_admin_fields($column, $post_id)
 	{
 
-		$efp_layouts     = get_post_meta($post_id, 'ta_efp_layouts', true);
-		$eventfuls_types = isset($efp_layouts['efp_layout_preset']) ? $efp_layouts['efp_layout_preset'] : '';
+		$eventful_layouts     = get_post_meta($post_id, 'ta_eventful_layouts', true);
+		$eventfuls_types = isset($eventful_layouts['eventful_layout_preset']) ? $eventful_layouts['eventful_layout_preset'] : '';
 		switch ($column) {
 			case 'shortcode':
-				$column_field = '<input  class="ta_efp_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="efp-after-copy-text"><i class="far fa-check-circle"></i> ' . esc_html('Shortcode Copied to Clipboard!', 'eventful') . ' </div>';
+				$column_field = '<input  class="ta_eventful_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="eventful-after-copy-text"><i class="far fa-check-circle"></i> ' . esc_html('Shortcode Copied to Clipboard!', 'eventful') . ' </div>';
 				echo $column_field;
 				break;
-			case 'efp_layout':
+			case 'eventful_layout':
 				$layout = ucwords(str_replace('_layout', ' ', $eventfuls_types));
 				esc_html_e($layout, 'eventful');
 				break;
@@ -198,7 +198,7 @@ class Eventful_Admin
  *
  * @return string
  */
-function efp_dashboard_capability()
+function eventful_dashboard_capability()
 {
-	return apply_filters('efp_dashboard_capability', 'manage_options');
+	return apply_filters('eventful_dashboard_capability', 'manage_options');
 }

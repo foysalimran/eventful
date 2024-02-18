@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
 
-if ( ! class_exists( 'EFP_Field_box_shadow' ) ) {
+if ( ! class_exists( 'EFUL_Field_box_shadow' ) ) {
 	/**
 	 *
 	 * Field: border
@@ -21,7 +21,7 @@ if ( ! class_exists( 'EFP_Field_box_shadow' ) ) {
 	 * @since 2.0
 	 * @version 2.0
 	 */
-	class EFP_Field_box_shadow extends EFP_Fields {
+	class EFUL_Field_box_shadow extends EFUL_Fields {
 		/**
 		 * The class constructor.
 		 *
@@ -78,7 +78,7 @@ if ( ! class_exists( 'EFP_Field_box_shadow' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo '<div class="efp--inputs">';
+			echo '<div class="eventful--inputs">';
 
 			$properties = array();
 
@@ -92,16 +92,16 @@ if ( ! class_exists( 'EFP_Field_box_shadow' ) ) {
 
 				$placeholder = ( ! empty( $args[ $property . '_placeholder' ] ) ) ? ' placeholder="' . $args[ $property . '_placeholder' ] . '"' : '';
 
-				echo '<div class="efp--input">';
-				echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="efp--label efp--icon">' . wp_kses_post( $args[ $property . '_icon' ] ) . '</span>' : '';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[' . $property . ']' ) ) . '" value="' . esc_attr( $value[ $property ] ) . '"' . wp_kses_post( $placeholder ) . ' class="efp-input-number efp--is-unit" />';
-				echo ( ! empty( $args['unit'] ) ) ? '<span class="efp--label efp--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
+				echo '<div class="eventful--input">';
+				echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post( $args[ $property . '_icon' ] ) . '</span>' : '';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[' . $property . ']' ) ) . '" value="' . esc_attr( $value[ $property ] ) . '"' . wp_kses_post( $placeholder ) . ' class="eventful-input-number eventful--is-unit" />';
+				echo ( ! empty( $args['unit'] ) ) ? '<span class="eventful--label eventful--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
 				echo '</div>';
 
 			}
 
 			if ( ! empty( $args['style'] ) ) {
-				echo '<div class="efp--input">';
+				echo '<div class="eventful--input">';
 				echo '<select name="' . esc_attr( $this->field_name( '[style]' ) ) . '">';
 				foreach ( array( 'inset', 'outset' ) as $style ) {
 					$selected = ( $value['style'] === $style ) ? ' selected' : '';
@@ -115,8 +115,8 @@ if ( ! class_exists( 'EFP_Field_box_shadow' ) ) {
 
 			if ( ! empty( $args['color'] ) ) {
 				$default_color_attr = ( ! empty( $default_value['color'] ) ) ? ' data-default-color="' . $default_value['color'] . '"' : '';
-				echo '<div class="efp-field-color">';
-				echo '<input type="text" name="' . esc_attr( $this->field_name( '[color]' ) ) . '" value="' . esc_attr( $value['color'] ) . '" class="efp-color"' . wp_kses_post( $default_color_attr ) . ' />';
+				echo '<div class="eventful-field-color">';
+				echo '<input type="text" name="' . esc_attr( $this->field_name( '[color]' ) ) . '" value="' . esc_attr( $value['color'] ) . '" class="eventful-color"' . wp_kses_post( $default_color_attr ) . ' />';
 				echo '</div>';
 			}
 

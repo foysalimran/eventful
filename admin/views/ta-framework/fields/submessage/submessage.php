@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_submessage' ) ) {
-	class EFP_Field_submessage extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_submessage' ) ) {
+	class EFUL_Field_submessage extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -18,7 +18,7 @@ if ( ! class_exists( 'EFP_Field_submessage' ) ) {
 
 			$style = ( ! empty( $this->field['style'] ) ) ? $this->field['style'] : 'normal';
 
-			echo '<div class="efp-submessage efp-submessage-' . esc_attr( $style ) . '">' . wp_kses_post($this->field['content']) . '</div>';
+			echo '<div class="eventful-submessage eventful-submessage-' . esc_attr( $style ) . '">' . wp_kses_post($this->field['content']) . '</div>';
 		}
 	}
 }

@@ -2,7 +2,7 @@
   die;
 } // Cannot access directly.
 
-class EFP_CustomCSS {
+class EFUL_CustomCSS {
 
 	/**
 	 * Custom CSS & JS settings.
@@ -11,14 +11,14 @@ class EFP_CustomCSS {
 	 * @return void
 	 */
 	public static function section( $prefix ) {
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'  => esc_html__( 'Custom CSS & JS', 'eventful' ),
 				'icon'   => 'fas fa-css3',
 				'fields' => array(
 					array(
-						'id'       => 'efp_custom_css',
+						'id'       => 'eventful_custom_css',
 						'type'     => 'code_editor',
 						'title'    => esc_html__( 'Custom CSS', 'eventful' ),
 						'settings' => array(
@@ -28,7 +28,7 @@ class EFP_CustomCSS {
 						),
 					),
 					array(
-						'id'       => 'efp_custom_js',
+						'id'       => 'eventful_custom_js',
 						'type'     => 'code_editor',
 						'title'    => esc_html__( 'Custom JS', 'eventful' ),
 						'settings' => array(

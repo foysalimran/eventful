@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_color' ) ) {
-	class EFP_Field_color extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_color' ) ) {
+	class EFUL_Field_color extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -19,7 +19,7 @@ if ( ! class_exists( 'EFP_Field_color' ) ) {
 			$default_attr = ( ! empty( $this->field['default'] ) ) ? ' data-default-color="' . esc_attr( $this->field['default'] ) . '"' : '';
 
 			echo wp_kses_post( $this->field_before() );
-			echo '<input type="text" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $this->value ) . '" class="efp-color"' . wp_kses_post($default_attr) . wp_kses_post( $this->field_attributes() ) . '/>';
+			echo '<input type="text" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $this->value ) . '" class="eventful-color"' . wp_kses_post($default_attr) . wp_kses_post( $this->field_attributes() ) . '/>';
 			echo wp_kses_post( $this->field_after() );
 		}
 

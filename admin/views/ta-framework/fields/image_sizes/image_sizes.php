@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
 
-if ( ! class_exists( 'EFP_Field_image_sizes' ) ) {
+if ( ! class_exists( 'EFUL_Field_image_sizes' ) ) {
 	/**
 	 *
 	 * Field: Image sizes.
@@ -21,7 +21,7 @@ if ( ! class_exists( 'EFP_Field_image_sizes' ) ) {
 	 * @since 1.0.0
 	 * @version 1.0.0
 	 */
-	class EFP_Field_image_sizes extends EFP_Fields {
+	class EFUL_Field_image_sizes extends EFUL_Fields {
 		/**
 		 * The class constructor.
 		 *
@@ -89,7 +89,7 @@ if ( ! class_exists( 'EFP_Field_image_sizes' ) ) {
 				$multiple_name    = ( $args['multiple'] ) ? '[]' : '';
 				$multiple_attr    = ( $args['multiple'] ) ? ' multiple="multiple"' : '';
 				$chosen_rtl       = ( is_rtl() ) ? ' chosen-rtl' : '';
-				$chosen_attr      = ( $args['chosen'] ) ? ' class="efp-chosen' . $chosen_rtl . '"' : '';
+				$chosen_attr      = ( $args['chosen'] ) ? ' class="eventful-chosen' . $chosen_rtl . '"' : '';
 				$placeholder_attr = ( $args['chosen'] && $args['placeholder'] ) ? ' data-placeholder="' . $args['placeholder'] . '"' : '';
 
 				if ( ! empty( $sizes ) ) {

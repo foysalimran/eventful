@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_background' ) ) {
-	class EFP_Field_background extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_background' ) ) {
+	class EFUL_Field_background extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -64,17 +64,17 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo '<div class="efp--background-colors">';
+			echo '<div class="eventful--background-colors">';
 
 			//
 			// Background Color
 			if ( ! empty( $args['background_color'] ) ) {
 
-				echo '<div class="efp--color">';
+				echo '<div class="eventful--color">';
 
-				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="efp--title">' . esc_html__( 'From', 'ta-framework' ) . '</div>' : '';
+				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="eventful--title">' . esc_html__( 'From', 'ta-framework' ) . '</div>' : '';
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'      => 'background-color',
 						'type'    => 'color',
@@ -93,11 +93,11 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 			// Background Gradient Color
 			if ( ! empty( $args['background_gradient_color'] ) && ! empty( $args['background_gradient'] ) ) {
 
-				echo '<div class="efp--color">';
+				echo '<div class="eventful--color">';
 
-				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="efp--title">' . esc_html__( 'To', 'ta-framework' ) . '</div>' : '';
+				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="eventful--title">' . esc_html__( 'To', 'ta-framework' ) . '</div>' : '';
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'      => 'background-gradient-color',
 						'type'    => 'color',
@@ -116,11 +116,11 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 			// Background Gradient Direction
 			if ( ! empty( $args['background_gradient_direction'] ) && ! empty( $args['background_gradient'] ) ) {
 
-				echo '<div class="efp--color">';
+				echo '<div class="eventful--color">';
 
-				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="efp---title">' . esc_html__( 'Direction', 'ta-framework' ) . '</div>' : '';
+				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="eventful---title">' . esc_html__( 'Direction', 'ta-framework' ) . '</div>' : '';
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'      => 'background-gradient-direction',
 						'type'    => 'select',
@@ -147,13 +147,13 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 			// Background Image
 			if ( ! empty( $args['background_image'] ) ) {
 
-				echo '<div class="efp--background-image">';
+				echo '<div class="eventful--background-image">';
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'          => 'background-image',
 						'type'        => 'media',
-						'class'       => 'efp-assign-field-background',
+						'class'       => 'eventful-assign-field-background',
 						'library'     => $args['background_image_library'],
 						'preview'     => $args['background_image_preview'],
 						'placeholder' => $args['background_image_placeholder'],
@@ -168,16 +168,16 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 
 			}
 
-			$auto_class   = ( ! empty( $args['background_auto_attributes'] ) ) ? ' efp--auto-attributes' : '';
-			$hidden_class = ( ! empty( $args['background_auto_attributes'] ) && empty( $this->value['background-image']['url'] ) ) ? ' efp--attributes-hidden' : '';
+			$auto_class   = ( ! empty( $args['background_auto_attributes'] ) ) ? ' eventful--auto-attributes' : '';
+			$hidden_class = ( ! empty( $args['background_auto_attributes'] ) && empty( $this->value['background-image']['url'] ) ) ? ' eventful--attributes-hidden' : '';
 
-			echo '<div class="efp--background-attributes' . esc_attr( $auto_class . $hidden_class ) . '">';
+			echo '<div class="eventful--background-attributes' . esc_attr( $auto_class . $hidden_class ) . '">';
 
 			//
 			// Background Position
 			if ( ! empty( $args['background_position'] ) ) {
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'      => 'background-position',
 						'type'    => 'select',
@@ -205,7 +205,7 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 			// Background Repeat
 			if ( ! empty( $args['background_repeat'] ) ) {
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'      => 'background-repeat',
 						'type'    => 'select',
@@ -228,7 +228,7 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 			// Background Attachment
 			if ( ! empty( $args['background_attachment'] ) ) {
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'      => 'background-attachment',
 						'type'    => 'select',
@@ -249,7 +249,7 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 			// Background Size
 			if ( ! empty( $args['background_size'] ) ) {
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'      => 'background-size',
 						'type'    => 'select',
@@ -271,7 +271,7 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 			// Background Origin
 			if ( ! empty( $args['background_origin'] ) ) {
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'      => 'background-origin',
 						'type'    => 'select',
@@ -293,7 +293,7 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 			// Background Clip
 			if ( ! empty( $args['background_clip'] ) ) {
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'      => 'background-clip',
 						'type'    => 'select',
@@ -315,7 +315,7 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 			// Background Blend Mode
 			if ( ! empty( $args['background_blend_mode'] ) ) {
 
-				EFP::field(
+				EFUL::field(
 					array(
 						'id'      => 'background-blend-mode',
 						'type'    => 'select',

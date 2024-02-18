@@ -10,6 +10,6 @@
 
  echo '<div class="eventful__item--meta">';
 
-EFP_Functions::efp_get_post_meta( $post, $post_meta_fields, $visitor_count, $_meta_separator, $is_table );
+EFUL_Functions::eventful_get_post_meta( $post, $post_meta_fields, $visitor_count, $_meta_separator, $is_table );
 
 echo '</div>';

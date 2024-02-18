@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_image_select' ) ) {
-	class EFP_Field_image_select extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_image_select' ) ) {
+	class EFUL_Field_image_select extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -25,7 +25,7 @@ if ( ! class_exists( 'EFP_Field_image_select' ) ) {
 				)
 			);
 
-			$inline = ( $args['inline'] ) ? ' efp--inline-list' : '';
+			$inline = ( $args['inline'] ) ? ' eventful--inline-list' : '';
 
 			$value = ( is_array( $this->value ) ) ? $this->value : array_filter( (array) $this->value );
 
@@ -33,7 +33,7 @@ if ( ! class_exists( 'EFP_Field_image_select' ) ) {
 
 			if ( ! empty( $args['options'] ) ) {
 
-				echo '<div class="efp-siblings efp--image-group' . esc_attr( $inline ) . '" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
+				echo '<div class="eventful-siblings eventful--image-group' . esc_attr( $inline ) . '" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
 
 				$num = 1;
 
@@ -41,10 +41,10 @@ if ( ! class_exists( 'EFP_Field_image_select' ) ) {
 
 					$type    = ( $args['multiple'] ) ? 'checkbox' : 'radio';
 					$extra   = ( $args['multiple'] ) ? '[]' : '';
-					$active  = ( in_array( $key, $value ) ) ? ' efp--active' : '';
+					$active  = ( in_array( $key, $value ) ) ? ' eventful--active' : '';
 					$checked = ( in_array( $key, $value ) ) ? ' checked' : '';
 
-					echo '<div class="efp--sibling efp--image' . esc_attr( $active ) . '">';
+					echo '<div class="eventful--sibling eventful--image' . esc_attr( $active ) . '">';
 					echo '<figure>';
 						echo '<img src="' . esc_url( $option ) . '" alt="img-' . esc_attr( $num++ ) . '" />';
 						echo '<input type="' . esc_attr( $type ) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr( $key ) . '"' . wp_kses_post( $this->field_attributes() ) . esc_attr( $checked ) . '/>';
