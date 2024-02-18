@@ -48,12 +48,12 @@ class Eventful_Public
 	private function load_public_dependencies()
 	{
 		require_once EFP_PATH . 'public/helpers/class-post-functions.php';
-		require_once EFP_PATH . 'public/helpers/class-efp-user-like.php';
+		require_once EFP_PATH . 'public/helpers/class-eventful-user-like.php';
 		new EFP_User_Like();
-		require_once EFP_PATH . 'public/helpers/class-efp-queryinside.php';
-		require_once EFP_PATH . 'public/helpers/class-efp-customfieldprocess.php';
-		require_once EFP_PATH . 'public/helpers/class-efp-shuffle-filter.php';
-		require_once EFP_PATH . 'public/helpers/class-efp-live-filter.php';
+		require_once EFP_PATH . 'public/helpers/class-eventful-queryinside.php';
+		require_once EFP_PATH . 'public/helpers/class-eventful-customfieldprocess.php';
+		require_once EFP_PATH . 'public/helpers/class-eventful-shuffle-filter.php';
+		require_once EFP_PATH . 'public/helpers/class-eventful-live-filter.php';
 		new EFP_Live_Filter();
 		require_once EFP_PATH . 'public/helpers/class-loop-html.php';
 	}
