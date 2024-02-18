@@ -3451,6 +3451,7 @@
         $this.children('.efp-field-wp_editor').efp_field_wp_editor();
 
         // Field colors
+        $this.children('.efp-field-box_shadow').find('.efp-color').efp_color();
         $this.children('.efp-field-border').find('.efp-color').efp_color();
         $this.children('.efp-field-background').find('.efp-color').efp_color();
         $this.children('.efp-field-color').find('.efp-color').efp_color();

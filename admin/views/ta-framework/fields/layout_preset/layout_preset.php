@@ -43,8 +43,8 @@ if ( ! class_exists( 'EFP_Field_layout_preset' ) ) {
 					$efp_pro_only_class = isset( $option['pro_only'] ) ? ' efp-pro-only' : '';
 
 					echo '<div class="efp--sibling efp--image' . $active . $efp_pro_only_class . '">';
-					echo '<img src="' . esc_url( $option['image'] ) . '" alt="' . $option['text'] . '" />';
-					echo '<input type="' . $type . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . $key . '"' . $this->field_attributes() . $checked . '/>';
+					echo '<img src="' . esc_url( $option['image'] ) . '" alt="' . esc_attr( $option['text'] ) . '" />';
+					echo '<input type="' . esc_attr($type) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr($key) . '"' . wp_kses_post($this->field_attributes()) . esc_attr($checked) . '/>';
 					echo '<span class="ta-carousel-type">' . esc_html( $option['text'] ) . '</span>';
 					echo '</div>';
 

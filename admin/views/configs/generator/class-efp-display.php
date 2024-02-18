@@ -108,25 +108,6 @@ class EFP_Display
 						'dependency' => array('efp_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 					),
 					array(
-						'id'         => 'post_list_orientation',
-						'type'       => 'layout_preset',
-						'class'      => 'img_custom_width',
-						'title'      => esc_html__('Content Orientation ', 'eventful-pro'),
-						'subtitle'   => esc_html__('Set a position for the post content.', 'eventful-pro'),
-						'options'    => array(
-							'left-thumb'  => array(
-								'image' => EFP_URL . 'admin/views/ta-framework/assets/img/left-image.svg',
-								'text'  => esc_html__('Left Image', 'eventful-pro'),
-							),
-							'right-thumb' => array(
-								'image' => EFP_URL . 'admin/views/ta-framework/assets/img/right-image.svg',
-								'text'  => esc_html__('Right Image', 'eventful-pro'),
-							),
-						),
-						'default'    => 'left-thumb',
-						'dependency' => array('efp_layout_preset', '==', 'list_layout', true),
-					),
-					array(
 						'id'         => 'item_same_height',
 						'type'       => 'checkbox',
 						'title'      => esc_html__('Same Height', 'eventful'),
