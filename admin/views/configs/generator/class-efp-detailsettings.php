@@ -17,32 +17,32 @@ class EFP_DetailSettings {
 		EFP::createSection(
 			$prefix,
 			array(
-				'title'  => esc_html__( 'Detail page Settings', 'eventful-pro' ),
+				'title'  => esc_html__( 'Detail page Settings', 'eventful' ),
 				'icon'   => 'fas fa-external-link-square-alt',
 				'fields' => array(
 					array(
 						'id'       => 'efp_page_link_type',
 						'class'    => 'efp_page_link_type',
 						'type'     => 'radio',
-						'title'    => esc_html__( 'Detail Page Link Type', 'eventful-pro' ),
-						'subtitle' => esc_html__( 'Choose a link type for the (item) detail page.', 'eventful-pro' ),
-						'desc'     => esc_html__( 'More amazing Popup Settings', 'eventful-pro' ),
+						'title'    => esc_html__( 'Detail Page Link Type', 'eventful' ),
+						'subtitle' => esc_html__( 'Choose a link type for the (item) detail page.', 'eventful' ),
+						'desc'     => esc_html__( 'More amazing Popup Settings', 'eventful' ),
 						'options'  => array(
-							'single_page' => esc_html__( 'Single Page', 'eventful-pro' ),
-							'none'        => esc_html__( 'None (no link action)', 'eventful-pro' ),
+							'single_page' => esc_html__( 'Single Page', 'eventful' ),
+							'none'        => esc_html__( 'None (no link action)', 'eventful' ),
 						),
 						'default'  => 'single_page',
 					),
 					array(
 						'id'         => 'efp_link_target',
 						'type'       => 'radio',
-						'title'      => esc_html__( 'Target', 'eventful-pro' ),
-						'subtitle'   => esc_html__( 'Set a target for the item link.', 'eventful-pro' ),
+						'title'      => esc_html__( 'Target', 'eventful' ),
+						'subtitle'   => esc_html__( 'Set a target for the item link.', 'eventful' ),
 						'options'    => array(
-							'_self'   => esc_html__( 'Current Tab', 'eventful-pro' ),
-							'_blank'  => esc_html__( 'New Tab', 'eventful-pro' ),
-							'_parent' => esc_html__( 'Parent', 'eventful-pro' ),
-							'_top'    => esc_html__( 'Top', 'eventful-pro' ),
+							'_self'   => esc_html__( 'Current Tab', 'eventful' ),
+							'_blank'  => esc_html__( 'New Tab', 'eventful' ),
+							'_parent' => esc_html__( 'Parent', 'eventful' ),
+							'_top'    => esc_html__( 'Top', 'eventful' ),
 						),
 						'default'    => '_self',
 						'dependency' => array( 'efp_page_link_type', '==', 'single_page' ),
@@ -50,7 +50,7 @@ class EFP_DetailSettings {
 					array(
 						'id'      => 'efp_link_rel',
 						'type'    => 'checkbox',
-						'title'   => esc_html__( 'Add rel="nofollow" to item links', 'eventful-pro' ),
+						'title'   => esc_html__( 'Add rel="nofollow" to item links', 'eventful' ),
 						'default' => 'false',
 					),
 				), // End of fields array.

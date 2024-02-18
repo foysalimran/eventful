@@ -148,13 +148,9 @@ class EFP_QueryInside
 						$tax_settings = array();
 						foreach ($taxonomy_types as $tax_type) {
 							$taxonomy         = isset($tax_type['efp_select_taxonomy']) ? $tax_type['efp_select_taxonomy'] : '';
-							$all_terms        = get_terms(
-								$taxonomy,
-								array(
-									'get'    => 'all',
-									'fields' => 'ids',
-								)
-							);
+							$all_terms = get_terms($taxonomy);
+							$all_terms = wp_list_pluck($all_terms, 'term_id');
+							
 							$terms            = isset($tax_type['efp_select_terms']) && !empty($tax_type['efp_select_terms']) ? $tax_type['efp_select_terms'] : $all_terms;
 							$all_button_label = isset($tax_type['ajax_filter_options']['ajax_rename_all_text']) ? $tax_type['ajax_filter_options']['ajax_rename_all_text'] : '';
 
@@ -327,7 +323,7 @@ class EFP_QueryInside
 			if ($_date_type_to_filter) {
 				switch ($_date_type_to_filter) {
 					case 'yesterday':
-						$yesterday = date('Y-m-d', strtotime('yesterday'));
+						$yesterday = gmdate('Y-m-d', strtotime('yesterday'));
 						$date      = date_parse($yesterday);
 
 						$date_query = array(
@@ -346,7 +342,7 @@ class EFP_QueryInside
 						break;
 
 					case 'today_onwards':
-						$yesterday  = date('Y-m-d', strtotime('yesterday'));
+						$yesterday  = gmdate('Y-m-d', strtotime('yesterday'));
 						$date_query = array(
 							'after' => $yesterday,
 						);

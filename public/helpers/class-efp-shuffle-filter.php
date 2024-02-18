@@ -93,13 +93,8 @@ class Eventful_Shuffle_Filter
 				while ($count < $taxonomy_count) {
 					$taxonomy = isset($taxonomy_types[$count]['efp_select_taxonomy']) ? $taxonomy_types[$count]['efp_select_taxonomy'] : '';
 
-					$all_terms = get_terms(
-						$taxonomy,
-						array(
-							'get'    => 'all',
-							'fields' => 'ids',
-						)
-					);
+					$all_terms = get_terms($taxonomy);
+					$all_terms = wp_list_pluck($all_terms, 'term_id');
 					$terms     = isset($taxonomy_types[$count]['efp_select_terms']) ? $taxonomy_types[$count]['efp_select_terms'] : $all_terms;
 
 					if (!empty($terms)) {

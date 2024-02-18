@@ -2,7 +2,7 @@
 /**
  * Preloader
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/preloader.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/preloader.php
  *
  * @package    Eventful
  * @subpackage Eventful/public/template

@@ -5,8 +5,8 @@
  *
  * @link       https://themeatelier.net/
  *
- * @package Eventful
- * @subpackage Eventful/admin/views
+ * @package Eventful_Pro
+ * @subpackage Eventful_Pro/admin/views
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -48,11 +48,11 @@ if ( ! class_exists( 'EFP_Field_dimensions_advanced' ) ) {
 					'left_icon'          => '<i class="fas fa-long-arrow-alt-left"></i>',
 					'bottom_icon'        => '<i class="fas fa-long-arrow-alt-down"></i>',
 					'all_icon'           => '<i class="fas fa-arrows-alt-h"></i>',
-					'top_placeholder'    => esc_html__( 'top', 'eventful-pro' ),
-					'right_placeholder'  => esc_html__( 'right', 'eventful-pro' ),
-					'bottom_placeholder' => esc_html__( 'bottom', 'eventful-pro' ),
-					'left_placeholder'   => esc_html__( 'left', 'eventful-pro' ),
-					'all_placeholder'    => esc_html__( 'all', 'eventful-pro' ),
+					'top_placeholder'    => esc_html__( 'top', 'eventful' ),
+					'right_placeholder'  => esc_html__( 'right', 'eventful' ),
+					'bottom_placeholder' => esc_html__( 'bottom', 'eventful' ),
+					'left_placeholder'   => esc_html__( 'left', 'eventful' ),
+					'all_placeholder'    => esc_html__( 'all', 'eventful' ),
 					'top'                => true,
 					'left'               => true,
 					'bottom'             => true,
@@ -79,15 +79,15 @@ if ( ! class_exists( 'EFP_Field_dimensions_advanced' ) ) {
 			);
 
 			$border_props = array(
-				'solid'  => esc_html__( 'Solid', 'eventful-pro' ),
-				'dashed' => esc_html__( 'Dashed', 'eventful-pro' ),
-				'dotted' => esc_html__( 'Dotted', 'eventful-pro' ),
-				'double' => esc_html__( 'Double', 'eventful-pro' ),
-				'inset'  => esc_html__( 'Inset', 'eventful-pro' ),
-				'outset' => esc_html__( 'Outset', 'eventful-pro' ),
-				'groove' => esc_html__( 'Groove', 'eventful-pro' ),
-				'ridge'  => esc_html__( 'ridge', 'eventful-pro' ),
-				'none'   => esc_html__( 'None', 'eventful-pro' ),
+				'solid'  => esc_html__( 'Solid', 'eventful' ),
+				'dashed' => esc_html__( 'Dashed', 'eventful' ),
+				'dotted' => esc_html__( 'Dotted', 'eventful' ),
+				'double' => esc_html__( 'Double', 'eventful' ),
+				'inset'  => esc_html__( 'Inset', 'eventful' ),
+				'outset' => esc_html__( 'Outset', 'eventful' ),
+				'groove' => esc_html__( 'Groove', 'eventful' ),
+				'ridge'  => esc_html__( 'ridge', 'eventful' ),
+				'none'   => esc_html__( 'None', 'eventful' ),
 			);
 
 			$default_values = ( ! empty( $this->field['default'] ) ) ? wp_parse_args( $this->field['default'], $default_values ) : $default_values;

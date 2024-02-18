@@ -133,7 +133,7 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
                 $tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="efp-tab-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
                 $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="efp-label-error efp-error">!</i>' : '';
 
-                echo '<li><a href="#">'. $tab_icon . $section['title'] . $tab_error .'</a></li>';
+                echo '<li><a href="#">'. wp_kses_post($tab_icon) . esc_html($tab['title']) . esc_html($tab_error) .'</a></li>';
 
                 $tab_key++;
 
@@ -160,8 +160,8 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
 
               echo '<div class="efp-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
 
-              echo ( $section_title || $section_icon ) ? '<div class="efp-section-title"><h3>'. $section_icon . $section_title .'</h3></div>' : '';
-              echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. $section['description'] .'</div>' : '';
+              echo ( $section_title || $section_icon ) ? '<div class="efp-section-title"><h3>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h3></div>' : '';
+              echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
 
               if ( ! empty( $section['fields'] ) ) {
 
@@ -181,7 +181,7 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
 
               } else {
 
-                echo '<div class="efp-no-option">'. esc_html__( 'No data available.', 'eventful-pro' ) .'</div>';
+                echo '<div class="efp-no-option">'. esc_html__( 'No data available.', 'ta-framework' ) .'</div>';
 
               }
 
@@ -198,8 +198,8 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
               echo '<div class="efp-sections-reset">';
               echo '<label>';
               echo '<input type="checkbox" name="'. esc_attr( $this->unique ) .'[_reset]" />';
-              echo '<span class="button efp-button-reset">'. esc_html__( 'Reset', 'eventful-pro' ) .'</span>';
-              echo '<span class="button efp-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'eventful-pro' ), esc_html__( 'Cancel', 'eventful-pro' ) ) .'</span>';
+              echo '<span class="button efp-button-reset">'. esc_html__( 'Reset', 'ta-framework' ) .'</span>';
+              echo '<span class="button efp-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'ta-framework' ), esc_html__( 'Cancel', 'ta-framework' ) ) .'</span>';
               echo '</label>';
               echo '</div>';
 

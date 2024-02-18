@@ -17,15 +17,15 @@ class EFP_Typography {
 		EFP::createSection(
 			$prefix,
 			array(
-				'title'           => esc_html__( 'Typography', 'eventful-pro' ),
+				'title'           => esc_html__( 'Typography', 'eventful' ),
 				'icon'            => 'fas fa-font',
 				'enqueue_webfont' => true,
 				'fields'          => array(
 					array(
 						'id'         => 'section_title_typography',
 						'type'       => 'typography',
-						'title'      => esc_html__( 'Section Title', 'eventful-pro' ),
-						'subtitle'   => esc_html__( 'Set item showcase section title font properties.', 'eventful-pro' ),
+						'title'      => esc_html__( 'Section Title', 'eventful' ),
+						'subtitle'   => esc_html__( 'Set item showcase section title font properties.', 'eventful' ),
 						'default'    => array(
 							'color'              => '#444',
 							'font-family'        => '',
@@ -48,8 +48,8 @@ class EFP_Typography {
 					array(
 						'id'         => 'thumb_archive_typography',
 						'type'       => 'typography',
-						'title'      => esc_html__( 'Thumb Archive', 'eventful-pro' ),
-						'subtitle'   => esc_html__( 'Set thumb archive font properties.', 'eventful-pro' ),
+						'title'      => esc_html__( 'Thumb Archive', 'eventful' ),
+						'subtitle'   => esc_html__( 'Set thumb archive font properties.', 'eventful' ),
 						'hover_color' => true,
 						'default'    => array(
 							'color'              => '#111111',
@@ -74,8 +74,8 @@ class EFP_Typography {
 					array(
 						'id'          => 'post_title_typography',
 						'type'        => 'typography',
-						'title'       => esc_html__( 'Title', 'eventful-pro' ),
-						'subtitle'    => esc_html__( 'Set title font properties.', 'eventful-pro' ),
+						'title'       => esc_html__( 'Title', 'eventful' ),
+						'subtitle'    => esc_html__( 'Set title font properties.', 'eventful' ),
 						'hover_color' => true,
 						'default'     => array(
 							'color'              => '#111111',
@@ -100,8 +100,8 @@ class EFP_Typography {
 					array(
 						'id'          => 'post_meta_typography',
 						'type'        => 'typography',
-						'title'       => esc_html__( 'Meta Fields', 'eventful-pro' ),
-						'subtitle'    => esc_html__( 'Set meta fields font properties.', 'eventful-pro' ),
+						'title'       => esc_html__( 'Meta Fields', 'eventful' ),
+						'subtitle'    => esc_html__( 'Set meta fields font properties.', 'eventful' ),
 						'hover_color' => true,
 						'default'     => array(
 							'color'              => '#111111',
@@ -126,8 +126,8 @@ class EFP_Typography {
 					array(
 						'id'          => 'event_fildes_typography',
 						'type'        => 'typography',
-						'title'       => esc_html__( 'Event Fields', 'eventful-pro' ),
-						'subtitle'    => esc_html__( 'Set event fields font properties.', 'eventful-pro' ),
+						'title'       => esc_html__( 'Event Fields', 'eventful' ),
+						'subtitle'    => esc_html__( 'Set event fields font properties.', 'eventful' ),
 						'hover_color' => true,
 						'default'     => array(
 							'color'              => '#111111',
@@ -152,8 +152,8 @@ class EFP_Typography {
 					array(
 						'id'         => 'post_content_typography',
 						'type'       => 'typography',
-						'title'      => esc_html__( 'Content', 'eventful-pro' ),
-						'subtitle'   => esc_html__( 'Set content font properties.', 'eventful-pro' ),
+						'title'      => esc_html__( 'Content', 'eventful' ),
+						'subtitle'   => esc_html__( 'Set content font properties.', 'eventful' ),
 						'default'    => array(
 							'color'              => '#111111',
 							'font-family'        => '',
@@ -176,8 +176,8 @@ class EFP_Typography {
 					array(
 						'id'         => 'read_more_typography',
 						'type'       => 'typography',
-						'title'      => esc_html__( 'Read More', 'eventful-pro' ),
-						'subtitle'   => esc_html__( 'Set read more font properties.', 'eventful-pro' ),
+						'title'      => esc_html__( 'Read More', 'eventful' ),
+						'subtitle'   => esc_html__( 'Set read more font properties.', 'eventful' ),
 						'color'      => false,
 						'default'    => array(
 							'font-family'        => '',
@@ -200,8 +200,8 @@ class EFP_Typography {
 					array(
 						'id'       => 'custom_fields_typography',
 						'type'     => 'typography',
-						'title'    => esc_html__( 'Custom Fields', 'eventful-pro' ),
-						'subtitle' => esc_html__( 'Set custom fields font properties.', 'eventful-pro' ),
+						'title'    => esc_html__( 'Custom Fields', 'eventful' ),
+						'subtitle' => esc_html__( 'Set custom fields font properties.', 'eventful' ),
 						'default'  => array(
 							'color'              => '#888',
 							'font-family'        => '',

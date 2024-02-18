@@ -43,12 +43,12 @@ if ( ! class_exists( 'EFP_Field_column' ) ) {
 					'mobile_landscape_icon'        => '<i class="fas fa-mobile-alt"></i>',
 					'mobile_icon'                  => '<i class="fas fa-mobile-alt"></i>',
 					'all_icon'                     => '<i class="fas fa-arrows-alt-h"></i>',
-					'lg_desktop_placeholder'       => esc_html__( 'Large Desktop', 'eventful-pro' ),
-					'desktop_placeholder'          => esc_html__( 'Desktop', 'eventful-pro' ),
-					'tablet_placeholder'           => esc_html__( 'Tablet', 'eventful-pro' ),
-					'mobile_landscape_placeholder' => esc_html__( 'Mobile Landscape', 'eventful-pro' ),
-					'mobile_placeholder'           => esc_html__( 'Mobile', 'eventful-pro' ),
-					'all_placeholder'              => esc_html__( 'all', 'eventful-pro' ),
+					'lg_desktop_placeholder'       => esc_html__( 'Large Desktop', 'eventful' ),
+					'desktop_placeholder'          => esc_html__( 'Desktop', 'eventful' ),
+					'tablet_placeholder'           => esc_html__( 'Tablet', 'eventful' ),
+					'mobile_landscape_placeholder' => esc_html__( 'Mobile Landscape', 'eventful' ),
+					'mobile_placeholder'           => esc_html__( 'Mobile', 'eventful' ),
+					'all_placeholder'              => esc_html__( 'all', 'eventful' ),
 					'lg_desktop'                   => true,
 					'desktop'                      => true,
 					'tablet'                       => true,
@@ -87,8 +87,8 @@ if ( ! class_exists( 'EFP_Field_column' ) ) {
 				$placeholder = ( ! empty( $args['all_placeholder'] ) ) ? ' placeholder="' . $args['all_placeholder'] . '"' : '';
 
 				echo '<div class="efp--input">';
-				echo ( ! empty( $args['all_icon'] ) ) ? '<span class="efp--label efp--icon">' . $args['all_icon'] . '</span>' : '';
-				echo '<input type="number" name="' . $this->field_name( '[all]' ) . '" value="' . $value['all'] . '"' . $placeholder . $min . ' class="efp-number" />';
+				echo ( ! empty( $args['all_icon'] ) ) ? '<span class="efp--label efp--icon">' . wp_kses_post($args['all_icon']) . '</span>' : '';
+				echo '<input type="number" name="' . $this->field_name( '[all]' ) . '" value="' . esc_attr($value['all']) . '"' . wp_kses_post($placeholder . $min) . ' class="efp-number" />';
 				echo ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? '<span class="efp--label efp--unit">' . $args['units'][0] . '</span>' : '';
 				echo '</div>';
 
@@ -110,7 +110,7 @@ if ( ! class_exists( 'EFP_Field_column' ) ) {
 
 					echo '<div class="efp--input">';
 					echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="efp--label efp--icon">' . $args[ $property . '_icon' ] . '</span>' : '';
-					echo '<input type="number" name="' . $this->field_name( '[' . $property . ']' ) . '" value="' . $value[ $property ] . '"' . $placeholder . $min . ' class="efp-number" />';
+					echo '<input type="number" name="' . $this->field_name( '[' . $property . ']' ) . '" value="' . esc_attr($value[ $property ]) . '"' . wp_kses_post($placeholder . $min) . ' class="efp-number" />';
 					echo ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? '<span class="efp--label efp--unit">' . $args['units'][0] . '</span>' : '';
 					echo '</div>';
 
@@ -123,7 +123,7 @@ if ( ! class_exists( 'EFP_Field_column' ) ) {
 				echo '<select name="' . $this->field_name( '[unit]' ) . '">';
 				foreach ( $args['units'] as $unit ) {
 					$selected = ( $value['unit'] === $unit ) ? ' selected' : '';
-					echo '<option value="' . $unit . '"' . $selected . '>' . $unit . '</option>';
+					echo '<option value="' . esc_attr($unit) . '"' . esc_attr($selected) . '>' . esc_html($unit) . '</option>';
 				}
 				echo '</select>';
 				echo '</div>';

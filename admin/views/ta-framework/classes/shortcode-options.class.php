@@ -82,7 +82,7 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
 
     public function add_footer_modal_shortcode() {
 
-      if( ! wp_script_is( 'eventful-pro' ) ) {
+      if( ! wp_script_is( 'ta-framework' ) ) {
         return;
       }
 
@@ -181,7 +181,7 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
 
             echo '<div class="efp-fields">';
 
-            echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. $section['description'] .'</div>' : '';
+            echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
 
             foreach ( $section['fields'] as $field ) {
 
@@ -207,7 +207,7 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
 
           if ( ! empty( $repeatable_fields ) ) {
 
-            $button_title    = ( ! empty( $section['button_title'] ) ) ? ' '. $section['button_title'] : esc_html__( 'Add New', 'eventful-pro' );
+            $button_title    = ( ! empty( $section['button_title'] ) ) ? ' '. $section['button_title'] : esc_html__( 'Add New', 'ta-framework' );
             $inner_shortcode = ( ! empty( $section['group_shortcode'] ) ) ? $section['group_shortcode'] : $shortcode;
 
             echo '<div class="efp--repeatable">';
@@ -237,14 +237,14 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
 
             echo '</div>';
 
-            echo '<div class="efp--repeat-button-block"><a class="button efp--repeat-button" href="#"><i class="fas fa-plus-circle"></i> '. esc_html($button_title) .'</a></div>';
+            echo '<div class="efp--repeat-button-block"><a class="button efp--repeat-button" href="#"><i class="fas fa-plus-circle"></i> '. $button_title .'</a></div>';
 
           }
 
         }
 
       } else {
-        echo '<div class="efp-field efp-error-text">'. esc_html__( 'Error: Invalid nonce verification.', 'eventful-pro' ) .'</div>';
+        echo '<div class="efp-field efp-error-text">'. esc_html__( 'Error: Invalid nonce verification.', 'ta-framework' ) .'</div>';
       }
 
       wp_send_json_success( array( 'content' => ob_get_clean() ) );

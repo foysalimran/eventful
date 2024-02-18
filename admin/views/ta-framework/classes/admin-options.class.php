@@ -166,7 +166,7 @@ if ( ! class_exists( 'EFP_Options' ) ) {
       $result = $this->set_options( true );
 
       if ( ! $result ) {
-        wp_send_json_error( array( 'error' => esc_html__( 'Error while saving the changes.', 'eventful-pro' ) ) );
+        wp_send_json_error( array( 'error' => esc_html__( 'Error while saving the changes.', 'ta-framework' ) ) );
       } else {
         wp_send_json_success( array( 'notice' => $this->notice, 'errors' => $this->errors ) );
       }
@@ -226,7 +226,7 @@ if ( ! class_exists( 'EFP_Options' ) ) {
           $import_data  = json_decode( wp_unslash( trim( $response[ 'efp_import_data' ] ) ), true );
           $options      = ( is_array( $import_data ) && ! empty( $import_data ) ) ? $import_data : array();
           $importing    = true;
-          $this->notice = esc_html__( 'Settings successfully imported.', 'eventful-pro' );
+          $this->notice = esc_html__( 'Settings successfully imported.', 'ta-framework' );
 
         }
 
@@ -238,7 +238,7 @@ if ( ! class_exists( 'EFP_Options' ) ) {
             }
           }
 
-          $this->notice = esc_html__( 'Default settings restored.', 'eventful-pro' );
+          $this->notice = esc_html__( 'Default settings restored.', 'ta-framework' );
 
         } else if ( ! empty( $transient['reset_section'] ) && ! empty( $section_id ) ) {
 
@@ -254,7 +254,7 @@ if ( ! class_exists( 'EFP_Options' ) ) {
 
           $data = wp_parse_args( $data, $this->options );
 
-          $this->notice = esc_html__( 'Default settings restored.', 'eventful-pro' );
+          $this->notice = esc_html__( 'Default settings restored.', 'ta-framework' );
 
         } else {
 
@@ -325,7 +325,7 @@ if ( ! class_exists( 'EFP_Options' ) ) {
         do_action( "efp_{$this->unique}_save_after", $data, $this );
 
         if ( empty( $this->notice ) ) {
-          $this->notice = esc_html__( 'Settings saved.', 'eventful-pro' );
+          $this->notice = esc_html__( 'Settings saved.', 'ta-framework' );
         }
 
         return true;
@@ -504,18 +504,18 @@ if ( ! class_exists( 'EFP_Options' ) ) {
             $notice_class = ( ! empty( $this->notice ) ) ? 'efp-form-show' : '';
             $notice_text  = ( ! empty( $this->notice ) ) ? $this->notice : '';
 
-            echo '<div class="efp-form-result efp-form-success '. esc_attr( $notice_class ) .'">'. $notice_text .'</div>';
+            echo '<div class="efp-form-result efp-form-success '. esc_attr( $notice_class ) .'">'. wp_kses_post($notice_text) .'</div>';
 
-            echo ( $this->args['show_form_warning'] ) ? '<div class="efp-form-result efp-form-warning">'. esc_html__( 'You have unsaved changes, save your changes!', 'eventful-pro' ) .'</div>' : '';
+            echo ( $this->args['show_form_warning'] ) ? '<div class="efp-form-result efp-form-warning">'. esc_html__( 'You have unsaved changes, save your changes!', 'ta-framework' ) .'</div>' : '';
 
-            echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="efp-expand-all" title="'. esc_html__( 'show all settings', 'eventful-pro' ) .'"><i class="fas fa-outdent"></i></div>' : '';
+            echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="efp-expand-all" title="'. esc_html__( 'show all settings', 'ta-framework' ) .'"><i class="fas fa-outdent"></i></div>' : '';
 
-            echo ( $this->args['show_search'] ) ? '<div class="efp-search"><input type="text" name="efp-search" placeholder="'. esc_html__( 'Search...', 'eventful-pro' ) .'" autocomplete="off" /></div>' : '';
+            echo ( $this->args['show_search'] ) ? '<div class="efp-search"><input type="text" name="efp-search" placeholder="'. esc_html__( 'Search...', 'ta-framework' ) .'" autocomplete="off" /></div>' : '';
 
             echo '<div class="efp-buttons">';
-            echo '<input type="submit" name="'. esc_attr( $this->unique ) .'[_nonce][save]" class="button button-primary efp-top-save efp-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'eventful-pro' ) .'" data-save="'. esc_html__( 'Saving...', 'eventful-pro' ) .'">';
-            echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="efp_transient[reset_section]" class="button button-secondary efp-reset-section efp-confirm" value="'. esc_html__( 'Reset Section', 'eventful-pro' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'eventful-pro' ) .'">' : '';
-            echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="efp_transient[reset]" class="button efp-warning-primary efp-reset-all efp-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'eventful-pro' ) : esc_html__( 'Reset', 'eventful-pro' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'eventful-pro' ) .'">' : '';
+            echo '<input type="submit" name="'. esc_attr( $this->unique ) .'[_nonce][save]" class="button button-primary efp-top-save efp-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'ta-framework' ) .'" data-save="'. esc_html__( 'Saving...', 'ta-framework' ) .'">';
+            echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="efp_transient[reset_section]" class="button button-secondary efp-reset-section efp-confirm" value="'. esc_html__( 'Reset Section', 'ta-framework' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'ta-framework' ) .'">' : '';
+            echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="efp_transient[reset]" class="button efp-warning-primary efp-reset-all efp-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'ta-framework' ) : esc_html__( 'Reset', 'ta-framework' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'ta-framework' ) .'">' : '';
             echo '</div>';
 
           echo '</div>';
@@ -542,7 +542,7 @@ if ( ! class_exists( 'EFP_Options' ) ) {
 
                   echo '<li class="efp-tab-item">';
 
-                    echo '<a href="#tab='. esc_attr( $tab_id ) .'" data-tab-id="'. esc_attr( $tab_id ) .'" class="efp-arrow">'. $tab_icon . $tab['title'] . $tab_error .'</a>';
+                    echo '<a href="#tab='. esc_attr( $tab_id ) .'" data-tab-id="'. esc_attr( $tab_id ) .'" class="efp-arrow">'. wp_kses_post($tab_icon) . esc_html($tab['title']) . esc_html($tab_error) .'</a>';
 
                     echo '<ul>';
 
@@ -562,7 +562,7 @@ if ( ! class_exists( 'EFP_Options' ) ) {
 
                 } else {
 
-                  echo '<li class="efp-tab-item"><a href="#tab='. esc_attr( $tab_id ) .'" data-tab-id="'. esc_attr( $tab_id ) .'">'. $tab_icon . $tab['title'] . $tab_error .'</a></li>';
+                  echo '<li class="efp-tab-item"><a href="#tab='. esc_attr( $tab_id ) .'" data-tab-id="'. esc_attr( $tab_id ) .'">'. wp_kses_post($tab_icon) . esc_html($tab['title']) . esc_html($tab_error) .'</a></li>';
 
                 }
 
@@ -588,8 +588,8 @@ if ( ! class_exists( 'EFP_Options' ) ) {
               $section_slug   = ( ! empty( $section['title'] ) ) ? sanitize_title( $section_title ) : '';
 
               echo '<div class="efp-section hidden'. esc_attr( $section_onload . $section_class ) .'" data-section-id="'. esc_attr( $section_parent . $section_slug ) .'">';
-              echo ( $has_nav ) ? '<div class="efp-section-title"><h3>'. $section_icon . $section_title .'</h3></div>' : '';
-              echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. $section['description'] .'</div>' : '';
+              echo ( $has_nav ) ? '<div class="efp-section-title"><h3>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h3></div>' : '';
+              echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
 
               if ( ! empty( $section['fields'] ) ) {
 
@@ -613,7 +613,7 @@ if ( ! class_exists( 'EFP_Options' ) ) {
 
               } else {
 
-                echo '<div class="efp-no-option">'. esc_html__( 'No data available.', 'eventful-pro' ) .'</div>';
+                echo '<div class="efp-no-option">'. esc_html__( 'No data available.', 'ta-framework' ) .'</div>';
 
               }
 
@@ -636,12 +636,12 @@ if ( ! class_exists( 'EFP_Options' ) ) {
           echo '<div class="efp-footer">';
 
           echo '<div class="efp-buttons">';
-          echo '<input type="submit" name="efp_transient[save]" class="button button-primary efp-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'eventful-pro' ) .'" data-save="'. esc_html__( 'Saving...', 'eventful-pro' ) .'">';
-          echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="efp_transient[reset_section]" class="button button-secondary efp-reset-section efp-confirm" value="'. esc_html__( 'Reset Section', 'eventful-pro' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'eventful-pro' ) .'">' : '';
-          echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="efp_transient[reset]" class="button efp-warning-primary efp-reset-all efp-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'eventful-pro' ) : esc_html__( 'Reset', 'eventful-pro' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'eventful-pro' ) .'">' : '';
+          echo '<input type="submit" name="efp_transient[save]" class="button button-primary efp-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'ta-framework' ) .'" data-save="'. esc_html__( 'Saving...', 'ta-framework' ) .'">';
+          echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="efp_transient[reset_section]" class="button button-secondary efp-reset-section efp-confirm" value="'. esc_html__( 'Reset Section', 'ta-framework' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'ta-framework' ) .'">' : '';
+          echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="efp_transient[reset]" class="button efp-warning-primary efp-reset-all efp-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'ta-framework' ) : esc_html__( 'Reset', 'ta-framework' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'ta-framework' ) .'">' : '';
           echo '</div>';
 
-          echo ( ! empty( $this->args['footer_text'] ) ) ? '<div class="efp-copyright">'. $this->args['footer_text'] .'</div>' : '';
+          echo ( ! empty( $this->args['footer_text'] ) ) ? '<div class="efp-copyright">'. wp_kses_post($this->args['footer_text']) .'</div>' : '';
 
           echo '<div class="clear"></div>';
           echo '</div>';
@@ -654,7 +654,7 @@ if ( ! class_exists( 'EFP_Options' ) ) {
 
         echo '<div class="clear"></div>';
 
-        echo ( ! empty( $this->args['footer_after'] ) ) ? $this->args['footer_after'] : '';
+        echo ( ! empty( $this->args['footer_after'] ) ) ? wp_kses_post($this->args['footer_after']) : '';
 
       echo '</div>';
 

@@ -1,6 +1,4 @@
-<?php if (!defined('ABSPATH')) {
-  die;
-} // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 /**
  *
  * Metabox Class
@@ -9,9 +7,8 @@
  * @version 1.0.0
  *
  */
-if (!class_exists('EFP_Metabox')) {
-  class EFP_Metabox extends EFP_Abstract
-  {
+if ( ! class_exists( 'EFP_Metabox' ) ) {
+  class EFP_Metabox extends EFP_Abstract{
 
     // constans
     public $unique         = '';
@@ -21,7 +18,7 @@ if (!class_exists('EFP_Metabox')) {
     public $post_type      = array();
     public $args           = array(
       'title'              => '',
-      'post_type'          => 'tribe_events',
+      'post_type'          => 'post',
       'data_type'          => 'serialize',
       'context'            => 'advanced',
       'priority'           => 'default',
@@ -40,354 +37,375 @@ if (!class_exists('EFP_Metabox')) {
     );
 
     // run metabox construct
-    public function __construct($key, $params = array())
-    {
+    public function __construct( $key, $params = array() ) {
 
       $this->unique         = $key;
-      $this->args           = apply_filters("efp_{$this->unique}_args", wp_parse_args($params['args'], $this->args), $this);
-      $this->sections       = apply_filters("efp_{$this->unique}_sections", $params['sections'], $this);
-      $this->post_type      = (is_array($this->args['post_type'])) ? $this->args['post_type'] : array_filter((array) $this->args['post_type']);
-      $this->post_formats   = (is_array($this->args['post_formats'])) ? $this->args['post_formats'] : array_filter((array) $this->args['post_formats']);
-      $this->page_templates = (is_array($this->args['page_templates'])) ? $this->args['page_templates'] : array_filter((array) $this->args['page_templates']);
-      $this->pre_fields     = $this->pre_fields($this->sections);
+      $this->args           = apply_filters( "efp_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections       = apply_filters( "efp_{$this->unique}_sections", $params['sections'], $this );
+      $this->post_type      = ( is_array( $this->args['post_type'] ) ) ? $this->args['post_type'] : array_filter( (array) $this->args['post_type'] );
+      $this->post_formats   = ( is_array( $this->args['post_formats'] ) ) ? $this->args['post_formats'] : array_filter( (array) $this->args['post_formats'] );
+      $this->page_templates = ( is_array( $this->args['page_templates'] ) ) ? $this->args['page_templates'] : array_filter( (array) $this->args['page_templates'] );
+      $this->pre_fields     = $this->pre_fields( $this->sections );
 
-      add_action('add_meta_boxes', array($this, 'add_meta_box'));
-      add_action('save_post', array($this, 'save_meta_box'));
-      add_action('edit_attachment', array($this, 'save_meta_box'));
+      add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+      add_action( 'save_post', array( $this, 'save_meta_box' ) );
+      add_action( 'edit_attachment', array( $this, 'save_meta_box' ) );
 
-      if (!empty($this->page_templates) || !empty($this->post_formats) || !empty($this->args['class'])) {
-        foreach ($this->post_type as $post_type) {
-          add_filter('postbox_classes_' . $post_type . '_' . $this->unique, array($this, 'add_metabox_classes'));
+      if ( ! empty( $this->page_templates ) || ! empty( $this->post_formats ) || ! empty( $this->args['class'] ) ) {
+        foreach ( $this->post_type as $post_type ) {
+          add_filter( 'postbox_classes_'. $post_type .'_'. $this->unique, array( $this, 'add_metabox_classes' ) );
         }
       }
 
       // wp enqeueu for typography and output css
       parent::__construct();
+
     }
 
     // instance
-    public static function instance($key, $params = array())
-    {
-      return new self($key, $params);
+    public static function instance( $key, $params = array() ) {
+      return new self( $key, $params );
     }
 
-    public function add_metabox_classes($classes)
-    {
+    public function add_metabox_classes( $classes ) {
 
       global $post;
 
-      if (!empty($this->post_formats)) {
+      if ( ! empty( $this->post_formats ) ) {
 
-        $saved_post_format = (is_object($post)) ? get_post_format($post) : false;
-        $saved_post_format = (!empty($saved_post_format)) ? $saved_post_format : 'default';
+        $saved_post_format = ( is_object( $post ) ) ? get_post_format( $post ) : false;
+        $saved_post_format = ( ! empty( $saved_post_format ) ) ? $saved_post_format : 'default';
 
         $classes[] = 'efp-post-formats';
 
         // Sanitize post format for standard to default
-        if (($key = array_search('standard', $this->post_formats)) !== false) {
+        if ( ( $key = array_search( 'standard', $this->post_formats ) ) !== false ) {
           $this->post_formats[$key] = 'default';
         }
 
-        foreach ($this->post_formats as $format) {
-          $classes[] = 'efp-post-format-' . $format;
+        foreach ( $this->post_formats as $format ) {
+          $classes[] = 'efp-post-format-'. $format;
         }
 
-        if (!in_array($saved_post_format, $this->post_formats)) {
+        if ( ! in_array( $saved_post_format, $this->post_formats ) ) {
           $classes[] = 'efp-metabox-hide';
         } else {
           $classes[] = 'efp-metabox-show';
         }
+
       }
 
-      if (!empty($this->page_templates)) {
+      if ( ! empty( $this->page_templates ) ) {
 
-        $saved_template = (is_object($post) && !empty($post->page_template)) ? $post->page_template : 'default';
+        $saved_template = ( is_object( $post ) && ! empty( $post->page_template ) ) ? $post->page_template : 'default';
 
         $classes[] = 'efp-page-templates';
 
-        foreach ($this->page_templates as $template) {
-          $classes[] = 'efp-page-' . preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($template));
+        foreach ( $this->page_templates as $template ) {
+          $classes[] = 'efp-page-'. preg_replace( '/[^a-zA-Z0-9]+/', '-', strtolower( $template ) );
         }
 
-        if (!in_array($saved_template, $this->page_templates)) {
+        if ( ! in_array( $saved_template, $this->page_templates ) ) {
           $classes[] = 'efp-metabox-hide';
         } else {
           $classes[] = 'efp-metabox-show';
         }
+
       }
 
-      if (!empty($this->args['class'])) {
+      if ( ! empty( $this->args['class'] ) ) {
         $classes[] = $this->args['class'];
       }
 
       return $classes;
+
     }
 
     // add metabox
-    public function add_meta_box($post_type)
-    {
+    public function add_meta_box( $post_type ) {
 
-      if (!in_array($post_type, $this->args['exclude_post_types'])) {
-        add_meta_box($this->unique, $this->args['title'], array($this, 'add_meta_box_content'), $this->post_type, $this->args['context'], $this->args['priority'], $this->args);
+      if ( ! in_array( $post_type, $this->args['exclude_post_types'] ) ) {
+        add_meta_box( $this->unique, $this->args['title'], array( $this, 'add_meta_box_content' ), $this->post_type, $this->args['context'], $this->args['priority'], $this->args );
       }
+
     }
 
     // get default value
-    public function get_default($field)
-    {
+    public function get_default( $field ) {
 
-      $default = (isset($field['default'])) ? $field['default'] : '';
-      $default = (isset($this->args['defaults'][$field['id']])) ? $this->args['defaults'][$field['id']] : $default;
+      $default = ( isset( $field['default'] ) ) ? $field['default'] : '';
+      $default = ( isset( $this->args['defaults'][$field['id']] ) ) ? $this->args['defaults'][$field['id']] : $default;
 
       return $default;
+
     }
 
     // get meta value
-    public function get_meta_value($field)
-    {
+    public function get_meta_value( $field ) {
 
       global $post;
 
       $value = null;
 
-      if (is_object($post) && !empty($field['id'])) {
+      if ( is_object( $post ) && ! empty( $field['id'] ) ) {
 
-        if ($this->args['data_type'] !== 'serialize') {
-          $meta  = get_post_meta($post->ID, $field['id']);
-          $value = (isset($meta[0])) ? $meta[0] : null;
+        if ( $this->args['data_type'] !== 'serialize' ) {
+          $meta  = get_post_meta( $post->ID, $field['id'] );
+          $value = ( isset( $meta[0] ) ) ? $meta[0] : null;
         } else {
-          $meta  = get_post_meta($post->ID, $this->unique, true);
-          $value = (isset($meta[$field['id']])) ? $meta[$field['id']] : null;
+          $meta  = get_post_meta( $post->ID, $this->unique, true );
+          $value = ( isset( $meta[$field['id']] ) ) ? $meta[$field['id']] : null;
         }
+
       }
 
-      $default = (isset($field['id'])) ? $this->get_default($field) : '';
-      $value   = (isset($value)) ? $value : $default;
+      $default = ( isset( $field['id'] ) ) ? $this->get_default( $field ) : '';
+      $value   = ( isset( $value ) ) ? $value : $default;
 
       return $value;
+
     }
 
     // add metabox content
-    public function add_meta_box_content($post, $callback)
-    {
+    public function add_meta_box_content( $post, $callback ) {
 
       global $post;
 
-      $has_nav   = (count($this->sections) > 1 && $this->args['context'] !== 'side') ? true : false;
-      $show_all  = (!$has_nav) ? ' efp-show-all' : '';
-      $post_type = (is_object($post)) ? $post->post_type : '';
-      $errors    = (is_object($post)) ? get_post_meta($post->ID, '_efp_errors_' . $this->unique, true) : array();
-      $errors    = (!empty($errors)) ? $errors : array();
-      $theme     = ($this->args['theme']) ? ' efp-theme-' . $this->args['theme'] : '';
-      $nav_type  = ($this->args['nav'] === 'inline') ? 'inline' : 'normal';
+      $has_nav   = ( count( $this->sections ) > 1 && $this->args['context'] !== 'side' ) ? true : false;
+      $show_all  = ( ! $has_nav ) ? ' efp-show-all' : '';
+      $post_type = ( is_object ( $post ) ) ? $post->post_type : '';
+      $errors    = ( is_object ( $post ) ) ? get_post_meta( $post->ID, '_efp_errors_'. $this->unique, true ) : array();
+      $errors    = ( ! empty( $errors ) ) ? $errors : array();
+      $theme     = ( $this->args['theme'] ) ? ' efp-theme-'. $this->args['theme'] : '';
+      $nav_type  = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 
-      if (is_object($post) && !empty($errors)) {
-        delete_post_meta($post->ID, '_efp_errors_' . $this->unique);
+      if ( is_object ( $post ) && ! empty( $errors ) ) {
+        delete_post_meta( $post->ID, '_efp_errors_'. $this->unique );
       }
 
-      wp_nonce_field('efp_metabox_nonce', 'efp_metabox_nonce' . $this->unique);
+      wp_nonce_field( 'efp_metabox_nonce', 'efp_metabox_nonce'. $this->unique );
 
-      echo '<div class="efp efp-metabox' . esc_attr($theme) . '">';
+      echo '<div class="efp efp-metabox'. esc_attr( $theme ) .'">';
 
-      echo '<div class="efp-wrapper' . esc_attr($show_all) . '">';
+        echo '<div class="efp-wrapper'. esc_attr( $show_all ) .'">';
 
-      if ($has_nav) {
+          if ( $has_nav ) {
 
-        echo '<div class="efp-nav efp-nav-' . esc_attr($nav_type) . ' efp-nav-metabox">';
+            echo '<div class="efp-nav efp-nav-'. esc_attr( $nav_type ) .' efp-nav-metabox">';
 
-        echo '<ul>';
+              echo '<ul>';
 
-        $tab_key = 1;
+              $tab_key = 1;
 
-        foreach ($this->sections as $section) {
+              foreach ( $this->sections as $section ) {
 
-          if (!empty($section['post_type']) && !in_array($post_type, array_filter((array) $section['post_type']))) {
-            continue;
+                if ( ! empty( $section['post_type'] ) && ! in_array( $post_type, array_filter( (array) $section['post_type'] ) ) ) {
+                  continue;
+                }
+
+                $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="efp-label-error efp-error">!</i>' : '';
+                $tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="efp-tab-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
+
+                echo '<li class="menu-item_' . $this->unique . '_' . $tab_key . '"><a href="#" data-section="' . $this->unique . '_' . $tab_key . '">' . $tab_icon . $section['title'] . $tab_error . '</a></li>';
+
+                $tab_key++;
+
+              }
+
+              echo '</ul>';
+
+            echo '</div>';
+
           }
 
-          $tab_error = (!empty($errors['sections'][$tab_key])) ? '<i class="efp-label-error efp-error">!</i>' : '';
-          $tab_icon  = (!empty($section['icon'])) ? '<i class="efp-tab-icon ' . esc_attr($section['icon']) . '"></i>' : '';
+          echo '<div class="efp-content">';
 
-          echo '<li class="menu-item_' . $this->unique . '_' . $tab_key . '"><a href="#" data-section="' . $this->unique . '_' . $tab_key . '">' . $tab_icon . $section['title'] . $tab_error . '</a></li>';
+            echo '<div class="efp-sections">';
 
-          $tab_key++;
-        }
+            $section_key = 1;
 
-        echo '</ul>';
+            foreach ( $this->sections as $section ) {
 
-        echo '</div>';
-      }
+              if ( ! empty( $section['post_type'] ) && ! in_array( $post_type, array_filter( (array) $section['post_type'] ) ) ) {
+                continue;
+              }
 
-      echo '<div class="efp-content">';
+              $section_onload = ( ! $has_nav ) ? ' efp-onload' : '';
+              $section_class  = ( ! empty( $section['class'] ) ) ? ' '. $section['class'] : '';
+              $section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
+              $section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="efp-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
 
-      echo '<div class="efp-sections">';
+              echo '<div id="efp-section-' . $this->unique . '_' . $section_key . '" class="efp-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
 
-      $section_key = 1;
+              echo ( $section_title || $section_icon ) ? '<div class="efp-section-title"><h3>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h3></div>' : '';
+              echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
 
-      foreach ($this->sections as $section) {
+              if ( ! empty( $section['fields'] ) ) {
 
-        if (!empty($section['post_type']) && !in_array($post_type, array_filter((array) $section['post_type']))) {
-          continue;
-        }
+                foreach ( $section['fields'] as $field ) {
 
-        $section_onload = (!$has_nav) ? ' efp-onload' : '';
-        $section_class  = (!empty($section['class'])) ? ' ' . $section['class'] : '';
-        $section_title  = (!empty($section['title'])) ? $section['title'] : '';
-        $section_icon   = (!empty($section['icon'])) ? '<i class="efp-section-icon ' . esc_attr($section['icon']) . '"></i>' : '';
+                  if ( ! empty( $field['id'] ) && ! empty( $errors['fields'][$field['id']] ) ) {
+                    $field['_error'] = $errors['fields'][$field['id']];
+                  }
 
-        echo '<div id="efp-section-' . $this->unique . '_' . $section_key . '" class="efp-section hidden' . esc_attr($section_onload . $section_class) . '">';
+                  if ( ! empty( $field['id'] ) ) {
+                    $field['default'] = $this->get_default( $field );
+                  }
 
-        echo ($section_title || $section_icon) ? '<div class="efp-section-title"><h3>' . $section_icon . $section_title . '</h3></div>' : '';
-        echo (!empty($section['description'])) ? '<div class="efp-field efp-section-description">' . $section['description'] . '</div>' : '';
+                  EFP::field( $field, $this->get_meta_value( $field ), $this->unique, 'metabox' );
 
-        if (!empty($section['fields'])) {
+                }
 
-          foreach ($section['fields'] as $field) {
+              } else {
 
-            if (!empty($field['id']) && !empty($errors['fields'][$field['id']])) {
-              $field['_error'] = $errors['fields'][$field['id']];
+                echo '<div class="efp-no-option">'. esc_html__( 'No data available.', 'ta-framework' ) .'</div>';
+
+              }
+
+              echo '</div>';
+
+              $section_key++;
+
             }
 
-            if (!empty($field['id'])) {
-              $field['default'] = $this->get_default($field);
+            echo '</div>';
+
+            if ( ! empty( $this->args['show_restore'] ) || ! empty( $this->args['show_reset'] ) ) {
+
+              echo '<div class="efp-sections-reset">';
+              echo '<label>';
+              echo '<input type="checkbox" name="'. esc_attr( $this->unique ) .'[_reset]" />';
+              echo '<span class="button efp-button-reset">'. esc_html__( 'Reset', 'ta-framework' ) .'</span>';
+              echo '<span class="button efp-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'ta-framework' ), esc_html__( 'Cancel', 'ta-framework' ) ) .'</span>';
+              echo '</label>';
+              echo '</div>';
+
             }
 
-            EFP::field($field, $this->get_meta_value($field), $this->unique, 'metabox');
-          }
-        } else {
+          echo '</div>';
 
-          echo '<div class="efp-no-option">' . esc_html__('No data available.', 'eventful-pro') . '</div>';
-        }
+          echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="efp-nav-background"></div>' : '';
+
+          echo '<div class="clear"></div>';
 
         echo '</div>';
 
-        $section_key++;
-      }
-
       echo '</div>';
 
-      if (!empty($this->args['show_restore']) || !empty($this->args['show_reset'])) {
-
-        echo '<div class="efp-sections-reset">';
-        echo '<label>';
-        echo '<input type="checkbox" name="' . esc_attr($this->unique) . '[_reset]" />';
-        echo '<span class="button efp-button-reset">' . esc_html__('Reset', 'eventful-pro') . '</span>';
-        echo '<span class="button efp-button-cancel">' . sprintf('<small>( %s )</small> %s', esc_html__('update post', 'eventful-pro'), esc_html__('Cancel', 'eventful-pro')) . '</span>';
-        echo '</label>';
-        echo '</div>';
-      }
-
-      echo '</div>';
-
-      echo ($has_nav && $nav_type === 'normal') ? '<div class="efp-nav-background"></div>' : '';
-
-      echo '<div class="clear"></div>';
-
-      echo '</div>';
-
-      echo '</div>';
     }
 
     // save metabox
-    public function save_meta_box($post_id)
-    {
+    public function save_meta_box( $post_id ) {
 
       $count    = 1;
       $data     = array();
       $errors   = array();
-      $noncekey = 'efp_metabox_nonce' . $this->unique;
-      $nonce    = (!empty($_POST[$noncekey])) ? sanitize_text_field(wp_unslash($_POST[$noncekey])) : '';
+      $noncekey = 'efp_metabox_nonce'. $this->unique;
+      $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
 
-      if ((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) || !wp_verify_nonce($nonce, 'efp_metabox_nonce')) {
+      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'efp_metabox_nonce' ) ) {
         return $post_id;
       }
 
       // XSS ok.
       // No worries, This "POST" requests is sanitizing in the below foreach.
-      $request = (!empty($_POST[$this->unique])) ? $_POST[$this->unique] : array();
+      $request = ( ! empty( $_POST[ $this->unique ] ) ) ? $_POST[ $this->unique ] : array();
 
-      if (!empty($request)) {
+      if ( ! empty( $request ) ) {
 
-        foreach ($this->sections as $section) {
+        foreach ( $this->sections as $section ) {
 
-          if (!empty($section['fields'])) {
+          if ( ! empty( $section['fields'] ) ) {
 
-            foreach ($section['fields'] as $field) {
+            foreach ( $section['fields'] as $field ) {
 
-              if (!empty($field['id'])) {
+              if ( ! empty( $field['id'] ) ) {
 
                 $field_id    = $field['id'];
-                $field_value = isset($request[$field_id]) ? $request[$field_id] : '';
+                $field_value = isset( $request[$field_id] ) ? $request[$field_id] : '';
 
                 // Sanitize "post" request of field.
-                if (!isset($field['sanitize'])) {
+                if ( ! isset( $field['sanitize'] ) ) {
 
-                  if (is_array($field_value)) {
-                    $data[$field_id] = wp_kses_post_deep($field_value);
+                  if( is_array( $field_value ) ) {
+                    $data[$field_id] = wp_kses_post_deep( $field_value );
                   } else {
-                    $data[$field_id] = wp_kses_post($field_value);
+                    $data[$field_id] = wp_kses_post( $field_value );
                   }
-                } else if (isset($field['sanitize']) && is_callable($field['sanitize'])) {
 
-                  $data[$field_id] = call_user_func($field['sanitize'], $field_value);
+                } else if( isset( $field['sanitize'] ) && is_callable( $field['sanitize'] ) ) {
+
+                  $data[$field_id] = call_user_func( $field['sanitize'], $field_value );
+
                 } else {
 
                   $data[$field_id] = $field_value;
+
                 }
 
                 // Validate "post" request of field.
-                if (isset($field['validate']) && is_callable($field['validate'])) {
+                if ( isset( $field['validate'] ) && is_callable( $field['validate'] ) ) {
 
-                  $has_validated = call_user_func($field['validate'], $field_value);
+                  $has_validated = call_user_func( $field['validate'], $field_value );
 
-                  if (!empty($has_validated)) {
+                  if ( ! empty( $has_validated ) ) {
 
                     $errors['sections'][$count] = true;
                     $errors['fields'][$field_id] = $has_validated;
-                    $data[$field_id] = $this->get_meta_value($field);
+                    $data[$field_id] = $this->get_meta_value( $field );
+
                   }
+
                 }
+
               }
+
             }
+
           }
 
           $count++;
+
         }
+
       }
 
-      $data = apply_filters("efp_{$this->unique}_save", $data, $post_id, $this);
+      $data = apply_filters( "efp_{$this->unique}_save", $data, $post_id, $this );
 
-      do_action("efp_{$this->unique}_save_before", $data, $post_id, $this);
+      do_action( "efp_{$this->unique}_save_before", $data, $post_id, $this );
 
-      if (empty($data) || !empty($request['_reset'])) {
+      if ( empty( $data ) || ! empty( $request['_reset'] ) ) {
 
-        if ($this->args['data_type'] !== 'serialize') {
-          foreach ($this->pre_fields as $field) {
-            if (!empty($field['id'])) {
-              delete_post_meta($post_id, $field['id']);
+        if ( $this->args['data_type'] !== 'serialize' ) {
+          foreach ( $this->pre_fields as $field ) {
+            if ( ! empty( $field['id'] ) ) {
+              delete_post_meta( $post_id, $field['id'] );
             }
           }
         } else {
-          delete_post_meta($post_id, $this->unique);
+          delete_post_meta( $post_id, $this->unique );
         }
+
       } else {
 
-        if ($this->args['data_type'] !== 'serialize') {
-          foreach ($data as $key => $value) {
-            update_post_meta($post_id, $key, $value);
+        if ( $this->args['data_type'] !== 'serialize' ) {
+          foreach ( $data as $key => $value ) {
+            update_post_meta( $post_id, $key, $value );
           }
         } else {
-          update_post_meta($post_id, $this->unique, $data);
+          update_post_meta( $post_id, $this->unique, $data );
         }
 
-        if (!empty($errors)) {
-          update_post_meta($post_id, '_efp_errors_' . $this->unique, $errors);
+        if ( ! empty( $errors ) ) {
+          update_post_meta( $post_id, '_efp_errors_'. $this->unique, $errors );
         }
+
       }
 
-      do_action("efp_{$this->unique}_saved", $data, $post_id, $this);
+      do_action( "efp_{$this->unique}_saved", $data, $post_id, $this );
 
-      do_action("efp_{$this->unique}_save_after", $data, $post_id, $this);
+      do_action( "efp_{$this->unique}_save_after", $data, $post_id, $this );
+
     }
   }
 }

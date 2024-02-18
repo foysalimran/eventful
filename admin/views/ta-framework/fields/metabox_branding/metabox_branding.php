@@ -16,10 +16,10 @@ if ( ! class_exists( 'EFP_Field_metabox_branding' ) ) {
 
 		public function render() {
 
-			echo ( ! empty( $this->field['content'] ) ) ? $this->field['content'] : '';
-			echo ( ! empty( $this->field['image'] ) ) ? '<img src="' . $this->field['image'] . '">' : '';
+			echo ( ! empty( $this->field['content'] ) ) ? esc_html($this->field['content']) : '';
+			echo ( ! empty( $this->field['image'] ) ) ? '<img src="' . esc_url($this->field['image']) . '">' : '';
 
-			echo ( ! empty( $this->field['after'] ) && ! empty( $this->field['link'] ) ) ? '<span class="spacer"></span><span class="support"><a target="_blank" href="' . $this->field['link'] . '">' . $this->field['after'] . '</a></span>' : '';
+			echo ( ! empty( $this->field['after'] ) && ! empty( $this->field['link'] ) ) ? '<span class="spacer"></span><span class="support"><a target="_blank" href="' . $this->field['link'] . '">' . esc_html($this->field['after']) . '</a></span>' : '';
 		}
 
   }

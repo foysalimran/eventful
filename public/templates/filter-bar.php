@@ -2,7 +2,7 @@
 /**
  *  Shuffle filter bar file
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/filter-bar.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/filter-bar.php
  *
  * @package    Eventful
  * @subpackage Eventful/public/template

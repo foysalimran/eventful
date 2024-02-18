@@ -1,64 +1,63 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die; } // Cannot access directly.
 /**
  *
  * Field: tabbed
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! class_exists( 'EFP_Field_tabbed' ) ) {
-  class EFP_Field_tabbed extends EFP_Fields {
+	class EFP_Field_tabbed extends EFP_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-    public function render() {
+		public function render() {
 
-      $unallows = array( 'tabbed' );
+			$unallows = array( 'tabbed' );
 
-      echo wp_kses_post( $this->field_before() );
+			echo wp_kses_post( $this->field_before() );
 
-      echo '<div class="efp-tabbed-nav" data-depend-id="'. esc_attr( $this->field['id'] ) .'">';
-      foreach ( $this->field['tabs'] as $key => $tab ) {
+			echo '<div class="efp-tabbed-nav" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
+			foreach ( $this->field['tabs'] as $key => $tab ) {
 
-        $tabbed_icon   = ( ! empty( $tab['icon'] ) ) ? '<i class="efp--icon '. esc_attr( $tab['icon'] ) .'"></i>' : '';
-        $tabbed_active = ( empty( $key ) ) ? 'efp-tabbed-active' : '';
+				$tabbed_icon   = ( ! empty( $tab['icon'] ) ) ? '<i class="efp--icon ' . esc_attr( $tab['icon'] ) . '"></i>' : '';
+				$tabbed_active = ( empty( $key ) ) ? 'efp-tabbed-active' : '';
 
-        echo '<a href="#" class="'. esc_attr( $tabbed_active ) .'"">'. $tabbed_icon . esc_attr( $tab['title'] ) .'</a>';
+				echo '<a href="#" class="' . esc_attr( $tabbed_active ) . '"">' . $tabbed_icon . esc_attr( $tab['title'] ) . '</a>';
 
-      }
-      echo '</div>';
+			}
+			echo '</div>';
 
-      echo '<div class="efp-tabbed-contents">';
-      foreach ( $this->field['tabs'] as $key => $tab ) {
+			echo '<div class="efp-tabbed-contents">';
+			foreach ( $this->field['tabs'] as $key => $tab ) {
 
-        $tabbed_hidden = ( ! empty( $key ) ) ? ' hidden' : '';
+				$tabbed_hidden = ( ! empty( $key ) ) ? ' hidden' : '';
 
-        echo '<div class="efp-tabbed-content'. esc_attr( $tabbed_hidden ) .'">';
+				echo '<div class="efp-tabbed-content' . esc_attr( $tabbed_hidden ) . '">';
 
-        foreach ( $tab['fields'] as $field ) {
+				foreach ( $tab['fields'] as $field ) {
 
-          if ( in_array( $field['type'], $unallows ) ) { $field['_notice'] = true; }
+					if ( in_array( $field['type'], $unallows ) ) {
+						$field['_notice'] = true; }
 
-          $field_id      = ( isset( $field['id'] ) ) ? $field['id'] : '';
-          $field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
-          $field_value   = ( isset( $this->value[$field_id] ) ) ? $this->value[$field_id] : $field_default;
-          $unique_id     = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .']' : $this->field['id'];
+					$field_id      = ( isset( $field['id'] ) ) ? $field['id'] : '';
+					$field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
+					$field_value   = ( isset( $this->value[ $field_id ] ) ) ? $this->value[ $field_id ] : $field_default;
+					$unique_id     = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $this->field['id'] . ']' : $this->field['id'];
 
-          EFP::field( $field, $field_value, $unique_id, 'field/tabbed' );
+					EFP::field( $field, $field_value, $unique_id, 'field/tabbed' );
 
-        }
+				}
 
-        echo '</div>';
+				echo '</div>';
 
-      }
-      echo '</div>';
+			}
+			echo '</div>';
 
-      echo wp_kses_post( $this->field_after() );
-
-    }
-
-  }
+			echo wp_kses_post( $this->field_after() );
+		}
+	}
 }

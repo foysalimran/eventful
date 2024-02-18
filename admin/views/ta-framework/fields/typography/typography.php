@@ -5,8 +5,8 @@
  *
  * @link       https://themeatelier.net/
  *
- * @package Eventful
- * @subpackage Eventful/admin/views
+ * @package Eventful_Pro
+ * @subpackage Eventful_Pro/admin/views
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -615,7 +615,6 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 				return $families;
 
 			}
-
 			return false;
 
 		}

@@ -3,7 +3,7 @@
 /**
  * Thumb taxonomy
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/item/over-thumb-taxonomy.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/item/over-thumb-taxonomy.php
  *
  * @package    Eventful
  * @subpackage Eventful/public
@@ -21,7 +21,7 @@
     if ('default' === $meta_date_format) {
         $post_date = esc_html(date_i18n(get_option('date_format'), strtotime($post->post_date)));
     } elseif ('time_ago' === $meta_date_format) {
-        $post_date = human_time_diff(date_i18n('U', strtotime($post->post_date)), current_time('timestamp')) . esc_html__(' ago', 'eventful-pro');
+        $post_date = human_time_diff(date_i18n('U', strtotime($post->post_date)), current_time('timestamp')) . esc_html__(' ago', 'eventful');
     } elseif ('custom' === $meta_date_format) {
         $post_date = esc_html(date_i18n($custom_date_format, strtotime($post->post_date)));
     }

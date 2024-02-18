@@ -3,7 +3,7 @@
 /**
  * Read more
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/item/read-more.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/item/read-more.php
  *
  * @package    Eventful_Pro
  * @subpackage Eventful_Pro/public

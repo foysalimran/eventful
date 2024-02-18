@@ -2,7 +2,7 @@
 /**
  * Meta
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/item/event-fildes.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/item/event-fildes.php
  *
  * @package    Eventful
  * @subpackage Eventful/public

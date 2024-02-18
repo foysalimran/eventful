@@ -27,7 +27,7 @@ class EFP_Settings {
 		EFP::createOptions(
 			$prefix,
 			array(
-				'menu_title'       => esc_html__( 'Settings', 'eventful-pro' ),
+				'menu_title'       => esc_html__( 'Settings', 'eventful' ),
 				'menu_parent'      => 'edit.php?post_type=eventful',
 				'menu_type'        => 'submenu', // menu, submenu, options, theme, etc.
 				'menu_slug'        => 'efp_settings',
@@ -37,7 +37,7 @@ class EFP_Settings {
 				'show_footer'      => false,
 				'show_bar_menu'           => false,
 				'class'            => 'ta-pc-settings',
-				'framework_title'  => esc_html__( 'Eventful', 'eventful-pro' ),
+				'framework_title'  => esc_html__( 'Eventful', 'eventful' ),
 				'menu_capability'  => $capability,
 			)
 		);

@@ -42,8 +42,8 @@ class EFP_User_Like
 			'simpleLikes',
 			array(
 				'ajaxurl' => admin_url('admin-ajax.php'),
-				'like'    => esc_html__('Like', 'eventful-pro'),
-				'unlike'  => esc_html__('Unlike', 'eventful-pro'),
+				'like'    => esc_html__('Like', 'eventful'),
+				'unlike'  => esc_html__('Unlike', 'eventful'),
 			)
 		);
 		wp_enqueue_script('efp-likes-public-js');
@@ -59,7 +59,7 @@ class EFP_User_Like
 
 		// Security.
 		if (isset($_REQUEST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_REQUEST['nonce'])), 'efp-likes-nonce')) {
-			exit(esc_html__('Not permitted', 'eventful-pro'));
+			exit(esc_html__('Not permitted', 'eventful'));
 		}
 		// Test if javascript is disabled.
 		$disabled = (isset($_REQUEST['disabled']) && sanitize_text_field(wp_unslash($_REQUEST['disabled']))) ? true : false;
@@ -158,10 +158,10 @@ class EFP_User_Like
 			}
 			if (1 === $is_comment) {
 				update_comment_meta($post_id, '_comment_like_count', $like_count);
-				update_comment_meta($post_id, '_comment_like_modified', date('Y-m-d H:i:s'));
+				update_comment_meta($post_id, '_comment_like_modified', gmdate('Y-m-d H:i:s'));
 			} else {
 				update_post_meta($post_id, '_post_like_count', $like_count);
-				update_post_meta($post_id, '_post_like_modified', date('Y-m-d H:i:s'));
+				update_post_meta($post_id, '_post_like_modified', gmdate('Y-m-d H:i:s'));
 			}
 			$response['count']   = self::get_like_count($like_count);
 			$response['testing'] = $is_comment;
@@ -242,11 +242,11 @@ class EFP_User_Like
 		// Liked/Unliked Variables.
 		if (self::already_liked($post_id, $is_comment)) {
 			$class = esc_attr(' liked');
-			$title = esc_html__('Unlike', 'eventful-pro');
+			$title = esc_html__('Unlike', 'eventful');
 			$icon  = $icon_full;
 		} else {
 			$class = '';
-			$title = esc_html__('Like', 'eventful-pro');
+			$title = esc_html__('Like', 'eventful');
 			$icon  = $icon_empty;
 		}
 		$output = '<span class="efpl-wrapper"><a href="#" class="efpl-button' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count . '</a>' . $loader . '</span>';
@@ -391,7 +391,7 @@ class EFP_User_Like
 	 */
 	public static function get_like_count($like_count)
 	{
-		$like_text = esc_html__('Like', 'eventful-pro');
+		$like_text = esc_html__('Like', 'eventful');
 		if (is_numeric($like_count) && $like_count > 0) {
 			$number = self::efpl_format_count($like_count);
 		} else {
@@ -411,7 +411,7 @@ class EFP_User_Like
 	{ ?>
 		<table class="form-table">
 			<tr>
-				<th><label for="user_likes"><?php esc_html__('You Like:', 'eventful-pro'); ?></label></th>
+				<th><label for="user_likes"><?php esc_html__('You Like:', 'eventful'); ?></label></th>
 				<td>
 					<?php
 					$types      = get_post_types(array('public' => true));
@@ -443,7 +443,7 @@ class EFP_User_Like
 							?>
 						</p>
 					<?php else : ?>
-						<p><?php esc_html_e('You do not like anything yet.', 'eventful-pro'); ?></p>
+						<p><?php esc_html_e('You do not like anything yet.', 'eventful'); ?></p>
 					<?php
 					endif;
 					wp_reset_postdata();

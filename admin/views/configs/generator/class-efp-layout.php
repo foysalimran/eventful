@@ -30,16 +30,16 @@ class EFP_Layout
 					array(
 						'id'      => 'efp_layout_preset',
 						'type'    => 'layout_preset',
-						'title'   => esc_html__('Layout Preset', 'eventful-pro'),
+						'title'   => esc_html__('Layout Preset', 'eventful'),
 						'class'   => 'efp-layout-preset',
 						'options' => array(
 							'grid_layout'      => array(
 								'image' => EFP_URL . 'admin/assets/img/grid.png',
-								'text'  => esc_html__('Grid', 'eventful-pro'),
+								'text'  => esc_html__('Grid', 'eventful'),
 							),
 							'carousel_layout'  => array(
 								'image' => EFP_URL . 'admin/assets/img/carousel.png',
-								'text'  => esc_html__('Carousel', 'eventful-pro'),
+								'text'  => esc_html__('Carousel', 'eventful'),
 							),
 						),
 						'default' => 'grid_layout',

@@ -67,9 +67,6 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       // Init action
       do_action( 'efp_init' );
 
-      // Setup textdomain
-      self::textdomain();
-
       add_action( 'after_setup_theme', array( 'EFP', 'setup' ) );
       add_action( 'init', array( 'EFP', 'setup' ) );
       add_action( 'switch_theme', array( 'EFP', 'setup' ) );
@@ -439,8 +436,8 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         'palette',
         'radio',
         'repeater',
-        'select',
         'shortcode',
+        'select',
         'slider',
         'sortable',
         'sorter',
@@ -466,11 +463,6 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         }
       }
 
-    }
-
-    // Setup textdomain
-    public static function textdomain() {
-      load_textdomain( 'efp', self::$dir .'/languages/'. get_locale() .'.mo' );
     }
 
     // Set all of used fields
@@ -508,9 +500,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
     // Enqueue admin and fields styles and scripts
     public static function add_admin_enqueue_scripts() {
-      $current_screen        = get_current_screen();
-			$the_current_post_type = $current_screen->post_type;
-      if ( 'eventful' === $the_current_post_type ) {
+
       if ( ! self::$enqueue ) {
 
         // Loads scripts and styles only when needed
@@ -587,10 +577,10 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Font awesome 4 and 5 loader
       if ( apply_filters( 'efp_fa4', false ) ) {
-        wp_enqueue_style( 'efp-fa', 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css', array(), '4.7.0', 'all' );
+        wp_enqueue_style( 'font-awesome_v4-fa', EFP_URL . 'admin/views/ta-framework/assets/css/font-awesome_v4.min.css', array(), '4.7.0', 'all' );
       } else {
-        wp_enqueue_style( 'efp-fa5', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css', array(), '5.15.5', 'all' );
-        wp_enqueue_style( 'efp-fa5-v4-shims', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/v4-shims.min.css', array(), '5.15.5', 'all' );
+        wp_enqueue_style( 'font-awesome_v5-fa5', EFP_URL .'admin/views/ta-framework/assets/css/font-awesome_v5.min.css', array(), '5.15.5', 'all' );
+        wp_enqueue_style( 'font-awesome_v4-v4-shims', EFP_URL .'admin/views/ta-framework/assets/css/font-awesome_v4-shims.min.css', array(), '5.15.5', 'all' );
       }
 
       // Check for developer mode
@@ -621,10 +611,10 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       wp_localize_script( 'efp', 'efp_vars', array(
         'color_palette'     => apply_filters( 'efp_color_palette', array() ),
         'i18n'              => array(
-          'confirm'         => esc_html__( 'Are you sure?', 'eventful-pro' ),
-          'typing_text'     => esc_html__( 'Please enter %s or more characters', 'eventful-pro' ),
-          'searching_text'  => esc_html__( 'Searching...', 'eventful-pro' ),
-          'no_results_text' => esc_html__( 'No results found.', 'eventful-pro' ),
+          'confirm'         => esc_html__( 'Are you sure?', 'ta-framework' ),
+          'typing_text'     => esc_html__( 'Please enter %s or more characters', 'ta-framework' ),
+          'searching_text'  => esc_html__( 'Searching...', 'ta-framework' ),
+          'no_results_text' => esc_html__( 'No results found.', 'ta-framework' ),
         ),
       ) );
 
@@ -647,7 +637,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       }
 
       do_action( 'efp_enqueue' );
-    }
+
     }
 
     // Add typography enqueue styles to front page
@@ -725,7 +715,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         $field_type = $field['type'];
 
         $field            = array();
-        $field['content'] = esc_html__( 'Oops! Not allowed.', 'eventful-pro' ) .' <strong>('. $field_type .')</strong>';
+        $field['content'] = esc_html__( 'Oops! Not allowed.', 'ta-framework' ) .' <strong>('. $field_type .')</strong>';
         $field['type']    = 'notice';
         $field['style']   = 'danger';
 
@@ -793,11 +783,11 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
           $instance = new $classname( $field, $value, $unique, $where, $parent );
           $instance->render();
         } else {
-          echo '<p>'. esc_html__( 'Field not found!', 'eventful-pro' ) .'</p>';
+          echo '<p>'. esc_html__( 'Field not found!', 'ta-framework' ) .'</p>';
         }
 
       } else {
-        echo '<p>'. esc_html__( 'Field not found!', 'eventful-pro' ) .'</p>';
+        echo '<p>'. esc_html__( 'Field not found!', 'ta-framework' ) .'</p>';
       }
 
       echo ( ! empty( $field['title'] ) ) ? '</div>' : '';
@@ -820,6 +810,6 @@ EFP_Setup::init( __FILE__, true );
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'eventful-pro' ) ) {
+if ( ! class_exists( 'ta-framework' ) ) {
   class EFP extends EFP_Setup{}
 }

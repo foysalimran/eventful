@@ -2215,7 +2215,7 @@
 
         if ( $preview_wrap.length ) {
 
-          if ( $.inArray( $value.split('.').efp().toLowerCase(), ['jpg', 'jpeg', 'gif', 'png', 'svg', 'webp'] ) !== -1 ) {
+          if ( $.inArray( $value.split('.').pop().toLowerCase(), ['jpg', 'jpeg', 'gif', 'png', 'svg', 'webp'] ) !== -1 ) {
             $preview_wrap.removeClass('hidden');
             $preview_src.attr('src', $value);
           } else {

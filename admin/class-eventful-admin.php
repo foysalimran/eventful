@@ -50,7 +50,7 @@ class Eventful_Admin
 
 		$active_plugins = get_option('active_plugins');
 		foreach ($active_plugins as $active_plugin) {
-			$_temp = strpos($active_plugin, 'eventful-pro.php');
+			$_temp = strpos($active_plugin, 'eventful.php');
 			if (false != $_temp) {
 				add_filter('plugin_action_links_' . $active_plugin, array($this, 'add_plugin_action_links'));
 			}
@@ -60,8 +60,8 @@ class Eventful_Admin
 	public function add_plugin_action_links($links)
 	{
 		$new_links = array(
-			sprintf('<a href="%s">%s</a>', admin_url('post-new.php?post_type=eventful'), esc_html__('Add New', 'eventful-pro')),
-			sprintf('<a href="%s">%s</a>', admin_url('edit.php?post_type=eventful'), esc_html__('Settings', 'eventful-pro')),
+			sprintf('<a href="%s">%s</a>', admin_url('post-new.php?post_type=eventful'), esc_html__('Add New', 'eventful')),
+			sprintf('<a href="%s">%s</a>', admin_url('edit.php?post_type=eventful'), esc_html__('Settings', 'eventful')),
 		);
 		return array_merge($new_links, $links);
 	}
@@ -149,10 +149,10 @@ class Eventful_Admin
 	{
 
 		$admin_columns['cb']         = '<input type="checkbox" />';
-		$admin_columns['title']      = esc_html__('Title', 'eventful-pro');
-		$admin_columns['shortcode']  = esc_html__('Shortcode', 'eventful-pro');
-		$admin_columns['efp_layout'] = esc_html__('Layout', 'eventful-pro');
-		$admin_columns['date']       = esc_html__('Date', 'eventful-pro');
+		$admin_columns['title']      = esc_html__('Title', 'eventful');
+		$admin_columns['shortcode']  = esc_html__('Shortcode', 'eventful');
+		$admin_columns['efp_layout'] = esc_html__('Layout', 'eventful');
+		$admin_columns['date']       = esc_html__('Date', 'eventful');
 
 		return $admin_columns;
 	}
@@ -171,12 +171,12 @@ class Eventful_Admin
 		$eventfuls_types = isset($efp_layouts['efp_layout_preset']) ? $efp_layouts['efp_layout_preset'] : '';
 		switch ($column) {
 			case 'shortcode':
-				$column_field = '<input  class="ta_efp_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="efp-after-copy-text"><i class="far fa-check-circle"></i> Shortcode Copied to Clipboard! </div>';
+				$column_field = '<input  class="ta_efp_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="efp-after-copy-text"><i class="far fa-check-circle"></i> ' . esc_html('Shortcode Copied to Clipboard!', 'eventful') . ' </div>';
 				echo $column_field;
 				break;
 			case 'efp_layout':
 				$layout = ucwords(str_replace('_layout', ' ', $eventfuls_types));
-				esc_html_e($layout, 'eventful-pro');
+				esc_html_e($layout, 'eventful');
 				break;
 		} // end switch.
 	}

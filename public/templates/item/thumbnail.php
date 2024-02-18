@@ -3,7 +3,7 @@
 /**
  * Item thumbnail
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/item/thumbnail.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/item/thumbnail.php
  *
  * @package    Eventful
  * @subpackage Eventful/public

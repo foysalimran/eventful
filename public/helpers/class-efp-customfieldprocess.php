@@ -336,9 +336,9 @@ function ta_efp_cf_multiple_plugins() {
  */
 function ta_efp_cf_supported_plugins() {
 	return array(
-		'_pods'    => esc_html__( 'Pods', 'eventful-pro' ),
-		'_toolset' => esc_html__( 'Toolset', 'eventful-pro' ),
-		'_acf'     => esc_html__( 'Advanced Custom Fields', 'eventful-pro' ),
+		'_pods'    => esc_html__( 'Pods', 'eventful' ),
+		'_toolset' => esc_html__( 'Toolset', 'eventful' ),
+		'_acf'     => esc_html__( 'Advanced Custom Fields', 'eventful' ),
 	);
 }
 

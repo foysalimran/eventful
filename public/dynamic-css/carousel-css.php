@@ -84,10 +84,10 @@
 			$custom_css .= "#et-boc .et-l #efp_wrapper-{$efp_id} .ta-efp-carousel {padding-bottom: 60px;}";
 		}
 	} else {
-		$custom_css .= "#efp_wrapper-{$efp_id} .swiper-container-fade:not(.swiper-container-rtl)  .swiper-slide .ta-eventful-pro-item:not(:last-child),  #efp_wrapper-{$efp_id} .swiper-container-cube:not(.swiper-container-rtl)  .swiper-slide [class~='ta-eventful-pro-item'], #efp_wrapper-{$efp_id} .swiper-container-flip:not(.swiper-container-rtl)  .swiper-slide [class~='ta-eventful-pro-item']{
+		$custom_css .= "#efp_wrapper-{$efp_id} .swiper-container-fade:not(.swiper-container-rtl)  .swiper-slide .ta-eventful-item:not(:last-child),  #efp_wrapper-{$efp_id} .swiper-container-cube:not(.swiper-container-rtl)  .swiper-slide [class~='ta-eventful-item'], #efp_wrapper-{$efp_id} .swiper-container-flip:not(.swiper-container-rtl)  .swiper-slide [class~='ta-eventful-item']{
 			margin-right:{$margin_between_post}px;
 		}
-		#efp_wrapper-{$efp_id} .swiper-container-fade.swiper-container-rtl  .swiper-slide .ta-eventful-pro-item:not(:last-child),  #efp_wrapper-{$efp_id} .swiper-container-cube.swiper-container-rtl  .swiper-slide [class~='ta-eventful-pro-item'], #efp_wrapper-{$efp_id} .swiper-container-flip.swiper-container-rtl  .swiper-slide [class~='ta-eventful-pro-item']{
+		#efp_wrapper-{$efp_id} .swiper-container-fade.swiper-container-rtl  .swiper-slide .ta-eventful-item:not(:last-child),  #efp_wrapper-{$efp_id} .swiper-container-cube.swiper-container-rtl  .swiper-slide [class~='ta-eventful-item'], #efp_wrapper-{$efp_id} .swiper-container-flip.swiper-container-rtl  .swiper-slide [class~='ta-eventful-item']{
 			margin-left:{$margin_between_post}px;
 		}
 		";

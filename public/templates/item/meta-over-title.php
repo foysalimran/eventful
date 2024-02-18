@@ -2,7 +2,7 @@
 /**
  * Meta over title
  *
- * This template can be overridden by copying it to yourtheme/eventful-pro/templates/item/meta-over-title.php
+ * This template can be overridden by copying it to yourtheme/eventful/templates/item/meta-over-title.php
  *
  * @package    Eventful
  * @subpackage Eventful/public
