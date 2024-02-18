@@ -3468,6 +3468,7 @@
         // Field Siblings
         $this.children('.efp-field-button_set').find('.efp-siblings').efp_siblings();
         $this.children('.efp-field-image_select').find('.efp-siblings').efp_siblings();
+        $this.children('.efp-field-layout_preset').find('.efp-siblings').efp_siblings();
         $this.children('.efp-field-palette').find('.efp-siblings').efp_siblings();
 
         // Help Tooptip

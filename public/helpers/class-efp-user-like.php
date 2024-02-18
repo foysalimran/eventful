@@ -158,10 +158,10 @@ class EFP_User_Like
 			}
 			if (1 === $is_comment) {
 				update_comment_meta($post_id, '_comment_like_count', $like_count);
-				update_comment_meta($post_id, '_comment_like_modified', date('Y-m-d H:i:s'));
+				update_comment_meta($post_id, '_comment_like_modified', gmdate('Y-m-d H:i:s'));
 			} else {
 				update_post_meta($post_id, '_post_like_count', $like_count);
-				update_post_meta($post_id, '_post_like_modified', date('Y-m-d H:i:s'));
+				update_post_meta($post_id, '_post_like_modified', gmdate('Y-m-d H:i:s'));
 			}
 			$response['count']   = self::get_like_count($like_count);
 			$response['testing'] = $is_comment;

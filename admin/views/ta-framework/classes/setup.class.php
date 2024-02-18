@@ -436,6 +436,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         'palette',
         'radio',
         'repeater',
+        'shortcode',
         'select',
         'slider',
         'sortable',

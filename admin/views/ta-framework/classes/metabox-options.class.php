@@ -195,7 +195,7 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
 
               echo '<ul>';
 
-              $tab_key = 0;
+              $tab_key = 1;
 
               foreach ( $this->sections as $section ) {
 
@@ -206,7 +206,7 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
                 $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="efp-label-error efp-error">!</i>' : '';
                 $tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="efp-tab-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
 
-                echo '<li><a href="#">'. wp_kses_post($tab_icon) . esc_html($section['title']) . esc_html($tab_error) .'</a></li>';
+                echo '<li class="menu-item_' . $this->unique . '_' . $tab_key . '"><a href="#" data-section="' . $this->unique . '_' . $tab_key . '">' . $tab_icon . $section['title'] . $tab_error . '</a></li>';
 
                 $tab_key++;
 

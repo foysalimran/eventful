@@ -76,7 +76,7 @@ if ( ! class_exists( 'EFP_Field_group' ) ) {
 
 				echo '</div>';
 
-				echo '<div class="efp-cloneable-wrapper efp-data-wrapper" data-title-by="' . esc_attr( json_encode( $title_by ) ) . '" data-title-by-prefix="' . esc_attr( $title_by_prefix ) . '" data-title-number="' . esc_attr( $title_number ) . '" data-field-id="[' . esc_attr( $this->field['id'] ) . ']" data-max="' . esc_attr( $args['max'] ) . '" data-min="' . esc_attr( $args['min'] ) . '">';
+				echo '<div class="efp-cloneable-wrapper efp-data-wrapper" data-title-by="' . esc_attr( wp_json_encode( $title_by ) ) . '" data-title-by-prefix="' . esc_attr( $title_by_prefix ) . '" data-title-number="' . esc_attr( $title_number ) . '" data-field-id="[' . esc_attr( $this->field['id'] ) . ']" data-max="' . esc_attr( $args['max'] ) . '" data-min="' . esc_attr( $args['min'] ) . '">';
 
 				if ( ! empty( $this->value ) ) {
 

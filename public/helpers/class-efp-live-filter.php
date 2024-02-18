@@ -256,14 +256,10 @@ class EFP_Live_Filter
 				while ($index < $taxonomy_count) {
 					$add_filter = isset($taxonomy_types[$index]['add_filter_post']) ? $taxonomy_types[$index]['add_filter_post'] : '';
 					if ($add_filter) {
-						$taxonomy        = isset($taxonomy_types[$index]['efp_select_taxonomy']) ? $taxonomy_types[$index]['efp_select_taxonomy'] : '';
-						$all_terms       = get_terms(
-							$taxonomy,
-							array(
-								'get'    => 'all',
-								'fields' => 'ids',
-							)
-						);
+						$taxonomy        = isset($taxonomy_types[$index]['efp_select_taxonomy']) ? $taxonomy_types[$index]['efp_select_taxonomy'] : '';			
+					$all_terms = get_terms($taxonomy);
+					$all_terms = wp_list_pluck($all_terms, 'term_id');
+					
 						$terms           = isset($taxonomy_types[$index]['efp_select_terms']) ? $taxonomy_types[$index]['efp_select_terms'] : $all_terms;
 						$all_post_ids    = get_posts($query_args);
 						$post_limit      = count($all_post_ids);

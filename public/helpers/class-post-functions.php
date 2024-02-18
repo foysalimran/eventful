@@ -1036,7 +1036,7 @@ class EFP_Functions
 	public static function efp_reading_time($post_id, $word_per_minute, $reading_time_postfix)
 	{
 		$content      = get_post_field('post_content', $post_id);
-		$word_count   = str_word_count(strip_tags($content));
+		$word_count   = str_word_count(wp_strip_all_tags($content));
 		$reading_time = ceil($word_count / $word_per_minute);
 
 		$total_reading_time = $reading_time . $reading_time_postfix;
