@@ -23,9 +23,9 @@ class EFP_Live_Filter
 	 */
 	public function __construct()
 	{
-		add_action('wp_ajax_efp_live_filter_reset', array($this, 'efp_live_filter_reset'));
-		add_action('wp_ajax_efp_admin_live_filter_reset', array($this, 'efp_admin_live_filter_reset'));
-		add_action('wp_ajax_nopriv_efp_live_filter_reset', array($this, 'efp_live_filter_reset'));
+		add_action('wp_ajax_eventful_live_filter_reset', array($this, 'efp_live_filter_reset'));
+		add_action('wp_ajax_eventful_admin_live_filter_reset', array($this, 'efp_admin_live_filter_reset'));
+		add_action('wp_ajax_nopriv_eventful_live_filter_reset', array($this, 'efp_live_filter_reset'));
 	}
 	/**
 	 * Live filter markup style.
@@ -793,7 +793,7 @@ class EFP_Live_Filter
 		}
 		$a_selected       = $selected;
 		$a_checked        = $checked;
-		$capitalize_value = ucfirst(apply_filters('ta_efp_custom_meta_filter_value', $value, $field_key)) . $post_count_markup;
+		$capitalize_value = ucfirst(apply_filters('ta_eventful_custom_meta_filter_value', $value, $field_key)) . $post_count_markup;
 
 		$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
 		if (!empty($filter_url_value)) {

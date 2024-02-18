@@ -80,7 +80,7 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 				}
 				// Caipt'n, ready to hook.
 				if ( true === $upscale ) {
-					add_filter( 'image_resize_dimensions', array( $this, 'ta_efp_upscale' ), 10, 6 );
+					add_filter( 'image_resize_dimensions', array( $this, 'ta_eventful_upscale' ), 10, 6 );
 				}
 				// Define upload path & dir.
 				$upload_info = wp_upload_dir();
@@ -166,7 +166,7 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 				}
 				// Okay, leave the ship.
 				if ( true === $upscale ) {
-					remove_filter( 'image_resize_dimensions', array( $this, 'ta_efp_upscale' ) );
+					remove_filter( 'image_resize_dimensions', array( $this, 'ta_eventful_upscale' ) );
 				}
 				// Return the output.
 				if ( $single ) {
@@ -204,7 +204,7 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 		 * @param  mixed $crop crop size.
 		 * @return statement
 		 */
-		public function ta_efp_upscale( $default, $orig_w, $orig_h, $dest_w, $dest_h, $crop ) {
+		public function ta_eventful_upscale( $default, $orig_w, $orig_h, $dest_w, $dest_h, $crop ) {
 			if ( ! $crop ) {
 				return null; // Let the WordPress default function handle this.
 			}
@@ -228,7 +228,7 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 	}
 }
 
-if ( ! function_exists( 'ta_efp_resize' ) ) {
+if ( ! function_exists( 'ta_eventful_resize' ) ) {
 	/**
 	 * This is just a tiny wrapper function for the class above so that there is no
 	 * need to change any code in your own WP themes. Usage is still the same :)
@@ -241,8 +241,8 @@ if ( ! function_exists( 'ta_efp_resize' ) ) {
 	 * @param  mixed $upscale upscale.
 	 * @return statement
 	 */
-	function ta_efp_resize( $url, $width = null, $height = null, $crop = null, $single = true, $upscale = false ) {
-		$ta_efp_resize = EFP_Resize::getInstance();
-		return $ta_efp_resize->process( $url, $width, $height, $crop, $single, $upscale );
+	function ta_eventful_resize( $url, $width = null, $height = null, $crop = null, $single = true, $upscale = false ) {
+		$ta_eventful_resize = EFP_Resize::getInstance();
+		return $ta_eventful_resize->process( $url, $width, $height, $crop, $single, $upscale );
 	}
 }

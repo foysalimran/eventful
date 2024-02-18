@@ -64,11 +64,11 @@ class Eventful_Public
 		add_action('wp_ajax_post_grid_ajax', array($this, 'post_grid_ajax'));
 		add_action('wp_ajax_nopriv_post_grid_ajax', array($this, 'post_grid_ajax'));
 
-		add_action('wp_ajax_efp_post_efpup', array($this, 'efp_post_efpup'));
-		add_action('wp_ajax_nopriv_efp_post_efpup', array($this, 'efp_post_efpup'));
+		add_action('wp_ajax_eventful_post_efpup', array($this, 'efp_post_efpup'));
+		add_action('wp_ajax_nopriv_eventful_post_efpup', array($this, 'efp_post_efpup'));
 
-		add_action('wp_ajax_efp_post_efpup_next_prev', array($this, 'efp_post_efpup_next_prev'));
-		add_action('wp_ajax_nopriv_efp_post_efpup_next_prev', array($this, 'efp_post_efpup_next_prev'));
+		add_action('wp_ajax_eventful_post_efpup_next_prev', array($this, 'efp_post_efpup_next_prev'));
+		add_action('wp_ajax_nopriv_eventful_post_efpup_next_prev', array($this, 'efp_post_efpup_next_prev'));
 
 		add_action('wp_ajax_post_pagination_bar', array($this, 'post_pagination_bar'));
 		add_action('wp_ajax_nopriv_post_pagination_bar', array($this, 'post_pagination_bar'));
@@ -76,8 +76,8 @@ class Eventful_Public
 		add_action('wp_ajax_post_pagination_bar_mobile', array($this, 'post_pagination_bar_mobile'));
 		add_action('wp_ajax_nopriv_post_pagination_bar_mobile', array($this, 'post_pagination_bar_mobile'));
 
-		add_action('wp_ajax_efp_post_order', array($this, 'efp_post_order'));
-		add_action('wp_ajax_nopriv_efp_post_order', array($this, 'efp_post_order'));
+		add_action('wp_ajax_eventful_post_order', array($this, 'efp_post_order'));
+		add_action('wp_ajax_nopriv_eventful_post_order', array($this, 'efp_post_order'));
 
 		add_shortcode('eventful', array($this, 'efp_shortcode_render'));
 

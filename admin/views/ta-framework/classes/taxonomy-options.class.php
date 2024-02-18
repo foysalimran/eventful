@@ -105,12 +105,12 @@ if ( ! class_exists( 'EFP_Taxonomy_Options' ) ) {
       $term_id   = ( $is_term ) ? $term->term_id : 0;
       $taxonomy  = ( $is_term ) ? $term->taxonomy : $term;
       $classname = ( $is_term ) ? 'edit' : 'add';
-      $errors    = ( ! empty( $term_id ) ) ? get_term_meta( $term_id, '_efp_errors_'. $this->unique, true ) : array();
+      $errors    = ( ! empty( $term_id ) ) ? get_term_meta( $term_id, '_eventful_errors_'. $this->unique, true ) : array();
       $errors    = ( ! empty( $errors ) ) ? $errors : array();
       $class     = ( $this->args['class'] ) ? ' '. $this->args['class'] : '';
 
       if ( ! empty( $errors ) ) {
-        delete_term_meta( $term_id, '_efp_errors_'. $this->unique );
+        delete_term_meta( $term_id, '_eventful_errors_'. $this->unique );
       }
 
       wp_nonce_field( 'efp_taxonomy_nonce', 'efp_taxonomy_nonce'. $this->unique );
@@ -254,7 +254,7 @@ if ( ! class_exists( 'EFP_Taxonomy_Options' ) ) {
         }
 
         if ( ! empty( $errors ) ) {
-          update_term_meta( $term_id, '_efp_errors_'. $this->unique, $errors );
+          update_term_meta( $term_id, '_eventful_errors_'. $this->unique, $errors );
         }
 
       }

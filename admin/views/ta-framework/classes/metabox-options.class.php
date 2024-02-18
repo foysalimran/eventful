@@ -174,13 +174,13 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
       $has_nav   = ( count( $this->sections ) > 1 && $this->args['context'] !== 'side' ) ? true : false;
       $show_all  = ( ! $has_nav ) ? ' efp-show-all' : '';
       $post_type = ( is_object ( $post ) ) ? $post->post_type : '';
-      $errors    = ( is_object ( $post ) ) ? get_post_meta( $post->ID, '_efp_errors_'. $this->unique, true ) : array();
+      $errors    = ( is_object ( $post ) ) ? get_post_meta( $post->ID, '_eventful_errors_'. $this->unique, true ) : array();
       $errors    = ( ! empty( $errors ) ) ? $errors : array();
       $theme     = ( $this->args['theme'] ) ? ' efp-theme-'. $this->args['theme'] : '';
       $nav_type  = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 
       if ( is_object ( $post ) && ! empty( $errors ) ) {
-        delete_post_meta( $post->ID, '_efp_errors_'. $this->unique );
+        delete_post_meta( $post->ID, '_eventful_errors_'. $this->unique );
       }
 
       wp_nonce_field( 'efp_metabox_nonce', 'efp_metabox_nonce'. $this->unique );
@@ -397,7 +397,7 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
         }
 
         if ( ! empty( $errors ) ) {
-          update_post_meta( $post_id, '_efp_errors_'. $this->unique, $errors );
+          update_post_meta( $post_id, '_eventful_errors_'. $this->unique, $errors );
         }
 
       }

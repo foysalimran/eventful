@@ -23,8 +23,8 @@ class EFP_User_Like
 	 */
 	public function __construct()
 	{
-		add_action('wp_ajax_process_efp_like', array($this, 'process_efp_like'));
-		add_action('wp_ajax_nopriv_process_efp_like', array($this, 'process_efp_like'));
+		add_action('wp_ajax_process_eventful_like', array($this, 'process_eventful_like'));
+		add_action('wp_ajax_nopriv_process_eventful_like', array($this, 'process_eventful_like'));
 		add_action('wp_enqueue_scripts', array($this, 'likes_enqueue_scripts'));
 	}
 
@@ -54,7 +54,7 @@ class EFP_User_Like
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function process_efp_like()
+	public function process_eventful_like()
 	{
 
 		// Security.
@@ -218,7 +218,7 @@ class EFP_User_Like
 	 * @param  mixed $is_comment comment.
 	 * @return statement
 	 */
-	public static function get_efp_likes_button($post_id, $is_comment = null)
+	public static function get_eventful_likes_button($post_id, $is_comment = null)
 	{
 		$is_comment = (null === $is_comment) ? 0 : 1;
 		$output     = '';
@@ -260,7 +260,7 @@ class EFP_User_Like
 	 */
 	public static function efpl_shortcode()
 	{
-		return self::get_efp_likes_button(get_the_ID(), 0);
+		return self::get_eventful_likes_button(get_the_ID(), 0);
 	}
 
 	/**

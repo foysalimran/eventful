@@ -88,12 +88,12 @@ if ( ! class_exists( 'EFP_Profile_Options' ) ) {
 
       $is_profile = ( is_object( $profileuser ) && isset( $profileuser->ID ) ) ? true : false;
       $profile_id = ( $is_profile ) ? $profileuser->ID : 0;
-      $errors     = ( ! empty( $profile_id ) ) ? get_user_meta( $profile_id, '_efp_errors_'. $this->unique, true ) : array();
+      $errors     = ( ! empty( $profile_id ) ) ? get_user_meta( $profile_id, '_eventful_errors_'. $this->unique, true ) : array();
       $errors     = ( ! empty( $errors ) ) ? $errors : array();
       $class      = ( $this->args['class'] ) ? ''. $this->args['class'] : '';
 
       if ( ! empty( $errors ) ) {
-        delete_user_meta( $profile_id, '_efp_errors_'. $this->unique );
+        delete_user_meta( $profile_id, '_eventful_errors_'. $this->unique );
       }
 
       echo '<div class="efp efp-profile-options efp-onload'. esc_attr( $class ) .'">';
@@ -235,7 +235,7 @@ if ( ! class_exists( 'EFP_Profile_Options' ) ) {
         }
 
         if ( ! empty( $errors ) ) {
-          update_user_meta( $user_id, '_efp_errors_'. $this->unique, $errors );
+          update_user_meta( $user_id, '_eventful_errors_'. $this->unique, $errors );
         }
 
       }

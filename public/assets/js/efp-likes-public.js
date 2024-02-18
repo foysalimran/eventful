@@ -10,7 +10,7 @@
 			type: "POST",
 			url: simpleLikes.ajaxurl,
 			data: {
-				action: "process_efp_like",
+				action: "process_eventful_like",
 				post_id: post_id,
 				nonce: security,
 				is_comment: iscomment
