@@ -16,7 +16,7 @@
  * Plugin Name:       Eventful
  * Plugin URI:        https://https://wp-plugins.themeatelier.net/eventful
  * Description:       Professional Event Post Layouts Addon For WordPress
- * Version:           1.1.0
+ * Version:           1.0.0
  * Author:            ThemeAtelier
  * Author URI:        https://https://https://themeatelier.net/
  * License:           GPL-2.0+
