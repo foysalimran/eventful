@@ -4,8 +4,8 @@
 
 /* layout_preset */
 
-.efp-field-image_select .efp--image,
-.efp-field-layout_preset .efp--image {
+.efp-field-image_select .eventful--image,
+.efp-field-layout_preset .eventful--image {
   cursor: pointer;
   position: relative;
   display: inline-block;
@@ -23,8 +23,8 @@
   outline-offset: -2px;
 }
 
-.efp-field-layout_preset .efp--image:before,
-.efp-field-image_select .efp--image:before {
+.efp-field-layout_preset .eventful--image:before,
+.efp-field-image_select .eventful--image:before {
   position: absolute;
   top: 0;
   left: 0;
@@ -41,12 +41,12 @@
   transition: opacity 0.2s;
 }
 
-.efp-field-layout_preset .efp--active.efp--image:before,
-.efp-field-image_select .efp--image.efp--active:before {
+.efp-field-layout_preset .eventful--active.eventful--image:before,
+.efp-field-image_select .eventful--image.eventful--active:before {
   opacity: 1;
 }
 
-.efp-field-image_select .efp--active img {
+.efp-field-image_select .eventful--active img {
   outline-color: #0015b5;
 }
 
@@ -62,7 +62,7 @@
   display: none;
 }
 
-.efp-field-layout_preset .efp--image img {
+.efp-field-layout_preset .eventful--image img {
   color: #7b8898;
   margin-right: 10px;
   outline: solid 3px transparent;
@@ -75,7 +75,7 @@
   outline-offset: -3px;
 }
 
-.efp-field-layout_preset .efp--image img {
+.efp-field-layout_preset .eventful--image img {
   max-width: 100%;
 }
 
@@ -92,7 +92,7 @@
   font-size: 12px;
 }
 
-.efp-field-layout_preset .efp--image.efp--active img {
+.efp-field-layout_preset .eventful--image.eventful--active img {
   outline-color: #0015b5;
 }
 
@@ -113,16 +113,16 @@
   width: 50%;
 }
 
-#ta_efp_view_options {
+#ta_eventful_view_options {
   border-top-color: #f1f1f1;
   margin-top: -21px;
 }
 
-#ta_efp_view_options .efp-nav ul li {
+#ta_eventful_view_options .efp-nav ul li {
   margin-bottom: -1px;
 }
 
-#ta_efp_view_options .efp-nav.efp-nav-metabox {
+#ta_eventful_view_options .efp-nav.efp-nav-metabox {
   border-right-color: #f1f1f1;
   border-right-color: #f1f1f1;
   background: #f1f1f1;
@@ -130,7 +130,7 @@
   padding-top: 15px;
 }
 
-#ta_efp_view_options .efp-content {
+#ta_eventful_view_options .efp-content {
   border-top: 1px solid #e5e5e5;
   box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.04);
 }
@@ -152,8 +152,8 @@
   margin-left: 0;
 }
 
-#ta_efp_view_options .hndle,
-#ta_efp_view_options .handlediv,
+#ta_eventful_view_options .hndle,
+#ta_eventful_view_options .handlediv,
 #ta_eventful_layouts .handlediv,
 #ta_eventful_layouts .hndle {
   display: none;
@@ -187,7 +187,7 @@
   clear: initial;
 }
 .efp_reading_time_postfix .efp-fieldset input,
-.efp_reading_time_meta .efp--wrap {
+.efp_reading_time_meta .eventful--wrap {
   margin-right: 5px;
 }
 .efp_reading_time_meta .efp-fieldset {
@@ -289,7 +289,7 @@
     color: #000;
 }
 
-#ta_efp_view_options .efp-theme-light .efp-nav ul li .efp-section-active {
+#ta_eventful_view_options .efp-theme-light .efp-nav ul li .efp-section-active {
     border-bottom: 1px solid #fff;
     border-top: 1px solid #0015b5;
     box-shadow: 0 3px 0 0 #0015b5 inset;
@@ -306,7 +306,7 @@
     border-top: 1px solid transparent;
 }
 
-#ta_efp_view_options .efp-theme-light .efp-nav ul li .efp-section-active i,
+#ta_eventful_view_options .efp-theme-light .efp-nav ul li .efp-section-active i,
 .ta-efp-options.efp-theme-light .efp-nav ul li .efp-section-active i {
     color: #0015b5;
 }
@@ -339,47 +339,47 @@
     background: linear-gradient(#fafafa, #f5f5f5);
 }
 
-.efp-field-box_shadow .efp--inputs,
-.efp-field-border .efp--inputs,
-.efp-field-spacing .efp--inputs,
-.efp-field-column .efp--inputs,
-.efp-field-dimensions .efp--inputs,
-.efp-field-dimensions_advanced .efp--inputs {
+.efp-field-box_shadow .eventful--inputs,
+.efp-field-border .eventful--inputs,
+.efp-field-spacing .eventful--inputs,
+.efp-field-column .eventful--inputs,
+.efp-field-dimensions .eventful--inputs,
+.efp-field-dimensions_advanced .eventful--inputs {
     float: left;
     display: flex;
     flex-wrap: wrap;
 }
 
-.efp-field-box_shadow .efp--input,
-.efp-field-border .efp--input,
-.efp-field-spacing .efp--input,
-.efp-field-column .efp--input,
-.efp-field-dimensions .efp--input,
-.efp-field-dimensions_advanced .efp--input {
+.efp-field-box_shadow .eventful--input,
+.efp-field-border .eventful--input,
+.efp-field-spacing .eventful--input,
+.efp-field-column .eventful--input,
+.efp-field-dimensions .eventful--input,
+.efp-field-dimensions_advanced .eventful--input {
     display: flex;
     padding-right: 6px;
     padding-bottom: 4px;
     box-sizing: border-box;
 }
 
-.efp-field-box_shadow .efp--input select,
-.efp-field-border .efp--input select,
-.efp-field-spacing .efp--input select,
-.efp-field-column .efp--input select,
-.efp-field-dimensions .efp--input select,
-.efp-field-dimensions_advanced .efp--input select {
+.efp-field-box_shadow .eventful--input select,
+.efp-field-border .eventful--input select,
+.efp-field-spacing .eventful--input select,
+.efp-field-column .eventful--input select,
+.efp-field-dimensions .eventful--input select,
+.efp-field-dimensions_advanced .eventful--input select {
     margin: 0;
 }
 
-.efp-content .efp-field-box_shadow .efp--input input{
+.efp-content .efp-field-box_shadow .eventful--input input{
     width: 58px;
 }
-.efp-field-box_shadow .efp--input input,
-.efp-field-border .efp--input input,
-.efp-field-spacing .efp--input input,
-.efp-field-column .efp--input input,
-.efp-field-dimensions .efp--input input,
-.efp-field-dimensions_advanced .efp--input input {
+.efp-field-box_shadow .eventful--input input,
+.efp-field-border .eventful--input input,
+.efp-field-spacing .eventful--input input,
+.efp-field-column .eventful--input input,
+.efp-field-dimensions .eventful--input input,
+.efp-field-dimensions_advanced .eventful--input input {
     position: relative;
     z-index: 1;
     margin: 0;
@@ -388,19 +388,19 @@
     text-align: center;
 }
 
-.efp-field-box_shadow .efp--color,
-.efp-field-border .efp--color,
-.efp-field-spacing .efp--color,
-.efp-field-dimensions .efp--color {
+.efp-field-box_shadow .eventful--color,
+.efp-field-border .eventful--color,
+.efp-field-spacing .eventful--color,
+.efp-field-dimensions .eventful--color {
     float: left;
 }
 
-.efp-field-box_shadow .efp--label,
-.efp-field-border .efp--label,
-.efp-field-spacing .efp--label,
-.efp-field-column .efp--label,
-.efp-field-dimensions .efp--label,
-.efp-field-dimensions_advanced .efp--label {
+.efp-field-box_shadow .eventful--label,
+.efp-field-border .eventful--label,
+.efp-field-spacing .eventful--label,
+.efp-field-column .eventful--label,
+.efp-field-dimensions .eventful--label,
+.efp-field-dimensions_advanced .eventful--label {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -415,40 +415,40 @@
     background-color: #f5f5f5;
 }
 
-.efp-field-box_shadow .efp--icon,
-.efp-field-border .efp--icon,
-.efp-field-spacing .efp--icon,
-.efp-field-column .efp--icon,
-.efp-field-dimensions .efp--icon,
-.efp-field-dimensions_advanced .efp--icon {
+.efp-field-box_shadow .eventful--icon,
+.efp-field-border .eventful--icon,
+.efp-field-spacing .eventful--icon,
+.efp-field-column .eventful--icon,
+.efp-field-dimensions .eventful--icon,
+.efp-field-dimensions_advanced .eventful--icon {
     border-right: 0;
     border-radius: 4px 0 0 4px;
 }
 
-.efp-field-box_shadow .efp--icon+input,
-.efp-field-border .efp--icon+input,
-.efp-field-spacing .efp--icon+input,
-.efp-field-column .efp--icon+input,
-.efp-field-dimensions .efp--icon+input,
-.efp-field-dimensions_advanced .efp--icon+input {
+.efp-field-box_shadow .eventful--icon+input,
+.efp-field-border .eventful--icon+input,
+.efp-field-spacing .eventful--icon+input,
+.efp-field-column .eventful--icon+input,
+.efp-field-dimensions .eventful--icon+input,
+.efp-field-dimensions_advanced .eventful--icon+input {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.efp-field-box_shadow .efp--unit,
-.efp-field-border .efp--unit,
-.efp-field-spacing .efp--unit,
-.efp-field-column .efp--unit,
-.efp-field-dimensions .efp--unit,
-.efp-field-dimensions_advanced .efp--unit {
+.efp-field-box_shadow .eventful--unit,
+.efp-field-border .eventful--unit,
+.efp-field-spacing .eventful--unit,
+.efp-field-column .eventful--unit,
+.efp-field-dimensions .eventful--unit,
+.efp-field-dimensions_advanced .eventful--unit {
     border-left: 0;
     border-radius: 0 4px 4px 0;
 }
 
-.efp-field-box_shadow .efp--is-unit,
-.efp-field-border .efp--is-unit,
-.efp-field-spacing .efp--is-unit,
-.efp-field-dimensions .efp--is-unit {
+.efp-field-box_shadow .eventful--is-unit,
+.efp-field-border .eventful--is-unit,
+.efp-field-spacing .eventful--is-unit,
+.efp-field-dimensions .eventful--is-unit {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -505,48 +505,48 @@
  * 03. 05. Field: border, spacing, dimensions, column, dimensions_advanced
  */
 
- .efp-field-box_shadow .efp--inputs,
- .efp-field-border .efp--inputs,
- .efp-field-spacing .efp--inputs,
- .efp-field-column .efp--inputs,
- .efp-field-dimensions .efp--inputs,
- .efp-field-dimensions_advanced .efp--inputs {
+ .efp-field-box_shadow .eventful--inputs,
+ .efp-field-border .eventful--inputs,
+ .efp-field-spacing .eventful--inputs,
+ .efp-field-column .eventful--inputs,
+ .efp-field-dimensions .eventful--inputs,
+ .efp-field-dimensions_advanced .eventful--inputs {
    float: left;
    display: flex;
    flex-wrap: wrap;
  }
  
- .efp-field-box_shadow .efp--input,
- .efp-field-border .efp--input,
- .efp-field-spacing .efp--input,
- .efp-field-column .efp--input,
- .efp-field-dimensions .efp--input,
- .efp-field-dimensions_advanced .efp--input {
+ .efp-field-box_shadow .eventful--input,
+ .efp-field-border .eventful--input,
+ .efp-field-spacing .eventful--input,
+ .efp-field-column .eventful--input,
+ .efp-field-dimensions .eventful--input,
+ .efp-field-dimensions_advanced .eventful--input {
    display: flex;
    padding-right: 6px;
    padding-bottom: 4px;
    box-sizing: border-box;
  }
  
- .efp-field-box_shadow .efp--input select,
- .efp-field-border .efp--input select,
- .efp-field-spacing .efp--input select,
- .efp-field-column .efp--input select,
- .efp-field-dimensions .efp--input select,
- .efp-field-dimensions_advanced .efp--input select {
+ .efp-field-box_shadow .eventful--input select,
+ .efp-field-border .eventful--input select,
+ .efp-field-spacing .eventful--input select,
+ .efp-field-column .eventful--input select,
+ .efp-field-dimensions .eventful--input select,
+ .efp-field-dimensions_advanced .eventful--input select {
    margin: 0;
  }
  
- .efp-content .efp-field-box_shadow .efp--input input {
+ .efp-content .efp-field-box_shadow .eventful--input input {
    width: 58px;
  }
  
- .efp-field-box_shadow .efp--input input,
- .efp-field-border .efp--input input,
- .efp-field-spacing .efp--input input,
- .efp-field-column .efp--input input,
- .efp-field-dimensions .efp--input input,
- .efp-field-dimensions_advanced .efp--input input {
+ .efp-field-box_shadow .eventful--input input,
+ .efp-field-border .eventful--input input,
+ .efp-field-spacing .eventful--input input,
+ .efp-field-column .eventful--input input,
+ .efp-field-dimensions .eventful--input input,
+ .efp-field-dimensions_advanced .eventful--input input {
    position: relative;
    z-index: 1;
    margin: 0;
@@ -555,19 +555,19 @@
    text-align: center;
  }
  
- .efp-field-box_shadow .efp--color,
- .efp-field-border .efp--color,
- .efp-field-spacing .efp--color,
- .efp-field-dimensions .efp--color {
+ .efp-field-box_shadow .eventful--color,
+ .efp-field-border .eventful--color,
+ .efp-field-spacing .eventful--color,
+ .efp-field-dimensions .eventful--color {
    float: left;
  }
  
- .efp-field-box_shadow .efp--label,
- .efp-field-border .efp--label,
- .efp-field-spacing .efp--label,
- .efp-field-column .efp--label,
- .efp-field-dimensions .efp--label,
- .efp-field-dimensions_advanced .efp--label {
+ .efp-field-box_shadow .eventful--label,
+ .efp-field-border .eventful--label,
+ .efp-field-spacing .eventful--label,
+ .efp-field-column .eventful--label,
+ .efp-field-dimensions .eventful--label,
+ .efp-field-dimensions_advanced .eventful--label {
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -582,40 +582,40 @@
    background-color: #f5f5f5;
  }
  
- .efp-field-box_shadow .efp--icon,
- .efp-field-border .efp--icon,
- .efp-field-spacing .efp--icon,
- .efp-field-column .efp--icon,
- .efp-field-dimensions .efp--icon,
- .efp-field-dimensions_advanced .efp--icon {
+ .efp-field-box_shadow .eventful--icon,
+ .efp-field-border .eventful--icon,
+ .efp-field-spacing .eventful--icon,
+ .efp-field-column .eventful--icon,
+ .efp-field-dimensions .eventful--icon,
+ .efp-field-dimensions_advanced .eventful--icon {
    border-right: 0;
    border-radius: 4px 0 0 4px;
  }
  
- .efp-field-box_shadow .efp--icon+input,
- .efp-field-border .efp--icon+input,
- .efp-field-spacing .efp--icon+input,
- .efp-field-column .efp--icon+input,
- .efp-field-dimensions .efp--icon+input,
- .efp-field-dimensions_advanced .efp--icon+input {
+ .efp-field-box_shadow .eventful--icon+input,
+ .efp-field-border .eventful--icon+input,
+ .efp-field-spacing .eventful--icon+input,
+ .efp-field-column .eventful--icon+input,
+ .efp-field-dimensions .eventful--icon+input,
+ .efp-field-dimensions_advanced .eventful--icon+input {
    border-top-left-radius: 0;
    border-bottom-left-radius: 0;
  }
  
- .efp-field-box_shadow .efp--unit,
- .efp-field-border .efp--unit,
- .efp-field-spacing .efp--unit,
- .efp-field-column .efp--unit,
- .efp-field-dimensions .efp--unit,
- .efp-field-dimensions_advanced .efp--unit {
+ .efp-field-box_shadow .eventful--unit,
+ .efp-field-border .eventful--unit,
+ .efp-field-spacing .eventful--unit,
+ .efp-field-column .eventful--unit,
+ .efp-field-dimensions .eventful--unit,
+ .efp-field-dimensions_advanced .eventful--unit {
    border-left: 0;
    border-radius: 0 4px 4px 0;
  }
  
- .efp-field-box_shadow .efp--is-unit,
- .efp-field-border .efp--is-unit,
- .efp-field-spacing .efp--is-unit,
- .efp-field-dimensions .efp--is-unit {
+ .efp-field-box_shadow .eventful--is-unit,
+ .efp-field-border .eventful--is-unit,
+ .efp-field-spacing .eventful--is-unit,
+ .efp-field-dimensions .eventful--is-unit {
    border-top-right-radius: 0;
    border-bottom-right-radius: 0;
  }

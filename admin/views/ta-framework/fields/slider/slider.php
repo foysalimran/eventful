@@ -26,15 +26,15 @@ if ( ! class_exists( 'EFP_Field_slider' ) ) {
 				)
 			);
 
-			$is_unit = ( ! empty( $args['unit'] ) ) ? ' efp--is-unit' : '';
+			$is_unit = ( ! empty( $args['unit'] ) ) ? ' eventful--is-unit' : '';
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo '<div class="efp--wrap">';
+			echo '<div class="eventful--wrap">';
 			echo '<div class="efp-slider-ui"></div>';
-			echo '<div class="efp--input">';
+			echo '<div class="eventful--input">';
 			echo '<input type="number" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $this->value ) . '"' . wp_kses_post($this->field_attributes( array( 'class' => 'efp-input-number' . esc_attr( $is_unit ) ) )) . ' data-min="' . esc_attr( $args['min'] ) . '" data-max="' . esc_attr( $args['max'] ) . '" data-step="' . esc_attr( $args['step'] ) . '" step="any" />';
-			echo ( ! empty( $args['unit'] ) ) ? '<span class="efp--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
+			echo ( ! empty( $args['unit'] ) ) ? '<span class="eventful--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
 			echo '</div>';
 			echo '</div>';
 

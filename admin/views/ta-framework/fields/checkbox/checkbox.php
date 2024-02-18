@@ -26,7 +26,7 @@ if ( ! class_exists( 'EFP_Field_checkbox' ) ) {
 				)
 			);
 
-			$inline_class = ( $args['inline'] ) ? ' class="efp--inline-list"' : '';
+			$inline_class = ( $args['inline'] ) ? ' class="eventful--inline-list"' : '';
 
 			echo wp_kses_post( $this->field_before() );
 
@@ -52,7 +52,7 @@ if ( ! class_exists( 'EFP_Field_checkbox' ) ) {
 								echo '<li>';
 								echo '<label>';
 								echo '<input type="checkbox" name="' . esc_attr( $this->field_name( '[]' ) ) . '" value="' . esc_attr( $sub_key ) . '"' . wp_kses_post( $this->field_attributes() ) . esc_attr( $checked ) . '/>';
-								echo '<span class="efp--text">' . esc_attr( $sub_value ) . '</span>';
+								echo '<span class="eventful--text">' . esc_attr( $sub_value ) . '</span>';
 								echo '</label>';
 								echo '</li>';
 							}
@@ -66,7 +66,7 @@ if ( ! class_exists( 'EFP_Field_checkbox' ) ) {
 							echo '<li>';
 							echo '<label>';
 							echo '<input type="checkbox" name="' . esc_attr( $this->field_name( '[]' ) ) . '" value="' . esc_attr( $option_key ) . '"' . wp_kses_post( $this->field_attributes() ) . esc_attr( $checked ) . '/>';
-							echo '<span class="efp--text">' . esc_attr( $option_value ) . '</span>';
+							echo '<span class="eventful--text">' . esc_attr( $option_value ) . '</span>';
 							echo '</label>';
 							echo '</li>';
 
@@ -86,9 +86,9 @@ if ( ! class_exists( 'EFP_Field_checkbox' ) ) {
 			} else {
 
 					echo '<label class="efp-checkbox">';
-					echo '<input type="hidden" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr($this->value) . '" class="efp--input"' . wp_kses_post( $this->field_attributes() ) . '/>';
-					echo '<input type="checkbox" name="_pseudo" class="efp--checkbox"' . esc_attr( checked( $this->value, 1, false ) ) . wp_kses_post( $this->field_attributes() ) . '/>';
-					echo ( ! empty( $this->field['label'] ) ) ? '<span class="efp--text">' . esc_attr( $this->field['label'] ) . '</span>' : '';
+					echo '<input type="hidden" name="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr($this->value) . '" class="eventful--input"' . wp_kses_post( $this->field_attributes() ) . '/>';
+					echo '<input type="checkbox" name="_pseudo" class="eventful--checkbox"' . esc_attr( checked( $this->value, 1, false ) ) . wp_kses_post( $this->field_attributes() ) . '/>';
+					echo ( ! empty( $this->field['label'] ) ) ? '<span class="eventful--text">' . esc_attr( $this->field['label'] ) . '</span>' : '';
 					echo '</label>';
 
 			}

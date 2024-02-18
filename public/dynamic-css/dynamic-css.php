@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-$view_options = get_post_meta($efp_id, 'ta_efp_view_options', true);
+$view_options = get_post_meta($efp_id, 'ta_eventful_view_options', true);
 $layouts      = get_post_meta($efp_id, 'ta_eventful_layouts', true);
 $layout = isset($layouts['eventful_layout_preset']) ? $layouts['eventful_layout_preset'] : '';
 $popup_content_color       = isset( $view_options['popup_content_color'] ) ? $view_options['popup_content_color'] : '';

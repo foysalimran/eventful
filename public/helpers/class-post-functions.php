@@ -1164,7 +1164,7 @@ class EFP_Functions
 		if (!$efp_gl_id) {
 			return;
 		}
-		$view_options = get_post_meta($efp_gl_id, 'ta_efp_view_options', true);
+		$view_options = get_post_meta($efp_gl_id, 'ta_eventful_view_options', true);
 		return $view_options;
 	}
 

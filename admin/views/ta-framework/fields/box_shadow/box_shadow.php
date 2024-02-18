@@ -78,7 +78,7 @@ if ( ! class_exists( 'EFP_Field_box_shadow' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo '<div class="efp--inputs">';
+			echo '<div class="eventful--inputs">';
 
 			$properties = array();
 
@@ -92,16 +92,16 @@ if ( ! class_exists( 'EFP_Field_box_shadow' ) ) {
 
 				$placeholder = ( ! empty( $args[ $property . '_placeholder' ] ) ) ? ' placeholder="' . $args[ $property . '_placeholder' ] . '"' : '';
 
-				echo '<div class="efp--input">';
-				echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="efp--label efp--icon">' . wp_kses_post( $args[ $property . '_icon' ] ) . '</span>' : '';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[' . $property . ']' ) ) . '" value="' . esc_attr( $value[ $property ] ) . '"' . wp_kses_post( $placeholder ) . ' class="efp-input-number efp--is-unit" />';
-				echo ( ! empty( $args['unit'] ) ) ? '<span class="efp--label efp--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
+				echo '<div class="eventful--input">';
+				echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post( $args[ $property . '_icon' ] ) . '</span>' : '';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[' . $property . ']' ) ) . '" value="' . esc_attr( $value[ $property ] ) . '"' . wp_kses_post( $placeholder ) . ' class="efp-input-number eventful--is-unit" />';
+				echo ( ! empty( $args['unit'] ) ) ? '<span class="eventful--label eventful--unit">' . esc_attr( $args['unit'] ) . '</span>' : '';
 				echo '</div>';
 
 			}
 
 			if ( ! empty( $args['style'] ) ) {
-				echo '<div class="efp--input">';
+				echo '<div class="eventful--input">';
 				echo '<select name="' . esc_attr( $this->field_name( '[style]' ) ) . '">';
 				foreach ( array( 'inset', 'outset' ) as $style ) {
 					$selected = ( $value['style'] === $style ) ? ' selected' : '';

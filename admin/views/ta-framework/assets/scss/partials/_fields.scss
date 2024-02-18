@@ -100,7 +100,7 @@
       border-color: #999;
     }
 
-    .efp--icon{
+    .eventful--icon{
       width: 20px;
       text-align: center;
       margin-right: 2px;
@@ -142,17 +142,17 @@
     margin-right: 6px;
   }
 
-  .efp--title{
+  .eventful--title{
     color: #777;
     font-size: 12px;
   }
 
-  .efp--background-colors{
+  .eventful--background-colors{
     display: flex;
     flex-wrap: wrap;
   }
 
-  .efp--background-attributes{
+  .eventful--background-attributes{
     display: flex;
     flex-wrap: wrap;
 
@@ -166,7 +166,7 @@
     }
   }
 
-  .efp--attributes-hidden{
+  .eventful--attributes-hidden{
     display: none;
   }
 }
@@ -201,13 +201,13 @@
 .efp-field-spacing,
 .efp-field-dimensions{
 
-  .efp--inputs{
+  .eventful--inputs{
     float: left;
     display: flex;
     flex-wrap: wrap;
   }
 
-  .efp--input{
+  .eventful--input{
     display: flex;
     padding-right: 6px;
     padding-bottom: 4px;
@@ -227,11 +227,11 @@
     }
   }
 
-  .efp--color{
+  .eventful--color{
     float: left;
   }
 
-  .efp--label{
+  .eventful--label{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -246,22 +246,22 @@
     background-color: #f5f5f5;
   }
 
-  .efp--icon{
+  .eventful--icon{
     border-right: 0;
     border-radius: 4px 0 0 4px;
   }
 
-  .efp--icon + input{
+  .eventful--icon + input{
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
   }
 
-  .efp--unit{
+  .eventful--unit{
     border-left: 0;
     border-radius: 0 4px 4px 0;
   }
 
-  .efp--is-unit{
+  .eventful--is-unit{
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
   }
@@ -272,11 +272,11 @@
  */
 .efp-field-button_set{
 
-  .efp--buttons{
+  .eventful--buttons{
     display: inline-block;
   }
 
-  .efp--button{
+  .eventful--button{
     position: relative;
     z-index: 1;
     float: left;
@@ -307,8 +307,8 @@
     }
   }
 
-  .efp--active:hover,
-  .efp--active{
+  .eventful--active:hover,
+  .eventful--active{
     z-index: 2;
     color: #fff;
     border-color: #006799;
@@ -354,12 +354,12 @@
     margin: 0 1px;
   }
 
-  .efp--inline-list li{
+  .eventful--inline-list li{
     display: inline-block;
     margin-right: 15px;
   }
 
-  .efp--text{
+  .eventful--text{
     margin-left: 5px;
     vertical-align: middle;
   }
@@ -421,13 +421,13 @@
  */
 .efp-field-color_group{
 
-  .efp--left{
+  .eventful--left{
     float: left;
     margin-right: 10px;
     margin-bottom: 5px;
   }
 
-  .efp--title{
+  .eventful--title{
     color: #999;
     margin-bottom: 5px;
   }
@@ -462,7 +462,7 @@
     margin: 0;
   }
 
-  .efp--to{
+  .eventful--to{
     margin-left: 7px;
   }
 }
@@ -628,7 +628,7 @@
     margin: 0;
   }
 
-  .efp--to{
+  .eventful--to{
     margin-left: 7px;
   }
 }
@@ -847,12 +847,12 @@
  */
 .efp-field-image_select{
 
-  .efp--image{
+  .eventful--image{
     display: inline-block;
     margin: 0 5px 5px 0;
   }
 
-  .efp--inline-list .efp--image{
+  .eventful--inline-list .eventful--image{
     display: block;
   }
 
@@ -887,7 +887,7 @@
     }
   }
 
-  .efp--active figure{
+  .eventful--active figure{
     border-color: #222;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
 
@@ -912,13 +912,13 @@
  */
 .efp-field-link_color{
 
-  .efp--left{
+  .eventful--left{
     float: left;
     margin-right: 10px;
     margin-bottom: 5px;
   }
 
-  .efp--title{
+  .eventful--title{
     color: #777;
     margin-bottom: 5px;
   }
@@ -937,11 +937,11 @@
     background-position-x: calc(100% - 5px);
   }
 
-  .efp--map-search + .efp--map-osm-wrap{
+  .eventful--map-search + .eventful--map-osm-wrap{
     margin-top: 10px;
   }
 
-  .efp--map-osm-wrap{
+  .eventful--map-osm-wrap{
     position: relative;
     padding: 5px;
     border: 1px solid #eee;
@@ -949,19 +949,19 @@
     box-shadow: 0 1px 1px rgba(0,0,0,.04);
   }
 
-  .efp--map-osm{
+  .eventful--map-osm{
     position: relative;
     z-index: 1;
     min-height: 250px;
   }
 
-  .efp--map-inputs{
+  .eventful--map-inputs{
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
   }
 
-  .efp--map-input{
+  .eventful--map-input{
     flex: 1;
 
     &:last-child{
@@ -989,7 +989,7 @@
  */
 .efp-field-media{
 
-  .efp--placeholder{
+  .eventful--placeholder{
     display: flex;
     align-items: flex-start;
 
@@ -1007,7 +1007,7 @@
     margin-left: 0;
   }
 
-  .efp--preview{
+  .eventful--preview{
     position: relative;
   }
 }
@@ -1017,7 +1017,7 @@
  */
 .efp-field-palette{
 
-  .efp--palette{
+  .eventful--palette{
     position: relative;
     display: inline-block;
     cursor: pointer;
@@ -1057,7 +1057,7 @@
     }
   }
 
-  .efp--active{
+  .eventful--active{
     border-color: #222;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
 
@@ -1193,16 +1193,16 @@
  */
 .efp-field-slider{
 
-  .efp--wrap{
+  .eventful--wrap{
     display: flex;
     align-items: center;
   }
 
-  .efp--input{
+  .eventful--input{
     display: flex;
   }
 
-  .efp--unit{
+  .eventful--unit{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -1229,7 +1229,7 @@
     text-align: center;
   }
 
-  .efp--is-unit{
+  .eventful--is-unit{
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
   }
@@ -1431,7 +1431,7 @@
  */
 .efp-field-spinner{
 
-  .efp--spin{
+  .eventful--spin{
     display: flex;
   }
 
@@ -1499,7 +1499,7 @@
       }
     }
 
-    .efp--unit{
+    .eventful--unit{
       border-left: 0;
       user-select: none;
     }
@@ -1531,7 +1531,7 @@
     order: 2;
   }
 
-  .efp--unit{
+  .eventful--unit{
     order: 3;
   }
 
@@ -1545,7 +1545,7 @@
  */
 .efp-field-switcher{
 
-  .efp--switcher{
+  .eventful--switcher{
     float: left;
     cursor: pointer;
     position: relative;
@@ -1560,7 +1560,7 @@
     -webkit-user-select: none;
   }
 
-  .efp--ball{
+  .eventful--ball{
     position: absolute;
     top: 4px;
     left: 4px;
@@ -1572,8 +1572,8 @@
     box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
   }
 
-  .efp--on,
-  .efp--off{
+  .eventful--on,
+  .eventful--off{
     position: absolute;
     top: 0;
     left: 0;
@@ -1590,30 +1590,30 @@
     transition: all .1s;
   }
 
-  .efp--off{
+  .eventful--off{
     padding-right: 0;
     padding-left: 28px;
     opacity: 1;
   }
 
-  .efp--active{
+  .eventful--active{
     background: #4fb845;
 
-    .efp--on{
+    .eventful--on{
       opacity: 1;
     }
 
-    .efp--off{
+    .eventful--off{
       opacity: 0;
     }
 
-    .efp--ball{
+    .eventful--ball{
       left: 100%;
       margin-left: -28px;
     }
   }
 
-  .efp--label{
+  .eventful--label{
     float: left;
     margin-top: 4px;
     margin-left: 8px;
@@ -1639,7 +1639,7 @@
 
   .efp-tabbed-nav{
 
-    .efp--icon{
+    .eventful--icon{
       padding-right: 5px;
     }
 
@@ -1715,7 +1715,7 @@
     max-width: 100%;
   }
 
-  .efp--title{
+  .eventful--title{
     color: #777;
     margin: 0 0 2px 0;
     font-size: 12px;
@@ -1725,28 +1725,28 @@
     }
   }
 
-  .efp--blocks{
+  .eventful--blocks{
     display: flex;
     flex-wrap: wrap;
   }
 
-  .efp--block{
+  .eventful--block{
     flex: 1;
     max-width: 100%;
     padding-right: 6px;
     padding-bottom: 6px;
   }
 
-  .efp--input{
+  .eventful--input{
     margin: 0;
     min-width: 100%;
   }
 
-  .efp--input-wrap{
+  .eventful--input-wrap{
     position: relative;
   }
 
-  .efp--unit{
+  .eventful--unit{
     position: absolute;
     z-index: 1;
     right: 4px;
@@ -1764,7 +1764,7 @@
     flex-direction: column;
   }
 
-  .efp--preview{
+  .eventful--preview{
     font-size: 16px;
     line-height: 20px;
     padding: 20px;
@@ -1777,7 +1777,7 @@
     transition: background-color .2s, border-color .2s;
   }
 
-  .efp--block-preview{
+  .eventful--block-preview{
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -1785,19 +1785,19 @@
     max-width: 100%;
   }
 
-  .efp--black-background{
+  .eventful--black-background{
     border-color: #000;
     background-color: #000;
   }
 
-  .efp--toggle{
+  .eventful--toggle{
     position: absolute;
     top: 5px;
     right: 10px;
     color: #999;
   }
 
-  .efp--block-extra-styles{
+  .eventful--block-extra-styles{
     margin-top: 5px;
   }
 }
@@ -1812,7 +1812,7 @@
     margin: 0;
   }
 
-  .efp--wrap{
+  .eventful--wrap{
     display: flex;
     align-items: flex-start;
   }
@@ -1821,7 +1821,7 @@
     margin-left: 5px;
   }
 
-  .efp--preview{
+  .eventful--preview{
     position: relative;
   }
 }
@@ -1999,13 +1999,13 @@
     margin: 0;
   }
 
-  .efp--wrap{
+  .eventful--wrap{
     position: relative;
     float: left;
     width: 100px;
   }
 
-  .efp--unit{
+  .eventful--unit{
     position: absolute;
     z-index: 1;
     right: 4px;
@@ -2029,7 +2029,7 @@
  */
 .efp-field-link{
 
-  .efp--result{
+  .eventful--result{
     display: inline-block;
     font-size: 12px;
     line-height: 16px;
@@ -2042,13 +2042,13 @@
     world-break: break-word;
   }
 
-  .efp--wrap{
+  .eventful--wrap{
     position: relative;
     float: left;
     width: 100px;
   }
 
-  .efp--unit{
+  .eventful--unit{
     position: absolute;
     z-index: 1;
     right: 4px;
@@ -2084,7 +2084,7 @@
   }
 }
 
-.efp--preview{
+.eventful--preview{
   max-width: 100%;
 }
 
@@ -2266,7 +2266,7 @@
     }
   }
 
-  .efp--transparent-wrap{
+  .eventful--transparent-wrap{
     display: none;
     position: relative;
     top: -1px;
@@ -2277,11 +2277,11 @@
     background-color: #fff;
   }
 
-  .wp-picker-active .efp--transparent-wrap{
+  .wp-picker-active .eventful--transparent-wrap{
     display: block;
   }
 
-  .efp--transparent-slider{
+  .eventful--transparent-slider{
     position: absolute;
     width: 190px;
     margin-left: 2px;
@@ -2317,7 +2317,7 @@
     }
   }
 
-  .efp--transparent-offset{
+  .eventful--transparent-offset{
     height: 18px;
     width: 200px;
     background: url(../images/checkerboard.png) repeat-y center left scroll #fff;
@@ -2325,7 +2325,7 @@
     box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
   }
 
-  .efp--transparent-text{
+  .eventful--transparent-text{
     position: absolute;
     top: 12px;
     right: 10px;
@@ -2336,7 +2336,7 @@
     color: #999;
   }
 
-  .efp--transparent-button{
+  .eventful--transparent-button{
     cursor: pointer;
     user-select: none;
     margin-top: 10px;
@@ -2352,7 +2352,7 @@
     transition: background-color .2s, border-color .2s, color .2s;
   }
 
-  .efp--transparent-active{
+  .eventful--transparent-active{
 
     .wp-color-result{
       background-image: url(../images/checkerboard.png);
@@ -2361,7 +2361,7 @@
       background-color: transparent !important;
     }
 
-    .efp--transparent-button{
+    .eventful--transparent-button{
       color: #fff;
       border-color: #3ea032;
       background-color: #4fb845;

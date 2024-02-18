@@ -211,10 +211,10 @@
   margin: 0;
   width: 100%;
 }
-.efp-field-typography .efp--blocks-inputs .efp--blocks {
+.efp-field-typography .eventful--blocks-inputs .eventful--blocks {
   flex-direction: row-reverse;
 }
-.efp-field-typography .efp--unit {
+.efp-field-typography .eventful--unit {
   left: 4px;
   right: auto;
 }
@@ -231,13 +231,13 @@
 .efp-field-radio ul ul li:first-child {
   margin-right: 0;
 }
-.efp-field-checkbox .efp--inline-list li,
-.efp-field-radio .efp--inline-list li {
+.efp-field-checkbox .eventful--inline-list li,
+.efp-field-radio .eventful--inline-list li {
   margin-right: 0;
   margin-left: 15px;
 }
-.efp-field-checkbox .efp--text,
-.efp-field-radio .efp--text {
+.efp-field-checkbox .eventful--text,
+.efp-field-radio .eventful--text {
   margin-left: 0;
   margin-right: 5px;
 }
@@ -245,10 +245,10 @@
 /**
  * 02. 03. Field: switcher
  */
-.efp-field-switcher .efp--switcher {
+.efp-field-switcher .eventful--switcher {
   float: right;
 }
-.efp-field-switcher .efp--label {
+.efp-field-switcher .eventful--label {
   float: right;
   margin-left: 0;
   margin-right: 5px;
@@ -257,8 +257,8 @@
 /**
  * 02. 04. Field: upload
  */
-.efp-field-upload .efp--remove,
-.efp-field-upload .efp--button {
+.efp-field-upload .eventful--remove,
+.efp-field-upload .eventful--button {
   margin-left: 0;
   margin-right: 5px;
 }
@@ -317,7 +317,7 @@
 /**
  * 02. 11. Field: tabbed
  */
-.efp-field-tabbed .efp-tabbed-nav .efp--icon {
+.efp-field-tabbed .efp-tabbed-nav .eventful--icon {
   padding-right: 0;
   padding-left: 5px;
 }
@@ -349,25 +349,25 @@
 /**
  * 02. 14. Field: border, spacing, dimensions
  */
-.efp-field-dimensions .efp--input,
+.efp-field-dimensions .eventful--input,
 .efp-field-dimensions .efp-fieldset,
-.efp-field-spacing .efp--input,
+.efp-field-spacing .eventful--input,
 .efp-field-spacing .efp-fieldset,
-.efp-field-border .efp--input,
+.efp-field-border .eventful--input,
 .efp-field-border .efp-fieldset {
   direction: ltr;
 }
-.efp-field-dimensions .efp--inputs,
-.efp-field-dimensions .efp--color,
-.efp-field-spacing .efp--inputs,
-.efp-field-spacing .efp--color,
-.efp-field-border .efp--inputs,
-.efp-field-border .efp--color {
+.efp-field-dimensions .eventful--inputs,
+.efp-field-dimensions .eventful--color,
+.efp-field-spacing .eventful--inputs,
+.efp-field-spacing .eventful--color,
+.efp-field-border .eventful--inputs,
+.efp-field-border .eventful--color {
   float: right;
 }
-.efp-field-dimensions .efp--color,
-.efp-field-spacing .efp--color,
-.efp-field-border .efp--color {
+.efp-field-dimensions .eventful--color,
+.efp-field-spacing .eventful--color,
+.efp-field-border .eventful--color {
   margin-right: 4px;
   direction: rtl;
 }
@@ -375,14 +375,14 @@
 /**
  * 02. 15. Field: background
  */
-.efp-field-background .efp--block {
+.efp-field-background .eventful--block {
   float: right;
 }
-.efp-field-background .efp--select,
-.efp-field-background .efp--media {
+.efp-field-background .eventful--select,
+.efp-field-background .eventful--media {
   padding-right: 0;
 }
-.efp-field-background .efp--title {
+.efp-field-background .eventful--title {
   margin-right: 0;
   margin-left: 5px;
 }
@@ -390,7 +390,7 @@
 /**
  * 02. 16. Field: spinner
  */
-.efp-field-spinner .efp--spin {
+.efp-field-spinner .eventful--spin {
   float: right;
   direction: ltr;
 }
@@ -403,21 +403,21 @@
   margin-right: 0;
   margin-left: 15px;
 }
-.efp-field-slider .efp--input {
+.efp-field-slider .eventful--input {
   direction: ltr;
 }
 
 /**
  * 02. 18. Field: button_set
  */
-.efp-field-button_set .efp--button-group {
+.efp-field-button_set .eventful--button-group {
   float: right;
 }
 
 /**
  * 02. 19. Field: link_color
  */
-.efp-field-link_color .efp--left {
+.efp-field-link_color .eventful--left {
   float: right;
   margin-right: 0;
   margin-left: 10px;
@@ -426,7 +426,7 @@
 /**
  * 02. 20. Field: color_group
  */
-.efp-field-color_group .efp--left {
+.efp-field-color_group .eventful--left {
   float: right;
   margin-right: 0;
   margin-left: 10px;
@@ -435,7 +435,7 @@
 /**
  * 02. 21. Field: palette
  */
-.efp-field-palette .efp--palette {
+.efp-field-palette .eventful--palette {
   margin-right: 0;
   margin-left: 10px;
 }
@@ -443,7 +443,7 @@
 /**
  * 02. 22. Field: accordion
  */
-.efp-field-accordion .efp--icon {
+.efp-field-accordion .eventful--icon {
   margin-right: 0;
   margin-left: 2px;
 }
@@ -451,7 +451,7 @@
 /**
  * 02. 23. Field: date
  */
-.efp-field-date .efp--to {
+.efp-field-date .eventful--to {
   margin-left: 0;
   margin-right: 7px;
 }
@@ -459,7 +459,7 @@
 /**
  * 02. 24. Field: map
  */
-.efp-field-map .efp--map-input:last-child {
+.efp-field-map .eventful--map-input:last-child {
   padding-left: 0;
   padding-right: 10px;
 }
@@ -475,10 +475,10 @@
 /**
  * 02. 26. Field: number
  */
-.efp-field-number .efp--wrap {
+.efp-field-number .eventful--wrap {
   float: right;
 }
-.efp-field-number .efp--unit {
+.efp-field-number .eventful--unit {
   left: 4px;
   right: auto;
 }
@@ -574,17 +574,17 @@
 /**
  * 09. Others
  */
-.efp-field .efp--transparent-slider {
+.efp-field .eventful--transparent-slider {
   margin-left: 0;
   margin-right: 2px;
 }
-.efp-field .efp--transparent-slider .ui-slider-handle {
+.efp-field .eventful--transparent-slider .ui-slider-handle {
   margin: 0 -11px;
 }
-.efp-field .efp--transparent-offset {
+.efp-field .eventful--transparent-offset {
   background-position: center right;
 }
-.efp-field .efp--transparent-text {
+.efp-field .eventful--transparent-text {
   right: auto;
   left: 10px;
 }

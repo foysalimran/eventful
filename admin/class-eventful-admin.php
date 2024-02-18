@@ -44,7 +44,7 @@ class Eventful_Admin
 		spl_autoload_register(array($this, 'autoload'));
 
 		EFP_Metaboxes::layout_metabox('ta_eventful_layouts');
-		EFP_Metaboxes::option_metabox('ta_efp_view_options');
+		EFP_Metaboxes::option_metabox('ta_eventful_view_options');
 		EFP_Metaboxes::shortcode_metabox('ta_efp_display_shortcode');
 		EFP_Settings::settings('ta_eventful_settings');
 

@@ -26,7 +26,7 @@ if ( ! class_exists( 'EFP_Field_accordion' ) ) {
 
 				echo '<div class="efp-accordion-item">';
 
-				$icon = ( ! empty( $accordion['icon'] ) ) ? 'efp--icon ' . $accordion['icon'] : 'efp-accordion-icon fas fa-angle-right';
+				$icon = ( ! empty( $accordion['icon'] ) ) ? 'eventful--icon ' . $accordion['icon'] : 'efp-accordion-icon fas fa-angle-right';
 
 				echo '<h4 class="efp-accordion-title">';
 				echo '<i class="' . esc_attr( $icon ) . '"></i>';

@@ -210,9 +210,9 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
             $button_title    = ( ! empty( $section['button_title'] ) ) ? ' '. $section['button_title'] : esc_html__( 'Add New', 'ta-framework' );
             $inner_shortcode = ( ! empty( $section['group_shortcode'] ) ) ? $section['group_shortcode'] : $shortcode;
 
-            echo '<div class="efp--repeatable">';
+            echo '<div class="eventful--repeatable">';
 
-              echo '<div class="efp--repeat-shortcode">';
+              echo '<div class="eventful--repeat-shortcode">';
 
                 echo '<div class="efp-repeat-remove fas fa-times"></div>';
 
@@ -237,7 +237,7 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
 
             echo '</div>';
 
-            echo '<div class="efp--repeat-button-block"><a class="button efp--repeat-button" href="#"><i class="fas fa-plus-circle"></i> '. $button_title .'</a></div>';
+            echo '<div class="eventful--repeat-button-block"><a class="button eventful--repeat-button" href="#"><i class="fas fa-plus-circle"></i> '. $button_title .'</a></div>';
 
           }
 

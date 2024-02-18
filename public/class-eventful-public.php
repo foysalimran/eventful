@@ -139,13 +139,13 @@ class Eventful_Public
 		$efp_enqueue_google_font = isset($setting_options['efp_enqueue_google_font']) ? $setting_options['efp_enqueue_google_font'] : true;
 		foreach ($post_ids as $efp_id) {
 			// Include dynamic style file.
-			$view_options = get_post_meta($efp_id, 'ta_efp_view_options', true);
+			$view_options = get_post_meta($efp_id, 'ta_eventful_view_options', true);
 			$layouts      = get_post_meta($efp_id, 'ta_eventful_layouts', true);
 			include 'dynamic-css/dynamic-css.php';
 
 			if ($efp_enqueue_google_font) {
 				// Google fonts.
-				$view_options     = get_post_meta($efp_id, 'ta_efp_view_options', true);
+				$view_options     = get_post_meta($efp_id, 'ta_eventful_view_options', true);
 				$all_fonts        = array();
 				$efp_typography   = array();
 				$efp_typography[] = $view_options['section_title_typography'];
@@ -237,7 +237,7 @@ class Eventful_Public
 		// $efp_search_url     = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ) : '';
 		$layout        = get_post_meta($views_id, 'ta_eventful_layouts', true);
 		$layout_preset = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
-		$view_options  = get_post_meta($views_id, 'ta_efp_view_options', true);
+		$view_options  = get_post_meta($views_id, 'ta_eventful_view_options', true);
 		// Post display settings.
 		if ('filter_layout' === $layout_preset) {
 			$pagination_type        = isset($view_options['filter_pagination_type']) ? $view_options['filter_pagination_type'] : '';
@@ -310,7 +310,7 @@ class Eventful_Public
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
-		$view_options        = get_post_meta($views_id, 'ta_efp_view_options', true);
+		$view_options        = get_post_meta($views_id, 'ta_eventful_view_options', true);
 		$layout              = get_post_meta($views_id, 'ta_eventful_layouts', true);
 		$layout_preset       = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
@@ -351,7 +351,7 @@ class Eventful_Public
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
-		$view_options        = get_post_meta($views_id, 'ta_efp_view_options', true);
+		$view_options        = get_post_meta($views_id, 'ta_eventful_view_options', true);
 		$layout              = get_post_meta($views_id, 'ta_eventful_layouts', true);
 		$layout_preset       = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
@@ -394,7 +394,7 @@ class Eventful_Public
 		$custom_fields_array    = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$layout                 = get_post_meta($views_id, 'ta_eventful_layouts', true);
 		$layout_preset          = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
-		$view_options           = get_post_meta($views_id, 'ta_efp_view_options', true);
+		$view_options           = get_post_meta($views_id, 'ta_eventful_view_options', true);
 		$pagination_type        = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
 		$pagination_type_mobile = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
 		$post_content_sorter    = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';
@@ -429,7 +429,7 @@ class Eventful_Public
 		$efp_gl_id = $attribute['id']; // Eventful global ID for Shortcode metaboxes.
 		// Preset Layouts.
 		$layout        = get_post_meta($efp_gl_id, 'ta_eventful_layouts', true);
-		$view_options  = get_post_meta($efp_gl_id, 'ta_efp_view_options', true);
+		$view_options  = get_post_meta($efp_gl_id, 'ta_eventful_view_options', true);
 		$section_title = get_the_title($efp_gl_id);
 		ob_start();
 		EFP_HTML::efp_html_show($view_options, $layout, $efp_gl_id, $section_title);

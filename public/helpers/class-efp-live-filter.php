@@ -207,7 +207,7 @@ class EFP_Live_Filter
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : ''; //phpcs:ignore
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : ''; //phpcs:ignore
 
-		$view_options                 = get_post_meta($efp_gl_id, 'ta_efp_view_options', true);
+		$view_options                 = get_post_meta($efp_gl_id, 'ta_eventful_view_options', true);
 		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $efp_gl_id);
 		$query_args['fields']         = 'ids';
 		$post_limit                   = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
@@ -401,7 +401,7 @@ class EFP_Live_Filter
 		parse_str($_POST['data'], $settings); //phpcs:ignore
 		$layout                       = $settings['ta_eventful_layouts'];
 		$layout_preset                = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
-		$view_options                 = $settings['ta_efp_view_options'];
+		$view_options                 = $settings['ta_eventful_view_options'];
 		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $efp_gl_id);
 		$query_args['fields']         = 'ids';
 		$new_query_args               = $query_args;

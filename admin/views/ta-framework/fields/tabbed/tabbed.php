@@ -23,7 +23,7 @@ if ( ! class_exists( 'EFP_Field_tabbed' ) ) {
 			echo '<div class="efp-tabbed-nav" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 			foreach ( $this->field['tabs'] as $key => $tab ) {
 
-				$tabbed_icon   = ( ! empty( $tab['icon'] ) ) ? '<i class="efp--icon ' . esc_attr( $tab['icon'] ) . '"></i>' : '';
+				$tabbed_icon   = ( ! empty( $tab['icon'] ) ) ? '<i class="eventful--icon ' . esc_attr( $tab['icon'] ) . '"></i>' : '';
 				$tabbed_active = ( empty( $key ) ) ? 'efp-tabbed-active' : '';
 
 				echo '<a href="#" class="' . esc_attr( $tabbed_active ) . '"">' . $tabbed_icon . esc_attr( $tab['title'] ) . '</a>';

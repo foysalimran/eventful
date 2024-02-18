@@ -240,13 +240,13 @@
     width: 100%;
   }
 
-  .efp--blocks-inputs{
-    .efp--blocks{
+  .eventful--blocks-inputs{
+    .eventful--blocks{
       flex-direction: row-reverse;
     }
   }
 
-  .efp--unit{
+  .eventful--unit{
     left: 4px;
     right: auto;
   }
@@ -267,12 +267,12 @@
     }
   }
 
-  .efp--inline-list li{
+  .eventful--inline-list li{
     margin-right: 0;
     margin-left: 15px;
   }
 
-  .efp--text{
+  .eventful--text{
     margin-left: 0;
     margin-right: 5px;
   }
@@ -283,11 +283,11 @@
  */
 .efp-field-switcher{
 
-  .efp--switcher{
+  .eventful--switcher{
     float: right;
   }
 
-  .efp--label{
+  .eventful--label{
     float: right;
     margin-left: 0;
     margin-right: 5px;
@@ -299,8 +299,8 @@
  */
 .efp-field-upload{
 
-  .efp--remove,
-  .efp--button{
+  .eventful--remove,
+  .eventful--button{
     margin-left: 0;
     margin-right: 5px;
   }
@@ -379,7 +379,7 @@
 
   .efp-tabbed-nav{
 
-    .efp--icon{
+    .eventful--icon{
       padding-right: 0;
       padding-left: 5px;
     }
@@ -422,17 +422,17 @@
 .efp-field-spacing,
 .efp-field-border{
 
-  .efp--input,
+  .eventful--input,
   .efp-fieldset{
     direction: ltr;
   }
 
-  .efp--inputs,
-  .efp--color{
+  .eventful--inputs,
+  .eventful--color{
     float: right;
   }
 
-  .efp--color{
+  .eventful--color{
     margin-right: 4px;
     direction: rtl;
   }
@@ -443,16 +443,16 @@
  */
 .efp-field-background{
 
-  .efp--block{
+  .eventful--block{
     float: right;
   }
 
-  .efp--select,
-  .efp--media{
+  .eventful--select,
+  .eventful--media{
     padding-right: 0;
   }
 
-  .efp--title{
+  .eventful--title{
     margin-right: 0;
     margin-left: 5px;
   }
@@ -463,7 +463,7 @@
  */
 .efp-field-spinner{
 
-  .efp--spin{
+  .eventful--spin{
     float: right;
     direction: ltr;
   }
@@ -480,7 +480,7 @@
     margin-left: 15px;
   }
 
-  .efp--input{
+  .eventful--input{
     direction: ltr;
   }
 }
@@ -490,7 +490,7 @@
  */
 .efp-field-button_set{
 
-  .efp--button-group{
+  .eventful--button-group{
     float: right;
   }
 }
@@ -500,7 +500,7 @@
  */
 .efp-field-link_color{
 
-  .efp--left{
+  .eventful--left{
     float: right;
     margin-right: 0;
     margin-left: 10px;
@@ -512,7 +512,7 @@
  */
 .efp-field-color_group{
 
-  .efp--left{
+  .eventful--left{
     float: right;
     margin-right: 0;
     margin-left: 10px;
@@ -524,7 +524,7 @@
  */
 .efp-field-palette{
 
-  .efp--palette{
+  .eventful--palette{
     margin-right: 0;
     margin-left: 10px;
   }
@@ -535,7 +535,7 @@
  */
 .efp-field-accordion{
 
-  .efp--icon{
+  .eventful--icon{
     margin-right: 0;
     margin-left: 2px;
   }
@@ -546,7 +546,7 @@
  */
 .efp-field-date{
 
-  .efp--to {
+  .eventful--to {
     margin-left: 0;
     margin-right: 7px;
   }
@@ -557,7 +557,7 @@
  */
 .efp-field-map{
 
-  .efp--map-input:last-child {
+  .eventful--map-input:last-child {
     padding-left: 0;
     padding-right: 10px;
   }
@@ -579,11 +579,11 @@
  */
 .efp-field-number{
 
-  .efp--wrap{
+  .eventful--wrap{
     float: right;
   }
 
-  .efp--unit{
+  .eventful--unit{
     left: 4px;
     right: auto;
   }
@@ -708,7 +708,7 @@
  */
 .efp-field{
 
-  .efp--transparent-slider{
+  .eventful--transparent-slider{
     margin-left: 0;
     margin-right: 2px;
 
@@ -717,11 +717,11 @@
     }
   }
 
-  .efp--transparent-offset{
+  .eventful--transparent-offset{
     background-position: center right;
   }
 
-  .efp--transparent-text{
+  .eventful--transparent-text{
     right: auto;
     left: 10px;
   }

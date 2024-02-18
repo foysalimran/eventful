@@ -102,7 +102,7 @@
     background-color: #fff;
   }
   /* Preloader */
-  #ta_efp_view_options .efp-metabox {
+  #ta_eventful_view_options .efp-metabox {
     min-height: 300px;
     z-index: 999;
     background-image: url(../img/preloader.gif);
@@ -110,7 +110,7 @@
     background-color: #fff;
     background-position: center 65%;
   }
-  #ta_efp_view_options .efp-nav-metabox li {
+  #ta_eventful_view_options .efp-nav-metabox li {
     opacity: 0;
   }
   /* Shortcode sidebar */

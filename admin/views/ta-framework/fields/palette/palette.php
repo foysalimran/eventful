@@ -22,14 +22,14 @@ if ( ! class_exists( 'EFP_Field_palette' ) ) {
 
 			if ( ! empty( $palette ) ) {
 
-				echo '<div class="efp-siblings efp--palettes">';
+				echo '<div class="efp-siblings eventful--palettes">';
 
 				foreach ( $palette as $key => $colors ) {
 
-					$active  = ( $key === $this->value ) ? ' efp--active' : '';
+					$active  = ( $key === $this->value ) ? ' eventful--active' : '';
 					$checked = ( $key === $this->value ) ? ' checked' : '';
 
-					echo '<div class="efp--sibling efp--palette' . esc_attr( $active ) . '">';
+					echo '<div class="eventful--sibling eventful--palette' . esc_attr( $active ) . '">';
 
 					if ( ! empty( $colors ) ) {
 

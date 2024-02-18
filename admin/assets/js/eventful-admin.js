@@ -8,13 +8,13 @@
   
 	$(function () {
 	  /* Preloader */
-	  $("#ta_efp_view_options .efp-metabox").css("visibility", "hidden");
+	  $("#ta_eventful_view_options .efp-metabox").css("visibility", "hidden");
   
 	  var PCP_layout_type = $(
-		'#efp-section-ta_eventful_layouts_1 .efp-field-layout_preset .efp-siblings .efp--sibling'
+		'#efp-section-ta_eventful_layouts_1 .efp-field-layout_preset .efp-siblings .eventful--sibling'
 	  )
 	  var PCP_get_layout_value = $(
-		'#efp-section-ta_eventful_layouts_1 .efp-field-layout_preset .efp-siblings .efp--sibling.efp--active'
+		'#efp-section-ta_eventful_layouts_1 .efp-field-layout_preset .efp-siblings .eventful--sibling.eventful--active'
 	  )
 		.find('input')
 		.val()
@@ -22,14 +22,14 @@
 	  // Carousel Layout.
 	  if (PCP_get_layout_value !== 'carousel_layout') {
 		$(
-		  '#ta_efp_view_options .efp-nav ul li.menu-item_ta_efp_view_options_3'
+		  '#ta_eventful_view_options .efp-nav ul li.menu-item_ta_eventful_view_options_3'
 		).hide()
 		$(
-		  '#ta_efp_view_options .efp-nav ul li.menu-item_ta_efp_view_options_1 a'
+		  '#ta_eventful_view_options .efp-nav ul li.menu-item_ta_eventful_view_options_1 a'
 		).trigger('click');
 	  } else {
 		$(
-		  '#ta_efp_view_options .efp-nav ul li.menu-item_ta_efp_view_options_3'
+		  '#ta_eventful_view_options .efp-nav ul li.menu-item_ta_eventful_view_options_3'
 		).show()
 	  }
   
@@ -42,21 +42,21 @@
 		// Carousel Layout.
 		if (PCP_get_layout_value !== 'carousel_layout') {
 		  $(
-			'#ta_efp_view_options .efp-nav ul li.menu-item_ta_efp_view_options_3'
+			'#ta_eventful_view_options .efp-nav ul li.menu-item_ta_eventful_view_options_3'
 		  ).hide()
 		  $(
-			'#ta_efp_view_options .efp-nav ul li.menu-item_ta_efp_view_options_1 a'
+			'#ta_eventful_view_options .efp-nav ul li.menu-item_ta_eventful_view_options_1 a'
 		  ).trigger('click');
 		} else {
 		  $(
-			'#ta_efp_view_options .efp-nav ul li.menu-item_ta_efp_view_options_3'
+			'#ta_eventful_view_options .efp-nav ul li.menu-item_ta_eventful_view_options_3'
 		  ).show()
 		}
 	  })
   
 	  /* Preloader js */
-	  $("#ta_efp_view_options .efp-metabox").css({ "backgroundImage": "none", "visibility": "visible", "minHeight": "auto" });
-	  $("#ta_efp_view_options .efp-nav-metabox li").css("opacity", 1);
+	  $("#ta_eventful_view_options .efp-metabox").css({ "backgroundImage": "none", "visibility": "visible", "minHeight": "auto" });
+	  $("#ta_eventful_view_options .efp-nav-metabox li").css("opacity", 1);
   
 	  /* Copy to clipboard */
 	  $('.efp-shortcode-selectable').on('click',function (e) {
