@@ -4,11 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die; 
 } // Cannot access directly.
 
-if ( ! class_exists( 'EFP_Field_shortcode' ) ) {	
+if ( ! class_exists( 'EFUL_Field_shortcode' ) ) {	
 	/**
-	 * EFP_Field_shortcode
+	 * EFUL_Field_shortcode
 	 */
-	class EFP_Field_shortcode extends EFP_Fields {
+	class EFUL_Field_shortcode extends EFUL_Fields {
 		/**
 		 * Field constructor.
 		 *

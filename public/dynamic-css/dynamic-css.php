@@ -146,7 +146,7 @@ if ($show_post_content) {
 }
 
 if ('carousel_layout' === $layout) {
-	include EFP_PATH . '/public/dynamic-css/carousel-css.php';
+	include EFUL_PATH . '/public/dynamic-css/carousel-css.php';
 }
 
 // Post inner padding.
@@ -154,7 +154,7 @@ $post_content_orientation   = $view_options['post_content_orientation'];
 $post_details_class         = 'overlay-box' === $post_content_orientation ? '.ta-eventful-post-details' : '';
 $post_details_content_class = 'overlay-box' === $post_content_orientation ? '.ta-eventful-post-details-content' : '';
 if ('overlay' !== $post_content_orientation) {
-	$_post_inner_padding       = EFP_Functions::eventful_metabox_value('post_inner_padding_property', $view_options);
+	$_post_inner_padding       = EFUL_Functions::eventful_metabox_value('post_inner_padding_property', $view_options);
 	$post_inner_padding_unit   = $_post_inner_padding['unit'];
 	$post_inner_padding_top    = $_post_inner_padding['top'] > 0 ? $_post_inner_padding['top'] . $post_inner_padding_unit : '0';
 	$post_inner_padding_right  = $_post_inner_padding['right'] > 0 ? $_post_inner_padding['right'] . $post_inner_padding_unit : '0';
@@ -173,9 +173,9 @@ if ('none' !== $post_border_style) {
 }
 
 // Post box shadow.
-$show_post_box_shadow = EFP_Functions::eventful_metabox_value( 'show_post_box_shadow', $view_options, false );
+$show_post_box_shadow = EFUL_Functions::eventful_metabox_value( 'show_post_box_shadow', $view_options, false );
 if ( $show_post_box_shadow ) {
-	$post_box_shadow_property = EFP_Functions::eventful_metabox_value(
+	$post_box_shadow_property = EFUL_Functions::eventful_metabox_value(
 		'post_box_shadow_property',
 		$view_options,
 		array(
@@ -186,11 +186,11 @@ if ( $show_post_box_shadow ) {
 			'color'      => 'rgb(187, 187, 187)',
 		)
 	);
-	$box_shadow_h             = EFP_Functions::eventful_metabox_value( 'horizontal', $post_box_shadow_property );
-	$box_shadow_v             = EFP_Functions::eventful_metabox_value( 'vertical', $post_box_shadow_property );
-	$box_shadow_blur          = EFP_Functions::eventful_metabox_value( 'blur', $post_box_shadow_property );
-	$box_shadow_spread        = EFP_Functions::eventful_metabox_value( 'spread', $post_box_shadow_property );
-	$box_shadow_color         = EFP_Functions::eventful_metabox_value( 'color', $post_box_shadow_property );
+	$box_shadow_h             = EFUL_Functions::eventful_metabox_value( 'horizontal', $post_box_shadow_property );
+	$box_shadow_v             = EFUL_Functions::eventful_metabox_value( 'vertical', $post_box_shadow_property );
+	$box_shadow_blur          = EFUL_Functions::eventful_metabox_value( 'blur', $post_box_shadow_property );
+	$box_shadow_spread        = EFUL_Functions::eventful_metabox_value( 'spread', $post_box_shadow_property );
+	$box_shadow_color         = EFUL_Functions::eventful_metabox_value( 'color', $post_box_shadow_property );
 	$box_shadow_style         = 'outset' === $post_box_shadow_property['style'] ? '' : $post_box_shadow_property['style'];
 	$box_shadow_margin_top    = 'inset' === $box_shadow_style ? '0' : ( $box_shadow_spread - $box_shadow_v + 0.5 * $box_shadow_blur );
 	$box_shadow_margin_right  = 'inset' === $box_shadow_style ? '0' : ( $box_shadow_spread + $box_shadow_h + 0.5 * $box_shadow_blur );
@@ -200,19 +200,19 @@ if ( $show_post_box_shadow ) {
 }
 
 // Post background color.
-$post_background_property = EFP_Functions::eventful_metabox_value('post_background_property', $view_options);
-$post_background_overlay = EFP_Functions::eventful_metabox_value('post_background_overlay', $view_options);
-$post_background_blur = EFP_Functions::eventful_metabox_value('post_background_blur', $view_options);
+$post_background_property = EFUL_Functions::eventful_metabox_value('post_background_property', $view_options);
+$post_background_overlay = EFUL_Functions::eventful_metabox_value('post_background_overlay', $view_options);
+$post_background_blur = EFUL_Functions::eventful_metabox_value('post_background_blur', $view_options);
 
-$_post_border_radius         = EFP_Functions::eventful_metabox_value(
+$_post_border_radius         = EFUL_Functions::eventful_metabox_value(
 	'post_border_radius_property',
 	$view_options,
 	array(
 		'all' => '0',
 	)
 );
-$post_border_radius_unit     = EFP_Functions::eventful_metabox_value('unit', $_post_border_radius);
-$post_border_radius_length   = EFP_Functions::eventful_metabox_value('all', $_post_border_radius);
+$post_border_radius_unit     = EFUL_Functions::eventful_metabox_value('unit', $_post_border_radius);
+$post_border_radius_length   = EFUL_Functions::eventful_metabox_value('all', $_post_border_radius);
 $post_border_radius_property = $post_border_radius_length > 0 ? $post_border_radius_length . $post_border_radius_unit : '0';
 $custom_css              .= "#eventful_wrapper-{$eventful_id} .eventful__item {border-radius: {$post_border_radius_property};}";
 if (!in_array($post_content_orientation, array('overlay', 'overlay-box'), true)) {

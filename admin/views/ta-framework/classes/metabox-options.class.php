@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Metabox' ) ) {
-  class EFP_Metabox extends EFP_Abstract{
+if ( ! class_exists( 'EFUL_Metabox' ) ) {
+  class EFUL_Metabox extends EFUL_Abstract{
 
     // constans
     public $unique         = '';
@@ -252,7 +252,7 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
                     $field['default'] = $this->get_default( $field );
                   }
 
-                  EFP::field( $field, $this->get_meta_value( $field ), $this->unique, 'metabox' );
+                  EFUL::field( $field, $this->get_meta_value( $field ), $this->unique, 'metabox' );
 
                 }
 

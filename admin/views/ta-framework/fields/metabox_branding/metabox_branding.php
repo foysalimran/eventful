@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Field_metabox_branding' ) ) {
-  class EFP_Field_metabox_branding extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_metabox_branding' ) ) {
+  class EFUL_Field_metabox_branding extends EFUL_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );

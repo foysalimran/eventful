@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
-  class EFP_Comment_Metabox extends EFP_Abstract{
+if ( ! class_exists( 'EFUL_Comment_Metabox' ) ) {
+  class EFUL_Comment_Metabox extends EFUL_Abstract{
 
     // constans
     public $unique     = '';
@@ -175,7 +175,7 @@ if ( ! class_exists( 'EFP_Comment_Metabox' ) ) {
                     $field['default'] = $this->get_default( $field );
                   }
 
-                  EFP::field( $field, $this->get_meta_value( $comment->comment_ID, $field ), $this->unique, 'comment_metabox' );
+                  EFUL::field( $field, $this->get_meta_value( $comment->comment_ID, $field ), $this->unique, 'comment_metabox' );
 
                 }
 

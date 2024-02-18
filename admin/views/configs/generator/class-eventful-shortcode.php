@@ -5,7 +5,7 @@
 /**
  * The Shortcode display class.
  */
-class EFP_Shortcode
+class EFUL_Shortcode
 {
 
 	/**
@@ -17,7 +17,7 @@ class EFP_Shortcode
 	public static function section($prefix)
 	{
 		if (isset($_GET['post'])) {
-			EFP::createSection(
+			EFUL::createSection(
 				$prefix,
 				array(
 					'fields' => array(

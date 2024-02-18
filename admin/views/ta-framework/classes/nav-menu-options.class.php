@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Nav_Menu_Options' ) ) {
-  class EFP_Nav_Menu_Options extends EFP_Abstract{
+if ( ! class_exists( 'EFUL_Nav_Menu_Options' ) ) {
+  class EFUL_Nav_Menu_Options extends EFUL_Abstract{
 
     // constans
     public $unique     = '';
@@ -47,11 +47,11 @@ if ( ! class_exists( 'EFP_Nav_Menu_Options' ) ) {
 
       if( version_compare( $wp_version, '5.4.0', '<' ) ) {
 
-        if ( ! class_exists( 'EFP_Walker_Nav_Menu_Edit' ) ) {
-          EFP::include_plugin_file( 'functions/walker.php' );
+        if ( ! class_exists( 'EFUL_Walker_Nav_Menu_Edit' ) ) {
+          EFUL::include_plugin_file( 'functions/walker.php' );
         }
 
-        return 'EFP_Walker_Nav_Menu_Edit';
+        return 'EFUL_Walker_Nav_Menu_Edit';
 
       }
 
@@ -128,7 +128,7 @@ if ( ! class_exists( 'EFP_Nav_Menu_Options' ) ) {
                 $field['default'] = $this->get_default( $field );
               }
 
-              EFP::field( $field, $this->get_meta_value( $menu_item_id, $field ), $this->unique .'['. $menu_item_id .']', 'menu' );
+              EFUL::field( $field, $this->get_meta_value( $menu_item_id, $field ), $this->unique .'['. $menu_item_id .']', 'menu' );
 
             }
 

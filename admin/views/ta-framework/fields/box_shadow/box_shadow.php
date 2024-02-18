@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
 
-if ( ! class_exists( 'EFP_Field_box_shadow' ) ) {
+if ( ! class_exists( 'EFUL_Field_box_shadow' ) ) {
 	/**
 	 *
 	 * Field: border
@@ -21,7 +21,7 @@ if ( ! class_exists( 'EFP_Field_box_shadow' ) ) {
 	 * @since 2.0
 	 * @version 2.0
 	 */
-	class EFP_Field_box_shadow extends EFP_Fields {
+	class EFUL_Field_box_shadow extends EFUL_Fields {
 		/**
 		 * The class constructor.
 		 *

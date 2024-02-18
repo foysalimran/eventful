@@ -14,7 +14,7 @@
  *
  * @since 2.2.0
  */
-class EFP_QueryInside
+class EFUL_QueryInside
 {
 
 	/**
@@ -67,7 +67,7 @@ class EFP_QueryInside
 			}
 		}
 
-		$post_per_page = EFP_Functions::eventful_post_per_page($post_limit, $post_per_page, $paged);
+		$post_per_page = EFUL_Functions::eventful_post_per_page($post_limit, $post_per_page, $paged);
 		if ($post_per_page < 1) {
 			$post_per_page = isset($view_options['post_per_page']) ? $view_options['post_per_page'] : 12;
 		}
@@ -178,7 +178,7 @@ class EFP_QueryInside
 					case 'author':
 						$author_include = isset($view_options['eventful_filter_by_author']['eventful_select_author_by']) ? $view_options['eventful_filter_by_author']['eventful_select_author_by'] : '';
 						$author_exclude = isset($view_options['eventful_filter_by_author']['eventful_select_author_not_by']) ? $view_options['eventful_filter_by_author']['eventful_select_author_not_by'] : '';
-						$wp37           = EFP_Functions::wp_version_compare('3.7');
+						$wp37           = EFUL_Functions::wp_version_compare('3.7');
 						if ($author_include) {
 							$args = array_merge(
 								$args,

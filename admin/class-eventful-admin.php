@@ -43,10 +43,10 @@ class Eventful_Admin
 		// Autoload system.
 		spl_autoload_register(array($this, 'autoload'));
 
-		EFP_Metaboxes::layout_metabox('ta_eventful_layouts');
-		EFP_Metaboxes::option_metabox('ta_eventful_view_options');
-		EFP_Metaboxes::shortcode_metabox('ta_eventful_display_shortcode');
-		EFP_Settings::settings('ta_eventful_settings');
+		EFUL_Metaboxes::layout_metabox('ta_eventful_layouts');
+		EFUL_Metaboxes::option_metabox('ta_eventful_view_options');
+		EFUL_Metaboxes::shortcode_metabox('ta_eventful_display_shortcode');
+		EFUL_Settings::settings('ta_eventful_settings');
 
 		$active_plugins = get_option('active_plugins');
 		foreach ($active_plugins as $active_plugin) {
@@ -109,7 +109,7 @@ class Eventful_Admin
 		$current_screen        = get_current_screen();
 		$the_current_post_type = $current_screen->post_type;
 		if ('eventful' == $the_current_post_type) {
-			wp_enqueue_style('eventful-admin', EFP_URL . 'admin/assets/css/eventful-admin' . $this->suffix . '.css', array(), $this->version, 'all');
+			wp_enqueue_style('eventful-admin', EFUL_URL . 'admin/assets/css/eventful-admin' . $this->suffix . '.css', array(), $this->version, 'all');
 		}
 	}
 
@@ -135,7 +135,7 @@ class Eventful_Admin
 		$current_screen        	= get_current_screen();
 		$the_current_post_type 	= $current_screen->post_type;
 		if ('eventful' == $the_current_post_type) {
-			wp_enqueue_script('eventful-admin', EFP_URL . 'admin/assets/js/eventful-admin' . $this->suffix . '.js', array('jquery'), $this->version, false);
+			wp_enqueue_script('eventful-admin', EFUL_URL . 'admin/assets/js/eventful-admin' . $this->suffix . '.js', array('jquery'), $this->version, false);
 		}
 	}
 

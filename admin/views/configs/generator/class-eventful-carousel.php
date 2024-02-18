@@ -5,7 +5,7 @@
 /**
  * The Carousel building class.
  */
-class EFP_Carousel
+class EFUL_Carousel
 {
 
 	/**
@@ -16,7 +16,7 @@ class EFP_Carousel
 	 */
 	public static function section($prefix)
 	{
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'  => esc_html__( 'Carousel Controls', 'eventful' ),

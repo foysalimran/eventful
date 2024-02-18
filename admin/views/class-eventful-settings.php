@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Settings.
  */
-class EFP_Settings {
+class EFUL_Settings {
 
 	/**
 	 * Create a settings page.
@@ -24,7 +24,7 @@ class EFP_Settings {
 
 		$capability = eventful_dashboard_capability(); // TODO: filter is not working.
 
-		EFP::createOptions(
+		EFUL::createOptions(
 			$prefix,
 			array(
 				'menu_title'       => esc_html__( 'Settings', 'eventful' ),
@@ -41,9 +41,9 @@ class EFP_Settings {
 				'menu_capability'  => $capability,
 			)
 		);
-		EFP_ScriptsAndStyles::section( $prefix );
-		EFP_Accessibility::section( $prefix );
-		EFP_CustomCSS::section( $prefix );
+		EFUL_ScriptsAndStyles::section( $prefix );
+		EFUL_Accessibility::section( $prefix );
+		EFUL_CustomCSS::section( $prefix );
 	}
 
 }

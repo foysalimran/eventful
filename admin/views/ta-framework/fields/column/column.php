@@ -7,12 +7,12 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_column' ) ) {
+if ( ! class_exists( 'EFUL_Field_column' ) ) {
 
 	/**
 	 * The column field class.
 	 */
-	class EFP_Field_column extends EFP_Fields {
+	class EFUL_Field_column extends EFUL_Fields {
 
 		/**
 		 * Column field constructor.

@@ -2,7 +2,7 @@
   die;
 } // Cannot access directly.
 
-class EFP_CustomCSS {
+class EFUL_CustomCSS {
 
 	/**
 	 * Custom CSS & JS settings.
@@ -11,7 +11,7 @@ class EFP_CustomCSS {
 	 * @return void
 	 */
 	public static function section( $prefix ) {
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'  => esc_html__( 'Custom CSS & JS', 'eventful' ),

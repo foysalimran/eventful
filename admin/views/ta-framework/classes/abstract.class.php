@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Abstract' ) ) {
-  abstract class EFP_Abstract {
+if ( ! class_exists( 'EFUL_Abstract' ) ) {
+  abstract class EFUL_Abstract {
 
     public $abstract   = '';
     public $output_css = '';
@@ -18,7 +18,7 @@ if ( ! class_exists( 'EFP_Abstract' ) ) {
       // Collect output css and typography
       if ( ! empty( $this->args['output_css'] ) || ! empty( $this->args['enqueue_webfont'] ) ) {
         add_action( 'wp_enqueue_scripts', array( $this, 'collect_output_css_and_typography' ), 10 );
-        EFP::$css = apply_filters( "eventful_{$this->unique}_output_css", EFP::$css, $this );
+        EFUL::$css = apply_filters( "eventful_{$this->unique}_output_css", EFUL::$css, $this );
       }
 
     }
@@ -37,7 +37,7 @@ if ( ! class_exists( 'EFP_Abstract' ) ) {
           $field_type   = ( ! empty( $field['type'] ) ) ? $field['type'] : '';
           $field_output = ( ! empty( $field['output'] ) ) ? $field['output'] : '';
           $field_check  = ( $field_type === 'typography' || $field_output ) ? true : false;
-          $field_class  = 'EFP_Field_' . $field_type;
+          $field_class  = 'EFUL_Field_' . $field_type;
 
           if ( $field_type && $field_id ) {
 
@@ -111,7 +111,7 @@ if ( ! class_exists( 'EFP_Abstract' ) ) {
 
                 // output css
                 if ( $field_output && $this->args['output_css'] ) {
-                  EFP::$css .= $instance->output();
+                  EFUL::$css .= $instance->output();
                 }
 
                 unset( $instance );

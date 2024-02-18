@@ -14,7 +14,7 @@
  *
  * @since 2.0.0
  */
-class EFP_User_Like
+class EFUL_User_Like
 {
 	/**
 	 * Initialize the class and set its properties.
@@ -36,7 +36,7 @@ class EFP_User_Like
 	 */
 	public function likes_enqueue_scripts()
 	{
-		wp_register_script('eventful-likes-public-js', EFP_URL . 'public/assets/js/eventful-likes-public.js', array('jquery'), '2.0.0', true);
+		wp_register_script('eventful-likes-public-js', EFUL_URL . 'public/assets/js/eventful-likes-public.js', array('jquery'), '2.0.0', true);
 		wp_localize_script(
 			'eventful-likes-public-js',
 			'simpleLikes',

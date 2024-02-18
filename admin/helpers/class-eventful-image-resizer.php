@@ -10,15 +10,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access pages directly.
 
-if ( ! class_exists( 'EFP_Resize' ) ) {
+if ( ! class_exists( 'EFUL_Resize' ) ) {
 	/**
-	 * EFP_Exception
+	 * EFUL_Exception
 	 */
-	class EFP_Exception extends Exception {}
+	class EFUL_Exception extends Exception {}
 	/**
-	 * EFP_Resize
+	 * EFUL_Resize
 	 */
-	class EFP_Resize {
+	class EFUL_Resize {
 
 		/**
 		 * The singleton instance
@@ -28,7 +28,7 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 		private static $instance = null;
 
 		/**
-		 * Should an EFP_Exception be thrown on error?
+		 * Should an EFUL_Exception be thrown on error?
 		 * If false (default), then the error will just be logged.
 		 *
 		 * @var bool
@@ -46,7 +46,7 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 		private function __clone() {}
 
 		/**
-		 * For your custom default usage you may want to initialize an EFP_Resize object by yourself and then have own defaults
+		 * For your custom default usage you may want to initialize an EFUL_Resize object by yourself and then have own defaults
 		 *
 		 * @return statement
 		 */
@@ -66,17 +66,17 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 		 * @param  mixed $crop crop size.
 		 * @param  mixed $single single.
 		 * @param  mixed $upscale upscale.
-		 * @throws EFP_Exception Validate inputs.
+		 * @throws EFUL_Exception Validate inputs.
 		 * @return statement
 		 */
 		public function process( $url, $width = null, $height = null, $crop = null, $single = true, $upscale = false ) {
 			try {
 				// Validate inputs.
 				if ( ! $url ) {
-					throw new EFP_Exception( '$url parameter is required' );
+					throw new EFUL_Exception( '$url parameter is required' );
 				}
 				if ( ! $width ) {
-					throw new EFP_Exception( '$width parameter is required' );
+					throw new EFUL_Exception( '$width parameter is required' );
 				}
 				// Caipt'n, ready to hook.
 				if ( true === $upscale ) {
@@ -112,14 +112,14 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 
 				// Check if $img_url is local.
 				if ( false === strpos( $url, $upload_url ) ) {
-					throw new EFP_Exception( 'Image must be local: ' . $url );
+					throw new EFUL_Exception( 'Image must be local: ' . $url );
 				}
 				// Define path of image.
 				$rel_path = str_replace( $upload_url, '', $url );
 				$img_path = $upload_dir . $rel_path;
 				// Check if img path exists, and is an image indeed.
 				if ( ! file_exists( $img_path ) or ! getimagesize( $img_path ) ) {
-					throw new EFP_Exception( 'Image file does not exist (or is not an image): ' . $img_path );
+					throw new EFUL_Exception( 'Image file does not exist (or is not an image): ' . $img_path );
 				}
 				// Get image info.
 				$info                    = pathinfo( $img_path );
@@ -142,7 +142,7 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 					$destfilename = "{$upload_dir}{$dst_rel_path}-{$suffix}.{$ext}";
 					if ( ! $dims || ( true === $crop && false === $upscale && ( $dst_w < $width || $dst_h < $height ) ) ) {
 						// Can't resize, so return false saying that the action to do could not be processed as planned.
-						throw new EFP_Exception( 'Unable to resize image because image_resize_dimensions() failed' );
+						throw new EFUL_Exception( 'Unable to resize image because image_resize_dimensions() failed' );
 					} elseif ( file_exists( $destfilename ) && getimagesize( $destfilename ) ) {
 						// Else check if cache exists.
 						$img_url = "{$upload_url}{$dst_rel_path}-{$suffix}.{$ext}";
@@ -150,7 +150,7 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 						// Else, we resize the image and return the new resized image url.
 						$editor = wp_get_image_editor( $img_path );
 						if ( is_wp_error( $editor ) || is_wp_error( $editor->resize( $width, $height, $crop ) ) ) {
-							throw new EFP_Exception(
+							throw new EFUL_Exception(
 								'Unable to get WP_Image_Editor: ' .
 												$editor->get_error_message() . ' (is GD or ImageMagick installed?)'
 							);
@@ -160,7 +160,7 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 							$resized_rel_path = str_replace( $upload_dir, '', $resized_file['path'] );
 							$img_url          = $upload_url . $resized_rel_path;
 						} else {
-							throw new EFP_Exception( 'Unable to save resized image file: ' . $editor->get_error_message() );
+							throw new EFUL_Exception( 'Unable to save resized image file: ' . $editor->get_error_message() );
 						}
 					}
 				}
@@ -181,8 +181,8 @@ if ( ! class_exists( 'EFP_Resize' ) ) {
 					);
 				}
 				return $image;
-			} catch ( EFP_Exception $ex ) {
-				error_log( 'EFP_Resize.process() error: ' . $ex->getMessage() );
+			} catch ( EFUL_Exception $ex ) {
+				error_log( 'EFUL_Resize.process() error: ' . $ex->getMessage() );
 				if ( $this->throwOnError ) {
 					// Bubble up exception.
 					throw $ex;
@@ -242,7 +242,7 @@ if ( ! function_exists( 'ta_eventful_resize' ) ) {
 	 * @return statement
 	 */
 	function ta_eventful_resize( $url, $width = null, $height = null, $crop = null, $single = true, $upscale = false ) {
-		$ta_eventful_resize = EFP_Resize::getInstance();
+		$ta_eventful_resize = EFUL_Resize::getInstance();
 		return $ta_eventful_resize->process( $url, $width, $height, $crop, $single, $upscale );
 	}
 }

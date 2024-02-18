@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_image_select' ) ) {
-	class EFP_Field_image_select extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_image_select' ) ) {
+	class EFUL_Field_image_select extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );

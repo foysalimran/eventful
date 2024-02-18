@@ -18,7 +18,7 @@ if (!defined('WPINC')) {
  *
  * @since 2.0.0
  */
-class EFP_HTML
+class EFUL_HTML
 {
 	/**
 	 * Post title html.
@@ -30,14 +30,14 @@ class EFP_HTML
 	public static function eventful_post_title($sorter, $layout, $options, $post, $is_table = false)
 	{
 
-		$_meta_settings     = EFP_Functions::eventful_metabox_value('eventful_post_meta', $sorter);
-		$post_meta_fields   = EFP_Functions::eventful_metabox_value('eventful_post_meta_group', $_meta_settings);
-		$show_post_meta     = EFP_Functions::eventful_metabox_value('show_post_meta', $_meta_settings, true);
-		$eventful_page_link_type = EFP_Functions::eventful_metabox_value('eventful_page_link_type', $options);
-		$eventful_link_rel       = EFP_Functions::eventful_metabox_value('eventful_link_rel', $options);
+		$_meta_settings     = EFUL_Functions::eventful_metabox_value('eventful_post_meta', $sorter);
+		$post_meta_fields   = EFUL_Functions::eventful_metabox_value('eventful_post_meta_group', $_meta_settings);
+		$show_post_meta     = EFUL_Functions::eventful_metabox_value('show_post_meta', $_meta_settings, true);
+		$eventful_page_link_type = EFUL_Functions::eventful_metabox_value('eventful_page_link_type', $options);
+		$eventful_link_rel       = EFUL_Functions::eventful_metabox_value('eventful_link_rel', $options);
 		$eventful_link_rel_text  = '1' === $eventful_link_rel ? "rel='nofollow'" : '';
 
-		$eventful_link_target = EFP_Functions::eventful_metabox_value('eventful_link_target', $options);
+		$eventful_link_target = EFUL_Functions::eventful_metabox_value('eventful_link_target', $options);
 		if (is_array($post_meta_fields) && 'accordion_layout' !== $layout && $show_post_meta) {
 			foreach ($post_meta_fields as $each_meta) {
 				if ('taxonomy' === $each_meta['select_post_meta']) {
@@ -47,7 +47,7 @@ class EFP_HTML
 						$terms = get_the_term_list($post->ID, $taxonomy, '', ' ');
 						if ($terms) {
 							ob_start();
-							include EFP_Functions::eventful_locate_template('item/meta-over-title.php');
+							include EFUL_Functions::eventful_locate_template('item/meta-over-title.php');
 							$meta_over_title = apply_filters('eventful_meta_over_title', ob_get_clean());
 							echo wp_kses_post($meta_over_title);
 						};
@@ -57,17 +57,17 @@ class EFP_HTML
 		}
 
 		$post_title_setting = isset($sorter['eventful_post_title']) ? $sorter['eventful_post_title'] : '';
-		$show_post_title    = EFP_Functions::eventful_metabox_value('show_post_title', $post_title_setting);
+		$show_post_title    = EFUL_Functions::eventful_metabox_value('show_post_title', $post_title_setting);
 
 		$eventful_post_title = get_the_title($post->ID);
 
 		if ($show_post_title && !empty($eventful_post_title)) {
 			// Post Title Settings.
-			$post_title_tag    = EFP_Functions::eventful_metabox_value('post_title_tag', $post_title_setting, 'h2');
-			$limit_post_title = EFP_Functions::eventful_metabox_value('post_title_limit', $post_title_setting);
+			$post_title_tag    = EFUL_Functions::eventful_metabox_value('post_title_tag', $post_title_setting, 'h2');
+			$limit_post_title = EFUL_Functions::eventful_metabox_value('post_title_limit', $post_title_setting);
 			if ($limit_post_title) {
 				$post_title_length = (int) isset($post_title_setting['eventful_title_length']) ? $post_title_setting['eventful_title_length'] : '';
-				$eventful_post_title    = EFP_Functions::limit_post_title($eventful_post_title, $post_title_length);
+				$eventful_post_title    = EFUL_Functions::limit_post_title($eventful_post_title, $post_title_length);
 			}
 
 			$allowed_html_tags = array(
@@ -87,7 +87,7 @@ class EFP_HTML
 			$allow_tag         = array('td' => array());
 			ob_start();
 			echo wp_kses($td['start'], $allow_tag);
-			include EFP_Functions::eventful_locate_template('item/title.php');
+			include EFUL_Functions::eventful_locate_template('item/title.php');
 			echo wp_kses($td['end'], $allow_tag);
 			$title = apply_filters('eventful_item_title', ob_get_clean());
 			echo wp_kses_post($title);
@@ -103,16 +103,16 @@ class EFP_HTML
 	 */
 	public static function eventful_content_html($sorter, $options, $post, $is_table = false)
 	{
-		$post_content_setting = EFP_Functions::eventful_metabox_value('eventful_post_content', $sorter);
-		$show_post_content    = EFP_Functions::eventful_metabox_value('show_post_content', $post_content_setting);
-		$show_read_more                = EFP_Functions::eventful_metabox_value('show_read_more', $post_content_setting);
-		$eventful_content_type              = EFP_Functions::eventful_metabox_value('post_content_type', $post_content_setting);
+		$post_content_setting = EFUL_Functions::eventful_metabox_value('eventful_post_content', $sorter);
+		$show_post_content    = EFUL_Functions::eventful_metabox_value('show_post_content', $post_content_setting);
+		$show_read_more                = EFUL_Functions::eventful_metabox_value('show_read_more', $post_content_setting);
+		$eventful_content_type              = EFUL_Functions::eventful_metabox_value('post_content_type', $post_content_setting);
 		$td                            = self::table_td($is_table);
 		$allow_tag                     = array('td' => array());
 		if ($show_post_content || $show_read_more) {
 			ob_start();
 			echo wp_kses($td['start'], $allow_tag);
-			include EFP_Functions::eventful_locate_template('item/content.php');
+			include EFUL_Functions::eventful_locate_template('item/content.php');
 			echo wp_kses($td['end'], $allow_tag);
 			$description = apply_filters('eventful_item_description', ob_get_clean());
 			echo wp_kses_post($description);
@@ -127,9 +127,9 @@ class EFP_HTML
 	 */
 	public static function eventful_read_more_html($sorter, $options, $post, $is_table = false)
 	{
-		$post_content_setting = EFP_Functions::eventful_metabox_value('eventful_post_content_readmore', $sorter);
-		$show_read_more                = EFP_Functions::eventful_metabox_value('show_read_more', $post_content_setting);
-		$eventful_content_type              = EFP_Functions::eventful_metabox_value('post_content_type', $post_content_setting);
+		$post_content_setting = EFUL_Functions::eventful_metabox_value('eventful_post_content_readmore', $sorter);
+		$show_read_more                = EFUL_Functions::eventful_metabox_value('show_read_more', $post_content_setting);
+		$eventful_content_type              = EFUL_Functions::eventful_metabox_value('post_content_type', $post_content_setting);
 		$td                            = self::table_td($is_table);
 		$allow_tag                     = array('td' => array());
 		if ($show_read_more) {
@@ -152,16 +152,16 @@ class EFP_HTML
 		}
 		$read_more_type     = isset($view_options['read_more_type']) ? $view_options['read_more_type'] : '';
 		$eventful_read_label     = isset($view_options['eventful_read_label']) ? $view_options['eventful_read_label'] : '';
-		$eventful_page_link_type = EFP_Functions::eventful_metabox_value('eventful_page_link_type', $options);
-		$eventful_link_rel       = EFP_Functions::eventful_metabox_value('eventful_link_rel', $options);
+		$eventful_page_link_type = EFUL_Functions::eventful_metabox_value('eventful_page_link_type', $options);
+		$eventful_link_rel       = EFUL_Functions::eventful_metabox_value('eventful_link_rel', $options);
 		$eventful_link_rel_text  = '';
 		if ($eventful_link_rel) {
 			$eventful_link_rel_text = "rel='nofollow'";
 		}
-		$readmore_target = EFP_Functions::eventful_metabox_value('eventful_link_target', $options);
+		$readmore_target = EFUL_Functions::eventful_metabox_value('eventful_link_target', $options);
 
 		ob_start();
-		include EFP_Functions::eventful_locate_template('item/read-more.php');
+		include EFUL_Functions::eventful_locate_template('item/read-more.php');
 		$read_more_button = apply_filters('eventful_read_more_btn', ob_get_clean(), $link = get_permalink($post));
 		echo wp_kses_post($read_more_button);
 	}
@@ -177,9 +177,9 @@ class EFP_HTML
 	 */
 	public static function eventful_post_thumb_html($sorter, $scode_id, $post, $options, $layout, $is_table = false)
 	{
-		$_post_thumb_setting = EFP_Functions::eventful_metabox_value('eventful_post_thumb', $sorter);
-		$eventful_page_link_type  = EFP_Functions::eventful_metabox_value('eventful_page_link_type', $options);
-		$eventful_link_rel        = EFP_Functions::eventful_metabox_value('eventful_link_rel', $options);
+		$_post_thumb_setting = EFUL_Functions::eventful_metabox_value('eventful_post_thumb', $sorter);
+		$eventful_page_link_type  = EFUL_Functions::eventful_metabox_value('eventful_page_link_type', $options);
+		$eventful_link_rel        = EFUL_Functions::eventful_metabox_value('eventful_link_rel', $options);
 		$eventful_post_type       = 'tribe_events';
 
 		$post_thumb_meta 	= $_post_thumb_setting['post_thumb_meta'];
@@ -191,9 +191,9 @@ class EFP_HTML
 			$is_attachment = true;
 		}
 		$eventful_link_rel_text    = '1' === $eventful_link_rel ? "rel='nofollow'" : '';
-		$eventful_link_target      = EFP_Functions::eventful_metabox_value('eventful_link_target', $options);
-		if (EFP_Functions::eventful_metabox_value('post_thumb_show', $_post_thumb_setting)) {
-			$eventful_image_attr  = EFP_Functions::eventful_sized_thumb($_post_thumb_setting, $post->ID, $is_attachment);
+		$eventful_link_target      = EFUL_Functions::eventful_metabox_value('eventful_link_target', $options);
+		if (EFUL_Functions::eventful_metabox_value('post_thumb_show', $_post_thumb_setting)) {
+			$eventful_image_attr  = EFUL_Functions::eventful_sized_thumb($_post_thumb_setting, $post->ID, $is_attachment);
 
 			$thumb_url       = $eventful_image_attr['src'];
 
@@ -203,16 +203,16 @@ class EFP_HTML
 				$retina_img_attr = 'srcset="' . esc_attr($thumb_url) . ', ' . esc_attr($retina_img_src) . ' 2x"';
 			}
 
-			$alter_text       = EFP_Functions::eventful_thumb_alter_text($post->ID);
-			$_meta_settings   = EFP_Functions::eventful_metabox_value('eventful_post_meta', $sorter);
-			$post_meta_fields = EFP_Functions::eventful_metabox_value('eventful_post_meta_group', $_meta_settings);
-			$show_post_meta   = EFP_Functions::eventful_metabox_value('show_post_meta', $_meta_settings, true);
+			$alter_text       = EFUL_Functions::eventful_thumb_alter_text($post->ID);
+			$_meta_settings   = EFUL_Functions::eventful_metabox_value('eventful_post_meta', $sorter);
+			$post_meta_fields = EFUL_Functions::eventful_metabox_value('eventful_post_meta_group', $_meta_settings);
+			$show_post_meta   = EFUL_Functions::eventful_metabox_value('show_post_meta', $_meta_settings, true);
 			$td               = self::table_td($is_table);
 			$allow_tag        = array('td' => array());
 			if (!empty($thumb_url)) {
 				ob_start();
 				echo wp_kses($td['start'], $allow_tag);
-				include EFP_Functions::eventful_locate_template('item/thumbnail.php');
+				include EFUL_Functions::eventful_locate_template('item/thumbnail.php');
 				echo wp_kses($td['end'], $allow_tag);
 				$item_thumb = apply_filters('eventful_item_thumbnail', ob_get_clean());
 				echo $item_thumb; // phpcs:ignore
@@ -240,7 +240,7 @@ class EFP_HTML
 						$terms                    = get_the_term_list($post->ID, $taxonomy, '', ' ');
 						if ($terms) {
 							ob_start();
-							include EFP_Functions::eventful_locate_template('item/over-thumb-taxonomy.php');
+							include EFUL_Functions::eventful_locate_template('item/over-thumb-taxonomy.php');
 							$item_over_thumb_taxonomy = apply_filters('item_over_thumb_taxonomy', ob_get_clean(), $terms);
 							echo wp_kses_post($item_over_thumb_taxonomy);
 						}
@@ -259,15 +259,15 @@ class EFP_HTML
 	 */
 	public static function eventful_post_meta_html($sorter, $visitor_count, $post, $is_table = false)
 	{
-		$_meta_settings   = EFP_Functions::eventful_metabox_value('eventful_post_meta', $sorter);
-		$post_meta_fields = EFP_Functions::eventful_metabox_value('eventful_post_meta_group', $_meta_settings);
-		$show_post_meta   = EFP_Functions::eventful_metabox_value('show_post_meta', $_meta_settings, true);
-		$_meta_separator  = EFP_Functions::eventful_metabox_value('meta_separator', $_meta_settings);
+		$_meta_settings   = EFUL_Functions::eventful_metabox_value('eventful_post_meta', $sorter);
+		$post_meta_fields = EFUL_Functions::eventful_metabox_value('eventful_post_meta_group', $_meta_settings);
+		$show_post_meta   = EFUL_Functions::eventful_metabox_value('show_post_meta', $_meta_settings, true);
+		$_meta_separator  = EFUL_Functions::eventful_metabox_value('meta_separator', $_meta_settings);
 
 		if ($post_meta_fields && $show_post_meta) {
 
 			ob_start();
-			include EFP_Functions::eventful_locate_template('item/meta.php');
+			include EFUL_Functions::eventful_locate_template('item/meta.php');
 			$item_meta = apply_filters('eventful_item_meta', ob_get_clean());
 			echo wp_kses_post($item_meta);
 		}
@@ -281,15 +281,15 @@ class EFP_HTML
 	 */
 	public static function eventful_event_fildes_html($sorter, $visitor_count, $post, $is_table = false)
 	{
-		$_meta_settings   = EFP_Functions::eventful_metabox_value('eventful_event_fildes', $sorter);
-		$event_fildes_fields = EFP_Functions::eventful_metabox_value('eventful_event_fildes_group', $_meta_settings);
-		$show_event_fildes   = EFP_Functions::eventful_metabox_value('show_event_fildes', $_meta_settings, true);
-		$_event_meta_separator  = EFP_Functions::eventful_metabox_value('event_meta_separator', $_meta_settings);
+		$_meta_settings   = EFUL_Functions::eventful_metabox_value('eventful_event_fildes', $sorter);
+		$event_fildes_fields = EFUL_Functions::eventful_metabox_value('eventful_event_fildes_group', $_meta_settings);
+		$show_event_fildes   = EFUL_Functions::eventful_metabox_value('show_event_fildes', $_meta_settings, true);
+		$_event_meta_separator  = EFUL_Functions::eventful_metabox_value('event_meta_separator', $_meta_settings);
 
 		if ($event_fildes_fields && $show_event_fildes) {
 			
 			ob_start();
-			include EFP_Functions::eventful_locate_template('item/event-fildes.php');
+			include EFUL_Functions::eventful_locate_template('item/event-fildes.php');
 			$item_meta = apply_filters('eventful_item_meta', ob_get_clean());
 			echo wp_kses_post($item_meta);
 		}
@@ -377,7 +377,7 @@ class EFP_HTML
 	public static function eventful_alt_post_class($options, $layout_preset)
 	{
 		if ('carousel_layout' === $layout_preset || 'grid_layout' === $layout_preset) {
-			if ('overlay' === EFP_Functions::eventful_metabox_value('post_content_orientation', $options)) {
+			if ('overlay' === EFUL_Functions::eventful_metabox_value('post_content_orientation', $options)) {
 				$eventful_alt_post_class = 'ta-overlay eventful__item';
 			} else {
 				$eventful_alt_post_class = 'eventful__item';
@@ -422,7 +422,7 @@ class EFP_HTML
 		if ($post_limit < 1) {
 			$pages = 0;
 		} else {
-			$pages = EFP_Functions::eventful_max_pages($post_limit, $post_per_page);
+			$pages = EFUL_Functions::eventful_max_pages($post_limit, $post_per_page);
 		}
 		$big = 999999999; // need an unlikely integer.
 		if ($pages > 1) {
@@ -554,7 +554,7 @@ class EFP_HTML
 			$section_title_text = apply_filters('eventful_section_title_text', $section_title_text);
 			ob_start();
 			do_action('eventful_before_section_title');
-			include EFP_Functions::eventful_locate_template('section-title.php');
+			include EFUL_Functions::eventful_locate_template('section-title.php');
 			do_action('eventful_after_section_title');
 			$section_title = apply_filters('eventful_filter_section_title', ob_get_clean());
 			echo wp_kses_post($section_title);
@@ -571,7 +571,7 @@ class EFP_HTML
 	{
 		if ($preloader) {
 			ob_start();
-			include EFP_Functions::eventful_locate_template('preloader.php');
+			include EFUL_Functions::eventful_locate_template('preloader.php');
 			$preloader = apply_filters('eventful_preloader', ob_get_clean());
 			echo wp_kses_post($preloader);
 		}
@@ -648,14 +648,14 @@ class EFP_HTML
 	 */
 	public static function eventful_post_loop($options, $layout, $sorter, $eventful_count, $scode_id, $post)
 	{
-		$number_of_columns = EFP_Functions::eventful_metabox_value('eventful_number_of_columns', $options);
-		$slide_effect      = EFP_Functions::eventful_metabox_value('eventful_slide_effect', $options);
+		$number_of_columns = EFUL_Functions::eventful_metabox_value('eventful_number_of_columns', $options);
+		$slide_effect      = EFUL_Functions::eventful_metabox_value('eventful_slide_effect', $options);
 		$visitor_count     = get_post_meta($post->ID, '_post_views_count', true);
-		$lazy_load         = EFP_Functions::eventful_metabox_value('eventful_lazy_load', $options);
+		$lazy_load         = EFUL_Functions::eventful_metabox_value('eventful_lazy_load', $options);
 		if ('cube' === $slide_effect || 'flip' === $slide_effect) {
 			$lazy_load = 'false';
 		}
-		if (('carousel_layout' === $layout || 'grid_layout' === $layout || 'filter_layout' === $layout) && ('default' === EFP_Functions::eventful_metabox_value('post_content_orientation', $options))) {
+		if (('carousel_layout' === $layout || 'grid_layout' === $layout || 'filter_layout' === $layout) && ('default' === EFUL_Functions::eventful_metabox_value('post_content_orientation', $options))) {
 		?>
 			<div class="<?php echo esc_attr(self::eventful_post_responsive_columns($layout, $number_of_columns, $post->ID)); ?>">
 				<div class="eventful__item eventful-item-<?php echo esc_attr($post->ID); ?>" data-id="<?php echo esc_attr($post->ID); ?>">
@@ -663,15 +663,15 @@ class EFP_HTML
 					self::eventful_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options);
 					?>
 				</div>
-				<?php if ('carousel_layout' === $layout && $lazy_load && 'ticker' !== EFP_Functions::eventful_metabox_value('eventful_carousel_mode', $options)) { ?>
+				<?php if ('carousel_layout' === $layout && $lazy_load && 'ticker' !== EFUL_Functions::eventful_metabox_value('eventful_carousel_mode', $options)) { ?>
 					<!-- <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div> -->
 				<?php } ?>
 			</div>
 		<?php
 		} else {
 			$animation_class = '';
-			if (('overlay' === EFP_Functions::eventful_metabox_value('post_content_orientation', $options) || 'overlay-box' === EFP_Functions::eventful_metabox_value('post_content_orientation', $options))) {
-				$animation_class = ('on_hover' === EFP_Functions::eventful_metabox_value('post_overlay_content_visibility', $options)) ? EFP_Functions::eventful_metabox_value('post_animation', $options) . ' animated' : '';
+			if (('overlay' === EFUL_Functions::eventful_metabox_value('post_content_orientation', $options) || 'overlay-box' === EFUL_Functions::eventful_metabox_value('post_content_orientation', $options))) {
+				$animation_class = ('on_hover' === EFUL_Functions::eventful_metabox_value('post_overlay_content_visibility', $options)) ? EFUL_Functions::eventful_metabox_value('post_animation', $options) . ' animated' : '';
 			}
 			if ('zigzag_layout' === $layout) {
 				$animation_class = '';
@@ -694,7 +694,7 @@ class EFP_HTML
 	}
 
 	/**
-	 * EFP shortcode markup wrapper classes.
+	 * EFUL shortcode markup wrapper classes.
 	 *
 	 * @param string $layout_preset The selected layout name.
 	 * @param int    $shortcode_id The shortcode ID.
@@ -764,7 +764,7 @@ class EFP_HTML
 			$eventful_query        = $query;
 			$total_post_count = $eventful_query->post_count;
 		} else {
-			$query_args       = EFP_QueryInside::get_filtered_content($view_options, $eventful_gl_id, $layout_preset);
+			$query_args       = EFUL_QueryInside::get_filtered_content($view_options, $eventful_gl_id, $layout_preset);
 			$eventful_query        = new WP_Query($query_args);
 			$total_post_count = $eventful_query->post_count;
 		}
@@ -801,11 +801,11 @@ class EFP_HTML
 		}
 
 		if ('carousel_layout' === $layout_preset) {
-			include EFP_Functions::eventful_locate_template('carousel.php');
+			include EFUL_Functions::eventful_locate_template('carousel.php');
 		} elseif ('grid_layout' === $layout_preset) {
-			include EFP_Functions::eventful_locate_template('grid.php');
+			include EFUL_Functions::eventful_locate_template('grid.php');
 		} elseif ('filter_layout' === $layout_preset) {
-			include EFP_Functions::eventful_locate_template('filter.php');
+			include EFUL_Functions::eventful_locate_template('filter.php');
 		}
 	}
 }

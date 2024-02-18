@@ -5,7 +5,7 @@
 /**
  * The Layout building class.
  */
-class EFP_Display
+class EFUL_Display
 {
 
 	/**
@@ -16,7 +16,7 @@ class EFP_Display
 	 */
 	public static function section($prefix)
 	{
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'  => esc_html__('DISPLAY OPTIONS', 'eventful'),
@@ -95,11 +95,11 @@ class EFP_Display
 						'class'    => 'eventful-content-orientation',
 						'options'  => array(
 							'default'     => array(
-								'image' => EFP_URL . 'admin/views/ta-framework/assets/images/default.png',
+								'image' => EFUL_URL . 'admin/views/ta-framework/assets/images/default.png',
 								'text'  => esc_html__('Default', 'eventful'),
 							),
 							'overlay'     => array(
-								'image'    => EFP_URL . 'admin/views/ta-framework/assets/images/overlay.png',
+								'image'    => EFUL_URL . 'admin/views/ta-framework/assets/images/overlay.png',
 								'text'     => esc_html__('Overlay', 'eventful'),
 								'pro_only' => true,
 							),
@@ -200,7 +200,7 @@ class EFP_Display
 							'left'   => '0',
 							'unit'   => 'px',
 						),
-						'help'     => "<img src='" . EFP_URL . "/admin/assets/img/inner_padding.jpg'>",
+						'help'     => "<img src='" . EFUL_URL . "/admin/assets/img/inner_padding.jpg'>",
 					),
 					array(
 						'id'       => 'post_content_sorter',

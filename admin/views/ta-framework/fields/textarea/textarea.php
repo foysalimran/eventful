@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_textarea' ) ) {
-	class EFP_Field_textarea extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_textarea' ) ) {
+	class EFUL_Field_textarea extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -27,7 +27,7 @@ if ( ! class_exists( 'EFP_Field_textarea' ) ) {
 			if ( ! empty( $this->field['shortcoder'] ) ) {
 
 				$shortcodes = ( is_array( $this->field['shortcoder'] ) ) ? $this->field['shortcoder'] : array_filter( (array) $this->field['shortcoder'] );
-				$instances  = ( ! empty( EFP::$shortcode_instances ) ) ? EFP::$shortcode_instances : array();
+				$instances  = ( ! empty( EFUL::$shortcode_instances ) ) ? EFUL::$shortcode_instances : array();
 
 				if ( ! empty( $shortcodes ) && ! empty( $instances ) ) {
 

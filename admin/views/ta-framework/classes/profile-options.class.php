@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Profile_Options' ) ) {
-  class EFP_Profile_Options extends EFP_Abstract{
+if ( ! class_exists( 'EFUL_Profile_Options' ) ) {
+  class EFUL_Profile_Options extends EFUL_Abstract{
 
     // constans
     public $unique     = '';
@@ -120,7 +120,7 @@ if ( ! class_exists( 'EFP_Profile_Options' ) ) {
               $field['default'] = $this->get_default( $field );
             }
 
-            EFP::field( $field, $this->get_meta_value( $profile_id, $field ), $this->unique, 'profile' );
+            EFUL::field( $field, $this->get_meta_value( $profile_id, $field ), $this->unique, 'profile' );
 
           }
 

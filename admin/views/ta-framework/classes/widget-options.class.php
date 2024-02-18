@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Widget' ) ) {
-  class EFP_Widget extends WP_Widget {
+if ( ! class_exists( 'EFUL_Widget' ) ) {
+  class EFUL_Widget extends WP_Widget {
 
     // constans
     public $unique  = '';
@@ -107,7 +107,7 @@ if ( ! class_exists( 'EFP_Widget' ) ) {
 
           }
 
-          EFP::field( $field, $this->get_widget_value( $instance, $field ), $field_unique );
+          EFUL::field( $field, $this->get_widget_value( $instance, $field ), $field_unique );
 
         }
 

@@ -20,7 +20,7 @@ if ( ! function_exists( 'eventful_get_icons' ) ) {
 
 		$icon_library = ( apply_filters( 'eventful_fa4', false ) ) ? 'fa4' : 'fa5';
 
-		EFP::include_plugin_file( 'fields/icon/' . $icon_library . '-icons.php' );
+		EFUL::include_plugin_file( 'fields/icon/' . $icon_library . '-icons.php' );
 
 		$icon_lists = apply_filters( 'eventful_field_icon_add_icons', eventful_get_default_icons() );
 
@@ -171,7 +171,7 @@ if ( ! function_exists( 'eventful_chosen_ajax' ) ) {
 		}
 
 		// Success
-		$options = EFP_Fields::field_data( $type, $term, $query );
+		$options = EFUL_Fields::field_data( $type, $term, $query );
 
 		wp_send_json_success( $options );
 	}

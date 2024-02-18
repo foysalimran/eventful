@@ -12,14 +12,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die; } // Cannot access directly.
 
-if ( ! class_exists( 'EFP_Field_dimensions_advanced' ) ) {
+if ( ! class_exists( 'EFUL_Field_dimensions_advanced' ) ) {
 
 	/**
 	 * The Advanced Dimensions field class.
 	 *
 	 * @since 3.5
 	 */
-	class EFP_Field_dimensions_advanced extends EFP_Fields {
+	class EFUL_Field_dimensions_advanced extends EFUL_Fields {
 
 		/**
 		 * Advanced Dimensions field constructor.

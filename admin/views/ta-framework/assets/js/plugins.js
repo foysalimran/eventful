@@ -2685,13 +2685,13 @@
 */
 (function($) {
 
-  function EFPAjaxChosen(element, options) {
+  function EFULAjaxChosen(element, options) {
     this.element = $(element);
     this.options = options;
     this.init();
   };
 
-  EFPAjaxChosen.prototype.init = function() {
+  EFULAjaxChosen.prototype.init = function() {
     this.element.chosen(this.options);
     this.container    = this.element.next('.chosen-container');
     this.search_field = this.container.find('.chosen-search-input');
@@ -2701,7 +2701,7 @@
     this.events();
   };
 
-  EFPAjaxChosen.prototype.events = function() {
+  EFULAjaxChosen.prototype.events = function() {
 
     var _this = this;
 
@@ -2724,14 +2724,14 @@
 
   };
 
-  EFPAjaxChosen.prototype.search_field_focused = function() {
+  EFULAjaxChosen.prototype.search_field_focused = function() {
     this.search_welcome_message();
     if ( this.options.min_length === 0 && this.search_field.val().length === 0 ) {
       this.update_list();
     }
   };
 
-  EFPAjaxChosen.prototype.search_welcome_message = function() {
+  EFULAjaxChosen.prototype.search_welcome_message = function() {
 
     var value   = $.trim(this.search_field.val());
     var results = this.container.find('.chosen-results');
@@ -2742,7 +2742,7 @@
 
   };
 
-  EFPAjaxChosen.prototype.update_list = function() {
+  EFULAjaxChosen.prototype.update_list = function() {
 
     var _this = this;
 
@@ -2783,7 +2783,7 @@
 
   };
 
-  EFPAjaxChosen.prototype.show_results = function( items ) {
+  EFULAjaxChosen.prototype.show_results = function( items ) {
 
     var _this = this;
 
@@ -2823,7 +2823,7 @@
       var $hidden_select = this.element.parent().find('.eventful-hide-select');
       var $hidden_value  = $hidden_select.val() || [];
 
-      this.element.EFPChosenOrder($hidden_value, true);
+      this.element.EFULChosenOrder($hidden_value, true);
       this.search_field.css('width', width_before_trigger);
 
     }
@@ -2836,9 +2836,9 @@
 
   };
 
-  $.fn.EFPAjaxChosen = function(chosenOptions) {
+  $.fn.EFULAjaxChosen = function(chosenOptions) {
     return this.each(function() {
-      new EFPAjaxChosen(this, chosenOptions);
+      new EFULAjaxChosen(this, chosenOptions);
     });
   };
 
@@ -2848,20 +2848,20 @@
 // Full source at https://github.com/tristanjahier/chosen-order
 // Copyright (c) 2013 - Tristan Jahier, http://tristan-jahier.fr
 (function() {
-  var $, EFPAbstractChosenOrder, _ref,
+  var $, EFULAbstractChosenOrder, _ref,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  EFPAbstractChosenOrder = (function() {
+  EFULAbstractChosenOrder = (function() {
 
-    function EFPAbstractChosenOrder() {}
+    function EFULAbstractChosenOrder() {}
 
-    EFPAbstractChosenOrder.insertAt = function(node, index, parentNode) {
+    EFULAbstractChosenOrder.insertAt = function(node, index, parentNode) {
       return parentNode.insertBefore(node, parentNode.children[index].nextSibling);
     };
 
-    EFPAbstractChosenOrder.getFlattenedOptionsAndGroups = function(select) {
+    EFULAbstractChosenOrder.getFlattenedOptionsAndGroups = function(select) {
       var flattened_options, opt, options, sub_opt, sub_options, _i, _j, _len, _len1;
       options = Array.prototype.filter.call(select.childNodes, function(o) {
         var _ref;
@@ -2884,11 +2884,11 @@
       return flattened_options;
     };
 
-    EFPAbstractChosenOrder.isValidMultipleSelectElement = function(element) {
+    EFULAbstractChosenOrder.isValidMultipleSelectElement = function(element) {
       return element !== null && typeof element !== "undefined" && element.nodeName === "SELECT" && element.multiple;
     };
 
-    EFPAbstractChosenOrder.getChosenUIContainer = function(select) {
+    EFULAbstractChosenOrder.getChosenUIContainer = function(select) {
       if (select.id !== "") {
         return document.getElementById(select.id.replace(/-/g, "_") + "_chosen");
       } else {
@@ -2896,11 +2896,11 @@
       }
     };
 
-    EFPAbstractChosenOrder.isChosenified = function(select) {
+    EFULAbstractChosenOrder.isChosenified = function(select) {
       return this.getChosenUIContainer(select) != null;
     };
 
-    EFPAbstractChosenOrder.forceSelection = function(select, selection) {
+    EFULAbstractChosenOrder.forceSelection = function(select, selection) {
       var i, opt, options, _ref;
       options = this.getFlattenedOptionsAndGroups(select);
       i = 0;
@@ -2918,7 +2918,7 @@
       return this.triggerEvent(select, "chosen:updated");
     };
 
-    EFPAbstractChosenOrder.EFPChosenOrder = function(select, order, force) {
+    EFULAbstractChosenOrder.EFULChosenOrder = function(select, order, force) {
       var chosen_choices, chosen_options, chosen_ui, i, j, opt, opt_val, option, options, rel, relAttributeName, _i, _j, _len, _len1, _results;
       if (this.getDOMElement != null) {
         select = this.getDOMElement(select);
@@ -2963,33 +2963,33 @@
       }
     };
 
-    return EFPAbstractChosenOrder;
+    return EFULAbstractChosenOrder;
 
   })();
 
   $ = jQuery;
 
   $.fn.extend({
-    EFPChosenOrder: function(order, force) {
-      return _EFPChosenOrder.EFPChosenOrder(this, order, force);
+    EFULChosenOrder: function(order, force) {
+      return _EFULChosenOrder.EFULChosenOrder(this, order, force);
     }
   });
 
-  this._EFPChosenOrder = (function(_super) {
-    __extends(_EFPChosenOrder, _super);
+  this._EFULChosenOrder = (function(_super) {
+    __extends(_EFULChosenOrder, _super);
 
-    function _EFPChosenOrder() {
-      _ref = _EFPChosenOrder.__super__.constructor.apply(this, arguments);
+    function _EFULChosenOrder() {
+      _ref = _EFULChosenOrder.__super__.constructor.apply(this, arguments);
       return _ref;
     }
 
-    _EFPChosenOrder.relAttributeName = 'data-option-array-index';
+    _EFULChosenOrder.relAttributeName = 'data-option-array-index';
 
-    _EFPChosenOrder.isjQueryObject = function(obj) {
+    _EFULChosenOrder.isjQueryObject = function(obj) {
       return (typeof jQuery !== "undefined" && jQuery !== null) && obj instanceof jQuery;
     };
 
-    _EFPChosenOrder.getDOMElement = function(element) {
+    _EFULChosenOrder.getDOMElement = function(element) {
       if (this.isjQueryObject(element)) {
         return element.get(0);
       } else {
@@ -2997,7 +2997,7 @@
       }
     };
 
-    _EFPChosenOrder.searchChosenUIContainer = function(element) {
+    _EFULChosenOrder.searchChosenUIContainer = function(element) {
       if ($(element).data("chosen") != null) {
         return $(element).data("chosen").container[0];
       } else {
@@ -3005,13 +3005,13 @@
       }
     };
 
-    _EFPChosenOrder.triggerEvent = function(target, event_name) {
+    _EFULChosenOrder.triggerEvent = function(target, event_name) {
       return $(target).trigger(event_name);
     };
 
-    return _EFPChosenOrder;
+    return _EFULChosenOrder;
 
-  })(EFPAbstractChosenOrder);
+  })(EFULAbstractChosenOrder);
 
 }).call(this);
 ;(function() {
@@ -4755,8 +4755,8 @@
   //
 
   if (typeof $.fn !== "undefined") {
-    $.fn.serializeObjectEFP = FormSerializer.serializeObject;
-    $.fn.serializeJSONEFP   = FormSerializer.serializeJSON;
+    $.fn.serializeObjectEFUL = FormSerializer.serializeObject;
+    $.fn.serializeJSONEFUL   = FormSerializer.serializeJSON;
   }
 
   exports.FormSerializer = FormSerializer;

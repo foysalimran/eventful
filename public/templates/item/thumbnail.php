@@ -51,14 +51,14 @@ if ('carousel_layout' !== $layout && $lazy_load && !is_admin()) {
 			if ($post_thumb_meta == 'category') {
 				ob_start();
 				echo wp_kses($td['start'], $allow_tag);
-				include EFP_Functions::eventful_locate_template('item/post-thumb-taxonomy.php');
+				include EFUL_Functions::eventful_locate_template('item/post-thumb-taxonomy.php');
 				echo wp_kses($td['end'], $allow_tag);
 				$item_thumb = apply_filters('eventful_thumb_taxonomy', ob_get_clean());
 				echo $item_thumb;
 			} elseif ($post_thumb_meta == 'date') {
 				ob_start();
 				echo wp_kses($td['start'], $allow_tag);
-				include EFP_Functions::eventful_locate_template('item/post-thumb-date.php');
+				include EFUL_Functions::eventful_locate_template('item/post-thumb-date.php');
 				echo wp_kses($td['end'], $allow_tag);
 				$item_thumb = apply_filters('eventful_thumb_archive', ob_get_clean());
 				echo $item_thumb;

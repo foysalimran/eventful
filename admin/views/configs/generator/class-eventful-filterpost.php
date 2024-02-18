@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The Filter post building class.
  */
-class EFP_FilterPost {
+class EFUL_FilterPost {
 
 	/**
 	 * Filter Post section metabox.
@@ -21,7 +21,7 @@ class EFP_FilterPost {
 	 * @return void
 	 */
 	public static function section( $prefix ) {
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'  => esc_html__( 'Filter Content', 'eventful' ),

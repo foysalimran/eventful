@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_gallery' ) ) {
-	class EFP_Field_gallery extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_gallery' ) ) {
+	class EFUL_Field_gallery extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );

@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Customize_Options' ) ) {
-  class EFP_Customize_Options extends EFP_Abstract {
+if ( ! class_exists( 'EFUL_Customize_Options' ) ) {
+  class EFUL_Customize_Options extends EFUL_Abstract {
 
     // constans
     public $unique       = '';
@@ -142,8 +142,8 @@ if ( ! class_exists( 'EFP_Customize_Options' ) ) {
 
     public function add_customize_options( $wp_customize ) {
 
-      if ( ! class_exists( 'WP_Customize_Panel_EFP' ) ) {
-        EFP::include_plugin_file( 'functions/customize.php'  );
+      if ( ! class_exists( 'WP_Customize_Panel_EFUL' ) ) {
+        EFUL::include_plugin_file( 'functions/customize.php'  );
       }
 
       foreach ( $this->pre_sections as $section ) {
@@ -152,7 +152,7 @@ if ( ! class_exists( 'EFP_Customize_Options' ) ) {
 
           $panel_id = ( isset( $section['id'] ) ) ? $section['id'] : $this->unique .'-panel-'. $this->priority;
 
-          $wp_customize->add_panel( new WP_Customize_Panel_EFP( $wp_customize, $panel_id, array(
+          $wp_customize->add_panel( new WP_Customize_Panel_EFUL( $wp_customize, $panel_id, array(
             'title'       => ( isset( $section['title'] ) ) ? $section['title'] : null,
             'description' => ( isset( $section['description'] ) ) ? $section['description'] : null,
             'priority'    => ( isset( $section['priority'] ) ) ? $section['priority'] : null,
@@ -193,7 +193,7 @@ if ( ! class_exists( 'EFP_Customize_Options' ) ) {
 
       } else {
 
-        $wp_customize->add_section( new WP_Customize_Section_EFP( $wp_customize, $section_id, array(
+        $wp_customize->add_section( new WP_Customize_Section_EFUL( $wp_customize, $section_id, array(
           'title'       => ( isset( $section_args['title'] ) ) ? $section_args['title'] : '',
           'description' => ( isset( $section_args['description'] ) ) ? $section_args['description'] : '',
           'priority'    => ( isset( $section_args['priority'] ) ) ? $section_args['priority'] : '',
@@ -236,7 +236,7 @@ if ( ! class_exists( 'EFP_Customize_Options' ) ) {
             ) )
           );
 
-          $wp_customize->add_control( new WP_Customize_Control_EFP( $wp_customize, $setting_id,
+          $wp_customize->add_control( new WP_Customize_Control_EFUL( $wp_customize, $setting_id,
             wp_parse_args( $control_args, array(
               'unique'   => $this->unique,
               'field'    => $field,

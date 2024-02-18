@@ -13,7 +13,7 @@
  *
  * @since 2.0.0
  */
-class EFP_CustomFieldProcess {
+class EFUL_CustomFieldProcess {
 
 	/**
 	 * The key of the custom field.
@@ -134,7 +134,7 @@ class EFP_CustomFieldProcess {
 		if ( function_exists( 'get_field_object' ) ) {
 			$field_object = get_field_object( $this->key, $this->object );
 			if ( $field_object ) {
-				$this->field_value = EFP_ACF::show_acf_output( $field_object );
+				$this->field_value = EFUL_ACF::show_acf_output( $field_object );
 				$this->field_type  = $field_object['type'];
 				$this->field_name  = $field_object['label'];
 			}
@@ -213,12 +213,12 @@ function eventful_custom_field_html(  $object, $post_content_sorter, $is_post = 
 
 	$eventful_custom_fields = $post_content_sorter['eventful_custom_fields'];
 
-	$plugin_used = EFP_Functions::eventful_metabox_value( 'which_plugin_used', $eventful_custom_fields );
+	$plugin_used = EFUL_Functions::eventful_metabox_value( 'which_plugin_used', $eventful_custom_fields );
 
-	$set_oembed = EFP_Functions::eventful_metabox_value( 'eventful_embed_cf_content', $eventful_custom_fields );
+	$set_oembed = EFUL_Functions::eventful_metabox_value( 'eventful_embed_cf_content', $eventful_custom_fields );
 
 	$cf_by_plugin        = ta_eventful_cf_multiple_plugins() && 'auto' !== $plugin_used ? $plugin_used : 'auto';
-	$custom_field_groups = EFP_Functions::eventful_metabox_value( 'eventful_custom_fields_group', $eventful_custom_fields );
+	$custom_field_groups = EFUL_Functions::eventful_metabox_value( 'eventful_custom_fields_group', $eventful_custom_fields );
 	
 	// Get all meta data of this post.
 	$metadata = $is_post ? get_metadata( 'post', $object->ID ) : array();
@@ -235,7 +235,7 @@ function eventful_custom_field_html(  $object, $post_content_sorter, $is_post = 
 			$key               = apply_filters( 'ta_eventful_cf_common_key', $is_post ) && in_array( $key, array_keys( $metadata ), true ) ? $key : '';
 
 			if ( ! empty( $key ) ) {
-				$cf_process_obj = new EFP_CustomFieldProcess( $key, $object, $is_post, $cf_by_plugin );
+				$cf_process_obj = new EFUL_CustomFieldProcess( $key, $object, $is_post, $cf_by_plugin );
 
 				$cf_value = $cf_process_obj->field_value;
 				$cf_name  = $cf_process_obj->field_name;
@@ -249,7 +249,7 @@ function eventful_custom_field_html(  $object, $post_content_sorter, $is_post = 
 					if ( $show_field_name ) {
 						// Field name.
 						$cf_name   = $cf_name ? $cf_name : esc_html( $key );
-						$name_text = ! empty( $cf_arbitrary_name ) ? $cf_arbitrary_name : EFP_Functions::slug_string_to_name( $cf_name );
+						$name_text = ! empty( $cf_arbitrary_name ) ? $cf_arbitrary_name : EFUL_Functions::slug_string_to_name( $cf_name );
 						// Colon after CF name.
 						$meta_colon = $colon_after_name ? ' :' : '';
 						$name_html  = sprintf( '<span class="%s">%s%s</span>', 'ta-eventful-cf-name', $name_text, $meta_colon );

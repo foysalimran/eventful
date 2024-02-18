@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The Layout building class.
  */
-class EFP_ScriptsAndStyles {
+class EFUL_ScriptsAndStyles {
 
 	/**
 	 * Advanced setting section.
@@ -21,7 +21,7 @@ class EFP_ScriptsAndStyles {
 	 * @return void
 	 */
 	public static function section( $prefix ) {
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'  => esc_html__( 'Scripts & Styles', 'eventful' ),

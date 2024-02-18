@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_map' ) ) {
-	class EFP_Field_map extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_map' ) ) {
+	class EFUL_Field_map extends EFUL_Fields {
 
 		public $version = '1.9.2';
 
@@ -85,11 +85,11 @@ if ( ! class_exists( 'EFP_Field_map' ) ) {
 		public function enqueue() {
 
 			if ( ! wp_script_is( 'eventful-leaflet' ) ) {
-				wp_enqueue_script( 'leaflet', EFP_URL . 'admin/views/ta-framework/assets/js/leaflet.js', array( 'ta-framework' ), $this->version, true );
+				wp_enqueue_script( 'leaflet', EFUL_URL . 'admin/views/ta-framework/assets/js/leaflet.js', array( 'ta-framework' ), $this->version, true );
 			}
 
 			if ( ! wp_style_is( 'eventful-leaflet' ) ) {
-				wp_enqueue_style( 'leaflet', EFP_URL . 'admin/views/ta-framework/assets/css/leaflet.css', array(), $this->version );
+				wp_enqueue_style( 'leaflet', EFUL_URL . 'admin/views/ta-framework/assets/css/leaflet.css', array(), $this->version );
 			}
 
 			if ( ! wp_script_is( 'jquery-ui-autocomplete' ) ) {

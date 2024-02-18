@@ -5,7 +5,7 @@
 /**
  * The accessibility setting class.
  */
-class EFP_Accessibility
+class EFUL_Accessibility
 {
 
 	/**
@@ -16,7 +16,7 @@ class EFP_Accessibility
 	 */
 	public static function section($prefix)
 	{
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'  => esc_html__('Accessibility', 'eventful'),

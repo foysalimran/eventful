@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_group' ) ) {
-	class EFP_Field_group extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_group' ) ) {
+	class EFUL_Field_group extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -69,7 +69,7 @@ if ( ! class_exists( 'EFP_Field_group' ) ) {
 					$field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
 					$field_unique  = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $this->field['id'] . '][0]' : $this->field['id'] . '[0]';
 
-					EFP::field( $field, $field_default, '___' . $field_unique, 'field/group' );
+					EFUL::field( $field, $field_default, '___' . $field_unique, 'field/group' );
 
 				}
 				echo '</div>';
@@ -125,7 +125,7 @@ if ( ! class_exists( 'EFP_Field_group' ) ) {
 							$field_unique = ( ! empty( $this->unique ) ) ? $this->unique . '[' . $this->field['id'] . '][' . $num . ']' : $this->field['id'] . '[' . $num . ']';
 							$field_value  = ( isset( $field['id'] ) && isset( $value[ $field['id'] ] ) ) ? $value[ $field['id'] ] : '';
 
-							EFP::field( $field, $field_value, $field_unique, 'field/group' );
+							EFUL::field( $field, $field_value, $field_unique, 'field/group' );
 
 						}
 

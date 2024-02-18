@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_code_editor' ) ) {
-	class EFP_Field_code_editor extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_code_editor' ) ) {
+	class EFUL_Field_code_editor extends EFUL_Fields {
 
 		public $version = '6.65.7';
 
@@ -42,12 +42,12 @@ if ( ! class_exists( 'EFP_Field_code_editor' ) ) {
 				return; }
 
 			if ( ! wp_script_is( 'eventful-codemirror' ) ) {
-				wp_enqueue_script( 'codemirror', EFP_URL . 'admin/views/ta-framework/assets/js/codemirror.min.js', array( 'ta-framework' ), $this->version, true );
-				wp_enqueue_script( 'loadmode', EFP_URL . 'admin/views/ta-framework/assets/js/loadmode.min.js', array( 'eventful-codemirror' ), $this->version, true );
+				wp_enqueue_script( 'codemirror', EFUL_URL . 'admin/views/ta-framework/assets/js/codemirror.min.js', array( 'ta-framework' ), $this->version, true );
+				wp_enqueue_script( 'loadmode', EFUL_URL . 'admin/views/ta-framework/assets/js/loadmode.min.js', array( 'eventful-codemirror' ), $this->version, true );
 			}
 
 			if ( ! wp_style_is( 'eventful-codemirror' ) ) {
-				wp_enqueue_style( 'codemirror', EFP_URL . 'admin/views/ta-framework/assets/css/codemirror.min.css', array(), $this->version );
+				wp_enqueue_style( 'codemirror', EFUL_URL . 'admin/views/ta-framework/assets/css/codemirror.min.css', array(), $this->version );
 			}
 		}
 	}

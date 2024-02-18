@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
 
-if ( ! class_exists( 'EFP_Field_typography' ) ) {
+if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 	/**
 	 *
 	 * Field: typography
@@ -21,7 +21,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 	 * @since 1.0.0
 	 * @version 1.0.0
 	 */
-	class EFP_Field_typography extends EFP_Fields {
+	class EFUL_Field_typography extends EFUL_Fields {
 
 		/**
 		 * Chosen
@@ -473,7 +473,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 
 			if ( ! wp_style_is( 'eventful-webfont-loader' ) ) {
 
-				EFP::include_plugin_file( 'fields/typography/google-fonts.php' );
+				EFUL::include_plugin_file( 'fields/typography/google-fonts.php' );
 
 				wp_enqueue_script( 'eventful-webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array( 'eventful' ), '1.6.28', true );
 
@@ -575,7 +575,7 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			if ( ! empty( $this->value['type'] ) ) {
 				$is_google = ( 'google' === $this->value['type'] ) ? true : false;
 			} else {
-				EFP::include_plugin_file( 'fields/typography/google-fonts.php' );
+				EFUL::include_plugin_file( 'fields/typography/google-fonts.php' );
 				$is_google = ( array_key_exists( $this->value['font-family'], eventful_get_google_fonts() ) ) ? true : false;
 			}
 

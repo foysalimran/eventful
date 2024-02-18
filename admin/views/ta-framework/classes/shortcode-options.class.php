@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Shortcoder' ) ) {
-  class EFP_Shortcoder extends EFP_Abstract{
+if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
+  class EFUL_Shortcoder extends EFUL_Abstract{
 
     // constans
     public $unique       = '';
@@ -26,8 +26,8 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
       'defaults'         => array(),
       'class'            => '',
       'gutenberg'        => array(
-        'title'          => 'EFP Shortcodes',
-        'description'    => 'EFP Shortcode Block',
+        'title'          => 'EFUL Shortcodes',
+        'description'    => 'EFUL Shortcode Block',
         'icon'           => 'screenoptions',
         'category'       => 'widgets',
         'keywords'       => array( 'shortcode', 'eventful', 'insert' ),
@@ -52,12 +52,12 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
 
         $name = str_replace( '_', '-', sanitize_title( $this->unique ) );
 
-        EFP::$shortcode_instances[] = wp_parse_args( array( 'name' => 'eventful/'. $name, 'modal_id' => $this->unique ), $this->args );
+        EFUL::$shortcode_instances[] = wp_parse_args( array( 'name' => 'eventful/'. $name, 'modal_id' => $this->unique ), $this->args );
 
         // elementor editor support
-        if ( EFP::is_active_plugin( 'elementor/elementor.php' ) ) {
-          add_action( 'elementor/editor/before_enqueue_scripts', array( 'EFP', 'add_admin_enqueue_scripts' ) );
-          add_action( 'elementor/editor/footer', array( 'EFP_Field_icon', 'add_footer_modal_icon' ) );
+        if ( EFUL::is_active_plugin( 'elementor/elementor.php' ) ) {
+          add_action( 'elementor/editor/before_enqueue_scripts', array( 'EFUL', 'add_admin_enqueue_scripts' ) );
+          add_action( 'elementor/editor/footer', array( 'EFUL_Field_icon', 'add_footer_modal_icon' ) );
           add_action( 'elementor/editor/footer', array( $this, 'add_footer_modal_shortcode' ) );
         }
 
@@ -192,7 +192,7 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
 
               $field_default = ( isset( $field['id'] ) ) ? $this->get_default( $field ) : '';
 
-              EFP::field( $field, $field_default, $shortcode, 'shortcode' );
+              EFUL::field( $field, $field_default, $shortcode, 'shortcode' );
 
             }
 
@@ -227,7 +227,7 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
 
                   $field_default = ( isset( $field['id'] ) ) ? $this->get_default( $field ) : '';
 
-                  EFP::field( $field, $field_default, $inner_shortcode.'[0]', 'shortcode' );
+                  EFUL::field( $field, $field_default, $inner_shortcode.'[0]', 'shortcode' );
 
                 }
 
@@ -255,11 +255,11 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
     public static function once_editor_setup() {
 
       if ( function_exists( 'register_block_type' ) ) {
-        add_action( 'enqueue_block_editor_assets', array( 'EFP_Shortcoder', 'add_guteberg_blocks' ) );
+        add_action( 'enqueue_block_editor_assets', array( 'EFUL_Shortcoder', 'add_guteberg_blocks' ) );
       }
 
       if ( eventful_wp_editor_api() ) {
-        add_action( 'media_buttons', array( 'EFP_Shortcoder', 'add_media_buttons' ) );
+        add_action( 'media_buttons', array( 'EFUL_Shortcoder', 'add_media_buttons' ) );
       }
 
     }
@@ -275,11 +275,11 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
         $depends[] = 'wp-edit-post';
       }
 
-      wp_enqueue_script( 'eventful-gutenberg-block', EFP::include_plugin_url( 'assets/js/gutenberg.js' ), $depends );
+      wp_enqueue_script( 'eventful-gutenberg-block', EFUL::include_plugin_url( 'assets/js/gutenberg.js' ), $depends );
 
-      wp_localize_script( 'eventful-gutenberg-block', 'eventful_gutenberg_blocks', EFP::$shortcode_instances );
+      wp_localize_script( 'eventful-gutenberg-block', 'eventful_gutenberg_blocks', EFUL::$shortcode_instances );
 
-      foreach ( EFP::$shortcode_instances as $block ) {
+      foreach ( EFUL::$shortcode_instances as $block ) {
 
         register_block_type( $block['name'], array(
           'editor_script' => 'eventful-gutenberg-block',
@@ -292,7 +292,7 @@ if ( ! class_exists( 'EFP_Shortcoder' ) ) {
     // Add media buttons
     public static function add_media_buttons( $editor_id ) {
 
-      foreach ( EFP::$shortcode_instances as $value ) {
+      foreach ( EFUL::$shortcode_instances as $value ) {
         echo '<a href="#" class="button button-primary eventful-shortcode-button" data-editor-id="'. esc_attr( $editor_id ) .'" data-modal-id="'. esc_attr( $value['modal_id'] ) .'">'. esc_html( $value['button_title'] ) .'</a>';
       }
 

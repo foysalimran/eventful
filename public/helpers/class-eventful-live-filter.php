@@ -14,7 +14,7 @@
  *
  * @since 2.0.0
  */
-class EFP_Live_Filter
+class EFUL_Live_Filter
 {
 	/**
 	 * Initialize the class and set its properties.
@@ -208,7 +208,7 @@ class EFP_Live_Filter
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : ''; //phpcs:ignore
 
 		$view_options                 = get_post_meta($eventful_gl_id, 'ta_eventful_view_options', true);
-		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $eventful_gl_id);
+		$query_args                   = EFUL_QueryInside::get_filtered_content($view_options, $eventful_gl_id);
 		$query_args['fields']         = 'ids';
 		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$query_args['posts_per_page'] = $post_limit;
@@ -218,7 +218,7 @@ class EFP_Live_Filter
 		if ('AND' !== $relation) {
 			$is_term_intersect = false;
 		}
-		$query_args = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
+		$query_args = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
 		$eventful_query  = array();
 		self::eventful_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
 		self::eventful_author_filter($view_options, $query_args, $author_id);
@@ -402,7 +402,7 @@ class EFP_Live_Filter
 		$layout                       = $settings['ta_eventful_layouts'];
 		$layout_preset                = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$view_options                 = $settings['ta_eventful_view_options'];
-		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $eventful_gl_id);
+		$query_args                   = EFUL_QueryInside::get_filtered_content($view_options, $eventful_gl_id);
 		$query_args['fields']         = 'ids';
 		$new_query_args               = $query_args;
 		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
@@ -414,7 +414,7 @@ class EFP_Live_Filter
 		if ('AND' !== $relation) {
 			$is_term_intersect = false;
 		}
-		$query_args = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
+		$query_args = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
 		self::eventful_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
 		self::eventful_author_filter($view_options, $query_args, $author_id);
 		self::eventful_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);

@@ -12,7 +12,7 @@
 ?>
 <div class="eventful__item--archive <?php echo esc_attr($post_thumb_meta_position); ?>">
     <?php
-    $term = EFP_Functions::eventful_post_thumb_taxonomy($taxonomy_name, $post->ID);
+    $term = EFUL_Functions::eventful_post_thumb_taxonomy($taxonomy_name, $post->ID);
     $start_tag      = $is_table ? '<td class="ta-eventful-post-meta">' : '<li>';
     $end_tag        = $is_table ? '</td>' : '</li>';
     $meta_tag_start = apply_filters('eventful_post_meta_html_tag_start', $start_tag);

@@ -7,7 +7,7 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Fields' ) ) {
+if ( ! class_exists( 'EFUL_Fields' ) ) {
   /**
 	 *
 	 * Fields Class
@@ -15,7 +15,7 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
 	 * @since 1.0.0
 	 * @version 1.0.0
 	 */
-  abstract class EFP_Fields extends EFP_Abstract {
+  abstract class EFUL_Fields extends EFUL_Abstract {
 
     /**
 		 * __Construct

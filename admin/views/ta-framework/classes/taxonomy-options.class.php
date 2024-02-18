@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Taxonomy_Options' ) ) {
-  class EFP_Taxonomy_Options extends EFP_Abstract{
+if ( ! class_exists( 'EFUL_Taxonomy_Options' ) ) {
+  class EFUL_Taxonomy_Options extends EFUL_Abstract{
 
     // constans
     public $unique      = '';
@@ -138,7 +138,7 @@ if ( ! class_exists( 'EFP_Taxonomy_Options' ) ) {
                 $field['default'] = $this->get_default( $field );
               }
 
-              EFP::field( $field, $this->get_meta_value( $field, $term_id ), $this->unique, 'taxonomy' );
+              EFUL::field( $field, $this->get_meta_value( $field, $term_id ), $this->unique, 'taxonomy' );
 
             }
           }

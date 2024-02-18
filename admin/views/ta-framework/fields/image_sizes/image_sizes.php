@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
 
-if ( ! class_exists( 'EFP_Field_image_sizes' ) ) {
+if ( ! class_exists( 'EFUL_Field_image_sizes' ) ) {
 	/**
 	 *
 	 * Field: Image sizes.
@@ -21,7 +21,7 @@ if ( ! class_exists( 'EFP_Field_image_sizes' ) ) {
 	 * @since 1.0.0
 	 * @version 1.0.0
 	 */
-	class EFP_Field_image_sizes extends EFP_Fields {
+	class EFUL_Field_image_sizes extends EFUL_Fields {
 		/**
 		 * The class constructor.
 		 *

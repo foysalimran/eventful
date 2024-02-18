@@ -5,7 +5,7 @@
 /**
  * The Typography class.
  */
-class EFP_Typography {
+class EFUL_Typography {
 
 	/**
 	 * Typography section metabox.
@@ -14,7 +14,7 @@ class EFP_Typography {
 	 * @return void
 	 */
 	public static function section( $prefix ) {
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'           => esc_html__( 'Typography', 'eventful' ),

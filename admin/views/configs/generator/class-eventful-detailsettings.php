@@ -5,7 +5,7 @@
 /**
  * The Popup settings class.
  */
-class EFP_DetailSettings {
+class EFUL_DetailSettings {
 
 	/**
 	 * Popup settings section metabox.
@@ -14,7 +14,7 @@ class EFP_DetailSettings {
 	 * @return void
 	 */
 	public static function section( $prefix ) {
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'title'  => esc_html__( 'Detail page Settings', 'eventful' ),

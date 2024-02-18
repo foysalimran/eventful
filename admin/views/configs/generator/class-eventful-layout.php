@@ -5,7 +5,7 @@
 /**
  * The Layout building class.
  */
-class EFP_Layout
+class EFUL_Layout
 {
 
 	/**
@@ -16,13 +16,13 @@ class EFP_Layout
 	 */
 	public static function section($prefix)
 	{
-		EFP::createSection(
+		EFUL::createSection(
 			$prefix,
 			array(
 				'fields' => array(
 					array(
 						'type'  => 'metabox_branding',
-						'image' => EFP_URL . 'admin/assets/img/eventful-logo.svg',
+						'image' => EFUL_URL . 'admin/assets/img/eventful-logo.svg',
 						'after' => '<i class="fas fa-life-ring"></i> Support',
 						'link'  => 'https://themeatelier.net/',
 						'class' => 'eventful-admin-header',
@@ -34,11 +34,11 @@ class EFP_Layout
 						'class'   => 'eventful-layout-preset',
 						'options' => array(
 							'grid_layout'      => array(
-								'image' => EFP_URL . 'admin/assets/img/grid.png',
+								'image' => EFUL_URL . 'admin/assets/img/grid.png',
 								'text'  => esc_html__('Grid', 'eventful'),
 							),
 							'carousel_layout'  => array(
-								'image' => EFP_URL . 'admin/assets/img/carousel.png',
+								'image' => EFUL_URL . 'admin/assets/img/carousel.png',
 								'text'  => esc_html__('Carousel', 'eventful'),
 							),
 						),

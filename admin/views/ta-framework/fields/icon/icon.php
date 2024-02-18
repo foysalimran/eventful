@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'EFP_Field_icon' ) ) {
-	class EFP_Field_icon extends EFP_Fields {
+if ( ! class_exists( 'EFUL_Field_icon' ) ) {
+	class EFUL_Field_icon extends EFUL_Fields {
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -40,8 +40,8 @@ if ( ! class_exists( 'EFP_Field_icon' ) ) {
 		}
 
 		public function enqueue() {
-			add_action( 'admin_footer', array( 'EFP_Field_icon', 'add_footer_modal_icon' ) );
-			add_action( 'customize_controls_print_footer_scripts', array( 'EFP_Field_icon', 'add_footer_modal_icon' ) );
+			add_action( 'admin_footer', array( 'EFUL_Field_icon', 'add_footer_modal_icon' ) );
+			add_action( 'customize_controls_print_footer_scripts', array( 'EFUL_Field_icon', 'add_footer_modal_icon' ) );
 		}
 
 		public static function add_footer_modal_icon() {

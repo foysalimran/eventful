@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'WP_Customize_Panel_EFP' ) && class_exists( 'WP_Customize_Panel' ) ) {
-	class WP_Customize_Panel_EFP extends WP_Customize_Panel {
+if ( ! class_exists( 'WP_Customize_Panel_EFUL' ) && class_exists( 'WP_Customize_Panel' ) ) {
+	class WP_Customize_Panel_EFUL extends WP_Customize_Panel {
 		public $type = 'eventful';
 	}
 }
@@ -20,8 +20,8 @@ if ( ! class_exists( 'WP_Customize_Panel_EFP' ) && class_exists( 'WP_Customize_P
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'WP_Customize_Section_EFP' ) && class_exists( 'WP_Customize_Section' ) ) {
-	class WP_Customize_Section_EFP extends WP_Customize_Section {
+if ( ! class_exists( 'WP_Customize_Section_EFUL' ) && class_exists( 'WP_Customize_Section' ) ) {
+	class WP_Customize_Section_EFUL extends WP_Customize_Section {
 		public $type = 'eventful';
 	}
 }
@@ -33,8 +33,8 @@ if ( ! class_exists( 'WP_Customize_Section_EFP' ) && class_exists( 'WP_Customize
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'WP_Customize_Control_EFP' ) && class_exists( 'WP_Customize_Control' ) ) {
-	class WP_Customize_Control_EFP extends WP_Customize_Control {
+if ( ! class_exists( 'WP_Customize_Control_EFUL' ) && class_exists( 'WP_Customize_Control' ) ) {
+	class WP_Customize_Control_EFUL extends WP_Customize_Control {
 
 		public $type   = 'eventful';
 		public $field  = '';
@@ -132,7 +132,7 @@ if ( ! class_exists( 'WP_Customize_Control_EFP' ) && class_exists( 'WP_Customize
 
 			echo '<div class="eventful-customize-field' . esc_attr( $class ) . '"' . wp_kses_post( $atts ) . '>';
 
-			EFP::field( $this->field, $this->value(), $this->unique, 'customize' );
+			EFUL::field( $this->field, $this->value(), $this->unique, 'customize' );
 
 			echo '</div>';
 		}

@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'EFP_Options' ) ) {
-  class EFP_Options extends EFP_Abstract {
+if ( ! class_exists( 'EFUL_Options' ) ) {
+  class EFUL_Options extends EFUL_Abstract {
 
     // constans
     public $unique       = '';
@@ -607,7 +607,7 @@ if ( ! class_exists( 'EFP_Options' ) ) {
 
                   $value = ( ! empty( $field['id'] ) && isset( $this->options[$field['id']] ) ) ? $this->options[$field['id']] : '';
 
-                  EFP::field( $field, $value, $this->unique, 'options' );
+                  EFUL::field( $field, $value, $this->unique, 'options' );
 
                 }
 

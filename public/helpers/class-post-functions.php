@@ -14,7 +14,7 @@
  *
  * @since 2.0.0
  */
-class EFP_Functions
+class EFUL_Functions
 {
 	/**
 	 * WP Version compare
@@ -348,7 +348,7 @@ class EFP_Functions
 			}
 		}
 
-		$placeholder_img = EFP_URL . 'public/assets/img/placeholder.png';
+		$placeholder_img = EFUL_URL . 'public/assets/img/placeholder.png';
 		$placeholder_img = apply_filters('eventful_no_thumb_placeholder', $placeholder_img);
 
 		if (empty($thumb_id) && !empty($placeholder_img)) {
@@ -753,7 +753,7 @@ class EFP_Functions
 					}
 					echo wp_kses_post($meta_tag_start);
 					?>
-					<?php echo EFP_User_Like::get_eventful_likes_button($post->ID); ?>
+					<?php echo EFUL_User_Like::get_eventful_likes_button($post->ID); ?>
 					<?php
 					echo wp_kses_post($meta_tag_end);
 					break;
@@ -1212,7 +1212,7 @@ class EFP_Functions
 		}
 
 		if (!$default_path) {
-			$default_path = EFP_PATH . 'public/templates/';
+			$default_path = EFUL_PATH . 'public/templates/';
 		}
 		$template = locate_template(trailingslashit($template_path) . $template_name);
 		// Get default template.
