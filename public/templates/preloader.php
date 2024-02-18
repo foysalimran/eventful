@@ -9,4 +9,4 @@
  */
 
 ?>
-<div class="efp-preloader"></div>
+<div class="eventful-preloader"></div>

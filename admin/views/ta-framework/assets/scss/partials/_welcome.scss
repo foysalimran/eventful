@@ -1,7 +1,7 @@
 /**
  * 11. Welcome Page
  */
-.efp-welcome-wrap{
+.eventful-welcome-wrap{
   position: relative;
   margin: 25px 40px 0 20px;
   font-size: 15px;
@@ -21,7 +21,7 @@
     font-weight: 400;
   }
 
-  .efp-logo{
+  .eventful-logo{
     position: absolute;
     overflow: hidden;
     top: 0;
@@ -112,7 +112,7 @@
     }
   }
 
-  .efp-about-text{
+  .eventful-about-text{
     font-weight: 400;
     line-height: 1.6em;
     font-size: 19px;
@@ -120,7 +120,7 @@
     color: #555d66;
   }
 
-  .efp-demo-button{
+  .eventful-demo-button{
     margin: 1em 200px 2em 0;
   }
 
@@ -205,7 +205,7 @@
   }
 }
 
-.efp-welcome-cols{
+.eventful-welcome-cols{
   clear: both;
   margin: 20px 0;
   background-color: #fff;
@@ -279,7 +279,7 @@
   }
 }
 
-.efp-features-cols{
+.eventful-features-cols{
 
   .eventful--key-features{
     width: 30%;
@@ -289,7 +289,7 @@
   }
 }
 
-.efp-code-block{
+.eventful-code-block{
   margin: 20px 0;
   padding: 5px 20px;
   background-color: #fff;
@@ -326,7 +326,7 @@
 
 @media only screen and (max-width:782px){
 
-  .efp-welcome-cols{
+  .eventful-welcome-cols{
     .eventful--col{
       width: 100%;
       min-height: auto;
@@ -335,7 +335,7 @@
     }
   }
 
-  .efp-features-cols{
+  .eventful-features-cols{
     .eventful--key-features{
       width: 100%;
     }

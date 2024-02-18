@@ -47,18 +47,18 @@ if ( ! class_exists( 'EFP_Field_wp_editor' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo ( efp_wp_editor_api() ) ? '<div class="efp-wp-editor" data-editor-settings="' . esc_attr( wp_json_encode( $editor_settings ) ) . '">' : '';
+			echo ( eventful_wp_editor_api() ) ? '<div class="eventful-wp-editor" data-editor-settings="' . esc_attr( wp_json_encode( $editor_settings ) ) . '">' : '';
 
 			echo '<textarea name="' . esc_attr( $this->field_name() ) . '"' . wp_kses_post( $this->field_attributes( $attributes ) ) . wp_kses_post( $editor_height ) . '>' . wp_kses_post( $this->value ) . '</textarea>';
 
-			echo ( efp_wp_editor_api() ) ? '</div>' : '';
+			echo ( eventful_wp_editor_api() ) ? '</div>' : '';
 
 			echo wp_kses_post( $this->field_after() );
 		}
 
 		public function enqueue() {
 
-			if ( efp_wp_editor_api() && function_exists( 'wp_enqueue_editor' ) ) {
+			if ( eventful_wp_editor_api() && function_exists( 'wp_enqueue_editor' ) ) {
 
 				wp_enqueue_editor();
 
@@ -83,17 +83,17 @@ if ( ! class_exists( 'EFP_Field_wp_editor' ) ) {
 			$media_buttons = ob_get_clean();
 
 			echo '<script type="text/javascript">';
-			echo 'var efp_media_buttons = ' . wp_json_encode( $media_buttons ) . ';';
+			echo 'var eventful_media_buttons = ' . wp_json_encode( $media_buttons ) . ';';
 			echo '</script>';
 		}
 
 		// Setup wp editor settings
 		public function setup_wp_editor_settings() {
 
-			if ( efp_wp_editor_api() && class_exists( '_WP_Editors' ) ) {
+			if ( eventful_wp_editor_api() && class_exists( '_WP_Editors' ) ) {
 
 				$defaults = apply_filters(
-					'efp_wp_editor',
+					'eventful_wp_editor',
 					array(
 						'tinymce' => array(
 							'wp_skip_init' => true,
@@ -101,9 +101,9 @@ if ( ! class_exists( 'EFP_Field_wp_editor' ) ) {
 					)
 				);
 
-				$setup = _WP_Editors::parse_settings( 'efp_wp_editor', $defaults );
+				$setup = _WP_Editors::parse_settings( 'eventful_wp_editor', $defaults );
 
-				_WP_Editors::editor_settings( 'efp_wp_editor', $setup );
+				_WP_Editors::editor_settings( 'eventful_wp_editor', $setup );
 
 			}
 		}

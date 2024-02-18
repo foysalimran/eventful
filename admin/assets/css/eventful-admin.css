@@ -7,7 +7,7 @@
     text-align: center;
   }
   
-  div.ta-efp-help .wp-badge {
+  div.ta-eventful-help .wp-badge {
     border: none;
     background: url(../img/sps-badge.png) right no-repeat;
     background-size: 100px 100px;
@@ -16,28 +16,28 @@
     top: -75px;
   }
   
-  .about-wrap.ta-efp-help [class$="-col"] {
+  .about-wrap.ta-eventful-help [class$="-col"] {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
   }
   
-  .about-wrap.ta-efp-help [class$="-col"] .col {
+  .about-wrap.ta-eventful-help [class$="-col"] .col {
     flex: 1;
     align-self: flex-start;
   }
   .about-wrap.plugin-section {
     margin: 25px 0px 0px;
   }
-  .about-wrap.ta-efp-help .feature-section .col {
+  .about-wrap.ta-eventful-help .feature-section .col {
     margin-top: 40px;
   }
   
-  .about-wrap.ta-efp-help [class$="-col"] .col + .col {
+  .about-wrap.ta-eventful-help [class$="-col"] .col + .col {
     margin-left: 20px;
   }
   
-  .wrap.about-wrap.ta-efp-help .headline-feature.feature-video {
+  .wrap.about-wrap.ta-eventful-help .headline-feature.feature-video {
     position: relative;
     margin: 40px 0;
     padding-bottom: 56.25%;
@@ -47,7 +47,7 @@
     text-align: center;
   }
   
-  div.ta-efp-help .headline-feature.feature-video iframe {
+  div.ta-eventful-help .headline-feature.feature-video iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -55,12 +55,12 @@
     height: 100%;
   }
   
-  div.ta-efp-help .plugin-section .ta-plugin-section-title h2 {
+  div.ta-eventful-help .plugin-section .ta-plugin-section-title h2 {
     font-size: 2.2em;
     color: #32373c;
     font-weight: 400;
   }
-  div.ta-efp-help .plugin-section .ta-plugin-section-title h4 {
+  div.ta-eventful-help .plugin-section .ta-plugin-section-title h4 {
     font-weight: 400;
     text-align: center;
     font-size: 18px;
@@ -69,40 +69,40 @@
     margin-bottom: 40px;
   }
   
-  div.ta-efp-help .feature-section .ta-efp-feature {
+  div.ta-eventful-help .feature-section .ta-eventful-feature {
     padding: 20px 20px;
     border: 1px solid #ddd;
   }
   
-  div.ta-efp-help .feature-section .ta-efp-feature h3 {
+  div.ta-eventful-help .feature-section .ta-eventful-feature h3 {
     font-size: 16px;
     margin-top: 18px;
   }
   
-  div.ta-efp-help .feature-section i.ta-efp-font-icon {
+  div.ta-eventful-help .feature-section i.ta-eventful-font-icon {
     font-size: 30px;
     display: block;
     color: #263ad0;
     font-family: "Font Awesome 5 Free";
     font-style: normal;
   }
-  .ta-efp-help .ta-efp-plugin {
+  .ta-eventful-help .ta-eventful-plugin {
     border: 1px solid #ddd;
   }
-  .ta-efp-help .ta-efp-plugin-content {
+  .ta-eventful-help .ta-eventful-plugin-content {
     padding: 0 20px 20px;
   }
-  .ta-efp-help .ta-efp-plugin-content h3 {
+  .ta-eventful-help .ta-eventful-plugin-content h3 {
     margin-top: 20px;
     margin-bottom: 8px;
     font-weight: 500;
   }
-  .ta-efp-help .feature-section .ta-efp-feature,
-  .ta-efp-help .ta-efp-plugin {
+  .ta-eventful-help .feature-section .ta-eventful-feature,
+  .ta-eventful-help .ta-eventful-plugin {
     background-color: #fff;
   }
   /* Preloader */
-  #ta_eventful_view_options .efp-metabox {
+  #ta_eventful_view_options .eventful-metabox {
     min-height: 300px;
     z-index: 999;
     background-image: url(../img/preloader.gif);
@@ -110,11 +110,11 @@
     background-color: #fff;
     background-position: center 65%;
   }
-  #ta_eventful_view_options .efp-nav-metabox li {
+  #ta_eventful_view_options .eventful-nav-metabox li {
     opacity: 0;
   }
   /* Shortcode sidebar */
-  .efp-after-copy-text {
+  .eventful-after-copy-text {
     bottom: 0;
     opacity: 0;
     z-index: 9999999;
@@ -129,13 +129,13 @@
     background: #32373C;
     border: 1px solid #32373C;
   }
-  .efp-after-copy-text .fa-check-circle {
+  .eventful-after-copy-text .fa-check-circle {
     font-size: 14px;
     margin-right: 2px;
     color: #5db62e
   }
   
-  span.efp-shortcode-selectable {
+  span.eventful-shortcode-selectable {
     background-color: #eeeeee;
     padding: 10px 15px 10px 30px;
     display: inline-block;
@@ -146,7 +146,7 @@
     position: relative;
     width: 80%;
   }
-  span.efp-shortcode-selectable::after {
+  span.eventful-shortcode-selectable::after {
     content: url(../img/copy.svg);
     width: 16px;
     left: 10px;
@@ -154,15 +154,15 @@
     position: absolute;
     margin-top: -6px;
   }
-  .efp-scode-wrap-side p {
+  .eventful-scode-wrap-side p {
     margin-top: 0;
   }
-  .efp-scode-wrap-side {
+  .eventful-scode-wrap-side {
     margin-top: 0;
     margin-bottom: 16px;
     overflow: hidden;
   }
-  .efp-scode-wrap-side .efp-sc-title {
+  .eventful-scode-wrap-side .eventful-sc-title {
     margin-top: 0;
     margin-bottom: 7px;
     font-size: 1.2em;

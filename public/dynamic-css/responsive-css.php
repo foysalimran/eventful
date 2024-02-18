@@ -9,17 +9,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 $eventful_settings                  = get_option( 'ta_eventful_settings' );
-$eventful_responsive_screen_setting = isset( $eventful_settings['efp_responsive_screen_setting'] ) ? $eventful_settings['efp_responsive_screen_setting'] : '';
+$eventful_responsive_screen_setting = isset( $eventful_settings['eventful_responsive_screen_setting'] ) ? $eventful_settings['eventful_responsive_screen_setting'] : '';
 $desktop_screen_size           = isset( $eventful_responsive_screen_setting ['desktop'] ) ? $eventful_responsive_screen_setting ['desktop'] : '1200';
 $tablet_screen_size            = isset( $eventful_responsive_screen_setting ['tablet'] ) ? $eventful_responsive_screen_setting ['tablet'] : '992';
 $mobile_land_screen_size       = isset( $eventful_responsive_screen_setting ['mobile_landscape'] ) ? $eventful_responsive_screen_setting ['mobile_landscape'] : '768';
 $mobile_screen_size            = isset( $eventful_responsive_screen_setting ['mobile'] ) ? $eventful_responsive_screen_setting ['mobile'] : '576';
 $classes                       = get_body_class();
 if ( in_array( 'et_divi_builder', $classes, true ) ) {
-	$custom_css .= '#et-boc .et-l .efp-filter-bar .efp-bar {
+	$custom_css .= '#et-boc .et-l .eventful-filter-bar .eventful-bar {
   margin-bottom: 30px;
 }
-#et-boc .et-l .efp-filter-bar label {
+#et-boc .et-l .eventful-filter-bar label {
   display: inline-block;
   font-size: 16px;
   font-weight: 400;
@@ -27,7 +27,7 @@ if ( in_array( 'et_divi_builder', $classes, true ) ) {
   text-transform: capitalize;
   margin-bottom: 10px;
 }
-#et-boc .et-l .efp-order.efp-bar.fl-btn input ~ div, #et-boc .et-l .efp-order-by.efp-bar.fl-btn input ~ div, #et-boc .et-l .efp-author-filter.efp-bar.fl_button input ~ div, #et-boc .et-l .efp-filter-bar .efp-filter-by.efp-bar.fl_button input ~ div {
+#et-boc .et-l .eventful-order.eventful-bar.fl-btn input ~ div, #et-boc .et-l .eventful-order-by.eventful-bar.fl-btn input ~ div, #et-boc .et-l .eventful-author-filter.eventful-bar.fl_button input ~ div, #et-boc .et-l .eventful-filter-bar .eventful-filter-by.eventful-bar.fl_button input ~ div {
   padding: 4px 10px;
   cursor: pointer;
   border-radius: 3px;
@@ -37,26 +37,26 @@ if ( in_array( 'et_divi_builder', $classes, true ) ) {
   text-transform: uppercase;
   text-align: center;
 }
-#et-boc .et-l .ta-efp-post .ta-efp-post-content .ta-efp-readmore {
+#et-boc .et-l .ta-eventful-post .ta-eventful-post-content .ta-eventful-readmore {
   margin-top: 15px;
 }
-#et-boc .et-l .ta-efp-post .ta-efp-post-content .ta-efp-readmore a {
+#et-boc .et-l .ta-eventful-post .ta-eventful-post-content .ta-eventful-readmore a {
   display: inline-block;
   border: 1px solid;
   padding: 7px 12px;
   box-shadow: 0 0 0;
 }
-#et-boc .et-l .efp-hide {
+#et-boc .et-l .eventful-hide {
   display: none;
 }
-#et-boc .et-l .ta-efp-post.left-thumb .eventful__item__content {
+#et-boc .et-l .ta-eventful-post.left-thumb .eventful__item__content {
   margin-left: 20px;
 }
 #et-boc .et-l .zigzag-container .ta-col-xs-1 .eventful__item__content {
   margin-left: 20px;
   margin-right: 0;
 }
-#et-boc .et-l .ta-collapse .efp-collapse-header {
+#et-boc .et-l .ta-collapse .eventful-collapse-header {
   padding: 15px;
   display: block;
   border-bottom: none;
@@ -65,7 +65,7 @@ if ( in_array( 'et_divi_builder', $classes, true ) ) {
   font-size: 20px;
   cursor: pointer;
 }
-#et-boc .et-l [class*="ta-efp-block-"] .ta-efp-post-thumb-area img {
+#et-boc .et-l [class*="ta-eventful-block-"] .ta-eventful-post-thumb-area img {
   height: 100%;
   width: 100%;
 }
@@ -75,14 +75,14 @@ if ( in_array( 'et_divi_builder', $classes, true ) ) {
   margin-left: auto;
   position: relative;
 }
-#et-boc .et-l .ta-efp-post.right-thumb .eventful__item__content {
+#et-boc .et-l .ta-eventful-post.right-thumb .eventful__item__content {
   text-align: right;
   margin-right: 20px;
 }
-#et-boc .et-l .efp-post-pagination.efp-on-mobile {
+#et-boc .et-l .eventful-post-pagination.eventful-on-mobile {
 display: none;
 }
-#et-boc .et-l .efp-post-pagination a, #et-boc .et-l .efp-post-pagination .page-numbers {
+#et-boc .et-l .eventful-post-pagination a, #et-boc .et-l .eventful-post-pagination .page-numbers {
   background: #fff;
   color: #5e5e5e;
   border: 2px solid #bbb;
@@ -102,11 +102,11 @@ display: none;
   box-sizing: content-box;
   cursor: pointer;
 }
-#et-boc .et-l .ta-efp-carousel div{
+#et-boc .et-l .ta-eventful-carousel div{
 	-webkit-transition:600ms;
 	transition:600ms;
 }
-#et-boc .et-l .ta-efp-timeline-section .efp-timeline-item .ta-efp-post {
+#et-boc .et-l .ta-eventful-timeline-section .eventful-timeline-item .ta-eventful-post {
   margin-bottom: 40px;
 }';
 }
@@ -258,7 +258,7 @@ $custom_css .= "
     max-width: 12.5%;
   }
 }
-.efp-post-pagination.efp-on-mobile {
+.eventful-post-pagination.eventful-on-mobile {
   display: none;
 }
 @media (max-width: {$mobile_screen_size}px) {
@@ -294,10 +294,10 @@ $custom_css .= "
     flex: 0 0 12.5%;
     max-width: 12.5%;
   }
-  .efp-post-pagination.efp-on-mobile:not(.efp-hide) {
+  .eventful-post-pagination.eventful-on-mobile:not(.eventful-hide) {
     display: block;
   }
-  .efp-post-pagination:not(.efp-on-mobile) {
+  .eventful-post-pagination:not(.eventful-on-mobile) {
     display: none;
   }
 }

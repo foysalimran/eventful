@@ -171,7 +171,7 @@ class Eventful_Admin
 		$eventfuls_types = isset($eventful_layouts['eventful_layout_preset']) ? $eventful_layouts['eventful_layout_preset'] : '';
 		switch ($column) {
 			case 'shortcode':
-				$column_field = '<input  class="ta_eventful_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="efp-after-copy-text"><i class="far fa-check-circle"></i> ' . esc_html('Shortcode Copied to Clipboard!', 'eventful') . ' </div>';
+				$column_field = '<input  class="ta_eventful_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="eventful-after-copy-text"><i class="far fa-check-circle"></i> ' . esc_html('Shortcode Copied to Clipboard!', 'eventful') . ' </div>';
 				echo $column_field;
 				break;
 			case 'eventful_layout':
@@ -198,7 +198,7 @@ class Eventful_Admin
  *
  * @return string
  */
-function efp_dashboard_capability()
+function eventful_dashboard_capability()
 {
-	return apply_filters('efp_dashboard_capability', 'manage_options');
+	return apply_filters('eventful_dashboard_capability', 'manage_options');
 }

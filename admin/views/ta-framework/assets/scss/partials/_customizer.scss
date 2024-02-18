@@ -3,10 +3,10 @@
  */
 .control-section{
 
-  .efp-field{
+  .eventful-field{
     padding: 0;
 
-    .efp-title{
+    .eventful-title{
       float: none;
       width: 100%;
       margin-bottom: 6px;
@@ -20,22 +20,22 @@
       }
     }
 
-    .efp-fieldset{
+    .eventful-fieldset{
       float: none;
       width: 100%;
     }
   }
 
-  .efp-help{
+  .eventful-help{
     top: -5px;
     right: -5px;
   }
 
-  .efp-field-select select{
+  .eventful-field-select select{
     width: 100%;
   }
 
-  .efp-field-heading{
+  .eventful-field-heading{
     color: inherit;
     font-size: 14px;
     line-height: 1em;
@@ -44,7 +44,7 @@
     padding: 15px;
   }
 
-  .efp-field-subheading{
+  .eventful-field-subheading{
     color: inherit;
     font-size: 11px;
     margin-right: -15px;
@@ -52,29 +52,29 @@
     padding: 10px 15px;
   }
 
-  .efp-subtitle-text{
+  .eventful-subtitle-text{
     margin-top: 4px;
     font-size: 12px;
   }
 
-  .efp-field-submessage .efp-submessage{
+  .eventful-field-submessage .eventful-submessage{
     margin-right: -15px;
     margin-left: -15px;
     padding: 15px;
   }
 
-  .efp-fieldset{
+  .eventful-fieldset{
 
-    .efp-field-submessage .efp-submessage,
-    .efp-field-heading,
-    .efp-field-subheading{
+    .eventful-field-submessage .eventful-submessage,
+    .eventful-field-heading,
+    .eventful-field-subheading{
       margin-left: 0;
       margin-right: 0;
     }
   }
 
-  .efp-field-date,
-  .efp-field-datetime{
+  .eventful-field-date,
+  .eventful-field-datetime{
 
     label{
       display: block;
@@ -86,37 +86,37 @@
     }
   }
 
-  .efp-field-sorter{
+  .eventful-field-sorter{
 
     ul li{
       padding: 5px;
     }
 
-    .efp-modules{
+    .eventful-modules{
       float: none;
       width: 100%;
     }
 
-    .efp-modules:first-child{
+    .eventful-modules:first-child{
       padding-right: 0;
       padding-bottom: 15px;
     }
   }
 
-  .efp-field-background{
+  .eventful-field-background{
 
     .eventful--background-attributes{
       flex-direction: column;
     }
   }
 
-  .efp-field-spacing{
+  .eventful-field-spacing{
     input{
       width: 90px;
     }
   }
 
-  .efp-field-border{
+  .eventful-field-border{
 
     .eventful--input{
       flex: 1 50%;
@@ -128,44 +128,44 @@
     }
   }
 
-  .efp-field-spinner{
+  .eventful-field-spinner{
     input{
       width: 50px;
     }
   }
 
-  .efp-field-number{
+  .eventful-field-number{
 
     .eventful--wrap{
       width: 100%;
     }
   }
 
-  .efp-field-backup{
+  .eventful-field-backup{
 
-    .efp-export-data{
+    .eventful-export-data{
       display: none;
     }
   }
 
-  .efp-field-fieldset{
+  .eventful-field-fieldset{
 
-    .efp-fieldset-content{
+    .eventful-fieldset-content{
       border-color: #e5e5e5;
     }
   }
 
-  .efp-tabbed-content,
-  .efp-sortable-content,
-  .efp-repeater-content,
-  .efp-fieldset-content,
-  .efp-cloneable-content,
-  .efp-accordion-content{
+  .eventful-tabbed-content,
+  .eventful-sortable-content,
+  .eventful-repeater-content,
+  .eventful-fieldset-content,
+  .eventful-cloneable-content,
+  .eventful-accordion-content{
 
-    > .efp-field{
+    > .eventful-field{
       padding: 10px;
 
-      .efp-title{
+      .eventful-title{
         margin-bottom: 5px;
       }
 
@@ -175,11 +175,11 @@
     }
   }
 
-  .efp-depend-hidden.efp-depend-on{
+  .eventful-depend-hidden.eventful-depend-on{
     display: none !important;
   }
 
-  .efp-depend-visible.efp-depend-on{
+  .eventful-depend-visible.eventful-depend-on{
     border-top: 0 !important;
   }
 }

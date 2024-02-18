@@ -2773,7 +2773,7 @@
 
       _this.options.data['term'] = value;
 
-      _this.chosenXhr = window.wp.ajax.post('efp-chosen', _this.options.data).done( function( response ) {
+      _this.chosenXhr = window.wp.ajax.post('eventful-chosen', _this.options.data).done( function( response ) {
         _this.show_results( response );
       }).fail( function( response ) {
         _this.container.find('.no-results').text(response.error);
@@ -2820,7 +2820,7 @@
 
     if( this.is_multiple ) {
 
-      var $hidden_select = this.element.parent().find('.efp-hide-select');
+      var $hidden_select = this.element.parent().find('.eventful-hide-select');
       var $hidden_value  = $hidden_select.val() || [];
 
       this.element.EFPChosenOrder($hidden_value, true);
@@ -4549,7 +4549,7 @@
       if( result ) {
 
         $(controls).each(function() {
-          $(this).removeClass('efp-depend-on');
+          $(this).removeClass('eventful-depend-on');
         });
 
         $(this.rules).each(function() {
@@ -4559,7 +4559,7 @@
       } else {
 
         $(controls).each(function() {
-          $(this).addClass('efp-depend-on');
+          $(this).addClass('eventful-depend-on');
         });
 
         $(this.rules).each(function() {
@@ -4589,7 +4589,7 @@
     }
   });
 
-  $.efp_deps = {
+  $.eventful_deps = {
 
     createRuleset: function() {
       return new Ruleset();

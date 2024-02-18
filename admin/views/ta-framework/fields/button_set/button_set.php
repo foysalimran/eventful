@@ -36,7 +36,7 @@ if ( ! class_exists( 'EFP_Field_button_set' ) ) {
 
 				if ( is_array( $options ) && ! empty( $options ) ) {
 
-					echo '<div class="efp-siblings eventful--button-group" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
+					echo '<div class="eventful-siblings eventful--button-group" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
 
 					foreach ( $options as $key => $option ) {
 

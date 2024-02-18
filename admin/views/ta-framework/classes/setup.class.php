@@ -65,7 +65,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
     public function __construct() {
 
       // Init action
-      do_action( 'efp_init' );
+      do_action( 'eventful_init' );
 
       add_action( 'after_setup_theme', array( 'EFP', 'setup' ) );
       add_action( 'init', array( 'EFP', 'setup' ) );
@@ -244,7 +244,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       }
 
-      do_action( 'efp_loaded' );
+      do_action( 'eventful_loaded' );
 
     }
 
@@ -325,7 +325,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       $path     = '';
       $file     = ltrim( $file, '/' );
-      $override = apply_filters( 'efp_override', 'efp-override' );
+      $override = apply_filters( 'eventful_override', 'eventful-override' );
 
       if ( file_exists( get_parent_theme_file_path( $override .'/'. $file ) ) ) {
         $path = get_parent_theme_file_path( $override .'/'. $file );
@@ -401,7 +401,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       }
 
       // Include all framework fields
-      $fields = apply_filters( 'efp_fields', array(
+      $fields = apply_filters( 'eventful_fields', array(
         'accordion',
         'background',
         'backup',
@@ -558,13 +558,13 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
           self::$enqueue = true;
         }
 
-        if ( $wpscreen->id === 'tools_page_efp-welcome' ) {
+        if ( $wpscreen->id === 'tools_page_eventful-welcome' ) {
           self::$enqueue = true;
         }
 
       }
 
-      if ( ! apply_filters( 'efp_enqueue_assets', self::$enqueue ) ) {
+      if ( ! apply_filters( 'eventful_enqueue_assets', self::$enqueue ) ) {
         return;
       }
 
@@ -576,7 +576,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       wp_enqueue_script( 'wp-color-picker' );
 
       // Font awesome 4 and 5 loader
-      if ( apply_filters( 'efp_fa4', false ) ) {
+      if ( apply_filters( 'eventful_fa4', false ) ) {
         wp_enqueue_style( 'font-awesome_v4-fa', EFP_URL . 'admin/views/ta-framework/assets/css/font-awesome_v4.min.css', array(), '4.7.0', 'all' );
       } else {
         wp_enqueue_style( 'font-awesome_v5-fa5', EFP_URL .'admin/views/ta-framework/assets/css/font-awesome_v5.min.css', array(), '5.15.5', 'all' );
@@ -591,7 +591,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
       // Main RTL styles
       if ( is_rtl() ) {
-        wp_enqueue_style( 'efp-rtl', self::include_plugin_url( 'assets/css/style-rtl'. $min .'.css' ), array(), self::$version, 'all' );
+        wp_enqueue_style( 'eventful-rtl', self::include_plugin_url( 'assets/css/style-rtl'. $min .'.css' ), array(), self::$version, 'all' );
       }
 
       // Main style
@@ -603,13 +603,13 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       }
 
       // Main scripts
-      wp_enqueue_script( 'efp-plugins', self::include_plugin_url( 'assets/js/plugins'. $min .'.js' ), array(), self::$version, true );
-      wp_enqueue_script( 'eventful', self::include_plugin_url( 'assets/js/main'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
-      wp_enqueue_script( 'efp-custom', self::include_plugin_url( 'assets/js/taf-custom'. $min .'.js' ), array( 'efp-plugins' ), self::$version, true );
+      wp_enqueue_script( 'eventful-plugins', self::include_plugin_url( 'assets/js/plugins'. $min .'.js' ), array(), self::$version, true );
+      wp_enqueue_script( 'eventful', self::include_plugin_url( 'assets/js/main'. $min .'.js' ), array( 'eventful-plugins' ), self::$version, true );
+      wp_enqueue_script( 'eventful-custom', self::include_plugin_url( 'assets/js/taf-custom'. $min .'.js' ), array( 'eventful-plugins' ), self::$version, true );
 
       // Main variables
-      wp_localize_script( 'eventful', 'efp_vars', array(
-        'color_palette'     => apply_filters( 'efp_color_palette', array() ),
+      wp_localize_script( 'eventful', 'eventful_vars', array(
+        'color_palette'     => apply_filters( 'eventful_color_palette', array() ),
         'i18n'              => array(
           'confirm'         => esc_html__( 'Are you sure?', 'ta-framework' ),
           'typing_text'     => esc_html__( 'Please enter %s or more characters', 'ta-framework' ),
@@ -636,7 +636,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         }
       }
 
-      do_action( 'efp_enqueue' );
+      do_action( 'eventful_enqueue' );
 
     }
 
@@ -664,7 +664,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
 
           $query['display'] = 'swap';
 
-          wp_enqueue_style( 'efp-google-web-fonts', esc_url( add_query_arg( $query, '//fonts.googleapis.com/css' ) ), array(), null );
+          wp_enqueue_style( 'eventful-google-web-fonts', esc_url( add_query_arg( $query, '//fonts.googleapis.com/css' ) ), array(), null );
 
         }
 
@@ -676,9 +676,9 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
             $fonts[] = $family . ( ( ! empty( $styles ) ) ? ':'. implode( ',', $styles ) : '' );
           }
 
-          wp_enqueue_script( 'efp-google-web-fonts', esc_url( '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' ), array(), null );
+          wp_enqueue_script( 'eventful-google-web-fonts', esc_url( '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' ), array(), null );
 
-          wp_localize_script( 'efp-google-web-fonts', 'WebFontConfig', array( 'google' => array( 'families' => $fonts ) ) );
+          wp_localize_script( 'eventful-google-web-fonts', 'WebFontConfig', array( 'google' => array( 'families' => $fonts ) ) );
 
         }
 
@@ -689,8 +689,8 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
     // Add admin body class
     public static function add_admin_body_class( $classes ) {
 
-      if ( apply_filters( 'efp_fa4', false ) ) {
-        $classes .= 'efp-fa5-shims';
+      if ( apply_filters( 'eventful_fa4', false ) ) {
+        $classes .= 'eventful-fa5-shims';
       }
 
       return $classes;
@@ -725,7 +725,7 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
       $visible    = '';
       $unique     = ( ! empty( $unique ) ) ? $unique : '';
       $class      = ( ! empty( $field['class'] ) ) ? ' ' . esc_attr( $field['class'] ) : '';
-      $is_pseudo  = ( ! empty( $field['pseudo'] ) ) ? ' efp-pseudo-field' : '';
+      $is_pseudo  = ( ! empty( $field['pseudo'] ) ) ? ' eventful-pseudo-field' : '';
       $field_type = ( ! empty( $field['type'] ) ) ? esc_attr( $field['type'] ) : '';
 
       if ( ! empty( $field['dependency'] ) ) {
@@ -756,23 +756,23 @@ if ( ! class_exists( 'EFP_Setup' ) ) {
         $depend .= ' data-value="'. esc_attr( $data_value ) .'"';
         $depend .= ( ! empty( $data_global ) ) ? ' data-depend-global="true"' : '';
 
-        $visible = ( ! empty( $depend_visible ) ) ? ' efp-depend-visible' : ' efp-depend-hidden';
+        $visible = ( ! empty( $depend_visible ) ) ? ' eventful-depend-visible' : ' eventful-depend-hidden';
 
       }
 
       // These attributes has been sanitized above.
-      echo '<div class="efp-field efp-field-'. $field_type . $is_pseudo . $class . $visible .'"'. $depend .'>';
+      echo '<div class="eventful-field eventful-field-'. $field_type . $is_pseudo . $class . $visible .'"'. $depend .'>';
 
       if ( ! empty( $field_type ) ) {
 
         if ( ! empty( $field['title'] ) ) {
-          echo '<div class="efp-title">';
+          echo '<div class="eventful-title">';
           echo '<h4>'. $field['title'] .'</h4>';
-          echo ( ! empty( $field['subtitle'] ) ) ? '<div class="efp-subtitle-text">'. $field['subtitle'] .'</div>' : '';
+          echo ( ! empty( $field['subtitle'] ) ) ? '<div class="eventful-subtitle-text">'. $field['subtitle'] .'</div>' : '';
           echo '</div>';
         }
 
-        echo ( ! empty( $field['title'] ) ) ? '<div class="efp-fieldset">' : '';
+        echo ( ! empty( $field['title'] ) ) ? '<div class="eventful-fieldset">' : '';
 
         $value = ( ! isset( $value ) && isset( $field['default'] ) ) ? $field['default'] : $value;
         $value = ( isset( $field['value'] ) ) ? $field['value'] : $value;

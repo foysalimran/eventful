@@ -26,9 +26,9 @@ if ( ! class_exists( 'EFP_Field_color_group' ) ) {
 					$color_value  = ( ! empty( $this->value[ $key ] ) ) ? $this->value[ $key ] : '';
 					$default_attr = ( ! empty( $this->field['default'][ $key ] ) ) ? ' data-default-color="' . esc_attr( $this->field['default'][ $key ] ) . '"' : '';
 
-					echo '<div class="eventful--left efp-field-color">';
+					echo '<div class="eventful--left eventful-field-color">';
 					echo '<div class="eventful--title">' . esc_html($option) . '</div>';
-					echo '<input type="text" name="' . esc_attr( $this->field_name( '[' . $key . ']' ) ) . '" value="' . esc_attr( $color_value ) . '" class="efp-color"' . wp_kses_post($default_attr) . wp_kses_post( $this->field_attributes() ) . '/>';
+					echo '<input type="text" name="' . esc_attr( $this->field_name( '[' . $key . ']' ) ) . '" value="' . esc_attr( $color_value ) . '" class="eventful-color"' . wp_kses_post($default_attr) . wp_kses_post( $this->field_attributes() ) . '/>';
 					echo '</div>';
 
 				}

@@ -3,17 +3,17 @@
  */
 @media only screen and (max-width:1200px){
 
-  .efp-metabox{
+  .eventful-metabox{
 
-    .efp-field{
+    .eventful-field{
 
-      .efp-title{
+      .eventful-title{
         float: none;
         width: 100%;
         margin-bottom: 10px;
       }
 
-      .efp-fieldset{
+      .eventful-fieldset{
         float: none;
         width: 100%;
       }
@@ -23,7 +23,7 @@
 
 @media only screen and (max-width:782px){
 
-  .efp-header-inner{
+  .eventful-header-inner{
     text-align: center;
 
     h1{
@@ -32,67 +32,67 @@
     }
   }
 
-  .efp-form-result{
+  .eventful-form-result{
     float: none;
     margin-right: 0;
     margin-bottom: 10px;
   }
 
-  .efp-search,
-  .efp-header-right,
-  .efp-header-left{
+  .eventful-search,
+  .eventful-header-right,
+  .eventful-header-left{
     width: 100%;
   }
 
-  .efp-search{
+  .eventful-search{
     text-align: center;
     margin-bottom: 15px;
   }
 
-  .efp-footer{
+  .eventful-footer{
     text-align: center;
   }
 
-  .efp-buttons{
+  .eventful-buttons{
     float: none;
   }
 
-  .efp-copyright{
+  .eventful-copyright{
     float: none;
     margin-top: 10px;
   }
 
-  .efp-nav,
-  .efp-expand-all,
-  .efp-reset-section,
-  .efp-nav-background{
+  .eventful-nav,
+  .eventful-expand-all,
+  .eventful-reset-section,
+  .eventful-nav-background{
     display: none !important;
   }
 
-  .efp-nav-normal + .efp-content{
+  .eventful-nav-normal + .eventful-content{
     margin-left: 0;
   }
 
-  .efp-section-title,
-  .efp-section{
+  .eventful-section-title,
+  .eventful-section{
     display: block !important;
   }
 
-  .efp-field{
+  .eventful-field{
 
-    .efp-title{
+    .eventful-title{
       float: none;
       width: 100%;
       margin-bottom: 10px;
     }
 
-    .efp-fieldset{
+    .eventful-fieldset{
       float: none;
       width: 100%;
     }
   }
 
-  .efp-field-color{
+  .eventful-field-color{
 
     .button.wp-picker-clear{
       padding: 0 8px;
@@ -101,31 +101,31 @@
     }
   }
 
-  .efp-profile-options,
-  .efp-taxonomy-edit-fields{
+  .eventful-profile-options,
+  .eventful-taxonomy-edit-fields{
 
-    > .efp-field{
+    > .eventful-field{
 
-      > .efp-title{
+      > .eventful-title{
         float: none;
         width: 100%;
         margin-bottom: 10px;
       }
 
-      > .efp-fieldset{
+      > .eventful-fieldset{
         float: none;
         width: 100%;
       }
     }
   }
 
-  .efp-nav-menu-options{
+  .eventful-nav-menu-options{
 
-    > .efp-fields{
+    > .eventful-fields{
       margin-left: -10px;
       margin-right: -10px;
 
-      > .efp-field{
+      > .eventful-field{
         padding: 10px;
       }
     }
@@ -134,9 +134,9 @@
 
 @media only screen and (max-width: 782px) {
 
-  .efp-modal{
+  .eventful-modal{
 
-    .efp-modal-inner{
+    .eventful-modal-inner{
       width: 90%;
     }
   }
@@ -144,13 +144,13 @@
 
 @media only screen and (max-height: 750px) {
 
-  .efp-modal{
+  .eventful-modal{
 
-    .efp-modal-inner{
+    .eventful-modal-inner{
       height: auto;
     }
 
-    .efp-modal-content{
+    .eventful-modal-content{
       height: calc(100vh - 200px);
     }
   }

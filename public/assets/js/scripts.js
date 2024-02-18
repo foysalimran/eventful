@@ -1,130 +1,130 @@
 jQuery(document).ready(function ($) {
   "use strict";
-  var efp_myScript = function () {
+  var eventful_myScript = function () {
     if ($(".ta-container").length > 0) {
       $(".ta-container").each(function () {
-        var efp_container = $(this),
-          efp_container_id = efp_container.attr("id"),
-          efp_Wrapper_ID = "#" + efp_container_id,
-          pc_sid = $(efp_Wrapper_ID).data("sid"), // The Shortcode ID.
-          efpCarousel = $("#" + efp_container_id + " .ta-efp-carousel"),
-          efpAccordion = $("#" + efp_container_id + " .ta-collapse"),
-          efpfilter = $("#" + efp_container_id + ".efp-filter-wrapper"),
-          ajaxurl = spefp.ajaxurl,
-          nonce = spefp.nonce,
-          efpCarouselDir = efpCarousel.attr("dir"),
-          efpSwiper,
-          efpCarouselData = efpCarousel.data("carousel");
+        var eventful_container = $(this),
+          eventful_container_id = eventful_container.attr("id"),
+          eventful_Wrapper_ID = "#" + eventful_container_id,
+          pc_sid = $(eventful_Wrapper_ID).data("sid"), // The Shortcode ID.
+          eventfulCarousel = $("#" + eventful_container_id + " .ta-eventful-carousel"),
+          eventfulAccordion = $("#" + eventful_container_id + " .ta-collapse"),
+          eventfulfilter = $("#" + eventful_container_id + ".eventful-filter-wrapper"),
+          ajaxurl = speventful.ajaxurl,
+          nonce = speventful.nonce,
+          eventfulCarouselDir = eventfulCarousel.attr("dir"),
+          eventfulSwiper,
+          eventfulCarouselData = eventfulCarousel.data("carousel");
        
-        if (efpCarousel.length > 0) {
+        if (eventfulCarousel.length > 0) {
           var mobile_land = parseInt(
-              efpCarouselData.responsive.mobile_landscape
+              eventfulCarouselData.responsive.mobile_landscape
             ),
-            tablet_size = parseInt(efpCarouselData.responsive.tablet),
-            desktop_size = parseInt(efpCarouselData.responsive.desktop),
-            lg_desktop_size = parseInt(efpCarouselData.responsive.lg_desktop);
+            tablet_size = parseInt(eventfulCarouselData.responsive.tablet),
+            desktop_size = parseInt(eventfulCarouselData.responsive.desktop),
+            lg_desktop_size = parseInt(eventfulCarouselData.responsive.lg_desktop);
         }
 
         // Carousel Init function.
-        function efp_carousel_init() {
+        function eventful_carousel_init() {
           // Carousel ticker mode.
-          if (efpCarouselData.mode == "ticker") {
-            var item = efpCarousel.find(".swiper-wrapper .swiper-slide").length;
-            efpSwiper = efpCarousel.find(".swiper-wrapper").bxSlider({
+          if (eventfulCarouselData.mode == "ticker") {
+            var item = eventfulCarousel.find(".swiper-wrapper .swiper-slide").length;
+            eventfulSwiper = eventfulCarousel.find(".swiper-wrapper").bxSlider({
               mode: "horizontal",
               moveSlides: 1,
-              slideMargin: efpCarouselData.spaceBetween,
-              infiniteLoop: efpCarouselData.loop,
-              slideWidth: efpCarouselData.ticker_width,
-              minSlides: efpCarouselData.slidesPerView.mobile,
-              maxSlides: efpCarouselData.slidesPerView.lg_desktop,
-              speed: efpCarouselData.ticker_speed * item,
+              slideMargin: eventfulCarouselData.spaceBetween,
+              infiniteLoop: eventfulCarouselData.loop,
+              slideWidth: eventfulCarouselData.ticker_width,
+              minSlides: eventfulCarouselData.slidesPerView.mobile,
+              maxSlides: eventfulCarouselData.slidesPerView.lg_desktop,
+              speed: eventfulCarouselData.ticker_speed * item,
               ticker: true,
-              tickerHover: efpCarouselData.stop_onHover,
-              autoDirection: efpCarouselDir,
+              tickerHover: eventfulCarouselData.stop_onHover,
+              autoDirection: eventfulCarouselDir,
             });
           }
 
           // Carousel Swiper for Standard & Center mode.
           if (
-            efpCarouselData.mode == "standard" ||
-            efpCarouselData.mode == "center"
+            eventfulCarouselData.mode == "standard" ||
+            eventfulCarouselData.mode == "center"
           ) {
             if (
-              efpCarouselData.effect == "fade" ||
-              efpCarouselData.effect == "cube" ||
-              efpCarouselData.effect == "flip"
+              eventfulCarouselData.effect == "fade" ||
+              eventfulCarouselData.effect == "cube" ||
+              eventfulCarouselData.effect == "flip"
             ) {
               if ($(window).width() > lg_desktop_size) {
-                slidePerView = efpCarouselData.slidesPerView.lg_desktop;
+                slidePerView = eventfulCarouselData.slidesPerView.lg_desktop;
               } else if ($(window).width() > desktop_size) {
-                slidePerView = efpCarouselData.slidesPerView.desktop;
+                slidePerView = eventfulCarouselData.slidesPerView.desktop;
               } else if ($(window).width() > tablet_size) {
-                slidePerView = efpCarouselData.slidesPerView.tablet;
+                slidePerView = eventfulCarouselData.slidesPerView.tablet;
               } else if ($(window).width() > 0) {
-                slidePerView = efpCarouselData.slidesPerView.mobile_landscape;
+                slidePerView = eventfulCarouselData.slidesPerView.mobile_landscape;
               }
               $(
-                efp_Wrapper_ID +
-                  " .ta-efp-carousel .swiper-wrapper > .ta-eventful-item"
+                eventful_Wrapper_ID +
+                  " .ta-eventful-carousel .swiper-wrapper > .ta-eventful-item"
               )
                 .css("width", 100 / slidePerView + "%")
                 .removeClass("swiper-slide");
               var fade_items = $(
-                efp_Wrapper_ID +
-                  " .ta-efp-carousel .swiper-wrapper > .ta-eventful-item"
+                eventful_Wrapper_ID +
+                  " .ta-eventful-carousel .swiper-wrapper > .ta-eventful-item"
               );
               var style =
-                efpCarouselDir == "rtl" ? "marginLeft" : "marginRight";
+                eventfulCarouselDir == "rtl" ? "marginLeft" : "marginRight";
               for (var i = 0; i < fade_items.length; i += slidePerView) {
                 fade_items
                   .slice(i, i + slidePerView)
                   .wrapAll('<div class="swiper-slide"></div>');
                 fade_items.eq(i - 1).css(style, 0);
               }
-              efpSwiper = new Swiper(
-                "#" + efp_container_id + " .ta-efp-carousel",
+              eventfulSwiper = new Swiper(
+                "#" + eventful_container_id + " .ta-eventful-carousel",
                 {
-                  speed: efpCarouselData.speed,
+                  speed: eventfulCarouselData.speed,
                   slidesPerView: 1,
-                  spaceBetween: efpCarouselData.spaceBetween,
+                  spaceBetween: eventfulCarouselData.spaceBetween,
                   loop:
-                    efpCarouselData.slidesRow.lg_desktop > "1" ||
-                    efpCarouselData.slidesRow.desktop > "1" ||
-                    efpCarouselData.slidesRow.tablet > "1" ||
-                    efpCarouselData.slidesRow.mobile_landscape > "1" ||
-                    efpCarouselData.slidesRow.mobile > "1"
+                    eventfulCarouselData.slidesRow.lg_desktop > "1" ||
+                    eventfulCarouselData.slidesRow.desktop > "1" ||
+                    eventfulCarouselData.slidesRow.tablet > "1" ||
+                    eventfulCarouselData.slidesRow.mobile_landscape > "1" ||
+                    eventfulCarouselData.slidesRow.mobile > "1"
                       ? false
-                      : efpCarouselData.loop,
-                  effect: efpCarouselData.effect,
-                  slidesPerGroup: efpCarouselData.slideToScroll.mobile,
+                      : eventfulCarouselData.loop,
+                  effect: eventfulCarouselData.effect,
+                  slidesPerGroup: eventfulCarouselData.slideToScroll.mobile,
                   preloadImages: false,
                   observer: true,
                   runCallbacksOnInit: false,
                   initialSlide: 0,
-                  slidesPerColumn: efpCarouselData.slidesRow.mobile,
+                  slidesPerColumn: eventfulCarouselData.slidesRow.mobile,
                   slidesPerColumnFill: "row",
                   autoHeight:
-                    efpCarouselData.slidesRow.lg_desktop > "1" ||
-                    efpCarouselData.slidesRow.desktop > "1" ||
-                    efpCarouselData.slidesRow.tablet > "1" ||
-                    efpCarouselData.slidesRow.mobile_landscape > "1" ||
-                    efpCarouselData.slidesRow.mobile > "1"
+                    eventfulCarouselData.slidesRow.lg_desktop > "1" ||
+                    eventfulCarouselData.slidesRow.desktop > "1" ||
+                    eventfulCarouselData.slidesRow.tablet > "1" ||
+                    eventfulCarouselData.slidesRow.mobile_landscape > "1" ||
+                    eventfulCarouselData.slidesRow.mobile > "1"
                       ? false
-                      : efpCarouselData.autoHeight,
-                  simulateTouch: efpCarouselData.simulateTouch,
-                  allowTouchMove: efpCarouselData.allowTouchMove,
-                  mousewheel: efpCarouselData.slider_mouse_wheel,
-                  centeredSlides: efpCarouselData.center_mode,
-                  lazy: efpCarouselData.lazy,
+                      : eventfulCarouselData.autoHeight,
+                  simulateTouch: eventfulCarouselData.simulateTouch,
+                  allowTouchMove: eventfulCarouselData.allowTouchMove,
+                  mousewheel: eventfulCarouselData.slider_mouse_wheel,
+                  centeredSlides: eventfulCarouselData.center_mode,
+                  lazy: eventfulCarouselData.lazy,
                   pagination:
-                    efpCarouselData.pagination == true
+                    eventfulCarouselData.pagination == true
                       ? {
                           el: ".swiper-pagination",
                           clickable: true,
-                          dynamicBullets: efpCarouselData.dynamicBullets,
+                          dynamicBullets: eventfulCarouselData.dynamicBullets,
                           renderBullet: function (index, className) {
-                            if (efpCarouselData.bullet_types == "number") {
+                            if (eventfulCarouselData.bullet_types == "number") {
                               return (
                                 '<span class="' +
                                 className +
@@ -139,76 +139,76 @@ jQuery(document).ready(function ($) {
                         }
                       : false,
                   autoplay: {
-                    delay: efpCarouselData.autoplay_speed,
+                    delay: eventfulCarouselData.autoplay_speed,
                   },
                   navigation:
-                    efpCarouselData.navigation == true
+                    eventfulCarouselData.navigation == true
                       ? {
-                          nextEl: ".efp-button-next",
-                          prevEl: ".efp-button-prev",
+                          nextEl: ".eventful-button-next",
+                          prevEl: ".eventful-button-prev",
                         }
                       : false,
                   fadeEffect: {
                     crossFade: true,
                   },
                   ally: {
-                    enabled: efpCarouselData.enabled,
-                    prevSlideMessage: efpCarouselData.prevSlideMessage,
-                    nextSlideMessage: efpCarouselData.nextSlideMessage,
-                    firstSlideMessage: efpCarouselData.firstSlideMessage,
-                    lastSlideMessage: efpCarouselData.lastSlideMessage,
+                    enabled: eventfulCarouselData.enabled,
+                    prevSlideMessage: eventfulCarouselData.prevSlideMessage,
+                    nextSlideMessage: eventfulCarouselData.nextSlideMessage,
+                    firstSlideMessage: eventfulCarouselData.firstSlideMessage,
+                    lastSlideMessage: eventfulCarouselData.lastSlideMessage,
                     paginationBulletMessage:
-                      efpCarouselData.paginationBulletMessage,
+                      eventfulCarouselData.paginationBulletMessage,
                   },
                   keyboard: {
-                    enabled: efpCarouselData.keyboard === "true" ? true : false,
+                    enabled: eventfulCarouselData.keyboard === "true" ? true : false,
                   },
                 }
               );
             } else {
-              efpSwiper = new Swiper(
-                "#" + efp_container_id + " .ta-efp-carousel",
+              eventfulSwiper = new Swiper(
+                "#" + eventful_container_id + " .ta-eventful-carousel",
                 {
-                  speed: efpCarouselData.speed,
-                  slidesPerView: efpCarouselData.slidesPerView.mobile,
-                  spaceBetween: efpCarouselData.spaceBetween,
+                  speed: eventfulCarouselData.speed,
+                  slidesPerView: eventfulCarouselData.slidesPerView.mobile,
+                  spaceBetween: eventfulCarouselData.spaceBetween,
                   loop:
-                    efpCarouselData.slidesRow.lg_desktop > "1" ||
-                    efpCarouselData.slidesRow.desktop > "1" ||
-                    efpCarouselData.slidesRow.tablet > "1" ||
-                    efpCarouselData.slidesRow.mobile_landscape > "1" ||
-                    efpCarouselData.slidesRow.mobile > "1"
+                    eventfulCarouselData.slidesRow.lg_desktop > "1" ||
+                    eventfulCarouselData.slidesRow.desktop > "1" ||
+                    eventfulCarouselData.slidesRow.tablet > "1" ||
+                    eventfulCarouselData.slidesRow.mobile_landscape > "1" ||
+                    eventfulCarouselData.slidesRow.mobile > "1"
                       ? false
-                      : efpCarouselData.loop,
-                  effect: efpCarouselData.effect,
-                  slidesPerGroup: efpCarouselData.slideToScroll.mobile,
+                      : eventfulCarouselData.loop,
+                  effect: eventfulCarouselData.effect,
+                  slidesPerGroup: eventfulCarouselData.slideToScroll.mobile,
                   preloadImages: false,
                   observer: true,
                   runCallbacksOnInit: false,
                   initialSlide: 0,
-                  slidesPerColumn: efpCarouselData.slidesRow.mobile,
+                  slidesPerColumn: eventfulCarouselData.slidesRow.mobile,
                   slidesPerColumnFill: "row",
                   autoHeight:
-                    efpCarouselData.slidesRow.lg_desktop > "1" ||
-                    efpCarouselData.slidesRow.desktop > "1" ||
-                    efpCarouselData.slidesRow.tablet > "1" ||
-                    efpCarouselData.slidesRow.mobile_landscape > "1" ||
-                    efpCarouselData.slidesRow.mobile > "1"
+                    eventfulCarouselData.slidesRow.lg_desktop > "1" ||
+                    eventfulCarouselData.slidesRow.desktop > "1" ||
+                    eventfulCarouselData.slidesRow.tablet > "1" ||
+                    eventfulCarouselData.slidesRow.mobile_landscape > "1" ||
+                    eventfulCarouselData.slidesRow.mobile > "1"
                       ? false
-                      : efpCarouselData.autoHeight,
-                  simulateTouch: efpCarouselData.simulateTouch,
-                  allowTouchMove: efpCarouselData.allowTouchMove,
-                  mousewheel: efpCarouselData.slider_mouse_wheel,
-                  centeredSlides: efpCarouselData.center_mode,
-                  lazy: efpCarouselData.lazy,
+                      : eventfulCarouselData.autoHeight,
+                  simulateTouch: eventfulCarouselData.simulateTouch,
+                  allowTouchMove: eventfulCarouselData.allowTouchMove,
+                  mousewheel: eventfulCarouselData.slider_mouse_wheel,
+                  centeredSlides: eventfulCarouselData.center_mode,
+                  lazy: eventfulCarouselData.lazy,
                   pagination:
-                    efpCarouselData.pagination == true
+                    eventfulCarouselData.pagination == true
                       ? {
                           el: ".swiper-pagination",
                           clickable: true,
-                          dynamicBullets: efpCarouselData.dynamicBullets,
+                          dynamicBullets: eventfulCarouselData.dynamicBullets,
                           renderBullet: function (index, className) {
-                            if (efpCarouselData.bullet_types == "number") {
+                            if (eventfulCarouselData.bullet_types == "number") {
                               return (
                                 '<span class="' +
                                 className +
@@ -223,38 +223,38 @@ jQuery(document).ready(function ($) {
                         }
                       : false,
                   autoplay: {
-                    delay: efpCarouselData.autoplay_speed,
+                    delay: eventfulCarouselData.autoplay_speed,
                   },
                   navigation:
-                    efpCarouselData.navigation == true
+                    eventfulCarouselData.navigation == true
                       ? {
-                          nextEl: ".efp-button-next",
-                          prevEl: ".efp-button-prev",
+                          nextEl: ".eventful-button-next",
+                          prevEl: ".eventful-button-prev",
                         }
                       : false,
                   breakpoints: {
                     [mobile_land]: {
                       slidesPerView:
-                        efpCarouselData.slidesPerView.mobile_landscape,
+                        eventfulCarouselData.slidesPerView.mobile_landscape,
                       slidesPerGroup:
-                        efpCarouselData.slideToScroll.mobile_landscape,
+                        eventfulCarouselData.slideToScroll.mobile_landscape,
                       slidesPerColumn:
-                        efpCarouselData.slidesRow.mobile_landscape,
+                        eventfulCarouselData.slidesRow.mobile_landscape,
                       navigation:
-                        efpCarouselData.navigation_mobile == true
+                        eventfulCarouselData.navigation_mobile == true
                           ? {
-                              nextEl: ".efp-button-next",
-                              prevEl: ".efp-button-prev",
+                              nextEl: ".eventful-button-next",
+                              prevEl: ".eventful-button-prev",
                             }
                           : false,
                       pagination:
-                        efpCarouselData.pagination_mobile == true
+                        eventfulCarouselData.pagination_mobile == true
                           ? {
                               el: ".swiper-pagination",
                               clickable: true,
-                              dynamicBullets: efpCarouselData.dynamicBullets,
+                              dynamicBullets: eventfulCarouselData.dynamicBullets,
                               renderBullet: function (index, className) {
-                                if (efpCarouselData.bullet_types == "number") {
+                                if (eventfulCarouselData.bullet_types == "number") {
                                   return (
                                     '<span class="' +
                                     className +
@@ -272,81 +272,81 @@ jQuery(document).ready(function ($) {
                           : false,
                     },
                     [tablet_size]: {
-                      slidesPerView: efpCarouselData.slidesPerView.tablet,
-                      slidesPerGroup: efpCarouselData.slideToScroll.tablet,
-                      slidesPerColumn: efpCarouselData.slidesRow.tablet,
+                      slidesPerView: eventfulCarouselData.slidesPerView.tablet,
+                      slidesPerGroup: eventfulCarouselData.slideToScroll.tablet,
+                      slidesPerColumn: eventfulCarouselData.slidesRow.tablet,
                     },
                     [desktop_size]: {
-                      slidesPerView: efpCarouselData.slidesPerView.desktop,
-                      slidesPerGroup: efpCarouselData.slideToScroll.desktop,
-                      slidesPerColumn: efpCarouselData.slidesRow.desktop,
+                      slidesPerView: eventfulCarouselData.slidesPerView.desktop,
+                      slidesPerGroup: eventfulCarouselData.slideToScroll.desktop,
+                      slidesPerColumn: eventfulCarouselData.slidesRow.desktop,
                     },
                     [lg_desktop_size]: {
-                      slidesPerView: efpCarouselData.slidesPerView.lg_desktop,
-                      slidesPerGroup: efpCarouselData.slideToScroll.lg_desktop,
-                      slidesPerColumn: efpCarouselData.slidesRow.lg_desktop,
+                      slidesPerView: eventfulCarouselData.slidesPerView.lg_desktop,
+                      slidesPerGroup: eventfulCarouselData.slideToScroll.lg_desktop,
+                      slidesPerColumn: eventfulCarouselData.slidesRow.lg_desktop,
                     },
                   },
                   fadeEffect: {
                     crossFade: true,
                   },
                   ally: {
-                    enabled: efpCarouselData.enabled,
-                    prevSlideMessage: efpCarouselData.prevSlideMessage,
-                    nextSlideMessage: efpCarouselData.nextSlideMessage,
-                    firstSlideMessage: efpCarouselData.firstSlideMessage,
-                    lastSlideMessage: efpCarouselData.lastSlideMessage,
+                    enabled: eventfulCarouselData.enabled,
+                    prevSlideMessage: eventfulCarouselData.prevSlideMessage,
+                    nextSlideMessage: eventfulCarouselData.nextSlideMessage,
+                    firstSlideMessage: eventfulCarouselData.firstSlideMessage,
+                    lastSlideMessage: eventfulCarouselData.lastSlideMessage,
                     paginationBulletMessage:
-                      efpCarouselData.paginationBulletMessage,
+                      eventfulCarouselData.paginationBulletMessage,
                   },
                   keyboard: {
-                    enabled: efpCarouselData.keyboard === "true" ? true : false,
+                    enabled: eventfulCarouselData.keyboard === "true" ? true : false,
                   },
                 }
               );
             }
-            if (efpCarouselData.autoplay === false) {
-              efpSwiper.autoplay.stop();
+            if (eventfulCarouselData.autoplay === false) {
+              eventfulSwiper.autoplay.stop();
             }
-            if (efpCarouselData.stop_onHover && efpCarouselData.autoplay) {
-              $(efpCarousel).on({
+            if (eventfulCarouselData.stop_onHover && eventfulCarouselData.autoplay) {
+              $(eventfulCarousel).on({
                 mouseenter: function () {
-                  efpSwiper.autoplay.stop();
+                  eventfulSwiper.autoplay.stop();
                 },
                 mouseleave: function () {
-                  efpSwiper.autoplay.start();
+                  eventfulSwiper.autoplay.start();
                 },
               });
             }
             $(window).on("resize", function () {
-              efpSwiper.update();
+              eventfulSwiper.update();
             });
             $(window).trigger("resize");
           }
         }
-        if (efpCarousel.length > 0) {
-          efp_carousel_init();
+        if (eventfulCarousel.length > 0) {
+          eventful_carousel_init();
         }
         $(
-          ".ta-overlay.ta-efp-post,.ta-content-box.ta-efp-post",
-          efp_Wrapper_ID
+          ".ta-overlay.ta-eventful-post,.ta-content-box.ta-eventful-post",
+          eventful_Wrapper_ID
         ).on("mouseover", function () {
           $(this)
-            .find(".eventful__item__content.animated:not(.efp_hover)")
-            .addClass("efp_hover");
+            .find(".eventful__item__content.animated:not(.eventful_hover)")
+            .addClass("eventful_hover");
         });
 
         
         /**
          *  Isotope Filter layout.
          */
-        if (efpfilter.length > 0) {
-          if (efpfilter.data("grid") == "masonry") {
+        if (eventfulfilter.length > 0) {
+          if (eventfulfilter.data("grid") == "masonry") {
             var layoutMode = "masonry";
           } else {
             var layoutMode = "fitRows";
           }
-          var $grid = $(".grid", efp_Wrapper_ID).isotope({
+          var $grid = $(".grid", eventful_Wrapper_ID).isotope({
             itemSelector: ".item",
             //layoutMode: 'fitRows'
             layoutMode: layoutMode,
@@ -355,23 +355,23 @@ jQuery(document).ready(function ($) {
             $grid.isotope("layout");
           });
 
-          // This function added for efp-Lazyload.
-          function efp_lazyload() {
-            $is_find = $(".ta-efp-post-thumb-area img").hasClass(
-              "efp-lazyload"
+          // This function added for eventful-Lazyload.
+          function eventful_lazyload() {
+            $is_find = $(".ta-eventful-post-thumb-area img").hasClass(
+              "eventful-lazyload"
             );
             if ($is_find) {
-              $("img.efp-lazyload")
-                .efp_lazyload({ effect: "fadeIn", effectTime: 2000 })
-                .removeClass("efp-lazyload")
-                .addClass("efp-lazyloaded");
+              $("img.eventful-lazyload")
+                .eventful_lazyload({ effect: "fadeIn", effectTime: 2000 })
+                .removeClass("eventful-lazyload")
+                .addClass("eventful-lazyloaded");
             }
             $grid.isotope("layout");
           }
 
           // Store filter for each group.
           var filters = {};
-          $(".efp-shuffle-filter .taxonomy-group", efp_Wrapper_ID).on(
+          $(".eventful-shuffle-filter .taxonomy-group", eventful_Wrapper_ID).on(
             "change",
             function (event) {
               var $select = $(event.target);
@@ -389,9 +389,9 @@ jQuery(document).ready(function ($) {
             }
           );
 
-          $(".efp-shuffle-filter", efp_Wrapper_ID).on(
+          $(".eventful-shuffle-filter", eventful_Wrapper_ID).on(
             "click",
-            ".efp-button",
+            ".eventful-button",
             function (event) {
               var $button = $(event.currentTarget);
               // get group key
@@ -411,7 +411,7 @@ jQuery(document).ready(function ($) {
             }
           );
           // Change is-active class on buttons.
-          $(".taxonomy-group", efp_Wrapper_ID).each(function (
+          $(".taxonomy-group", eventful_Wrapper_ID).each(function (
             i,
             taxonomyGroup
           ) {
@@ -439,19 +439,19 @@ jQuery(document).ready(function ($) {
           }
         }
 
-        function efp_item_same_height() {
+        function eventful_item_same_height() {
           var maxHeight = 0;
-          $(efp_Wrapper_ID + ".efp_same_height .item").each(function () {
-            if ($(this).find(".ta-efp-post").height() > maxHeight) {
-              maxHeight = $(this).find(".ta-efp-post").height();
+          $(eventful_Wrapper_ID + ".eventful_same_height .item").each(function () {
+            if ($(this).find(".ta-eventful-post").height() > maxHeight) {
+              maxHeight = $(this).find(".ta-eventful-post").height();
             }
           });
-          $(efp_Wrapper_ID + ".efp_same_height .ta-efp-post").height(maxHeight);
+          $(eventful_Wrapper_ID + ".eventful_same_height .ta-eventful-post").height(maxHeight);
         }
         if (
-          $(efp_Wrapper_ID + ".efp_same_height").hasClass("efp-filter-wrapper")
+          $(eventful_Wrapper_ID + ".eventful_same_height").hasClass("eventful-filter-wrapper")
         ) {
-          efp_item_same_height();
+          eventful_item_same_height();
         }
 
         // Ajax Action for Live filter.
@@ -461,20 +461,20 @@ jQuery(document).ready(function ($) {
           order = "",
           term_id = "",
           page = "",
-          spsp_lang = $(efp_Wrapper_ID).data("lang");
+          spsp_lang = $(eventful_Wrapper_ID).data("lang");
           var author_id = "",
           custom_field_key = "",
           custom_field_value = "",
-          efp_hash_url = Array(),
-          efp_last_filter = "",
+          eventful_hash_url = Array(),
+          eventful_last_filter = "",
           custom_fields_array = Array(),
           is_pagination_url_change = true;
-        function efp_ajax_action(selected_term_list = null) {
+        function eventful_ajax_action(selected_term_list = null) {
           jQuery.ajax({
             url: ajaxurl,
             type: "POST",
             data: {
-              action: "efp_post_order",
+              action: "eventful_post_order",
               id: pc_sid,
               lang: spsp_lang,
               order: order,
@@ -491,16 +491,16 @@ jQuery(document).ready(function ($) {
               var $data = $(data);
               var $newElements = $data;
 
-              if ($(efp_Wrapper_ID).hasClass("efp-masonry")) {
-                var $post_wrapper = $(".ta-row", efp_Wrapper_ID);
+              if ($(eventful_Wrapper_ID).hasClass("eventful-masonry")) {
+                var $post_wrapper = $(".ta-row", eventful_Wrapper_ID);
                 $post_wrapper.masonry("destroy");
                 $post_wrapper.html($newElements).imagesLoaded(function () {
                   $post_wrapper.masonry();
                 });
-              } else if ($(efp_Wrapper_ID).hasClass("efp-filter-wrapper")) {
+              } else if ($(eventful_Wrapper_ID).hasClass("eventful-filter-wrapper")) {
                 $(
-                  ".ta-row, .efp-timeline-grid, .ta-collapse, .table-responsive tbody",
-                  efp_Wrapper_ID
+                  ".ta-row, .eventful-timeline-grid, .ta-collapse, .table-responsive tbody",
+                  eventful_Wrapper_ID
                 ).html($newElements);
                 $grid
                   .append($newElements)
@@ -508,35 +508,35 @@ jQuery(document).ready(function ($) {
                   .imagesLoaded(function () {
                     $grid.isotope("layout");
                   });
-                efp_item_same_height();
-              } else if (efpCarousel.length > 0) {
-                if (efpCarouselData.mode == "ticker") {
-                  efpSwiper.destroySlider();
-                  $(".swiper-wrapper", efp_Wrapper_ID).html($newElements);
-                  efp_carousel_init();
-                  efpSwiper.reloadSlider();
+                eventful_item_same_height();
+              } else if (eventfulCarousel.length > 0) {
+                if (eventfulCarouselData.mode == "ticker") {
+                  eventfulSwiper.destroySlider();
+                  $(".swiper-wrapper", eventful_Wrapper_ID).html($newElements);
+                  eventful_carousel_init();
+                  eventfulSwiper.reloadSlider();
                 } else {
-                  efpSwiper.destroy(true, true);
-                  $(".swiper-wrapper", efp_Wrapper_ID).html($newElements);
-                  efp_carousel_init();
+                  eventfulSwiper.destroy(true, true);
+                  $(".swiper-wrapper", eventful_Wrapper_ID).html($newElements);
+                  eventful_carousel_init();
                 }
               } else {
                 var $newElements = $data.css({
                   opacity: 0,
                 });
                 $(
-                  ".ta-row, .efp-timeline-grid, .ta-collapse, .table-responsive tbody",
-                  efp_Wrapper_ID
+                  ".ta-row, .eventful-timeline-grid, .ta-collapse, .table-responsive tbody",
+                  eventful_Wrapper_ID
                 ).html($newElements);
-                if (efpAccordion.length > 0) {
-                  efpAccordion.accordion("refresh");
+                if (eventfulAccordion.length > 0) {
+                  eventfulAccordion.accordion("refresh");
                   if (accordion_mode === "multi-open") {
-                    efpAccordion
-                      .find(".efp-collapse-header")
+                    eventfulAccordion
+                      .find(".eventful-collapse-header")
                       .next()
                       .slideDown();
-                    efpAccordion
-                      .find(".efp-collapse-header .fa")
+                    eventfulAccordion
+                      .find(".eventful-collapse-header .fa")
                       .removeClass("fa-plus")
                       .addClass("fa-minus");
                   }
@@ -545,17 +545,17 @@ jQuery(document).ready(function ($) {
                   opacity: 1,
                 });
               }
-              efp_lazyload();
+              eventful_lazyload();
             },
           });
         }
 
         // Pagination.
-        function efp_pagination_action(selected_term_list = null) {
-          var LoadMoreText = $(".ta-efp-pagination-data", efp_Wrapper_ID).data(
+        function eventful_pagination_action(selected_term_list = null) {
+          var LoadMoreText = $(".ta-eventful-pagination-data", eventful_Wrapper_ID).data(
             "loadmoretext"
           );
-          var EndingMessage = $(".ta-efp-pagination-data", efp_Wrapper_ID).data(
+          var EndingMessage = $(".ta-eventful-pagination-data", eventful_Wrapper_ID).data(
             "endingtext"
           );
           jQuery.ajax({
@@ -580,27 +580,27 @@ jQuery(document).ready(function ($) {
               var $data = $(data);
               var $newElements = $data;
               $(
-                ".efp-post-pagination.efp-on-mobile:not(.no_ajax)",
-                efp_Wrapper_ID
+                ".eventful-post-pagination.eventful-on-mobile:not(.no_ajax)",
+                eventful_Wrapper_ID
               ).html($newElements);
               if (
                 Pagination_Type == "infinite_scroll" ||
                 Pagination_Type == "ajax_load_more"
               ) {
-                $(".efp-load-more", efp_Wrapper_ID)
+                $(".eventful-load-more", eventful_Wrapper_ID)
                   .removeClass("finished")
-                  .removeClass("efp-hide")
+                  .removeClass("eventful-hide")
                   .html(
-                    '<button efp-processing="0">' + LoadMoreText + "</button>"
+                    '<button eventful-processing="0">' + LoadMoreText + "</button>"
                   );
-                if (!$(".efp-post-pagination a", efp_Wrapper_ID).length) {
-                  $(".efp-load-more", efp_Wrapper_ID)
+                if (!$(".eventful-post-pagination a", eventful_Wrapper_ID).length) {
+                  $(".eventful-load-more", eventful_Wrapper_ID)
                     .show()
                     .html(EndingMessage);
                 }
               }
               if (Pagination_Type == "infinite_scroll") {
-                $(".efp-load-more", efp_Wrapper_ID).addClass("efp-hide");
+                $(".eventful-load-more", eventful_Wrapper_ID).addClass("eventful-hide");
               }
             },
           });
@@ -626,37 +626,37 @@ jQuery(document).ready(function ($) {
               var $data = $(data);
               var $newElements = $data;
               $(
-                ".efp-post-pagination.efp-on-desktop:not(.no_ajax)",
-                efp_Wrapper_ID
+                ".eventful-post-pagination.eventful-on-desktop:not(.no_ajax)",
+                eventful_Wrapper_ID
               ).html($newElements);
               if (
                 Pagination_Type == "infinite_scroll" ||
                 Pagination_Type == "ajax_load_more"
               ) {
-                $(".efp-load-more", efp_Wrapper_ID)
+                $(".eventful-load-more", eventful_Wrapper_ID)
                   .removeClass("finished")
-                  .removeClass("efp-hide")
+                  .removeClass("eventful-hide")
                   .html(
-                    '<button efp-processing="0">' + LoadMoreText + "</button>"
+                    '<button eventful-processing="0">' + LoadMoreText + "</button>"
                   );
               }
               if (Pagination_Type == "infinite_scroll") {
-                $(".efp-load-more", efp_Wrapper_ID).addClass("efp-hide");
+                $(".eventful-load-more", eventful_Wrapper_ID).addClass("eventful-hide");
               }
-              if (!$(".efp-post-pagination a", efp_Wrapper_ID).length) {
-                $(".efp-load-more", efp_Wrapper_ID).show().html(EndingMessage);
+              if (!$(".eventful-post-pagination a", eventful_Wrapper_ID).length) {
+                $(".eventful-load-more", eventful_Wrapper_ID).show().html(EndingMessage);
               }
-              efp_lazyload();
+              eventful_lazyload();
             },
           });
         }
         // Live filter button reset on ajax call.
-        function efp_live_filter_reset(selected_term_list = null) {
+        function eventful_live_filter_reset(selected_term_list = null) {
           jQuery.ajax({
             url: ajaxurl,
             type: "POST",
             data: {
-              action: "efp_live_filter_reset",
+              action: "eventful_live_filter_reset",
               id: pc_sid,
               order: order,
               lang: spsp_lang,
@@ -667,7 +667,7 @@ jQuery(document).ready(function ($) {
               author_id: author_id,
               nonce: nonce,
               term_list: selected_term_list,
-              last_filter: efp_last_filter,
+              last_filter: eventful_last_filter,
               custom_fields_array: custom_fields_array,
             },
             success: function (data) {
@@ -675,7 +675,7 @@ jQuery(document).ready(function ($) {
               var $newElements = $data.animate({
                 opacity: 0.5,
               });
-              $(".efp-filter-bar", efp_Wrapper_ID).html($newElements);
+              $(".eventful-filter-bar", eventful_Wrapper_ID).html($newElements);
               custom_field_filter_slider();
               $newElements.animate({
                 opacity: 1,
@@ -684,39 +684,39 @@ jQuery(document).ready(function ($) {
           });
         }
         // Update Hash url array.
-        function efp_hash_update_arr(efp_filter_keyword, filter_arr, key) {
-          if (efp_hash_url.length > 0) {
-            efp_hash_url.forEach(function (row) {
-              if ($.inArray(efp_filter_keyword, row.efp_filter_keyword)) {
-                row[key] = efp_filter_keyword;
+        function eventful_hash_update_arr(eventful_filter_keyword, filter_arr, key) {
+          if (eventful_hash_url.length > 0) {
+            eventful_hash_url.forEach(function (row) {
+              if ($.inArray(eventful_filter_keyword, row.eventful_filter_keyword)) {
+                row[key] = eventful_filter_keyword;
               } else {
-                efp_hash_url.push(filter_arr);
+                eventful_hash_url.push(filter_arr);
               }
             });
           } else {
-            efp_hash_url.push(filter_arr);
+            eventful_hash_url.push(filter_arr);
           }
-          return efp_hash_url;
+          return eventful_hash_url;
         }
         // On normal pagination go to current shortcode.
         var url_hash = window.location.search;
         if (url_hash.indexOf("paged") >= 0) {
           var s_id = /paged(\d+)/.exec(url_hash)[1];
-          var spscurrent_id = document.getElementById("efp_wrapper-" + s_id);
+          var spscurrent_id = document.getElementById("eventful_wrapper-" + s_id);
           spscurrent_id.scrollIntoView();
         }
         // Update url.
         var selected_term_list = Array();
-        function efp_update_url() {
+        function eventful_update_url() {
           var p_search = window.location.search;
           if (p_search.indexOf("page_id") >= 0) {
-            var efp_page = /page_id\=(\d+)/.exec(p_search)[1];
-            var efp_url = "?page_id=" + efp_page + "&";
+            var eventful_page = /page_id\=(\d+)/.exec(p_search)[1];
+            var eventful_url = "?page_id=" + eventful_page + "&";
           } else {
-            var efp_url = "&";
+            var eventful_url = "&";
           }
-          if (efp_hash_url.length > 0) {
-            $.map(efp_hash_url, function (value, index) {
+          if (eventful_hash_url.length > 0) {
+            $.map(eventful_hash_url, function (value, index) {
               $.map(value, function (value2, index2) {
                 if (
                   value2 == "all" ||
@@ -724,9 +724,9 @@ jQuery(document).ready(function ($) {
                   value2 == "" ||
                   value2 == "page"
                 ) {
-                  efp_url += "";
+                  eventful_url += "";
                 } else {
-                  efp_url += "efp_" + index2 + "=" + value2 + "&";
+                  eventful_url += "eventful_" + index2 + "=" + value2 + "&";
                 }
               });
             });
@@ -735,12 +735,12 @@ jQuery(document).ready(function ($) {
             var term_total_length = selected_term_list.length;
             $.map(selected_term_list, function (value, index) {
               if (value.term_id == "all" || value.term_id == "") {
-                efp_url += "";
+                eventful_url += "";
               } else {
                 if (index == term_total_length - 1) {
-                  efp_url += "tx_" + value.taxonomy + "=" + value.term_id + "";
+                  eventful_url += "tx_" + value.taxonomy + "=" + value.term_id + "";
                 } else {
-                  efp_url += "tx_" + value.taxonomy + "=" + value.term_id + "&";
+                  eventful_url += "tx_" + value.taxonomy + "=" + value.term_id + "&";
                 }
               }
             });
@@ -749,7 +749,7 @@ jQuery(document).ready(function ($) {
             var meta_field_total_length = custom_fields_array.length;
             $.map(custom_fields_array, function (value, index) {
               //  if (index == meta_field_total_length - 1) {
-              efp_url +=
+              eventful_url +=
                 "cf" +
                 value.custom_field_key +
                 "=" +
@@ -758,17 +758,17 @@ jQuery(document).ready(function ($) {
               // }
             });
           }
-          if (efp_hash_url.length < 0 || selected_term_list.length < 0) {
-            efp_url = "";
+          if (eventful_hash_url.length < 0 || selected_term_list.length < 0) {
+            eventful_url = "";
           }
-          if (efp_url.length > 1) {
+          if (eventful_url.length > 1) {
             var slf = "";
-            if (efp_last_filter.length > 0) {
-              var slf = "&slf=" + efp_last_filter;
+            if (eventful_last_filter.length > 0) {
+              var slf = "&slf=" + eventful_last_filter;
             }
 
-            efp_url = "?efp=" + pc_sid + slf + efp_url;
-            history.pushState(null, null, encodeURI(efp_url));
+            eventful_url = "?eventful=" + pc_sid + slf + eventful_url;
+            history.pushState(null, null, encodeURI(eventful_url));
           } else {
             var uri = window.location.toString();
             if (uri.indexOf("?") > 0) {
@@ -779,16 +779,16 @@ jQuery(document).ready(function ($) {
         }
 
         function custom_field_filter_slider() {
-          $(efp_Wrapper_ID + " .efp-custom-field-filter-slider").each(
+          $(eventful_Wrapper_ID + " .eventful-custom-field-filter-slider").each(
             function () {
               var _that = $(this);
-              var _input = _that.find(".efp-input");
+              var _input = _that.find(".eventful-input");
               var custom_field_key = _input.attr("name");
               var _min = _input.data("min");
               var _crmin = _input.data("crmin");
               var _crmax = _input.data("crmax");
               var _max = _input.data("max");
-              _that.find(".efp-slider").slider({
+              _that.find(".eventful-slider").slider({
                 range: true,
                 min: _crmin,
                 max: _crmax,
@@ -823,10 +823,10 @@ jQuery(document).ready(function ($) {
                     }) // check if there is any occurrence of the item in whole array
                     .reverse()
                     .map(JSON.parse);
-                  efp_update_url();
-                  efp_last_filter = custom_field_key;
-                  efp_ajax_action(selected_term_list);
-                  efp_live_filter_reset(selected_term_list);
+                  eventful_update_url();
+                  eventful_last_filter = custom_field_key;
+                  eventful_ajax_action(selected_term_list);
+                  eventful_live_filter_reset(selected_term_list);
                 },
               });
             }
@@ -834,23 +834,23 @@ jQuery(document).ready(function ($) {
         }
         custom_field_filter_slider();
         // Ajax post search.
-        $("input.efp-search-field", efp_Wrapper_ID).on("keyup", function () {
+        $("input.eventful-search-field", eventful_Wrapper_ID).on("keyup", function () {
           var that = $(this);
           keyword = that.val();
-          efp_last_filter = "keyword";
-          var efp_search_arr = { keyword, keyword };
-          efp_live_filter_reset(selected_term_list);
-          efp_hash_update_arr(keyword, efp_search_arr, "keyword");
-          efp_update_url();
-          efp_ajax_action(selected_term_list);
-          efp_pagination_action();
+          eventful_last_filter = "keyword";
+          var eventful_search_arr = { keyword, keyword };
+          eventful_live_filter_reset(selected_term_list);
+          eventful_hash_update_arr(keyword, eventful_search_arr, "keyword");
+          eventful_update_url();
+          eventful_ajax_action(selected_term_list);
+          eventful_pagination_action();
           is_pagination_url_change = false;
-          efp_hash_update_arr("page", { page: "" }, "page");
-          efp_update_url();
+          eventful_hash_update_arr("page", { page: "" }, "page");
+          eventful_update_url();
         });
 
         // Post order by.
-        $(".efp-order-by", efp_Wrapper_ID).on("change", function () {
+        $(".eventful-order-by", eventful_Wrapper_ID).on("change", function () {
           var that;
           $(this)
             .find("option:selected, input:radio:checked")
@@ -859,15 +859,15 @@ jQuery(document).ready(function ($) {
               orderby = that.val();
             });
           var orerbyarr = { orderby, orderby };
-          efp_hash_update_arr(orderby, orerbyarr, "orderby");
-          efp_update_url();
-          efp_ajax_action();
-          efp_pagination_action();
-          efp_hash_update_arr("page", { page: "" }, "page");
-          efp_update_url();
+          eventful_hash_update_arr(orderby, orerbyarr, "orderby");
+          eventful_update_url();
+          eventful_ajax_action();
+          eventful_pagination_action();
+          eventful_hash_update_arr("page", { page: "" }, "page");
+          eventful_update_url();
         });
 
-        function efp_filter_push(myarr, item) {
+        function eventful_filter_push(myarr, item) {
           var found = false;
           var i = 0;
           while (i < myarr.length) {
@@ -885,7 +885,7 @@ jQuery(document).ready(function ($) {
 
         // Pre Filter Init.
         var tax_list = Array();
-        $(".efp-filter-by", efp_Wrapper_ID)
+        $(".eventful-filter-by", eventful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
             term_id = $(this).val();
@@ -914,7 +914,7 @@ jQuery(document).ready(function ($) {
                   return val !== taxonomy;
                 });
               } else {
-                tax_list = efp_filter_push(tax_list, taxonomy);
+                tax_list = eventful_filter_push(tax_list, taxonomy);
               }
               selected_term_list = $.grep(selected_term_list, function (e, i) {
                 return e.term_id != "all";
@@ -930,29 +930,29 @@ jQuery(document).ready(function ($) {
               tax_list = Array(taxonomy);
             }
           });
-        $(".efp-author-filter", efp_Wrapper_ID)
+        $(".eventful-author-filter", eventful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
             that = $(this);
             author_id = that.val();
           });
-        $(".efp-order", efp_Wrapper_ID)
+        $(".eventful-order", eventful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
             that = $(this);
             order = $(this).val();
           });
-        $(".efp-order-by", efp_Wrapper_ID)
+        $(".eventful-order-by", eventful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
             that = $(this);
             orderby = that.val();
           });
-        $("input.efp-search-field", efp_Wrapper_ID).each(function () {
+        $("input.eventful-search-field", eventful_Wrapper_ID).each(function () {
           var that = $(this);
           keyword = that.val();
         });
-        $(".efp-filter-by-checkbox", efp_Wrapper_ID).each(function () {
+        $(".eventful-filter-by-checkbox", eventful_Wrapper_ID).each(function () {
           var current_tax = $(this).data("taxonomy");
           var term_ids = "";
           $(this)
@@ -984,10 +984,10 @@ jQuery(document).ready(function ($) {
           .reverse()
           .map(JSON.parse);
         // Filter by checkbox.
-        $(efp_Wrapper_ID).on("change", ".efp-filter-by-checkbox", function (e) {
+        $(eventful_Wrapper_ID).on("change", ".eventful-filter-by-checkbox", function (e) {
           e.stopPropagation();
           e.preventDefault();
-          $(".efp-filter-by-checkbox", efp_Wrapper_ID).each(function () {
+          $(".eventful-filter-by-checkbox", eventful_Wrapper_ID).each(function () {
             var current_tax = $(this).data("taxonomy");
             var term_ids = "";
             $(this)
@@ -1028,19 +1028,19 @@ jQuery(document).ready(function ($) {
           taxonomy = $(this).data("taxonomy");
           term_id = term_ids.replace(/,(?=\s*$)/, "");
           if (term_id.length > 0) {
-            efp_last_filter = taxonomy;
+            eventful_last_filter = taxonomy;
           } else {
-            efp_last_filter = efp_last_filter;
+            eventful_last_filter = eventful_last_filter;
           }
-          efp_hash_update_arr("page", { page: "" }, "page");
-          efp_update_url();
-          efp_live_filter_reset(selected_term_list);
-          efp_ajax_action(selected_term_list);
-          efp_pagination_action(selected_term_list);
+          eventful_hash_update_arr("page", { page: "" }, "page");
+          eventful_update_url();
+          eventful_live_filter_reset(selected_term_list);
+          eventful_ajax_action(selected_term_list);
+          eventful_pagination_action(selected_term_list);
         });
 
         // Filter by taxonomy.
-        $(efp_Wrapper_ID).on("change", ".efp-filter-by", function (e) {
+        $(eventful_Wrapper_ID).on("change", ".eventful-filter-by", function (e) {
           e.stopPropagation();
           e.preventDefault();
           $(this)
@@ -1072,7 +1072,7 @@ jQuery(document).ready(function ($) {
                     return val !== taxonomy;
                   });
                 } else {
-                  tax_list = efp_filter_push(tax_list, taxonomy);
+                  tax_list = eventful_filter_push(tax_list, taxonomy);
                 }
                 selected_term_list = $.grep(
                   selected_term_list,
@@ -1089,9 +1089,9 @@ jQuery(document).ready(function ($) {
               }
             });
           if (term_id == "all") {
-            efp_last_filter = efp_last_filter;
+            eventful_last_filter = eventful_last_filter;
           } else {
-            efp_last_filter = taxonomy;
+            eventful_last_filter = taxonomy;
           }
           selected_term_list = selected_term_list
             .map(JSON.stringify)
@@ -1101,16 +1101,16 @@ jQuery(document).ready(function ($) {
             })
             .reverse()
             .map(JSON.parse);
-          efp_hash_update_arr("page", { page: "" }, "page");
-          efp_update_url();
-          // if ($('.efp-filter-by', efp_Wrapper_ID).length > 1) {
-          efp_live_filter_reset(selected_term_list);
+          eventful_hash_update_arr("page", { page: "" }, "page");
+          eventful_update_url();
+          // if ($('.eventful-filter-by', eventful_Wrapper_ID).length > 1) {
+          eventful_live_filter_reset(selected_term_list);
           //}
-          efp_ajax_action(selected_term_list);
-          efp_pagination_action(selected_term_list);
+          eventful_ajax_action(selected_term_list);
+          eventful_pagination_action(selected_term_list);
         });
         // Author filter.
-        $(efp_Wrapper_ID).on("change", ".efp-author-filter", function (e) {
+        $(eventful_Wrapper_ID).on("change", ".eventful-author-filter", function (e) {
           var that;
           $(this)
             .find("option:selected, input:radio:checked")
@@ -1120,19 +1120,19 @@ jQuery(document).ready(function ($) {
             });
           var author_arr = { author_id, author_id };
           if (author_id == "all") {
-            efp_last_filter = efp_last_filter;
+            eventful_last_filter = eventful_last_filter;
           } else {
-            efp_last_filter = "author_id";
+            eventful_last_filter = "author_id";
           }
-          efp_hash_update_arr(author_id, author_arr, "author_id");
-          efp_update_url();
-          efp_live_filter_reset(selected_term_list);
-          efp_ajax_action();
-          efp_pagination_action();
+          eventful_hash_update_arr(author_id, author_arr, "author_id");
+          eventful_update_url();
+          eventful_live_filter_reset(selected_term_list);
+          eventful_ajax_action();
+          eventful_pagination_action();
         });
 
         // Post order asc/dsc.
-        $(efp_Wrapper_ID).on("change", ".efp-order", function (e) {
+        $(eventful_Wrapper_ID).on("change", ".eventful-order", function (e) {
           var that;
           $(this)
             .find("option:selected, input:radio:checked")
@@ -1141,18 +1141,18 @@ jQuery(document).ready(function ($) {
               order = $(this).val();
             });
           var order_arr = { order, order };
-          efp_hash_update_arr(order, order_arr, "order");
-          efp_update_url();
-          efp_ajax_action();
-          efp_pagination_action();
-          efp_hash_update_arr("page", { page: "" }, "page");
-          efp_update_url();
+          eventful_hash_update_arr(order, order_arr, "order");
+          eventful_update_url();
+          eventful_ajax_action();
+          eventful_pagination_action();
+          eventful_hash_update_arr("page", { page: "" }, "page");
+          eventful_update_url();
         });
         /**
          * Grid masonry.
          */
-        if ($(efp_Wrapper_ID).hasClass("efp-masonry")) {
-          var $post_wrapper = $(".ta-row", efp_Wrapper_ID);
+        if ($(eventful_Wrapper_ID).hasClass("eventful-masonry")) {
+          var $post_wrapper = $(".ta-row", eventful_Wrapper_ID);
           $post_wrapper.imagesLoaded(function () {
             $post_wrapper.masonry(/* {
                 itemSelector: 'div[class*=ta-col-]',
@@ -1167,53 +1167,53 @@ jQuery(document).ready(function ($) {
          *
          * The effects for pagination to work for both mobile and other screens.
          */
-        var Pagination_Type = $(efp_Wrapper_ID).data("pagination");
+        var Pagination_Type = $(eventful_Wrapper_ID).data("pagination");
         if ($(window).width() <= 480) {
-          var Pagination_Type = $(efp_Wrapper_ID).data("pagination_mobile");
+          var Pagination_Type = $(eventful_Wrapper_ID).data("pagination_mobile");
         }
         // Ajax number pagination
         if (Pagination_Type == "ajax_pagination") {
-          $(efp_Wrapper_ID).on("click", ".efp-post-pagination a", function (e) {
+          $(eventful_Wrapper_ID).on("click", ".eventful-post-pagination a", function (e) {
             e.preventDefault();
             var that = $(this);
             var totalPage = $(
-                ".efp-post-pagination.efp-on-desktop a:not(.efp_next, .efp_prev)",
-                efp_Wrapper_ID
+                ".eventful-post-pagination.eventful-on-desktop a:not(.eventful_next, .eventful_prev)",
+                eventful_Wrapper_ID
               ).length,
               currentPage = parseInt(
                 $(
-                  ".efp-post-pagination.efp-on-desktop .active:not(.efp_next, .efp_prev)",
-                  efp_Wrapper_ID
+                  ".eventful-post-pagination.eventful-on-desktop .active:not(.eventful_next, .eventful_prev)",
+                  eventful_Wrapper_ID
                 ).data("page")
               );
             if ($(window).width() <= 480) {
               var totalPage = $(
-                  ".efp-post-pagination.efp-on-mobile a:not(.efp_next, .efp_prev)",
-                  efp_Wrapper_ID
+                  ".eventful-post-pagination.eventful-on-mobile a:not(.eventful_next, .eventful_prev)",
+                  eventful_Wrapper_ID
                 ).length,
                 currentPage = parseInt(
                   $(
-                    ".efp-post-pagination.efp-on-mobile .active:not(.efp_next, .efp_prev)",
-                    efp_Wrapper_ID
+                    ".eventful-post-pagination.eventful-on-mobile .active:not(.eventful_next, .eventful_prev)",
+                    eventful_Wrapper_ID
                   ).data("page")
                 );
             }
             page = parseInt(that.data("page"));
-            if (that.hasClass("efp_next")) {
+            if (that.hasClass("eventful_next")) {
               if (totalPage > currentPage) {
                 var page = currentPage + 1;
               } else {
                 return;
               }
             }
-            if (that.hasClass("efp_prev")) {
+            if (that.hasClass("eventful_prev")) {
               if (currentPage > 1) {
                 var page = currentPage - 1;
               } else {
                 return;
               }
             }
-            var efp_paged = { page, page };
+            var eventful_paged = { page, page };
             $.ajax({
               url: ajaxurl,
               type: "post",
@@ -1237,34 +1237,34 @@ jQuery(document).ready(function ($) {
               success: function (response) {
                 var $data = $(response);
                 var $newElements = $data;
-                if ($(efp_Wrapper_ID).hasClass("efp-masonry")) {
-                  var $post_wrapper = $(".ta-row", efp_Wrapper_ID);
+                if ($(eventful_Wrapper_ID).hasClass("eventful-masonry")) {
+                  var $post_wrapper = $(".ta-row", eventful_Wrapper_ID);
                   $post_wrapper.masonry("destroy");
                   $post_wrapper.html($newElements).imagesLoaded(function () {
                     $post_wrapper.masonry();
                   });
-                } else if ($(efp_Wrapper_ID).hasClass("efp-filter-wrapper")) {
+                } else if ($(eventful_Wrapper_ID).hasClass("eventful-filter-wrapper")) {
                   $grid
                     .html($newElements)
                     .isotope("appended", $newElements)
                     .imagesLoaded(function () {
                       $grid.isotope("layout");
                     });
-                  efp_item_same_height();
+                  eventful_item_same_height();
                 } else {
                   $(
-                    ".ta-row, .efp-timeline-grid, .ta-collapse, .table-responsive tbody",
-                    efp_Wrapper_ID
+                    ".ta-row, .eventful-timeline-grid, .ta-collapse, .table-responsive tbody",
+                    eventful_Wrapper_ID
                   ).html($newElements);
-                  if (efpAccordion.length > 0) {
-                    efpAccordion.accordion("refresh");
+                  if (eventfulAccordion.length > 0) {
+                    eventfulAccordion.accordion("refresh");
                     if (accordion_mode === "multi-open") {
-                      efpAccordion
-                        .find(".efp-collapse-header")
+                      eventfulAccordion
+                        .find(".eventful-collapse-header")
                         .next()
                         .slideDown();
-                      efpAccordion
-                        .find(".efp-collapse-header .fa")
+                      eventfulAccordion
+                        .find(".eventful-collapse-header .fa")
                         .removeClass("fa-plus")
                         .addClass("fa-minus");
                     }
@@ -1273,36 +1273,36 @@ jQuery(document).ready(function ($) {
                     opacity: 1,
                   });
                 }
-                $(".page-numbers", efp_Wrapper_ID).removeClass("active");
-                $(".page-numbers", efp_Wrapper_ID).each(function () {
-                  // if (parseInt($('.efp-post-pagination a').data('page')) === page) {
+                $(".page-numbers", eventful_Wrapper_ID).removeClass("active");
+                $(".page-numbers", eventful_Wrapper_ID).each(function () {
+                  // if (parseInt($('.eventful-post-pagination a').data('page')) === page) {
                   $(
-                    ".efp-post-pagination a[data-page=" + page + "]",
-                    efp_Wrapper_ID
+                    ".eventful-post-pagination a[data-page=" + page + "]",
+                    eventful_Wrapper_ID
                   ).addClass("active");
                   // }
                 });
-                $(".efp_next", efp_Wrapper_ID).removeClass("active");
-                $(".efp_prev", efp_Wrapper_ID).removeClass("active");
-                $(".efp-post-pagination a.active", efp_Wrapper_ID).each(
+                $(".eventful_next", eventful_Wrapper_ID).removeClass("active");
+                $(".eventful_prev", eventful_Wrapper_ID).removeClass("active");
+                $(".eventful-post-pagination a.active", eventful_Wrapper_ID).each(
                   function () {
                     if (parseInt($(this).data("page")) === totalPage) {
-                      $(".efp_next", efp_Wrapper_ID).addClass("active");
+                      $(".eventful_next", eventful_Wrapper_ID).addClass("active");
                     }
                     if (parseInt($(this).data("page")) === 1) {
-                      $(".efp_prev", efp_Wrapper_ID).addClass("active");
+                      $(".eventful_prev", eventful_Wrapper_ID).addClass("active");
                     }
                   }
                 );
-                if (efpAccordion.length > 0) {
-                  efpAccordion.accordion("refresh");
+                if (eventfulAccordion.length > 0) {
+                  eventfulAccordion.accordion("refresh");
                   if (accordion_mode === "multi-open") {
-                    efpAccordion
-                      .find(".efp-collapse-header")
+                    eventfulAccordion
+                      .find(".eventful-collapse-header")
                       .next()
                       .slideDown();
-                    efpAccordion
-                      .find(".efp-collapse-header .fa")
+                    eventfulAccordion
+                      .find(".eventful-collapse-header .fa")
                       .removeClass("fa-plus")
                       .addClass("fa-minus");
                   }
@@ -1310,18 +1310,18 @@ jQuery(document).ready(function ($) {
                 $newElements.animate({
                   opacity: 1,
                 });
-                efp_lazyload();
+                eventful_lazyload();
                 // Ajax Number pagination go to current shortcode top.
                 var url_hash = window.location.search;
-                if (url_hash.indexOf("efp_page") >= 0) {
+                if (url_hash.indexOf("eventful_page") >= 0) {
                   var current_screen_id =
-                    document.querySelector(efp_Wrapper_ID);
+                    document.querySelector(eventful_Wrapper_ID);
                   current_screen_id.scrollIntoView();
                 }
               },
             });
-            efp_hash_update_arr(page, efp_paged, "page");
-            efp_update_url();
+            eventful_hash_update_arr(page, eventful_paged, "page");
+            eventful_update_url();
           });
         }
 
@@ -1332,67 +1332,67 @@ jQuery(document).ready(function ($) {
           Pagination_Type == "infinite_scroll" ||
           Pagination_Type == "ajax_load_more"
         ) {
-          $(efp_Wrapper_ID).each(function () {
+          $(eventful_Wrapper_ID).each(function () {
             var EndingMessage = $(this)
-              .find(".ta-efp-pagination-data")
+              .find(".ta-eventful-pagination-data")
               .data("endingtext");
             var LoadMoreText = $(this)
-              .find(".ta-efp-pagination-data")
+              .find(".ta-eventful-pagination-data")
               .data("loadmoretext");
             if (
               !$(this)
-                .find(".efp-load-more")
-                .hasClass("efp-load-more-initialize")
+                .find(".eventful-load-more")
+                .hasClass("eventful-load-more-initialize")
             ) {
-              if ($(".efp-post-pagination a", efp_Wrapper_ID).length) {
-                $(".efp-post-pagination", efp_Wrapper_ID)
+              if ($(".eventful-post-pagination a", eventful_Wrapper_ID).length) {
+                $(".eventful-post-pagination", eventful_Wrapper_ID)
                   .eq(0)
                   .before(
-                    '<div class="efp-load-more"><button efp-processing="0">' +
+                    '<div class="eventful-load-more"><button eventful-processing="0">' +
                       LoadMoreText +
                       "</button></div>"
                   );
               }
               if (Pagination_Type == "infinite_scroll") {
-                $(".efp-load-more", efp_Wrapper_ID).addClass("efp-hide");
+                $(".eventful-load-more", eventful_Wrapper_ID).addClass("eventful-hide");
               }
-              $(".efp-post-pagination", efp_Wrapper_ID).addClass("efp-hide");
-              $(".ta-row div[class*=ta-col-]", efp_Wrapper_ID).addClass(
-                "efp-added"
+              $(".eventful-post-pagination", eventful_Wrapper_ID).addClass("eventful-hide");
+              $(".ta-row div[class*=ta-col-]", eventful_Wrapper_ID).addClass(
+                "eventful-added"
               );
               $(this)
-                .find(".efp-load-more")
-                .addClass("efp-load-more-initialize");
-              $(this).on("click", ".efp-load-more button", function (e) {
+                .find(".eventful-load-more")
+                .addClass("eventful-load-more-initialize");
+              $(this).on("click", ".eventful-load-more button", function (e) {
                 e.preventDefault();
                 if (
                   $(
-                    ".efp-post-pagination a.active:not(.efp_next, .efp_prev)",
-                    efp_Wrapper_ID
+                    ".eventful-post-pagination a.active:not(.eventful_next, .eventful_prev)",
+                    eventful_Wrapper_ID
                   ).length
                 ) {
-                  $(".efp-load-more button").attr("efp-processing", 1);
+                  $(".eventful-load-more button").attr("eventful-processing", 1);
                   var current_page = parseInt(
                     $(
-                      ".efp-post-pagination a.active:not(.efp_next, .efp_prev)",
-                      efp_Wrapper_ID
+                      ".eventful-post-pagination a.active:not(.eventful_next, .eventful_prev)",
+                      eventful_Wrapper_ID
                     ).data("page")
                   );
                   current_page = current_page + 1;
-                  $(".efp-load-more", efp_Wrapper_ID).hide();
-                  $(".efp-post-pagination", efp_Wrapper_ID)
+                  $(".eventful-load-more", eventful_Wrapper_ID).hide();
+                  $(".eventful-post-pagination", eventful_Wrapper_ID)
                     .eq(0)
                     .before(
-                      '<div class="efp-infinite-scroll-loader"><svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#444"><g fill="none" fill-rule="evenodd" stroke-width="2"><circle cx="22" cy="22" r="1"><animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" /> <animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite" /> </circle> <circle cx="22" cy="22" r="1"> <animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" /> <animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"/></circle></g></svg></div>'
+                      '<div class="eventful-infinite-scroll-loader"><svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#444"><g fill="none" fill-rule="evenodd" stroke-width="2"><circle cx="22" cy="22" r="1"><animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" /> <animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite" /> </circle> <circle cx="22" cy="22" r="1"> <animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" /> <animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"/></circle></g></svg></div>'
                     );
                   var totalPage = $(
-                    ".efp-post-pagination.efp-on-desktop.infinite_scroll a:not(.efp_next, .efp_prev), .efp-post-pagination.efp-on-desktop.ajax_load_more a:not(.efp_next, .efp_prev)",
-                    efp_Wrapper_ID
+                    ".eventful-post-pagination.eventful-on-desktop.infinite_scroll a:not(.eventful_next, .eventful_prev), .eventful-post-pagination.eventful-on-desktop.ajax_load_more a:not(.eventful_next, .eventful_prev)",
+                    eventful_Wrapper_ID
                   ).length;
                   if ($(window).width() <= 480) {
                     var totalPage = $(
-                      ".efp-post-pagination.efp-on-mobile.infinite_scroll a:not(.efp_next, .efp_prev), .efp-post-pagination.ajax_load_more.efp-on-mobile  a:not(.efp_next, .efp_prev)",
-                      efp_Wrapper_ID
+                      ".eventful-post-pagination.eventful-on-mobile.infinite_scroll a:not(.eventful_next, .eventful_prev), .eventful-post-pagination.ajax_load_more.eventful-on-mobile  a:not(.eventful_next, .eventful_prev)",
+                      eventful_Wrapper_ID
                     ).length;
                   }
                   page = current_page;
@@ -1419,8 +1419,8 @@ jQuery(document).ready(function ($) {
                     success: function (response) {
                       var $data = $(response);
                       var $newElements = $data;
-                      if ($(efp_Wrapper_ID).hasClass("efp-masonry")) {
-                        var $post_wrapper = $(".ta-row", efp_Wrapper_ID);
+                      if ($(eventful_Wrapper_ID).hasClass("eventful-masonry")) {
+                        var $post_wrapper = $(".ta-row", eventful_Wrapper_ID);
                         $post_wrapper.masonry("destroy");
                         $post_wrapper
                           .append($newElements)
@@ -1428,7 +1428,7 @@ jQuery(document).ready(function ($) {
                             $post_wrapper.masonry();
                           });
                       } else if (
-                        $(efp_Wrapper_ID).hasClass("efp-filter-wrapper")
+                        $(eventful_Wrapper_ID).hasClass("eventful-filter-wrapper")
                       ) {
                         $grid
                           .append($newElements)
@@ -1436,24 +1436,24 @@ jQuery(document).ready(function ($) {
                           .imagesLoaded(function () {
                             $grid.isotope("layout");
                           });
-                        efp_item_same_height();
+                        eventful_item_same_height();
                       } else {
                         var $newElements = $data.css({
                           opacity: 0,
                         });
                         $(
-                          ".ta-row, .efp-timeline-grid, .ta-collapse, .table-responsive tbody",
-                          efp_Wrapper_ID
+                          ".ta-row, .eventful-timeline-grid, .ta-collapse, .table-responsive tbody",
+                          eventful_Wrapper_ID
                         ).append($newElements);
-                        if (efpAccordion.length > 0) {
-                          efpAccordion.accordion("refresh");
+                        if (eventfulAccordion.length > 0) {
+                          eventfulAccordion.accordion("refresh");
                           if (accordion_mode === "multi-open") {
-                            efpAccordion
-                              .find(".efp-collapse-header")
+                            eventfulAccordion
+                              .find(".eventful-collapse-header")
                               .next()
                               .slideDown();
-                            efpAccordion
-                              .find(".efp-collapse-header .fa")
+                            eventfulAccordion
+                              .find(".eventful-collapse-header .fa")
                               .removeClass("fa-plus")
                               .addClass("fa-minus");
                           }
@@ -1462,42 +1462,42 @@ jQuery(document).ready(function ($) {
                           opacity: 1,
                         });
                       }
-                      $(".page-numbers", efp_Wrapper_ID).removeClass("active");
-                      $(".page-numbers", efp_Wrapper_ID).each(function () {
+                      $(".page-numbers", eventful_Wrapper_ID).removeClass("active");
+                      $(".page-numbers", eventful_Wrapper_ID).each(function () {
                         $(
-                          ".efp-post-pagination a[data-page=" + page + "]",
-                          efp_Wrapper_ID
+                          ".eventful-post-pagination a[data-page=" + page + "]",
+                          eventful_Wrapper_ID
                         ).addClass("active");
                       });
-                      $(".efp-infinite-scroll-loader", efp_Wrapper_ID).remove();
+                      $(".eventful-infinite-scroll-loader", eventful_Wrapper_ID).remove();
                       if (Pagination_Type == "ajax_load_more") {
-                        $(".efp-load-more").show();
+                        $(".eventful-load-more").show();
                       }
-                      $(".efp-load-more button").attr("efp-processing", 0);
-                      $(".ta-row div[class*=ta-col-]", efp_Wrapper_ID)
-                        .not(".efp-added")
-                        .addClass("animated efpFadeIn")
+                      $(".eventful-load-more button").attr("eventful-processing", 0);
+                      $(".ta-row div[class*=ta-col-]", eventful_Wrapper_ID)
+                        .not(".eventful-added")
+                        .addClass("animated eventfulFadeIn")
                         .one("webkitAnimationEnd animationEnd", function () {
                           $(this)
-                            .removeClass("animated efpFadeIn")
-                            .addClass("efp-added");
+                            .removeClass("animated eventfulFadeIn")
+                            .addClass("eventful-added");
                         });
                       if (totalPage == current_page) {
-                        $(".efp-load-more", efp_Wrapper_ID)
+                        $(".eventful-load-more", eventful_Wrapper_ID)
                           .addClass("finished")
-                          .removeClass("efp-hide");
-                        $(".efp-load-more", efp_Wrapper_ID)
+                          .removeClass("eventful-hide");
+                        $(".eventful-load-more", eventful_Wrapper_ID)
                           .show()
                           .html(EndingMessage);
                       }
-                      efp_lazyload();
+                      eventful_lazyload();
                     },
                   });
                 } else {
-                  $(".efp-load-more", efp_Wrapper_ID)
+                  $(".eventful-load-more", eventful_Wrapper_ID)
                     .addClass("finished")
-                    .removeClass("efp-hide");
-                  $(".efp-load-more", efp_Wrapper_ID)
+                    .removeClass("eventful-hide");
+                  $(".eventful-load-more", eventful_Wrapper_ID)
                     .show()
                     .html(EndingMessage);
                 }
@@ -1508,27 +1508,27 @@ jQuery(document).ready(function ($) {
               $(window).scroll(function () {
                 if (
                   $(
-                    ".ta-row, .ta-collapse, .efp-timeline-grid, .table-responsive tbody",
-                    efp_Wrapper_ID
+                    ".ta-row, .ta-collapse, .eventful-timeline-grid, .table-responsive tbody",
+                    eventful_Wrapper_ID
                   ).length
                 ) {
                   var TopAndContent =
                     $(
-                      ".ta-row, .ta-collapse, .efp-timeline-grid, .table-responsive tbody",
-                      efp_Wrapper_ID
+                      ".ta-row, .ta-collapse, .eventful-timeline-grid, .table-responsive tbody",
+                      eventful_Wrapper_ID
                     ).offset().top +
                     $(
-                      ".ta-row, .ta-collapse, .efp-timeline-grid, .table-responsive tbody",
-                      efp_Wrapper_ID
+                      ".ta-row, .ta-collapse, .eventful-timeline-grid, .table-responsive tbody",
+                      eventful_Wrapper_ID
                     ).outerHeight();
                   var areaLeft = TopAndContent - $(window).scrollTop();
                   if (areaLeft - bufferBefore < $(window).height()) {
                     if (
-                      $(".efp-load-more button", efp_Wrapper_ID).attr(
-                        "efp-processing"
+                      $(".eventful-load-more button", eventful_Wrapper_ID).attr(
+                        "eventful-processing"
                       ) == 0
                     ) {
-                      $(".efp-load-more button", efp_Wrapper_ID).trigger(
+                      $(".eventful-load-more button", eventful_Wrapper_ID).trigger(
                         "click"
                       );
                     }
@@ -1540,10 +1540,10 @@ jQuery(document).ready(function ($) {
         }
 
         /* This code added for divi-builder ticker mode compatibility. */
-        if (efpCarousel.length > 0 && efpCarouselData.mode == "ticker") {
-          $(".ta-efp-carousel img").removeAttr("loading");
+        if (eventfulCarousel.length > 0 && eventfulCarouselData.mode == "ticker") {
+          $(".ta-eventful-carousel img").removeAttr("loading");
           $(window).on("load", function () {
-            $(".ta-efp-carousel").each(function () {
+            $(".ta-eventful-carousel").each(function () {
               var thisdfd = $(this);
               var thisCSS = thisdfd.attr("style");
               $(this).removeAttr("style");
@@ -1556,27 +1556,27 @@ jQuery(document).ready(function ($) {
 
         /* Preloader js */
         $(document).ready(function () {
-          $(".efp-preloader", efp_Wrapper_ID).css({
+          $(".eventful-preloader", eventful_Wrapper_ID).css({
             backgroundImage: "none",
             visibility: "hidden",
           });
         });
-        // This function added for efp-Lazyload.
-        function efp_lazyload() {
+        // This function added for eventful-Lazyload.
+        function eventful_lazyload() {
           var $is_find = $(".eventful__item--thumbnail img").hasClass(
-            "efp-lazyload"
+            "eventful-lazyload"
           );
           if ($is_find) {
-            $("img.efp-lazyload")
-              .efp_lazyload({ effect: "fadeIn", effectTime: 2000 })
-              .removeClass("efp-lazyload")
-              .addClass("efp-lazyloaded");
+            $("img.eventful-lazyload")
+              .eventful_lazyload({ effect: "fadeIn", effectTime: 2000 })
+              .removeClass("eventful-lazyload")
+              .addClass("eventful-lazyloaded");
           }
-          // efp_item_same_height();
+          // eventful_item_same_height();
         }
-        efp_lazyload();
+        eventful_lazyload();
       });
     }
   };
-  efp_myScript();
+  eventful_myScript();
 });

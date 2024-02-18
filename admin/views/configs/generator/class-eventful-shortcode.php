@@ -23,7 +23,7 @@ class EFP_Shortcode
 					'fields' => array(
 						array(
 							'type'  => 'shortcode',
-							'class' => 'efp-admin-sidebar',
+							'class' => 'eventful-admin-sidebar',
 						),
 					),
 				)

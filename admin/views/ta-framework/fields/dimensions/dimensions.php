@@ -49,7 +49,7 @@ if ( ! class_exists( 'EFP_Field_dimensions' ) ) {
 				$placeholder = ( ! empty( $args['width_placeholder'] ) ) ? ' placeholder="' . esc_attr( $args['width_placeholder'] ) . '"' : '';
 				echo '<div class="eventful--input">';
 				echo ( ! empty( $args['width_icon'] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post($args['width_icon']) . '</span>' : '';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[width]' ) ) . '" value="' . esc_attr( $value['width'] ) . '"' . wp_kses_post($placeholder) . ' class="efp-input-number' . esc_attr( $is_unit ) . '" step="any" />';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[width]' ) ) . '" value="' . esc_attr( $value['width'] ) . '"' . wp_kses_post($placeholder) . ' class="eventful-input-number' . esc_attr( $is_unit ) . '" step="any" />';
 				echo ( ! empty( $unit ) ) ? '<span class="eventful--label eventful--unit">' . esc_attr( $args['units'][0] ) . '</span>' : '';
 				echo '</div>';
 			}
@@ -58,7 +58,7 @@ if ( ! class_exists( 'EFP_Field_dimensions' ) ) {
 				$placeholder = ( ! empty( $args['height_placeholder'] ) ) ? ' placeholder="' . esc_attr( $args['height_placeholder'] ) . '"' : '';
 				echo '<div class="eventful--input">';
 				echo ( ! empty( $args['height_icon'] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post($args['height_icon']) . '</span>' : '';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[height]' ) ) . '" value="' . esc_attr( $value['height'] ) . '"' . wp_kses_post($placeholder) . ' class="efp-input-number' . esc_attr( $is_unit ) . '" step="any" />';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[height]' ) ) . '" value="' . esc_attr( $value['height'] ) . '"' . wp_kses_post($placeholder) . ' class="eventful-input-number' . esc_attr( $is_unit ) . '" step="any" />';
 				echo ( ! empty( $unit ) ) ? '<span class="eventful--label eventful--unit">' . esc_attr( $args['units'][0] ) . '</span>' : '';
 				echo '</div>';
 			}

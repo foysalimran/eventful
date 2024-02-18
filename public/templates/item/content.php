@@ -13,7 +13,7 @@
 	<?php
 	if ( $show_post_content ) {
 
-		echo wp_kses( EFP_Functions::efp_content( $post_content_setting, $eventful_content_type, $post ), apply_filters( 'ta_wp_eventful_allowed_tags', EFP_Functions::allowed_tags() ) );
+		echo wp_kses( EFP_Functions::eventful_content( $post_content_setting, $eventful_content_type, $post ), apply_filters( 'ta_wp_eventful_allowed_tags', EFP_Functions::allowed_tags() ) );
 	}
 	?>
 </div>

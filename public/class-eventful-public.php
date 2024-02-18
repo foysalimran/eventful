@@ -42,7 +42,7 @@ class Eventful_Public
 	public function __construct()
 	{
 		$this->load_public_dependencies();
-		$this->efp_public_action();
+		$this->eventful_public_action();
 	}
 
 	private function load_public_dependencies()
@@ -58,17 +58,17 @@ class Eventful_Public
 		require_once EFP_PATH . 'public/helpers/class-loop-html.php';
 	}
 
-	private function efp_public_action()
+	private function eventful_public_action()
 	{
 
 		add_action('wp_ajax_post_grid_ajax', array($this, 'post_grid_ajax'));
 		add_action('wp_ajax_nopriv_post_grid_ajax', array($this, 'post_grid_ajax'));
 
-		add_action('wp_ajax_eventful_post_efpup', array($this, 'efp_post_efpup'));
-		add_action('wp_ajax_nopriv_eventful_post_efpup', array($this, 'efp_post_efpup'));
+		add_action('wp_ajax_eventful_post_eventfulup', array($this, 'eventful_post_eventfulup'));
+		add_action('wp_ajax_nopriv_eventful_post_eventfulup', array($this, 'eventful_post_eventfulup'));
 
-		add_action('wp_ajax_eventful_post_efpup_next_prev', array($this, 'efp_post_efpup_next_prev'));
-		add_action('wp_ajax_nopriv_eventful_post_efpup_next_prev', array($this, 'efp_post_efpup_next_prev'));
+		add_action('wp_ajax_eventful_post_eventfulup_next_prev', array($this, 'eventful_post_eventfulup_next_prev'));
+		add_action('wp_ajax_nopriv_eventful_post_eventfulup_next_prev', array($this, 'eventful_post_eventfulup_next_prev'));
 
 		add_action('wp_ajax_post_pagination_bar', array($this, 'post_pagination_bar'));
 		add_action('wp_ajax_nopriv_post_pagination_bar', array($this, 'post_pagination_bar'));
@@ -76,10 +76,10 @@ class Eventful_Public
 		add_action('wp_ajax_post_pagination_bar_mobile', array($this, 'post_pagination_bar_mobile'));
 		add_action('wp_ajax_nopriv_post_pagination_bar_mobile', array($this, 'post_pagination_bar_mobile'));
 
-		add_action('wp_ajax_eventful_post_order', array($this, 'efp_post_order'));
-		add_action('wp_ajax_nopriv_eventful_post_order', array($this, 'efp_post_order'));
+		add_action('wp_ajax_eventful_post_order', array($this, 'eventful_post_order'));
+		add_action('wp_ajax_nopriv_eventful_post_order', array($this, 'eventful_post_order'));
 
-		add_shortcode('eventful', array($this, 'efp_shortcode_render'));
+		add_shortcode('eventful', array($this, 'eventful_shortcode_render'));
 
 		$this->suffix = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) || (defined('WP_DEBUG') && WP_DEBUG) ? '' : '.min';
 	}
@@ -104,25 +104,25 @@ class Eventful_Public
 		 */
 
 		$eventful_settings        = get_option('ta_eventful_settings');
-		$eventful_fontawesome_css = isset($eventful_settings['efp_fontawesome_css']) ? $eventful_settings['efp_fontawesome_css'] : true;
-		$eventful_swiper_css      = isset($eventful_settings['efp_swiper_css']) ? $eventful_settings['efp_swiper_css'] : true;
-		$eventful_bxslider_css    = isset($eventful_settings['efp_bxSlider_css']) ? $eventful_settings['efp_bxSlider_css'] : true;
-		$eventful_like_css        = isset($eventful_settings['efp_like_css']) ? $eventful_settings['efp_like_css'] : true;
-		$eventful_magnific_css    = isset($eventful_settings['efp_magnific_css']) ? $eventful_settings['efp_magnific_css'] : true;
+		$eventful_fontawesome_css = isset($eventful_settings['eventful_fontawesome_css']) ? $eventful_settings['eventful_fontawesome_css'] : true;
+		$eventful_swiper_css      = isset($eventful_settings['eventful_swiper_css']) ? $eventful_settings['eventful_swiper_css'] : true;
+		$eventful_bxslider_css    = isset($eventful_settings['eventful_bxSlider_css']) ? $eventful_settings['eventful_bxSlider_css'] : true;
+		$eventful_like_css        = isset($eventful_settings['eventful_like_css']) ? $eventful_settings['eventful_like_css'] : true;
+		$eventful_magnific_css    = isset($eventful_settings['eventful_magnific_css']) ? $eventful_settings['eventful_magnific_css'] : true;
 		if ($eventful_fontawesome_css) {
-			wp_enqueue_style('efp-font-awesome', EFP_URL . 'public/assets/css/fontawesome.min.css', array(), EFP_VERSION, 'all');
+			wp_enqueue_style('eventful-font-awesome', EFP_URL . 'public/assets/css/fontawesome.min.css', array(), EFP_VERSION, 'all');
 		}
 		if ($eventful_swiper_css) {
-			wp_enqueue_style('efp_swiper', EFP_URL . 'public/assets/css/swiper-bundle' . $this->suffix . '.css', array(), EFP_VERSION, 'all');
+			wp_enqueue_style('eventful_swiper', EFP_URL . 'public/assets/css/swiper-bundle' . $this->suffix . '.css', array(), EFP_VERSION, 'all');
 		}
 		if ($eventful_bxslider_css) {
-			wp_enqueue_style('efp-bxslider', EFP_URL . 'public/assets/css/jquery.bxslider' . $this->suffix . '.css', array(), EFP_VERSION, 'all');
+			wp_enqueue_style('eventful-bxslider', EFP_URL . 'public/assets/css/jquery.bxslider' . $this->suffix . '.css', array(), EFP_VERSION, 'all');
 		}
 		if ($eventful_like_css) {
-			wp_enqueue_style('efp-likes', EFP_URL . 'public/assets/css/efp-likes-public' . $this->suffix . '.css', array(), EFP_VERSION, 'all');
+			wp_enqueue_style('eventful-likes', EFP_URL . 'public/assets/css/eventful-likes-public' . $this->suffix . '.css', array(), EFP_VERSION, 'all');
 		}
-		wp_enqueue_style('efp-grid', EFP_URL . 'public/assets/css/ta-grid' . $this->suffix . '.css', array(), EFP_VERSION, 'all');
-		wp_enqueue_style('efp-style', EFP_URL . 'public/assets/css/style' . $this->suffix . '.css', array(), EFP_VERSION, 'all');
+		wp_enqueue_style('eventful-grid', EFP_URL . 'public/assets/css/ta-grid' . $this->suffix . '.css', array(), EFP_VERSION, 'all');
+		wp_enqueue_style('eventful-style', EFP_URL . 'public/assets/css/style' . $this->suffix . '.css', array(), EFP_VERSION, 'all');
 
 		$eventful_posts       = new WP_Query(
 			array(
@@ -134,9 +134,9 @@ class Eventful_Public
 		$custom_css      = '';
 		$enqueue_fonts   = array();
 		$setting_options = get_option('ta_eventful_settings');
-		$eventful_custom_css  = isset($setting_options['efp_custom_css']) ? $setting_options['efp_custom_css'] : '';
+		$eventful_custom_css  = isset($setting_options['eventful_custom_css']) ? $setting_options['eventful_custom_css'] : '';
 
-		$eventful_enqueue_google_font = isset($setting_options['efp_enqueue_google_font']) ? $setting_options['efp_enqueue_google_font'] : true;
+		$eventful_enqueue_google_font = isset($setting_options['eventful_enqueue_google_font']) ? $setting_options['eventful_enqueue_google_font'] : true;
 		foreach ($post_ids as $eventful_id) {
 			// Include dynamic style file.
 			$view_options = get_post_meta($eventful_id, 'ta_eventful_view_options', true);
@@ -183,14 +183,14 @@ class Eventful_Public
 		}
 		// Enqueue Google fonts.
 		if ($eventful_enqueue_google_font && !empty($enqueue_fonts)) {
-			wp_enqueue_style('efp-google-fonts', esc_url(add_query_arg('family', rawurlencode(implode('|', array_merge(...$enqueue_fonts))), '//fonts.googleapis.com/css')), array(), EFP_VERSION, false);
+			wp_enqueue_style('eventful-google-fonts', esc_url(add_query_arg('family', rawurlencode(implode('|', array_merge(...$enqueue_fonts))), '//fonts.googleapis.com/css')), array(), EFP_VERSION, false);
 		}
 		include 'dynamic-css/responsive-css.php';
 		if (!empty($eventful_custom_css)) {
 			$custom_css .= $eventful_custom_css;
 		}
 		// Add dynamic style.
-		wp_add_inline_style('efp-style', $custom_css);
+		wp_add_inline_style('eventful-style', $custom_css);
 	}
 
 	/**
@@ -200,17 +200,17 @@ class Eventful_Public
 	 */
 	public function enqueue_scripts()
 	{
-		wp_register_script('efp-swiper', EFP_URL . 'public/assets/js/swiper-bundle' . $this->suffix . '.js', array('jquery'), EFP_VERSION, true);
-		wp_register_script('efp-isotope', EFP_URL . 'public/assets/js/isotope' . $this->suffix . '.js', array('jquery'), EFP_VERSION, true);
-		wp_register_script('efp-bxslider', EFP_URL . 'public/assets/js/jquery.bxslider' . $this->suffix . '.js', array('jquery'), EFP_VERSION, true);
-		wp_register_script('efp-lazy', EFP_URL . 'public/assets/js/efp-lazyload' . $this->suffix . '.js', array('jquery'), EFP_VERSION, true);
-		wp_register_script('efp-script', EFP_URL . 'public/assets/js/scripts' . $this->suffix . '.js', array('efp-swiper', 'efp-bxslider'), EFP_VERSION, true);
+		wp_register_script('eventful-swiper', EFP_URL . 'public/assets/js/swiper-bundle' . $this->suffix . '.js', array('jquery'), EFP_VERSION, true);
+		wp_register_script('eventful-isotope', EFP_URL . 'public/assets/js/isotope' . $this->suffix . '.js', array('jquery'), EFP_VERSION, true);
+		wp_register_script('eventful-bxslider', EFP_URL . 'public/assets/js/jquery.bxslider' . $this->suffix . '.js', array('jquery'), EFP_VERSION, true);
+		wp_register_script('eventful-lazy', EFP_URL . 'public/assets/js/eventful-lazyload' . $this->suffix . '.js', array('jquery'), EFP_VERSION, true);
+		wp_register_script('eventful-script', EFP_URL . 'public/assets/js/scripts' . $this->suffix . '.js', array('eventful-swiper', 'eventful-bxslider'), EFP_VERSION, true);
 		wp_localize_script(
-			'efp-script',
-			'spefp',
+			'eventful-script',
+			'speventful',
 			array(
 				'ajaxurl' => admin_url('admin-ajax.php'),
-				'nonce'   => wp_create_nonce('spefp_nonce'),
+				'nonce'   => wp_create_nonce('speventful_nonce'),
 			)
 		);
 	}
@@ -220,7 +220,7 @@ class Eventful_Public
 	 */
 	public static function post_grid_ajax()
 	{
-		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'spefp_nonce')) {
+		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'speventful_nonce')) {
 			return false;
 		}
 		$views_id            = isset($_POST['id']) ? absint($_POST['id']) : '';
@@ -254,13 +254,13 @@ class Eventful_Public
 		}
 		$post_content_sorter              = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';
 		$query_args                       = EFP_QueryInside::get_filtered_content($view_options, $views_id, $layout_preset);
-		$post_limit                       = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
-		$post_offset                      = isset($view_options['efp_post_offset']) ? $view_options['efp_post_offset'] : 0;
+		$post_limit                       = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
+		$post_offset                      = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
 		$new_query_args                   = $query_args;
 		$new_query_args['fields']         = 'ids';
 		$new_query_args['posts_per_page'] = $post_limit;
 		$query_post_ids                   = get_posts($new_query_args);
-		$relation                         = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation'] : 'AND';
+		$relation                         = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 		$query_args                       = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$new_query_args                   = $query_args;
 		$new_query_args['fields']         = 'ids';
@@ -273,9 +273,9 @@ class Eventful_Public
 			if ($post_limit < 1) {
 				$total_page = 0;
 			} else {
-				$total_page = EFP_Functions::efp_max_pages($post_limit, $post_per_page);
+				$total_page = EFP_Functions::eventful_max_pages($post_limit, $post_per_page);
 			}
-			$eventful_last_page_post   = EFP_Functions::efp_last_page_post($post_limit, $post_per_page, $total_page);
+			$eventful_last_page_post   = EFP_Functions::eventful_last_page_post($post_limit, $post_per_page, $total_page);
 			$offset               = (int) $post_per_page * ($paged - 1);
 			$query_args['offset'] = (int) $offset + (int) $post_offset;
 			if ($total_page == $paged) {
@@ -287,7 +287,7 @@ class Eventful_Public
 		}
 		$query_args['paged'] = $paged;
 		$eventful_query           = new WP_Query($query_args);
-		EFP_HTML::efp_get_posts($view_options, $layout_preset, $post_content_sorter, $eventful_query, $views_id);
+		EFP_HTML::eventful_get_posts($view_options, $layout_preset, $post_content_sorter, $eventful_query, $views_id);
 		die();
 	}
 
@@ -296,7 +296,7 @@ class Eventful_Public
 	 */
 	public static function post_pagination_bar()
 	{
-		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'spefp_nonce')) {
+		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'speventful_nonce')) {
 			return false;
 		}
 		$views_id            = isset($_POST['id']) ? absint($_POST['id']) : '';
@@ -317,18 +317,18 @@ class Eventful_Public
 		$pagination_type     = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
 		$query_args          = EFP_QueryInside::get_filtered_content($view_options, $views_id, $layout_preset);
 
-		$post_offset                      = isset($view_options['efp_post_offset']) ? $view_options['efp_post_offset'] : 0;
+		$post_offset                      = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
 		$new_query_args                   = $query_args;
 		$new_query_args['fields']         = 'ids';
-		$post_limit                       = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
+		$post_limit                       = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$new_query_args['posts_per_page'] = $post_limit;
 		$query_post_ids                   = get_posts($new_query_args);
 
-		$relation           = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation'] : 'AND';
+		$relation           = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 		$query_args         = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$query_args['lang'] = '';
 		$eventful_query          = new WP_Query($query_args);
-		EFP_HTML::efp_pagination_bar($eventful_query, $view_options, $layout, $views_id, $paged);
+		EFP_HTML::eventful_pagination_bar($eventful_query, $view_options, $layout, $views_id, $paged);
 		die();
 	}
 
@@ -337,7 +337,7 @@ class Eventful_Public
 	 */
 	public static function post_pagination_bar_mobile()
 	{
-		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'spefp_nonce')) {
+		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'speventful_nonce')) {
 			return false;
 		}
 		$views_id            = isset($_POST['id']) ? absint($_POST['id']) : '';
@@ -358,28 +358,28 @@ class Eventful_Public
 		$pagination_type     = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
 		$query_args          = EFP_QueryInside::get_filtered_content($view_options, $views_id, $layout_preset, 'on_mobile');
 		$tax_settings        = array();
-		$post_offset         = isset($view_options['efp_post_offset']) ? $view_options['efp_post_offset'] : 0;
+		$post_offset         = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
 
 		$new_query_args                   = $query_args;
 		$new_query_args['fields']         = 'ids';
-		$post_limit                       = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
+		$post_limit                       = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$new_query_args['posts_per_page'] = $post_limit;
 		$query_post_ids                   = get_posts($new_query_args);
 		$query_post_ids                   = array('');
 
-		$relation   = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation'] : 'AND';
+		$relation   = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 		$query_args = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$eventful_query  = new WP_Query($query_args);
-		EFP_HTML::efp_pagination_bar($eventful_query, $view_options, $layout, $views_id, $paged, 'on_mobile');
+		EFP_HTML::eventful_pagination_bar($eventful_query, $view_options, $layout, $views_id, $paged, 'on_mobile');
 		die();
 	}
 
 	/**
 	 * Post Ajax filter.
 	 */
-	public static function efp_post_order()
+	public static function eventful_post_order()
 	{
-		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'spefp_nonce')) {
+		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'speventful_nonce')) {
 			return false;
 		}
 		$views_id               = isset($_POST['id']) ? absint($_POST['id']) : '';
@@ -399,17 +399,17 @@ class Eventful_Public
 		$pagination_type_mobile = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
 		$post_content_sorter    = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';
 		$query_args             = EFP_QueryInside::get_filtered_content($view_options, $views_id, $layout_preset);
-		$post_offset            = isset($view_options['efp_post_offset']) ? $view_options['efp_post_offset'] : 0;
+		$post_offset            = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
 
 		$new_query_args                   = $query_args;
 		$new_query_args['fields']         = 'ids';
-		$post_limit                       = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
+		$post_limit                       = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$new_query_args['posts_per_page'] = $post_limit;
 		$query_post_ids                   = get_posts($new_query_args);
-		$relation                         = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation'] : 'AND';
+		$relation                         = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 		$query_args                       = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$eventful_query                        = new WP_Query($query_args);
-		EFP_HTML::efp_get_posts($view_options, $layout_preset, $post_content_sorter, $eventful_query, $views_id);
+		EFP_HTML::eventful_get_posts($view_options, $layout_preset, $post_content_sorter, $eventful_query, $views_id);
 		die();
 	}
 
@@ -421,7 +421,7 @@ class Eventful_Public
 	 * @since 2.0
 	 * @param array $attribute attribute of this shortcode.
 	 */
-	public function efp_shortcode_render($attribute)
+	public function eventful_shortcode_render($attribute)
 	{
 		if (empty($attribute['id'])) {
 			return;
@@ -432,7 +432,7 @@ class Eventful_Public
 		$view_options  = get_post_meta($eventful_gl_id, 'ta_eventful_view_options', true);
 		$section_title = get_the_title($eventful_gl_id);
 		ob_start();
-		EFP_HTML::efp_html_show($view_options, $layout, $eventful_gl_id, $section_title);
+		EFP_HTML::eventful_html_show($view_options, $layout, $eventful_gl_id, $section_title);
 		return ob_get_clean();
 	}
 }

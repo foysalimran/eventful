@@ -33,7 +33,7 @@ if ( ! class_exists( 'EFP_Field_image_select' ) ) {
 
 			if ( ! empty( $args['options'] ) ) {
 
-				echo '<div class="efp-siblings eventful--image-group' . esc_attr( $inline ) . '" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
+				echo '<div class="eventful-siblings eventful--image-group' . esc_attr( $inline ) . '" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
 
 				$num = 1;
 

@@ -626,7 +626,7 @@
     /**
      * Populates the pager with proper amount of pages
      */
-    var efpulatePager = function() {
+    var eventfululatePager = function() {
       var pagerHtml = '',
       linkContent = '',
       pagerQty = getPagerQty();
@@ -645,7 +645,7 @@
         // add the markup to the string
         pagerHtml += '<div class="bx-pager-item"><a href="" data-slide-index="' + i + '" class="bx-pager-link">' + linkContent + '</a></div>';
       }
-      // efpulate the pager element with pager links
+      // eventfululate the pager element with pager links
       slider.pagerEl.html(pagerHtml);
     };
 
@@ -656,15 +656,15 @@
       if (!slider.settings.pagerCustom) {
         // create the pager DOM element
         slider.pagerEl = $('<div class="bx-pager" />');
-        // if a pager selector was supplied, efpulate it with the pager
+        // if a pager selector was supplied, eventfululate it with the pager
         if (slider.settings.pagerSelector) {
           $(slider.settings.pagerSelector).html(slider.pagerEl);
         // if no pager selector was supplied, add it after the wrapper
         } else {
           slider.controls.el.addClass('bx-has-pager').append(slider.pagerEl);
         }
-        // efpulate the pager
-        efpulatePager();
+        // eventfululate the pager
+        eventfululatePager();
       } else {
         slider.pagerEl = $(slider.settings.pagerCustom);
       }
@@ -681,11 +681,11 @@
       // add click actions to the controls
       slider.controls.next.on('click touchend', clickNextBind);
       slider.controls.prev.on('click touchend', clickPrevBind);
-      // if nextSelector was supplied, efpulate it
+      // if nextSelector was supplied, eventfululate it
       if (slider.settings.nextSelector) {
         $(slider.settings.nextSelector).append(slider.controls.next);
       }
-      // if prevSelector was supplied, efpulate it
+      // if prevSelector was supplied, eventfululate it
       if (slider.settings.prevSelector) {
         $(slider.settings.prevSelector).append(slider.controls.prev);
       }
@@ -718,7 +718,7 @@
       } else {
         slider.controls.autoEl.append(slider.controls.start).append(slider.controls.stop);
       }
-      // if auto controls selector was supplied, efpulate it with the controls
+      // if auto controls selector was supplied, eventfululate it with the controls
       if (slider.settings.autoControlsSelector) {
         $(slider.settings.autoControlsSelector).html(slider.controls.autoEl);
       // if auto controls selector was not supplied, add it after the wrapper
@@ -1606,7 +1606,7 @@
       if (slider.active.index >= getPagerQty()) { slider.active.last = true; }
       // if a pager is being displayed and a custom pager is not being used, update it
       if (slider.settings.pager && !slider.settings.pagerCustom) {
-        efpulatePager();
+        eventfululatePager();
         updatePagerActive(slider.active.index);
       }
       if (slider.settings.ariaHidden) { applyAriaHiddenAttributes(slider.active.index * getMoveBy()); }

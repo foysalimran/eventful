@@ -1,11 +1,11 @@
 ! function ($) {
 	"use strict";
-	$(document).on("click", ".efpl-wrapper .efpl-button", function () {
+	$(document).on("click", ".eventfull-wrapper .eventfull-button", function () {
 		var button = $(this),
 			post_id = button.attr("data-post-id"),
 			security = button.attr("data-nonce"),
 			iscomment = button.attr("data-iscomment"),
-			allbuttons, loader = (allbuttons = $("1" === iscomment ? ".efpl-comment-button-" + post_id : ".efpl-button-" + post_id)).next("#efpl-loader");
+			allbuttons, loader = (allbuttons = $("1" === iscomment ? ".eventfull-comment-button-" + post_id : ".eventfull-button-" + post_id)).next("#eventfull-loader");
 		return "" !== post_id && $.ajax({
 			type: "POST",
 			url: simpleLikes.ajaxurl,

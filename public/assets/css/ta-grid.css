@@ -174,7 +174,7 @@
       max-width: 12.5%;
     }
   }
-  .efp-post-pagination.efp-on-mobile {
+  .eventful-post-pagination.eventful-on-mobile {
     display: none;
   }
   @media (max-width: 420px) {
@@ -210,10 +210,10 @@
       flex: 0 0 12.5%;
       max-width: 12.5%;
     }
-    .efp-post-pagination.efp-on-mobile:not(.efp-hide) {
+    .eventful-post-pagination.eventful-on-mobile:not(.eventful-hide) {
       display: block;
     }
-    .efp-post-pagination:not(.efp-on-mobile) {
+    .eventful-post-pagination:not(.eventful-on-mobile) {
       display: none;
     }
   }

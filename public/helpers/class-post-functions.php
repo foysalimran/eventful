@@ -44,7 +44,7 @@ class EFP_Functions
 	 */
 	public static function limit_post_title($eventful_title, $limit_length, $eventful_after_string = '...')
 	{
-		return mb_strimwidth($eventful_title, 0, $limit_length, apply_filters('efp_post_title_ellipsis', $eventful_after_string));
+		return mb_strimwidth($eventful_title, 0, $limit_length, apply_filters('eventful_post_title_ellipsis', $eventful_after_string));
 	}
 
 	/**
@@ -70,7 +70,7 @@ class EFP_Functions
 	 * @param string $ellipsis The ellipsis at the end of the text.
 	 * @return statement
 	 */
-	public static function efp_limit_text($text, $limit, $ellipsis = '...')
+	public static function eventful_limit_text($text, $limit, $ellipsis = '...')
 	{
 		$word_arr = explode(' ', $text);
 		if (count($word_arr) > $limit) {
@@ -131,19 +131,19 @@ class EFP_Functions
 	 * @param  mixed  $post post.
 	 * @return content
 	 */
-	public static function efp_content($view_options, $type, $post)
+	public static function eventful_content($view_options, $type, $post)
 	{
 
-		$eventful_content_length_type      = isset($view_options['efp_content_length_type']) ? $view_options['efp_content_length_type'] : 'words';
-		$post_content_length          = isset($view_options['efp_content_limit']) ? $view_options['efp_content_limit'] : '';
-		$eventful_content_characters_limit = isset($view_options['efp_content_characters_limit']) ? $view_options['efp_content_characters_limit'] : '';
+		$eventful_content_length_type      = isset($view_options['eventful_content_length_type']) ? $view_options['eventful_content_length_type'] : 'words';
+		$post_content_length          = isset($view_options['eventful_content_limit']) ? $view_options['eventful_content_limit'] : '';
+		$eventful_content_characters_limit = isset($view_options['eventful_content_characters_limit']) ? $view_options['eventful_content_characters_limit'] : '';
 		$post_content_ellipsis        = isset($view_options['post_content_ellipsis']) ? $view_options['post_content_ellipsis'] : '';
-		$eventful_strip_tags               = isset($view_options['efp_strip_tags']) ? $view_options['efp_strip_tags'] : '';
-		$eventful_allow_tag_name           = isset($view_options['efp_allow_tag_name']) ? $view_options['efp_allow_tag_name'] : '';
+		$eventful_strip_tags               = isset($view_options['eventful_strip_tags']) ? $view_options['eventful_strip_tags'] : '';
+		$eventful_allow_tag_name           = isset($view_options['eventful_allow_tag_name']) ? $view_options['eventful_allow_tag_name'] : '';
 		$allowed_tags                 = explode(',', $eventful_allow_tag_name);
 
 		$is_page_content = false;
-		$is_page_content = apply_filters('efp_strip_shortcode_in_page_content', $is_page_content);
+		$is_page_content = apply_filters('eventful_strip_shortcode_in_page_content', $is_page_content);
 		global $wp_embed;
 		if ('excerpt' === $type) {
 			$eventful_post_content = get_the_excerpt($post);
@@ -171,7 +171,7 @@ class EFP_Functions
 			if ('characters' === $eventful_content_length_type) {
 				$_trimmed_content = ('strip_all' === $eventful_strip_tags) ? wp_html_excerpt($post_content, $eventful_content_characters_limit, $post_content_ellipsis) : self::limit_content_chr($post_content, $eventful_content_characters_limit, $post_content_ellipsis);
 			} else {
-				$_trimmed_content = self::efp_limit_text($post_content, $post_content_length, $post_content_ellipsis);
+				$_trimmed_content = self::eventful_limit_text($post_content, $post_content_length, $post_content_ellipsis);
 			}
 			if ('allow_some' === $eventful_strip_tags) {
 				$eventful_post_content = strip_tags($_trimmed_content, self::short_tag_to_html($allowed_tags));
@@ -193,13 +193,13 @@ class EFP_Functions
 	 * @param int   $post_id The image url.
 	 * @return statement
 	 */
-	public static function efp_image_id_by_url($url, $post_id = null)
+	public static function eventful_image_id_by_url($url, $post_id = null)
 	{
 		global $wpdb;
 
 		// If the URL is auto-generated thumbnail, remove the sizes and get the URL of the original image.
 		$url       = preg_replace('/-\d+x\d+(?=\.(png|jp(e|g|eg)|gif|bmp|ico|webp|svg)$)/i', '', $url);
-		$cache_key = 'efp_content_img_url_to_id' . $post_id;
+		$cache_key = 'eventful_content_img_url_to_id' . $post_id;
 		$img_cache = wp_cache_get($cache_key);
 		if (false === $img_cache) {
 			$image = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid=%s;", $url));
@@ -217,7 +217,7 @@ class EFP_Functions
 	 *
 	 * @return string
 	 */
-	public static function efp_thumb_alter_text($slide_id)
+	public static function eventful_thumb_alter_text($slide_id)
 	{
 		$image_id = get_post_thumbnail_id($slide_id);
 		$alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
@@ -285,7 +285,7 @@ class EFP_Functions
 		}
 
 		if (!empty($orderby)) {
-			$query_args['orderby'] = ('rand' === $orderby) ? 'rand(' . get_transient('efp_rand') . ')' : $orderby;
+			$query_args['orderby'] = ('rand' === $orderby) ? 'rand(' . get_transient('eventful_rand') . ')' : $orderby;
 		}
 		if (!empty($order)) {
 			$query_args['order'] = $order;
@@ -328,19 +328,19 @@ class EFP_Functions
 	 *
 	 * @return string
 	 */
-	public static function efp_sized_thumb($post_thumb_setting, $slide_id, $is_attachment = false)
+	public static function eventful_sized_thumb($post_thumb_setting, $slide_id, $is_attachment = false)
 	{
 		$thumb_id                  = '';
 		$image                     = '';
-		$eventful_thumb_src_replace     = isset($post_thumb_setting['efp_thumb_src_replace']) ? $post_thumb_setting['efp_thumb_src_replace'] : '';
+		$eventful_thumb_src_replace     = isset($post_thumb_setting['eventful_thumb_src_replace']) ? $post_thumb_setting['eventful_thumb_src_replace'] : '';
 		$post_featured_thumb_found = isset($post_thumb_setting['post_featured_thumb_found']) ? $post_thumb_setting['post_featured_thumb_found'] : 'no_featured_img_found';
 		$show_2x_image             = isset($post_thumb_setting['load_2x_image']) ? $post_thumb_setting['load_2x_image'] : false;
 		$image_resize_2x_url       = '';
 		if ('even_featured_img_found' === $post_featured_thumb_found && is_array($eventful_thumb_src_replace)) {
-			$replace_thumb = self::efp_thumb_replace($post_thumb_setting, $slide_id);
+			$replace_thumb = self::eventful_thumb_replace($post_thumb_setting, $slide_id);
 			$thumb_id      = $replace_thumb['id'];
 		} elseif (!has_post_thumbnail($slide_id) && 'no_featured_img_found' === $post_featured_thumb_found) {
-			$replace_thumb = self::efp_thumb_replace($post_thumb_setting, $slide_id);
+			$replace_thumb = self::eventful_thumb_replace($post_thumb_setting, $slide_id);
 			$thumb_id      = $replace_thumb['id'];
 		} else {
 			if (has_post_thumbnail($slide_id)) {
@@ -349,7 +349,7 @@ class EFP_Functions
 		}
 
 		$placeholder_img = EFP_URL . 'public/assets/img/placeholder.png';
-		$placeholder_img = apply_filters('efp_no_thumb_placeholder', $placeholder_img);
+		$placeholder_img = apply_filters('eventful_no_thumb_placeholder', $placeholder_img);
 
 		if (empty($thumb_id) && !empty($placeholder_img)) {
 			$thumb_id = attachment_url_to_postid($placeholder_img);
@@ -358,10 +358,10 @@ class EFP_Functions
 			$thumb_id = $slide_id;
 		}
 		if (!empty($thumb_id)) {
-			$image_sizes       = isset($post_thumb_setting['efp_thumb_sizes']) ? $post_thumb_setting['efp_thumb_sizes'] : 'large';
-			$post_image_width  = isset($post_thumb_setting['efp_image_crop_size']['top']) ? $post_thumb_setting['efp_image_crop_size']['top'] : '';
-			$post_image_height = isset($post_thumb_setting['efp_image_crop_size']['right']) ? $post_thumb_setting['efp_image_crop_size']['right'] : '';
-			$post_image_crop   = isset($post_thumb_setting['efp_image_crop_size']['style']) ? $post_thumb_setting['efp_image_crop_size']['style'] : '';
+			$image_sizes       = isset($post_thumb_setting['eventful_thumb_sizes']) ? $post_thumb_setting['eventful_thumb_sizes'] : 'large';
+			$post_image_width  = isset($post_thumb_setting['eventful_image_crop_size']['top']) ? $post_thumb_setting['eventful_image_crop_size']['top'] : '';
+			$post_image_height = isset($post_thumb_setting['eventful_image_crop_size']['right']) ? $post_thumb_setting['eventful_image_crop_size']['right'] : '';
+			$post_image_crop   = isset($post_thumb_setting['eventful_image_crop_size']['style']) ? $post_thumb_setting['eventful_image_crop_size']['style'] : '';
 			$thumb_full_src    = wp_get_attachment_image_src($thumb_id, 'full');
 			$thumb_full_src    = is_array($thumb_full_src) ? $thumb_full_src : array('', '', '');
 			$image_src         = wp_get_attachment_image_src($thumb_id, $image_sizes);
@@ -410,7 +410,7 @@ class EFP_Functions
 	 * @param  bool  $is_attachment type attachment.
 	 * @return array
 	 */
-	public static function efp_sized_efpup_thumb($view_options, $slide_id, $is_attachment = false)
+	public static function eventful_sized_eventfulup_thumb($view_options, $slide_id, $is_attachment = false)
 	{
 		$thumb_id     = '';
 		$image        = '';
@@ -423,10 +423,10 @@ class EFP_Functions
 			$thumb_id = $slide_id;
 		}
 		if (!empty($thumb_id)) {
-			$image_sizes       = isset($view_options['efp_efpup_img_sizes']) ? $view_options['efp_efpup_img_sizes'] : 'medium';
-			$post_image_width  = isset($view_options['efp_efpup_image_crop_size']['top']) ? $view_options['efp_efpup_image_crop_size']['top'] : '';
-			$post_image_height = isset($view_options['efp_efpup_image_crop_size']['right']) ? $view_options['efp_efpup_image_crop_size']['right'] : '';
-			$post_image_crop   = isset($view_options['efp_efpup_image_crop_size']['style']) ? $view_options['efp_efpup_image_crop_size']['style'] : '';
+			$image_sizes       = isset($view_options['eventful_eventfulup_img_sizes']) ? $view_options['eventful_eventfulup_img_sizes'] : 'medium';
+			$post_image_width  = isset($view_options['eventful_eventfulup_image_crop_size']['top']) ? $view_options['eventful_eventfulup_image_crop_size']['top'] : '';
+			$post_image_height = isset($view_options['eventful_eventfulup_image_crop_size']['right']) ? $view_options['eventful_eventfulup_image_crop_size']['right'] : '';
+			$post_image_crop   = isset($view_options['eventful_eventfulup_image_crop_size']['style']) ? $view_options['eventful_eventfulup_image_crop_size']['style'] : '';
 			$thumb_full_src    = wp_get_attachment_image_src($thumb_id, 'full');
 			$thumb_full_src    = is_array($thumb_full_src) ? $thumb_full_src : array('', '', '');
 			$image_src         = wp_get_attachment_image_src($thumb_id, $image_sizes);
@@ -457,9 +457,9 @@ class EFP_Functions
 	 *
 	 * @return string
 	 */
-	public static function efp_thumb_replace($post_thumb_setting, $slide_id)
+	public static function eventful_thumb_replace($post_thumb_setting, $slide_id)
 	{
-		$eventful_thumb_src_replace = isset($post_thumb_setting['efp_thumb_src_replace']) ? $post_thumb_setting['efp_thumb_src_replace'] : '';
+		$eventful_thumb_src_replace = isset($post_thumb_setting['eventful_thumb_src_replace']) ? $post_thumb_setting['eventful_thumb_src_replace'] : '';
 
 		if (is_array($eventful_thumb_src_replace)) {
 			$image_src    = in_array('image', $eventful_thumb_src_replace, true) ? true : false;
@@ -488,9 +488,9 @@ class EFP_Functions
 					$first_content = 'audio';
 				}
 			}
-			$image_id = 'image' === $first_content ? self::efp_get_img_from_post($post_thumb_setting, $slide_id) : '';
-			$is_video = 'video' === $first_content ? self::efp_get_video_from_post($slide_id) : '';
-			$is_audio = 'audio' === $first_content ? self::efp_get_audios_from_post($slide_id) : '';
+			$image_id = 'image' === $first_content ? self::eventful_get_img_from_post($post_thumb_setting, $slide_id) : '';
+			$is_video = 'video' === $first_content ? self::eventful_get_video_from_post($slide_id) : '';
+			$is_audio = 'audio' === $first_content ? self::eventful_get_audios_from_post($slide_id) : '';
 
 			if ($image_src && $video_src && $audio_src) {
 				$thumb_id    = $image_id;
@@ -510,13 +510,13 @@ class EFP_Functions
 				$audio_thumb = $is_audio;
 			}
 			if ($image_src) {
-				$thumb_id = self::efp_get_img_from_post($post_thumb_setting, $slide_id);
+				$thumb_id = self::eventful_get_img_from_post($post_thumb_setting, $slide_id);
 			}
 			if ($video_src && (empty($matches[1][0]) || !$image_src)) {
-				$video_thumb = self::efp_get_video_from_post($slide_id);
+				$video_thumb = self::eventful_get_video_from_post($slide_id);
 			}
 			if ($audio_src && empty($video_thumb) && (empty($matches[1][0]) || !$image_src)) {
-				$audio_thumb = self::efp_get_audios_from_post($slide_id);
+				$audio_thumb = self::eventful_get_audios_from_post($slide_id);
 			}
 		}
 		$eventful_thumbs_replace_src = array(
@@ -536,15 +536,15 @@ class EFP_Functions
 	 * @param  number $slide_id Post id.
 	 * @return mixed
 	 */
-	public static function efp_get_img_from_post($post_thumb_setting, $slide_id)
+	public static function eventful_get_img_from_post($post_thumb_setting, $slide_id)
 	{
-		$eventful_thumb_src = isset($post_thumb_setting['efp_thumb_src']) ? $post_thumb_setting['efp_thumb_src'] : 'featured_image';
+		$eventful_thumb_src = isset($post_thumb_setting['eventful_thumb_src']) ? $post_thumb_setting['eventful_thumb_src'] : 'featured_image';
 		$content_post  = get_post($slide_id);
 		$content       = $content_post->post_content;
 		$images        = preg_match_all('/<img[^>]* src=\"([^\"]*)\"[^>]*>/i', $content, $matches);
 		if ($images) {
 			$img_url  = 'last_img_content' === $eventful_thumb_src ? array_values(array_slice($matches[1], -1)) : $matches[1][0];
-			$thumb_id = self::efp_image_id_by_url($img_url, $slide_id);
+			$thumb_id = self::eventful_image_id_by_url($img_url, $slide_id);
 		}
 		if (!empty($thumb_id)) {
 			return $thumb_id;
@@ -558,12 +558,12 @@ class EFP_Functions
 	 * @param  number $slide_id Post id.
 	 * @return mixed
 	 */
-	public static function efp_get_video_from_post($slide_id)
+	public static function eventful_get_video_from_post($slide_id)
 	{
 
 		$post    = get_post($slide_id);
 		$content = do_shortcode(apply_filters('the_content', $post->post_content));
-		$embeds  = apply_filters('efp_get_post_video', get_media_embedded_in_content($content));
+		$embeds  = apply_filters('eventful_get_post_video', get_media_embedded_in_content($content));
 
 		if (empty($embeds)) {
 			return '';
@@ -583,12 +583,12 @@ class EFP_Functions
 	 * @param  number $slide_id Post id.
 	 * @return mixed          Iframe.
 	 */
-	public static function efp_get_audios_from_post($slide_id)
+	public static function eventful_get_audios_from_post($slide_id)
 	{
 		// For audio post type - grab.
 		$post    = get_post($slide_id);
 		$content = do_shortcode(apply_filters('ta_eventful_the_content', $post->post_content));
-		$embeds  = apply_filters('efp_get_post_audio', get_media_embedded_in_content($content));
+		$embeds  = apply_filters('eventful_get_post_audio', get_media_embedded_in_content($content));
 		if (empty($embeds)) {
 			return '';
 		}
@@ -611,12 +611,12 @@ class EFP_Functions
 	 * @param string $is_table the table layout check.
 	 * @return void
 	 */
-	public static function efp_get_post_meta($post, $post_meta_fields, $visitor_count, $meta_separator, $is_table)
+	public static function eventful_get_post_meta($post, $post_meta_fields, $visitor_count, $meta_separator, $is_table)
 	{
 
 
-		$meta_wrapper_start_tag = !$is_table ? apply_filters('efp_post_meta_wrapper_start', '<ul>') : '';
-		$meta_wrapper_end_tag   = !$is_table ? apply_filters('efp_post_meta_wrapper_end', '</ul>') : '';
+		$meta_wrapper_start_tag = !$is_table ? apply_filters('eventful_post_meta_wrapper_start', '<ul>') : '';
+		$meta_wrapper_end_tag   = !$is_table ? apply_filters('eventful_post_meta_wrapper_end', '</ul>') : '';
 		echo wp_kses_post($meta_wrapper_start_tag);
 		$i = 0;
 		foreach ($post_meta_fields as $each_meta) {
@@ -624,15 +624,15 @@ class EFP_Functions
 			$taxonomy_name        = isset($each_meta['post_meta_taxonomy']) ? $each_meta['post_meta_taxonomy'] : '';
 			$author_avatar        = isset($each_meta['post_meta_author_avatar']) ? $each_meta['post_meta_author_avatar'] : 'name_with_icon';
 			$meta_date_format     = isset($each_meta['post_meta_date_format']) ? $each_meta['post_meta_date_format'] : 'default';
-			$custom_date_format   = isset($each_meta['efp_custom_meta_date_format']) ? $each_meta['efp_custom_meta_date_format'] : 'F j, Y';
-			$word_per_minute      = isset($each_meta['efp_word_per_minute']) ? $each_meta['efp_word_per_minute'] : 300;
+			$custom_date_format   = isset($each_meta['eventful_custom_meta_date_format']) ? $each_meta['eventful_custom_meta_date_format'] : 'F j, Y';
+			$word_per_minute      = isset($each_meta['eventful_word_per_minute']) ? $each_meta['eventful_word_per_minute'] : 300;
 			$reading_time_postfix = isset($each_meta['reading_time_postfix']) ? $each_meta['reading_time_postfix'] : ' Min Read';
 
 			$meta_icon      = !empty($each_meta['select_meta_icon']) ? sprintf('<i class="' . $each_meta['select_meta_icon'] . '"></i>') : '';
-			$start_tag      = $is_table ? '<td class="ta-efp-post-meta">' : '<li>';
+			$start_tag      = $is_table ? '<td class="ta-eventful-post-meta">' : '<li>';
 			$end_tag        = $is_table ? '</td>' : '</li>';
-			$meta_tag_start = apply_filters('efp_post_meta_html_tag_start', $start_tag);
-			$meta_tag_end   = apply_filters('efp_post_meta_html_tag_end', $end_tag);
+			$meta_tag_start = apply_filters('eventful_post_meta_html_tag_start', $start_tag);
+			$meta_tag_end   = apply_filters('eventful_post_meta_html_tag_end', $end_tag);
 			$allowed_html   = array(
 				'a'    => array(
 					'href'  => array(),
@@ -700,8 +700,8 @@ class EFP_Functions
 					echo wp_kses_post($meta_tag_end);
 					break;
 				case 'taxonomy':
-					if ('beside_meta' === $each_meta['efp_meta_position']) {
-						$term = self::efp_taxonomy_terms($taxonomy_name, $post->ID, $meta_icon);
+					if ('beside_meta' === $each_meta['eventful_meta_position']) {
+						$term = self::eventful_taxonomy_terms($taxonomy_name, $post->ID, $meta_icon);
 						if (!empty($term)) {
 							if (0 < $i) {
 					?>
@@ -765,7 +765,7 @@ class EFP_Functions
 					}
 					echo wp_kses_post($meta_tag_start);
 					?>
-					<?php echo wp_kses($meta_icon, $allowed_html); ?> <span><?php self::efp_reading_time($post->ID, $word_per_minute, $reading_time_postfix); ?></span>
+					<?php echo wp_kses($meta_icon, $allowed_html); ?> <span><?php self::eventful_reading_time($post->ID, $word_per_minute, $reading_time_postfix); ?></span>
 					<?php
 					echo wp_kses_post($meta_tag_end);
 					break;
@@ -784,10 +784,10 @@ class EFP_Functions
 	 * @param string $is_table the table layout check.
 	 * @return void
 	 */
-	public static function efp_get_event_fildes($post, $event_fildes_fields, $visitor_count, $meta_separator, $is_table)
+	public static function eventful_get_event_fildes($post, $event_fildes_fields, $visitor_count, $meta_separator, $is_table)
 	{
-		$meta_wrapper_start_tag = !$is_table ? apply_filters('efp_event_fildes_wrapper_start', '<ul>') : '';
-		$meta_wrapper_end_tag   = !$is_table ? apply_filters('efp_event_fildes_wrapper_end', '</ul>') : '';
+		$meta_wrapper_start_tag = !$is_table ? apply_filters('eventful_event_fildes_wrapper_start', '<ul>') : '';
+		$meta_wrapper_end_tag   = !$is_table ? apply_filters('eventful_event_fildes_wrapper_end', '</ul>') : '';
 		echo wp_kses_post($meta_wrapper_start_tag);
 		$i = 0;
 		foreach ($event_fildes_fields as $each_meta) {
@@ -796,13 +796,13 @@ class EFP_Functions
 			$venue_phone_icon        = isset($each_meta['venue_phone_icon']) ? $each_meta['venue_phone_icon'] : '';
 			$meta_date_format     = isset($each_meta['event_fildes_date_format']) ? $each_meta['event_fildes_date_format'] : 'j F, Y g:i A';
 			$event_date_style   = isset($each_meta['event_fildes_date_type']) ? $each_meta['event_fildes_date_type'] : 'start_date';
-			$custom_date_format   = isset($each_meta['efp_custom_event_date_format']) ? $each_meta['efp_custom_event_date_format'] : 'j F, Y g:i A';
+			$custom_date_format   = isset($each_meta['eventful_custom_event_date_format']) ? $each_meta['eventful_custom_event_date_format'] : 'j F, Y g:i A';
 
 			$meta_icon      = !empty($each_meta['select_event_fildes_icon']) ? sprintf('<i class="' . $each_meta['select_event_fildes_icon'] . '"></i>') : '';
-			$start_tag      = $is_table ? '<td class="ta-efp-post-meta">' : '<li>';
+			$start_tag      = $is_table ? '<td class="ta-eventful-post-meta">' : '<li>';
 			$end_tag        = $is_table ? '</td>' : '</li>';
-			$meta_tag_start = apply_filters('efp_event_fildes_html_tag_start', $start_tag);
-			$meta_tag_end   = apply_filters('efp_event_fildes_html_tag_end', $end_tag);
+			$meta_tag_start = apply_filters('eventful_event_fildes_html_tag_start', $start_tag);
+			$meta_tag_end   = apply_filters('eventful_event_fildes_html_tag_end', $end_tag);
 			$allowed_html   = array(
 				'a'    => array(
 					'href'  => array(),
@@ -975,7 +975,7 @@ class EFP_Functions
 	 * @param  mixed $post_meta_fields The selected post meta to show.
 	 * @return void
 	 */
-	public static function efp_get_post_meta_on_table_heading($post_meta_fields)
+	public static function eventful_get_post_meta_on_table_heading($post_meta_fields)
 	{
 		$i = 0;
 		foreach ($post_meta_fields as $each_meta) {
@@ -993,7 +993,7 @@ class EFP_Functions
 					<?php
 					break;
 				case 'taxonomy':
-					if ('beside_meta' === $each_meta['efp_meta_position']) {
+					if ('beside_meta' === $each_meta['eventful_meta_position']) {
 					?>
 						<th><?php echo $taxonomy_name; ?></th>
 					<?php
@@ -1033,7 +1033,7 @@ class EFP_Functions
 	 *
 	 * @return void
 	 */
-	public static function efp_reading_time($post_id, $word_per_minute, $reading_time_postfix)
+	public static function eventful_reading_time($post_id, $word_per_minute, $reading_time_postfix)
 	{
 		$content      = get_post_field('post_content', $post_id);
 		$word_count   = str_word_count(wp_strip_all_tags($content));
@@ -1052,7 +1052,7 @@ class EFP_Functions
 	 * @param mixed $meta_icon The meta icon html.
 	 * @return statement
 	 */
-	public static function efp_taxonomy_terms($taxonomy, $id, $meta_icon = null)
+	public static function eventful_taxonomy_terms($taxonomy, $id, $meta_icon = null)
 	{
 		$terms = get_the_term_list($id, $taxonomy, '', ', ');
 		if (!empty($terms) && !is_wp_error($terms)) {
@@ -1066,7 +1066,7 @@ class EFP_Functions
 	 * @param integer $post_id The post ID.
 	 * @return statement.
 	 */
-	public static function efp_post_thumb_taxonomy($taxonomy, $id, $meta_icon = null)
+	public static function eventful_post_thumb_taxonomy($taxonomy, $id, $meta_icon = null)
 	{
 		$terms = get_the_terms($id, $taxonomy);
 
@@ -1085,7 +1085,7 @@ class EFP_Functions
 	 * @param integer $post_id The post ID.
 	 * @return statement.
 	 */
-	public static function efp_post_tags($post_id)
+	public static function eventful_post_tags($post_id)
 	{
 		$post_tags = get_the_tags($post_id);
 		$separator = ', ';
@@ -1106,7 +1106,7 @@ class EFP_Functions
 	 *
 	 * @return void
 	 */
-	public static function efp_max_pages($total_post, $post_per_page)
+	public static function eventful_max_pages($total_post, $post_per_page)
 	{
 		if (!$total_post) {
 			return;
@@ -1124,7 +1124,7 @@ class EFP_Functions
 	 *
 	 * @return int
 	 */
-	public static function efp_post_per_page($limit, $post_per_page, $page)
+	public static function eventful_post_per_page($limit, $post_per_page, $page)
 	{
 		$limit               = (empty($limit) || '-1' === $limit) ? 10000000 : $limit;
 		$offset              = (int) $post_per_page * ($page - 1);
@@ -1144,7 +1144,7 @@ class EFP_Functions
 	 *
 	 * @return int.
 	 */
-	public static function efp_last_page_post($limit, $post_per_page, $total_page)
+	public static function eventful_last_page_post($limit, $post_per_page, $total_page)
 	{
 		$limit              = (empty($limit) || '-1' === $limit) ? 10000000 : $limit;
 		$offset             = $post_per_page * ($total_page - 1);
@@ -1175,7 +1175,7 @@ class EFP_Functions
 	 * @param array      $array_to_get Array to get values of wanted setting.
 	 * @param mixed|null $assign       The value to assign if setting is not found.
 	 */
-	public static function efp_metabox_value($field, $array_to_get = null, $assign = null)
+	public static function eventful_metabox_value($field, $array_to_get = null, $assign = null)
 	{
 		global $eventful_gl_id;
 		if (empty($array_to_get)) {
@@ -1205,7 +1205,7 @@ class EFP_Functions
 	 * @param  mixed $default_path default path .
 	 * @return string
 	 */
-	public static function efp_locate_template($template_name, $template_path = '', $default_path = '')
+	public static function eventful_locate_template($template_name, $template_path = '', $default_path = '')
 	{
 		if (!$template_path) {
 			$template_path = 'eventful/templates';

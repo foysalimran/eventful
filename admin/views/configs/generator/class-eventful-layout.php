@@ -25,13 +25,13 @@ class EFP_Layout
 						'image' => EFP_URL . 'admin/assets/img/eventful-logo.svg',
 						'after' => '<i class="fas fa-life-ring"></i> Support',
 						'link'  => 'https://themeatelier.net/',
-						'class' => 'efp-admin-header',
+						'class' => 'eventful-admin-header',
 					),
 					array(
 						'id'      => 'eventful_layout_preset',
 						'type'    => 'layout_preset',
 						'title'   => esc_html__('Layout Preset', 'eventful'),
-						'class'   => 'efp-layout-preset',
+						'class'   => 'eventful-layout-preset',
 						'options' => array(
 							'grid_layout'      => array(
 								'image' => EFP_URL . 'admin/assets/img/grid.png',

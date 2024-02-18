@@ -18,7 +18,7 @@ if ( ! class_exists( 'EFP_Field_submessage' ) ) {
 
 			$style = ( ! empty( $this->field['style'] ) ) ? $this->field['style'] : 'normal';
 
-			echo '<div class="efp-submessage efp-submessage-' . esc_attr( $style ) . '">' . wp_kses_post($this->field['content']) . '</div>';
+			echo '<div class="eventful-submessage eventful-submessage-' . esc_attr( $style ) . '">' . wp_kses_post($this->field['content']) . '</div>';
 		}
 	}
 }

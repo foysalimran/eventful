@@ -107,7 +107,7 @@ if ( ! class_exists( 'EFP_Field_dimensions_advanced' ) ) {
 
 				echo '<div class="eventful--input">';
 				echo ( ! empty( $args['all_icon'] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post( $args['all_icon'] ) . '</span>' : '';
-				echo '<input type="number" name="' . esc_attr( $this->field_name( '[all]' ) ) . '" value="' . esc_attr( $value['all'] ) . '"' . wp_kses_post( $placeholder . $min ) . ' class="efp-input-number' . esc_attr( $is_unit ) . '" />';
+				echo '<input type="number" name="' . esc_attr( $this->field_name( '[all]' ) ) . '" value="' . esc_attr( $value['all'] ) . '"' . wp_kses_post( $placeholder . $min ) . ' class="eventful-input-number' . esc_attr( $is_unit ) . '" />';
 				echo ( $unit ) ? '<span class="eventful--label eventful--unit">' . esc_html( $args['units'][0] ) . '</span>' : '';
 				echo '</div>';
 
@@ -129,7 +129,7 @@ if ( ! class_exists( 'EFP_Field_dimensions_advanced' ) ) {
 
 					echo '<div class="eventful--input">';
 					echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post( $args[ $property . '_icon' ] ) . '</span>' : '';
-					echo '<input type="number" name="' . esc_attr( $this->field_name( '[' . $property . ']' ) ) . '" value="' . esc_attr( $value[ $property ] ) . '"' . wp_kses_post( $placeholder . $min ) . ' class="efp-input-number' . esc_attr( $is_unit ) . '" />';
+					echo '<input type="number" name="' . esc_attr( $this->field_name( '[' . $property . ']' ) ) . '" value="' . esc_attr( $value[ $property ] ) . '"' . wp_kses_post( $placeholder . $min ) . ' class="eventful-input-number' . esc_attr( $is_unit ) . '" />';
 					echo ( $unit ) ? '<span class="eventful--label eventful--unit">' . esc_html( $args['units'][0] ) . '</span>' : '';
 					echo '</div>';
 
@@ -149,8 +149,8 @@ if ( ! class_exists( 'EFP_Field_dimensions_advanced' ) ) {
 
 			if ( ! empty( $args['color'] ) ) {
 				$default_color_attr = ( ! empty( $default_values['color'] ) ) ? ' data-default-color="' . $default_values['color'] . '"' : '';
-				echo '<div class="eventful--left efp-field-color">';
-				echo '<input type="text" name="' . esc_attr( $this->field_name( '[color]' ) ) . '" value="' . esc_attr( $value['color'] ) . '" class="efp-color"' . wp_kses_post( $default_color_attr ) . ' />';
+				echo '<div class="eventful--left eventful-field-color">';
+				echo '<input type="text" name="' . esc_attr( $this->field_name( '[color]' ) ) . '" value="' . esc_attr( $value['color'] ) . '" class="eventful-color"' . wp_kses_post( $default_color_attr ) . ' />';
 				echo '</div>';
 			}
 

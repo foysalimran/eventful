@@ -23,9 +23,9 @@ class EFP_Live_Filter
 	 */
 	public function __construct()
 	{
-		add_action('wp_ajax_eventful_live_filter_reset', array($this, 'efp_live_filter_reset'));
-		add_action('wp_ajax_eventful_admin_live_filter_reset', array($this, 'efp_admin_live_filter_reset'));
-		add_action('wp_ajax_nopriv_eventful_live_filter_reset', array($this, 'efp_live_filter_reset'));
+		add_action('wp_ajax_eventful_live_filter_reset', array($this, 'eventful_live_filter_reset'));
+		add_action('wp_ajax_eventful_admin_live_filter_reset', array($this, 'eventful_admin_live_filter_reset'));
+		add_action('wp_ajax_nopriv_eventful_live_filter_reset', array($this, 'eventful_live_filter_reset'));
 	}
 	/**
 	 * Live filter markup style.
@@ -44,10 +44,10 @@ class EFP_Live_Filter
 	 * @param string $pre_checked  checked.
 	 * @return array
 	 */
-	public static function efp_filter_style($btn_type, $taxonomy, $label, $all_text, $align = 'center', $show_count = false, $term = null, $name = null, $p_count = null, $id = '', $pre_selected = '', $pre_checked = '')
+	public static function eventful_filter_style($btn_type, $taxonomy, $label, $all_text, $align = 'center', $show_count = false, $term = null, $name = null, $p_count = null, $id = '', $pre_selected = '', $pre_checked = '')
 	{
 		if ($show_count) {
-			$post_count_markup = '<span class="efp-count">(' . $p_count . ')</span>';
+			$post_count_markup = '<span class="eventful-count">(' . $p_count . ')</span>';
 		} else {
 			$post_count_markup = '';
 		}
@@ -92,24 +92,24 @@ class EFP_Live_Filter
 			$all_label  = !empty($all_text) ? $all_text : '';
 			$all_button = !empty($all_text) ? '<div class="fl_checkbox"><label><input checked type="checkbox" name="' . $taxonomy . '" data-taxonomy="' . $taxonomy . '"value="all">' . $all_label . '</label></div>' : '';
 
-			$first_item = '<form class="efp-filter-by-checkbox efp-bar" data-taxonomy="' . $taxonomy . '" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p>';
+			$first_item = '<form class="eventful-filter-by-checkbox eventful-bar" data-taxonomy="' . $taxonomy . '" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p>';
 			$push_item  = '<div class="fl_checkbox"><label><input ' . $is_checked . ' name="' . $taxonomy . '" type="checkbox" ' . $checked . ' data-taxonomy="' . $taxonomy . '" value="' . $term . '">' . $name . $post_count_markup . '</span></label></div>';
 		} elseif ('fl_radio' === $btn_type) {
 			$all_label  = !empty($all_text) ? $all_text : '';
 			$all_button = !empty($all_text) ? '<div class="fl_radio"><label><input checked type="radio" name="' . $taxonomy . '" data-taxonomy="' . $taxonomy . '"value="all">' . $all_label . '</label></div>' : '';
-			$first_item = '<form class="efp-filter-by efp-bar" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p>' . $all_button;
+			$first_item = '<form class="eventful-filter-by eventful-bar" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p>' . $all_button;
 			$push_item  = '<div class="fl_radio"><label><input ' . $is_checked . ' name="' . $taxonomy . '" type="radio" ' . $checked . ' data-taxonomy="' . $taxonomy . '" value="' . $term . '">' . $name . $post_count_markup . '</span></label></div>';
 		} elseif ('fl_btn' === $btn_type) {
 			$all_label  = !empty($all_text) ? '<div>' . $all_text . '</div>' : '';
 			$all_button = !empty($all_text) ? '<div class="fl_radio"><label><input checked type="radio" name="' . $taxonomy . '" data-taxonomy="' . $taxonomy . '" value="all">' . $all_label . '</label></div>' : '';
 
-			$first_item = '<form class="efp-filter-by efp-bar fl_button filter-' . $taxonomy . '" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p>' . $all_button;
+			$first_item = '<form class="eventful-filter-by eventful-bar fl_button filter-' . $taxonomy . '" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p>' . $all_button;
 			$push_item  = '<div class="fl_radio"><label><input ' . $is_checked . ' name="' . $taxonomy . '" type="radio" ' . $checked . ' data-taxonomy="' . $taxonomy . '" value="' . $term . '"><div>' . $name . $post_count_markup . '</div></label></div>';
 		} else {
 			$all_label  = !empty($all_text) ? $all_text : '';
 			$all_button = !empty($all_text) ? '<option value="all"  data-taxonomy="' . $taxonomy . '">' . $all_label . '</option>' : '';
 
-			$first_item = '<form class="efp-filter-by efp-bar" style="text-align:' . esc_attr($align) . ';"> <label class="efp-label">' . esc_html($label) . '</label> <select>' . $all_button;
+			$first_item = '<form class="eventful-filter-by eventful-bar" style="text-align:' . esc_attr($align) . ';"> <label class="eventful-label">' . esc_html($label) . '</label> <select>' . $all_button;
 			$push_item  = '<option data-taxonomy="' . $taxonomy . '" ' . $selected . ' ' . $is_selected . ' value="' . $term . '">' . $name . $post_count_markup . '</option>';
 		}
 		$filter_output = array(
@@ -146,7 +146,7 @@ class EFP_Live_Filter
 	 * @param object $taxonomies select Taxonomies.
 	 * @return Array
 	 */
-	public static function efp_all_other_taxonomy_term($eventful_query, $taxonomies)
+	public static function eventful_all_other_taxonomy_term($eventful_query, $taxonomies)
 	{
 		$post_ids         = $eventful_query;
 		$y                = 0;
@@ -174,7 +174,7 @@ class EFP_Live_Filter
 	 * @param  string $taxonomy taxonomy.
 	 * @return array
 	 */
-	public static function efp_all_taxonomy_terms_form_the_query($eventful_query, $taxonomy)
+	public static function eventful_all_taxonomy_terms_form_the_query($eventful_query, $taxonomy)
 	{
 		$post_ids  = $eventful_query;
 		$term_list = array();
@@ -189,9 +189,9 @@ class EFP_Live_Filter
 	/**
 	 * Live Filter reset after ajax request.
 	 */
-	public static function efp_live_filter_reset()
+	public static function eventful_live_filter_reset()
 	{
-		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'spefp_nonce')) {
+		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'speventful_nonce')) {
 			return false;
 		}
 		$eventful_gl_id           = isset($_POST['id']) ? absint($_POST['id']) : '';
@@ -210,19 +210,19 @@ class EFP_Live_Filter
 		$view_options                 = get_post_meta($eventful_gl_id, 'ta_eventful_view_options', true);
 		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $eventful_gl_id);
 		$query_args['fields']         = 'ids';
-		$post_limit                   = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
+		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$query_args['posts_per_page'] = $post_limit;
 		$query_post_ids               = get_posts($query_args);
-		$relation                     = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation'] : 'AND';
+		$relation                     = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 		$is_term_intersect            = true;
 		if ('AND' !== $relation) {
 			$is_term_intersect = false;
 		}
 		$query_args = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
 		$eventful_query  = array();
-		self::efp_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
-		self::efp_author_filter($view_options, $query_args, $author_id);
-		self::efp_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
+		self::eventful_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
+		self::eventful_author_filter($view_options, $query_args, $author_id);
+		self::eventful_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
 
 		wp_die();
 	}
@@ -238,15 +238,15 @@ class EFP_Live_Filter
 	 * @param  string $last_filter last filter.
 	 * @return void
 	 */
-	public static function efp_live_filter($view_options, $query_args = '', $id = '', $is_term_intersect = true, $selected_term_list = array(), $last_filter = '')
+	public static function eventful_live_filter($view_options, $query_args = '', $id = '', $is_term_intersect = true, $selected_term_list = array(), $last_filter = '')
 	{
-		$filter_by                    = isset($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : array();
-		$post_limit                   = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
+		$filter_by                    = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
+		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$query_args['posts_per_page'] = $post_limit;
 		$query_args['fields']         = 'ids';
 		if (in_array('taxonomy', $filter_by, true)) {
-			$taxonomy_types = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms']) && !empty($view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'] : '';
-			$relation       = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation'] : 'AND';
+			$taxonomy_types = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) && !empty($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms'] : '';
+			$relation       = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 			if (!empty($taxonomy_types)) {
 				$output         = '';
 				$newterm_array  = array();
@@ -256,11 +256,11 @@ class EFP_Live_Filter
 				while ($index < $taxonomy_count) {
 					$add_filter = isset($taxonomy_types[$index]['add_filter_post']) ? $taxonomy_types[$index]['add_filter_post'] : '';
 					if ($add_filter) {
-						$taxonomy        = isset($taxonomy_types[$index]['efp_select_taxonomy']) ? $taxonomy_types[$index]['efp_select_taxonomy'] : '';			
+						$taxonomy        = isset($taxonomy_types[$index]['eventful_select_taxonomy']) ? $taxonomy_types[$index]['eventful_select_taxonomy'] : '';			
 					$all_terms = get_terms($taxonomy);
 					$all_terms = wp_list_pluck($all_terms, 'term_id');
 					
-						$terms           = isset($taxonomy_types[$index]['efp_select_terms']) ? $taxonomy_types[$index]['efp_select_terms'] : $all_terms;
+						$terms           = isset($taxonomy_types[$index]['eventful_select_terms']) ? $taxonomy_types[$index]['eventful_select_terms'] : $all_terms;
 						$all_post_ids    = get_posts($query_args);
 						$post_limit      = count($all_post_ids);
 						$url_last_filter = isset($_GET['slf']) ? wp_unslash(sanitize_text_field($_GET['slf'])) : ''; //phpcs:ignore
@@ -301,7 +301,7 @@ class EFP_Live_Filter
 						$filter_options = isset($taxonomy_types[$index]['ajax_filter_options']) ? $taxonomy_types[$index]['ajax_filter_options'] : '';
 						$all_text       = isset($filter_options['ajax_rename_all_text']) && !empty($filter_options['ajax_rename_all_text']) ? $filter_options['ajax_rename_all_text'] : '';
 						if ($is_term_intersect) {
-							$new_terms = self::efp_all_taxonomy_terms_form_the_query($all_post_ids, $taxonomy);
+							$new_terms = self::eventful_all_taxonomy_terms_form_the_query($all_post_ids, $taxonomy);
 							$terms     = is_array($terms) ? $terms : array($terms);
 							$terms     = array_intersect($terms, $new_terms);
 						}
@@ -314,9 +314,9 @@ class EFP_Live_Filter
 						$hide_empty = isset($filter_options['ajax_hide_empty']) ? $filter_options['ajax_hide_empty'] : '';
 						$show_count = isset($filter_options['ajax_show_count']) ? $filter_options['ajax_show_count'] : '';
 
-						$eventful_live_filter_align = isset($filter_options['efp_live_filter_align']) ? $filter_options['efp_live_filter_align'] : 'center';
+						$eventful_live_filter_align = isset($filter_options['eventful_live_filter_align']) ? $filter_options['eventful_live_filter_align'] : 'center';
 						if ($add_filter && !empty($terms) && !empty($taxonomy)) {
-							$filter_item             = self::efp_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align);
+							$filter_item             = self::eventful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align);
 							$newterm_array[$index] = array($filter_item['first_item']);
 							foreach ($terms as $term) {
 								$selected = '';
@@ -355,10 +355,10 @@ class EFP_Live_Filter
 									}
 
 									if (!$hide_empty) {
-										$push_item = self::efp_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
+										$push_item = self::eventful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
 										array_push($newterm_array[$index], $push_item);
 									} elseif ($hide_empty && $term_post_count > 0) {
-										$push_item = self::efp_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
+										$push_item = self::eventful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
 										array_push($newterm_array[$index], $push_item);
 									}
 								}
@@ -380,9 +380,9 @@ class EFP_Live_Filter
 	/**
 	 * Live Filter reset after ajax request.
 	 */
-	public static function efp_admin_live_filter_reset()
+	public static function eventful_admin_live_filter_reset()
 	{
-		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'spefp_nonce')) {
+		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'speventful_nonce')) {
 			return false;
 		}
 		$eventful_gl_id           = isset($_POST['id']) ? absint($_POST['id']) : '';
@@ -405,19 +405,19 @@ class EFP_Live_Filter
 		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $eventful_gl_id);
 		$query_args['fields']         = 'ids';
 		$new_query_args               = $query_args;
-		$post_limit                   = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
+		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$query_args['posts_per_page'] = $post_limit;
 		$query_post_ids               = get_posts($new_query_args);
 
-		$relation          = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation'] : 'AND';
+		$relation          = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 		$is_term_intersect = true;
 		if ('AND' !== $relation) {
 			$is_term_intersect = false;
 		}
 		$query_args = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
-		self::efp_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
-		self::efp_author_filter($view_options, $query_args, $author_id);
-		self::efp_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
+		self::eventful_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
+		self::eventful_author_filter($view_options, $query_args, $author_id);
+		self::eventful_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
 		wp_die();
 	}
 
@@ -434,7 +434,7 @@ class EFP_Live_Filter
 	 * @param array  $is_other_query_active query.
 	 * @return object
 	 */
-	public static function efp_showing_term($taxonomy, $selected_taxonomy, $all_term, $terms, $tax_settings_count, $selected_taxs, $is_other_query_active = false)
+	public static function eventful_showing_term($taxonomy, $selected_taxonomy, $all_term, $terms, $tax_settings_count, $selected_taxs, $is_other_query_active = false)
 	{
 		if ($selected_taxs) {
 			if (($selected_taxonomy === $taxonomy && $tax_settings_count < 1) || (count($selected_taxs) <= 1 && $selected_taxs[0] === $taxonomy)) {
@@ -461,24 +461,24 @@ class EFP_Live_Filter
 	 * @param string $current_author current author.
 	 * @return void
 	 */
-	public static function efp_author_filter($view_options, $query_args, $current_author = '')
+	public static function eventful_author_filter($view_options, $query_args, $current_author = '')
 	{
-		$filter_by            = isset($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : array();
-		$post_limit           = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
+		$filter_by            = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
+		$post_limit           = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 
 		if (in_array('author', $filter_by, true)) {
-			$eventful_filter_by_author  = isset($view_options['efp_filter_by_author']) ? $view_options['efp_filter_by_author'] : '';
+			$eventful_filter_by_author  = isset($view_options['eventful_filter_by_author']) ? $view_options['eventful_filter_by_author'] : '';
 			$add_filter_post       = isset($eventful_filter_by_author['add_author_filter_post']) ? $eventful_filter_by_author['add_author_filter_post'] : '';
-			$eventful_select_author_by  = isset($eventful_filter_by_author['efp_select_author_by']) ? $eventful_filter_by_author['efp_select_author_by'] : '';
+			$eventful_select_author_by  = isset($eventful_filter_by_author['eventful_select_author_by']) ? $eventful_filter_by_author['eventful_select_author_by'] : '';
 			$ajax_filter_options   = isset($eventful_filter_by_author['ajax_filter_options']) ? $eventful_filter_by_author['ajax_filter_options'] : '';
 			$btn_type              = isset($ajax_filter_options['ajax_filter_style']) ? $ajax_filter_options['ajax_filter_style'] : '';
 			$label                 = isset($ajax_filter_options['ajax_filter_label']) && !empty($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : 'Author';
 			$all_text              = isset($ajax_filter_options['ajax_rename_all_text']) ? $ajax_filter_options['ajax_rename_all_text'] : '';
 			$hide_empty            = isset($ajax_filter_options['ajax_hide_empty']) ? $ajax_filter_options['ajax_hide_empty'] : '';
 			$show_count            = isset($ajax_filter_options['ajax_show_count']) ? $ajax_filter_options['ajax_show_count'] : '';
-			$eventful_live_filter_align = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
+			$eventful_live_filter_align = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
 			if ($add_filter_post && is_array($eventful_select_author_by)) {
-				$filter_item   = self::efp_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align);
+				$filter_item   = self::eventful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
 				foreach ($eventful_select_author_by as $author_id) {
 					$author_name = get_the_author_meta('nicename', $author_id);
@@ -497,10 +497,10 @@ class EFP_Live_Filter
 					$author_posts      = get_posts($query_args);
 					$author_post_count = count($author_posts);
 					if (!$hide_empty) {
-						$push_item = self::efp_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
+						$push_item = self::eventful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
 						array_push($newterm_array, $push_item);
 					} elseif ($hide_empty && $author_post_count > 0) {
-						$push_item = self::efp_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
+						$push_item = self::eventful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
 						array_push($newterm_array, $push_item);
 					}
 				}
@@ -522,16 +522,16 @@ class EFP_Live_Filter
 	 * @param  string $last_filter last filter.
 	 * @return void
 	 */
-	public static function efp_custom_filter_filter($view_options, $query_args, $sid = '', $custom_fields_array = array(), $last_filter = '')
+	public static function eventful_custom_filter_filter($view_options, $query_args, $sid = '', $custom_fields_array = array(), $last_filter = '')
 	{
-		$filter_by                    = isset($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : array();
-		$post_limit                   = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
+		$filter_by                    = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
+		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 
 		$query_args['fields']         = 'ids';
 		$query_args['posts_per_page'] = $post_limit;
 		$old_all_post_ids             = get_posts($query_args);
 		if (in_array('custom_field', $filter_by)) {
-			$custom_field_groups = isset($view_options['efp_filter_custom_field']['efp_filter_by_custom_field_group']) ? $view_options['efp_filter_custom_field']['efp_filter_by_custom_field_group'] : '';
+			$custom_field_groups = isset($view_options['eventful_filter_custom_field']['eventful_filter_by_custom_field_group']) ? $view_options['eventful_filter_custom_field']['eventful_filter_by_custom_field_group'] : '';
 			if (!empty($custom_field_groups)) {
 				$groups_count    = count($custom_field_groups);
 				$newcustom_array = array();
@@ -542,13 +542,13 @@ class EFP_Live_Filter
 					$add_filter = isset($custom_field_groups[$index]['add_filter_post']) ? $custom_field_groups[$index]['add_filter_post'] : '';
 					if ($add_filter) {
 						$all_post_ids = get_posts($query_args);
-						$field_key    = isset($custom_field_groups[$index]['efp_select_custom_field_key']) ? $custom_field_groups[$index]['efp_select_custom_field_key'] : '';
+						$field_key    = isset($custom_field_groups[$index]['eventful_select_custom_field_key']) ? $custom_field_groups[$index]['eventful_select_custom_field_key'] : '';
 
 						$ajax_filter_options   = isset($custom_field_groups[$index]['ajax_filter_options']) ? $custom_field_groups[$index]['ajax_filter_options'] : '';
 						$btn_style             = isset($ajax_filter_options['ajax_filter_style']) ? $ajax_filter_options['ajax_filter_style'] : 'fl_btn';
 						$ajax_filter_label     = isset($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : '';
 						$all_text              = isset($ajax_filter_options['ajax_rename_all_text']) ? $ajax_filter_options['ajax_rename_all_text'] : '';
-						$eventful_live_filter_align = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : '';
+						$eventful_live_filter_align = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : '';
 						$hide_empty            = isset($ajax_filter_options['ajax_hide_empty']) ? $ajax_filter_options['ajax_hide_empty'] : '';
 						$show_count            = isset($ajax_filter_options['ajax_show_count']) ? $ajax_filter_options['ajax_show_count'] : '';
 						$meta_values           = array();
@@ -599,14 +599,14 @@ class EFP_Live_Filter
 									wp_enqueue_script('jquery-ui-slider');
 								}
 								$newcustom_array[$index] = array(
-									'<div class="efp-custom-field-filter-slider efp-bar" style="text-align:' . $eventful_live_filter_align . ';"><p>
+									'<div class="eventful-custom-field-filter-slider eventful-bar" style="text-align:' . $eventful_live_filter_align . ';"><p>
 							<label>' . esc_html($ajax_filter_label) . '</label>
-							<input value="' . $min . '-' . $max . '" type="text" name=' . esc_attr($field_key) . ' class="efp-input" data-crmin="' . $crmin . '" data-min="' . $min . '" data-crmax="' . $crmax . '" data-max="' . $max . '" readonly>
-						 </p> <div class="efp-slider"></div></div>',
+							<input value="' . $min . '-' . $max . '" type="text" name=' . esc_attr($field_key) . ' class="eventful-input" data-crmin="' . $crmin . '" data-min="' . $min . '" data-crmax="' . $crmax . '" data-max="' . $max . '" readonly>
+						 </p> <div class="eventful-slider"></div></div>',
 								);
 							}
 						} else {
-							$filter_item               = self::efp_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key);
+							$filter_item               = self::eventful_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key);
 							$newcustom_array[$index] = array($filter_item['first_item']);
 							if (!empty($meta_values)) {
 								foreach ($meta_values as $key => $value) {
@@ -630,10 +630,10 @@ class EFP_Live_Filter
 									}
 
 									if (!$hide_empty) {
-										$push_item = self::efp_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key, $value, $post_counts_by_value[$value], $sid, $selected, $checked, $show_count)['push_item'];
+										$push_item = self::eventful_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key, $value, $post_counts_by_value[$value], $sid, $selected, $checked, $show_count)['push_item'];
 										array_push($newcustom_array[$index], $push_item);
 									} elseif ($post_counts_by_value[$value] > 0) {
-										$push_item = self::efp_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key, $value, $post_counts_by_value[$value], $sid, $selected, $checked, $show_count)['push_item'];
+										$push_item = self::eventful_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key, $value, $post_counts_by_value[$value], $sid, $selected, $checked, $show_count)['push_item'];
 										array_push($newcustom_array[$index], $push_item);
 									}
 								}
@@ -658,23 +658,23 @@ class EFP_Live_Filter
 	 * @param string $sid shortcode id.
 	 * @return void
 	 */
-	public static function efp_orderby_filter_bar($view_options, $query_args, $sid = null)
+	public static function eventful_orderby_filter_bar($view_options, $query_args, $sid = null)
 	{
-		$filter_by = isset($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : array();
+		$filter_by = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		if (in_array('sortby', $filter_by, true)) {
-			$eventful_filter_by_order    = isset($view_options['efp_filter_by_order']) ? $view_options['efp_filter_by_order'] : '';
+			$eventful_filter_by_order    = isset($view_options['eventful_filter_by_order']) ? $view_options['eventful_filter_by_order'] : '';
 			$add_filter_post        = isset($eventful_filter_by_order['add_orderby_filter_post']) ? $eventful_filter_by_order['add_orderby_filter_post'] : '';
 			$ajax_filter_options    = isset($eventful_filter_by_order['orderby_ajax_filter_options']) ? $eventful_filter_by_order['orderby_ajax_filter_options'] : '';
-			$eventful_add_filter_orderby = isset($ajax_filter_options['efp_add_filter_orderby']) ? $ajax_filter_options['efp_add_filter_orderby'] : '';
+			$eventful_add_filter_orderby = isset($ajax_filter_options['eventful_add_filter_orderby']) ? $ajax_filter_options['eventful_add_filter_orderby'] : '';
 			$btn_type               = isset($ajax_filter_options['orderby_filter_style']) ? $ajax_filter_options['orderby_filter_style'] : 'fl_dropdown';
 			$label                  = isset($ajax_filter_options['ajax_filter_label']) && !empty($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : 'Filter by';
 			$all_text               = isset($ajax_filter_options['ajax_rename_all_text']) ? $ajax_filter_options['ajax_rename_all_text'] : '';
-			$eventful_live_filter_align  = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
+			$eventful_live_filter_align  = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
 			if ($add_filter_post && is_array($eventful_add_filter_orderby)) {
-				$filter_item   = self::efp_orderby_filter_style($btn_type, $label, $eventful_live_filter_align);
+				$filter_item   = self::eventful_orderby_filter_style($btn_type, $label, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
 				foreach ($eventful_add_filter_orderby as $orderby) {
-					$push_item = self::efp_orderby_filter_style($btn_type, $label, $eventful_live_filter_align, $orderby, $sid)['push_item'];
+					$push_item = self::eventful_orderby_filter_style($btn_type, $label, $eventful_live_filter_align, $orderby, $sid)['push_item'];
 					array_push($newterm_array, $push_item);
 				}
 				$tax_html = implode('', $newterm_array);
@@ -692,23 +692,23 @@ class EFP_Live_Filter
 	 * @param string $sid shortcode id.
 	 * @return void
 	 */
-	public static function efp_order_filter_bar($view_options, $sid = null)
+	public static function eventful_order_filter_bar($view_options, $sid = null)
 	{
-		$filter_by = isset($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : array();
+		$filter_by = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		if (in_array('sortby', $filter_by)) {
-			$eventful_filter_by_order     = isset($view_options['efp_filter_by_order']) ? $view_options['efp_filter_by_order'] : '';
+			$eventful_filter_by_order     = isset($view_options['eventful_filter_by_order']) ? $view_options['eventful_filter_by_order'] : '';
 			$add_filter_post         = isset($eventful_filter_by_order['add_order_filter_post']) ? $eventful_filter_by_order['add_order_filter_post'] : '';
 			$ajax_filter_options     = isset($eventful_filter_by_order['order_filter_options']) ? $eventful_filter_by_order['order_filter_options'] : '';
-			$eventful_select_filter_order = isset($eventful_filter_by_order['efp_select_filter_order']) ? $eventful_filter_by_order['efp_select_filter_order'] : '';
+			$eventful_select_filter_order = isset($eventful_filter_by_order['eventful_select_filter_order']) ? $eventful_filter_by_order['eventful_select_filter_order'] : '';
 			$eventful_add_filter_orderby  = array('DESC', 'ASC');
 			$btn_type                = isset($ajax_filter_options['order_filter_style']) ? $ajax_filter_options['order_filter_style'] : '';
 			$label                   = isset($ajax_filter_options['order_filter_label']) ? $ajax_filter_options['order_filter_label'] : '';
-			$eventful_live_filter_align   = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
+			$eventful_live_filter_align   = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
 			if ($add_filter_post) {
-				$filter_item   = self::efp_order_filter_style($btn_type, $label, $eventful_live_filter_align);
+				$filter_item   = self::eventful_order_filter_style($btn_type, $label, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
 				foreach ($eventful_add_filter_orderby as $order) {
-					$push_item = self::efp_order_filter_style($btn_type, $label, $eventful_live_filter_align, $order, $eventful_select_filter_order, $sid)['push_item'];
+					$push_item = self::eventful_order_filter_style($btn_type, $label, $eventful_live_filter_align, $order, $eventful_select_filter_order, $sid)['push_item'];
 					array_push($newterm_array, $push_item);
 				}
 				$tax_html = implode('', $newterm_array);
@@ -733,15 +733,15 @@ class EFP_Live_Filter
 	 * @param string  $selected select.
 	 * @param string  $checked check.
 	 */
-	public static function efp_author_filter_style($btn_type, $label, $all_text, $align = 'center', $author_id = null, $author_name = null, $author_post_count = null, $show_count = true, $selected = '', $checked = '')
+	public static function eventful_author_filter_style($btn_type, $label, $all_text, $align = 'center', $author_id = null, $author_name = null, $author_post_count = null, $show_count = true, $selected = '', $checked = '')
 	{
 		if ($show_count) {
-			$post_count_markup = '<span class="efp-count">(' . $author_post_count . ')</span>';
+			$post_count_markup = '<span class="eventful-count">(' . $author_post_count . ')</span>';
 		} else {
 			$post_count_markup = '';
 		}
 
-		$final_author_url_value = isset($_GET['efp_author_id']) ? wp_unslash(sanitize_text_field($_GET['efp_author_id'])) : '';
+		$final_author_url_value = isset($_GET['eventful_author_id']) ? wp_unslash(sanitize_text_field($_GET['eventful_author_id'])) : '';
 		if ($final_author_url_value == $author_id) {
 			$a_selected = 'selected';
 			$a_checked  = 'checked';
@@ -751,15 +751,15 @@ class EFP_Live_Filter
 		}
 		if ('fl_radio' === $btn_type) {
 			$all_label  = !empty($all_text) ? $all_text : '';
-			$first_item = '<div class="efp-author-filter efp-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="author" value="all">' . $all_label . '</label></div>';
+			$first_item = '<div class="eventful-author-filter eventful-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="author" value="all">' . $all_label . '</label></div>';
 			$push_item  = '<div class="fl_radio"><label><input name="author" type="radio" ' . $a_checked . ' value="' . esc_attr($author_id) . '">' . esc_attr($author_name) . $post_count_markup . '</label></div>';
 		} elseif ('fl_btn' === $btn_type) {
 			$all_label  = !empty($all_text) ? '<div>' . $all_text . '</div>' : '';
-			$first_item = '<div class="efp-author-filter efp-bar fl_button" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="author" value="all">' . $all_label . '</label></div>';
+			$first_item = '<div class="eventful-author-filter eventful-bar fl_button" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="author" value="all">' . $all_label . '</label></div>';
 			$push_item  = '<div class="fl_radio"><label><input name="author" type="radio" ' . $a_checked . ' value="' . esc_attr($author_id) . '"><div>' . esc_attr($author_name) . $post_count_markup . '</div></label></div>';
 		} else {
 			$all_label  = !empty($all_text) ? $all_text : '';
-			$first_item = '<div class="efp-author-filter efp-bar" style="text-align:' . esc_attr($align) . ';"> <label class="efp-label">' . esc_html($label) . '</label><select><option  name="author" value="all">' . $all_label . '</option>';
+			$first_item = '<div class="eventful-author-filter eventful-bar" style="text-align:' . esc_attr($align) . ';"> <label class="eventful-label">' . esc_html($label) . '</label><select><option  name="author" value="all">' . $all_label . '</option>';
 			$push_item  = '<option name="author" value="' . esc_attr($author_id) . '" ' . $a_selected . '>' . esc_attr($author_name) . $post_count_markup . ' </option>';
 		}
 		$filter_output = array(
@@ -785,11 +785,11 @@ class EFP_Live_Filter
 	 * @param  bool   $show_count is show post count.
 	 * @return statement
 	 */
-	public static function efp_custom_field_filter_style($btn_type, $label = 'Custom field', $all_text = 'All', $align = 'center', $field_key = null, $value = null, $p_count = '', $id = '', $selected = '', $checked = '', $show_count = false)
+	public static function eventful_custom_field_filter_style($btn_type, $label = 'Custom field', $all_text = 'All', $align = 'center', $field_key = null, $value = null, $p_count = '', $id = '', $selected = '', $checked = '', $show_count = false)
 	{
 		$post_count_markup = '';
 		if ($show_count) {
-			$post_count_markup = '<span class="efp-count">(' . $p_count . ')</span>';
+			$post_count_markup = '<span class="eventful-count">(' . $p_count . ')</span>';
 		}
 		$a_selected       = $selected;
 		$a_checked        = $checked;
@@ -827,19 +827,19 @@ class EFP_Live_Filter
 		}
 
 		if ('fl_checkbox' === $btn_type) {
-			$first_item = '<div class="efp-custom-field-filter-checkbox efp-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p>';
+			$first_item = '<div class="eventful-custom-field-filter-checkbox eventful-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p>';
 			$push_item  = '<div class="fl_checkbox"><label><input name="' . esc_attr($field_key) . '" type="checkbox" ' . $a_checked . '  value="' . esc_attr($value) . '">' . wp_kses_post($capitalize_value) . '</span></label></div>';
 		} elseif ('fl_radio' === $btn_type) {
 			$all_label  = !empty($all_text) ? $all_text : '';
-			$first_item = '<div class="efp-custom-field-filter efp-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="' . esc_attr($field_key) . '" value="all">' . $all_label . '</label></div>';
+			$first_item = '<div class="eventful-custom-field-filter eventful-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="' . esc_attr($field_key) . '" value="all">' . $all_label . '</label></div>';
 			$push_item  = '<div class="fl_radio"><label><input name="' . esc_attr($field_key) . '" type="radio" ' . $a_checked . ' value="' . esc_attr($value) . '">' . wp_kses_post($capitalize_value) . '</label></div>';
 		} elseif ('fl_btn' === $btn_type) {
 			$all_label  = !empty($all_text) ? '<div>' . esc_html($all_text) . '</div>' : '';
-			$first_item = '<div class="efp-custom-field-filter efp-bar fl_button filter-' . $field_key . '" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="' . esc_attr($field_key) . '" value="all">' . $all_label . '</label></div>';
+			$first_item = '<div class="eventful-custom-field-filter eventful-bar fl_button filter-' . $field_key . '" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="' . esc_attr($field_key) . '" value="all">' . $all_label . '</label></div>';
 			$push_item  = '<div class="fl_radio"><label><input name="' . esc_attr($field_key) . '" type="radio" ' . $a_checked . ' value="' . esc_attr($value) . '"><div>' . wp_kses_post($capitalize_value) . '</div></label></div>';
 		} else {
 			$all_label  = !empty($all_text) ? $all_text : '';
-			$first_item = '<div class="efp-custom-field-filter efp-bar" style="text-align:' . esc_attr($align) . ';"> <label class="efp-label">' . esc_html($label) . '</label><select><option  name="' . $field_key . '" value="all">' . $all_label . '</option>';
+			$first_item = '<div class="eventful-custom-field-filter eventful-bar" style="text-align:' . esc_attr($align) . ';"> <label class="eventful-label">' . esc_html($label) . '</label><select><option  name="' . $field_key . '" value="all">' . $all_label . '</option>';
 			$push_item  = '<option name="' . $field_key . '" value="' . $value . '" ' . $a_selected . '>' . wp_kses_post($capitalize_value) . ' </option>';
 		}
 		$filter_output = array(
@@ -858,14 +858,14 @@ class EFP_Live_Filter
 	 * @param string $sid shortcode id.
 	 * @return array
 	 */
-	public static function efp_orderby_filter_style($btn_type, $label, $align = 'center', $orderby = null, $sid = null)
+	public static function eventful_orderby_filter_style($btn_type, $label, $align = 'center', $orderby = null, $sid = null)
 	{
 		$filter_url_value        = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
 		$final_orderby_url_value = '';
 		if (!empty($filter_url_value)) {
 			$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 			if ($shortcode_id == $sid) {
-				$final_orderby_url_value = isset($_GET['efp_orderby']) ? sanitize_text_field(wp_unslash($_GET['efp_orderby'])) : '';
+				$final_orderby_url_value = isset($_GET['eventful_orderby']) ? sanitize_text_field(wp_unslash($_GET['eventful_orderby'])) : '';
 			}
 		}
 
@@ -878,13 +878,13 @@ class EFP_Live_Filter
 		}
 
 		if ('fl_radio' === $btn_type) {
-			$first_item = '<div class="efp-order-by efp-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="orderby" value="">None</label></div>';
+			$first_item = '<div class="eventful-order-by eventful-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="orderby" value="">None</label></div>';
 			$push_item  = '<div class="fl_radio"><label><input name="orderby" type="radio"  ' . $is_checked . ' value="' . $orderby . '">' . $orderby . '</label></div>';
 		} elseif ('fl_btn' === $btn_type) {
-			$first_item = '<div class="efp-order-by efp-bar fl-btn" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p> <div class="fl_radio"><label><input checked type="radio" name="orderby" value=""><div>None</div></label></div>';
+			$first_item = '<div class="eventful-order-by eventful-bar fl-btn" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p> <div class="fl_radio"><label><input checked type="radio" name="orderby" value=""><div>None</div></label></div>';
 			$push_item  = '<div class="fl_radio"><label><input type="radio" name="orderby" ' . $is_checked . ' value="' . $orderby . '"><div>' . $orderby . '</div></label></div>';
 		} else {
-			$first_item = '<div class="efp-order-by efp-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><select><option  name="orderby" value="">None</option>';
+			$first_item = '<div class="eventful-order-by eventful-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><select><option  name="orderby" value="">None</option>';
 			$push_item  = '<option name="orderby" ' . $is_selected . ' value="' . $orderby . '">' . $orderby . '</option>';
 		}
 		$filter_output = array(
@@ -904,14 +904,14 @@ class EFP_Live_Filter
 	 * @param string $select_order selected order.
 	 * @param string $sid shortcode id.
 	 */
-	public static function efp_order_filter_style($btn_type, $label, $align = 'center', $order = null, $select_order = null, $sid = null)
+	public static function eventful_order_filter_style($btn_type, $label, $align = 'center', $order = null, $select_order = null, $sid = null)
 	{
 		$final_order_url_value = '';
 		$filter_url_value      = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
 		if (!empty($filter_url_value)) {
 			$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 			if ($shortcode_id == $sid) {
-				$final_order_url_value = isset($_GET['efp_order']) ? sanitize_text_field(wp_unslash($_GET['efp_order'])) : '';
+				$final_order_url_value = isset($_GET['eventful_order']) ? sanitize_text_field(wp_unslash($_GET['eventful_order'])) : '';
 			}
 		}
 
@@ -923,13 +923,13 @@ class EFP_Live_Filter
 			$checked  = '';
 		}
 		if ('fl_radio' === $btn_type) {
-			$first_item = '<div class="efp-order efp-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p>';
+			$first_item = '<div class="eventful-order eventful-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p>';
 			$push_item  = '<div class="fl_radio"><label><input name="order" ' . $checked . ' type="radio" value="' . $order . '">' . $order . '</label></div>';
 		} elseif ('fl_btn' === $btn_type) {
-			$first_item = '<div class="efp-order efp-bar fl-btn" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p>';
+			$first_item = '<div class="eventful-order eventful-bar fl-btn" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p>';
 			$push_item  = '<div class="fl_radio"><label><input type="radio" ' . $checked . ' name="order" value="' . $order . '"><div>' . $order . '</div></label></div>';
 		} else {
-			$first_item = '<div class="efp-order efp-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><select>';
+			$first_item = '<div class="eventful-order eventful-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><select>';
 			$push_item  = '<option name="order" ' . $selected . ' value="' . $order . '">' . $order . '</option>';
 		}
 		$filter_output = array(
@@ -946,25 +946,25 @@ class EFP_Live_Filter
 	 * @param string $sid shortcode id.
 	 * @return void
 	 */
-	public static function efp_live_search_bar($view_options, $sid = null)
+	public static function eventful_live_search_bar($view_options, $sid = null)
 	{
-		$filter_by        = isset($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : array();
+		$filter_by        = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		$final_keyword    = '';
 		$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
 		if (!empty($filter_url_value)) {
 			$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 			if ($shortcode_id == $sid) {
-				$final_keyword = isset($_GET['efp_keyword']) ? sanitize_text_field(wp_unslash($_GET['efp_keyword'])) : '';
+				$final_keyword = isset($_GET['eventful_keyword']) ? sanitize_text_field(wp_unslash($_GET['eventful_keyword'])) : '';
 			}
 		}
 		if (in_array('keyword', $filter_by, true)) {
-			$eventful_filter_by_keyword = isset($view_options['efp_filter_by_keyword']) ? $view_options['efp_filter_by_keyword'] : '';
+			$eventful_filter_by_keyword = isset($view_options['eventful_filter_by_keyword']) ? $view_options['eventful_filter_by_keyword'] : '';
 			$add_filter_post       = isset($eventful_filter_by_keyword['add_search_filter_post']) ? $eventful_filter_by_keyword['add_search_filter_post'] : '';
 			if ($add_filter_post) {
 				$ajax_filter_options   = isset($eventful_filter_by_keyword['ajax_filter_options']) ? $eventful_filter_by_keyword['ajax_filter_options'] : '';
 				$label                 = isset($ajax_filter_options['ajax_filter_label']) && !empty($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : '';
-				$eventful_live_filter_align = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
-				echo '<div class="efp-ajax-search efp-bar" style="text-align:' . esc_attr($eventful_live_filter_align) . ';"><label class="efp-label">' . wp_kses_post($label) . ' <input type="text" value="' . esc_attr($final_keyword) . '" class="efp-search-field" placeholder="Search..."></label></div>';
+				$eventful_live_filter_align = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
+				echo '<div class="eventful-ajax-search eventful-bar" style="text-align:' . esc_attr($eventful_live_filter_align) . ';"><label class="eventful-label">' . wp_kses_post($label) . ' <input type="text" value="' . esc_attr($final_keyword) . '" class="eventful-search-field" placeholder="Search..."></label></div>';
 			}
 		}
 	}

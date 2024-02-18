@@ -10,6 +10,6 @@
 
  echo '<div class="eventful__item--meta event_meta">';
 
-EFP_Functions::efp_get_event_fildes( $post, $event_fildes_fields, $visitor_count, $_event_meta_separator, $is_table );
+EFP_Functions::eventful_get_event_fildes( $post, $event_fildes_fields, $visitor_count, $_event_meta_separator, $is_table );
 
 echo '</div>';

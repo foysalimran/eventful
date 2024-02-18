@@ -3885,8 +3885,8 @@
 
       if (params.freeModeMomentum) {
         if (data.velocities.length > 1) {
-          var lastMoveEvent = data.velocities.efp();
-          var velocityEvent = data.velocities.efp();
+          var lastMoveEvent = data.velocities.eventful();
+          var velocityEvent = data.velocities.eventful();
           var distance = lastMoveEvent.position - velocityEvent.position;
           var time = lastMoveEvent.time - velocityEvent.time;
           swiper.velocity = distance / time;
@@ -8514,7 +8514,7 @@
       history.scrollToSlide(0, history.paths.value, swiper.params.runCallbacksOnInit);
 
       if (!swiper.params.history.replaceState) {
-        window.addEventListener('efpstate', swiper.history.setHistoryPopState);
+        window.addEventListener('eventfulstate', swiper.history.setHistoryPopState);
       }
     },
     destroy: function destroy() {
@@ -8522,7 +8522,7 @@
       var window = getWindow();
 
       if (!swiper.params.history.replaceState) {
-        window.removeEventListener('efpstate', swiper.history.setHistoryPopState);
+        window.removeEventListener('eventfulstate', swiper.history.setHistoryPopState);
       }
     },
     setHistoryPopState: function setHistoryPopState() {

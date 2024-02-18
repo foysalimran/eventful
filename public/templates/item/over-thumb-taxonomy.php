@@ -9,6 +9,6 @@
  */
 
 ?>
-<div class="efp-category <?php echo esc_attr( $meta_over_thumb_position ) . ' ' . esc_attr( $taxonomy ); ?>">
+<div class="eventful-category <?php echo esc_attr( $meta_over_thumb_position ) . ' ' . esc_attr( $taxonomy ); ?>">
 	<?php echo wp_kses_post( $terms ); ?>
 </div>

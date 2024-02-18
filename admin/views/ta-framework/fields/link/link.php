@@ -49,7 +49,7 @@ if ( ! class_exists( 'EFP_Field_link' ) ) {
 
 			echo '<a href="#" class="button button-primary eventful--add' . esc_attr( $hidden ) . '">' . esc_html($args['add_title']) . '</a> ';
 			echo '<a href="#" class="button eventful--edit' . esc_attr( $maybe_hidden ) . '">' . esc_html($args['edit_title']) . '</a> ';
-			echo '<a href="#" class="button efp-warning-primary eventful--remove' . esc_attr( $maybe_hidden ) . '">' . esc_html( $args['remove_title'] ) . '</a>';
+			echo '<a href="#" class="button eventful-warning-primary eventful--remove' . esc_attr( $maybe_hidden ) . '">' . esc_html( $args['remove_title'] ) . '</a>';
 
 			echo wp_kses_post( $this->field_after() );
 		}

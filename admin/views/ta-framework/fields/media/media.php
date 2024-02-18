@@ -70,7 +70,7 @@ if ( ! class_exists( 'EFP_Field_media' ) ) {
 				$preview_style  = ( ! empty( $preview_width ) || ! empty( $preview_height ) ) ? ' style="' . esc_attr( $preview_width . $preview_height ) . '"' : '';
 
 				echo '<div class="eventful--preview' . esc_attr( $hidden_auto ) . '">';
-				echo '<div class="efp-image-preview"' . wp_kses_post($preview_style) . '>';
+				echo '<div class="eventful-image-preview"' . wp_kses_post($preview_style) . '>';
 				echo '<i class="eventful--remove fas fa-times"></i><span><img src="' . esc_url( $preview_src ) . '" class="eventful--src" /></span>';
 				echo '</div>';
 				echo '</div>';
@@ -80,7 +80,7 @@ if ( ! class_exists( 'EFP_Field_media' ) ) {
 			echo '<div class="eventful--placeholder">';
 			echo '<input type="text" name="' . esc_attr( $this->field_name( '[url]' ) ) . '" value="' . esc_attr( $this->value['url'] ) . '" class="eventful--url' . esc_attr( $hidden_url ) . '" readonly="readonly"' . wp_kses_post( $this->field_attributes() ) . wp_kses_post($placeholder) . ' />';
 			echo '<a href="#" class="button button-primary eventful--button" data-library="' . esc_attr( $library ) . '" data-preview-size="' . esc_attr( $args['preview_size'] ) . '">' . esc_html( $args['button_title'] ) . '</a>';
-			echo ( empty( $args['preview'] ) ) ? '<a href="#" class="button button-secondary efp-warning-primary eventful--remove' . esc_attr( $hidden_auto ) . '">' . esc_html( $args['remove_title'] ) . '</a>' : '';
+			echo ( empty( $args['preview'] ) ) ? '<a href="#" class="button button-secondary eventful-warning-primary eventful--remove' . esc_attr( $hidden_auto ) . '">' . esc_html( $args['remove_title'] ) . '</a>' : '';
 			echo '</div>';
 
 			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[id]' ) ) . '" value="' . esc_attr( $this->value['id'] ) . '" class="eventful--id"/>';

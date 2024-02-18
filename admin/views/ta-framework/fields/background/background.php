@@ -153,7 +153,7 @@ if ( ! class_exists( 'EFP_Field_background' ) ) {
 					array(
 						'id'          => 'background-image',
 						'type'        => 'media',
-						'class'       => 'efp-assign-field-background',
+						'class'       => 'eventful-assign-field-background',
 						'library'     => $args['background_image_library'],
 						'preview'     => $args['background_image_preview'],
 						'placeholder' => $args['background_image_placeholder'],

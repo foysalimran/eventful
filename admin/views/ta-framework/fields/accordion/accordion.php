@@ -20,20 +20,20 @@ if ( ! class_exists( 'EFP_Field_accordion' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo '<div class="efp-accordion-items" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
+			echo '<div class="eventful-accordion-items" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 
 			foreach ( $this->field['accordions'] as $key => $accordion ) {
 
-				echo '<div class="efp-accordion-item">';
+				echo '<div class="eventful-accordion-item">';
 
-				$icon = ( ! empty( $accordion['icon'] ) ) ? 'eventful--icon ' . $accordion['icon'] : 'efp-accordion-icon fas fa-angle-right';
+				$icon = ( ! empty( $accordion['icon'] ) ) ? 'eventful--icon ' . $accordion['icon'] : 'eventful-accordion-icon fas fa-angle-right';
 
-				echo '<h4 class="efp-accordion-title">';
+				echo '<h4 class="eventful-accordion-title">';
 				echo '<i class="' . esc_attr( $icon ) . '"></i>';
 				echo esc_html( $accordion['title'] );
 				echo '</h4>';
 
-				echo '<div class="efp-accordion-content">';
+				echo '<div class="eventful-accordion-content">';
 
 				foreach ( $accordion['fields'] as $field ) {
 

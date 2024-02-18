@@ -22,7 +22,7 @@ if ( ! class_exists( 'EFP_Field_palette' ) ) {
 
 			if ( ! empty( $palette ) ) {
 
-				echo '<div class="efp-siblings eventful--palettes">';
+				echo '<div class="eventful-siblings eventful--palettes">';
 
 				foreach ( $palette as $key => $colors ) {
 

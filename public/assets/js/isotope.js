@@ -169,8 +169,8 @@ function (e, t) {
  * Licensed GPLv3 for open source use
  * or Isotope Commercial License for commercial use
  *
- * https://isotope.meefpizzy.co
- * Copyright 2010-2018 Meefpizzy
+ * https://isotope.meeventfulizzy.co
+ * Copyright 2010-2018 Meeventfulizzy
  */
 
 ! function (t, e) {

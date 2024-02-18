@@ -41,12 +41,12 @@ if ( ! class_exists( 'EFP_Field_code_editor' ) ) {
 			if ( in_array( $page, array( 'revslider' ) ) ) {
 				return; }
 
-			if ( ! wp_script_is( 'efp-codemirror' ) ) {
+			if ( ! wp_script_is( 'eventful-codemirror' ) ) {
 				wp_enqueue_script( 'codemirror', EFP_URL . 'admin/views/ta-framework/assets/js/codemirror.min.js', array( 'ta-framework' ), $this->version, true );
-				wp_enqueue_script( 'loadmode', EFP_URL . 'admin/views/ta-framework/assets/js/loadmode.min.js', array( 'efp-codemirror' ), $this->version, true );
+				wp_enqueue_script( 'loadmode', EFP_URL . 'admin/views/ta-framework/assets/js/loadmode.min.js', array( 'eventful-codemirror' ), $this->version, true );
 			}
 
-			if ( ! wp_style_is( 'efp-codemirror' ) ) {
+			if ( ! wp_style_is( 'eventful-codemirror' ) ) {
 				wp_enqueue_style( 'codemirror', EFP_URL . 'admin/views/ta-framework/assets/css/codemirror.min.css', array(), $this->version );
 			}
 		}

@@ -22,7 +22,7 @@ class EFP_Settings {
 	 */
 	public static function settings( $prefix ) {
 
-		$capability = efp_dashboard_capability(); // TODO: filter is not working.
+		$capability = eventful_dashboard_capability(); // TODO: filter is not working.
 
 		EFP::createOptions(
 			$prefix,
@@ -30,7 +30,7 @@ class EFP_Settings {
 				'menu_title'       => esc_html__( 'Settings', 'eventful' ),
 				'menu_parent'      => 'edit.php?post_type=eventful',
 				'menu_type'        => 'submenu', // menu, submenu, options, theme, etc.
-				'menu_slug'        => 'efp_settings',
+				'menu_slug'        => 'eventful_settings',
 				'theme'            => 'light',
 				'show_all_options' => false,
 				'show_search'      => false,

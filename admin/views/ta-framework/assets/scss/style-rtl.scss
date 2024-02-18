@@ -56,7 +56,7 @@
 /**
  * 01. Base
  */
-.efp-options{
+.eventful-options{
   margin-left: 20px;
   margin-right: 0;
 }
@@ -64,7 +64,7 @@
 /**
  * 01. 01. Header
  */
-.efp-header{
+.eventful-header{
   h1{
     float: right;
   }
@@ -77,43 +77,43 @@
 /**
  * 01. 02. Header Buttons
  */
-.efp-buttons{
+.eventful-buttons{
   float: left;
   direction: ltr;
 }
 
-.efp-header-left{
+.eventful-header-left{
   float: right;
 }
 
-.efp-header-right{
+.eventful-header-right{
   float: left;
 }
 
 /**
  * 01. 03. Navigation
  */
-.efp-nav{
+.eventful-nav{
   float: right;
 
   ul{
     clear: right;
 
     li{
-      .efp-active:after{
+      .eventful-active:after{
         right: auto;
         left: 0;
         border-left-color: #fff;
         border-right-color: transparent;
       }
 
-      .efp-arrow:after{
+      .eventful-arrow:after{
         content: "\f053";
         right: auto;
         left: 10px;
       }
 
-      &.efp-tab-expanded .efp-arrow:after{
+      &.eventful-tab-expanded .eventful-arrow:after{
         transform: rotate(-90deg);
       }
     }
@@ -133,13 +133,13 @@
     }
   }
 
-  .efp-tab-icon{
+  .eventful-tab-icon{
     margin-left: 5px;
     margin-right: 0;
   }
 }
 
-.efp-nav-background{
+.eventful-nav-background{
   left: auto;
   right: 0;
 }
@@ -147,7 +147,7 @@
 /**
  * 01. 04. Content
  */
-.efp-content{
+.eventful-content{
   margin-left: 0;
   margin-right: 225px;
 }
@@ -155,19 +155,19 @@
 /**
  * 01. 05. Section
  */
-.efp-sections{
+.eventful-sections{
   float: right;
 }
 
 /**
  * 01. 06. Show all options
  */
-.efp-show-all .efp-content{
+.eventful-show-all .eventful-content{
   margin-right: 0;
   overflow: hidden;
 }
 
-.efp-expand-all{
+.eventful-expand-all{
   float: right;
   right: auto;
   left: 40px;
@@ -178,7 +178,7 @@
 /**
  * 01. 07. Search Input
  */
-.efp-search{
+.eventful-search{
   float: right;
 
   input{
@@ -189,24 +189,24 @@
 /**
  * 01. 08. Copyright
  */
-.efp-copyright{
+.eventful-copyright{
   float: right;
 }
 
 /**
  * 01. 09. Metabox
  */
-.efp-metabox{
+.eventful-metabox{
   margin: -6px -12px -12px -12px;
 
-  .efp-section-title{
+  .eventful-section-title{
     padding: 20px;
   }
 }
 
-.efp-section-title{
+.eventful-section-title{
 
-  .efp-section-icon{
+  .eventful-section-icon{
     margin-left: 5px;
     margin-right: 0;
   }
@@ -215,25 +215,25 @@
 /**
  * 02. Fields
  */
-.efp-field{
+.eventful-field{
 
-  .efp-title{
+  .eventful-title{
     float: right;
   }
 
-  .efp-fieldset{
+  .eventful-fieldset{
     float: left;
   }
 }
 
-.efp-pseudo-field{
+.eventful-pseudo-field{
   padding: 0 0 0 5px !important;
 }
 
 /**
  * 02. 01. Field: typography
  */
-.efp-field-typography{
+.eventful-field-typography{
 
   select{
     margin: 0;
@@ -255,8 +255,8 @@
 /**
  * 02. 02. Field: checkbox, radio
  */
-.efp-field-checkbox,
-.efp-field-radio{
+.eventful-field-checkbox,
+.eventful-field-radio{
 
   ul ul li{
     margin-left: 0;
@@ -281,7 +281,7 @@
 /**
  * 02. 03. Field: switcher
  */
-.efp-field-switcher{
+.eventful-field-switcher{
 
   .eventful--switcher{
     float: right;
@@ -297,7 +297,7 @@
 /**
  * 02. 04. Field: upload
  */
-.efp-field-upload{
+.eventful-field-upload{
 
   .eventful--remove,
   .eventful--button{
@@ -309,13 +309,13 @@
 /**
  * 02. 05. Field: group
  */
-.efp-field-group{
+.eventful-field-group{
 
-  .efp-cloneable-title{
+  .eventful-cloneable-title{
     padding: 15px 10px 15px 65px;
   }
 
-  .efp-cloneable-helper{
+  .eventful-cloneable-helper{
     right: auto;
     left: 10px;
   }
@@ -324,9 +324,9 @@
 /**
  * 02. 06. Field: repeater
  */
-.efp-field-repeater{
+.eventful-field-repeater{
 
-  .efp-repeater-helper{
+  .eventful-repeater-helper{
     border-left: 0;
     border-right: 1px solid #eee;
   }
@@ -335,7 +335,7 @@
 /**
  * 02. 07. Field: help
  */
-.efp-help{
+.eventful-help{
   right: auto;
   left: 5px;
 }
@@ -343,14 +343,14 @@
 /**
  * 02. 08. Field: icon
  */
-.efp-field-icon{
+.eventful-field-icon{
 
   .button{
     margin-right: 0;
     margin-left: 5px;
   }
 
-  .efp-icon-preview i{
+  .eventful-icon-preview i{
     margin-right: 0;
     margin-left: 5px;
   }
@@ -359,7 +359,7 @@
 /**
  * 02. 09. Field: gallery
  */
-.efp-field-gallery{
+.eventful-field-gallery{
 
   ul li{
     margin-right: 0;
@@ -375,9 +375,9 @@
 /**
  * 02. 11. Field: tabbed
  */
-.efp-field-tabbed{
+.eventful-field-tabbed{
 
-  .efp-tabbed-nav{
+  .eventful-tabbed-nav{
 
     .eventful--icon{
       padding-right: 0;
@@ -394,7 +394,7 @@
 /**
  * 02. 12. Field: media
  */
-.efp-field-media{
+.eventful-field-media{
 
   .button{
     margin-left: 0;
@@ -409,7 +409,7 @@
 /**
  * 02. 13. Field: notice
  */
-.efp-notice{
+.eventful-notice{
   border-left: none;
   border-right-style: solid;
   border-right-width: 4px;
@@ -418,12 +418,12 @@
 /**
  * 02. 14. Field: border, spacing, dimensions
  */
-.efp-field-dimensions,
-.efp-field-spacing,
-.efp-field-border{
+.eventful-field-dimensions,
+.eventful-field-spacing,
+.eventful-field-border{
 
   .eventful--input,
-  .efp-fieldset{
+  .eventful-fieldset{
     direction: ltr;
   }
 
@@ -441,7 +441,7 @@
 /**
  * 02. 15. Field: background
  */
-.efp-field-background{
+.eventful-field-background{
 
   .eventful--block{
     float: right;
@@ -461,7 +461,7 @@
 /**
  * 02. 16. Field: spinner
  */
-.efp-field-spinner{
+.eventful-field-spinner{
 
   .eventful--spin{
     float: right;
@@ -472,9 +472,9 @@
 /**
  * 02. 17. Field: slider
  */
-.efp-field-slider{
+.eventful-field-slider{
 
-  .efp-slider-ui{
+  .eventful-slider-ui{
     direction: ltr;
     margin-right: 0;
     margin-left: 15px;
@@ -488,7 +488,7 @@
 /**
  * 02. 18. Field: button_set
  */
-.efp-field-button_set{
+.eventful-field-button_set{
 
   .eventful--button-group{
     float: right;
@@ -498,7 +498,7 @@
 /**
  * 02. 19. Field: link_color
  */
-.efp-field-link_color{
+.eventful-field-link_color{
 
   .eventful--left{
     float: right;
@@ -510,7 +510,7 @@
 /**
  * 02. 20. Field: color_group
  */
-.efp-field-color_group{
+.eventful-field-color_group{
 
   .eventful--left{
     float: right;
@@ -522,7 +522,7 @@
 /**
  * 02. 21. Field: palette
  */
-.efp-field-palette{
+.eventful-field-palette{
 
   .eventful--palette{
     margin-right: 0;
@@ -533,7 +533,7 @@
 /**
  * 02. 22. Field: accordion
  */
-.efp-field-accordion{
+.eventful-field-accordion{
 
   .eventful--icon{
     margin-right: 0;
@@ -544,7 +544,7 @@
 /**
  * 02. 23. Field: date
  */
-.efp-field-date{
+.eventful-field-date{
 
   .eventful--to {
     margin-left: 0;
@@ -555,7 +555,7 @@
 /**
  * 02. 24. Field: map
  */
-.efp-field-map{
+.eventful-field-map{
 
   .eventful--map-input:last-child {
     padding-left: 0;
@@ -566,9 +566,9 @@
 /**
  * 02. 25. Field: sortable
  */
-.efp-field-sortable{
+.eventful-field-sortable{
 
-  .efp-sortable-helper{
+  .eventful-sortable-helper{
     border-left: none;
     border-right: 1px solid #eee;
   }
@@ -577,7 +577,7 @@
 /**
  * 02. 26. Field: number
  */
-.efp-field-number{
+.eventful-field-number{
 
   .eventful--wrap{
     float: right;
@@ -592,21 +592,21 @@
 /**
  * 03. Taxonomy
  */
-.efp-taxonomy-add-fields{
+.eventful-taxonomy-add-fields{
   margin-right: 0;
   margin-left: 30px;
 
-  .efp-field > .efp-fieldset > .efp-help{
+  .eventful-field > .eventful-fieldset > .eventful-help{
     left: -5px;
     right: auto;
   }
 }
 
-.efp-taxonomy-edit-fields{
+.eventful-taxonomy-edit-fields{
   margin-right: 0;
   margin-left: 35px;
 
-  .efp-field > .efp-fieldset > .efp-help{
+  .eventful-field > .eventful-fieldset > .eventful-help{
     right: auto;
     left: -5px;
   }
@@ -615,18 +615,18 @@
 /**
  * 04. Profile
  */
-.efp-profile-options{
+.eventful-profile-options{
 
   > h2 > .fa{
     padding-right: 0;
     padding-left: 7px;
   }
 
-  > .efp-field{
+  > .eventful-field{
 
-    > .efp-fieldset{
+    > .eventful-fieldset{
 
-      > .efp-help{
+      > .eventful-help{
         left: -5px;
         right: auto;
       }
@@ -637,20 +637,20 @@
 /**
  * 05. Nav Menu
  */
-.efp-nav-menu-options{
+.eventful-nav-menu-options{
 
-  > .efp-fields{
+  > .eventful-fields{
     margin-left: 0;
     margin-right: -10px;
   }
 }
 
-.efp-nav-menu-title {
+.eventful-nav-menu-title {
   padding-left: 14px;
   padding-right: 12px;
 }
 
-.efp-nav-menu-icon{
+.eventful-nav-menu-icon{
   margin-right: 0;
   margin-left: 5px;
 }
@@ -658,18 +658,18 @@
 /**
  * 06. Modal
  */
-.efp-modal-content{
+.eventful-modal-content{
 
-  .efp-field{
+  .eventful-field{
     padding: 15px 15px 15px 30px;
   }
 }
 
-.efp-modal-title{
+.eventful-modal-title{
   padding: 0 16px 0 36px;
 }
 
-.efp-modal-close{
+.eventful-modal-close{
   right: auto;
   left: 0;
 }
@@ -679,9 +679,9 @@
  */
 .control-section{
 
-  .efp-field{
+  .eventful-field{
 
-    .efp-fieldset{
+    .eventful-fieldset{
       margin-right: 0;
     }
   }
@@ -691,14 +691,14 @@
  * 08. Responsive
  */
 @media only screen and (max-width:1200px){
-  .efp-metabox .efp-field .efp-fieldset{
+  .eventful-metabox .eventful-field .eventful-fieldset{
     margin-left: 0;
   }
 }
 
 @media only screen and (max-width:782px){
-  .efp .efp-fieldset,
-  .efp .efp-content{
+  .eventful .eventful-fieldset,
+  .eventful .eventful-content{
     margin-right: 0;
   }
 }
@@ -706,7 +706,7 @@
 /**
  * 09. Others
  */
-.efp-field{
+.eventful-field{
 
   .eventful--transparent-slider{
     margin-left: 0;

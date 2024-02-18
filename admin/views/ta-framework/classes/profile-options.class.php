@@ -25,8 +25,8 @@ if ( ! class_exists( 'EFP_Profile_Options' ) ) {
     public function __construct( $key, $params ) {
 
       $this->unique     = $key;
-      $this->args       = apply_filters( "efp_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections   = apply_filters( "efp_{$this->unique}_sections", $params['sections'], $this );
+      $this->args       = apply_filters( "eventful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections   = apply_filters( "eventful_{$this->unique}_sections", $params['sections'], $this );
       $this->pre_fields = $this->pre_fields( $this->sections );
 
       add_action( 'admin_init', array( $this, 'add_profile_options' ) );
@@ -96,17 +96,17 @@ if ( ! class_exists( 'EFP_Profile_Options' ) ) {
         delete_user_meta( $profile_id, '_eventful_errors_'. $this->unique );
       }
 
-      echo '<div class="efp efp-profile-options efp-onload'. esc_attr( $class ) .'">';
+      echo '<div class="eventful eventful-profile-options eventful-onload'. esc_attr( $class ) .'">';
 
-      wp_nonce_field( 'efp_profile_nonce', 'efp_profile_nonce'. $this->unique );
+      wp_nonce_field( 'eventful_profile_nonce', 'eventful_profile_nonce'. $this->unique );
 
       foreach ( $this->sections as $section ) {
 
-        $section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="efp-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
+        $section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="eventful-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
         $section_title = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
 
         echo ( $section_title || $section_icon ) ? '<h2>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h2>' : '';
-        echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
+        echo ( ! empty( $section['description'] ) ) ? '<div class="eventful-field eventful-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
 
         if ( ! empty( $section['fields'] ) ) {
 
@@ -138,10 +138,10 @@ if ( ! class_exists( 'EFP_Profile_Options' ) ) {
       $count    = 1;
       $data     = array();
       $errors   = array();
-      $noncekey = 'efp_profile_nonce'. $this->unique;
+      $noncekey = 'eventful_profile_nonce'. $this->unique;
       $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
 
-      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'efp_profile_nonce' ) ) {
+      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'eventful_profile_nonce' ) ) {
         return $user_id;
       }
 
@@ -208,9 +208,9 @@ if ( ! class_exists( 'EFP_Profile_Options' ) ) {
 
       }
 
-      $data = apply_filters( "efp_{$this->unique}_save", $data, $user_id, $this );
+      $data = apply_filters( "eventful_{$this->unique}_save", $data, $user_id, $this );
 
-      do_action( "efp_{$this->unique}_save_before", $data, $user_id, $this );
+      do_action( "eventful_{$this->unique}_save_before", $data, $user_id, $this );
 
       if ( empty( $data ) ) {
 
@@ -240,9 +240,9 @@ if ( ! class_exists( 'EFP_Profile_Options' ) ) {
 
       }
 
-      do_action( "efp_{$this->unique}_saved", $data, $user_id, $this );
+      do_action( "eventful_{$this->unique}_saved", $data, $user_id, $this );
 
-      do_action( "efp_{$this->unique}_save_after", $data, $user_id, $this );
+      do_action( "eventful_{$this->unique}_save_after", $data, $user_id, $this );
 
     }
   }

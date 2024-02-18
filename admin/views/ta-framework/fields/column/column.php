@@ -88,7 +88,7 @@ if ( ! class_exists( 'EFP_Field_column' ) ) {
 
 				echo '<div class="eventful--input">';
 				echo ( ! empty( $args['all_icon'] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post($args['all_icon']) . '</span>' : '';
-				echo '<input type="number" name="' . $this->field_name( '[all]' ) . '" value="' . esc_attr($value['all']) . '"' . wp_kses_post($placeholder . $min) . ' class="efp-number" />';
+				echo '<input type="number" name="' . $this->field_name( '[all]' ) . '" value="' . esc_attr($value['all']) . '"' . wp_kses_post($placeholder . $min) . ' class="eventful-number" />';
 				echo ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? '<span class="eventful--label eventful--unit">' . $args['units'][0] . '</span>' : '';
 				echo '</div>';
 
@@ -110,7 +110,7 @@ if ( ! class_exists( 'EFP_Field_column' ) ) {
 
 					echo '<div class="eventful--input">';
 					echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="eventful--label eventful--icon">' . $args[ $property . '_icon' ] . '</span>' : '';
-					echo '<input type="number" name="' . $this->field_name( '[' . $property . ']' ) . '" value="' . esc_attr($value[ $property ]) . '"' . wp_kses_post($placeholder . $min) . ' class="efp-number" />';
+					echo '<input type="number" name="' . $this->field_name( '[' . $property . ']' ) . '" value="' . esc_attr($value[ $property ]) . '"' . wp_kses_post($placeholder . $min) . ' class="eventful-number" />';
 					echo ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? '<span class="eventful--label eventful--unit">' . $args['units'][0] . '</span>' : '';
 					echo '</div>';
 

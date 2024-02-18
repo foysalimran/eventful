@@ -84,11 +84,11 @@ if ( ! class_exists( 'EFP_Field_map' ) ) {
 
 		public function enqueue() {
 
-			if ( ! wp_script_is( 'efp-leaflet' ) ) {
+			if ( ! wp_script_is( 'eventful-leaflet' ) ) {
 				wp_enqueue_script( 'leaflet', EFP_URL . 'admin/views/ta-framework/assets/js/leaflet.js', array( 'ta-framework' ), $this->version, true );
 			}
 
-			if ( ! wp_style_is( 'efp-leaflet' ) ) {
+			if ( ! wp_style_is( 'eventful-leaflet' ) ) {
 				wp_enqueue_style( 'leaflet', EFP_URL . 'admin/views/ta-framework/assets/css/leaflet.css', array(), $this->version );
 			}
 

@@ -53,9 +53,9 @@ if ( ! class_exists( 'EFP_Field_link_color' ) ) {
 
 					$default_attr = ( ! empty( $this->field['default'][ $color_prop_key ] ) ) ? ' data-default-color="' . esc_attr( $this->field['default'][ $color_prop_key ] ) . '"' : '';
 
-					echo '<div class="eventful--left efp-field-color">';
+					echo '<div class="eventful--left eventful-field-color">';
 					echo '<div class="eventful--title">' . esc_attr( $color_prop_value ) . '</div>';
-					echo '<input type="text" name="' . esc_attr( $this->field_name( '[' . $color_prop_key . ']' ) ) . '" value="' . esc_attr( $value[ $color_prop_key ] ) . '" class="efp-color"' . wp_kses_post($default_attr) . wp_kses_post( $this->field_attributes() ) . '/>';
+					echo '<input type="text" name="' . esc_attr( $this->field_name( '[' . $color_prop_key . ']' ) ) . '" value="' . esc_attr( $value[ $color_prop_key ] ) . '" class="eventful-color"' . wp_kses_post($default_attr) . wp_kses_post( $this->field_attributes() ) . '/>';
 					echo '</div>';
 
 				}

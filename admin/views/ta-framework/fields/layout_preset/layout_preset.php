@@ -30,7 +30,7 @@ if ( ! class_exists( 'EFP_Field_layout_preset' ) ) {
 
 			if ( ! empty( $args['options'] ) ) {
 
-				echo '<div class="efp-siblings eventful--image-group" data-multiple="' . $args['multiple'] . '">';
+				echo '<div class="eventful-siblings eventful--image-group" data-multiple="' . $args['multiple'] . '">';
 
 				$num = 1;
 
@@ -40,7 +40,7 @@ if ( ! class_exists( 'EFP_Field_layout_preset' ) ) {
 					$extra              = ( $args['multiple'] ) ? '[]' : '';
 					$active             = ( in_array( $key, $value ) ) ? ' eventful--active' : '';
 					$checked            = ( in_array( $key, $value ) ) ? ' checked' : '';
-					$eventful_pro_only_class = isset( $option['pro_only'] ) ? ' efp-pro-only' : '';
+					$eventful_pro_only_class = isset( $option['pro_only'] ) ? ' eventful-pro-only' : '';
 
 					echo '<div class="eventful--sibling eventful--image' . esc_attr($active . $eventful_pro_only_class) . '">';
 					echo '<img src="' . esc_url( $option['image'] ) . '" alt="' . esc_attr( $option['text'] ) . '" />';

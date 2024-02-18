@@ -89,7 +89,7 @@ if ( ! class_exists( 'EFP_Field_image_sizes' ) ) {
 				$multiple_name    = ( $args['multiple'] ) ? '[]' : '';
 				$multiple_attr    = ( $args['multiple'] ) ? ' multiple="multiple"' : '';
 				$chosen_rtl       = ( is_rtl() ) ? ' chosen-rtl' : '';
-				$chosen_attr      = ( $args['chosen'] ) ? ' class="efp-chosen' . $chosen_rtl . '"' : '';
+				$chosen_attr      = ( $args['chosen'] ) ? ' class="eventful-chosen' . $chosen_rtl . '"' : '';
 				$placeholder_attr = ( $args['chosen'] && $args['placeholder'] ) ? ' data-placeholder="' . $args['placeholder'] . '"' : '';
 
 				if ( ! empty( $sizes ) ) {

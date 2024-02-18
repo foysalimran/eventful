@@ -99,7 +99,7 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
 		 * @return mixed
 		 */
     public function field_before() {
-      return ( ! empty( $this->field['before'] ) ) ? '<div class="efp-before-text">'. $this->field['before'] .'</div>' : '';
+      return ( ! empty( $this->field['before'] ) ) ? '<div class="eventful-before-text">'. $this->field['before'] .'</div>' : '';
     }
 
     /**
@@ -109,10 +109,10 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
 		 */
     public function field_after() {
 
-      $output  = ( ! empty( $this->field['after'] ) ) ? '<div class="efp-after-text">'. $this->field['after'] .'</div>' : '';
-      $output .= ( ! empty( $this->field['desc'] ) ) ? '<div class="clear"></div><div class="efp-desc-text">'. $this->field['desc'] .'</div>' : '';
-      $output .= ( ! empty( $this->field['help'] ) ) ? '<div class="efp-help"><span class="efp-help-text">'. $this->field['help'] .'</span><i class="fas fa-question-circle"></i></div>' : '';
-      $output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="efp-error-text">'. $this->field['_error'] .'</div>' : '';
+      $output  = ( ! empty( $this->field['after'] ) ) ? '<div class="eventful-after-text">'. $this->field['after'] .'</div>' : '';
+      $output .= ( ! empty( $this->field['desc'] ) ) ? '<div class="clear"></div><div class="eventful-desc-text">'. $this->field['desc'] .'</div>' : '';
+      $output .= ( ! empty( $this->field['help'] ) ) ? '<div class="eventful-help"><span class="eventful-help-text">'. $this->field['help'] .'</span><i class="fas fa-question-circle"></i></div>' : '';
+      $output .= ( ! empty( $this->field['_error'] ) ) ? '<div class="eventful-error-text">'. $this->field['_error'] .'</div>' : '';
 
       return $output;
 
@@ -312,7 +312,7 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
             $eventful_post_types = 'tribe_events';
   
             $field_index = preg_replace( '/[^0-9]/', '', $field_unique );
-            $eventful_taxonomy = isset( $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'][ $field_index ]['efp_select_taxonomy'] ) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'][ $field_index ]['efp_select_taxonomy'] : get_object_taxonomies( $eventful_post_types, 'names' );
+            $eventful_taxonomy = isset( $view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms'][ $field_index ]['eventful_select_taxonomy'] ) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms'][ $field_index ]['eventful_select_taxonomy'] : get_object_taxonomies( $eventful_post_types, 'names' );
             if ( version_compare( get_bloginfo( 'version' ), '4.5', '>=' ) ) {
               $terms = get_terms( array( 'taxonomy' => $eventful_taxonomy ) );
             } else {

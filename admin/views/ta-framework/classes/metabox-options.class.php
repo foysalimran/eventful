@@ -40,8 +40,8 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
     public function __construct( $key, $params = array() ) {
 
       $this->unique         = $key;
-      $this->args           = apply_filters( "efp_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections       = apply_filters( "efp_{$this->unique}_sections", $params['sections'], $this );
+      $this->args           = apply_filters( "eventful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections       = apply_filters( "eventful_{$this->unique}_sections", $params['sections'], $this );
       $this->post_type      = ( is_array( $this->args['post_type'] ) ) ? $this->args['post_type'] : array_filter( (array) $this->args['post_type'] );
       $this->post_formats   = ( is_array( $this->args['post_formats'] ) ) ? $this->args['post_formats'] : array_filter( (array) $this->args['post_formats'] );
       $this->page_templates = ( is_array( $this->args['page_templates'] ) ) ? $this->args['page_templates'] : array_filter( (array) $this->args['page_templates'] );
@@ -76,7 +76,7 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
         $saved_post_format = ( is_object( $post ) ) ? get_post_format( $post ) : false;
         $saved_post_format = ( ! empty( $saved_post_format ) ) ? $saved_post_format : 'default';
 
-        $classes[] = 'efp-post-formats';
+        $classes[] = 'eventful-post-formats';
 
         // Sanitize post format for standard to default
         if ( ( $key = array_search( 'standard', $this->post_formats ) ) !== false ) {
@@ -84,13 +84,13 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
         }
 
         foreach ( $this->post_formats as $format ) {
-          $classes[] = 'efp-post-format-'. $format;
+          $classes[] = 'eventful-post-format-'. $format;
         }
 
         if ( ! in_array( $saved_post_format, $this->post_formats ) ) {
-          $classes[] = 'efp-metabox-hide';
+          $classes[] = 'eventful-metabox-hide';
         } else {
-          $classes[] = 'efp-metabox-show';
+          $classes[] = 'eventful-metabox-show';
         }
 
       }
@@ -99,16 +99,16 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
 
         $saved_template = ( is_object( $post ) && ! empty( $post->page_template ) ) ? $post->page_template : 'default';
 
-        $classes[] = 'efp-page-templates';
+        $classes[] = 'eventful-page-templates';
 
         foreach ( $this->page_templates as $template ) {
-          $classes[] = 'efp-page-'. preg_replace( '/[^a-zA-Z0-9]+/', '-', strtolower( $template ) );
+          $classes[] = 'eventful-page-'. preg_replace( '/[^a-zA-Z0-9]+/', '-', strtolower( $template ) );
         }
 
         if ( ! in_array( $saved_template, $this->page_templates ) ) {
-          $classes[] = 'efp-metabox-hide';
+          $classes[] = 'eventful-metabox-hide';
         } else {
-          $classes[] = 'efp-metabox-show';
+          $classes[] = 'eventful-metabox-show';
         }
 
       }
@@ -172,26 +172,26 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
       global $post;
 
       $has_nav   = ( count( $this->sections ) > 1 && $this->args['context'] !== 'side' ) ? true : false;
-      $show_all  = ( ! $has_nav ) ? ' efp-show-all' : '';
+      $show_all  = ( ! $has_nav ) ? ' eventful-show-all' : '';
       $post_type = ( is_object ( $post ) ) ? $post->post_type : '';
       $errors    = ( is_object ( $post ) ) ? get_post_meta( $post->ID, '_eventful_errors_'. $this->unique, true ) : array();
       $errors    = ( ! empty( $errors ) ) ? $errors : array();
-      $theme     = ( $this->args['theme'] ) ? ' efp-theme-'. $this->args['theme'] : '';
+      $theme     = ( $this->args['theme'] ) ? ' eventful-theme-'. $this->args['theme'] : '';
       $nav_type  = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 
       if ( is_object ( $post ) && ! empty( $errors ) ) {
         delete_post_meta( $post->ID, '_eventful_errors_'. $this->unique );
       }
 
-      wp_nonce_field( 'efp_metabox_nonce', 'efp_metabox_nonce'. $this->unique );
+      wp_nonce_field( 'eventful_metabox_nonce', 'eventful_metabox_nonce'. $this->unique );
 
-      echo '<div class="efp efp-metabox'. esc_attr( $theme ) .'">';
+      echo '<div class="eventful eventful-metabox'. esc_attr( $theme ) .'">';
 
-        echo '<div class="efp-wrapper'. esc_attr( $show_all ) .'">';
+        echo '<div class="eventful-wrapper'. esc_attr( $show_all ) .'">';
 
           if ( $has_nav ) {
 
-            echo '<div class="efp-nav efp-nav-'. esc_attr( $nav_type ) .' efp-nav-metabox">';
+            echo '<div class="eventful-nav eventful-nav-'. esc_attr( $nav_type ) .' eventful-nav-metabox">';
 
               echo '<ul>';
 
@@ -203,8 +203,8 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
                   continue;
                 }
 
-                $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="efp-label-error efp-error">!</i>' : '';
-                $tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="efp-tab-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
+                $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="eventful-label-error eventful-error">!</i>' : '';
+                $tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="eventful-tab-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
 
                 echo '<li class="menu-item_' . $this->unique . '_' . $tab_key . '"><a href="#" data-section="' . $this->unique . '_' . $tab_key . '">' . $tab_icon . $section['title'] . $tab_error . '</a></li>';
 
@@ -218,9 +218,9 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
 
           }
 
-          echo '<div class="efp-content">';
+          echo '<div class="eventful-content">';
 
-            echo '<div class="efp-sections">';
+            echo '<div class="eventful-sections">';
 
             $section_key = 1;
 
@@ -230,15 +230,15 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
                 continue;
               }
 
-              $section_onload = ( ! $has_nav ) ? ' efp-onload' : '';
+              $section_onload = ( ! $has_nav ) ? ' eventful-onload' : '';
               $section_class  = ( ! empty( $section['class'] ) ) ? ' '. $section['class'] : '';
               $section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
-              $section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="efp-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
+              $section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="eventful-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
 
-              echo '<div id="efp-section-' . $this->unique . '_' . $section_key . '" class="efp-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
+              echo '<div id="eventful-section-' . $this->unique . '_' . $section_key . '" class="eventful-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
 
-              echo ( $section_title || $section_icon ) ? '<div class="efp-section-title"><h3>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h3></div>' : '';
-              echo ( ! empty( $section['description'] ) ) ? '<div class="efp-field efp-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
+              echo ( $section_title || $section_icon ) ? '<div class="eventful-section-title"><h3>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h3></div>' : '';
+              echo ( ! empty( $section['description'] ) ) ? '<div class="eventful-field eventful-section-description">'. wp_kses_post($section['description']) .'</div>' : '';
 
               if ( ! empty( $section['fields'] ) ) {
 
@@ -258,7 +258,7 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
 
               } else {
 
-                echo '<div class="efp-no-option">'. esc_html__( 'No data available.', 'ta-framework' ) .'</div>';
+                echo '<div class="eventful-no-option">'. esc_html__( 'No data available.', 'ta-framework' ) .'</div>';
 
               }
 
@@ -272,11 +272,11 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
 
             if ( ! empty( $this->args['show_restore'] ) || ! empty( $this->args['show_reset'] ) ) {
 
-              echo '<div class="efp-sections-reset">';
+              echo '<div class="eventful-sections-reset">';
               echo '<label>';
               echo '<input type="checkbox" name="'. esc_attr( $this->unique ) .'[_reset]" />';
-              echo '<span class="button efp-button-reset">'. esc_html__( 'Reset', 'ta-framework' ) .'</span>';
-              echo '<span class="button efp-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'ta-framework' ), esc_html__( 'Cancel', 'ta-framework' ) ) .'</span>';
+              echo '<span class="button eventful-button-reset">'. esc_html__( 'Reset', 'ta-framework' ) .'</span>';
+              echo '<span class="button eventful-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'ta-framework' ), esc_html__( 'Cancel', 'ta-framework' ) ) .'</span>';
               echo '</label>';
               echo '</div>';
 
@@ -284,7 +284,7 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
 
           echo '</div>';
 
-          echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="efp-nav-background"></div>' : '';
+          echo ( $has_nav && $nav_type === 'normal' ) ? '<div class="eventful-nav-background"></div>' : '';
 
           echo '<div class="clear"></div>';
 
@@ -300,10 +300,10 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
       $count    = 1;
       $data     = array();
       $errors   = array();
-      $noncekey = 'efp_metabox_nonce'. $this->unique;
+      $noncekey = 'eventful_metabox_nonce'. $this->unique;
       $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
 
-      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'efp_metabox_nonce' ) ) {
+      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'eventful_metabox_nonce' ) ) {
         return $post_id;
       }
 
@@ -370,9 +370,9 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
 
       }
 
-      $data = apply_filters( "efp_{$this->unique}_save", $data, $post_id, $this );
+      $data = apply_filters( "eventful_{$this->unique}_save", $data, $post_id, $this );
 
-      do_action( "efp_{$this->unique}_save_before", $data, $post_id, $this );
+      do_action( "eventful_{$this->unique}_save_before", $data, $post_id, $this );
 
       if ( empty( $data ) || ! empty( $request['_reset'] ) ) {
 
@@ -402,9 +402,9 @@ if ( ! class_exists( 'EFP_Metabox' ) ) {
 
       }
 
-      do_action( "efp_{$this->unique}_saved", $data, $post_id, $this );
+      do_action( "eventful_{$this->unique}_saved", $data, $post_id, $this );
 
-      do_action( "efp_{$this->unique}_save_after", $data, $post_id, $this );
+      do_action( "eventful_{$this->unique}_save_after", $data, $post_id, $this );
 
     }
   }
