@@ -211,19 +211,19 @@ class EFP_CustomFieldProcess {
  */
 function efp_custom_field_html(  $object, $post_content_sorter, $is_post = true, $is_table = false ) {
 
-	$efp_custom_fields = $post_content_sorter['efp_custom_fields'];
+	$eventful_custom_fields = $post_content_sorter['efp_custom_fields'];
 
-	$plugin_used = EFP_Functions::efp_metabox_value( 'which_plugin_used', $efp_custom_fields );
+	$plugin_used = EFP_Functions::efp_metabox_value( 'which_plugin_used', $eventful_custom_fields );
 
-	$set_oembed = EFP_Functions::efp_metabox_value( 'efp_embed_cf_content', $efp_custom_fields );
+	$set_oembed = EFP_Functions::efp_metabox_value( 'efp_embed_cf_content', $eventful_custom_fields );
 
 	$cf_by_plugin        = ta_efp_cf_multiple_plugins() && 'auto' !== $plugin_used ? $plugin_used : 'auto';
-	$custom_field_groups = EFP_Functions::efp_metabox_value( 'efp_custom_fields_group', $efp_custom_fields );
+	$custom_field_groups = EFP_Functions::efp_metabox_value( 'efp_custom_fields_group', $eventful_custom_fields );
 	
 	// Get all meta data of this post.
 	$metadata = $is_post ? get_metadata( 'post', $object->ID ) : array();
 
-	$efp_cf_html = '';
+	$eventful_cf_html = '';
 	if ( ! empty( $custom_field_groups ) ) {
 		$the_cfields_html = array();
 		foreach ( $custom_field_groups as $cf_group ) {
@@ -263,15 +263,15 @@ function efp_custom_field_html(  $object, $post_content_sorter, $is_post = true,
 			}
 		} // End of foreach.
 		if ( ! empty( $the_cfields_html ) ) {
-			$efp_cf_html = sprintf( '<div class="%s">%s</div>', 'ta_efp_cf_list', implode( '', $the_cfields_html ) );
+			$eventful_cf_html = sprintf( '<div class="%s">%s</div>', 'ta_efp_cf_list', implode( '', $the_cfields_html ) );
 		}
 	}
 	$td_before = $is_table ? '<td>' : '';
 	$td_after  = $is_table ? '</td>' : '';
 
-	if ( $efp_cf_html ) {
+	if ( $eventful_cf_html ) {
 		echo $td_before;
-		echo $efp_cf_html;
+		echo $eventful_cf_html;
 		echo $td_after;
 	}
 

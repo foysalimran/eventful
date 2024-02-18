@@ -295,8 +295,8 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
           case 'taxonomy':
             global $post;
             $view_options       = get_post_meta( $post->ID, 'ta_eventful_view_options', true );
-            $efp_post_types     = 'tribe_events';
-              $taxonomy_names = get_object_taxonomies( $efp_post_types, 'names' );
+            $eventful_post_types     = 'tribe_events';
+              $taxonomy_names = get_object_taxonomies( $eventful_post_types, 'names' );
             if ( ! is_wp_error( $taxonomy_names ) && ! empty( $taxonomy_names ) ) {
               $options[''] =esc_html__( 'Select Taxonomy', 'eventful-pro' );
               foreach ( $taxonomy_names as $taxonomy => $label ) {
@@ -309,14 +309,14 @@ if ( ! class_exists( 'EFP_Fields' ) ) {
           case 'term':
             global $post;
             $view_options   = get_post_meta( $post->ID, 'ta_eventful_view_options', true );
-            $efp_post_types = 'tribe_events';
+            $eventful_post_types = 'tribe_events';
   
             $field_index = preg_replace( '/[^0-9]/', '', $field_unique );
-            $efp_taxonomy = isset( $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'][ $field_index ]['efp_select_taxonomy'] ) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'][ $field_index ]['efp_select_taxonomy'] : get_object_taxonomies( $efp_post_types, 'names' );
+            $eventful_taxonomy = isset( $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'][ $field_index ]['efp_select_taxonomy'] ) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'][ $field_index ]['efp_select_taxonomy'] : get_object_taxonomies( $eventful_post_types, 'names' );
             if ( version_compare( get_bloginfo( 'version' ), '4.5', '>=' ) ) {
-              $terms = get_terms( array( 'taxonomy' => $efp_taxonomy ) );
+              $terms = get_terms( array( 'taxonomy' => $eventful_taxonomy ) );
             } else {
-              $terms = get_terms( array( $efp_taxonomy ) );
+              $terms = get_terms( array( $eventful_taxonomy ) );
             }
   
             if ( ! is_wp_error( $terms ) && ! empty( $terms ) && ! isset( $terms['errors'] ) ) {

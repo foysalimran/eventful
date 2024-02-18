@@ -67,11 +67,11 @@ class Eventful_Shuffle_Filter
 	 *
 	 * @param array  $view_options Shortcode options.
 	 * @param array  $layout_preset layout preset.
-	 * @param object $efp_query wp query object.
+	 * @param object $eventful_query wp query object.
 	 * @param string $filter_type Filter type.
 	 * @return void
 	 */
-	public static function efp_shuffle_filter($view_options, $layout_preset, $efp_query, $filter_type)
+	public static function efp_shuffle_filter($view_options, $layout_preset, $eventful_query, $filter_type)
 	{
 		$filter_by    = isset($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : '';
 		$filter_type  = isset($view_options['efp_filter_type']) ? $view_options['efp_filter_type'] : '';
@@ -83,7 +83,7 @@ class Eventful_Shuffle_Filter
 		$post_limit   = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
 		if ('filter_layout' === $layout_preset && in_array('taxonomy', $filter_by, true)) {
 			$taxonomy_types   = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms']) && !empty($view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomy_and_terms'] : '';
-			$total_post_count = $efp_query->post_count;
+			$total_post_count = $eventful_query->post_count;
 			if (!empty($taxonomy_types)) {
 				$output         = '';
 				$newterm_array  = array();

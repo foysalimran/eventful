@@ -77,8 +77,8 @@ class Eventful_Admin
 		$name = explode('_', $class);
 		if (isset($name[1])) {
 			$class_name       = strtolower($name[1]);
-			$efp_config_paths = array('views/', 'views/configs/settings/', 'views/configs/generator/');
-			foreach ($efp_config_paths as $ta_efp_path) {
+			$eventful_config_paths = array('views/', 'views/configs/settings/', 'views/configs/generator/');
+			foreach ($eventful_config_paths as $ta_efp_path) {
 				$filename = plugin_dir_path(__FILE__) . '/' . $ta_efp_path . 'class-efp-' . $class_name . '.php';
 				if (file_exists($filename)) {
 					require_once $filename;

@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 ?>
-<div id="efp_wrapper-<?php echo esc_attr($efp_gl_id); ?>" class="<?php self::efp_wrapper_classes($layout_preset, $efp_gl_id, $pagination_type); ?>" <?php self::wrapper_data($pagination_type, $pagination_type_mobile, $efp_gl_id); ?> data-sid="<?php echo esc_attr($efp_gl_id); ?>" data-lang="<?php echo esc_attr($spsp_lang); ?>">
+<div id="efp_wrapper-<?php echo esc_attr($eventful_gl_id); ?>" class="<?php self::efp_wrapper_classes($layout_preset, $eventful_gl_id, $pagination_type); ?>" <?php self::wrapper_data($pagination_type, $pagination_type_mobile, $eventful_gl_id); ?> data-sid="<?php echo esc_attr($eventful_gl_id); ?>" data-lang="<?php echo esc_attr($spsp_lang); ?>">
 	<?php
 	EFP_HTML::efp_section_title($section_title, $show_section_title);
 	EFP_HTML::efp_preloader($show_preloader);
@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
 	<?php require EFP_Functions::efp_locate_template('filter-bar.php'); ?>
 	<div class="eventful">
 		<div class="ta-row">
-			<?php self::efp_get_posts($options, $layout_preset, $post_content_sorter, $efp_query, $efp_gl_id); ?>
+			<?php self::efp_get_posts($options, $layout_preset, $post_content_sorter, $eventful_query, $eventful_gl_id); ?>
 		</div>
 	</div>
 	<?php require EFP_Functions::efp_locate_template('pagination.php'); ?>

@@ -37,14 +37,14 @@ class EFP_Functions
 	/**
 	 * Post title character limit.
 	 *
-	 * @param string  $efp_title The post title.
+	 * @param string  $eventful_title The post title.
 	 * @param integer $limit_length The length for the title.
-	 * @param string  $efp_after_string The string after title.
+	 * @param string  $eventful_after_string The string after title.
 	 * @return statement
 	 */
-	public static function limit_post_title($efp_title, $limit_length, $efp_after_string = '...')
+	public static function limit_post_title($eventful_title, $limit_length, $eventful_after_string = '...')
 	{
-		return mb_strimwidth($efp_title, 0, $limit_length, apply_filters('efp_post_title_ellipsis', $efp_after_string));
+		return mb_strimwidth($eventful_title, 0, $limit_length, apply_filters('efp_post_title_ellipsis', $eventful_after_string));
 	}
 
 	/**
@@ -134,19 +134,19 @@ class EFP_Functions
 	public static function efp_content($view_options, $type, $post)
 	{
 
-		$efp_content_length_type      = isset($view_options['efp_content_length_type']) ? $view_options['efp_content_length_type'] : 'words';
+		$eventful_content_length_type      = isset($view_options['efp_content_length_type']) ? $view_options['efp_content_length_type'] : 'words';
 		$post_content_length          = isset($view_options['efp_content_limit']) ? $view_options['efp_content_limit'] : '';
-		$efp_content_characters_limit = isset($view_options['efp_content_characters_limit']) ? $view_options['efp_content_characters_limit'] : '';
+		$eventful_content_characters_limit = isset($view_options['efp_content_characters_limit']) ? $view_options['efp_content_characters_limit'] : '';
 		$post_content_ellipsis        = isset($view_options['post_content_ellipsis']) ? $view_options['post_content_ellipsis'] : '';
-		$efp_strip_tags               = isset($view_options['efp_strip_tags']) ? $view_options['efp_strip_tags'] : '';
-		$efp_allow_tag_name           = isset($view_options['efp_allow_tag_name']) ? $view_options['efp_allow_tag_name'] : '';
-		$allowed_tags                 = explode(',', $efp_allow_tag_name);
+		$eventful_strip_tags               = isset($view_options['efp_strip_tags']) ? $view_options['efp_strip_tags'] : '';
+		$eventful_allow_tag_name           = isset($view_options['efp_allow_tag_name']) ? $view_options['efp_allow_tag_name'] : '';
+		$allowed_tags                 = explode(',', $eventful_allow_tag_name);
 
 		$is_page_content = false;
 		$is_page_content = apply_filters('efp_strip_shortcode_in_page_content', $is_page_content);
 		global $wp_embed;
 		if ('excerpt' === $type) {
-			$efp_post_content = get_the_excerpt($post);
+			$eventful_post_content = get_the_excerpt($post);
 		} elseif ('full_content' === $type) {
 
 
@@ -155,12 +155,12 @@ class EFP_Functions
 			} else {
 				$post_content = apply_filters('ta_efp_the_content', $post->post_content);
 			}
-			if ('allow_some' === $efp_strip_tags) {
-				$efp_post_content = strip_tags($post_content, self::short_tag_to_html($allowed_tags));
-			} elseif ('strip_all' === $efp_strip_tags) {
-				$efp_post_content = wp_strip_all_tags($post_content);
+			if ('allow_some' === $eventful_strip_tags) {
+				$eventful_post_content = strip_tags($post_content, self::short_tag_to_html($allowed_tags));
+			} elseif ('strip_all' === $eventful_strip_tags) {
+				$eventful_post_content = wp_strip_all_tags($post_content);
 			} else {
-				$efp_post_content = $post_content;
+				$eventful_post_content = $post_content;
 			}
 		} else {
 			if ($is_page_content) {
@@ -168,22 +168,22 @@ class EFP_Functions
 			} else {
 				$post_content = apply_filters('ta_efp_the_content', $post->post_content);
 			}
-			if ('characters' === $efp_content_length_type) {
-				$_trimmed_content = ('strip_all' === $efp_strip_tags) ? wp_html_excerpt($post_content, $efp_content_characters_limit, $post_content_ellipsis) : self::limit_content_chr($post_content, $efp_content_characters_limit, $post_content_ellipsis);
+			if ('characters' === $eventful_content_length_type) {
+				$_trimmed_content = ('strip_all' === $eventful_strip_tags) ? wp_html_excerpt($post_content, $eventful_content_characters_limit, $post_content_ellipsis) : self::limit_content_chr($post_content, $eventful_content_characters_limit, $post_content_ellipsis);
 			} else {
 				$_trimmed_content = self::efp_limit_text($post_content, $post_content_length, $post_content_ellipsis);
 			}
-			if ('allow_some' === $efp_strip_tags) {
-				$efp_post_content = strip_tags($_trimmed_content, self::short_tag_to_html($allowed_tags));
-			} elseif ('strip_all' === $efp_strip_tags) {
-				$efp_post_content = wp_strip_all_tags($_trimmed_content);
+			if ('allow_some' === $eventful_strip_tags) {
+				$eventful_post_content = strip_tags($_trimmed_content, self::short_tag_to_html($allowed_tags));
+			} elseif ('strip_all' === $eventful_strip_tags) {
+				$eventful_post_content = wp_strip_all_tags($_trimmed_content);
 			} else {
-				$efp_post_content = $_trimmed_content;
+				$eventful_post_content = $_trimmed_content;
 			}
-			$efp_post_content = force_balance_tags($efp_post_content);
+			$eventful_post_content = force_balance_tags($eventful_post_content);
 		}
-		$efp_post_content = do_shortcode($wp_embed->autoembed($efp_post_content));
-		return $efp_post_content;
+		$eventful_post_content = do_shortcode($wp_embed->autoembed($eventful_post_content));
+		return $eventful_post_content;
 	}
 
 	/**
@@ -255,13 +255,13 @@ class EFP_Functions
 		}
 		$query_args['post__in'] = $post_in;
 		if (!empty($custom_fields_array)) {
-			$efp_meta_query = array();
+			$eventful_meta_query = array();
 			foreach ($custom_fields_array as $_custom_field) {
 				$c_field_key   = $_custom_field['custom_field_key'];
 				$c_field_value = $_custom_field['custom_field_value'];
 				if (strpos($c_field_value, ' ') !== false) {
 					$c_field_value    = explode(' ', $c_field_value);
-					$efp_meta_query[] = array(
+					$eventful_meta_query[] = array(
 						'key'     => $c_field_key,
 						'value'   => $c_field_value,
 						'compare' => 'BETWEEN',
@@ -271,17 +271,17 @@ class EFP_Functions
 					if (strpos($c_field_value, ',') !== false) {
 						$c_field_value = explode(',', $c_field_value);
 					}
-					$efp_meta_query[] = array(
+					$eventful_meta_query[] = array(
 						'key'     => $c_field_key,
 						'compare' => 'IN',
 						'value'   => $c_field_value,
 					);
 				}
 			}
-			if (count($efp_meta_query) > 1) {
-				$efp_meta_query['relation'] = 'AND';
+			if (count($eventful_meta_query) > 1) {
+				$eventful_meta_query['relation'] = 'AND';
 			}
-			$query_args['meta_query'] = $efp_meta_query;
+			$query_args['meta_query'] = $eventful_meta_query;
 		}
 
 		if (!empty($orderby)) {
@@ -332,11 +332,11 @@ class EFP_Functions
 	{
 		$thumb_id                  = '';
 		$image                     = '';
-		$efp_thumb_src_replace     = isset($post_thumb_setting['efp_thumb_src_replace']) ? $post_thumb_setting['efp_thumb_src_replace'] : '';
+		$eventful_thumb_src_replace     = isset($post_thumb_setting['efp_thumb_src_replace']) ? $post_thumb_setting['efp_thumb_src_replace'] : '';
 		$post_featured_thumb_found = isset($post_thumb_setting['post_featured_thumb_found']) ? $post_thumb_setting['post_featured_thumb_found'] : 'no_featured_img_found';
 		$show_2x_image             = isset($post_thumb_setting['load_2x_image']) ? $post_thumb_setting['load_2x_image'] : false;
 		$image_resize_2x_url       = '';
-		if ('even_featured_img_found' === $post_featured_thumb_found && is_array($efp_thumb_src_replace)) {
+		if ('even_featured_img_found' === $post_featured_thumb_found && is_array($eventful_thumb_src_replace)) {
 			$replace_thumb = self::efp_thumb_replace($post_thumb_setting, $slide_id);
 			$thumb_id      = $replace_thumb['id'];
 		} elseif (!has_post_thumbnail($slide_id) && 'no_featured_img_found' === $post_featured_thumb_found) {
@@ -388,7 +388,7 @@ class EFP_Functions
 			$image_width  = 600;
 			$image_height = 450;
 		}
-		$efp_image_attr = array(
+		$eventful_image_attr = array(
 			'src'        => $image,
 			'2x_src'     => $image_resize_2x_url,
 			'width'      => $image_width,
@@ -398,7 +398,7 @@ class EFP_Functions
 			'aria_label' => !empty($replace_thumb['aria_label']) ? $replace_thumb['aria_label'] : 'feature_image',
 		);
 
-		return $efp_image_attr;
+		return $eventful_image_attr;
 	}
 
 
@@ -459,12 +459,12 @@ class EFP_Functions
 	 */
 	public static function efp_thumb_replace($post_thumb_setting, $slide_id)
 	{
-		$efp_thumb_src_replace = isset($post_thumb_setting['efp_thumb_src_replace']) ? $post_thumb_setting['efp_thumb_src_replace'] : '';
+		$eventful_thumb_src_replace = isset($post_thumb_setting['efp_thumb_src_replace']) ? $post_thumb_setting['efp_thumb_src_replace'] : '';
 
-		if (is_array($efp_thumb_src_replace)) {
-			$image_src    = in_array('image', $efp_thumb_src_replace, true) ? true : false;
-			$video_src    = in_array('video', $efp_thumb_src_replace, true) ? true : false;
-			$audio_src    = in_array('audio', $efp_thumb_src_replace, true) ? true : false;
+		if (is_array($eventful_thumb_src_replace)) {
+			$image_src    = in_array('image', $eventful_thumb_src_replace, true) ? true : false;
+			$video_src    = in_array('video', $eventful_thumb_src_replace, true) ? true : false;
+			$audio_src    = in_array('audio', $eventful_thumb_src_replace, true) ? true : false;
 			$content_post = get_post($slide_id);
 			$content      = $content_post->post_content;
 
@@ -519,13 +519,13 @@ class EFP_Functions
 				$audio_thumb = self::efp_get_audios_from_post($slide_id);
 			}
 		}
-		$efp_thumbs_replace_src = array(
+		$eventful_thumbs_replace_src = array(
 			'id'         => !empty($thumb_id) ? $thumb_id : '',
 			'video'      => !empty($video_thumb) ? $video_thumb : '',
 			'audio'      => !empty($audio_thumb) ? $audio_thumb : '',
 			'aria_label' => !empty($first_content) ? $first_content : '',
 		);
-		return $efp_thumbs_replace_src;
+		return $eventful_thumbs_replace_src;
 	}
 
 	/**
@@ -538,12 +538,12 @@ class EFP_Functions
 	 */
 	public static function efp_get_img_from_post($post_thumb_setting, $slide_id)
 	{
-		$efp_thumb_src = isset($post_thumb_setting['efp_thumb_src']) ? $post_thumb_setting['efp_thumb_src'] : 'featured_image';
+		$eventful_thumb_src = isset($post_thumb_setting['efp_thumb_src']) ? $post_thumb_setting['efp_thumb_src'] : 'featured_image';
 		$content_post  = get_post($slide_id);
 		$content       = $content_post->post_content;
 		$images        = preg_match_all('/<img[^>]* src=\"([^\"]*)\"[^>]*>/i', $content, $matches);
 		if ($images) {
-			$img_url  = 'last_img_content' === $efp_thumb_src ? array_values(array_slice($matches[1], -1)) : $matches[1][0];
+			$img_url  = 'last_img_content' === $eventful_thumb_src ? array_values(array_slice($matches[1], -1)) : $matches[1][0];
 			$thumb_id = self::efp_image_id_by_url($img_url, $slide_id);
 		}
 		if (!empty($thumb_id)) {
@@ -1148,23 +1148,23 @@ class EFP_Functions
 	{
 		$limit              = (empty($limit) || '-1' === $limit) ? 10000000 : $limit;
 		$offset             = $post_per_page * ($total_page - 1);
-		$efp_last_page_post = $limit - $offset;
-		return $efp_last_page_post;
+		$eventful_last_page_post = $limit - $offset;
+		return $eventful_last_page_post;
 	}
 
 	/**
 	 * Get view option from view ID
 	 *
-	 * @param string $efp_gl_id ID of custom field.
+	 * @param string $eventful_gl_id ID of custom field.
 	 *
 	 * @return array
 	 */
-	public static function view_options($efp_gl_id)
+	public static function view_options($eventful_gl_id)
 	{
-		if (!$efp_gl_id) {
+		if (!$eventful_gl_id) {
 			return;
 		}
-		$view_options = get_post_meta($efp_gl_id, 'ta_eventful_view_options', true);
+		$view_options = get_post_meta($eventful_gl_id, 'ta_eventful_view_options', true);
 		return $view_options;
 	}
 
@@ -1177,9 +1177,9 @@ class EFP_Functions
 	 */
 	public static function efp_metabox_value($field, $array_to_get = null, $assign = null)
 	{
-		global $efp_gl_id;
+		global $eventful_gl_id;
 		if (empty($array_to_get)) {
-			$array_to_get = self::view_options($efp_gl_id);
+			$array_to_get = self::view_options($eventful_gl_id);
 		}
 		return isset($array_to_get[$field]) ? $array_to_get[$field] : $assign;
 	}

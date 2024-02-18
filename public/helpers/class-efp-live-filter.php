@@ -142,13 +142,13 @@ class EFP_Live_Filter
 	/**
 	 * Term id list after ajax filter.
 	 *
-	 * @param object $efp_query Post query array.
+	 * @param object $eventful_query Post query array.
 	 * @param object $taxonomies select Taxonomies.
 	 * @return Array
 	 */
-	public static function efp_all_other_taxonomy_term($efp_query, $taxonomies)
+	public static function efp_all_other_taxonomy_term($eventful_query, $taxonomies)
 	{
-		$post_ids         = $efp_query;
+		$post_ids         = $eventful_query;
 		$y                = 0;
 		$final_term_list  = array();
 		$taxonomies_count = count($taxonomies);
@@ -170,13 +170,13 @@ class EFP_Live_Filter
 	/**
 	 * All terms form the query
 	 *
-	 * @param  array  $efp_query query arg.
+	 * @param  array  $eventful_query query arg.
 	 * @param  string $taxonomy taxonomy.
 	 * @return array
 	 */
-	public static function efp_all_taxonomy_terms_form_the_query($efp_query, $taxonomy)
+	public static function efp_all_taxonomy_terms_form_the_query($eventful_query, $taxonomy)
 	{
-		$post_ids  = $efp_query;
+		$post_ids  = $eventful_query;
 		$term_list = array();
 		foreach ($post_ids as $key => $id) {
 			$ct_term = wp_get_post_terms($id, $taxonomy, array('fields' => 'ids'));
@@ -194,21 +194,21 @@ class EFP_Live_Filter
 		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'spefp_nonce')) {
 			return false;
 		}
-		$efp_gl_id           = isset($_POST['id']) ? absint($_POST['id']) : '';
+		$eventful_gl_id           = isset($_POST['id']) ? absint($_POST['id']) : '';
 		$keyword             = isset($_POST['keyword']) ? sanitize_text_field(wp_unslash($_POST['keyword'])) : '';
 		$orderby             = isset($_POST['orderby']) ? sanitize_text_field(wp_unslash($_POST['orderby'])) : '';
 		$order               = isset($_POST['order']) ? sanitize_text_field(wp_unslash($_POST['order'])) : '';
 		$taxonomy            = isset($_POST['taxonomy']) ? sanitize_text_field(wp_unslash($_POST['taxonomy'])) : '';
 		$term_id             = isset($_POST['term_id']) ? sanitize_text_field(wp_unslash($_POST['term_id'])) : '';
-		$efp_lang            = isset($_POST['lang']) ? sanitize_text_field(wp_unslash($_POST['lang'])) : '';
+		$eventful_lang            = isset($_POST['lang']) ? sanitize_text_field(wp_unslash($_POST['lang'])) : '';
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$last_filter         = isset($_POST['last_filter']) ? sanitize_text_field(wp_unslash($_POST['last_filter'])) : '';
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : ''; //phpcs:ignore
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : ''; //phpcs:ignore
 
-		$view_options                 = get_post_meta($efp_gl_id, 'ta_eventful_view_options', true);
-		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $efp_gl_id);
+		$view_options                 = get_post_meta($eventful_gl_id, 'ta_eventful_view_options', true);
+		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $eventful_gl_id);
 		$query_args['fields']         = 'ids';
 		$post_limit                   = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
 		$query_args['posts_per_page'] = $post_limit;
@@ -218,9 +218,9 @@ class EFP_Live_Filter
 		if ('AND' !== $relation) {
 			$is_term_intersect = false;
 		}
-		$query_args = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $efp_lang);
-		$efp_query  = array();
-		self::efp_live_filter($view_options, $query_args, $efp_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
+		$query_args = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
+		$eventful_query  = array();
+		self::efp_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
 		self::efp_author_filter($view_options, $query_args, $author_id);
 		self::efp_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
 
@@ -314,9 +314,9 @@ class EFP_Live_Filter
 						$hide_empty = isset($filter_options['ajax_hide_empty']) ? $filter_options['ajax_hide_empty'] : '';
 						$show_count = isset($filter_options['ajax_show_count']) ? $filter_options['ajax_show_count'] : '';
 
-						$efp_live_filter_align = isset($filter_options['efp_live_filter_align']) ? $filter_options['efp_live_filter_align'] : 'center';
+						$eventful_live_filter_align = isset($filter_options['efp_live_filter_align']) ? $filter_options['efp_live_filter_align'] : 'center';
 						if ($add_filter && !empty($terms) && !empty($taxonomy)) {
-							$filter_item             = self::efp_filter_style($btn_style, $taxonomy, $label, $all_text, $efp_live_filter_align);
+							$filter_item             = self::efp_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align);
 							$newterm_array[$index] = array($filter_item['first_item']);
 							foreach ($terms as $term) {
 								$selected = '';
@@ -355,10 +355,10 @@ class EFP_Live_Filter
 									}
 
 									if (!$hide_empty) {
-										$push_item = self::efp_filter_style($btn_style, $taxonomy, $label, $all_text, $efp_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
+										$push_item = self::efp_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
 										array_push($newterm_array[$index], $push_item);
 									} elseif ($hide_empty && $term_post_count > 0) {
-										$push_item = self::efp_filter_style($btn_style, $taxonomy, $label, $all_text, $efp_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
+										$push_item = self::efp_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
 										array_push($newterm_array[$index], $push_item);
 									}
 								}
@@ -385,12 +385,12 @@ class EFP_Live_Filter
 		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'spefp_nonce')) {
 			return false;
 		}
-		$efp_gl_id           = isset($_POST['id']) ? absint($_POST['id']) : '';
+		$eventful_gl_id           = isset($_POST['id']) ? absint($_POST['id']) : '';
 		$keyword             = isset($_POST['keyword']) ? sanitize_text_field(wp_unslash($_POST['keyword'])) : '';
 		$orderby             = isset($_POST['orderby']) ? sanitize_text_field(wp_unslash($_POST['orderby'])) : '';
 		$order               = isset($_POST['order']) ? sanitize_text_field(wp_unslash($_POST['order'])) : '';
 		$taxonomy            = isset($_POST['taxonomy']) ? sanitize_text_field(wp_unslash($_POST['taxonomy'])) : '';
-		$efp_lang            = isset($_POST['lang']) ? sanitize_text_field(wp_unslash($_POST['lang'])) : '';
+		$eventful_lang            = isset($_POST['lang']) ? sanitize_text_field(wp_unslash($_POST['lang'])) : '';
 		$term_id             = isset($_POST['term_id']) ? sanitize_text_field(wp_unslash($_POST['term_id'])) : '';
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$last_filter         = isset($_POST['last_filter']) ? sanitize_text_field(wp_unslash($_POST['last_filter'])) : '';
@@ -402,7 +402,7 @@ class EFP_Live_Filter
 		$layout                       = $settings['ta_eventful_layouts'];
 		$layout_preset                = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$view_options                 = $settings['ta_eventful_view_options'];
-		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $efp_gl_id);
+		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $eventful_gl_id);
 		$query_args['fields']         = 'ids';
 		$new_query_args               = $query_args;
 		$post_limit                   = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
@@ -414,8 +414,8 @@ class EFP_Live_Filter
 		if ('AND' !== $relation) {
 			$is_term_intersect = false;
 		}
-		$query_args = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $efp_lang);
-		self::efp_live_filter($view_options, $query_args, $efp_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
+		$query_args = EFP_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
+		self::efp_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
 		self::efp_author_filter($view_options, $query_args, $author_id);
 		self::efp_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
 		wp_die();
@@ -467,20 +467,20 @@ class EFP_Live_Filter
 		$post_limit           = isset($view_options['efp_post_limit']) && !empty($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
 
 		if (in_array('author', $filter_by, true)) {
-			$efp_filter_by_author  = isset($view_options['efp_filter_by_author']) ? $view_options['efp_filter_by_author'] : '';
-			$add_filter_post       = isset($efp_filter_by_author['add_author_filter_post']) ? $efp_filter_by_author['add_author_filter_post'] : '';
-			$efp_select_author_by  = isset($efp_filter_by_author['efp_select_author_by']) ? $efp_filter_by_author['efp_select_author_by'] : '';
-			$ajax_filter_options   = isset($efp_filter_by_author['ajax_filter_options']) ? $efp_filter_by_author['ajax_filter_options'] : '';
+			$eventful_filter_by_author  = isset($view_options['efp_filter_by_author']) ? $view_options['efp_filter_by_author'] : '';
+			$add_filter_post       = isset($eventful_filter_by_author['add_author_filter_post']) ? $eventful_filter_by_author['add_author_filter_post'] : '';
+			$eventful_select_author_by  = isset($eventful_filter_by_author['efp_select_author_by']) ? $eventful_filter_by_author['efp_select_author_by'] : '';
+			$ajax_filter_options   = isset($eventful_filter_by_author['ajax_filter_options']) ? $eventful_filter_by_author['ajax_filter_options'] : '';
 			$btn_type              = isset($ajax_filter_options['ajax_filter_style']) ? $ajax_filter_options['ajax_filter_style'] : '';
 			$label                 = isset($ajax_filter_options['ajax_filter_label']) && !empty($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : 'Author';
 			$all_text              = isset($ajax_filter_options['ajax_rename_all_text']) ? $ajax_filter_options['ajax_rename_all_text'] : '';
 			$hide_empty            = isset($ajax_filter_options['ajax_hide_empty']) ? $ajax_filter_options['ajax_hide_empty'] : '';
 			$show_count            = isset($ajax_filter_options['ajax_show_count']) ? $ajax_filter_options['ajax_show_count'] : '';
-			$efp_live_filter_align = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
-			if ($add_filter_post && is_array($efp_select_author_by)) {
-				$filter_item   = self::efp_author_filter_style($btn_type, $label, $all_text, $efp_live_filter_align);
+			$eventful_live_filter_align = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
+			if ($add_filter_post && is_array($eventful_select_author_by)) {
+				$filter_item   = self::efp_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
-				foreach ($efp_select_author_by as $author_id) {
+				foreach ($eventful_select_author_by as $author_id) {
 					$author_name = get_the_author_meta('nicename', $author_id);
 					// Prepare the query arguments.
 					$query_args['posts_per_page'] = (int) $post_limit;
@@ -497,10 +497,10 @@ class EFP_Live_Filter
 					$author_posts      = get_posts($query_args);
 					$author_post_count = count($author_posts);
 					if (!$hide_empty) {
-						$push_item = self::efp_author_filter_style($btn_type, $label, $all_text, $efp_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
+						$push_item = self::efp_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
 						array_push($newterm_array, $push_item);
 					} elseif ($hide_empty && $author_post_count > 0) {
-						$push_item = self::efp_author_filter_style($btn_type, $label, $all_text, $efp_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
+						$push_item = self::efp_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
 						array_push($newterm_array, $push_item);
 					}
 				}
@@ -548,7 +548,7 @@ class EFP_Live_Filter
 						$btn_style             = isset($ajax_filter_options['ajax_filter_style']) ? $ajax_filter_options['ajax_filter_style'] : 'fl_btn';
 						$ajax_filter_label     = isset($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : '';
 						$all_text              = isset($ajax_filter_options['ajax_rename_all_text']) ? $ajax_filter_options['ajax_rename_all_text'] : '';
-						$efp_live_filter_align = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : '';
+						$eventful_live_filter_align = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : '';
 						$hide_empty            = isset($ajax_filter_options['ajax_hide_empty']) ? $ajax_filter_options['ajax_hide_empty'] : '';
 						$show_count            = isset($ajax_filter_options['ajax_show_count']) ? $ajax_filter_options['ajax_show_count'] : '';
 						$meta_values           = array();
@@ -599,14 +599,14 @@ class EFP_Live_Filter
 									wp_enqueue_script('jquery-ui-slider');
 								}
 								$newcustom_array[$index] = array(
-									'<div class="efp-custom-field-filter-slider efp-bar" style="text-align:' . $efp_live_filter_align . ';"><p>
+									'<div class="efp-custom-field-filter-slider efp-bar" style="text-align:' . $eventful_live_filter_align . ';"><p>
 							<label>' . esc_html($ajax_filter_label) . '</label>
 							<input value="' . $min . '-' . $max . '" type="text" name=' . esc_attr($field_key) . ' class="efp-input" data-crmin="' . $crmin . '" data-min="' . $min . '" data-crmax="' . $crmax . '" data-max="' . $max . '" readonly>
 						 </p> <div class="efp-slider"></div></div>',
 								);
 							}
 						} else {
-							$filter_item               = self::efp_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $efp_live_filter_align, $field_key);
+							$filter_item               = self::efp_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key);
 							$newcustom_array[$index] = array($filter_item['first_item']);
 							if (!empty($meta_values)) {
 								foreach ($meta_values as $key => $value) {
@@ -630,10 +630,10 @@ class EFP_Live_Filter
 									}
 
 									if (!$hide_empty) {
-										$push_item = self::efp_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $efp_live_filter_align, $field_key, $value, $post_counts_by_value[$value], $sid, $selected, $checked, $show_count)['push_item'];
+										$push_item = self::efp_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key, $value, $post_counts_by_value[$value], $sid, $selected, $checked, $show_count)['push_item'];
 										array_push($newcustom_array[$index], $push_item);
 									} elseif ($post_counts_by_value[$value] > 0) {
-										$push_item = self::efp_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $efp_live_filter_align, $field_key, $value, $post_counts_by_value[$value], $sid, $selected, $checked, $show_count)['push_item'];
+										$push_item = self::efp_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key, $value, $post_counts_by_value[$value], $sid, $selected, $checked, $show_count)['push_item'];
 										array_push($newcustom_array[$index], $push_item);
 									}
 								}
@@ -662,19 +662,19 @@ class EFP_Live_Filter
 	{
 		$filter_by = isset($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : array();
 		if (in_array('sortby', $filter_by, true)) {
-			$efp_filter_by_order    = isset($view_options['efp_filter_by_order']) ? $view_options['efp_filter_by_order'] : '';
-			$add_filter_post        = isset($efp_filter_by_order['add_orderby_filter_post']) ? $efp_filter_by_order['add_orderby_filter_post'] : '';
-			$ajax_filter_options    = isset($efp_filter_by_order['orderby_ajax_filter_options']) ? $efp_filter_by_order['orderby_ajax_filter_options'] : '';
-			$efp_add_filter_orderby = isset($ajax_filter_options['efp_add_filter_orderby']) ? $ajax_filter_options['efp_add_filter_orderby'] : '';
+			$eventful_filter_by_order    = isset($view_options['efp_filter_by_order']) ? $view_options['efp_filter_by_order'] : '';
+			$add_filter_post        = isset($eventful_filter_by_order['add_orderby_filter_post']) ? $eventful_filter_by_order['add_orderby_filter_post'] : '';
+			$ajax_filter_options    = isset($eventful_filter_by_order['orderby_ajax_filter_options']) ? $eventful_filter_by_order['orderby_ajax_filter_options'] : '';
+			$eventful_add_filter_orderby = isset($ajax_filter_options['efp_add_filter_orderby']) ? $ajax_filter_options['efp_add_filter_orderby'] : '';
 			$btn_type               = isset($ajax_filter_options['orderby_filter_style']) ? $ajax_filter_options['orderby_filter_style'] : 'fl_dropdown';
 			$label                  = isset($ajax_filter_options['ajax_filter_label']) && !empty($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : 'Filter by';
 			$all_text               = isset($ajax_filter_options['ajax_rename_all_text']) ? $ajax_filter_options['ajax_rename_all_text'] : '';
-			$efp_live_filter_align  = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
-			if ($add_filter_post && is_array($efp_add_filter_orderby)) {
-				$filter_item   = self::efp_orderby_filter_style($btn_type, $label, $efp_live_filter_align);
+			$eventful_live_filter_align  = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
+			if ($add_filter_post && is_array($eventful_add_filter_orderby)) {
+				$filter_item   = self::efp_orderby_filter_style($btn_type, $label, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
-				foreach ($efp_add_filter_orderby as $orderby) {
-					$push_item = self::efp_orderby_filter_style($btn_type, $label, $efp_live_filter_align, $orderby, $sid)['push_item'];
+				foreach ($eventful_add_filter_orderby as $orderby) {
+					$push_item = self::efp_orderby_filter_style($btn_type, $label, $eventful_live_filter_align, $orderby, $sid)['push_item'];
 					array_push($newterm_array, $push_item);
 				}
 				$tax_html = implode('', $newterm_array);
@@ -696,19 +696,19 @@ class EFP_Live_Filter
 	{
 		$filter_by = isset($view_options['efp_advanced_filter']) ? $view_options['efp_advanced_filter'] : array();
 		if (in_array('sortby', $filter_by)) {
-			$efp_filter_by_order     = isset($view_options['efp_filter_by_order']) ? $view_options['efp_filter_by_order'] : '';
-			$add_filter_post         = isset($efp_filter_by_order['add_order_filter_post']) ? $efp_filter_by_order['add_order_filter_post'] : '';
-			$ajax_filter_options     = isset($efp_filter_by_order['order_filter_options']) ? $efp_filter_by_order['order_filter_options'] : '';
-			$efp_select_filter_order = isset($efp_filter_by_order['efp_select_filter_order']) ? $efp_filter_by_order['efp_select_filter_order'] : '';
-			$efp_add_filter_orderby  = array('DESC', 'ASC');
+			$eventful_filter_by_order     = isset($view_options['efp_filter_by_order']) ? $view_options['efp_filter_by_order'] : '';
+			$add_filter_post         = isset($eventful_filter_by_order['add_order_filter_post']) ? $eventful_filter_by_order['add_order_filter_post'] : '';
+			$ajax_filter_options     = isset($eventful_filter_by_order['order_filter_options']) ? $eventful_filter_by_order['order_filter_options'] : '';
+			$eventful_select_filter_order = isset($eventful_filter_by_order['efp_select_filter_order']) ? $eventful_filter_by_order['efp_select_filter_order'] : '';
+			$eventful_add_filter_orderby  = array('DESC', 'ASC');
 			$btn_type                = isset($ajax_filter_options['order_filter_style']) ? $ajax_filter_options['order_filter_style'] : '';
 			$label                   = isset($ajax_filter_options['order_filter_label']) ? $ajax_filter_options['order_filter_label'] : '';
-			$efp_live_filter_align   = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
+			$eventful_live_filter_align   = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
 			if ($add_filter_post) {
-				$filter_item   = self::efp_order_filter_style($btn_type, $label, $efp_live_filter_align);
+				$filter_item   = self::efp_order_filter_style($btn_type, $label, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
-				foreach ($efp_add_filter_orderby as $order) {
-					$push_item = self::efp_order_filter_style($btn_type, $label, $efp_live_filter_align, $order, $efp_select_filter_order, $sid)['push_item'];
+				foreach ($eventful_add_filter_orderby as $order) {
+					$push_item = self::efp_order_filter_style($btn_type, $label, $eventful_live_filter_align, $order, $eventful_select_filter_order, $sid)['push_item'];
 					array_push($newterm_array, $push_item);
 				}
 				$tax_html = implode('', $newterm_array);
@@ -958,13 +958,13 @@ class EFP_Live_Filter
 			}
 		}
 		if (in_array('keyword', $filter_by, true)) {
-			$efp_filter_by_keyword = isset($view_options['efp_filter_by_keyword']) ? $view_options['efp_filter_by_keyword'] : '';
-			$add_filter_post       = isset($efp_filter_by_keyword['add_search_filter_post']) ? $efp_filter_by_keyword['add_search_filter_post'] : '';
+			$eventful_filter_by_keyword = isset($view_options['efp_filter_by_keyword']) ? $view_options['efp_filter_by_keyword'] : '';
+			$add_filter_post       = isset($eventful_filter_by_keyword['add_search_filter_post']) ? $eventful_filter_by_keyword['add_search_filter_post'] : '';
 			if ($add_filter_post) {
-				$ajax_filter_options   = isset($efp_filter_by_keyword['ajax_filter_options']) ? $efp_filter_by_keyword['ajax_filter_options'] : '';
+				$ajax_filter_options   = isset($eventful_filter_by_keyword['ajax_filter_options']) ? $eventful_filter_by_keyword['ajax_filter_options'] : '';
 				$label                 = isset($ajax_filter_options['ajax_filter_label']) && !empty($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : '';
-				$efp_live_filter_align = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
-				echo '<div class="efp-ajax-search efp-bar" style="text-align:' . esc_attr($efp_live_filter_align) . ';"><label class="efp-label">' . wp_kses_post($label) . ' <input type="text" value="' . esc_attr($final_keyword) . '" class="efp-search-field" placeholder="Search..."></label></div>';
+				$eventful_live_filter_align = isset($ajax_filter_options['efp_live_filter_align']) ? $ajax_filter_options['efp_live_filter_align'] : 'center';
+				echo '<div class="efp-ajax-search efp-bar" style="text-align:' . esc_attr($eventful_live_filter_align) . ';"><label class="efp-label">' . wp_kses_post($label) . ' <input type="text" value="' . esc_attr($final_keyword) . '" class="efp-search-field" placeholder="Search..."></label></div>';
 			}
 		}
 	}

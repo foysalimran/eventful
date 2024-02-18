@@ -26,17 +26,17 @@ class EFP_QueryInside
 	/**
 	 * Filtered content.
 	 *
-	 * @param integer $efp_gl_id Shortcode ID.
+	 * @param integer $eventful_gl_id Shortcode ID.
 	 * @return statement
 	 */
 	public static function get_filtered_content($view_options, $id = '', $layout_preset = 'default', $on_screen = null)
 	{
-		$efp_post_type                 = 'tribe_events';
+		$eventful_post_type                 = 'tribe_events';
 
 		$post_limit      = isset($view_options['efp_post_limit']) ? $view_options['efp_post_limit'] : 10000;
 		$post_per_page   = isset($view_options['post_per_page']) ? $view_options['post_per_page'] : 12;
 		$post_offset     = isset($view_options['efp_post_offset']) ? $view_options['efp_post_offset'] : 0;
-		$efp_sticky_post = isset($view_options['efp_sticky_post']) ? $view_options['efp_sticky_post'] : 0;
+		$eventful_sticky_post = isset($view_options['efp_sticky_post']) ? $view_options['efp_sticky_post'] : 0;
 		$show_pagination = isset($view_options['show_post_pagination']) ? $view_options['show_post_pagination'] : false;
 		$post_per_page   = ($post_per_page > $post_limit) ? $post_limit : $post_per_page;
 		$post_per_page   = (!$show_pagination) ? $post_limit : $post_per_page;
@@ -59,9 +59,9 @@ class EFP_QueryInside
 			if (!empty($filter_url_value)) {
 				$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 				if ($shortcode_id == $id) {
-					$efp_page = isset($_GET['efp_page']) ? wp_unslash(sanitize_text_field($_GET['efp_page'])) : '1';
-					if (!empty($efp_page)) {
-						$paged = $efp_page;
+					$eventful_page = isset($_GET['efp_page']) ? wp_unslash(sanitize_text_field($_GET['efp_page'])) : '1';
+					if (!empty($eventful_page)) {
+						$paged = $eventful_page;
 					}
 				}
 			}
@@ -72,11 +72,11 @@ class EFP_QueryInside
 			$post_per_page = isset($view_options['post_per_page']) ? $view_options['post_per_page'] : 12;
 		}
 		$offset               = (int) $post_per_page * ($paged - 1);
-		$sticky_post_position = 'top_list' === $efp_sticky_post ? 0 : 1;
+		$sticky_post_position = 'top_list' === $eventful_sticky_post ? 0 : 1;
 		if ('carousel_layout' === $layout_preset) {
 			$post_per_page = ($post_limit > 0) ? $post_limit : 999999;
 			$args          = array(
-				'post_type'           => $efp_post_type,
+				'post_type'           => $eventful_post_type,
 				'suppress_filters'    => false,
 				'ignore_sticky_posts' => $sticky_post_position,
 				'posts_per_page'      => $post_per_page,
@@ -84,7 +84,7 @@ class EFP_QueryInside
 			);
 		} else {
 			$args = array(
-				'post_type'           => $efp_post_type,
+				'post_type'           => $eventful_post_type,
 				'suppress_filters'    => false,
 				'ignore_sticky_posts' => $sticky_post_position,
 				'posts_per_page'      => $post_per_page,
@@ -222,8 +222,8 @@ class EFP_QueryInside
 
 						break;
 					case 'status':
-						$efp_post_status = isset($view_options['efp_filter_by_status']['efp_select_post_status']) && !empty($view_options['efp_filter_by_status']['efp_select_post_status']) ? $view_options['efp_filter_by_status']['efp_select_post_status'] : 'publish';
-						$args            = array_merge($args, array('post_status' => $efp_post_status));
+						$eventful_post_status = isset($view_options['efp_filter_by_status']['efp_select_post_status']) && !empty($view_options['efp_filter_by_status']['efp_select_post_status']) ? $view_options['efp_filter_by_status']['efp_select_post_status'] : 'publish';
+						$args            = array_merge($args, array('post_status' => $eventful_post_status));
 						break;
 					case 'date':
 						self::efp_filter_by_date($args, $view_options);
@@ -252,7 +252,7 @@ class EFP_QueryInside
 				$url_args['fields'] = 'ids';
 				$relation           = isset($view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation']) ? $view_options['efp_filter_by_taxonomy']['efp_taxonomies_relation'] : 'AND';
 
-				$taxonomies          = get_object_taxonomies($efp_post_type);
+				$taxonomies          = get_object_taxonomies($eventful_post_type);
 				$tax_settings_by_url = array();
 				foreach ($taxonomies as $taxonomy) {
 					$filter_url_value = isset($_GET["tx_$taxonomy"]) ? wp_unslash(sanitize_text_field($_GET["tx_$taxonomy"])) : '';

@@ -8,12 +8,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$efp_settings                  = get_option( 'ta_eventful_settings' );
-$efp_responsive_screen_setting = isset( $efp_settings['efp_responsive_screen_setting'] ) ? $efp_settings['efp_responsive_screen_setting'] : '';
-$desktop_screen_size           = isset( $efp_responsive_screen_setting ['desktop'] ) ? $efp_responsive_screen_setting ['desktop'] : '1200';
-$tablet_screen_size            = isset( $efp_responsive_screen_setting ['tablet'] ) ? $efp_responsive_screen_setting ['tablet'] : '992';
-$mobile_land_screen_size       = isset( $efp_responsive_screen_setting ['mobile_landscape'] ) ? $efp_responsive_screen_setting ['mobile_landscape'] : '768';
-$mobile_screen_size            = isset( $efp_responsive_screen_setting ['mobile'] ) ? $efp_responsive_screen_setting ['mobile'] : '576';
+$eventful_settings                  = get_option( 'ta_eventful_settings' );
+$eventful_responsive_screen_setting = isset( $eventful_settings['efp_responsive_screen_setting'] ) ? $eventful_settings['efp_responsive_screen_setting'] : '';
+$desktop_screen_size           = isset( $eventful_responsive_screen_setting ['desktop'] ) ? $eventful_responsive_screen_setting ['desktop'] : '1200';
+$tablet_screen_size            = isset( $eventful_responsive_screen_setting ['tablet'] ) ? $eventful_responsive_screen_setting ['tablet'] : '992';
+$mobile_land_screen_size       = isset( $eventful_responsive_screen_setting ['mobile_landscape'] ) ? $eventful_responsive_screen_setting ['mobile_landscape'] : '768';
+$mobile_screen_size            = isset( $eventful_responsive_screen_setting ['mobile'] ) ? $eventful_responsive_screen_setting ['mobile'] : '576';
 $classes                       = get_body_class();
 if ( in_array( 'et_divi_builder', $classes, true ) ) {
 	$custom_css .= '#et-boc .et-l .efp-filter-bar .efp-bar {

@@ -446,14 +446,14 @@ if ( ! class_exists( 'EFP_Field_typography' ) ) {
 			$output .= ( ! empty( $placeholder ) ) ? '<option value="">' . ( ( ! $this->chosen ) ? $placeholder : '' ) . '</option>' : '';
 
 			if ( ! empty( $options ) ) {
-				foreach ( $options as $option_key => $efp_metabox_value ) {
+				foreach ( $options as $option_key => $eventful_metabox_value ) {
 					if ( $is_multiple ) {
-						$selected = ( in_array( $efp_metabox_value, $this->value[ $name ] ) ) ? ' selected' : '';
-						$output  .= '<option value="' . $efp_metabox_value . '"' . $selected . '>' . $efp_metabox_value . '</option>';
+						$selected = ( in_array( $eventful_metabox_value, $this->value[ $name ] ) ) ? ' selected' : '';
+						$output  .= '<option value="' . $eventful_metabox_value . '"' . $selected . '>' . $eventful_metabox_value . '</option>';
 					} else {
-						$option_key = ( is_numeric( $option_key ) ) ? $efp_metabox_value : $option_key;
+						$option_key = ( is_numeric( $option_key ) ) ? $eventful_metabox_value : $option_key;
 						$selected   = ( $option_key === $this->value[ $name ] ) ? ' selected' : '';
-						$output    .= '<option value="' . $option_key . '"' . $selected . '>' . $efp_metabox_value . '</option>';
+						$output    .= '<option value="' . $option_key . '"' . $selected . '>' . $eventful_metabox_value . '</option>';
 					}
 				}
 			}
