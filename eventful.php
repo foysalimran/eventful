@@ -42,7 +42,7 @@ define('EFUL_BASENAME', plugin_basename(__FILE__));
  * The code that runs during plugin activation.
  * This action is documented in includes/class-eventful-activator.php
  */
-function eventful_pro_activate() {
+function eventful_activate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-eventful-activator.php';
 	Eventful_Activator::activate();
 }
@@ -51,13 +51,13 @@ function eventful_pro_activate() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-eventful-deactivator.php
  */
-function eventful_pro_deactivate() {
+function eventful_deactivate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-eventful-deactivator.php';
 	Eventful_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'eventful_pro_activate' );
-register_deactivation_hook( __FILE__, 'eventful_pro_deactivate' );
+register_activation_hook( __FILE__, 'eventful_activate' );
+register_deactivation_hook( __FILE__, 'eventful_deactivate' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -74,10 +74,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-eventful.php';
  *
  * @since    1.0.0
  */
-function eventful_pro_run() {
+function eventful_run() {
 
 	$plugin = new Eventful();
 	$plugin->run();
 
 }
-eventful_pro_run();
+eventful_run();

@@ -45,10 +45,10 @@ if ( ! class_exists( 'EFUL_Field_box_shadow' ) ) {
 			$args = wp_parse_args(
 				$this->field,
 				array(
-					'horizontal_icon'        => esc_html__( 'X offset', 'eventful-pro' ),
-					'vertical_icon'          => esc_html__( 'Y offset', 'eventful-pro' ),
-					'blur_icon'              => esc_html__( 'Blur', 'eventful-pro' ),
-					'spread_icon'            => esc_html__( 'Spread', 'eventful-pro' ),
+					'horizontal_icon'        => esc_html__( 'X offset', 'eventful' ),
+					'vertical_icon'          => esc_html__( 'Y offset', 'eventful' ),
+					'blur_icon'              => esc_html__( 'Blur', 'eventful' ),
+					'spread_icon'            => esc_html__( 'Spread', 'eventful' ),
 					'horizontal_placeholder' => 'h-offset',
 					'vertical_placeholder'   => 'v-offset',
 					'blur_placeholder'       => 'blur',

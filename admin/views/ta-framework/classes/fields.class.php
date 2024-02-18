@@ -298,7 +298,7 @@ if ( ! class_exists( 'EFUL_Fields' ) ) {
             $eventful_post_types     = 'tribe_events';
               $taxonomy_names = get_object_taxonomies( $eventful_post_types, 'names' );
             if ( ! is_wp_error( $taxonomy_names ) && ! empty( $taxonomy_names ) ) {
-              $options[''] =esc_html__( 'Select Taxonomy', 'eventful-pro' );
+              $options[''] =esc_html__( 'Select Taxonomy', 'eventful' );
               foreach ( $taxonomy_names as $taxonomy => $label ) {
                 $options[ $label ] = $label;
               }
