@@ -79,7 +79,7 @@
   max-width: 100%;
 }
 
-#efp-section-ta-efp_layouts_1 .efp-field-layout_preset span {
+#efp-section-ta-eventful_layouts_1 .efp-field-layout_preset span {
   font-size: 13px;
 }
 
@@ -135,16 +135,16 @@
   box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.04);
 }
 
-#efp-section-ta_efp_layouts_1 .efp-field-layout_preset .efp-title,
-#efp-section-ta_efp_layouts_1 .efp-field-gallery .efp-title,
+#efp-section-ta_eventful_layouts_1 .efp-field-layout_preset .efp-title,
+#efp-section-ta_eventful_layouts_1 .efp-field-gallery .efp-title,
 .efp_carousel_content_wrapper .efp-title,
 .efp-video-description .efp-title,
 .efp-video-field-wrapper > .efp-title {
   width: 100%;
 }
 
-#efp-section-ta_efp_layouts_1 .efp-field-layout_preset .efp-fieldset,
-#efp-section-ta_efp_layouts_1 .efp-field-gallery .efp-fieldset,
+#efp-section-ta_eventful_layouts_1 .efp-field-layout_preset .efp-fieldset,
+#efp-section-ta_eventful_layouts_1 .efp-field-gallery .efp-fieldset,
 .efp_carousel_content_wrapper .efp-fieldset,
 .efp-video-description .efp-fieldset,
 .efp-video-field-wrapper > .efp-fieldset {
@@ -156,12 +156,12 @@
 
 #ta_efp_view_options .hndle,
 #ta_efp_view_options .handlediv,
-#ta_efp_layouts .handlediv,
-#ta_efp_layouts .hndle {
+#ta_eventful_layouts .handlediv,
+#ta_eventful_layouts .hndle {
   display: none;
 }
 
-#efp-section-ta_efp_layouts_1 .efp-admin-header {
+#efp-section-ta_eventful_layouts_1 .efp-admin-header {
   background: #0015b5;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #263ad0, #0015b5);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #263ad0, #0015b5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -169,16 +169,16 @@
   overflow: hidden;
 }
 
-#efp-section-ta_efp_layouts_1 .efp-admin-header img {
+#efp-section-ta_eventful_layouts_1 .efp-admin-header img {
   max-width: 170px;
 }
 
-#efp-section-ta_efp_layouts_1 .efp-admin-header .support {
+#efp-section-ta_eventful_layouts_1 .efp-admin-header .support {
   margin-left: 16px;
   float: right;
 }
 
-#efp-section-ta_efp_layouts_1 .efp-admin-header .support a {
+#efp-section-ta_eventful_layouts_1 .efp-admin-header .support a {
   color: #ffffff;
   text-decoration: none;
   line-height: 35px;

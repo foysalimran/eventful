@@ -408,7 +408,7 @@ class EFP_HTML
 		$post_per_page = isset($view_options['post_per_page']) ? $view_options['post_per_page'] : 12;
 		$post_per_page = ($post_per_page > $post_limit) ? $post_limit : $post_per_page;
 
-		$layout_preset = isset($layout['efp_layout_preset']) ? $layout['efp_layout_preset'] : '';
+		$layout_preset = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		// Post display settings.
 		if ('filter_layout' === $layout_preset) {
 			$pagination_type = isset($view_options['filter_pagination_type']) ? $view_options['filter_pagination_type'] : '';
@@ -748,7 +748,7 @@ class EFP_HTML
 	public static function efp_html_show($view_options, $layout, $efp_gl_id, $section_title = '', $query = array())
 	{
 		$options              = $view_options;
-		$layout_preset        = isset($layout['efp_layout_preset']) ? $layout['efp_layout_preset'] : 'carousel_layout';
+		$layout_preset        = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : 'carousel_layout';
 		$efp_settings         = get_option('ta_eventful_settings');
 		$grid_style           = isset($view_options['efp_grid_style']) ? $view_options['efp_grid_style'] : 'even';
 		$post_content_sorter  = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';

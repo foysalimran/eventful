@@ -28,7 +28,7 @@ class EFP_Layout
 						'class' => 'efp-admin-header',
 					),
 					array(
-						'id'      => 'efp_layout_preset',
+						'id'      => 'eventful_layout_preset',
 						'type'    => 'layout_preset',
 						'title'   => esc_html__('Layout Preset', 'eventful'),
 						'class'   => 'efp-layout-preset',

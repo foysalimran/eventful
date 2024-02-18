@@ -399,8 +399,8 @@ class EFP_Live_Filter
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		$settings            = array(); //phpcs:ignore
 		parse_str($_POST['data'], $settings); //phpcs:ignore
-		$layout                       = $settings['ta_efp_layouts'];
-		$layout_preset                = isset($layout['efp_layout_preset']) ? $layout['efp_layout_preset'] : '';
+		$layout                       = $settings['ta_eventful_layouts'];
+		$layout_preset                = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$view_options                 = $settings['ta_efp_view_options'];
 		$query_args                   = EFP_QueryInside::get_filtered_content($view_options, $efp_gl_id);
 		$query_args['fields']         = 'ids';

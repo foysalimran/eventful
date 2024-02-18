@@ -43,7 +43,7 @@ class Eventful_Admin
 		// Autoload system.
 		spl_autoload_register(array($this, 'autoload'));
 
-		EFP_Metaboxes::layout_metabox('ta_efp_layouts');
+		EFP_Metaboxes::layout_metabox('ta_eventful_layouts');
 		EFP_Metaboxes::option_metabox('ta_efp_view_options');
 		EFP_Metaboxes::shortcode_metabox('ta_efp_display_shortcode');
 		EFP_Settings::settings('ta_eventful_settings');
@@ -151,7 +151,7 @@ class Eventful_Admin
 		$admin_columns['cb']         = '<input type="checkbox" />';
 		$admin_columns['title']      = esc_html__('Title', 'eventful');
 		$admin_columns['shortcode']  = esc_html__('Shortcode', 'eventful');
-		$admin_columns['efp_layout'] = esc_html__('Layout', 'eventful');
+		$admin_columns['eventful_layout'] = esc_html__('Layout', 'eventful');
 		$admin_columns['date']       = esc_html__('Date', 'eventful');
 
 		return $admin_columns;
@@ -167,14 +167,14 @@ class Eventful_Admin
 	public function display_eventful_admin_fields($column, $post_id)
 	{
 
-		$efp_layouts     = get_post_meta($post_id, 'ta_efp_layouts', true);
-		$eventfuls_types = isset($efp_layouts['efp_layout_preset']) ? $efp_layouts['efp_layout_preset'] : '';
+		$eventful_layouts     = get_post_meta($post_id, 'ta_eventful_layouts', true);
+		$eventfuls_types = isset($eventful_layouts['eventful_layout_preset']) ? $eventful_layouts['eventful_layout_preset'] : '';
 		switch ($column) {
 			case 'shortcode':
 				$column_field = '<input  class="ta_efp_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="efp-after-copy-text"><i class="far fa-check-circle"></i> ' . esc_html('Shortcode Copied to Clipboard!', 'eventful') . ' </div>';
 				echo $column_field;
 				break;
-			case 'efp_layout':
+			case 'eventful_layout':
 				$layout = ucwords(str_replace('_layout', ' ', $eventfuls_types));
 				esc_html_e($layout, 'eventful');
 				break;

@@ -11,10 +11,10 @@
 	  $("#ta_efp_view_options .efp-metabox").css("visibility", "hidden");
   
 	  var PCP_layout_type = $(
-		'#efp-section-ta_efp_layouts_1 .efp-field-layout_preset .efp-siblings .efp--sibling'
+		'#efp-section-ta_eventful_layouts_1 .efp-field-layout_preset .efp-siblings .efp--sibling'
 	  )
 	  var PCP_get_layout_value = $(
-		'#efp-section-ta_efp_layouts_1 .efp-field-layout_preset .efp-siblings .efp--sibling.efp--active'
+		'#efp-section-ta_eventful_layouts_1 .efp-field-layout_preset .efp-siblings .efp--sibling.efp--active'
 	  )
 		.find('input')
 		.val()

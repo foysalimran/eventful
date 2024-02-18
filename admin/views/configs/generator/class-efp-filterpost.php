@@ -325,7 +325,7 @@ class EFP_FilterPost {
 										'type'       => 'checkbox',
 										'title'      => esc_html__( 'Add to Ajax Live Filters', 'eventful' ),
 										'title_help' => esc_html__( 'Check to add ajax live filters.', 'eventful' ),
-										'dependency' => array( 'efp_layout_preset', '!=', 'filter_layout', true ),
+										'dependency' => array( 'eventful_layout_preset', '!=', 'filter_layout', true ),
 									),
 									array(
 										'id'         => 'ajax_filter_options',
@@ -499,7 +499,7 @@ class EFP_FilterPost {
 										'type'       => 'checkbox',
 										'title'      => esc_html__( 'Add to Ajax Live Filters', 'eventful' ),
 										'title_help' => esc_html__( 'Check to add ajax live filter for Order by.', 'eventful' ),
-										'dependency' => array( 'efp_layout_preset', '!=', 'filter_layout', true ),
+										'dependency' => array( 'eventful_layout_preset', '!=', 'filter_layout', true ),
 									),
 									array(
 										'id'         => 'orderby_ajax_filter_options',
@@ -615,7 +615,7 @@ class EFP_FilterPost {
 										'type'       => 'checkbox',
 										'title'      => esc_html__( 'Add to Ajax Live Filters', 'eventful' ),
 										'title_help' => esc_html__( 'Check to add ajax live filter for order.', 'eventful' ),
-										'dependency' => array( 'efp_select_filter_orderby|efp_layout_preset', '!=|!=', 'post__in|filter_layout', true ),
+										'dependency' => array( 'efp_select_filter_orderby|eventful_layout_preset', '!=|!=', 'post__in|filter_layout', true ),
 									),
 									array(
 										'id'         => 'order_filter_options',
@@ -823,7 +823,7 @@ class EFP_FilterPost {
 										'type'       => 'checkbox',
 										'title'      => esc_html__( 'Add to Ajax Live Filters', 'eventful' ),
 										'title_help' => esc_html__( 'Check to add ajax live filter.', 'eventful' ),
-										'dependency' => array( 'efp_layout_preset', '!=', 'filter_layout', true ),
+										'dependency' => array( 'eventful_layout_preset', '!=', 'filter_layout', true ),
 									),
 									array(
 										'id'         => 'ajax_filter_options',

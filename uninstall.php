@@ -3,7 +3,7 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * When efpulating this file, consider the following flow
+ * When populating this file, consider the following flow
  * of control:
  *
  * - This method should be static

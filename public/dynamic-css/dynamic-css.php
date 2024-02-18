@@ -12,8 +12,8 @@ if (!defined('ABSPATH')) {
 }
 
 $view_options = get_post_meta($efp_id, 'ta_efp_view_options', true);
-$layouts      = get_post_meta($efp_id, 'ta_efp_layouts', true);
-$layout = isset($layouts['efp_layout_preset']) ? $layouts['efp_layout_preset'] : '';
+$layouts      = get_post_meta($efp_id, 'ta_eventful_layouts', true);
+$layout = isset($layouts['eventful_layout_preset']) ? $layouts['eventful_layout_preset'] : '';
 $popup_content_color       = isset( $view_options['popup_content_color'] ) ? $view_options['popup_content_color'] : '';
 $popup_custom_fields_color = isset( $popup_content_color['custom-fields'] ) ? $popup_content_color['custom-fields'] : '#888';
 
@@ -52,7 +52,7 @@ if ($show_section_title) {
 $margin_between_post      = isset( $view_options['margin_between_post']['all'] ) ? (int) $view_options['margin_between_post']['all'] : 20;
 $margin_between_post_half = $margin_between_post / 2;
 $custom_css              .= "#efp_wrapper-{$efp_id} .ta-row{ margin-right: -{$margin_between_post_half}px;margin-left: -{$margin_between_post_half}px;}#efp_wrapper-{$efp_id} .ta-row [class*='ta-col-']{padding-right: {$margin_between_post_half}px;padding-left: {$margin_between_post_half}px;padding-bottom: {$margin_between_post}px;}";
-if ( 'large_with_small' === $layouts['efp_layout_preset'] ) {
+if ( 'large_with_small' === $layouts['eventful_layout_preset'] ) {
 	$custom_css .= "#efp_wrapper-{$efp_id} .ta-efp-block-8, #efp_wrapper-{$efp_id} .ta-efp-block-4, #efp_wrapper-{$efp_id} .ta-efp-block-6, #efp_wrapper-{$efp_id} .ta-efp-block-3{padding-right: {$margin_between_post_half}px;padding-left: {$margin_between_post_half}px;}#efp_wrapper-{$efp_id} .ta-efp-block-4 .ta-efp-block-half,#efp_wrapper-{$efp_id} .ta-efp-block-8,#efp_wrapper-{$efp_id} .ta-efp-block-3 .ta-efp-block-half,#efp_wrapper-{$efp_id} .ta-efp-block-6{padding-bottom: {$margin_between_post}px;}";
 }
 /**
@@ -101,7 +101,7 @@ if ($show_post_title) {
 	if (!empty($_post_title_typography['font-family'])) {
 		$custom_css .= "font-family: {$_post_title_typography['font-family']};font-weight: {$post_title_font_weight};font-style: {$post_title_font_style};";
 	}
-	if ('zigzag_layout' !== $layouts['efp_layout_preset']) {
+	if ('zigzag_layout' !== $layouts['eventful_layout_preset']) {
 		$custom_css .= "text-align: {$_post_title_typography['text-align']};";
 	}
 	$custom_css .= "text-transform: {$_post_title_typography['text-transform']};font-size: {$_post_title_typography['font-size']}px;line-height: {$_post_title_typography['line-height']}px;letter-spacing: {$_post_title_typography['letter-spacing']}px;color: {$_post_title_typography['color']};display: inherit;}#efp_wrapper-{$efp_id} .eventful__item--title {margin: {$post_title_margin['top']}px {$post_title_margin['right']}px {$post_title_margin['bottom']}px {$post_title_margin['left']}px;}#efp_wrapper-{$efp_id} .efp-collapse-header a{display: inline-block;}";
@@ -139,7 +139,7 @@ if ($show_post_content) {
 	if (!empty($_post_content_typography['font-family'])) {
 		$custom_css .= "font-family: {$_post_content_typography['font-family']};font-weight: {$post_content_font_weight};font-style: {$post_content_font_style};";
 	}
-	if ('zigzag_layout' !== $layouts['efp_layout_preset']) {
+	if ('zigzag_layout' !== $layouts['eventful_layout_preset']) {
 		$custom_css .= "text-align: {$_post_content_typography['text-align']};";
 	}
 	$custom_css .= "text-transform: {$_post_content_typography['text-transform']};font-size: {$_post_content_typography['font-size']}px;line-height: {$_post_content_typography['line-height']}px;letter-spacing: {$_post_content_typography['letter-spacing']}px;margin: {$post_content_margin['top']}px {$post_content_margin['right']}px {$post_content_margin['bottom']}px {$post_content_margin['left']}px;color: {$_post_content_typography['color']}; }";
@@ -323,7 +323,7 @@ if (!empty($_post_meta_typography['font-family'])) {
 }
 
 $custom_css .= "text-transform: {$_post_meta_typography['text-transform']};font-size: {$_post_meta_typography['font-size']}px;line-height: {$_post_meta_typography['line-height']}px;letter-spacing: {$_post_meta_typography['letter-spacing']}px;color: {$_post_meta_typography['color']};}#efp_wrapper-{$efp_id} .eventful__item--meta{margin: {$post_meta_margin['top']}px {$post_meta_margin['right']}px {$post_meta_margin['bottom']}px {$post_meta_margin['left']}px;";
-if ('zigzag_layout' !== $layouts['efp_layout_preset']) {
+if ('zigzag_layout' !== $layouts['eventful_layout_preset']) {
 	$custom_css .= "text-align: {$_post_meta_typography['text-align']};";
 }
 $custom_css .= '}';
@@ -427,7 +427,7 @@ if (!empty($_event_fildes_typography['font-family'])) {
 }
 
 $custom_css .= "text-transform: {$_event_fildes_typography['text-transform']};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;color: {$_event_fildes_typography['color']};}#efp_wrapper-{$efp_id} .eventful__item--meta.event_meta{margin: {$event_fildes_margin['top']}px {$event_fildes_margin['right']}px {$event_fildes_margin['bottom']}px {$event_fildes_margin['left']}px;";
-if ('zigzag_layout' !== $layouts['efp_layout_preset']) {
+if ('zigzag_layout' !== $layouts['eventful_layout_preset']) {
 	$custom_css .= "text-align: {$_event_fildes_typography['text-align']};";
 }
 $custom_css .= '}';
@@ -523,7 +523,7 @@ if ($show_read_more) {
 		$custom_css .= "font-family: {$_read_more_typography['font-family']}; font-weight: {$read_more_font_weight}; font-style: {$read_more_font_style};";
 	}
 	$custom_css .= "text-transform: {$_read_more_typography['text-transform']}; font-size: {$_read_more_typography['font-size']}px; line-height: {$_read_more_typography['line-height']}px; letter-spacing: {$_read_more_typography['letter-spacing']}px; }";
-	if ( 'zigzag_layout' !== $layouts['efp_layout_preset'] ) {
+	if ( 'zigzag_layout' !== $layouts['eventful_layout_preset'] ) {
 		$custom_css .= "#efp_wrapper-{$efp_id} .eventful__item__content__readmore{ text-align: {$_read_more_typography['text-align']}; }";
 	}
 	if ('button' === $read_more_type) {

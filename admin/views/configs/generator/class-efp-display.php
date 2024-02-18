@@ -68,7 +68,7 @@ class EFP_Display
 							'mobile'           => '1',
 						),
 						'min'      => '1',
-						'dependency' => array('efp_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
+						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 						'help'       => wp_kses(esc_html__('<i class="fa fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fa fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fa fa-tablet"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fa fa-mobile"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fa fa-mobile"></i> <b> Mobile </b> - size is smaller than 576px.', 'eventful'), array('i' => array('class' => array()), 'br' => array())),
 					),
 					array(
@@ -105,7 +105,7 @@ class EFP_Display
 							),
 						),
 						'default'  => 'default',
-						'dependency' => array('efp_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
+						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 					),
 					array(
 						'id'         => 'item_same_height',
@@ -113,7 +113,7 @@ class EFP_Display
 						'title'      => esc_html__('Same Height', 'eventful'),
 						'subtitle'   => esc_html__('Check to make all items/slides the same height as the tallest one.', 'eventful'),
 						'default'    => false,
-						'dependency' => array('efp_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
+						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 					),
 					
 					array(
@@ -371,7 +371,7 @@ class EFP_Display
 												'text_on'  => esc_html__('Enabled', 'eventful'),
 												'text_off' => esc_html__('Disabled', 'eventful'),
 												'text_width' => 100,
-												'dependency' => array('post_thumb_show|efp_layout_preset', '==|!=', 'true|carousel_layout', true),
+												'dependency' => array('post_thumb_show|eventful_layout_preset', '==|!=', 'true|carousel_layout', true),
 											),
 											array(
 												'id'       => 'post_thumb_meta',
@@ -1220,7 +1220,7 @@ class EFP_Display
 						'title'      => esc_html__('Pagination', 'eventful'),
 						'subtitle'   => esc_html__('Enabled/Disabled item pagination.', 'eventful'),
 						'default'    => true,
-						'dependency' => array('efp_layout_preset', '!=', 'carousel_layout', true),
+						'dependency' => array('eventful_layout_preset', '!=', 'carousel_layout', true),
 					),
 					array(
 						'id'         => 'post_pagination_type',
@@ -1234,7 +1234,7 @@ class EFP_Display
 							'no_ajax'         => esc_html__('No Ajax (Normal Pagination)', 'eventful'),
 						),
 						'default'    => 'ajax_load_more',
-						'dependency' => array('efp_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
 					),
 					array(
 						'id'         => 'filter_pagination_type',
@@ -1246,7 +1246,7 @@ class EFP_Display
 							'infinite_scroll' => esc_html__('Infinite Scroll (Ajax)', 'eventful'),
 						),
 						'default'    => 'ajax_load_more',
-						'dependency' => array('efp_layout_preset|show_post_pagination', '==|==', 'filter_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', '==|==', 'filter_layout|true', true),
 					),
 					array(
 						'id'         => 'post_pagination_type_mobile',
@@ -1260,7 +1260,7 @@ class EFP_Display
 							'no_ajax'         => esc_html__('No Ajax (Normal Pagination)', 'eventful'),
 						),
 						'default'    => 'infinite_scroll',
-						'dependency' => array('efp_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
 					),
 					array(
 						'id'         => 'load_more_button_text',
@@ -1268,7 +1268,7 @@ class EFP_Display
 						'title'      => esc_html__('Load More Button Label', 'eventful'),
 						'subtitle'   => esc_html__('Set the label for load more button.', 'eventful'),
 						'default'    => esc_html__('Load More', 'eventful'),
-						'dependency' => array('efp_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
 						'id'         => 'load_more_ending_message',
@@ -1276,7 +1276,7 @@ class EFP_Display
 						'title'      => esc_html__('Ending Message', 'eventful'),
 						'subtitle'   => esc_html__('Set ending message for load more/infinite scroll.', 'eventful'),
 						'default'    => esc_html__('No more events available', 'eventful'),
-						'dependency' => array('efp_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
 						'id'         => 'efp_pagination_btn_color',
@@ -1299,7 +1299,7 @@ class EFP_Display
 							'background'        => '#ffffff',
 							'active_background' => '#0015b5',
 						),
-						'dependency' => array('efp_layout_preset|show_post_pagination|post_pagination_type', '!=|==|any', 'carousel_layout|true|ajax_pagination,no_ajax', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination|post_pagination_type', '!=|==|any', 'carousel_layout|true|ajax_pagination,no_ajax', true),
 					),
 					array(
 						'id'         => 'efp_loadmore_btn_color',
@@ -1318,7 +1318,7 @@ class EFP_Display
 							'background'        => '#0015b5',
 							'active_background' => '#ffffff',
 						),
-						'dependency' => array('efp_layout_preset|show_post_pagination|post_pagination_type', '!=|==|==', 'carousel_layout|true|ajax_load_more', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination|post_pagination_type', '!=|==|==', 'carousel_layout|true|ajax_load_more', true),
 					),
 					array(
 						'id'         => 'pagination_alignment',
@@ -1331,7 +1331,7 @@ class EFP_Display
 							'right'  => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'eventful'), array('i' => array('class' => array()))),
 						),
 						'default'    => 'left',
-						'dependency' => array('efp_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
 						'id'         => 'post_per_page',
@@ -1341,7 +1341,7 @@ class EFP_Display
 						'title_help' => esc_html__('This value should be lesser than that <strong> Limit </strong> from <strong>Filter Content  </strong> tab.', 'eventful'),
 						'sanitize'   => 'efp_sanitize_number_field',
 						'default'    => 12,
-						'dependency' => array('efp_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
 						'id'         => 'show_preloader',
