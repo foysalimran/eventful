@@ -507,11 +507,11 @@
 /**
  * 04. Profile
  */
-.eventful-profile-options > h2 > .fa {
+.eventfulfile-options > h2 > .fa {
   padding-right: 0;
   padding-left: 7px;
 }
-.eventful-profile-options > .eventful-field > .eventful-fieldset > .eventful-help {
+.eventfulfile-options > .eventful-field > .eventful-fieldset > .eventful-help {
   left: -5px;
   right: auto;
 }

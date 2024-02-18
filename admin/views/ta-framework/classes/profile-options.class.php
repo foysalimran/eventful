@@ -96,7 +96,7 @@ if ( ! class_exists( 'EFUL_Profile_Options' ) ) {
         delete_user_meta( $profile_id, '_eventful_errors_'. $this->unique );
       }
 
-      echo '<div class="eventful eventful-profile-options eventful-onload'. esc_attr( $class ) .'">';
+      echo '<div class="eventful eventfulfile-options eventful-onload'. esc_attr( $class ) .'">';
 
       wp_nonce_field( 'eventful_profile_nonce', 'eventful_profile_nonce'. $this->unique );
 

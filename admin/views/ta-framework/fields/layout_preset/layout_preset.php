@@ -40,7 +40,7 @@ if ( ! class_exists( 'EFUL_Field_layout_preset' ) ) {
 					$extra              = ( $args['multiple'] ) ? '[]' : '';
 					$active             = ( in_array( $key, $value ) ) ? ' eventful--active' : '';
 					$checked            = ( in_array( $key, $value ) ) ? ' checked' : '';
-					$eventful_pro_only_class = isset( $option['pro_only'] ) ? ' eventful-pro-only' : '';
+					$eventful_pro_only_class = isset( $option['pro_only'] ) ? ' eventful-only' : '';
 
 					echo '<div class="eventful--sibling eventful--image' . esc_attr($active . $eventful_pro_only_class) . '">';
 					echo '<img src="' . esc_url( $option['image'] ) . '" alt="' . esc_attr( $option['text'] ) . '" />';
