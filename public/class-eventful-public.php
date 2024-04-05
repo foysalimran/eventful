@@ -142,7 +142,7 @@ class Eventful_Public
 			// Include dynamic style file.
 			$view_options = get_post_meta($eventful_id, 'ta_eventful_view_options', true);
 
-			$layouts      = get_post_meta($eventful_id, 'ta_eventful_layouts', true);
+			$layouts      = get_post_meta($eventful_id, 'eful_layouts', true);
 			include 'dynamic-css/dynamic-css.php';
 
 			if ($eventful_enqueue_google_font) {
@@ -241,7 +241,7 @@ class Eventful_Public
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		// $eventful_search_url     = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ) : '';
-		$layout        = get_post_meta($views_id, 'ta_eventful_layouts', true);
+		$layout        = get_post_meta($views_id, 'eful_layouts', true);
 		$layout_preset = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$view_options  = get_post_meta($views_id, 'ta_eventful_view_options', true);
 		// Post display settings.
@@ -321,7 +321,7 @@ class Eventful_Public
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		$view_options        = get_post_meta($views_id, 'ta_eventful_view_options', true);
-		$layout              = get_post_meta($views_id, 'ta_eventful_layouts', true);
+		$layout              = get_post_meta($views_id, 'eful_layouts', true);
 		$layout_preset       = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
@@ -362,7 +362,7 @@ class Eventful_Public
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$view_options        = get_post_meta($views_id, 'ta_eventful_view_options', true);
-		$layout              = get_post_meta($views_id, 'ta_eventful_layouts', true);
+		$layout              = get_post_meta($views_id, 'eful_layouts', true);
 		$layout_preset       = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
@@ -402,7 +402,7 @@ class Eventful_Public
 		$author_id              = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$selected_term_list     = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
 		$custom_fields_array    = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
-		$layout                 = get_post_meta($views_id, 'ta_eventful_layouts', true);
+		$layout                 = get_post_meta($views_id, 'eful_layouts', true);
 		$layout_preset          = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$view_options           = get_post_meta($views_id, 'ta_eventful_view_options', true);
 		$pagination_type        = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
@@ -438,7 +438,7 @@ class Eventful_Public
 		}
 		$eventful_gl_id = $attribute['id']; // Eventful global ID for Shortcode metaboxes.
 		// Preset Layouts.
-		$layout        = get_post_meta($eventful_gl_id, 'ta_eventful_layouts', true);
+		$layout        = get_post_meta($eventful_gl_id, 'eful_layouts', true);
 		$view_options  = get_post_meta($eventful_gl_id, 'ta_eventful_view_options', true);
 		$section_title = get_the_title($eventful_gl_id);
 		ob_start();

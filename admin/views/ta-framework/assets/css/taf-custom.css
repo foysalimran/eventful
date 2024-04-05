@@ -135,16 +135,16 @@
   box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.04);
 }
 
-#eventful-section-ta_eventful_layouts_1 .eventful-field-layout_preset .eventful-title,
-#eventful-section-ta_eventful_layouts_1 .eventful-field-gallery .eventful-title,
+#eventful-section-eful_layouts_1 .eventful-field-layout_preset .eventful-title,
+#eventful-section-eful_layouts_1 .eventful-field-gallery .eventful-title,
 .eventful_carousel_content_wrapper .eventful-title,
 .eventful-video-description .eventful-title,
 .eventful-video-field-wrapper > .eventful-title {
   width: 100%;
 }
 
-#eventful-section-ta_eventful_layouts_1 .eventful-field-layout_preset .eventful-fieldset,
-#eventful-section-ta_eventful_layouts_1 .eventful-field-gallery .eventful-fieldset,
+#eventful-section-eful_layouts_1 .eventful-field-layout_preset .eventful-fieldset,
+#eventful-section-eful_layouts_1 .eventful-field-gallery .eventful-fieldset,
 .eventful_carousel_content_wrapper .eventful-fieldset,
 .eventful-video-description .eventful-fieldset,
 .eventful-video-field-wrapper > .eventful-fieldset {
@@ -154,12 +154,12 @@
 
 #ta_eventful_view_options .hndle,
 #ta_eventful_view_options .handlediv,
-#ta_eventful_layouts .handlediv,
-#ta_eventful_layouts .hndle {
+#eful_layouts .handlediv,
+#eful_layouts .hndle {
   display: none;
 }
 
-#eventful-section-ta_eventful_layouts_1 .eventful-admin-header {
+#eventful-section-eful_layouts_1 .eventful-admin-header {
   background: #0015b5;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #263ad0, #0015b5);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #263ad0, #0015b5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -167,16 +167,16 @@
   overflow: hidden;
 }
 
-#eventful-section-ta_eventful_layouts_1 .eventful-admin-header img {
+#eventful-section-eful_layouts_1 .eventful-admin-header img {
   max-width: 170px;
 }
 
-#eventful-section-ta_eventful_layouts_1 .eventful-admin-header .support {
+#eventful-section-eful_layouts_1 .eventful-admin-header .support {
   margin-left: 16px;
   float: right;
 }
 
-#eventful-section-ta_eventful_layouts_1 .eventful-admin-header .support a {
+#eventful-section-eful_layouts_1 .eventful-admin-header .support a {
   color: #ffffff;
   text-decoration: none;
   line-height: 35px;

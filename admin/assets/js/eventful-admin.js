@@ -11,10 +11,10 @@
 	  $("#ta_eventful_view_options .eventful-metabox").css("visibility", "hidden");
   
 	  var PCP_layout_type = $(
-		'#eventful-section-ta_eventful_layouts_1 .eventful-field-layout_preset .eventful-siblings .eventful--sibling'
+		'#eventful-section-eful_layouts_1 .eventful-field-layout_preset .eventful-siblings .eventful--sibling'
 	  )
 	  var PCP_get_layout_value = $(
-		'#eventful-section-ta_eventful_layouts_1 .eventful-field-layout_preset .eventful-siblings .eventful--sibling.eventful--active'
+		'#eventful-section-eful_layouts_1 .eventful-field-layout_preset .eventful-siblings .eventful--sibling.eventful--active'
 	  )
 		.find('input')
 		.val()

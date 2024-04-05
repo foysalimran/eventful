@@ -43,7 +43,7 @@ class Eventful_Admin
 		// Autoload system.
 		spl_autoload_register(array($this, 'autoload'));
 
-		EFUL_Metaboxes::layout_metabox('ta_eventful_layouts');
+		EFUL_Metaboxes::layout_metabox('eful_layouts');
 		EFUL_Metaboxes::option_metabox('ta_eventful_view_options');
 		EFUL_Metaboxes::shortcode_metabox('ta_eventful_display_shortcode');
 		EFUL_Settings::settings('ta_eventful_settings');
@@ -167,7 +167,7 @@ class Eventful_Admin
 	public function display_eventful_admin_fields($column, $post_id)
 	{
 
-		$eventful_layouts     = get_post_meta($post_id, 'ta_eventful_layouts', true);
+		$eventful_layouts     = get_post_meta($post_id, 'eful_layouts', true);
 
 
 		$eventfuls_types = isset($eventful_layouts['eventful_layout_preset']) ? $eventful_layouts['eventful_layout_preset'] : '';
