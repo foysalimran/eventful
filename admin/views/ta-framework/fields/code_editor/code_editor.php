@@ -10,7 +10,7 @@
 if ( ! class_exists( 'EFUL_Field_code_editor' ) ) {
 	class EFUL_Field_code_editor extends EFUL_Fields {
 
-		public $version = '6.65.7';
+		public $version = '1.0.0';
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -42,12 +42,12 @@ if ( ! class_exists( 'EFUL_Field_code_editor' ) ) {
 				return; }
 
 			if ( ! wp_script_is( 'eventful-codemirror' ) ) {
-				wp_enqueue_script( 'codemirror', EFUL_URL . 'admin/views/ta-framework/assets/js/codemirror.min.js', array( 'ta-framework' ), $this->version, true );
+				wp_enqueue_script('wp-codemirror-js', 'path_to_wp_codemirror_js_file', array('jquery'), null, true);
 				wp_enqueue_script( 'loadmode', EFUL_URL . 'admin/views/ta-framework/assets/js/loadmode.min.js', array( 'eventful-codemirror' ), $this->version, true );
 			}
 
 			if ( ! wp_style_is( 'eventful-codemirror' ) ) {
-				wp_enqueue_style( 'codemirror', EFUL_URL . 'admin/views/ta-framework/assets/css/codemirror.min.css', array(), $this->version );
+				wp_enqueue_style('wp-codemirror', 'path_to_wp_codemirror_css_file');
 			}
 		}
 	}

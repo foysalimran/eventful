@@ -191,6 +191,10 @@ class EFUL_Live_Filter
 	 */
 	public static function eventful_live_filter_reset()
 	{
+		if (!current_user_can('manage_options')) {
+			return;
+		}
+
 		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'speventful_nonce')) {
 			return false;
 		}
@@ -200,7 +204,7 @@ class EFUL_Live_Filter
 		$order               = isset($_POST['order']) ? sanitize_text_field(wp_unslash($_POST['order'])) : '';
 		$taxonomy            = isset($_POST['taxonomy']) ? sanitize_text_field(wp_unslash($_POST['taxonomy'])) : '';
 		$term_id             = isset($_POST['term_id']) ? sanitize_text_field(wp_unslash($_POST['term_id'])) : '';
-		$eventful_lang            = isset($_POST['lang']) ? sanitize_text_field(wp_unslash($_POST['lang'])) : '';
+		$eventful_lang       = isset($_POST['lang']) ? sanitize_text_field(wp_unslash($_POST['lang'])) : '';
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$last_filter         = isset($_POST['last_filter']) ? sanitize_text_field(wp_unslash($_POST['last_filter'])) : '';
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
@@ -256,10 +260,10 @@ class EFUL_Live_Filter
 				while ($index < $taxonomy_count) {
 					$add_filter = isset($taxonomy_types[$index]['add_filter_post']) ? $taxonomy_types[$index]['add_filter_post'] : '';
 					if ($add_filter) {
-						$taxonomy        = isset($taxonomy_types[$index]['eventful_select_taxonomy']) ? $taxonomy_types[$index]['eventful_select_taxonomy'] : '';			
-					$all_terms = get_terms($taxonomy);
-					$all_terms = wp_list_pluck($all_terms, 'term_id');
-					
+						$taxonomy        = isset($taxonomy_types[$index]['eventful_select_taxonomy']) ? $taxonomy_types[$index]['eventful_select_taxonomy'] : '';
+						$all_terms = get_terms($taxonomy);
+						$all_terms = wp_list_pluck($all_terms, 'term_id');
+
 						$terms           = isset($taxonomy_types[$index]['eventful_select_terms']) ? $taxonomy_types[$index]['eventful_select_terms'] : $all_terms;
 						$all_post_ids    = get_posts($query_args);
 						$post_limit      = count($all_post_ids);
@@ -372,7 +376,28 @@ class EFUL_Live_Filter
 					}
 					$index++;
 				}
-				echo $output; //phpcs:ignore
+				$allowed_tags = array(
+					'form'  => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'p'     => array(),
+					'div'   => array(
+						'class' => array(),
+					),
+					'label' => array(),
+					'input' => array(
+						'checked'       => array(),
+						'type'          => array(),
+						'name'          => array(),
+						'data-taxonomy' => array(),
+						'value'         => array(),
+					),
+				);
+				echo wp_kses(
+					$output,
+					$allowed_tags
+				);
 			}
 		}
 	}
@@ -382,6 +407,9 @@ class EFUL_Live_Filter
 	 */
 	public static function eventful_admin_live_filter_reset()
 	{
+		if (!current_user_can('manage_options')) {
+			return;
+		}
 		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'speventful_nonce')) {
 			return false;
 		}
@@ -395,10 +423,10 @@ class EFUL_Live_Filter
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$last_filter         = isset($_POST['last_filter']) ? sanitize_text_field(wp_unslash($_POST['last_filter'])) : '';
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
-		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : ''; //phpcs:ignore
+		$custom_fields_array = isset($_POST['custom_fields_array']) ? sanitize_text_field(wp_unslash($_POST['custom_fields_array'])) : '';
 		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
-		$settings            = array(); //phpcs:ignore
-		parse_str($_POST['data'], $settings); //phpcs:ignore
+		$settings            = array();
+		parse_str(wp_kses_post($_POST['data']), $settings);
 		$layout                       = $settings['ta_eventful_layouts'];
 		$layout_preset                = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$view_options                 = $settings['ta_eventful_view_options'];
@@ -605,39 +633,6 @@ class EFUL_Live_Filter
 						 </p> <div class="eventful-slider"></div></div>',
 								);
 							}
-						} else {
-							$filter_item               = self::eventful_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key);
-							$newcustom_array[$index] = array($filter_item['first_item']);
-							if (!empty($meta_values)) {
-								foreach ($meta_values as $key => $value) {
-									$selected = '';
-									$checked  = '';
-									if (!empty($custom_fields_array)) {
-										foreach ($custom_fields_array as $key => $_custom_field) {
-											$c_field_key   = $_custom_field['custom_field_key'];
-											$c_field_value = $_custom_field['custom_field_value'];
-											if (strpos($c_field_value, ',') !== false) {
-												$c_field_value = explode(',', $c_field_value);
-											} else {
-												$c_field_value = array($c_field_value);
-											}
-											if ($field_key === $c_field_key && in_array($value, $c_field_value)) {
-												$selected = 'selected';
-												$checked  = 'checked';
-												break;
-											}
-										}
-									}
-
-									if (!$hide_empty) {
-										$push_item = self::eventful_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key, $value, $post_counts_by_value[$value], $sid, $selected, $checked, $show_count)['push_item'];
-										array_push($newcustom_array[$index], $push_item);
-									} elseif ($post_counts_by_value[$value] > 0) {
-										$push_item = self::eventful_custom_field_filter_style($btn_style, $ajax_filter_label, $all_text, $eventful_live_filter_align, $field_key, $value, $post_counts_by_value[$value], $sid, $selected, $checked, $show_count)['push_item'];
-										array_push($newcustom_array[$index], $push_item);
-									}
-								}
-							}
 						}
 					}
 					if (isset($newcustom_array[$index]) && !empty($newcustom_array[$index])) {
@@ -714,7 +709,29 @@ class EFUL_Live_Filter
 				$tax_html = implode('', $newterm_array);
 				$output   = '';
 				$output   = $output . force_balance_tags($tax_html);
-				echo $output;
+				$allowed_tags = array(
+					'form'  => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'p'     => array(),
+					'div'   => array(
+						'class' => array(),
+					),
+					'label' => array(),
+					'input' => array(
+						'checked'       => array(),
+						'type'          => array(),
+						'name'          => array(),
+						'data-taxonomy' => array(),
+						'value'         => array(),
+					),
+				);
+
+				echo wp_kses(
+					$output,
+					$allowed_tags
+				);
 			}
 		}
 	}
@@ -766,88 +783,27 @@ class EFUL_Live_Filter
 			'first_item' => $first_item,
 			'push_item'  => $push_item,
 		);
+
+		// $allowed_html = array(
+		// 	'div'    => array(
+		// 		'class' => array(),
+		// 		'style' => array(),
+		// 	),
+		// 	'p'      => array(),
+		// 	'label'  => array(
+		// 		'input'  => array(
+		// 			'checked' => array(),
+		// 			'type'    => array(),
+		// 			'name'    => array(),
+		// 			'value'   => array(),
+		// 		),	
+		// 	),
+
+		// );
+
 		return $filter_output;
 	}
 
-	/**
-	 * Custom field filter style
-	 *
-	 * @param  string $btn_type btn_type.
-	 * @param  string $label label.
-	 * @param  string $all_text all text.
-	 * @param  string $align alignment.
-	 * @param  string $field_key key.
-	 * @param  string $value  field value.
-	 * @param  string $p_count post count.
-	 * @param  string $id shortcode id.
-	 * @param  string $selected selected text.
-	 * @param  string $checked checked.
-	 * @param  bool   $show_count is show post count.
-	 * @return statement
-	 */
-	public static function eventful_custom_field_filter_style($btn_type, $label = 'Custom field', $all_text = 'All', $align = 'center', $field_key = null, $value = null, $p_count = '', $id = '', $selected = '', $checked = '', $show_count = false)
-	{
-		$post_count_markup = '';
-		if ($show_count) {
-			$post_count_markup = '<span class="eventful-count">(' . $p_count . ')</span>';
-		}
-		$a_selected       = $selected;
-		$a_checked        = $checked;
-		$capitalize_value = ucfirst(apply_filters('ta_eventful_custom_meta_filter_value', $value, $field_key)) . $post_count_markup;
-
-		$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
-		if (!empty($filter_url_value)) {
-			$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
-			if ($shortcode_id == $id) {
-				$filter_value = isset($_GET["cf$field_key"]) ? wp_unslash(sanitize_text_field($_GET["cf$field_key"])) : '';
-				if (!empty($filter_value)) {
-					if (strpos($filter_value, ',') !== false) {
-						$filter_value = explode(',', $filter_value);
-					}
-
-					if (is_array($filter_value)) {
-						if (in_array($value, $filter_value)) {
-							$a_checked  = 'checked';
-							$a_selected = 'selected';
-						} else {
-							$is_checked  = $checked;
-							$is_selected = $selected;
-						}
-					} else {
-						if ($filter_value == $value) {
-							$a_checked  = 'checked';
-							$a_selected = 'selected';
-						} else {
-							$a_checked  = $checked;
-							$a_selected = $selected;
-						}
-					}
-				}
-			}
-		}
-
-		if ('fl_checkbox' === $btn_type) {
-			$first_item = '<div class="eventful-custom-field-filter-checkbox eventful-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p>';
-			$push_item  = '<div class="fl_checkbox"><label><input name="' . esc_attr($field_key) . '" type="checkbox" ' . $a_checked . '  value="' . esc_attr($value) . '">' . wp_kses_post($capitalize_value) . '</span></label></div>';
-		} elseif ('fl_radio' === $btn_type) {
-			$all_label  = !empty($all_text) ? $all_text : '';
-			$first_item = '<div class="eventful-custom-field-filter eventful-bar" style="text-align:' . esc_attr($align) . ';"><p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="' . esc_attr($field_key) . '" value="all">' . $all_label . '</label></div>';
-			$push_item  = '<div class="fl_radio"><label><input name="' . esc_attr($field_key) . '" type="radio" ' . $a_checked . ' value="' . esc_attr($value) . '">' . wp_kses_post($capitalize_value) . '</label></div>';
-		} elseif ('fl_btn' === $btn_type) {
-			$all_label  = !empty($all_text) ? '<div>' . esc_html($all_text) . '</div>' : '';
-			$first_item = '<div class="eventful-custom-field-filter eventful-bar fl_button filter-' . $field_key . '" style="text-align:' . esc_attr($align) . ';"> <p>' . esc_html($label) . '</p><div class="fl_radio"><label><input checked type="radio" name="' . esc_attr($field_key) . '" value="all">' . $all_label . '</label></div>';
-			$push_item  = '<div class="fl_radio"><label><input name="' . esc_attr($field_key) . '" type="radio" ' . $a_checked . ' value="' . esc_attr($value) . '"><div>' . wp_kses_post($capitalize_value) . '</div></label></div>';
-		} else {
-			$all_label  = !empty($all_text) ? $all_text : '';
-			$first_item = '<div class="eventful-custom-field-filter eventful-bar" style="text-align:' . esc_attr($align) . ';"> <label class="eventful-label">' . esc_html($label) . '</label><select><option  name="' . $field_key . '" value="all">' . $all_label . '</option>';
-			$push_item  = '<option name="' . $field_key . '" value="' . $value . '" ' . $a_selected . '>' . wp_kses_post($capitalize_value) . ' </option>';
-		}
-		$filter_output = array(
-			'first_item' => $first_item,
-			'push_item'  => $push_item,
-		);
-		return $filter_output;
-	}
 	/**
 	 * Order by filter bar style.
 	 *
@@ -891,7 +847,29 @@ class EFUL_Live_Filter
 			'first_item' => $first_item,
 			'push_item'  => $push_item,
 		);
-		return $filter_output;
+		$allowed_tags = array(
+			'form'  => array(
+				'class' => array(),
+				'style' => array(),
+			),
+			'p'     => array(),
+			'div'   => array(
+				'class' => array(),
+			),
+			'label' => array(),
+			'input' => array(
+				'checked'       => array(),
+				'type'          => array(),
+				'name'          => array(),
+				'data-taxonomy' => array(),
+				'value'         => array(),
+			),
+		);
+
+		echo wp_kses(
+			$filter_output,
+			$allowed_tags
+		);
 	}
 
 	/**

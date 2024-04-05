@@ -168,15 +168,33 @@ class Eventful_Admin
 	{
 
 		$eventful_layouts     = get_post_meta($post_id, 'ta_eventful_layouts', true);
+
+
 		$eventfuls_types = isset($eventful_layouts['eventful_layout_preset']) ? $eventful_layouts['eventful_layout_preset'] : '';
 		switch ($column) {
 			case 'shortcode':
+				$allowed_tags = array(
+					'input' => array(
+						'class' => array(),
+						'style' => array(),
+						'type' => array(),
+						'onClick' => array(),
+						'readonly' => array(),
+						'value' => array(),
+					),
+					'div' => array(
+						'class' => array(),
+					),
+					'i' => array(
+						'class' => array(),
+					),
+				);
 				$column_field = '<input  class="ta_eventful_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="eventful-after-copy-text"><i class="far fa-check-circle"></i> ' . esc_html('Shortcode Copied to Clipboard!', 'eventful') . ' </div>';
-				echo $column_field;
+				echo wp_kses($column_field, $allowed_tags);
 				break;
 			case 'eventful_layout':
 				$layout = ucwords(str_replace('_layout', ' ', $eventfuls_types));
-				esc_html_e($layout, 'eventful');
+				esc_html($layout);
 				break;
 		} // end switch.
 	}

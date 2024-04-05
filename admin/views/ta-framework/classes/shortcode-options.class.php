@@ -237,7 +237,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
 
             echo '</div>';
 
-            echo '<div class="eventful--repeat-button-block"><a class="button eventful--repeat-button" href="#"><i class="fas fa-plus-circle"></i> '. $button_title .'</a></div>';
+            echo '<div class="eventful--repeat-button-block"><a class="button eventful--repeat-button" href="#"><i class="fas fa-plus-circle"></i> '. esc_html($button_title) .'</a></div>';
 
           }
 

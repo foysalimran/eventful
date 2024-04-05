@@ -795,9 +795,9 @@ class EFUL_HTML
 		if (!empty($eventful_custom_js)) {
 			wp_add_inline_script('eventful-script', $eventful_custom_js);
 		}
-		$spta_lang = '';
+		$spsp_lang = '';
 		if (function_exists('pll_current_language')) {
-			$spta_lang = pll_current_language();
+			$spsp_lang = pll_current_language();
 		}
 
 		if ('carousel_layout' === $layout_preset) {

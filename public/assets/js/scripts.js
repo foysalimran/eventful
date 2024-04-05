@@ -933,18 +933,21 @@ jQuery(document).ready(function ($) {
         $(".eventful-author-filter", eventful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
+            var that;
             that = $(this);
             author_id = that.val();
           });
         $(".eventful-order", eventful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
+            var that;
             that = $(this);
             order = $(this).val();
           });
         $(".eventful-order-by", eventful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
+            var that;
             that = $(this);
             orderby = that.val();
           });
@@ -1115,6 +1118,7 @@ jQuery(document).ready(function ($) {
           $(this)
             .find("option:selected, input:radio:checked")
             .each(function () {
+              var that;
               that = $(this);
               author_id = that.val();
             });
@@ -1137,6 +1141,7 @@ jQuery(document).ready(function ($) {
           $(this)
             .find("option:selected, input:radio:checked")
             .each(function () {
+              var that;
               that = $(this);
               order = $(this).val();
             });

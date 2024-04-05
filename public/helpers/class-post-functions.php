@@ -995,7 +995,7 @@ class EFUL_Functions
 				case 'taxonomy':
 					if ('beside_meta' === $each_meta['eventful_meta_position']) {
 					?>
-						<th><?php echo $taxonomy_name; ?></th>
+						<th><?php echo esc_html($taxonomy_name); ?></th>
 					<?php
 					}
 					break;

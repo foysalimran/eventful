@@ -475,7 +475,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 
 				EFUL::include_plugin_file( 'fields/typography/google-fonts.php' );
 
-				wp_enqueue_script( 'eventful-webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array( 'eventful' ), '1.6.28', true );
+				wp_enqueue_script( 'eventful-webfont-loader', EFUL_URL . 'admin/views/ta-framework/assets/js/webfont.js', array( 'eventful' ), '1.6.28', true );
 
 				$webfonts = array();
 

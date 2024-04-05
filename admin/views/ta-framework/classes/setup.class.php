@@ -676,7 +676,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
             $fonts[] = $family . ( ( ! empty( $styles ) ) ? ':'. implode( ',', $styles ) : '' );
           }
 
-          wp_enqueue_script( 'eventful-google-web-fonts', esc_url( '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' ), array(), null );
+          wp_enqueue_script( 'eventful-google-web-fonts', EFUL_URL . 'admin/views/ta-framework/assets/js/webfont.js', array(), '1.6.28', null );
 
           wp_localize_script( 'eventful-google-web-fonts', 'WebFontConfig', array( 'google' => array( 'families' => $fonts ) ) );
 
@@ -701,7 +701,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
     public static function add_custom_css() {
 
       if ( ! empty( self::$css ) ) {
-        echo '<style type="text/css">'. wp_strip_all_tags( self::$css ) .'</style>';
+        echo '<style type="text/css">'. esc_html(wp_strip_all_tags( self::$css )) .'</style>';
       }
 
     }

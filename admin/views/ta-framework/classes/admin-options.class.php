@@ -202,10 +202,13 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
 
     // set options
     public function set_options( $ajax = false ) {
+      if (!current_user_can('manage_options')) {
+        return;
+      }
 
       // XSS ok.
       // No worries, This "POST" requests is sanitizing in the below foreach. see #L337 - #L341
-      $response  = ( $ajax && ! empty( $_POST['data'] ) ) ? json_decode( wp_unslash( trim( $_POST['data'] ) ), true ) : $_POST;
+      $response  = ( $ajax && ! empty( $_POST['data']) ) ? json_decode( wp_unslash( trim( sanitize_text_field($_POST['data']) ) ), true ) : $_POST;
 
       // Set variables.
       $data      = array();

@@ -131,6 +131,7 @@ class Eventful_Public
 			)
 		);
 		$post_ids        = wp_list_pluck($eventful_posts->posts, 'ID');
+
 		$custom_css      = '';
 		$enqueue_fonts   = array();
 		$setting_options = get_option('ta_eventful_settings');
@@ -140,15 +141,20 @@ class Eventful_Public
 		foreach ($post_ids as $eventful_id) {
 			// Include dynamic style file.
 			$view_options = get_post_meta($eventful_id, 'ta_eventful_view_options', true);
+
 			$layouts      = get_post_meta($eventful_id, 'ta_eventful_layouts', true);
 			include 'dynamic-css/dynamic-css.php';
 
 			if ($eventful_enqueue_google_font) {
 				// Google fonts.
 				$view_options     = get_post_meta($eventful_id, 'ta_eventful_view_options', true);
+	
+
 				$all_fonts        = array();
 				$eventful_typography   = array();
+			
 				$eventful_typography[] = $view_options['section_title_typography'];
+
 				$eventful_typography[] = $view_options['post_title_typography'];
 				$eventful_typography[] = $view_options['post_meta_typography'];
 				$eventful_typography[] = $view_options['post_content_typography'];
@@ -200,9 +206,9 @@ class Eventful_Public
 	 */
 	public function enqueue_scripts()
 	{
-		wp_register_script('eventful-swiper', EFUL_URL . 'public/assets/js/swiper-bundle' . $this->suffix . '.js', array('jquery'), EFUL_VERSION, true);
-		wp_register_script('eventful-isotope', EFUL_URL . 'public/assets/js/isotope' . $this->suffix . '.js', array('jquery'), EFUL_VERSION, true);
-		wp_register_script('eventful-bxslider', EFUL_URL . 'public/assets/js/jquery.bxslider' . $this->suffix . '.js', array('jquery'), EFUL_VERSION, true);
+		wp_register_script('eventful-swiper', EFUL_URL . 'public/assets/js/swiper-bundle' . $this->suffix . '.js', array('jquery'), '6.5.7', true);
+		wp_register_script('eventful-isotope', EFUL_URL . 'public/assets/js/isotope' . $this->suffix . '.js', array('jquery'), '4.1.4', true);
+		wp_register_script('eventful-bxslider', EFUL_URL . 'public/assets/js/jquery.bxslider' . $this->suffix . '.js', array('jquery'), '4.2.1d', true);
 		wp_register_script('eventful-lazy', EFUL_URL . 'public/assets/js/eventful-lazyload' . $this->suffix . '.js', array('jquery'), EFUL_VERSION, true);
 		wp_register_script('eventful-script', EFUL_URL . 'public/assets/js/scripts' . $this->suffix . '.js', array('eventful-swiper', 'eventful-bxslider'), EFUL_VERSION, true);
 		wp_localize_script(
@@ -296,6 +302,10 @@ class Eventful_Public
 	 */
 	public static function post_pagination_bar()
 	{
+		if (!current_user_can('manage_options')) {
+			return;
+		}
+		
 		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'speventful_nonce')) {
 			return false;
 		}
