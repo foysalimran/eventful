@@ -15,7 +15,7 @@ if (!function_exists('eventful_get_icons')) {
 		$nonce = (!empty($_POST['nonce'])) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
 
 		if (!wp_verify_nonce($nonce, 'eventful_icon_nonce')) {
-			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'ta-framework')));
+			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'eventful' )));
 		}
 
 		ob_start();
@@ -38,7 +38,7 @@ if (!function_exists('eventful_get_icons')) {
 			}
 		} else {
 
-			echo '<div class="eventful-error-text">' . esc_html__('No data available.', 'ta-framework') . '</div>';
+			echo '<div class="eventful-error-text">' . esc_html__('No data available.', 'eventful' ) . '</div>';
 		}
 
 		$content = ob_get_clean();
@@ -63,11 +63,11 @@ if (!function_exists('eventful_export')) {
 		$unique = (!empty($_GET['unique'])) ? sanitize_text_field(wp_unslash($_GET['unique'])) : '';
 
 		if (!wp_verify_nonce($nonce, 'eventful_backup_nonce')) {
-			die(esc_html__('Error: Invalid nonce verification.', 'ta-framework'));
+			die(esc_html__('Error: Invalid nonce verification.', 'eventful' ));
 		}
 
 		if (empty($unique)) {
-			die(esc_html__('Error: Invalid key.', 'ta-framework'));
+			die(esc_html__('Error: Invalid key.', 'eventful' ));
 		}
 
 		// Export
@@ -100,15 +100,15 @@ if (!function_exists('eventful_import_ajax')) {
 		$data   = (!empty($_POST['data'])) ? wp_kses_post_deep(json_decode(wp_unslash(trim($_POST['data'])), true)) : array();
 
 		if (!wp_verify_nonce($nonce, 'eventful_backup_nonce')) {
-			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'ta-framework')));
+			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'eventful' )));
 		}
 
 		if (empty($unique)) {
-			wp_send_json_error(array('error' => esc_html__('Error: Invalid key.', 'ta-framework')));
+			wp_send_json_error(array('error' => esc_html__('Error: Invalid key.', 'eventful' )));
 		}
 
 		if (empty($data) || !is_array($data)) {
-			wp_send_json_error(array('error' => esc_html__('Error: The response is not a valid JSON response.', 'ta-framework')));
+			wp_send_json_error(array('error' => esc_html__('Error: The response is not a valid JSON response.', 'eventful' )));
 		}
 
 		// Success
@@ -134,7 +134,7 @@ if (!function_exists('eventful_reset_ajax')) {
 		$unique = (!empty($_POST['unique'])) ? sanitize_text_field(wp_unslash($_POST['unique'])) : '';
 
 		if (!wp_verify_nonce($nonce, 'eventful_backup_nonce')) {
-			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'ta-framework')));
+			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'eventful' )));
 		}
 
 		// Success
@@ -165,17 +165,17 @@ if (!function_exists('eventful_chosen_ajax')) {
 		$query = (!empty($_POST['query_args'])) ? wp_kses_post_deep($_POST['query_args']) : array();
 
 		if (!wp_verify_nonce($nonce, 'eventful_chosen_ajax_nonce')) {
-			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'ta-framework')));
+			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'eventful' )));
 		}
 
 		if (empty($type) || empty($term)) {
-			wp_send_json_error(array('error' => esc_html__('Error: Invalid term ID.', 'ta-framework')));
+			wp_send_json_error(array('error' => esc_html__('Error: Invalid term ID.', 'eventful' )));
 		}
 
 		$capability = apply_filters('eventful_chosen_ajax_capability', 'manage_options');
 
 		if (!current_user_can($capability)) {
-			wp_send_json_error(array('error' => esc_html__('Error: You do not have permission to do that.', 'ta-framework')));
+			wp_send_json_error(array('error' => esc_html__('Error: You do not have permission to do that.', 'eventful' )));
 		}
 
 		// Success
