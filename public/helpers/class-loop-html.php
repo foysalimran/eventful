@@ -749,7 +749,7 @@ class EFUL_HTML
 	{
 		$options              = $view_options;
 		$layout_preset        = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : 'carousel_layout';
-		$eventful_settings         = get_option('ta_eventful_settings');
+		$eventful_settings         = get_option('eful_settings');
 		$grid_style           = isset($view_options['eventful_grid_style']) ? $view_options['eventful_grid_style'] : 'even';
 		$post_content_sorter  = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';
 		$show_section_title   = isset($view_options['section_title']) ? $view_options['section_title'] : false;

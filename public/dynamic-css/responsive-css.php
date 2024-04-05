@@ -8,7 +8,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$eventful_settings                  = get_option( 'ta_eventful_settings' );
+$eventful_settings                  = get_option( 'eful_settings' );
 $eventful_responsive_screen_setting = isset( $eventful_settings['eventful_responsive_screen_setting'] ) ? $eventful_settings['eventful_responsive_screen_setting'] : '';
 $desktop_screen_size           = isset( $eventful_responsive_screen_setting ['desktop'] ) ? $eventful_responsive_screen_setting ['desktop'] : '1200';
 $tablet_screen_size            = isset( $eventful_responsive_screen_setting ['tablet'] ) ? $eventful_responsive_screen_setting ['tablet'] : '992';

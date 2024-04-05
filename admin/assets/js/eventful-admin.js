@@ -8,7 +8,7 @@
   
 	$(function () {
 	  /* Preloader */
-	  $("#ta_eventful_view_options .eventful-metabox").css("visibility", "hidden");
+	  $("#eful_view_options .eventful-metabox").css("visibility", "hidden");
   
 	  var PCP_layout_type = $(
 		'#eventful-section-eful_layouts_1 .eventful-field-layout_preset .eventful-siblings .eventful--sibling'
@@ -22,14 +22,14 @@
 	  // Carousel Layout.
 	  if (PCP_get_layout_value !== 'carousel_layout') {
 		$(
-		  '#ta_eventful_view_options .eventful-nav ul li.menu-item_ta_eventful_view_options_3'
+		  '#eful_view_options .eventful-nav ul li.menu-item_eful_view_options_3'
 		).hide()
 		$(
-		  '#ta_eventful_view_options .eventful-nav ul li.menu-item_ta_eventful_view_options_1 a'
+		  '#eful_view_options .eventful-nav ul li.menu-item_eful_view_options_1 a'
 		).trigger('click');
 	  } else {
 		$(
-		  '#ta_eventful_view_options .eventful-nav ul li.menu-item_ta_eventful_view_options_3'
+		  '#eful_view_options .eventful-nav ul li.menu-item_eful_view_options_3'
 		).show()
 	  }
   
@@ -42,21 +42,21 @@
 		// Carousel Layout.
 		if (PCP_get_layout_value !== 'carousel_layout') {
 		  $(
-			'#ta_eventful_view_options .eventful-nav ul li.menu-item_ta_eventful_view_options_3'
+			'#eful_view_options .eventful-nav ul li.menu-item_eful_view_options_3'
 		  ).hide()
 		  $(
-			'#ta_eventful_view_options .eventful-nav ul li.menu-item_ta_eventful_view_options_1 a'
+			'#eful_view_options .eventful-nav ul li.menu-item_eful_view_options_1 a'
 		  ).trigger('click');
 		} else {
 		  $(
-			'#ta_eventful_view_options .eventful-nav ul li.menu-item_ta_eventful_view_options_3'
+			'#eful_view_options .eventful-nav ul li.menu-item_eful_view_options_3'
 		  ).show()
 		}
 	  })
   
 	  /* Preloader js */
-	  $("#ta_eventful_view_options .eventful-metabox").css({ "backgroundImage": "none", "visibility": "visible", "minHeight": "auto" });
-	  $("#ta_eventful_view_options .eventful-nav-metabox li").css("opacity", 1);
+	  $("#eful_view_options .eventful-metabox").css({ "backgroundImage": "none", "visibility": "visible", "minHeight": "auto" });
+	  $("#eful_view_options .eventful-nav-metabox li").css("opacity", 1);
   
 	  /* Copy to clipboard */
 	  $('.eventful-shortcode-selectable').on('click',function (e) {
@@ -77,7 +77,7 @@
 		  }, 0);
 		}, 2000);
 	  });
-	  $('.ta_eventful_input').on('click',function (e) {
+	  $('.eful_input').on('click',function (e) {
 		e.preventDefault();
 		/* Get the text field */
 		var copyText = $(this);

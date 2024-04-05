@@ -44,9 +44,9 @@ class Eventful_Admin
 		spl_autoload_register(array($this, 'autoload'));
 
 		EFUL_Metaboxes::layout_metabox('eful_layouts');
-		EFUL_Metaboxes::option_metabox('ta_eventful_view_options');
-		EFUL_Metaboxes::shortcode_metabox('ta_eventful_display_shortcode');
-		EFUL_Settings::settings('ta_eventful_settings');
+		EFUL_Metaboxes::option_metabox('eful_view_options');
+		EFUL_Metaboxes::shortcode_metabox('eful_display_shortcode');
+		EFUL_Settings::settings('eful_settings');
 
 		$active_plugins = get_option('active_plugins');
 		foreach ($active_plugins as $active_plugin) {
@@ -78,8 +78,8 @@ class Eventful_Admin
 		if (isset($name[1])) {
 			$class_name       = strtolower($name[1]);
 			$eventful_config_paths = array('views/', 'views/configs/settings/', 'views/configs/generator/');
-			foreach ($eventful_config_paths as $ta_eventful_path) {
-				$filename = plugin_dir_path(__FILE__) . '/' . $ta_eventful_path . 'class-eventful-' . $class_name . '.php';
+			foreach ($eventful_config_paths as $eful_path) {
+				$filename = plugin_dir_path(__FILE__) . '/' . $eful_path . 'class-eventful-' . $class_name . '.php';
 				if (file_exists($filename)) {
 					require_once $filename;
 				}
@@ -189,7 +189,7 @@ class Eventful_Admin
 						'class' => array(),
 					),
 				);
-				$column_field = '<input  class="ta_eventful_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="eventful-after-copy-text"><i class="far fa-check-circle"></i> ' . esc_html('Shortcode Copied to Clipboard!', 'eventful') . ' </div>';
+				$column_field = '<input  class="eful_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="eventful-after-copy-text"><i class="far fa-check-circle"></i> ' . esc_html('Shortcode Copied to Clipboard!', 'eventful') . ' </div>';
 				echo wp_kses($column_field, $allowed_tags);
 				break;
 			case 'eventful_layout':

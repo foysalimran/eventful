@@ -151,9 +151,9 @@ class EFUL_Functions
 
 
 			if ($is_page_content) {
-				$post_content = apply_filters('ta_eventful_the_content', strip_shortcodes($post->post_content));
+				$post_content = apply_filters('eful_the_content', strip_shortcodes($post->post_content));
 			} else {
-				$post_content = apply_filters('ta_eventful_the_content', $post->post_content);
+				$post_content = apply_filters('eful_the_content', $post->post_content);
 			}
 			if ('allow_some' === $eventful_strip_tags) {
 				$eventful_post_content = strip_tags($post_content, self::short_tag_to_html($allowed_tags));
@@ -164,9 +164,9 @@ class EFUL_Functions
 			}
 		} else {
 			if ($is_page_content) {
-				$post_content = apply_filters('ta_eventful_the_content', strip_shortcodes($post->post_content));
+				$post_content = apply_filters('eful_the_content', strip_shortcodes($post->post_content));
 			} else {
-				$post_content = apply_filters('ta_eventful_the_content', $post->post_content);
+				$post_content = apply_filters('eful_the_content', $post->post_content);
 			}
 			if ('characters' === $eventful_content_length_type) {
 				$_trimmed_content = ('strip_all' === $eventful_strip_tags) ? wp_html_excerpt($post_content, $eventful_content_characters_limit, $post_content_ellipsis) : self::limit_content_chr($post_content, $eventful_content_characters_limit, $post_content_ellipsis);
@@ -370,9 +370,9 @@ class EFUL_Functions
 			if (('custom' === $image_sizes) && (!empty($post_image_width) && $thumb_full_src[1] >= $post_image_width) && (!empty($post_image_height) && $thumb_full_src[2] >= $post_image_height)) {
 				$hard_crop = 'Hard-crop' === $post_image_crop ? true : false;
 
-				$image = ta_eventful_resize($thumb_full_src[0], $post_image_width, $post_image_height, $hard_crop);
+				$image = eful_resize($thumb_full_src[0], $post_image_width, $post_image_height, $hard_crop);
 				if ($show_2x_image && ($thumb_full_src[1] >= ($post_image_width * 2)) && $thumb_full_src[2] >= ($post_image_height * 2)) {
-					$image_resize_2x_url = ta_eventful_resize($thumb_full_src[0], $post_image_width * 2, $post_image_height * 2, $hard_crop);
+					$image_resize_2x_url = eful_resize($thumb_full_src[0], $post_image_width * 2, $post_image_height * 2, $hard_crop);
 				} elseif ($show_2x_image && (($post_image_width * 2) === $thumb_full_src[1]) && ($post_image_height * 2) === $thumb_full_src[2]) {
 					$image_resize_2x_url = $thumb_full_src[0];
 				}
@@ -434,7 +434,7 @@ class EFUL_Functions
 			if (('custom' === $image_sizes) && (!empty($post_image_width) && $thumb_full_src[1] >= $post_image_width) && (!empty($post_image_height) && $thumb_full_src[2] >= $post_image_height)) {
 				$hard_crop = 'Hard-crop' === $post_image_crop ? true : false;
 
-				$image        = ta_eventful_resize($thumb_full_src[0], $post_image_width, $post_image_height, $hard_crop);
+				$image        = eful_resize($thumb_full_src[0], $post_image_width, $post_image_height, $hard_crop);
 				$image_width  = $post_image_width;
 				$image_height = $post_image_height;
 			} else {
@@ -587,7 +587,7 @@ class EFUL_Functions
 	{
 		// For audio post type - grab.
 		$post    = get_post($slide_id);
-		$content = do_shortcode(apply_filters('ta_eventful_the_content', $post->post_content));
+		$content = do_shortcode(apply_filters('eful_the_content', $post->post_content));
 		$embeds  = apply_filters('eventful_get_post_audio', get_media_embedded_in_content($content));
 		if (empty($embeds)) {
 			return '';
@@ -1164,7 +1164,7 @@ class EFUL_Functions
 		if (!$eventful_gl_id) {
 			return;
 		}
-		$view_options = get_post_meta($eventful_gl_id, 'ta_eventful_view_options', true);
+		$view_options = get_post_meta($eventful_gl_id, 'eful_view_options', true);
 		return $view_options;
 	}
 

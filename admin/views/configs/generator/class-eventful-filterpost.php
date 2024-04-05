@@ -39,7 +39,7 @@ class EFUL_FilterPost {
 						'ajax'        => true,
 						'sortable'    => true,
 						'chosen'      => true,
-						'class'       => 'ta_eventful_include_only_posts',
+						'class'       => 'eful_include_only_posts',
 						'multiple'    => true,
 						'placeholder' => esc_html__( 'Choose posts', 'eventful' ),
 						'query_args'  => array(
@@ -53,14 +53,14 @@ class EFUL_FilterPost {
 						'type'     => 'fieldset',
 						'title'    => esc_html__( 'Exclude', 'eventful' ),
 						'subtitle' => esc_html__( 'Choose posts to exclude by title.', 'eventful' ),
-						'class'    => 'ta_eventful_exclude_post_set',
+						'class'    => 'eful_exclude_post_set',
 						'fields'   => array(
 							array(
 								'id'          => 'eventful_exclude_posts',
 								'type'        => 'select',
 								'options'     => 'posts',
 								'chosen'      => true,
-								'class'       => 'ta_eventful_exclude_posts',
+								'class'       => 'eful_exclude_posts',
 								'multiple'    => true,
 								'ajax'        => true,
 								'placeholder' => esc_html__( 'Choose posts to exclude', 'eventful' ),
@@ -74,7 +74,7 @@ class EFUL_FilterPost {
 							array(
 								'id'      => 'eventful_exclude_too',
 								'type'    => 'checkbox',
-								'class'   => 'ta_eventful_exclude_too',
+								'class'   => 'eful_exclude_too',
 								'options' => array(
 									'current'            => esc_html__( 'Current Post', 'eventful' ),
 									'password_protected' => esc_html__( 'Password Protected Posts', 'eventful' ),
@@ -138,7 +138,7 @@ class EFUL_FilterPost {
 												'id'      => 'eventful_select_taxonomy',
 												'type'    => 'select',
 												'title'   => esc_html__( 'Select Taxonomy', 'eventful' ),
-												'class'   => 'ta_eventful_post_taxonomy',
+												'class'   => 'eful_post_taxonomy',
 												'options' => 'taxonomy',
 												'query_args' => array(
 													'type' => 'post',
@@ -161,7 +161,7 @@ class EFUL_FilterPost {
 												'title'    => esc_html__( 'Choose Term(s)', 'eventful' ),
 												'title_help' => esc_html__( 'Choose the taxonomy term(s) to show the posts from. Leave empty to show all found taxonomy term(s).', 'eventful' ),
 												'options'  => 'terms',
-												'class'    => 'ta_eventful_taxonomy_terms',
+												'class'    => 'eful_taxonomy_terms',
 												'width'    => '300px',
 												'multiple' => true,
 												'sortable' => true,

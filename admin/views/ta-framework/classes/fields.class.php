@@ -294,7 +294,7 @@ if (!class_exists('EFUL_Fields')) {
         case 'taxonomies':
         case 'taxonomy':
           global $post;
-          $view_options       = get_post_meta($post->ID, 'ta_eventful_view_options', true);
+          $view_options       = get_post_meta($post->ID, 'eful_view_options', true);
           $eventful_post_types     = 'tribe_events';
           $taxonomy_names = get_object_taxonomies($eventful_post_types, 'names');
           if (!is_wp_error($taxonomy_names) && !empty($taxonomy_names)) {
@@ -308,7 +308,7 @@ if (!class_exists('EFUL_Fields')) {
         case 'terms':
         case 'term':
           global $post;
-          $view_options   = get_post_meta($post->ID, 'ta_eventful_view_options', true);
+          $view_options   = get_post_meta($post->ID, 'eful_view_options', true);
           $eventful_post_types = 'tribe_events';
           if ($field_unique !== null) {
             $field_index = preg_replace('/[^0-9]/', '', $field_unique);
