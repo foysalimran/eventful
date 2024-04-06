@@ -47,18 +47,18 @@ if ( ! class_exists( 'EFUL_Field_wp_editor' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			echo ( eventful_wp_editor_api() ) ? '<div class="eventful-wp-editor" data-editor-settings="' . esc_attr( wp_json_encode( $editor_settings ) ) . '">' : '';
+			echo ( eful__wp_editor_api() ) ? '<div class="eventful-wp-editor" data-editor-settings="' . esc_attr( wp_json_encode( $editor_settings ) ) . '">' : '';
 
 			echo '<textarea name="' . esc_attr( $this->field_name() ) . '"' . wp_kses_post( $this->field_attributes( $attributes ) ) . wp_kses_post( $editor_height ) . '>' . wp_kses_post( $this->value ) . '</textarea>';
 
-			echo ( eventful_wp_editor_api() ) ? '</div>' : '';
+			echo ( eful__wp_editor_api() ) ? '</div>' : '';
 
 			echo wp_kses_post( $this->field_after() );
 		}
 
 		public function enqueue() {
 
-			if ( eventful_wp_editor_api() && function_exists( 'wp_enqueue_editor' ) ) {
+			if ( eful__wp_editor_api() && function_exists( 'wp_enqueue_editor' ) ) {
 
 				wp_enqueue_editor();
 
@@ -90,7 +90,7 @@ if ( ! class_exists( 'EFUL_Field_wp_editor' ) ) {
 		// Setup wp editor settings
 		public function setup_wp_editor_settings() {
 
-			if ( eventful_wp_editor_api() && class_exists( '_WP_Editors' ) ) {
+			if ( eful__wp_editor_api() && class_exists( '_WP_Editors' ) ) {
 
 				$defaults = apply_filters(
 					'eventful_wp_editor',

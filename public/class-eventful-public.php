@@ -42,7 +42,7 @@ class Eventful_Public
 	public function __construct()
 	{
 		$this->load_public_dependencies();
-		$this->eventful_public_action();
+		$this->eful_public_action();
 	}
 
 	private function load_public_dependencies()
@@ -58,7 +58,7 @@ class Eventful_Public
 		require_once EFUL_PATH . 'public/helpers/class-loop-html.php';
 	}
 
-	private function eventful_public_action()
+	private function eful_public_action()
 	{
 
 		add_action('wp_ajax_post_grid_ajax', array($this, 'post_grid_ajax'));
@@ -76,10 +76,10 @@ class Eventful_Public
 		add_action('wp_ajax_post_pagination_bar_mobile', array($this, 'post_pagination_bar_mobile'));
 		add_action('wp_ajax_nopriv_post_pagination_bar_mobile', array($this, 'post_pagination_bar_mobile'));
 
-		add_action('wp_ajax_eventful_post_order', array($this, 'eventful_post_order'));
-		add_action('wp_ajax_nopriv_eventful_post_order', array($this, 'eventful_post_order'));
+		add_action('wp_ajax_eful_post_order', array($this, 'eful_post_order'));
+		add_action('wp_ajax_nopriv_eful_post_order', array($this, 'eful_post_order'));
 
-		add_shortcode('eventful', array($this, 'eventful_shortcode_render'));
+		add_shortcode('eventful', array($this, 'eful_shortcode_render'));
 
 		$this->suffix = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) || (defined('WP_DEBUG') && WP_DEBUG) ? '' : '.min';
 	}
@@ -387,7 +387,7 @@ class Eventful_Public
 	/**
 	 * Post Ajax filter.
 	 */
-	public static function eventful_post_order()
+	public static function eful_post_order()
 	{
 		if (isset($_POST['nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'speventful_nonce')) {
 			return false;
@@ -431,7 +431,7 @@ class Eventful_Public
 	 * @since 2.0
 	 * @param array $attribute attribute of this shortcode.
 	 */
-	public function eventful_shortcode_render($attribute)
+	public function eful_shortcode_render($attribute)
 	{
 		if (empty($attribute['id'])) {
 			return;

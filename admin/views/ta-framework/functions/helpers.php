@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! function_exists( 'eventful_array_search' ) ) {
-	function eventful_array_search( $array, $key, $value ) {
+if ( ! function_exists( 'eful_array_search' ) ) {
+	function eful_array_search( $array, $key, $value ) {
 
 		$results = array();
 
@@ -18,7 +18,7 @@ if ( ! function_exists( 'eventful_array_search' ) ) {
 			}
 
 			foreach ( $array as $sub_array ) {
-				$results = array_merge( $results, eventful_array_search( $sub_array, $key, $value ) );
+				$results = array_merge( $results, eful_array_search( $sub_array, $key, $value ) );
 			}
 		}
 
@@ -33,8 +33,8 @@ if ( ! function_exists( 'eventful_array_search' ) ) {
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! function_exists( 'eventful_timeout' ) ) {
-	function eventful_timeout( $timenow, $starttime, $timeout = 30 ) {
+if ( ! function_exists( 'eful_timeout' ) ) {
+	function eful_timeout( $timenow, $starttime, $timeout = 30 ) {
 		return ( ( $timenow - $starttime ) < $timeout ) ? true : false;
 	}
 }
@@ -46,8 +46,8 @@ if ( ! function_exists( 'eventful_timeout' ) ) {
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! function_exists( 'eventful_wp_editor_api' ) ) {
-	function eventful_wp_editor_api() {
+if ( ! function_exists( 'eful__wp_editor_api' ) ) {
+	function eful__wp_editor_api() {
 		global $wp_version;
 		return version_compare( $wp_version, '4.8', '>=' );
 	}

@@ -258,7 +258,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
         add_action( 'enqueue_block_editor_assets', array( 'EFUL_Shortcoder', 'add_guteberg_blocks' ) );
       }
 
-      if ( eventful_wp_editor_api() ) {
+      if ( eful__wp_editor_api() ) {
         add_action( 'media_buttons', array( 'EFUL_Shortcoder', 'add_media_buttons' ) );
       }
 

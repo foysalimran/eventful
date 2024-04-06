@@ -11,14 +11,14 @@
 if ( is_array( $advanced_filter ) && ! $eventful_query->is_main_query() ) {
 	ob_start();
 		EFUL_Live_Filter::eventful_live_filter( $view_options, $query_args, $eventful_gl_id );
-		EFUL_Live_Filter::eventful_author_filter( $view_options, $query_args );
-		EFUL_Live_Filter::eventful_custom_filter_filter( $view_options, $query_args, $eventful_gl_id );
+		EFUL_Live_Filter::eful_author_filter( $view_options, $query_args );
+		EFUL_Live_Filter::eful_custom_filter_filter( $view_options, $query_args, $eventful_gl_id );
 	$filter_bar = ob_get_clean();
 
 	ob_start();
-		EFUL_Live_Filter::eventful_orderby_filter_bar( $view_options, $eventful_query, $eventful_gl_id );
-		EFUL_Live_Filter::eventful_order_filter_bar( $view_options, $eventful_gl_id );
-		EFUL_Live_Filter::eventful_live_search_bar( $view_options, $eventful_gl_id );
+		EFUL_Live_Filter::eful_orderby_filter_bar( $view_options, $eventful_query, $eventful_gl_id );
+		EFUL_Live_Filter::eful_order_filter_bar( $view_options, $eventful_gl_id );
+		EFUL_Live_Filter::eful_live_search_bar( $view_options, $eventful_gl_id );
 	$ex_filter_bar = ob_get_clean();
 
 

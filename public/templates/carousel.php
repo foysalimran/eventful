@@ -131,7 +131,7 @@ if ( 'center' === $carousel_mode ) {
 <div id="eventful_wrapper-<?php echo esc_html( $eventful_gl_id ); ?>" class="<?php self::eventful_wrapper_classes( $layout_preset, $eventful_gl_id, $pagination_type, $item_same_height_class ); ?> <?php self::wrapper_data( $pagination_type, $pagination_type_mobile, $eventful_gl_id ); ?> <?php echo esc_html( $carousel_mode ); ?>" data-sid="<?php echo esc_html( $eventful_gl_id ); ?>">
 
 <?php
-	EFUL_HTML::eventful_section_title( $section_title, $show_section_title );
+	EFUL_HTML::eful_section_title( $section_title, $show_section_title );
 	EFUL_HTML::eventful_preloader( $show_preloader );
 ?>
 <?php require EFUL_Functions::eventful_locate_template('filter-bar.php'); ?>

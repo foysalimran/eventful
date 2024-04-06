@@ -125,7 +125,7 @@ class EFUL_HTML
 	 * @param array $options options.
 	 * @return void
 	 */
-	public static function eventful_read_more_html($sorter, $options, $post, $is_table = false)
+	public static function eful_read_more_html($sorter, $options, $post, $is_table = false)
 	{
 		$post_content_setting = EFUL_Functions::eventful_metabox_value('eventful_post_content_readmore', $sorter);
 		$show_read_more                = EFUL_Functions::eventful_metabox_value('show_read_more', $post_content_setting);
@@ -175,7 +175,7 @@ class EFUL_HTML
 	 * @param array $options The slide/post ID.
 	 * @return void
 	 */
-	public static function eventful_post_thumb_html($sorter, $scode_id, $post, $options, $layout, $is_table = false)
+	public static function eful_post_thumb_html($sorter, $scode_id, $post, $options, $layout, $is_table = false)
 	{
 		$_post_thumb_setting = EFUL_Functions::eventful_metabox_value('eventful_post_thumb', $sorter);
 		$eventful_page_link_type  = EFUL_Functions::eventful_metabox_value('eventful_page_link_type', $options);
@@ -279,7 +279,7 @@ class EFUL_HTML
 	 * @param int   $visitor_count views count.
 	 * @return void
 	 */
-	public static function eventful_event_fildes_html($sorter, $visitor_count, $post, $is_table = false)
+	public static function eful_event_fildes_html($sorter, $visitor_count, $post, $is_table = false)
 	{
 		$_meta_settings   = EFUL_Functions::eventful_metabox_value('eventful_event_fildes', $sorter);
 		$event_fildes_fields = EFUL_Functions::eventful_metabox_value('eventful_event_fildes_group', $_meta_settings);
@@ -306,13 +306,13 @@ class EFUL_HTML
 	 * @param object $post The Post object.
 	 * @return void
 	 */
-	public static function eventful_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $is_table = false)
+	public static function eful_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $is_table = false)
 	{
 		if ($sorter) {
 			foreach ($sorter as $style_key => $style_value) {
 				switch ($style_key) {
 					case 'eventful_post_thumb':
-						self::eventful_post_thumb_html($sorter, $scode_id, $post, $options, $layout, $is_table);
+						self::eful_post_thumb_html($sorter, $scode_id, $post, $options, $layout, $is_table);
 						break;
 					case 'eventful_post_title':
 						self::eventful_post_title($sorter, $layout, $options, $post, $is_table);
@@ -321,13 +321,13 @@ class EFUL_HTML
 						self::eventful_content_html($sorter, $options, $post, $is_table);
 						break;
 					case 'eventful_post_content_readmore':
-						self::eventful_read_more_html($sorter, $options, $post, $is_table);
+						self::eful_read_more_html($sorter, $options, $post, $is_table);
 						break;
 					case 'eventful_post_meta':
 						self::eventful_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'eventful_event_fildes':
-						self::eventful_event_fildes_html($sorter, $visitor_count, $post, $is_table);
+						self::eful_event_fildes_html($sorter, $visitor_count, $post, $is_table);
 						break;
 				}
 			}
@@ -344,7 +344,7 @@ class EFUL_HTML
 	 * @param array  $options Shortcode options.
 	 * @return void
 	 */
-	public static function eventful_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $is_table = false)
+	public static function eful_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options, $is_table = false)
 	{
 		if ($sorter) {
 			foreach ($sorter as $style_key => $style_value) {
@@ -356,13 +356,13 @@ class EFUL_HTML
 						self::eventful_content_html($sorter, $options, $post, $is_table);
 						break;
 					case 'eventful_post_content_readmore':
-						self::eventful_read_more_html($sorter, $options, $post, $is_table);
+						self::eful_read_more_html($sorter, $options, $post, $is_table);
 						break;
 					case 'eventful_post_meta':
 						self::eventful_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'eventful_event_fildes':
-						self::eventful_event_fildes_html($sorter, $visitor_count, $post, $is_table);
+						self::eful_event_fildes_html($sorter, $visitor_count, $post, $is_table);
 						break;
 				}
 			}
@@ -374,18 +374,18 @@ class EFUL_HTML
 	 *
 	 * @return string
 	 */
-	public static function eventful_alt_post_class($options, $layout_preset)
+	public static function eful_alt_post_class($options, $layout_preset)
 	{
 		if ('carousel_layout' === $layout_preset || 'grid_layout' === $layout_preset) {
 			if ('overlay' === EFUL_Functions::eventful_metabox_value('post_content_orientation', $options)) {
-				$eventful_alt_post_class = 'ta-overlay eventful__item';
+				$eful_alt_post_class = 'ta-overlay eventful__item';
 			} else {
-				$eventful_alt_post_class = 'eventful__item';
+				$eful_alt_post_class = 'eventful__item';
 			}
 		} else {
-			$eventful_alt_post_class = 'eventful__item';
+			$eful_alt_post_class = 'eventful__item';
 		}
-		return apply_filters('post_post_class_name', $eventful_alt_post_class);
+		return apply_filters('post_post_class_name', $eful_alt_post_class);
 	}
 
 	/**
@@ -547,11 +547,11 @@ class EFUL_HTML
 	 * @return void
 	 */
 
-	public static function eventful_section_title($section_title_text, $show_section_title)
+	public static function eful_section_title($section_title_text, $show_section_title)
 	{
 
 		if ($show_section_title) {
-			$section_title_text = apply_filters('eventful_section_title_text', $section_title_text);
+			$section_title_text = apply_filters('eful_section_title_text', $section_title_text);
 			ob_start();
 			do_action('eventful_before_section_title');
 			include EFUL_Functions::eventful_locate_template('section-title.php');
@@ -625,7 +625,7 @@ class EFUL_HTML
 	 * @param string $columns Columns number.
 	 * @return string
 	 */
-	public static function eventful_post_responsive_columns($layout, $columns)
+	public static function eful_post_responsive_columns($layout, $columns)
 	{
 
 		$eventful_post_columns = '';
@@ -657,10 +657,10 @@ class EFUL_HTML
 		}
 		if (('carousel_layout' === $layout || 'grid_layout' === $layout || 'filter_layout' === $layout) && ('default' === EFUL_Functions::eventful_metabox_value('post_content_orientation', $options))) {
 		?>
-			<div class="<?php echo esc_attr(self::eventful_post_responsive_columns($layout, $number_of_columns, $post->ID)); ?>">
+			<div class="<?php echo esc_attr(self::eful_post_responsive_columns($layout, $number_of_columns, $post->ID)); ?>">
 				<div class="eventful__item eventful-item-<?php echo esc_attr($post->ID); ?>" data-id="<?php echo esc_attr($post->ID); ?>">
 					<?php
-					self::eventful_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options);
+					self::eful_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options);
 					?>
 				</div>
 				<?php if ('carousel_layout' === $layout && $lazy_load && 'ticker' !== EFUL_Functions::eventful_metabox_value('eventful_carousel_mode', $options)) { ?>
@@ -677,14 +677,14 @@ class EFUL_HTML
 				$animation_class = '';
 			}
 		?>
-			<div class="<?php echo esc_attr(self::eventful_post_responsive_columns($layout, $number_of_columns, $post->ID)); ?>">
-				<div class="<?php echo esc_attr(self::eventful_alt_post_class($options, $layout)); ?> eventful-item-<?php echo esc_attr($post->ID); ?>" data-id="<?php echo esc_attr($post->ID); ?>">
+			<div class="<?php echo esc_attr(self::eful_post_responsive_columns($layout, $number_of_columns, $post->ID)); ?>">
+				<div class="<?php echo esc_attr(self::eful_alt_post_class($options, $layout)); ?> eventful-item-<?php echo esc_attr($post->ID); ?>" data-id="<?php echo esc_attr($post->ID); ?>">
 					<?php
-					self::eventful_post_thumb_html($sorter, $scode_id, $post, $options, $layout);
+					self::eful_post_thumb_html($sorter, $scode_id, $post, $options, $layout);
 					?>
 					<div class="eventful__item__details <?php echo esc_html($animation_class); ?>">
 						<?php
-						self::eventful_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options);
+						self::eful_post_content_without_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options);
 						?>
 					</div>
 				</div>

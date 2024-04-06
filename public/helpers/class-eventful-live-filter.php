@@ -24,7 +24,7 @@ class EFUL_Live_Filter
 	public function __construct()
 	{
 		add_action('wp_ajax_eventful_live_filter_reset', array($this, 'eventful_live_filter_reset'));
-		add_action('wp_ajax_eventful_admin_live_filter_reset', array($this, 'eventful_admin_live_filter_reset'));
+		add_action('wp_ajax_eful_admin_live_filter_reset', array($this, 'eful_admin_live_filter_reset'));
 		add_action('wp_ajax_nopriv_eventful_live_filter_reset', array($this, 'eventful_live_filter_reset'));
 	}
 	/**
@@ -44,7 +44,7 @@ class EFUL_Live_Filter
 	 * @param string $pre_checked  checked.
 	 * @return array
 	 */
-	public static function eventful_filter_style($btn_type, $taxonomy, $label, $all_text, $align = 'center', $show_count = false, $term = null, $name = null, $p_count = null, $id = '', $pre_selected = '', $pre_checked = '')
+	public static function eful_filter_style($btn_type, $taxonomy, $label, $all_text, $align = 'center', $show_count = false, $term = null, $name = null, $p_count = null, $id = '', $pre_selected = '', $pre_checked = '')
 	{
 		if ($show_count) {
 			$post_count_markup = '<span class="eventful-count">(' . $p_count . ')</span>';
@@ -139,33 +139,6 @@ class EFUL_Live_Filter
 		}
 		return $result;
 	}
-	/**
-	 * Term id list after ajax filter.
-	 *
-	 * @param object $eventful_query Post query array.
-	 * @param object $taxonomies select Taxonomies.
-	 * @return Array
-	 */
-	public static function eventful_all_other_taxonomy_term($eventful_query, $taxonomies)
-	{
-		$post_ids         = $eventful_query;
-		$y                = 0;
-		$final_term_list  = array();
-		$taxonomies_count = count($taxonomies);
-		while ($y < $taxonomies_count) {
-			$term_list = array();
-			foreach ($post_ids as $key => $id) {
-				$ct_term = wp_get_post_terms($id, $taxonomies[$y], array('fields' => 'ids'));
-				if (is_array($ct_term) && !empty($ct_term)) {
-					array_push($term_list, $ct_term);
-				}
-			}
-			$term_list                            = array_unique(self::array_flatten($term_list));
-			$final_term_list[$taxonomies[$y]] = $term_list;
-			$y++;
-		}
-		return $final_term_list;
-	}
 
 	/**
 	 * All terms form the query
@@ -174,7 +147,7 @@ class EFUL_Live_Filter
 	 * @param  string $taxonomy taxonomy.
 	 * @return array
 	 */
-	public static function eventful_all_taxonomy_terms_form_the_query($eventful_query, $taxonomy)
+	public static function eful_all_taxonomy_terms_form_the_query($eventful_query, $taxonomy)
 	{
 		$post_ids  = $eventful_query;
 		$term_list = array();
@@ -225,8 +198,8 @@ class EFUL_Live_Filter
 		$query_args = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
 		$eventful_query  = array();
 		self::eventful_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
-		self::eventful_author_filter($view_options, $query_args, $author_id);
-		self::eventful_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
+		self::eful_author_filter($view_options, $query_args, $author_id);
+		self::eful_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
 
 		wp_die();
 	}
@@ -305,7 +278,7 @@ class EFUL_Live_Filter
 						$filter_options = isset($taxonomy_types[$index]['ajax_filter_options']) ? $taxonomy_types[$index]['ajax_filter_options'] : '';
 						$all_text       = isset($filter_options['ajax_rename_all_text']) && !empty($filter_options['ajax_rename_all_text']) ? $filter_options['ajax_rename_all_text'] : '';
 						if ($is_term_intersect) {
-							$new_terms = self::eventful_all_taxonomy_terms_form_the_query($all_post_ids, $taxonomy);
+							$new_terms = self::eful_all_taxonomy_terms_form_the_query($all_post_ids, $taxonomy);
 							$terms     = is_array($terms) ? $terms : array($terms);
 							$terms     = array_intersect($terms, $new_terms);
 						}
@@ -320,7 +293,7 @@ class EFUL_Live_Filter
 
 						$eventful_live_filter_align = isset($filter_options['eventful_live_filter_align']) ? $filter_options['eventful_live_filter_align'] : 'center';
 						if ($add_filter && !empty($terms) && !empty($taxonomy)) {
-							$filter_item             = self::eventful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align);
+							$filter_item             = self::eful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align);
 							$newterm_array[$index] = array($filter_item['first_item']);
 							foreach ($terms as $term) {
 								$selected = '';
@@ -359,10 +332,10 @@ class EFUL_Live_Filter
 									}
 
 									if (!$hide_empty) {
-										$push_item = self::eventful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
+										$push_item = self::eful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
 										array_push($newterm_array[$index], $push_item);
 									} elseif ($hide_empty && $term_post_count > 0) {
-										$push_item = self::eventful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
+										$push_item = self::eful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
 										array_push($newterm_array[$index], $push_item);
 									}
 								}
@@ -405,7 +378,7 @@ class EFUL_Live_Filter
 	/**
 	 * Live Filter reset after ajax request.
 	 */
-	public static function eventful_admin_live_filter_reset()
+	public static function eful_admin_live_filter_reset()
 	{
 		if (!current_user_can('manage_options')) {
 			return;
@@ -444,41 +417,9 @@ class EFUL_Live_Filter
 		}
 		$query_args = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
 		self::eventful_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
-		self::eventful_author_filter($view_options, $query_args, $author_id);
-		self::eventful_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
+		self::eful_author_filter($view_options, $query_args, $author_id);
+		self::eful_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
 		wp_die();
-	}
-
-
-	/**
-	 * Final showing terms list
-	 *
-	 * @param string $taxonomy taxonomy.
-	 * @param string $selected_taxonomy Selected taxonomy.
-	 * @param array  $all_term all terms id.
-	 * @param array  $terms terms.
-	 * @param int    $tax_settings_count taxonomy count.
-	 * @param array  $selected_taxs Selected taxonomys.
-	 * @param array  $is_other_query_active query.
-	 * @return object
-	 */
-	public static function eventful_showing_term($taxonomy, $selected_taxonomy, $all_term, $terms, $tax_settings_count, $selected_taxs, $is_other_query_active = false)
-	{
-		if ($selected_taxs) {
-			if (($selected_taxonomy === $taxonomy && $tax_settings_count < 1) || (count($selected_taxs) <= 1 && $selected_taxs[0] === $taxonomy)) {
-				$final_terms = $terms;
-			} else {
-				$final_terms = array_intersect($all_term, $terms);
-			}
-		} else {
-			if ($is_other_query_active) {
-				$final_terms = array_intersect($all_term, $terms);
-			} else {
-				$final_terms = $terms;
-			}
-		}
-
-		return $final_terms;
 	}
 
 	/**
@@ -489,7 +430,7 @@ class EFUL_Live_Filter
 	 * @param string $current_author current author.
 	 * @return void
 	 */
-	public static function eventful_author_filter($view_options, $query_args, $current_author = '')
+	public static function eful_author_filter($view_options, $query_args, $current_author = '')
 	{
 		$filter_by            = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		$post_limit           = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
@@ -506,7 +447,7 @@ class EFUL_Live_Filter
 			$show_count            = isset($ajax_filter_options['ajax_show_count']) ? $ajax_filter_options['ajax_show_count'] : '';
 			$eventful_live_filter_align = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
 			if ($add_filter_post && is_array($eventful_select_author_by)) {
-				$filter_item   = self::eventful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align);
+				$filter_item   = self::eful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
 				foreach ($eventful_select_author_by as $author_id) {
 					$author_name = get_the_author_meta('nicename', $author_id);
@@ -525,10 +466,10 @@ class EFUL_Live_Filter
 					$author_posts      = get_posts($query_args);
 					$author_post_count = count($author_posts);
 					if (!$hide_empty) {
-						$push_item = self::eventful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
+						$push_item = self::eful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
 						array_push($newterm_array, $push_item);
 					} elseif ($hide_empty && $author_post_count > 0) {
-						$push_item = self::eventful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
+						$push_item = self::eful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
 						array_push($newterm_array, $push_item);
 					}
 				}
@@ -550,7 +491,7 @@ class EFUL_Live_Filter
 	 * @param  string $last_filter last filter.
 	 * @return void
 	 */
-	public static function eventful_custom_filter_filter($view_options, $query_args, $sid = '', $custom_fields_array = array(), $last_filter = '')
+	public static function eful_custom_filter_filter($view_options, $query_args, $sid = '', $custom_fields_array = array(), $last_filter = '')
 	{
 		$filter_by                    = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
@@ -653,7 +594,7 @@ class EFUL_Live_Filter
 	 * @param string $sid shortcode id.
 	 * @return void
 	 */
-	public static function eventful_orderby_filter_bar($view_options, $query_args, $sid = null)
+	public static function eful_orderby_filter_bar($view_options, $query_args, $sid = null)
 	{
 		$filter_by = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		if (in_array('sortby', $filter_by, true)) {
@@ -666,10 +607,10 @@ class EFUL_Live_Filter
 			$all_text               = isset($ajax_filter_options['ajax_rename_all_text']) ? $ajax_filter_options['ajax_rename_all_text'] : '';
 			$eventful_live_filter_align  = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
 			if ($add_filter_post && is_array($eventful_add_filter_orderby)) {
-				$filter_item   = self::eventful_orderby_filter_style($btn_type, $label, $eventful_live_filter_align);
+				$filter_item   = self::eful_orderby_filter_style($btn_type, $label, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
 				foreach ($eventful_add_filter_orderby as $orderby) {
-					$push_item = self::eventful_orderby_filter_style($btn_type, $label, $eventful_live_filter_align, $orderby, $sid)['push_item'];
+					$push_item = self::eful_orderby_filter_style($btn_type, $label, $eventful_live_filter_align, $orderby, $sid)['push_item'];
 					array_push($newterm_array, $push_item);
 				}
 				$tax_html = implode('', $newterm_array);
@@ -687,7 +628,7 @@ class EFUL_Live_Filter
 	 * @param string $sid shortcode id.
 	 * @return void
 	 */
-	public static function eventful_order_filter_bar($view_options, $sid = null)
+	public static function eful_order_filter_bar($view_options, $sid = null)
 	{
 		$filter_by = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		if (in_array('sortby', $filter_by)) {
@@ -700,10 +641,10 @@ class EFUL_Live_Filter
 			$label                   = isset($ajax_filter_options['order_filter_label']) ? $ajax_filter_options['order_filter_label'] : '';
 			$eventful_live_filter_align   = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
 			if ($add_filter_post) {
-				$filter_item   = self::eventful_order_filter_style($btn_type, $label, $eventful_live_filter_align);
+				$filter_item   = self::eful_order_filter_style($btn_type, $label, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
 				foreach ($eventful_add_filter_orderby as $order) {
-					$push_item = self::eventful_order_filter_style($btn_type, $label, $eventful_live_filter_align, $order, $eventful_select_filter_order, $sid)['push_item'];
+					$push_item = self::eful_order_filter_style($btn_type, $label, $eventful_live_filter_align, $order, $eventful_select_filter_order, $sid)['push_item'];
 					array_push($newterm_array, $push_item);
 				}
 				$tax_html = implode('', $newterm_array);
@@ -750,7 +691,7 @@ class EFUL_Live_Filter
 	 * @param string  $selected select.
 	 * @param string  $checked check.
 	 */
-	public static function eventful_author_filter_style($btn_type, $label, $all_text, $align = 'center', $author_id = null, $author_name = null, $author_post_count = null, $show_count = true, $selected = '', $checked = '')
+	public static function eful_author_filter_style($btn_type, $label, $all_text, $align = 'center', $author_id = null, $author_name = null, $author_post_count = null, $show_count = true, $selected = '', $checked = '')
 	{
 		if ($show_count) {
 			$post_count_markup = '<span class="eventful-count">(' . $author_post_count . ')</span>';
@@ -814,7 +755,7 @@ class EFUL_Live_Filter
 	 * @param string $sid shortcode id.
 	 * @return array
 	 */
-	public static function eventful_orderby_filter_style($btn_type, $label, $align = 'center', $orderby = null, $sid = null)
+	public static function eful_orderby_filter_style($btn_type, $label, $align = 'center', $orderby = null, $sid = null)
 	{
 		$filter_url_value        = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
 		$final_orderby_url_value = '';
@@ -882,7 +823,7 @@ class EFUL_Live_Filter
 	 * @param string $select_order selected order.
 	 * @param string $sid shortcode id.
 	 */
-	public static function eventful_order_filter_style($btn_type, $label, $align = 'center', $order = null, $select_order = null, $sid = null)
+	public static function eful_order_filter_style($btn_type, $label, $align = 'center', $order = null, $select_order = null, $sid = null)
 	{
 		$final_order_url_value = '';
 		$filter_url_value      = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
@@ -924,7 +865,7 @@ class EFUL_Live_Filter
 	 * @param string $sid shortcode id.
 	 * @return void
 	 */
-	public static function eventful_live_search_bar($view_options, $sid = null)
+	public static function eful_live_search_bar($view_options, $sid = null)
 	{
 		$filter_by        = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		$final_keyword    = '';

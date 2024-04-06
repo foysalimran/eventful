@@ -35,7 +35,7 @@ class Eventful_Shuffle_Filter
 
 	 * @return array
 	 */
-	public static function eventful_filter_style($filter_type, $taxonomy, $all_text, $show_count = false, $term = null, $name = null, $slug = null, $p_count = null, $selected_term = null, $selected_taxs = null, $selected_term_id = null)
+	public static function eful_filter_style($filter_type, $taxonomy, $all_text, $show_count = false, $term = null, $name = null, $slug = null, $p_count = null, $selected_term = null, $selected_taxs = null, $selected_term_id = null)
 	{
 		if ($show_count) {
 			$post_count_markup = '<span class="eventful-count">(' . $p_count . ')</span>';
@@ -98,14 +98,14 @@ class Eventful_Shuffle_Filter
 					$terms     = isset($taxonomy_types[$count]['eventful_select_terms']) ? $taxonomy_types[$count]['eventful_select_terms'] : $all_terms;
 
 					if (!empty($terms)) {
-						$filter_item             = self::eventful_filter_style($filter_type, $taxonomy, $all_text);
+						$filter_item             = self::eful_filter_style($filter_type, $taxonomy, $all_text);
 						$newterm_array[$count] = array($filter_item['first_item']);
 						foreach ($terms as $term) {
 							$p_term          = get_term($term, $taxonomy);
 							$term_post_count = $p_term->count;
 							$term_post_count = $term_post_count > $post_limit ? $post_limit : $term_post_count;
 							if ($term_post_count) {
-								$push_item = self::eventful_filter_style($filter_type, $taxonomy, $all_text, $show_count, $term, $p_term->name, $p_term->slug, $term_post_count)['push_item'];
+								$push_item = self::eful_filter_style($filter_type, $taxonomy, $all_text, $show_count, $term, $p_term->name, $p_term->slug, $term_post_count)['push_item'];
 								array_push($newterm_array[$count], $push_item);
 							}
 						}

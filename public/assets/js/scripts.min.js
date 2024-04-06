@@ -474,7 +474,7 @@ jQuery(document).ready(function ($) {
             url: ajaxurl,
             type: "POST",
             data: {
-              action: "eventful_post_order",
+              action: "eful_post_order",
               id: pc_sid,
               lang: spsp_lang,
               order: order,

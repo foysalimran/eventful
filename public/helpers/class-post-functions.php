@@ -402,53 +402,7 @@ class EFUL_Functions
 	}
 
 
-	/**
-	 * Thumb Sized function
-	 *
-	 * @param  array $view_options options array.
-	 * @param  int   $slide_id post id.
-	 * @param  bool  $is_attachment type attachment.
-	 * @return array
-	 */
-	public static function eventful_sized_eventfulup_thumb($view_options, $slide_id, $is_attachment = false)
-	{
-		$thumb_id     = '';
-		$image        = '';
-		$image_height = '';
-		$image_width  = '';
-		if (has_post_thumbnail($slide_id)) {
-			$thumb_id = get_post_thumbnail_id($slide_id);
-		}
-		if ($is_attachment) {
-			$thumb_id = $slide_id;
-		}
-		if (!empty($thumb_id)) {
-			$image_sizes       = isset($view_options['eventful_eventfulup_img_sizes']) ? $view_options['eventful_eventfulup_img_sizes'] : 'medium';
-			$post_image_width  = isset($view_options['eventful_eventfulup_image_crop_size']['top']) ? $view_options['eventful_eventfulup_image_crop_size']['top'] : '';
-			$post_image_height = isset($view_options['eventful_eventfulup_image_crop_size']['right']) ? $view_options['eventful_eventfulup_image_crop_size']['right'] : '';
-			$post_image_crop   = isset($view_options['eventful_eventfulup_image_crop_size']['style']) ? $view_options['eventful_eventfulup_image_crop_size']['style'] : '';
-			$thumb_full_src    = wp_get_attachment_image_src($thumb_id, 'full');
-			$thumb_full_src    = is_array($thumb_full_src) ? $thumb_full_src : array('', '', '');
-			$image_src         = wp_get_attachment_image_src($thumb_id, $image_sizes);
-			$image_src         = is_array($image_src) ? $image_src : array('', '', '');
-			if (('custom' === $image_sizes) && (!empty($post_image_width) && $thumb_full_src[1] >= $post_image_width) && (!empty($post_image_height) && $thumb_full_src[2] >= $post_image_height)) {
-				$hard_crop = 'Hard-crop' === $post_image_crop ? true : false;
-
-				$image        = eful_resize($thumb_full_src[0], $post_image_width, $post_image_height, $hard_crop);
-				$image_width  = $post_image_width;
-				$image_height = $post_image_height;
-			} else {
-				$image        = !empty($image_src[0]) ? $image_src[0] : '';
-				$image_width  = !empty($image_src[1]) ? $image_src[1] : 600;
-				$image_height = !empty($image_src[2]) ? $image_src[2] : 450;
-			}
-		}
-		return array(
-			'src'    => $image,
-			'width'  => $image_width,
-			'height' => $image_height,
-		);
-	}
+	
 	/**
 	 * Thumb Sized function
 	 *
@@ -489,8 +443,8 @@ class EFUL_Functions
 				}
 			}
 			$image_id = 'image' === $first_content ? self::eventful_get_img_from_post($post_thumb_setting, $slide_id) : '';
-			$is_video = 'video' === $first_content ? self::eventful_get_video_from_post($slide_id) : '';
-			$is_audio = 'audio' === $first_content ? self::eventful_get_audios_from_post($slide_id) : '';
+			$is_video = 'video' === $first_content ? self::eful_get_video_from_post($slide_id) : '';
+			$is_audio = 'audio' === $first_content ? self::eful_get_audios_from_post($slide_id) : '';
 
 			if ($image_src && $video_src && $audio_src) {
 				$thumb_id    = $image_id;
@@ -513,10 +467,10 @@ class EFUL_Functions
 				$thumb_id = self::eventful_get_img_from_post($post_thumb_setting, $slide_id);
 			}
 			if ($video_src && (empty($matches[1][0]) || !$image_src)) {
-				$video_thumb = self::eventful_get_video_from_post($slide_id);
+				$video_thumb = self::eful_get_video_from_post($slide_id);
 			}
 			if ($audio_src && empty($video_thumb) && (empty($matches[1][0]) || !$image_src)) {
-				$audio_thumb = self::eventful_get_audios_from_post($slide_id);
+				$audio_thumb = self::eful_get_audios_from_post($slide_id);
 			}
 		}
 		$eventful_thumbs_replace_src = array(
@@ -558,7 +512,7 @@ class EFUL_Functions
 	 * @param  number $slide_id Post id.
 	 * @return mixed
 	 */
-	public static function eventful_get_video_from_post($slide_id)
+	public static function eful_get_video_from_post($slide_id)
 	{
 
 		$post    = get_post($slide_id);
@@ -583,7 +537,7 @@ class EFUL_Functions
 	 * @param  number $slide_id Post id.
 	 * @return mixed          Iframe.
 	 */
-	public static function eventful_get_audios_from_post($slide_id)
+	public static function eful_get_audios_from_post($slide_id)
 	{
 		// For audio post type - grab.
 		$post    = get_post($slide_id);
@@ -784,7 +738,7 @@ class EFUL_Functions
 	 * @param string $is_table the table layout check.
 	 * @return void
 	 */
-	public static function eventful_get_event_fildes($post, $event_fildes_fields, $visitor_count, $meta_separator, $is_table)
+	public static function eful_get_event_fildes($post, $event_fildes_fields, $visitor_count, $meta_separator, $is_table)
 	{
 		$meta_wrapper_start_tag = !$is_table ? apply_filters('eventful_event_fildes_wrapper_start', '<ul>') : '';
 		$meta_wrapper_end_tag   = !$is_table ? apply_filters('eventful_event_fildes_wrapper_end', '</ul>') : '';
@@ -801,8 +755,8 @@ class EFUL_Functions
 			$meta_icon      = !empty($each_meta['select_event_fildes_icon']) ? sprintf('<i class="' . $each_meta['select_event_fildes_icon'] . '"></i>') : '';
 			$start_tag      = $is_table ? '<td class="ta-eventful-post-meta">' : '<li>';
 			$end_tag        = $is_table ? '</td>' : '</li>';
-			$meta_tag_start = apply_filters('eventful_event_fildes_html_tag_start', $start_tag);
-			$meta_tag_end   = apply_filters('eventful_event_fildes_html_tag_end', $end_tag);
+			$meta_tag_start = apply_filters('eful_event_fildes_html_tag_start', $start_tag);
+			$meta_tag_end   = apply_filters('eful_event_fildes_html_tag_end', $end_tag);
 			$allowed_html   = array(
 				'a'    => array(
 					'href'  => array(),
@@ -969,61 +923,7 @@ class EFUL_Functions
 		} // End Foreach.
 		echo wp_kses_post($meta_wrapper_end_tag);
 	}
-	/**
-	 * Pcp_get_post_meta_on_table_heading
-	 *
-	 * @param  mixed $post_meta_fields The selected post meta to show.
-	 * @return void
-	 */
-	public static function eventful_get_post_meta_on_table_heading($post_meta_fields)
-	{
-		$i = 0;
-		foreach ($post_meta_fields as $each_meta) {
-			$selected_meta = isset($each_meta['select_post_meta']) ? $each_meta['select_post_meta'] : '';
-			$taxonomy_name = isset($each_meta['post_meta_taxonomy']) ? $each_meta['post_meta_taxonomy'] : '';
-			switch ($selected_meta) {
-				case 'author':
-				?>
-					<th><?php esc_html_e('Author', 'eventful'); ?></th>
-				<?php
-					break;
-				case 'date':
-				?>
-					<th><?php esc_html_e('Date', 'eventful'); ?></th>
-					<?php
-					break;
-				case 'taxonomy':
-					if ('beside_meta' === $each_meta['eventful_meta_position']) {
-					?>
-						<th><?php echo esc_html($taxonomy_name); ?></th>
-					<?php
-					}
-					break;
-				case 'comment_count':
-					?>
-					<th><?php esc_html_e('Comment', 'eventful'); ?></th>
-				<?php
-
-					break;
-				case 'view_count':
-				?>
-					<th><?php esc_html_e('View count', 'eventful'); ?></th>
-				<?php
-					break;
-				case 'like':
-				?>
-					<th><?php esc_html_e('Like', 'eventful'); ?></th>
-				<?php
-					break;
-				case 'reading_time':
-				?>
-					<th><?php esc_html_e('Reading count', 'eventful'); ?></th>
-<?php
-					break;
-			}
-			++$i;
-		} // End Foreach.
-	}
+	
 	/**
 	 * Show reading time for the post.
 	 *
@@ -1066,7 +966,7 @@ class EFUL_Functions
 	 * @param integer $post_id The post ID.
 	 * @return statement.
 	 */
-	public static function eventful_post_thumb_taxonomy($taxonomy, $id, $meta_icon = null)
+	public static function eful_post_thumb_taxonomy($taxonomy, $id, $meta_icon = null)
 	{
 		$terms = get_the_terms($id, $taxonomy);
 

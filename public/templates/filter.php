@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 ?>
 <div id="eventful_wrapper-<?php echo esc_attr($eventful_gl_id); ?>" class="<?php self::eventful_wrapper_classes($layout_preset, $eventful_gl_id, $pagination_type, $item_same_height_class); ?>" data-sid="<?php echo esc_attr($eventful_gl_id); ?>" <?php self::wrapper_data($pagination_type, $pagination_type_mobile, $eventful_gl_id); ?> data-grid="<?php echo esc_attr($grid_style); ?>" data-lang="<?php echo esc_attr($spta_lang); ?>">
 	<?php
-	EFUL_HTML::eventful_section_title($section_title, $show_section_title);
+	EFUL_HTML::eful_section_title($section_title, $show_section_title);
 	EFUL_HTML::eventful_preloader($show_preloader);
 	$categories = get_categories(
 		array(
