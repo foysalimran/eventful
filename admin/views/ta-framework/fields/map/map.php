@@ -21,9 +21,9 @@ if ( ! class_exists( 'EFUL_Field_map' ) ) {
 			$args = wp_parse_args(
 				$this->field,
 				array(
-					'placeholder'    => esc_html__( 'Search...', 'ta-framework' ),
-					'latitude_text'  => esc_html__( 'Latitude', 'ta-framework' ),
-					'longitude_text' => esc_html__( 'Longitude', 'ta-framework' ),
+					'placeholder'    => esc_html__( 'Search...', 'eventful' ),
+					'latitude_text'  => esc_html__( 'Latitude', 'eventful' ),
+					'longitude_text' => esc_html__( 'Longitude', 'eventful' ),
 					'address_field'  => '',
 					'height'         => '',
 				)
@@ -85,7 +85,7 @@ if ( ! class_exists( 'EFUL_Field_map' ) ) {
 		public function enqueue() {
 
 			if ( ! wp_script_is( 'eventful-leaflet' ) ) {
-				wp_enqueue_script( 'leaflet', EFUL_URL . 'admin/views/ta-framework/assets/js/leaflet.js', array( 'ta-framework' ), $this->version, true );
+				wp_enqueue_script( 'leaflet', EFUL_URL . 'admin/views/ta-framework/assets/js/leaflet.js', array( 'eventful' ), $this->version, true );
 			}
 
 			if ( ! wp_style_is( 'eventful-leaflet' ) ) {

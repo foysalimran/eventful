@@ -19,8 +19,8 @@ if ( ! class_exists( 'EFUL_Field_icon' ) ) {
 			$args = wp_parse_args(
 				$this->field,
 				array(
-					'button_title' => esc_html__( 'Add Icon', 'ta-framework' ),
-					'remove_title' => esc_html__( 'Remove Icon', 'ta-framework' ),
+					'button_title' => esc_html__( 'Add Icon', 'eventful' ),
+					'remove_title' => esc_html__( 'Remove Icon', 'eventful' ),
 				)
 			);
 
@@ -52,11 +52,11 @@ if ( ! class_exists( 'EFUL_Field_icon' ) ) {
 			<div class="eventful-modal-overlay"></div>
 			<div class="eventful-modal-inner">
 				<div class="eventful-modal-title">
-				<?php esc_html_e( 'Add Icon', 'ta-framework' ); ?>
+				<?php esc_html_e( 'Add Icon', 'eventful' ); ?>
 				<div class="eventful-modal-close eventful-icon-close"></div>
 				</div>
 				<div class="eventful-modal-header">
-				<input type="text" placeholder="<?php esc_html_e( 'Search...', 'ta-framework' ); ?>" class="eventful-icon-search" />
+				<input type="text" placeholder="<?php esc_html_e( 'Search...', 'eventful' ); ?>" class="eventful-icon-search" />
 				</div>
 				<div class="eventful-modal-content">
 				<div class="eventful-modal-loading"><div class="eventful-loading"></div></div>

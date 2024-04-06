@@ -80,7 +80,7 @@ if ( ! class_exists( 'EFUL_Field_checkbox' ) ) {
 					}
 				} else {
 
-						echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'ta-framework' );
+						echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'eventful' );
 
 				}
 			} else {

@@ -207,7 +207,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
 
           if ( ! empty( $repeatable_fields ) ) {
 
-            $button_title    = ( ! empty( $section['button_title'] ) ) ? ' '. $section['button_title'] : esc_html__( 'Add New', 'ta-framework' );
+            $button_title    = ( ! empty( $section['button_title'] ) ) ? ' '. $section['button_title'] : esc_html__( 'Add New', 'eventful' );
             $inner_shortcode = ( ! empty( $section['group_shortcode'] ) ) ? $section['group_shortcode'] : $shortcode;
 
             echo '<div class="eventful--repeatable">';
@@ -244,7 +244,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
         }
 
       } else {
-        echo '<div class="eventful-field eventful-error-text">'. esc_html__( 'Error: Invalid nonce verification.', 'ta-framework' ) .'</div>';
+        echo '<div class="eventful-field eventful-error-text">'. esc_html__( 'Error: Invalid nonce verification.', 'eventful' ) .'</div>';
       }
 
       wp_send_json_success( array( 'content' => ob_get_clean() ) );

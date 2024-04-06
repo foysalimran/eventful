@@ -35,7 +35,7 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 					'background_auto_attributes'    => false,
 					'compact'                       => false,
 					'background_image_library'      => 'image',
-					'background_image_placeholder'  => esc_html__( 'Not selected', 'ta-framework' ),
+					'background_image_placeholder'  => esc_html__( 'Not selected', 'eventful' ),
 				)
 			);
 
@@ -72,7 +72,7 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 
 				echo '<div class="eventful--color">';
 
-				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="eventful--title">' . esc_html__( 'From', 'ta-framework' ) . '</div>' : '';
+				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="eventful--title">' . esc_html__( 'From', 'eventful' ) . '</div>' : '';
 
 				EFUL::field(
 					array(
@@ -95,7 +95,7 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 
 				echo '<div class="eventful--color">';
 
-				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="eventful--title">' . esc_html__( 'To', 'ta-framework' ) . '</div>' : '';
+				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="eventful--title">' . esc_html__( 'To', 'eventful' ) . '</div>' : '';
 
 				EFUL::field(
 					array(
@@ -118,18 +118,18 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 
 				echo '<div class="eventful--color">';
 
-				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="eventful---title">' . esc_html__( 'Direction', 'ta-framework' ) . '</div>' : '';
+				echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="eventful---title">' . esc_html__( 'Direction', 'eventful' ) . '</div>' : '';
 
 				EFUL::field(
 					array(
 						'id'      => 'background-gradient-direction',
 						'type'    => 'select',
 						'options' => array(
-							''          => esc_html__( 'Gradient Direction', 'ta-framework' ),
-							'to bottom' => esc_html__( '&#8659; top to bottom', 'ta-framework' ),
-							'to right'  => esc_html__( '&#8658; left to right', 'ta-framework' ),
-							'135deg'    => esc_html__( '&#8664; corner top to right', 'ta-framework' ),
-							'-135deg'   => esc_html__( '&#8665; corner top to left', 'ta-framework' ),
+							''          => esc_html__( 'Gradient Direction', 'eventful' ),
+							'to bottom' => esc_html__( '&#8659; top to bottom', 'eventful' ),
+							'to right'  => esc_html__( '&#8658; left to right', 'eventful' ),
+							'135deg'    => esc_html__( '&#8664; corner top to right', 'eventful' ),
+							'-135deg'   => esc_html__( '&#8665; corner top to left', 'eventful' ),
 						),
 					),
 					$this->value['background-gradient-direction'],
@@ -182,16 +182,16 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 						'id'      => 'background-position',
 						'type'    => 'select',
 						'options' => array(
-							''              => esc_html__( 'Background Position', 'ta-framework' ),
-							'left top'      => esc_html__( 'Left Top', 'ta-framework' ),
-							'left center'   => esc_html__( 'Left Center', 'ta-framework' ),
-							'left bottom'   => esc_html__( 'Left Bottom', 'ta-framework' ),
-							'center top'    => esc_html__( 'Center Top', 'ta-framework' ),
-							'center center' => esc_html__( 'Center Center', 'ta-framework' ),
-							'center bottom' => esc_html__( 'Center Bottom', 'ta-framework' ),
-							'right top'     => esc_html__( 'Right Top', 'ta-framework' ),
-							'right center'  => esc_html__( 'Right Center', 'ta-framework' ),
-							'right bottom'  => esc_html__( 'Right Bottom', 'ta-framework' ),
+							''              => esc_html__( 'Background Position', 'eventful' ),
+							'left top'      => esc_html__( 'Left Top', 'eventful' ),
+							'left center'   => esc_html__( 'Left Center', 'eventful' ),
+							'left bottom'   => esc_html__( 'Left Bottom', 'eventful' ),
+							'center top'    => esc_html__( 'Center Top', 'eventful' ),
+							'center center' => esc_html__( 'Center Center', 'eventful' ),
+							'center bottom' => esc_html__( 'Center Bottom', 'eventful' ),
+							'right top'     => esc_html__( 'Right Top', 'eventful' ),
+							'right center'  => esc_html__( 'Right Center', 'eventful' ),
+							'right bottom'  => esc_html__( 'Right Bottom', 'eventful' ),
 						),
 					),
 					$this->value['background-position'],
@@ -210,11 +210,11 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 						'id'      => 'background-repeat',
 						'type'    => 'select',
 						'options' => array(
-							''          => esc_html__( 'Background Repeat', 'ta-framework' ),
-							'repeat'    => esc_html__( 'Repeat', 'ta-framework' ),
-							'no-repeat' => esc_html__( 'No Repeat', 'ta-framework' ),
-							'repeat-x'  => esc_html__( 'Repeat Horizontally', 'ta-framework' ),
-							'repeat-y'  => esc_html__( 'Repeat Vertically', 'ta-framework' ),
+							''          => esc_html__( 'Background Repeat', 'eventful' ),
+							'repeat'    => esc_html__( 'Repeat', 'eventful' ),
+							'no-repeat' => esc_html__( 'No Repeat', 'eventful' ),
+							'repeat-x'  => esc_html__( 'Repeat Horizontally', 'eventful' ),
+							'repeat-y'  => esc_html__( 'Repeat Vertically', 'eventful' ),
 						),
 					),
 					$this->value['background-repeat'],
@@ -233,9 +233,9 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 						'id'      => 'background-attachment',
 						'type'    => 'select',
 						'options' => array(
-							''       => esc_html__( 'Background Attachment', 'ta-framework' ),
-							'scroll' => esc_html__( 'Scroll', 'ta-framework' ),
-							'fixed'  => esc_html__( 'Fixed', 'ta-framework' ),
+							''       => esc_html__( 'Background Attachment', 'eventful' ),
+							'scroll' => esc_html__( 'Scroll', 'eventful' ),
+							'fixed'  => esc_html__( 'Fixed', 'eventful' ),
 						),
 					),
 					$this->value['background-attachment'],
@@ -254,10 +254,10 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 						'id'      => 'background-size',
 						'type'    => 'select',
 						'options' => array(
-							''        => esc_html__( 'Background Size', 'ta-framework' ),
-							'cover'   => esc_html__( 'Cover', 'ta-framework' ),
-							'contain' => esc_html__( 'Contain', 'ta-framework' ),
-							'auto'    => esc_html__( 'Auto', 'ta-framework' ),
+							''        => esc_html__( 'Background Size', 'eventful' ),
+							'cover'   => esc_html__( 'Cover', 'eventful' ),
+							'contain' => esc_html__( 'Contain', 'eventful' ),
+							'auto'    => esc_html__( 'Auto', 'eventful' ),
 						),
 					),
 					$this->value['background-size'],
@@ -276,10 +276,10 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 						'id'      => 'background-origin',
 						'type'    => 'select',
 						'options' => array(
-							''            => esc_html__( 'Background Origin', 'ta-framework' ),
-							'padding-box' => esc_html__( 'Padding Box', 'ta-framework' ),
-							'border-box'  => esc_html__( 'Border Box', 'ta-framework' ),
-							'content-box' => esc_html__( 'Content Box', 'ta-framework' ),
+							''            => esc_html__( 'Background Origin', 'eventful' ),
+							'padding-box' => esc_html__( 'Padding Box', 'eventful' ),
+							'border-box'  => esc_html__( 'Border Box', 'eventful' ),
+							'content-box' => esc_html__( 'Content Box', 'eventful' ),
 						),
 					),
 					$this->value['background-origin'],
@@ -298,10 +298,10 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 						'id'      => 'background-clip',
 						'type'    => 'select',
 						'options' => array(
-							''            => esc_html__( 'Background Clip', 'ta-framework' ),
-							'border-box'  => esc_html__( 'Border Box', 'ta-framework' ),
-							'padding-box' => esc_html__( 'Padding Box', 'ta-framework' ),
-							'content-box' => esc_html__( 'Content Box', 'ta-framework' ),
+							''            => esc_html__( 'Background Clip', 'eventful' ),
+							'border-box'  => esc_html__( 'Border Box', 'eventful' ),
+							'padding-box' => esc_html__( 'Padding Box', 'eventful' ),
+							'content-box' => esc_html__( 'Content Box', 'eventful' ),
 						),
 					),
 					$this->value['background-clip'],
@@ -320,17 +320,17 @@ if ( ! class_exists( 'EFUL_Field_background' ) ) {
 						'id'      => 'background-blend-mode',
 						'type'    => 'select',
 						'options' => array(
-							''            => esc_html__( 'Background Blend Mode', 'ta-framework' ),
-							'normal'      => esc_html__( 'Normal', 'ta-framework' ),
-							'multiply'    => esc_html__( 'Multiply', 'ta-framework' ),
-							'screen'      => esc_html__( 'Screen', 'ta-framework' ),
-							'overlay'     => esc_html__( 'Overlay', 'ta-framework' ),
-							'darken'      => esc_html__( 'Darken', 'ta-framework' ),
-							'lighten'     => esc_html__( 'Lighten', 'ta-framework' ),
-							'color-dodge' => esc_html__( 'Color Dodge', 'ta-framework' ),
-							'saturation'  => esc_html__( 'Saturation', 'ta-framework' ),
-							'color'       => esc_html__( 'Color', 'ta-framework' ),
-							'luminosity'  => esc_html__( 'Luminosity', 'ta-framework' ),
+							''            => esc_html__( 'Background Blend Mode', 'eventful' ),
+							'normal'      => esc_html__( 'Normal', 'eventful' ),
+							'multiply'    => esc_html__( 'Multiply', 'eventful' ),
+							'screen'      => esc_html__( 'Screen', 'eventful' ),
+							'overlay'     => esc_html__( 'Overlay', 'eventful' ),
+							'darken'      => esc_html__( 'Darken', 'eventful' ),
+							'lighten'     => esc_html__( 'Lighten', 'eventful' ),
+							'color-dodge' => esc_html__( 'Color Dodge', 'eventful' ),
+							'saturation'  => esc_html__( 'Saturation', 'eventful' ),
+							'color'       => esc_html__( 'Color', 'eventful' ),
+							'luminosity'  => esc_html__( 'Luminosity', 'eventful' ),
 						),
 					),
 					$this->value['background-blend-mode'],

@@ -20,8 +20,8 @@ if ( ! class_exists( 'EFUL_Field_sorter' ) ) {
 				$this->field,
 				array(
 					'disabled'       => true,
-					'enabled_title'  => esc_html__( 'Enabled', 'ta-framework' ),
-					'disabled_title' => esc_html__( 'Disabled', 'ta-framework' ),
+					'enabled_title'  => esc_html__( 'Enabled', 'eventful' ),
+					'disabled_title' => esc_html__( 'Disabled', 'eventful' ),
 				)
 			);
 

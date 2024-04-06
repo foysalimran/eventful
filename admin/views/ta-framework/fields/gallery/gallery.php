@@ -19,9 +19,9 @@ if ( ! class_exists( 'EFUL_Field_gallery' ) ) {
 			$args = wp_parse_args(
 				$this->field,
 				array(
-					'add_title'   => esc_html__( 'Add Gallery', 'ta-framework' ),
-					'edit_title'  => esc_html__( 'Edit Gallery', 'ta-framework' ),
-					'clear_title' => esc_html__( 'Clear', 'ta-framework' ),
+					'add_title'   => esc_html__( 'Add Gallery', 'eventful' ),
+					'edit_title'  => esc_html__( 'Edit Gallery', 'eventful' ),
+					'clear_title' => esc_html__( 'Clear', 'eventful' ),
 				)
 			);
 

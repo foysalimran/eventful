@@ -36,11 +36,11 @@ if ( ! class_exists( 'EFUL_Field_link_color' ) ) {
 			);
 
 			$color_props = array(
-				'color'   => esc_html__( 'Normal', 'ta-framework' ),
-				'hover'   => esc_html__( 'Hover', 'ta-framework' ),
-				'active'  => esc_html__( 'Active', 'ta-framework' ),
-				'visited' => esc_html__( 'Visited', 'ta-framework' ),
-				'focus'   => esc_html__( 'Focus', 'ta-framework' ),
+				'color'   => esc_html__( 'Normal', 'eventful' ),
+				'hover'   => esc_html__( 'Hover', 'eventful' ),
+				'active'  => esc_html__( 'Active', 'eventful' ),
+				'visited' => esc_html__( 'Visited', 'eventful' ),
+				'focus'   => esc_html__( 'Focus', 'eventful' ),
 			);
 
 			$value = wp_parse_args( $this->value, $default_values );

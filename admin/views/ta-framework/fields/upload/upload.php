@@ -23,8 +23,8 @@ if ( ! class_exists( 'EFUL_Field_upload' ) ) {
 					'preview'        => false,
 					'preview_width'  => '',
 					'preview_height' => '',
-					'button_title'   => esc_html__( 'Upload', 'ta-framework' ),
-					'remove_title'   => esc_html__( 'Remove', 'ta-framework' ),
+					'button_title'   => esc_html__( 'Upload', 'eventful' ),
+					'remove_title'   => esc_html__( 'Remove', 'eventful' ),
 				)
 			);
 

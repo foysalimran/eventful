@@ -166,7 +166,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
       $result = $this->set_options( true );
 
       if ( ! $result ) {
-        wp_send_json_error( array( 'error' => esc_html__( 'Error while saving the changes.', 'ta-framework' ) ) );
+        wp_send_json_error( array( 'error' => esc_html__( 'Error while saving the changes.', 'eventful' ) ) );
       } else {
         wp_send_json_success( array( 'notice' => $this->notice, 'errors' => $this->errors ) );
       }
@@ -229,7 +229,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
           $import_data  = json_decode( wp_unslash( trim( $response[ 'eventful_import_data' ] ) ), true );
           $options      = ( is_array( $import_data ) && ! empty( $import_data ) ) ? $import_data : array();
           $importing    = true;
-          $this->notice = esc_html__( 'Settings successfully imported.', 'ta-framework' );
+          $this->notice = esc_html__( 'Settings successfully imported.', 'eventful' );
 
         }
 
@@ -241,7 +241,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
             }
           }
 
-          $this->notice = esc_html__( 'Default settings restored.', 'ta-framework' );
+          $this->notice = esc_html__( 'Default settings restored.', 'eventful' );
 
         } else if ( ! empty( $transient['reset_section'] ) && ! empty( $section_id ) ) {
 
@@ -257,7 +257,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
 
           $data = wp_parse_args( $data, $this->options );
 
-          $this->notice = esc_html__( 'Default settings restored.', 'ta-framework' );
+          $this->notice = esc_html__( 'Default settings restored.', 'eventful' );
 
         } else {
 
@@ -328,7 +328,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
         do_action( "eventful_{$this->unique}_save_after", $data, $this );
 
         if ( empty( $this->notice ) ) {
-          $this->notice = esc_html__( 'Settings saved.', 'ta-framework' );
+          $this->notice = esc_html__( 'Settings saved.', 'eventful' );
         }
 
         return true;
@@ -509,16 +509,16 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
 
             echo '<div class="eventful-form-result eventful-form-success '. esc_attr( $notice_class ) .'">'. wp_kses_post($notice_text) .'</div>';
 
-            echo ( $this->args['show_form_warning'] ) ? '<div class="eventful-form-result eventful-form-warning">'. esc_html__( 'You have unsaved changes, save your changes!', 'ta-framework' ) .'</div>' : '';
+            echo ( $this->args['show_form_warning'] ) ? '<div class="eventful-form-result eventful-form-warning">'. esc_html__( 'You have unsaved changes, save your changes!', 'eventful' ) .'</div>' : '';
 
-            echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="eventful-expand-all" title="'. esc_html__( 'show all settings', 'ta-framework' ) .'"><i class="fas fa-outdent"></i></div>' : '';
+            echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="eventful-expand-all" title="'. esc_html__( 'show all settings', 'eventful' ) .'"><i class="fas fa-outdent"></i></div>' : '';
 
-            echo ( $this->args['show_search'] ) ? '<div class="eventful-search"><input type="text" name="eventful-search" placeholder="'. esc_html__( 'Search...', 'ta-framework' ) .'" autocomplete="off" /></div>' : '';
+            echo ( $this->args['show_search'] ) ? '<div class="eventful-search"><input type="text" name="eventful-search" placeholder="'. esc_html__( 'Search...', 'eventful' ) .'" autocomplete="off" /></div>' : '';
 
             echo '<div class="eventful-buttons">';
-            echo '<input type="submit" name="'. esc_attr( $this->unique ) .'[_nonce][save]" class="button button-primary eventful-top-save eventful-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'ta-framework' ) .'" data-save="'. esc_html__( 'Saving...', 'ta-framework' ) .'">';
-            echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="eventful_transient[reset_section]" class="button button-secondary eventful-reset-section eventful-confirm" value="'. esc_html__( 'Reset Section', 'ta-framework' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'ta-framework' ) .'">' : '';
-            echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="eventful_transient[reset]" class="button eventful-warning-primary eventful-reset-all eventful-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'ta-framework' ) : esc_html__( 'Reset', 'ta-framework' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'ta-framework' ) .'">' : '';
+            echo '<input type="submit" name="'. esc_attr( $this->unique ) .'[_nonce][save]" class="button button-primary eventful-top-save eventful-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'eventful' ) .'" data-save="'. esc_html__( 'Saving...', 'eventful' ) .'">';
+            echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="eventful_transient[reset_section]" class="button button-secondary eventful-reset-section eventful-confirm" value="'. esc_html__( 'Reset Section', 'eventful' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'eventful' ) .'">' : '';
+            echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="eventful_transient[reset]" class="button eventful-warning-primary eventful-reset-all eventful-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'eventful' ) : esc_html__( 'Reset', 'eventful' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'eventful' ) .'">' : '';
             echo '</div>';
 
           echo '</div>';
@@ -616,7 +616,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
 
               } else {
 
-                echo '<div class="eventful-no-option">'. esc_html__( 'No data available.', 'ta-framework' ) .'</div>';
+                echo '<div class="eventful-no-option">'. esc_html__( 'No data available.', 'eventful' ) .'</div>';
 
               }
 
@@ -639,9 +639,9 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
           echo '<div class="eventful-footer">';
 
           echo '<div class="eventful-buttons">';
-          echo '<input type="submit" name="eventful_transient[save]" class="button button-primary eventful-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'ta-framework' ) .'" data-save="'. esc_html__( 'Saving...', 'ta-framework' ) .'">';
-          echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="eventful_transient[reset_section]" class="button button-secondary eventful-reset-section eventful-confirm" value="'. esc_html__( 'Reset Section', 'ta-framework' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'ta-framework' ) .'">' : '';
-          echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="eventful_transient[reset]" class="button eventful-warning-primary eventful-reset-all eventful-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'ta-framework' ) : esc_html__( 'Reset', 'ta-framework' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'ta-framework' ) .'">' : '';
+          echo '<input type="submit" name="eventful_transient[save]" class="button button-primary eventful-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'eventful' ) .'" data-save="'. esc_html__( 'Saving...', 'eventful' ) .'">';
+          echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="eventful_transient[reset_section]" class="button button-secondary eventful-reset-section eventful-confirm" value="'. esc_html__( 'Reset Section', 'eventful' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'eventful' ) .'">' : '';
+          echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="eventful_transient[reset]" class="button eventful-warning-primary eventful-reset-all eventful-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'eventful' ) : esc_html__( 'Reset', 'eventful' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'eventful' ) .'">' : '';
           echo '</div>';
 
           echo ( ! empty( $this->args['footer_text'] ) ) ? '<div class="eventful-copyright">'. wp_kses_post($this->args['footer_text']) .'</div>' : '';

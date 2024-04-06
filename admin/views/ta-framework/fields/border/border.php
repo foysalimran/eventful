@@ -24,11 +24,11 @@ if ( ! class_exists( 'EFUL_Field_border' ) ) {
 					'bottom_icon'        => '<i class="fas fa-long-arrow-alt-down"></i>',
 					'right_icon'         => '<i class="fas fa-long-arrow-alt-right"></i>',
 					'all_icon'           => '<i class="fas fa-arrows-alt"></i>',
-					'top_placeholder'    => esc_html__( 'top', 'ta-framework' ),
-					'right_placeholder'  => esc_html__( 'right', 'ta-framework' ),
-					'bottom_placeholder' => esc_html__( 'bottom', 'ta-framework' ),
-					'left_placeholder'   => esc_html__( 'left', 'ta-framework' ),
-					'all_placeholder'    => esc_html__( 'all', 'ta-framework' ),
+					'top_placeholder'    => esc_html__( 'top', 'eventful' ),
+					'right_placeholder'  => esc_html__( 'right', 'eventful' ),
+					'bottom_placeholder' => esc_html__( 'bottom', 'eventful' ),
+					'left_placeholder'   => esc_html__( 'left', 'eventful' ),
+					'all_placeholder'    => esc_html__( 'all', 'eventful' ),
 					'top'                => true,
 					'left'               => true,
 					'bottom'             => true,
@@ -51,15 +51,15 @@ if ( ! class_exists( 'EFUL_Field_border' ) ) {
 			);
 
 			$border_props = array(
-				'solid'  => esc_html__( 'Solid', 'ta-framework' ),
-				'dashed' => esc_html__( 'Dashed', 'ta-framework' ),
-				'dotted' => esc_html__( 'Dotted', 'ta-framework' ),
-				'double' => esc_html__( 'Double', 'ta-framework' ),
-				'inset'  => esc_html__( 'Inset', 'ta-framework' ),
-				'outset' => esc_html__( 'Outset', 'ta-framework' ),
-				'groove' => esc_html__( 'Groove', 'ta-framework' ),
-				'ridge'  => esc_html__( 'ridge', 'ta-framework' ),
-				'none'   => esc_html__( 'None', 'ta-framework' ),
+				'solid'  => esc_html__( 'Solid', 'eventful' ),
+				'dashed' => esc_html__( 'Dashed', 'eventful' ),
+				'dotted' => esc_html__( 'Dotted', 'eventful' ),
+				'double' => esc_html__( 'Double', 'eventful' ),
+				'inset'  => esc_html__( 'Inset', 'eventful' ),
+				'outset' => esc_html__( 'Outset', 'eventful' ),
+				'groove' => esc_html__( 'Groove', 'eventful' ),
+				'ridge'  => esc_html__( 'ridge', 'eventful' ),
+				'none'   => esc_html__( 'None', 'eventful' ),
 			);
 
 			$default_value = ( ! empty( $this->field['default'] ) ) ? wp_parse_args( $this->field['default'], $default_value ) : $default_value;

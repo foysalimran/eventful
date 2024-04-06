@@ -24,8 +24,8 @@ if ( ! class_exists( 'EFUL_Field_media' ) ) {
 					'preview_width'  => '',
 					'preview_height' => '',
 					'library'        => array(),
-					'button_title'   => esc_html__( 'Upload', 'ta-framework' ),
-					'remove_title'   => esc_html__( 'Remove', 'ta-framework' ),
+					'button_title'   => esc_html__( 'Upload', 'eventful' ),
+					'remove_title'   => esc_html__( 'Remove', 'eventful' ),
 					'preview_size'   => 'thumbnail',
 				)
 			);
@@ -59,7 +59,7 @@ if ( ! class_exists( 'EFUL_Field_media' ) ) {
 			$preview_src = ( $args['preview_size'] !== 'thumbnail' ) ? $this->value['url'] : $this->value['thumbnail'];
 			$hidden_url  = ( empty( $args['url'] ) ) ? ' hidden' : '';
 			$hidden_auto = ( empty( $this->value['url'] ) ) ? ' hidden' : '';
-			$placeholder = ( empty( $this->field['placeholder'] ) ) ? ' placeholder="' . esc_html__( 'Not selected', 'ta-framework' ) . '"' : '';
+			$placeholder = ( empty( $this->field['placeholder'] ) ) ? ' placeholder="' . esc_html__( 'Not selected', 'eventful' ) . '"' : '';
 
 			echo wp_kses_post( $this->field_before() );
 

@@ -35,8 +35,8 @@ if ( ! class_exists( 'EFUL_Field_datetime' ) ) {
 				$args = wp_parse_args(
 					$this->field,
 					array(
-						'text_from' => esc_html__( 'From', 'ta-framework' ),
-						'text_to'   => esc_html__( 'To', 'ta-framework' ),
+						'text_from' => esc_html__( 'From', 'eventful' ),
+						'text_to'   => esc_html__( 'To', 'eventful' ),
 					)
 				);
 

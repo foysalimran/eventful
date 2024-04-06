@@ -27,7 +27,7 @@ if ( ! class_exists( 'EFUL_Field_repeater' ) ) {
 
 			if ( preg_match( '/' . preg_quote( '[' . $this->field['id'] . ']' ) . '/', $this->unique ) ) {
 
-				echo '<div class="eventful-notice eventful-notice-danger">' . esc_html__( 'Error: Field ID conflict.', 'ta-framework' ) . '</div>';
+				echo '<div class="eventful-notice eventful-notice-danger">' . esc_html__( 'Error: Field ID conflict.', 'eventful' ) . '</div>';
 
 			} else {
 
@@ -48,7 +48,7 @@ if ( ! class_exists( 'EFUL_Field_repeater' ) ) {
 				echo '<div class="eventful-repeater-helper-inner">';
 				echo '<i class="eventful-repeater-sort fas fa-arrows-alt"></i>';
 				echo '<i class="eventful-repeater-clone far fa-clone"></i>';
-				echo '<i class="eventful-repeater-remove eventful-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'ta-framework' ) . '"></i>';
+				echo '<i class="eventful-repeater-remove eventful-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'eventful' ) . '"></i>';
 				echo '</div>';
 				echo '</div>';
 				echo '</div>';
@@ -76,7 +76,7 @@ if ( ! class_exists( 'EFUL_Field_repeater' ) ) {
 						echo '<div class="eventful-repeater-helper-inner">';
 						echo '<i class="eventful-repeater-sort fas fa-arrows-alt"></i>';
 						echo '<i class="eventful-repeater-clone far fa-clone"></i>';
-						echo '<i class="eventful-repeater-remove eventful-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'ta-framework' ) . '"></i>';
+						echo '<i class="eventful-repeater-remove eventful-confirm fas fa-times" data-confirm="' . esc_html__( 'Are you sure to delete this item?', 'eventful' ) . '"></i>';
 						echo '</div>';
 						echo '</div>';
 						echo '</div>';
@@ -88,8 +88,8 @@ if ( ! class_exists( 'EFUL_Field_repeater' ) ) {
 
 				echo '</div>';
 
-				echo '<div class="eventful-repeater-alert eventful-repeater-max">' . esc_html__( 'You cannot add more.', 'ta-framework' ) . '</div>';
-				echo '<div class="eventful-repeater-alert eventful-repeater-min">' . esc_html__( 'You cannot remove more.', 'ta-framework' ) . '</div>';
+				echo '<div class="eventful-repeater-alert eventful-repeater-max">' . esc_html__( 'You cannot add more.', 'eventful' ) . '</div>';
+				echo '<div class="eventful-repeater-alert eventful-repeater-min">' . esc_html__( 'You cannot remove more.', 'eventful' ) . '</div>';
 				echo '<a href="#" class="button button-primary eventful-repeater-add">' . esc_html( $args['button_title'] ) . '</a>';
 
 				echo wp_kses_post( $this->field_after() );

@@ -19,9 +19,9 @@ if ( ! class_exists( 'EFUL_Field_link' ) ) {
 			$args = wp_parse_args(
 				$this->field,
 				array(
-					'add_title'    => esc_html__( 'Add Link', 'ta-framework' ),
-					'edit_title'   => esc_html__( 'Edit Link', 'ta-framework' ),
-					'remove_title' => esc_html__( 'Remove Link', 'ta-framework' ),
+					'add_title'    => esc_html__( 'Add Link', 'eventful' ),
+					'edit_title'   => esc_html__( 'Edit Link', 'eventful' ),
+					'remove_title' => esc_html__( 'Remove Link', 'eventful' ),
 				)
 			);
 

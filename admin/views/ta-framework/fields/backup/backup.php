@@ -30,12 +30,12 @@ if ( ! class_exists( 'EFUL_Field_backup' ) ) {
 			echo wp_kses_post( $this->field_before() );
 
 			echo '<textarea name="eventful_import_data" class="eventful-import-data"></textarea>';
-			echo '<button type="submit" class="button button-primary eventful-confirm eventful-import" data-unique="' . esc_attr( $unique ) . '" data-nonce="' . esc_attr( $nonce ) . '">' . esc_html__( 'Import', 'ta-framework' ) . '</button>';
+			echo '<button type="submit" class="button button-primary eventful-confirm eventful-import" data-unique="' . esc_attr( $unique ) . '" data-nonce="' . esc_attr( $nonce ) . '">' . esc_html__( 'Import', 'eventful' ) . '</button>';
 			echo '<hr />';
 			echo '<textarea readonly="readonly" class="eventful-export-data">' . esc_attr( wp_json_encode( get_option( $unique ) ) ) . '</textarea>';
-			echo '<a href="' . esc_url( $export ) . '" class="button button-primary eventful-export" target="_blank">' . esc_html__( 'Export & Download', 'ta-framework' ) . '</a>';
+			echo '<a href="' . esc_url( $export ) . '" class="button button-primary eventful-export" target="_blank">' . esc_html__( 'Export & Download', 'eventful' ) . '</a>';
 			echo '<hr />';
-			echo '<button type="submit" name="eventful_transient[reset]" value="reset" class="button eventful-warning-primary eventful-confirm eventful-reset" data-unique="' . esc_attr( $unique ) . '" data-nonce="' . esc_attr( $nonce ) . '">' . esc_html__( 'Reset', 'ta-framework' ) . '</button>';
+			echo '<button type="submit" name="eventful_transient[reset]" value="reset" class="button eventful-warning-primary eventful-confirm eventful-reset" data-unique="' . esc_attr( $unique ) . '" data-nonce="' . esc_attr( $nonce ) . '">' . esc_html__( 'Reset', 'eventful' ) . '</button>';
 
 			echo wp_kses_post( $this->field_after() );
 		}

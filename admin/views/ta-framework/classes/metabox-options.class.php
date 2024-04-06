@@ -258,7 +258,7 @@ if ( ! class_exists( 'EFUL_Metabox' ) ) {
 
               } else {
 
-                echo '<div class="eventful-no-option">'. esc_html__( 'No data available.', 'ta-framework' ) .'</div>';
+                echo '<div class="eventful-no-option">'. esc_html__( 'No data available.', 'eventful' ) .'</div>';
 
               }
 
@@ -275,8 +275,8 @@ if ( ! class_exists( 'EFUL_Metabox' ) ) {
               echo '<div class="eventful-sections-reset">';
               echo '<label>';
               echo '<input type="checkbox" name="'. esc_attr( $this->unique ) .'[_reset]" />';
-              echo '<span class="button eventful-button-reset">'. esc_html__( 'Reset', 'ta-framework' ) .'</span>';
-              echo '<span class="button eventful-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'ta-framework' ), esc_html__( 'Cancel', 'ta-framework' ) ) .'</span>';
+              echo '<span class="button eventful-button-reset">'. esc_html__( 'Reset', 'eventful' ) .'</span>';
+              echo '<span class="button eventful-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'eventful' ), esc_html__( 'Cancel', 'eventful' ) ) .'</span>';
               echo '</label>';
               echo '</div>';
 
