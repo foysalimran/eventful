@@ -7,6 +7,7 @@
  * @package    Eventful
  * @subpackage Eventful/public/template
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( is_array( $advanced_filter ) && ! $eventful_query->is_main_query() ) {
 	ob_start();

@@ -7,6 +7,7 @@
  *
  * @since 2.0.0
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * The Custom Field Output class to process the custom field as custom meta.

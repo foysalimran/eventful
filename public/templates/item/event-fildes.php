@@ -7,6 +7,7 @@
  * @package    Eventful
  * @subpackage Eventful/public
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
  echo '<div class="eventful__item--meta event_meta">';
 

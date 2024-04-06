@@ -14,6 +14,8 @@
  *
  * @since 2.0.0
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class EFUL_User_Like
 {
 	/**

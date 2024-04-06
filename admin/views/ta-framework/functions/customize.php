@@ -7,8 +7,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'WP_Customize_Panel_EFUL' ) && class_exists( 'WP_Customize_Panel' ) ) {
-	class WP_Customize_Panel_EFUL extends WP_Customize_Panel {
+if ( ! class_exists( 'EFUL_Customize_Panel' ) && class_exists( 'WP_Customize_Panel' ) ) {
+	class EFUL_Customize_Panel extends WP_Customize_Panel {
 		public $type = 'eventful';
 	}
 }
@@ -20,8 +20,8 @@ if ( ! class_exists( 'WP_Customize_Panel_EFUL' ) && class_exists( 'WP_Customize_
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'WP_Customize_Section_EFUL' ) && class_exists( 'WP_Customize_Section' ) ) {
-	class WP_Customize_Section_EFUL extends WP_Customize_Section {
+if ( ! class_exists( 'EFUL_Customize_Section' ) && class_exists( 'WP_Customize_Section' ) ) {
+	class EFUL_Customize_Section extends WP_Customize_Section {
 		public $type = 'eventful';
 	}
 }
@@ -33,8 +33,8 @@ if ( ! class_exists( 'WP_Customize_Section_EFUL' ) && class_exists( 'WP_Customiz
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! class_exists( 'WP_Customize_Control_EFUL' ) && class_exists( 'WP_Customize_Control' ) ) {
-	class WP_Customize_Control_EFUL extends WP_Customize_Control {
+if ( ! class_exists( 'EFUL_Customize_Control' ) && class_exists( 'WP_Customize_Control' ) ) {
+	class EFUL_Customize_Control extends WP_Customize_Control {
 
 		public $type   = 'eventful';
 		public $field  = '';

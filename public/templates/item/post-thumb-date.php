@@ -8,6 +8,7 @@
  * @package    Eventful
  * @subpackage Eventful/public
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 <div class="eventful__item--archive <?php echo esc_attr($post_thumb_meta_position); ?>">
     <?php

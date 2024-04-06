@@ -5,6 +5,7 @@
  * @package Eventful
  * @subpackage Eventful/Public/dynamic-css
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	// Navigation options.
 	$eventful_navigation                = isset( $view_options['eventful_navigation'] ) ? $view_options['eventful_navigation'] : '';

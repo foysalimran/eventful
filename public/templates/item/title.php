@@ -8,7 +8,7 @@
  * @package    Eventful
  * @subpackage Eventful/public
  */
-
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 
 <<?php echo esc_attr($post_title_tag); ?> class="eventful__item--title">

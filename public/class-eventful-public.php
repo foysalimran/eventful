@@ -9,6 +9,7 @@
  * @package    Eventful
  * @subpackage Eventful/public
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * The public-facing functionality of the plugin.

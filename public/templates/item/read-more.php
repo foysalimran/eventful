@@ -8,7 +8,7 @@
  * @package    Eventful_Pro
  * @subpackage Eventful_Pro/public
  */
-
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ('text_link' === $read_more_type) {
 ?>
 

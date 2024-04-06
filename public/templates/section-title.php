@@ -7,6 +7,7 @@
  * @package    Eventful
  * @subpackage Eventful/public/template
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( ! empty( $section_title_text ) ) {
 	?>

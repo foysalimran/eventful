@@ -8,6 +8,7 @@
  * @package    Eventful
  * @subpackage Eventful/public
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $lazy_load = isset($_post_thumb_setting['eventful_img_lazy_load']) ? $_post_thumb_setting['eventful_img_lazy_load'] : true;
 $lazy_load = apply_filters('eventful_img_lazy_load', $lazy_load);

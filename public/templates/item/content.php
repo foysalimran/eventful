@@ -7,6 +7,7 @@
  * @package    Eventful
  * @subpackage Eventful/public
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 ?>
 <div class="eventful__item__content">
