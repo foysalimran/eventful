@@ -19,7 +19,7 @@ if ( ! class_exists( 'EFUL_Field_metabox_branding' ) ) {
 			echo ( ! empty( $this->field['content'] ) ) ? esc_html($this->field['content']) : '';
 			echo ( ! empty( $this->field['image'] ) ) ? '<img src="' . esc_url($this->field['image']) . '">' : '';
 
-			echo ( ! empty( $this->field['after'] ) && ! empty( $this->field['link'] ) ) ? '<span class="spacer"></span><span class="support"><a target="_blank" href="' . $this->field['link'] . '">' . esc_html($this->field['after']) . '</a></span>' : '';
+			echo ( ! empty( $this->field['after'] ) && ! empty( $this->field['link'] ) ) ? '<span class="spacer"></span><span class="support"><a target="_blank" href="' . esc_url($this->field['link']) . '">' . wp_kses_post($this->field['after']) . '</a></span>' : '';
 		}
 
   }

@@ -476,7 +476,26 @@ class EFUL_Live_Filter
 				$tax_html = implode('', $newterm_array);
 				$output   = '';
 				$output   = $output . force_balance_tags($tax_html);
-				echo $output;
+				$allowed_tags = array(
+					'p'     => array(),
+					'div'   => array(
+						'style' => array(),
+						'class' => array(),
+					),
+					'label' => array(),
+					'input' => array(
+						'checked'       => array(),
+						'type'          => array(),
+						'name'          => array(),
+						'data-taxonomy' => array(),
+						'value'         => array(),
+					),
+				);
+
+				echo wp_kses(
+					$output,
+					$allowed_tags
+				);
 			}
 		}
 	}

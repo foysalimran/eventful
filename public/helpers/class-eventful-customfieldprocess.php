@@ -271,9 +271,9 @@ function eventful_custom_field_html(  $object, $post_content_sorter, $is_post = 
 	$td_after  = $is_table ? '</td>' : '';
 
 	if ( $eventful_cf_html ) {
-		echo $td_before;
-		echo $eventful_cf_html;
-		echo $td_after;
+		echo wp_kses_post($td_before);
+		echo wp_kses_post($eventful_cf_html);
+		echo wp_kses_post($td_after);
 	}
 
 }

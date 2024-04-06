@@ -206,7 +206,7 @@ if ( ! class_exists( 'EFUL_Metabox' ) ) {
                 $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="eventful-label-error eventful-error">!</i>' : '';
                 $tab_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="eventful-tab-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
 
-                echo '<li class="menu-item_' . $this->unique . '_' . $tab_key . '"><a href="#" data-section="' . $this->unique . '_' . $tab_key . '">' . $tab_icon . $section['title'] . $tab_error . '</a></li>';
+                echo '<li class="menu-item_' . esc_attr($this->unique) . '_' . esc_attr($tab_key) . '"><a href="#" data-section="' . esc_attr($this->unique) . '_' . esc_attr( $tab_key ) . '">' . wp_kses_post($tab_icon) . esc_html($section['title']) . esc_html($tab_error) . '</a></li>';
 
                 $tab_key++;
 
@@ -235,7 +235,7 @@ if ( ! class_exists( 'EFUL_Metabox' ) ) {
               $section_title  = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
               $section_icon   = ( ! empty( $section['icon'] ) ) ? '<i class="eventful-section-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
 
-              echo '<div id="eventful-section-' . $this->unique . '_' . $section_key . '" class="eventful-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
+              echo '<div id="eventful-section-' . esc_attr($this->unique) . '_' . esc_attr($section_key) . '" class="eventful-section hidden'. esc_attr( $section_onload . $section_class ) .'">';
 
               echo ( $section_title || $section_icon ) ? '<div class="eventful-section-title"><h3>'. wp_kses_post($section_icon) . esc_html($section_title) .'</h3></div>' : '';
               echo ( ! empty( $section['description'] ) ) ? '<div class="eventful-field eventful-section-description">'. wp_kses_post($section['description']) .'</div>' : '';

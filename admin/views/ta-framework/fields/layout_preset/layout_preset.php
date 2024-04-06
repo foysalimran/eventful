@@ -30,7 +30,7 @@ if ( ! class_exists( 'EFUL_Field_layout_preset' ) ) {
 
 			if ( ! empty( $args['options'] ) ) {
 
-				echo '<div class="eventful-siblings eventful--image-group" data-multiple="' . $args['multiple'] . '">';
+				echo '<div class="eventful-siblings eventful--image-group" data-multiple="' . esc_attr($args['multiple']) . '">';
 
 				$num = 1;
 

@@ -34,14 +34,14 @@ if ('carousel_layout' !== $layout && $lazy_load && !is_admin()) {
 			<?php
 		}
 		if (empty($eventful_image_attr['video']) && empty($eventful_image_attr['audio'])) {
-			echo $image;
+			echo wp_kses_post($image);
 		} elseif ($eventful_image_attr['video']) {
 			?>
-				<div class='ta-eventful-post-video-thumb-area'><?php echo $eventful_image_attr['video']; ?></div>
+				<div class='ta-eventful-post-video-thumb-area'><?php echo wp_kses_post($eventful_image_attr['video']); ?></div>
 			<?php
 		} elseif ($eventful_image_attr['audio']) {
 			?>
-				<div class='ta-eventful-post-audio-thumb-area'><?php echo $eventful_image_attr['audio']; ?></div>
+				<div class='ta-eventful-post-audio-thumb-area'><?php echo wp_kses_post($eventful_image_attr['audio']); ?></div>
 			<?php } ?>
 			</a>
 			<?php
@@ -55,14 +55,14 @@ if ('carousel_layout' !== $layout && $lazy_load && !is_admin()) {
 				include EFUL_Functions::eventful_locate_template('item/post-thumb-taxonomy.php');
 				echo wp_kses($td['end'], $allow_tag);
 				$item_thumb = apply_filters('eventful_thumb_taxonomy', ob_get_clean());
-				echo $item_thumb;
+				echo wp_kses_post($item_thumb);
 			} elseif ($post_thumb_meta == 'date') {
 				ob_start();
 				echo wp_kses($td['start'], $allow_tag);
 				include EFUL_Functions::eventful_locate_template('item/post-thumb-date.php');
 				echo wp_kses($td['end'], $allow_tag);
 				$item_thumb = apply_filters('eventful_thumb_archive', ob_get_clean());
-				echo $item_thumb;
+				echo wp_kses_post($item_thumb);
 			}
 			?>
 

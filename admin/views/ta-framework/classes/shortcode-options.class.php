@@ -98,7 +98,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
             <div class="eventful-modal-overlay"></div>
             <div class="eventful-modal-inner">
               <div class="eventful-modal-title">
-                <?php echo $this->args['button_title']; ?>
+                <?php echo esc_html($this->args['button_title']); ?>
                 <div class="eventful-modal-close"></div>
               </div>
               <?php
@@ -121,7 +121,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
                       $shortcode = ( ! empty( $sub['shortcode'] ) ) ? ' data-shortcode="'. esc_attr( $sub['shortcode'] ) .'"' : '';
                       $group     = ( ! empty( $sub['group_shortcode'] ) ) ? ' data-group="'. esc_attr( $sub['group_shortcode'] ) .'"' : '';
 
-                      echo '<option value="'. esc_attr( $tab_key ) .'"'. $view . $shortcode . $group .'>'. esc_attr( $sub['title'] ) .'</option>';
+                      echo '<option value="'. esc_attr( $tab_key ) .'"'. wp_kses_post($view) . wp_kses_post($shortcode) . wp_kses_post($group) .'>'. esc_html( $sub['title'] ) .'</option>';
 
                       $tab_key++;
 
@@ -135,7 +135,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
                       $shortcode = ( ! empty( $tab['shortcode'] ) ) ? ' data-shortcode="'. esc_attr( $tab['shortcode'] ) .'"' : '';
                       $group     = ( ! empty( $tab['group_shortcode'] ) ) ? ' data-group="'. esc_attr( $tab['group_shortcode'] ) .'"' : '';
 
-                      echo '<option value="'. esc_attr( $tab_key ) .'"'. $view . $shortcode . $group .'>'. esc_attr( $tab['title'] ) .'</option>';
+                      echo '<option value="'. esc_attr( $tab_key ) .'"'. wp_kses_post($view) . wp_kses_post($shortcode) . wp_kses_post($group) .'>'. esc_html( $tab['title'] ) .'</option>';
 
                     $tab_key++;
 
@@ -151,7 +151,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
                 <div class="eventful-modal-loading"><div class="eventful-loading"></div></div>
                 <div class="eventful-modal-load"></div>
               </div>
-              <div class="eventful-modal-insert-wrapper hidden"><a href="#" class="button button-primary eventful-modal-insert"><?php echo $this->args['insert_title']; ?></a></div>
+              <div class="eventful-modal-insert-wrapper hidden"><a href="#" class="button button-primary eventful-modal-insert"><?php echo esc_html($this->args['insert_title']); ?></a></div>
             </div>
           </div>
         </div>

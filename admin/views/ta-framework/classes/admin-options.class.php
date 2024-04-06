@@ -499,7 +499,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
         echo '<div class="eventful-header-inner">';
 
           echo '<div class="eventful-header-left">';
-          echo '<h1>'. $this->args['framework_title'] .'</h1>';
+          echo '<h1>'. esc_html($this->args['framework_title']) .'</h1>';
           echo '</div>';
 
           echo '<div class="eventful-header-right">';
@@ -555,7 +555,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
                       $sub_error = $this->error_check( $sub );
                       $sub_icon  = ( ! empty( $sub['icon'] ) ) ? '<i class="eventful-tab-icon '. esc_attr( $sub['icon'] ) .'"></i>' : '';
 
-                      echo '<li><a href="#tab='. esc_attr( $sub_id ) .'" data-tab-id="'. esc_attr( $sub_id ) .'">'. $sub_icon . $sub['title'] . $sub_error .'</a></li>';
+                      echo '<li><a href="#tab='. esc_attr( $sub_id ) .'" data-tab-id="'. esc_attr( $sub_id ) .'">'. wp_kses_post( $tab_icon ) . esc_html( $tab['title'] ) . esc_html( $tab_error ) .'</a></li>';
 
                     }
 

@@ -402,7 +402,7 @@ class EFUL_Functions
 	}
 
 
-	
+
 	/**
 	 * Thumb Sized function
 	 *
@@ -707,7 +707,23 @@ class EFUL_Functions
 					}
 					echo wp_kses_post($meta_tag_start);
 					?>
-					<?php echo EFUL_User_Like::get_eventful_likes_button($post->ID); ?>
+					<?php
+					echo wp_kses(
+						EFUL_User_Like::get_eventful_likes_button($post->ID),
+						array(
+							'a'    => array(
+								'href'           => true,
+								'class'          => true,
+								'data-nonce'     => true,
+								'data-post-id'   => true,
+								'data-iscomment' => true,
+								'title'          => true,
+							),
+							'i'    => array('class' => true),
+							'span' => array('class' => true),
+						)
+					);
+					?>
 					<?php
 					echo wp_kses_post($meta_tag_end);
 					break;
@@ -806,22 +822,22 @@ class EFUL_Functions
 										break;
 									case 'city':
 										if (tribe_get_city($post->ID, true)) {
-											echo '<span>' . tribe_get_city($post->ID, true) . ',' . '</span>';
+											echo '<span>' . esc_html(tribe_get_city($post->ID, true)) . ',' . '</span>';
 										}
 										break;
 									case 'country':
 										if (tribe_get_country($post->ID, true)) {
-											echo '<span>' . tribe_get_country($post->ID, true) . ',' . '</span>';
+											echo '<span>' . esc_html(tribe_get_country($post->ID, true)) . ',' . '</span>';
 										}
 										break;
 									case 'state':
 										if (tribe_get_stateprovince($post->ID, true)) {
-											echo '<span>' . tribe_get_stateprovince($post->ID, true) . ',' . '</span>';
+											echo '<span>' . esc_html(tribe_get_stateprovince($post->ID, true)) . ',' . '</span>';
 										}
 										break;
 									case 'postal_code':
 										if (tribe_get_zip($post->ID, true)) {
-											echo '<span>' . tribe_get_zip($post->ID, true) . ',' . '</span>';
+											echo '<span>' . esc_html(tribe_get_zip($post->ID, true)) . ',' . '</span>';
 										}
 										break;
 									case 'phone':
@@ -854,11 +870,11 @@ class EFUL_Functions
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($venue_map_link) {
 						?>
-							<a href="<?php echo esc_url(tribe_get_organizer_website_url($post->ID)); ?>"><?php echo tribe_get_organizer($post->ID, true);  ?></a>
+							<a href="<?php echo esc_url(tribe_get_organizer_website_url($post->ID)); ?>"><?php echo esc_html(tribe_get_organizer($post->ID, true));  ?></a>
 						<?php
 						} else {
 						?>
-							<span><?php echo tribe_get_organizer($post->ID, true); ?></span>
+							<span><?php echo esc_html(tribe_get_organizer($post->ID, true)); ?></span>
 						<?php
 						}
 						echo wp_kses_post($meta_tag_end);
@@ -875,11 +891,11 @@ class EFUL_Functions
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($venue_map_link) {
 						?>
-							<span><?php echo tribe_get_cost($post->ID) ?></span>
+							<span><?php echo esc_html( tribe_get_cost($post->ID) ) ?></span>
 						<?php
 						} else {
 						?>
-							<span><?php echo tribe_get_cost($post->ID) ?></span>
+							<span><?php echo esc_html( tribe_get_cost($post->ID) ) ?></span>
 						<?php
 						}
 						echo wp_kses_post($meta_tag_end);
@@ -915,7 +931,7 @@ class EFUL_Functions
 					echo wp_kses($meta_icon, $allowed_html); ?>
 					<time class="entry-date published updated">
 						<?php echo wp_kses_post($post_date); ?></time>
-				<?php
+<?php
 					echo wp_kses_post($meta_tag_end);
 					break;
 			}
@@ -923,7 +939,7 @@ class EFUL_Functions
 		} // End Foreach.
 		echo wp_kses_post($meta_wrapper_end_tag);
 	}
-	
+
 	/**
 	 * Show reading time for the post.
 	 *

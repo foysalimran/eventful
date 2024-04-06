@@ -761,14 +761,14 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
       }
 
       // These attributes has been sanitized above.
-      echo '<div class="eventful-field eventful-field-'. $field_type . $is_pseudo . $class . $visible .'"'. $depend .'>';
+      echo '<div class="eventful-field eventful-field-'. esc_attr($field_type) . esc_attr($is_pseudo) . esc_attr($class) . esc_attr($visible) .'"'. wp_kses_post($depend) .'>';
 
       if ( ! empty( $field_type ) ) {
 
         if ( ! empty( $field['title'] ) ) {
           echo '<div class="eventful-title">';
-          echo '<h4>'. $field['title'] .'</h4>';
-          echo ( ! empty( $field['subtitle'] ) ) ? '<div class="eventful-subtitle-text">'. $field['subtitle'] .'</div>' : '';
+          echo '<h4>'. esc_html($field['title']) .'</h4>';
+          echo ( ! empty( $field['subtitle'] ) ) ? '<div class="eventful-subtitle-text">'. wp_kses_post($field['subtitle']) .'</div>' : '';
           echo '</div>';
         }
 

@@ -88,8 +88,8 @@ if ( ! class_exists( 'EFUL_Field_column' ) ) {
 
 				echo '<div class="eventful--input">';
 				echo ( ! empty( $args['all_icon'] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post($args['all_icon']) . '</span>' : '';
-				echo '<input type="number" name="' . $this->field_name( '[all]' ) . '" value="' . esc_attr($value['all']) . '"' . wp_kses_post($placeholder . $min) . ' class="eventful-number" />';
-				echo ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? '<span class="eventful--label eventful--unit">' . $args['units'][0] . '</span>' : '';
+				echo '<input type="number" name="' . esc_attr($this->field_name( '[all]' )) . '" value="' . esc_attr($value['all']) . '"' . wp_kses_post($placeholder . $min) . ' class="eventful-number" />';
+				echo ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? '<span class="eventful--label eventful--unit">' . esc_html($args['units'][0]) . '</span>' : '';
 				echo '</div>';
 
 			} else {
@@ -109,9 +109,9 @@ if ( ! class_exists( 'EFUL_Field_column' ) ) {
 					$placeholder = ( ! empty( $args[ $property . '_placeholder' ] ) ) ? ' placeholder="' . $args[ $property . '_placeholder' ] . '"' : '';
 
 					echo '<div class="eventful--input">';
-					echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="eventful--label eventful--icon">' . $args[ $property . '_icon' ] . '</span>' : '';
-					echo '<input type="number" name="' . $this->field_name( '[' . $property . ']' ) . '" value="' . esc_attr($value[ $property ]) . '"' . wp_kses_post($placeholder . $min) . ' class="eventful-number" />';
-					echo ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? '<span class="eventful--label eventful--unit">' . $args['units'][0] . '</span>' : '';
+					echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="eventful--label eventful--icon">' . wp_kses_post($args[ $property . '_icon' ]) . '</span>' : '';
+					echo '<input type="number" name="' . esc_attr($this->field_name( '[' . $property . ']' )) . '" value="' . esc_attr($value[ $property ]) . '"' . wp_kses_post($placeholder . $min) . ' class="eventful-number" />';
+					echo ( count( $args['units'] ) === 1 && ! empty( $args['unit'] ) ) ? '<span class="eventful--label eventful--unit">' . wp_kses_post($args['units'][0]) . '</span>' : '';
 					echo '</div>';
 
 				}
@@ -120,7 +120,7 @@ if ( ! class_exists( 'EFUL_Field_column' ) ) {
 			if ( ! empty( $args['unit'] ) && count( $args['units'] ) > 1 ) {
 				echo '<div class="eventful--input">';
 
-				echo '<select name="' . $this->field_name( '[unit]' ) . '">';
+				echo '<select name="' . esc_attr($this->field_name( '[unit]' )) . '">';
 				foreach ( $args['units'] as $unit ) {
 					$selected = ( $value['unit'] === $unit ) ? ' selected' : '';
 					echo '<option value="' . esc_attr($unit) . '"' . esc_attr($selected) . '>' . esc_html($unit) . '</option>';
