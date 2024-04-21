@@ -230,7 +230,6 @@ class EFUL_Functions
 	 * @param  array  $query_args query_args.
 	 * @param  string $keyword keyword.
 	 * @param  int    $author_id author id.
-	 * @param  array  $custom_fields_array custom fields array.
 	 * @param  string $orderby orderby.
 	 * @param  string $order order.
 	 * @param  array  $selected_term_list term_list.
@@ -240,7 +239,7 @@ class EFUL_Functions
 	 * @param  string $lang current lang.
 	 * @return array
 	 */
-	public static function modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $post_in = array(), $lang = '')
+	public static function modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, $post_offset, $relation, $post_in = array(), $lang = '')
 	{
 		if (!empty($keyword)) {
 			$query_args['s'] = $keyword;
@@ -254,35 +253,6 @@ class EFUL_Functions
 			$query_args['lang'] = $lang;
 		}
 		$query_args['post__in'] = $post_in;
-		if (!empty($custom_fields_array)) {
-			$eventful_meta_query = array();
-			foreach ($custom_fields_array as $_custom_field) {
-				$c_field_key   = $_custom_field['custom_field_key'];
-				$c_field_value = $_custom_field['custom_field_value'];
-				if (strpos($c_field_value, ' ') !== false) {
-					$c_field_value    = explode(' ', $c_field_value);
-					$eventful_meta_query[] = array(
-						'key'     => $c_field_key,
-						'value'   => $c_field_value,
-						'compare' => 'BETWEEN',
-						'type'    => 'numeric',
-					);
-				} else {
-					if (strpos($c_field_value, ',') !== false) {
-						$c_field_value = explode(',', $c_field_value);
-					}
-					$eventful_meta_query[] = array(
-						'key'     => $c_field_key,
-						'compare' => 'IN',
-						'value'   => $c_field_value,
-					);
-				}
-			}
-			if (count($eventful_meta_query) > 1) {
-				$eventful_meta_query['relation'] = 'AND';
-			}
-			$query_args['meta_query'] = $eventful_meta_query;
-		}
 
 		if (!empty($orderby)) {
 			$query_args['orderby'] = ('rand' === $orderby) ? 'rand(' . get_transient('eventful_rand') . ')' : $orderby;

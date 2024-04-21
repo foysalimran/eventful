@@ -427,7 +427,7 @@ class EFUL_HTML
 		$big = 999999999; // need an unlikely integer.
 		if ($pages > 1) {
 			$page_current     = max(1, get_query_var('paged'));
-			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : ''; //phpcs:ignore
+			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? sanitize_text_field(wp_unslash($_SERVER['QUERY_STRING'])) : ''; //phpcs:ignore
 			if (!empty($filter_url_value)) {
 				$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : ''; //phpcs:ignore
 				if ($shortcode_id == $views_id) {

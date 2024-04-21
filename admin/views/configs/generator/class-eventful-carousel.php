@@ -172,7 +172,7 @@ class EFUL_Carousel
 						),
 						'min'        => '1',
 						'dependency' => array( 'eventful_carousel_mode', '==', 'standard', true ),
-						'help'       => esc_html__( 'When multiple <b>Row</b> is set, the above two options <b>Infinite Loop</b> and <b>Auto Height</b> won\'t work properly.', 'eventful' ),
+						'help'       => wp_kses_post( 'When multiple <b>Row</b> is set, the above two options <b>Infinite Loop</b> and <b>Auto Height</b> won\'t work properly.', 'eventful' ),
 					),
 					array(
 						'type'       => 'subheading',
@@ -371,7 +371,7 @@ class EFUL_Carousel
 							'mobile'     => '1',
 						),
 						'dependency' => array( 'eventful_carousel_mode', '!=', 'ticker' ),
-						'help'       => wp_kses(esc_html__('<i class="fas fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fas fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fas fa-tablet-alt"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile </b> - size is smaller than 576px.', 'eventful'), array('i' => array('class' => array()), 'br' => array()) ),
+						'help'       => wp_kses_post('<i class="fas fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fas fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fas fa-tablet-alt"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fas fa-mobile-alt"></i> <b> Mobile </b> - size is smaller than 576px.', 'eventful'),
 					),
 					// Miscellaneous Settings.
 					array(

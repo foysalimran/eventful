@@ -69,7 +69,7 @@ class EFUL_Display
 						),
 						'min'      => '1',
 						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
-						'help'       => wp_kses(esc_html__('<i class="fa fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fa fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fa fa-tablet"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fa fa-mobile"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fa fa-mobile"></i> <b> Mobile </b> - size is smaller than 576px.', 'eventful'), array('i' => array('class' => array()), 'br' => array())),
+						'help'       => wp_kses_post('<i class="fa fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fa fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fa fa-tablet"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fa fa-mobile"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fa fa-mobile"></i> <b> Mobile </b> - size is smaller than 576px.', 'eventful'),
 					),
 					array(
 						'id'              => 'margin_between_post',
@@ -115,7 +115,7 @@ class EFUL_Display
 						'default'    => false,
 						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 					),
-					
+
 					array(
 						'id'       => 'post_border',
 						'type'     => 'border',
@@ -732,14 +732,14 @@ class EFUL_Display
 											array(
 												'id'      => 'post_meta_alignment',
 												'type'    => 'button_set',
-												'title'   => esc_html__( 'Alignment', 'eventful' ),
+												'title'   => esc_html__('Alignment', 'eventful'),
 												'options' => array(
-													'left' => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
-													'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
-													'right' => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
+													'left' => wp_kses(__('<i class="fas fa-align-left" title="Left"></i>', 'eventful'), array('i' => array('class' => array()))),
+													'center' => wp_kses(__('<i class="fas fa-align-center" title="Center"></i>', 'eventful'), array('i' => array('class' => array()))),
+													'right' => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'eventful'), array('i' => array('class' => array()))),
 												),
 												'default' => 'left',
-												'dependency' => array( 'show_post_meta', '==', 'true' ),
+												'dependency' => array('show_post_meta', '==', 'true'),
 											),
 											array(
 												'id'       => 'post_meta_margin',
@@ -945,14 +945,14 @@ class EFUL_Display
 											array(
 												'id'      => 'event_meta_alignment',
 												'type'    => 'button_set',
-												'title'   => esc_html__( 'Alignment', 'eventful' ),
+												'title'   => esc_html__('Alignment', 'eventful'),
 												'options' => array(
-													'left' => wp_kses( __( '<i class="fas fa-align-left" title="Left"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
-													'center' => wp_kses( __( '<i class="fas fa-align-center" title="Center"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
-													'right' => wp_kses( __( '<i class="fas fa-align-right" title="Right"></i>', 'eventful' ), array( 'i' => array( 'class' => array() ) ) ),
+													'left' => wp_kses(__('<i class="fas fa-align-left" title="Left"></i>', 'eventful'), array('i' => array('class' => array()))),
+													'center' => wp_kses(__('<i class="fas fa-align-center" title="Center"></i>', 'eventful'), array('i' => array('class' => array()))),
+													'right' => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'eventful'), array('i' => array('class' => array()))),
 												),
 												'default' => 'left',
-												'dependency' => array( 'show_event_fildes', '==', 'true' ),
+												'dependency' => array('show_event_fildes', '==', 'true'),
 											),
 											array(
 												'id'       => 'event_fildes_margin',
@@ -1338,7 +1338,7 @@ class EFUL_Display
 						'type'       => 'spinner',
 						'title'      => esc_html__('Items Per Page', 'eventful'),
 						'subtitle'   => esc_html__('Set number of items to show per page.', 'eventful'),
-						'title_help' => esc_html__('This value should be lesser than that <strong> Limit </strong> from <strong>Filter Content  </strong> tab.', 'eventful'),
+						'title_help' => wp_kses_post('This value should be lesser than that <strong> Limit </strong> from <strong>Filter Content  </strong> tab.', 'eventful'),
 						'sanitize'   => 'eventful_sanitize_number_field',
 						'default'    => 12,
 						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),

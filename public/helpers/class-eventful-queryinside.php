@@ -56,7 +56,7 @@ class EFUL_QueryInside
 			$paged     = isset($_GET["$paged_var"]) ? sanitize_text_field(wp_unslash($_GET["$paged_var"])) : 1;
 		} else {
 			$paged            = (get_query_var('paged')) ? get_query_var('paged') : 1;
-			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
+			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? sanitize_text_field(wp_unslash($_SERVER['QUERY_STRING'])) : '';
 			if (!empty($filter_url_value)) {
 				$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 				if ($shortcode_id == $id) {
@@ -245,7 +245,7 @@ class EFUL_QueryInside
 		}
 
 
-		$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash($_SERVER['QUERY_STRING']) : '';
+		$filter_url_value = isset($_SERVER['QUERY_STRING']) ? sanitize_text_field(wp_unslash($_SERVER['QUERY_STRING'])) : '';
 		if (!empty($filter_url_value)) {
 			$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 			if ($shortcode_id == $id) {

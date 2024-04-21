@@ -220,11 +220,9 @@ if ( ! class_exists( 'EFUL_Taxonomy_Options' ) ) {
             }
 
           }
-
           $count++;
 
         }
-
       }
 
       $data = apply_filters( "eventful_{$this->unique}_save", $data, $term_id, $this );
