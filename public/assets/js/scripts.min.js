@@ -651,12 +651,12 @@ jQuery(document).ready(function ($) {
           });
         }
         // Live filter button reset on ajax call.
-        function eventful_live_filter_reset(selected_term_list = null) {
+        function eful_live_filter_reset(selected_term_list = null) {
           jQuery.ajax({
             url: ajaxurl,
             type: "POST",
             data: {
-              action: "eventful_live_filter_reset",
+              action: "eful_live_filter_reset",
               id: pc_sid,
               order: order,
               lang: spsp_lang,
@@ -826,7 +826,7 @@ jQuery(document).ready(function ($) {
                   eventful_update_url();
                   eventful_last_filter = custom_field_key;
                   eventful_ajax_action(selected_term_list);
-                  eventful_live_filter_reset(selected_term_list);
+                  eful_live_filter_reset(selected_term_list);
                 },
               });
             }
@@ -839,7 +839,7 @@ jQuery(document).ready(function ($) {
           keyword = that.val();
           eventful_last_filter = "keyword";
           var eventful_search_arr = { keyword, keyword };
-          eventful_live_filter_reset(selected_term_list);
+          eful_live_filter_reset(selected_term_list);
           eventful_hash_update_arr(keyword, eventful_search_arr, "keyword");
           eventful_update_url();
           eventful_ajax_action(selected_term_list);
@@ -1037,7 +1037,7 @@ jQuery(document).ready(function ($) {
           }
           eventful_hash_update_arr("page", { page: "" }, "page");
           eventful_update_url();
-          eventful_live_filter_reset(selected_term_list);
+          eful_live_filter_reset(selected_term_list);
           eventful_ajax_action(selected_term_list);
           eventful_pagination_action(selected_term_list);
         });
@@ -1107,7 +1107,7 @@ jQuery(document).ready(function ($) {
           eventful_hash_update_arr("page", { page: "" }, "page");
           eventful_update_url();
           // if ($('.eventful-filter-by', eventful_Wrapper_ID).length > 1) {
-          eventful_live_filter_reset(selected_term_list);
+          eful_live_filter_reset(selected_term_list);
           //}
           eventful_ajax_action(selected_term_list);
           eventful_pagination_action(selected_term_list);
@@ -1130,7 +1130,7 @@ jQuery(document).ready(function ($) {
           }
           eventful_hash_update_arr(author_id, author_arr, "author_id");
           eventful_update_url();
-          eventful_live_filter_reset(selected_term_list);
+          eful_live_filter_reset(selected_term_list);
           eventful_ajax_action();
           eventful_pagination_action();
         });

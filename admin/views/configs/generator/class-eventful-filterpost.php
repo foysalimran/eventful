@@ -272,7 +272,7 @@ class EFUL_FilterPost {
 														'default'  => false,
 													),
 													array(
-														'id'       => 'eventful_live_filter_align',
+														'id'       => 'eful_live_filter_align',
 														'type'     => 'button_set',
 														'title'    => esc_html__( 'Alignment', 'eventful' ),
 														'options'    => array(
@@ -409,7 +409,7 @@ class EFUL_FilterPost {
 												'title_help' => esc_html__( 'Check to show post count.', 'eventful' ),
 											),
 											array(
-												'id'      => 'eventful_live_filter_align',
+												'id'      => 'eful_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'eventful' ),
 												'options'    => array(
@@ -586,7 +586,7 @@ class EFUL_FilterPost {
 												'default' => esc_html__( 'Order by', 'eventful' ),
 											),
 											array(
-												'id'      => 'eventful_live_filter_align',
+												'id'      => 'eful_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'eventful' ),
 												'options'    => array(
@@ -665,7 +665,7 @@ class EFUL_FilterPost {
 												'default' => esc_html__( 'Order', 'eventful' ),
 											),
 											array(
-												'id'      => 'eventful_live_filter_align',
+												'id'      => 'eful_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'eventful' ),
 												'options'    => array(
@@ -838,7 +838,7 @@ class EFUL_FilterPost {
 												'title_help' => esc_html__( 'Type live filter label.', 'eventful' ),
 											),
 											array(
-												'id'      => 'eventful_live_filter_align',
+												'id'      => 'eful_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'eventful' ),
 												'options'    => array(

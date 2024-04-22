@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 if (is_array($advanced_filter) && !$eventful_query->is_main_query()) {
 	ob_start();
-	EFUL_Live_Filter::eventful_live_filter($view_options, $query_args, $eventful_gl_id);
+	EFUL_Live_Filter::eful_live_filter($view_options, $query_args, $eventful_gl_id);
 	EFUL_Live_Filter::eful_author_filter($view_options, $query_args);
 	EFUL_Live_Filter::eful_custom_filter_filter($view_options, $query_args, $eventful_gl_id);
 	$filter_bar = ob_get_clean();
