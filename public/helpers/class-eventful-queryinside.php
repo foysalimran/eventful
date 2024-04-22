@@ -197,18 +197,7 @@ class EFUL_QueryInside
 						$orderby = isset($view_options['eventful_filter_by_order']['eventful_select_filter_orderby']) ? $view_options['eventful_filter_by_order']['eventful_select_filter_orderby'] : '';
 						$order   = isset($view_options['eventful_filter_by_order']['eventful_select_filter_order']) ? $view_options['eventful_filter_by_order']['eventful_select_filter_order'] : '';
 
-						if ('custom_field' === $orderby) {
-							$order_custom_field_option = isset( $view_options['eventful_filter_by_order']['orderby_custom_field_options'] ) ? $view_options['eventful_filter_by_order']['orderby_custom_field_options'] : '';
-							$order_field_key           = isset( $order_custom_field_option['eventful_select_custom_field_key'] ) ? $order_custom_field_option['eventful_select_custom_field_key'] : '';
-							$field_value_type          = isset( $order_custom_field_option['eventful_select_custom_field_value_type'] ) ? $order_custom_field_option['eventful_select_custom_field_value_type'] : '';
-							$order_settings            = array(
-								'meta_key'  => $order_field_key,
-								'orderby'   => 'meta_value',
-								'meta_type' => $field_value_type,
-								'order'     => $order_field_key ? $order : '',
-							);
-							$args                      = array_merge( $args, $order_settings );
-						} else {
+						
 							if ('rand' === $orderby) {
 								if ($paged && get_query_var('paged') === 0 && get_query_var('paged') !== null) {
 									set_transient('eventful_rand', wp_rand());
@@ -219,7 +208,7 @@ class EFUL_QueryInside
 								'order'   => $orderby ? $order : '',
 							);
 							$args           = array_merge($args, $order_settings);
-						}
+						
 
 						break;
 					case 'status':

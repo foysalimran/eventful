@@ -15,7 +15,6 @@ $view_options = get_post_meta($eventful_id, 'eful_view_options', true);
 $layouts      = get_post_meta($eventful_id, 'eful_layouts', true);
 $layout = isset($layouts['eventful_layout_preset']) ? $layouts['eventful_layout_preset'] : '';
 $popup_content_color       = isset( $view_options['popup_content_color'] ) ? $view_options['popup_content_color'] : '';
-$popup_custom_fields_color = isset( $popup_content_color['custom-fields'] ) ? $popup_content_color['custom-fields'] : '#888';
 
 $show_section_title        = isset($view_options['section_title']) ? $view_options['section_title'] : false;
 if ($show_section_title) {

@@ -463,11 +463,8 @@ jQuery(document).ready(function ($) {
           page = "",
           spsp_lang = $(eventful_Wrapper_ID).data("lang");
           var author_id = "",
-          custom_field_key = "",
-          custom_field_value = "",
           eventful_hash_url = Array(),
           eventful_last_filter = "",
-          custom_fields_array = Array(),
           is_pagination_url_change = true;
         function eventful_ajax_action(selected_term_list = null) {
           jQuery.ajax({
@@ -485,7 +482,6 @@ jQuery(document).ready(function ($) {
               author_id: author_id,
               nonce: nonce,
               term_list: selected_term_list,
-              custom_fields_array: custom_fields_array,
             },
             success: function (data) {
               var $data = $(data);
@@ -574,7 +570,6 @@ jQuery(document).ready(function ($) {
               page: page,
               nonce: nonce,
               term_list: selected_term_list,
-              custom_fields_array: custom_fields_array,
             },
             success: function (data) {
               var $data = $(data);
@@ -620,7 +615,6 @@ jQuery(document).ready(function ($) {
               page: page,
               nonce: nonce,
               term_list: selected_term_list,
-              custom_fields_array: custom_fields_array,
             },
             success: function (data) {
               var $data = $(data);
@@ -668,7 +662,6 @@ jQuery(document).ready(function ($) {
               nonce: nonce,
               term_list: selected_term_list,
               last_filter: eventful_last_filter,
-              custom_fields_array: custom_fields_array,
             },
             success: function (data) {
               var $data = $(data);
@@ -676,7 +669,6 @@ jQuery(document).ready(function ($) {
                 opacity: 0.5,
               });
               $(".eventful-filter-bar", eventful_Wrapper_ID).html($newElements);
-              custom_field_filter_slider();
               $newElements.animate({
                 opacity: 1,
               });
@@ -745,19 +737,7 @@ jQuery(document).ready(function ($) {
               }
             });
           }
-          if (custom_fields_array.length > 0) {
-            var meta_field_total_length = custom_fields_array.length;
-            $.map(custom_fields_array, function (value, index) {
-              //  if (index == meta_field_total_length - 1) {
-              eventful_url +=
-                "cf" +
-                value.custom_field_key +
-                "=" +
-                value.custom_field_value +
-                "&";
-              // }
-            });
-          }
+          
           if (eventful_hash_url.length < 0 || selected_term_list.length < 0) {
             eventful_url = "";
           }
@@ -778,61 +758,6 @@ jQuery(document).ready(function ($) {
           }
         }
 
-        function custom_field_filter_slider() {
-          $(eventful_Wrapper_ID + " .eventful-custom-field-filter-slider").each(
-            function () {
-              var _that = $(this);
-              var _input = _that.find(".eventful-input");
-              var custom_field_key = _input.attr("name");
-              var _min = _input.data("min");
-              var _crmin = _input.data("crmin");
-              var _crmax = _input.data("crmax");
-              var _max = _input.data("max");
-              _that.find(".eventful-slider").slider({
-                range: true,
-                min: _crmin,
-                max: _crmax,
-                values: [_min, _max],
-                slide: function (event, ui) {
-                  _input.val(ui.values[0] + " - " + ui.values[1]);
-                },
-                stop: function (event, ui) {
-                  _input.data("max", ui.values[1]);
-
-                  custom_field_value = ui.values[0] + " " + ui.values[1];
-                  custom_fields_array.push({
-                    custom_field_key,
-                    custom_field_value,
-                  });
-                  custom_fields_array.map(function (person) {
-                    if (person.custom_field_key === custom_field_key) {
-                      person.custom_field_value = custom_field_value;
-                    }
-                  });
-                  custom_fields_array = $.grep(
-                    custom_fields_array,
-                    function (e, i) {
-                      return e.custom_field_value.length;
-                    }
-                  );
-                  custom_fields_array = custom_fields_array
-                    .map(JSON.stringify)
-                    .reverse() // convert to JSON string the array content, then reverse it (to check from end to beginning)
-                    .filter(function (item, index, arr) {
-                      return arr.indexOf(item, index + 1) === -1;
-                    }) // check if there is any occurrence of the item in whole array
-                    .reverse()
-                    .map(JSON.parse);
-                  eventful_update_url();
-                  eventful_last_filter = custom_field_key;
-                  eventful_ajax_action(selected_term_list);
-                  eful_live_filter_reset(selected_term_list);
-                },
-              });
-            }
-          );
-        }
-        custom_field_filter_slider();
         // Ajax post search.
         $("input.eventful-search-field", eventful_Wrapper_ID).on("keyup", function () {
           var that = $(this);
@@ -1234,7 +1159,6 @@ jQuery(document).ready(function ($) {
                 term_id: term_id,
                 author_id: author_id,
                 term_list: selected_term_list,
-                custom_fields_array: custom_fields_array,
                 nonce: nonce,
               },
               error: function (response) {
@@ -1416,7 +1340,6 @@ jQuery(document).ready(function ($) {
                       term_id: term_id,
                       author_id: author_id,
                       term_list: selected_term_list,
-                      custom_fields_array: custom_fields_array,
                       nonce: nonce,
                     },
                     error: function (response) {
