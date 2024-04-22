@@ -16,11 +16,11 @@ if (!defined('ABSPATH')) {
 	EFUL_HTML::eful_section_title($section_title, $show_section_title);
 	EFUL_HTML::eventful_preloader($show_preloader);
 	?>
-	<?php require EFUL_Functions::eventful_locate_template('filter-bar.php'); ?>
+	<?php require EFUL_Functions::eful_locate_template('filter-bar.php'); ?>
 	<div class="eventful">
 		<div class="ta-row">
 			<?php self::eventful_get_posts($options, $layout_preset, $post_content_sorter, $eventful_query, $eventful_gl_id); ?>
 		</div>
 	</div>
-	<?php require EFUL_Functions::eventful_locate_template( 'pagination.php' ); ?>
+	<?php require EFUL_Functions::eful_locate_template( 'pagination.php' ); ?>
 </div>

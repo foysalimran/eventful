@@ -61,8 +61,8 @@
 	  /* Copy to clipboard */
 	  $('.eventful-shortcode-selectable').on('click',function (e) {
 		e.preventDefault();
-		eventful_copyToClipboard($(this));
-		eventful_SelectText($(this));
+		eful_copyToClipboard($(this));
+		eful_SelectText($(this));
 		$(this).trigger("focus").select();
 		$('.eventful-after-copy-text').animate({
 		  opacity: 1,
@@ -97,14 +97,14 @@
 		  }, 0);
 		}, 2000);
 	  });
-	  function eventful_copyToClipboard(element) {
+	  function eful_copyToClipboard(element) {
 		var $temp = $("<input>");
 		$("body").append($temp);
 		$temp.val($(element).text()).select();
 		document.execCommand("copy");
 		$temp.remove();
 	  }
-	  function eventful_SelectText(element) {
+	  function eful_SelectText(element) {
 		var r = document.createRange();
 		var w = element.get(0);
 		r.selectNodeContents(w);

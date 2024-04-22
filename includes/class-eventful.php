@@ -210,8 +210,8 @@ class Eventful
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 
-		$this->loader->add_filter('manage_eventful_posts_columns', $plugin_admin, 'filter_eventful_admin_column');
-		$this->loader->add_action('manage_eventful_posts_custom_column', $plugin_admin, 'display_eventful_admin_fields', 10, 2);
+		$this->loader->add_filter('manage_eventful_posts_columns', $plugin_admin, 'eful_filter_admin_column');
+		$this->loader->add_action('manage_eventful_posts_custom_column', $plugin_admin, 'eful_display_admin_fields', 10, 2);
 	}
 
 	/**

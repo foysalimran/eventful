@@ -43,21 +43,21 @@ class Eventful_Admin
 		// Autoload system.
 		spl_autoload_register(array($this, 'autoload'));
 
-		EFUL_Metaboxes::layout_metabox('eful_layouts');
-		EFUL_Metaboxes::option_metabox('eful_view_options');
-		EFUL_Metaboxes::shortcode_metabox('eful_display_shortcode');
+		EFUL_Metaboxes::eful_layout_metabox('eful_layouts');
+		EFUL_Metaboxes::eful_option_metabox('eful_view_options');
+		EFUL_Metaboxes::eful_shortcode_metabox('eful_display_shortcode');
 		EFUL_Settings::settings('eful_settings');
 
 		$active_plugins = get_option('active_plugins');
 		foreach ($active_plugins as $active_plugin) {
 			$_temp = strpos($active_plugin, 'eventful.php');
 			if (false != $_temp) {
-				add_filter('plugin_action_links_' . $active_plugin, array($this, 'add_plugin_action_links'));
+				add_filter('plugin_action_links_' . $active_plugin, array($this, 'eful_add_plugin_action_links'));
 			}
 		}
 	}
 
-	public function add_plugin_action_links($links)
+	public function eful_add_plugin_action_links($links)
 	{
 		$new_links = array(
 			sprintf('<a href="%s">%s</a>', admin_url('post-new.php?post_type=eventful'), esc_html__('Add New', 'eventful')),
@@ -145,7 +145,7 @@ class Eventful_Admin
 	 * @since 2.0.0
 	 * @return statement
 	 */
-	public function filter_eventful_admin_column()
+	public function eful_filter_admin_column()
 	{
 
 		$admin_columns['cb']         = '<input type="checkbox" />';
@@ -164,11 +164,9 @@ class Eventful_Admin
 	 * @param string $post_id The post ID.
 	 * @return void
 	 */
-	public function display_eventful_admin_fields($column, $post_id)
+	public function eful_display_admin_fields($column, $post_id)
 	{
-
 		$eventful_layouts     = get_post_meta($post_id, 'eful_layouts', true);
-
 
 		$eventfuls_types = isset($eventful_layouts['eventful_layout_preset']) ? $eventful_layouts['eventful_layout_preset'] : '';
 		switch ($column) {
@@ -216,7 +214,7 @@ class Eventful_Admin
  *
  * @return string
  */
-function eventful_dashboard_capability()
+function eful_dashboard_capability()
 {
-	return apply_filters('eventful_dashboard_capability', 'manage_options');
+	return apply_filters('eful_dashboard_capability', 'manage_options');
 }

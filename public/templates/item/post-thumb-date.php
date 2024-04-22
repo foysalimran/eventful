@@ -14,8 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     <?php
     $start_tag      = $is_table ? '<td>' : '<li>';
     $end_tag        = $is_table ? '</td>' : '</li>';
-    $meta_tag_start = apply_filters('eventful_post_meta_html_tag_start', $start_tag);
-    $meta_tag_end   = apply_filters('eventful_post_meta_html_tag_end', $end_tag);
+    $meta_tag_start = apply_filters('eful_post_meta_html_tag_start', $start_tag);
+    $meta_tag_end   = apply_filters('eful_post_meta_html_tag_end', $end_tag);
     
     
     echo wp_kses_post($meta_tag_start);

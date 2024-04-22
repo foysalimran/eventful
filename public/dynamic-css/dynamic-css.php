@@ -341,7 +341,7 @@ $show_post_meta  = isset($eventful_post_meta['show_post_meta']) ? $eventful_post
 if (is_array($post_meta_group) && $show_post_meta) {
 	foreach ($post_meta_group as $key => $post_meta) {
 		$selected_meta      = $post_meta['select_post_meta'];
-		$meta_position      = isset($post_meta['eventful_meta_position']) ? $post_meta['eventful_meta_position'] : '';
+		$meta_position      = isset($post_meta['eful_meta_position']) ? $post_meta['eful_meta_position'] : '';
 		$meta_pill_color    = isset($post_meta['eventful_meta_pill_color']) ? $post_meta['eventful_meta_pill_color'] : array(
 			'text' => '#fff',
 			'bg'   => '#0015b5',
@@ -442,7 +442,7 @@ $show_event_fildes  = isset($eventful_event_fildes['show_event_fildes']) ? $even
 if (is_array($event_fildes_group) && $show_event_fildes) {
 	foreach ($event_fildes_group as $key => $event_fildes) {
 		$selected_meta      = $event_fildes['select_event_fildes'];
-		$meta_position      = isset($event_fildes['eventful_meta_position']) ? $event_fildes['eventful_meta_position'] : '';
+		$meta_position      = isset($event_fildes['eful_meta_position']) ? $event_fildes['eful_meta_position'] : '';
 		$meta_pill_color    = isset($event_fildes['eventful_meta_pill_color']) ? $event_fildes['eventful_meta_pill_color'] : array(
 			'text' => '#fff',
 			'bg'   => '#0015b5',

@@ -42,12 +42,12 @@ class EFUL_HTML
 			foreach ($post_meta_fields as $each_meta) {
 				if ('taxonomy' === $each_meta['select_post_meta']) {
 					$taxonomy      = $each_meta['post_meta_taxonomy'];
-					$meta_position = $each_meta['eventful_meta_position'];
+					$meta_position = $each_meta['eful_meta_position'];
 					if ('above_title' === $meta_position) {
 						$terms = get_the_term_list($post->ID, $taxonomy, '', ' ');
 						if ($terms) {
 							ob_start();
-							include EFUL_Functions::eventful_locate_template('item/meta-over-title.php');
+							include EFUL_Functions::eful_locate_template('item/meta-over-title.php');
 							$meta_over_title = apply_filters('eventful_meta_over_title', ob_get_clean());
 							echo wp_kses_post($meta_over_title);
 						};
@@ -87,7 +87,7 @@ class EFUL_HTML
 			$allow_tag         = array('td' => array());
 			ob_start();
 			echo wp_kses($td['start'], $allow_tag);
-			include EFUL_Functions::eventful_locate_template('item/title.php');
+			include EFUL_Functions::eful_locate_template('item/title.php');
 			echo wp_kses($td['end'], $allow_tag);
 			$title = apply_filters('eventful_item_title', ob_get_clean());
 			echo wp_kses_post($title);
@@ -101,18 +101,18 @@ class EFUL_HTML
 	 * @param array $options options.
 	 * @return void
 	 */
-	public static function eventful_content_html($sorter, $options, $post, $is_table = false)
+	public static function eful_content_html($sorter, $options, $post, $is_table = false)
 	{
 		$post_content_setting = EFUL_Functions::eventful_metabox_value('eventful_post_content', $sorter);
 		$show_post_content    = EFUL_Functions::eventful_metabox_value('show_post_content', $post_content_setting);
 		$show_read_more                = EFUL_Functions::eventful_metabox_value('show_read_more', $post_content_setting);
-		$eventful_content_type              = EFUL_Functions::eventful_metabox_value('post_content_type', $post_content_setting);
+		$eful_content_type              = EFUL_Functions::eventful_metabox_value('post_content_type', $post_content_setting);
 		$td                            = self::table_td($is_table);
 		$allow_tag                     = array('td' => array());
 		if ($show_post_content || $show_read_more) {
 			ob_start();
 			echo wp_kses($td['start'], $allow_tag);
-			include EFUL_Functions::eventful_locate_template('item/content.php');
+			include EFUL_Functions::eful_locate_template('item/content.php');
 			echo wp_kses($td['end'], $allow_tag);
 			$description = apply_filters('eventful_item_description', ob_get_clean());
 			echo wp_kses_post($description);
@@ -129,11 +129,11 @@ class EFUL_HTML
 	{
 		$post_content_setting = EFUL_Functions::eventful_metabox_value('eventful_post_content_readmore', $sorter);
 		$show_read_more                = EFUL_Functions::eventful_metabox_value('show_read_more', $post_content_setting);
-		$eventful_content_type              = EFUL_Functions::eventful_metabox_value('post_content_type', $post_content_setting);
+		$eful_content_type              = EFUL_Functions::eventful_metabox_value('post_content_type', $post_content_setting);
 		$td                            = self::table_td($is_table);
 		$allow_tag                     = array('td' => array());
 		if ($show_read_more) {
-			self::eventful_readmore( $post_content_setting, $eventful_content_type, $options, $post );
+			self::eventful_readmore( $post_content_setting, $eful_content_type, $options, $post );
 		}
 	}
 
@@ -161,7 +161,7 @@ class EFUL_HTML
 		$readmore_target = EFUL_Functions::eventful_metabox_value('eventful_link_target', $options);
 
 		ob_start();
-		include EFUL_Functions::eventful_locate_template('item/read-more.php');
+		include EFUL_Functions::eful_locate_template('item/read-more.php');
 		$read_more_button = apply_filters('eventful_read_more_btn', ob_get_clean(), $link = get_permalink($post));
 		echo wp_kses_post($read_more_button);
 	}
@@ -193,7 +193,7 @@ class EFUL_HTML
 		$eventful_link_rel_text    = '1' === $eventful_link_rel ? "rel='nofollow'" : '';
 		$eventful_link_target      = EFUL_Functions::eventful_metabox_value('eventful_link_target', $options);
 		if (EFUL_Functions::eventful_metabox_value('post_thumb_show', $_post_thumb_setting)) {
-			$eventful_image_attr  = EFUL_Functions::eventful_sized_thumb($_post_thumb_setting, $post->ID, $is_attachment);
+			$eventful_image_attr  = EFUL_Functions::eful_sized_thumb($_post_thumb_setting, $post->ID, $is_attachment);
 
 			$thumb_url       = $eventful_image_attr['src'];
 
@@ -203,7 +203,7 @@ class EFUL_HTML
 				$retina_img_attr = 'srcset="' . esc_attr($thumb_url) . ', ' . esc_attr($retina_img_src) . ' 2x"';
 			}
 
-			$alter_text       = EFUL_Functions::eventful_thumb_alter_text($post->ID);
+			$alter_text       = EFUL_Functions::eful_thumb_alter_text($post->ID);
 			$_meta_settings   = EFUL_Functions::eventful_metabox_value('eventful_post_meta', $sorter);
 			$post_meta_fields = EFUL_Functions::eventful_metabox_value('eventful_post_meta_group', $_meta_settings);
 			$show_post_meta   = EFUL_Functions::eventful_metabox_value('show_post_meta', $_meta_settings, true);
@@ -212,7 +212,7 @@ class EFUL_HTML
 			if (!empty($thumb_url)) {
 				ob_start();
 				echo wp_kses($td['start'], $allow_tag);
-				include EFUL_Functions::eventful_locate_template('item/thumbnail.php');
+				include EFUL_Functions::eful_locate_template('item/thumbnail.php');
 				echo wp_kses($td['end'], $allow_tag);
 				$item_thumb = apply_filters('eventful_item_thumbnail', ob_get_clean());
 				echo $item_thumb; // phpcs:ignore
@@ -234,13 +234,13 @@ class EFUL_HTML
 			foreach ($post_meta_fields as $each_meta) {
 				if ('taxonomy' === $each_meta['select_post_meta']) {
 					$taxonomy      = $each_meta['post_meta_taxonomy'];
-					$meta_position = $each_meta['eventful_meta_position'];
+					$meta_position = $each_meta['eful_meta_position'];
 					if ('over_thumb' === $meta_position) {
 						$meta_over_thumb_position = isset($each_meta['eventful_meta_over_thump_position']) ? $each_meta['eventful_meta_over_thump_position'] : 'top_left';
 						$terms                    = get_the_term_list($post->ID, $taxonomy, '', ' ');
 						if ($terms) {
 							ob_start();
-							include EFUL_Functions::eventful_locate_template('item/over-thumb-taxonomy.php');
+							include EFUL_Functions::eful_locate_template('item/over-thumb-taxonomy.php');
 							$item_over_thumb_taxonomy = apply_filters('item_over_thumb_taxonomy', ob_get_clean(), $terms);
 							echo wp_kses_post($item_over_thumb_taxonomy);
 						}
@@ -267,7 +267,7 @@ class EFUL_HTML
 		if ($post_meta_fields && $show_post_meta) {
 
 			ob_start();
-			include EFUL_Functions::eventful_locate_template('item/meta.php');
+			include EFUL_Functions::eful_locate_template('item/meta.php');
 			$item_meta = apply_filters('eventful_item_meta', ob_get_clean());
 			echo wp_kses_post($item_meta);
 		}
@@ -289,7 +289,7 @@ class EFUL_HTML
 		if ($event_fildes_fields && $show_event_fildes) {
 			
 			ob_start();
-			include EFUL_Functions::eventful_locate_template('item/event-fildes.php');
+			include EFUL_Functions::eful_locate_template('item/event-fildes.php');
 			$item_meta = apply_filters('eventful_item_meta', ob_get_clean());
 			echo wp_kses_post($item_meta);
 		}
@@ -318,7 +318,7 @@ class EFUL_HTML
 						self::eventful_post_title($sorter, $layout, $options, $post, $is_table);
 						break;
 					case 'eventful_post_content':
-						self::eventful_content_html($sorter, $options, $post, $is_table);
+						self::eful_content_html($sorter, $options, $post, $is_table);
 						break;
 					case 'eventful_post_content_readmore':
 						self::eful_read_more_html($sorter, $options, $post, $is_table);
@@ -353,7 +353,7 @@ class EFUL_HTML
 						self::eventful_post_title($sorter, $layout, $options, $post, $is_table);
 						break;
 					case 'eventful_post_content':
-						self::eventful_content_html($sorter, $options, $post, $is_table);
+						self::eful_content_html($sorter, $options, $post, $is_table);
 						break;
 					case 'eventful_post_content_readmore':
 						self::eful_read_more_html($sorter, $options, $post, $is_table);
@@ -554,7 +554,7 @@ class EFUL_HTML
 			$section_title_text = apply_filters('eful_section_title_text', $section_title_text);
 			ob_start();
 			do_action('eventful_before_section_title');
-			include EFUL_Functions::eventful_locate_template('section-title.php');
+			include EFUL_Functions::eful_locate_template('section-title.php');
 			do_action('eventful_after_section_title');
 			$section_title = apply_filters('eventful_filter_section_title', ob_get_clean());
 			echo wp_kses_post($section_title);
@@ -571,7 +571,7 @@ class EFUL_HTML
 	{
 		if ($preloader) {
 			ob_start();
-			include EFUL_Functions::eventful_locate_template('preloader.php');
+			include EFUL_Functions::eful_locate_template('preloader.php');
 			$preloader = apply_filters('eventful_preloader', ob_get_clean());
 			echo wp_kses_post($preloader);
 		}
@@ -753,7 +753,7 @@ class EFUL_HTML
 		$grid_style           = isset($view_options['eventful_grid_style']) ? $view_options['eventful_grid_style'] : 'even';
 		$post_content_sorter  = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';
 		$show_section_title   = isset($view_options['section_title']) ? $view_options['section_title'] : false;
-		$eventful_content_position = isset($view_options['post_content_orientation']) ? $view_options['post_content_orientation'] : '';
+		$eful_content_position = isset($view_options['post_content_orientation']) ? $view_options['post_content_orientation'] : '';
 		$margin_between_post  = isset($view_options['margin_between_post']['all']) ? $view_options['margin_between_post']['all'] : '';
 		$show_preloader       = isset($view_options['show_preloader']) ? $view_options['show_preloader'] : 0;
 
@@ -801,11 +801,11 @@ class EFUL_HTML
 		}
 
 		if ('carousel_layout' === $layout_preset) {
-			include EFUL_Functions::eventful_locate_template('carousel.php');
+			include EFUL_Functions::eful_locate_template('carousel.php');
 		} elseif ('grid_layout' === $layout_preset) {
-			include EFUL_Functions::eventful_locate_template('grid.php');
+			include EFUL_Functions::eful_locate_template('grid.php');
 		} elseif ('filter_layout' === $layout_preset) {
-			include EFUL_Functions::eventful_locate_template('filter.php');
+			include EFUL_Functions::eful_locate_template('filter.php');
 		}
 	}
 }

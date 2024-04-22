@@ -35,5 +35,5 @@ if (!defined('ABSPATH')) {
 	<div class="ta-row grid">
 		<?php self::eventful_get_posts($options, $layout_preset, $post_content_sorter, $eventful_query, $eventful_gl_id); ?>
 	</div>
-	<?php require EFUL_Functions::eventful_locate_template('pagination.php'); ?>
+	<?php require EFUL_Functions::eful_locate_template('pagination.php'); ?>
 </div>

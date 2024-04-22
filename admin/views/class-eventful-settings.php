@@ -22,7 +22,7 @@ class EFUL_Settings {
 	 */
 	public static function settings( $prefix ) {
 
-		$capability = eventful_dashboard_capability(); // TODO: filter is not working.
+		$capability = eful_dashboard_capability(); // TODO: filter is not working.
 
 		EFUL::createOptions(
 			$prefix,

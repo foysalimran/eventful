@@ -131,7 +131,7 @@ class EFUL_FilterPost {
 									array(
 										'id'     => 'eventful_taxonomy_and_terms',
 										'type'   => 'group',
-										'class'  => 'eventful_taxonomy_terms_group eventful_custom_group_design',
+										'class'  => 'eful_taxonomy_terms_group eventful_custom_group_design',
 										'accordion_title_auto' => true,
 										'fields' => array(
 											array(

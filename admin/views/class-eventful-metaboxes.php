@@ -9,7 +9,7 @@ class EFUL_Metaboxes {
 	 * @param string $prefix The meta-key for this metabox.
 	 * @return void
 	 */
-	public static function layout_metabox( $prefix ) {
+	public static function eful_layout_metabox( $prefix ) {
 		EFUL::createMetabox(
 			$prefix,
 			array(
@@ -30,7 +30,7 @@ class EFUL_Metaboxes {
 	 * @param string $prefix The metabox key.
 	 * @return void
 	 */
-	public static function option_metabox( $prefix ) {
+	public static function eful_option_metabox( $prefix ) {
 		EFUL::createMetabox(
 			$prefix,
 			array(
@@ -54,7 +54,7 @@ class EFUL_Metaboxes {
 	 * @param string $prefix The metabox key.
 	 * @return void
 	 */
-	public static function shortcode_metabox( $prefix ) {
+	public static function eful_shortcode_metabox( $prefix ) {
 		EFUL::createMetabox(
 			$prefix,
 			array(

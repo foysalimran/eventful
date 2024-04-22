@@ -185,17 +185,17 @@
   font-size: 15px;
   font-weight: 500;
 }
-.eventful_reading_time_meta .clear {
+.eful_reading_time_meta .clear {
   clear: initial;
 }
-.eventful_reading_time_postfix .eventful-fieldset input,
-.eventful_reading_time_meta .eventful--wrap {
+.eful_reading_time_postfix .eventful-fieldset input,
+.eful_reading_time_meta .eventful--wrap {
   margin-right: 5px;
 }
-.eventful_reading_time_meta .eventful-fieldset {
+.eful_reading_time_meta .eventful-fieldset {
   line-height: 2;
 }
-.eventful_reading_time_postfix .eventful-fieldset input {
+.eful_reading_time_postfix .eventful-fieldset input {
   max-width: 255px;
 }
 

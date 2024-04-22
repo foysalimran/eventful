@@ -57,7 +57,7 @@ class Eventful_Post_Type
 		if (post_type_exists('eventful')) {
 			return;
 		}
-		$capability = eventful_dashboard_capability();
+		$capability = eful_dashboard_capability();
 		// Set the Eventful post type labels.
 		$labels = apply_filters(
 			'eventful_post_type_labels',
