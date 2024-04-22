@@ -101,15 +101,15 @@
  *Custom Style for the SP PCP
  *
  **/
-.eventful_column_2 ul,
-.eventful_column_2 .eventful-fieldset ul {
+.eful_column_2 ul,
+.eful_column_2 .eventful-fieldset ul {
   -webkit-columns: 2;
   -moz-columns: 2;
   columns: 2;
 }
 
-.eventful_column_2 ul li,
-.eventful_column_2 .eventful-fieldset ul li {
+.eful_column_2 ul li,
+.eful_column_2 .eventful-fieldset ul li {
   width: 50%;
 }
 

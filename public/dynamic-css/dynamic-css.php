@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 
 $view_options = get_post_meta($eventful_id, 'eful_view_options', true);
 $layouts      = get_post_meta($eventful_id, 'eful_layouts', true);
-$layout = isset($layouts['eventful_layout_preset']) ? $layouts['eventful_layout_preset'] : '';
+$layout = isset($layouts['eful_layout_preset']) ? $layouts['eful_layout_preset'] : '';
 $popup_content_color       = isset( $view_options['popup_content_color'] ) ? $view_options['popup_content_color'] : '';
 $popup_custom_fields_color = isset( $popup_content_color['custom-fields'] ) ? $popup_content_color['custom-fields'] : '#888';
 
@@ -52,7 +52,7 @@ if ($show_section_title) {
 $margin_between_post      = isset( $view_options['margin_between_post']['all'] ) ? (int) $view_options['margin_between_post']['all'] : 20;
 $margin_between_post_half = $margin_between_post / 2;
 $custom_css              .= "#eventful_wrapper-{$eventful_id} .ta-row{ margin-right: -{$margin_between_post_half}px;margin-left: -{$margin_between_post_half}px;}#eventful_wrapper-{$eventful_id} .ta-row [class*='ta-col-']{padding-right: {$margin_between_post_half}px;padding-left: {$margin_between_post_half}px;padding-bottom: {$margin_between_post}px;}";
-if ( 'large_with_small' === $layouts['eventful_layout_preset'] ) {
+if ( 'large_with_small' === $layouts['eful_layout_preset'] ) {
 	$custom_css .= "#eventful_wrapper-{$eventful_id} .ta-eventful-block-8, #eventful_wrapper-{$eventful_id} .ta-eventful-block-4, #eventful_wrapper-{$eventful_id} .ta-eventful-block-6, #eventful_wrapper-{$eventful_id} .ta-eventful-block-3{padding-right: {$margin_between_post_half}px;padding-left: {$margin_between_post_half}px;}#eventful_wrapper-{$eventful_id} .ta-eventful-block-4 .ta-eventful-block-half,#eventful_wrapper-{$eventful_id} .ta-eventful-block-8,#eventful_wrapper-{$eventful_id} .ta-eventful-block-3 .ta-eventful-block-half,#eventful_wrapper-{$eventful_id} .ta-eventful-block-6{padding-bottom: {$margin_between_post}px;}";
 }
 /**
@@ -101,7 +101,7 @@ if ($show_post_title) {
 	if (!empty($_post_title_typography['font-family'])) {
 		$custom_css .= "font-family: {$_post_title_typography['font-family']};font-weight: {$post_title_font_weight};font-style: {$post_title_font_style};";
 	}
-	if ('zigzag_layout' !== $layouts['eventful_layout_preset']) {
+	if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
 		$custom_css .= "text-align: {$_post_title_typography['text-align']};";
 	}
 	$custom_css .= "text-transform: {$_post_title_typography['text-transform']};font-size: {$_post_title_typography['font-size']}px;line-height: {$_post_title_typography['line-height']}px;letter-spacing: {$_post_title_typography['letter-spacing']}px;color: {$_post_title_typography['color']};display: inherit;}#eventful_wrapper-{$eventful_id} .eventful__item--title {margin: {$post_title_margin['top']}px {$post_title_margin['right']}px {$post_title_margin['bottom']}px {$post_title_margin['left']}px;}#eventful_wrapper-{$eventful_id} .eventful-collapse-header a{display: inline-block;}";
@@ -139,7 +139,7 @@ if ($show_post_content) {
 	if (!empty($_post_content_typography['font-family'])) {
 		$custom_css .= "font-family: {$_post_content_typography['font-family']};font-weight: {$post_content_font_weight};font-style: {$post_content_font_style};";
 	}
-	if ('zigzag_layout' !== $layouts['eventful_layout_preset']) {
+	if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
 		$custom_css .= "text-align: {$_post_content_typography['text-align']};";
 	}
 	$custom_css .= "text-transform: {$_post_content_typography['text-transform']};font-size: {$_post_content_typography['font-size']}px;line-height: {$_post_content_typography['line-height']}px;letter-spacing: {$_post_content_typography['letter-spacing']}px;margin: {$post_content_margin['top']}px {$post_content_margin['right']}px {$post_content_margin['bottom']}px {$post_content_margin['left']}px;color: {$_post_content_typography['color']}; }";
@@ -323,7 +323,7 @@ if (!empty($_post_meta_typography['font-family'])) {
 }
 
 $custom_css .= "text-transform: {$_post_meta_typography['text-transform']};font-size: {$_post_meta_typography['font-size']}px;line-height: {$_post_meta_typography['line-height']}px;letter-spacing: {$_post_meta_typography['letter-spacing']}px;color: {$_post_meta_typography['color']};}#eventful_wrapper-{$eventful_id} .eventful__item--meta{margin: {$post_meta_margin['top']}px {$post_meta_margin['right']}px {$post_meta_margin['bottom']}px {$post_meta_margin['left']}px;";
-if ('zigzag_layout' !== $layouts['eventful_layout_preset']) {
+if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
 	$custom_css .= "text-align: {$_post_meta_typography['text-align']};";
 }
 $custom_css .= '}';
@@ -427,7 +427,7 @@ if (!empty($_event_fildes_typography['font-family'])) {
 }
 
 $custom_css .= "text-transform: {$_event_fildes_typography['text-transform']};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;color: {$_event_fildes_typography['color']};}#eventful_wrapper-{$eventful_id} .eventful__item--meta.event_meta{margin: {$event_fildes_margin['top']}px {$event_fildes_margin['right']}px {$event_fildes_margin['bottom']}px {$event_fildes_margin['left']}px;";
-if ('zigzag_layout' !== $layouts['eventful_layout_preset']) {
+if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
 	$custom_css .= "text-align: {$_event_fildes_typography['text-align']};";
 }
 $custom_css .= '}';
@@ -523,7 +523,7 @@ if ($show_read_more) {
 		$custom_css .= "font-family: {$_read_more_typography['font-family']}; font-weight: {$read_more_font_weight}; font-style: {$read_more_font_style};";
 	}
 	$custom_css .= "text-transform: {$_read_more_typography['text-transform']}; font-size: {$_read_more_typography['font-size']}px; line-height: {$_read_more_typography['line-height']}px; letter-spacing: {$_read_more_typography['letter-spacing']}px; }";
-	if ( 'zigzag_layout' !== $layouts['eventful_layout_preset'] ) {
+	if ( 'zigzag_layout' !== $layouts['eful_layout_preset'] ) {
 		$custom_css .= "#eventful_wrapper-{$eventful_id} .eventful__item__content__readmore{ text-align: {$_read_more_typography['text-align']}; }";
 	}
 	if ('button' === $read_more_type) {
@@ -618,14 +618,14 @@ if ($show_pagination) {
 }
 
 // $index          = 0;
-$filter_by      = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
-$taxonomy_types = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) && !empty($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms'] : '';
+$filter_by      = isset($view_options['eful_advanced_filter']) ? $view_options['eful_advanced_filter'] : array();
+$taxonomy_types = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms']) && !empty($view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms'] : '';
 if (is_array($taxonomy_types) && !empty($taxonomy_types) && is_array($filter_by) && in_array('taxonomy', $filter_by)) {
 	foreach ($taxonomy_types as $tax_type) {
 		$filter_options            = isset($tax_type['ajax_filter_options']) ? $tax_type['ajax_filter_options'] : '';
 		$add_filter                = isset($tax_type['add_filter_post']) ? $tax_type['add_filter_post'] : '';
-		$eventful_select_taxonomy       = isset($tax_type['eventful_select_taxonomy']) ? $tax_type['eventful_select_taxonomy'] : '';
-		$eventful_filter_btn_color      = isset($filter_options['eventful_filter_btn_color']) ? $filter_options['eventful_filter_btn_color'] : array(
+		$eful_select_taxonomy       = isset($tax_type['eful_select_taxonomy']) ? $tax_type['eful_select_taxonomy'] : '';
+		$eful_filter_btn_color      = isset($filter_options['eful_filter_btn_color']) ? $filter_options['eful_filter_btn_color'] : array(
 			'text_color'        => '#5e5e5e',
 			'text_acolor'       => '#ffffff',
 			'border_color'      => '#bbbbbb',
@@ -633,7 +633,7 @@ if (is_array($taxonomy_types) && !empty($taxonomy_types) && is_array($filter_by)
 			'background'        => '#ffffff',
 			'active_background' => '#263ad0',
 		);
-		$eventful_margin_between_button = isset($filter_options['eventful_margin_between_button']) ? $filter_options['eventful_margin_between_button'] : array(
+		$eful_margin_between_button = isset($filter_options['eful_margin_between_button']) ? $filter_options['eful_margin_between_button'] : array(
 			'top'    => '0',
 			'right'  => '8',
 			'bottom' => '8',
@@ -643,27 +643,27 @@ if (is_array($taxonomy_types) && !empty($taxonomy_types) && is_array($filter_by)
 		$ajax_filter_style         = isset($filter_options['ajax_filter_style']) ? $filter_options['ajax_filter_style'] : '';
 
 		if ('fl_btn' === $ajax_filter_style && $add_filter) {
-			if (!empty($eventful_filter_btn_color)) {
+			if (!empty($eful_filter_btn_color)) {
 				$custom_css .= "
-			#eventful_wrapper-{$eventful_id} .eventful-filter-bar .eventful-filter-by.eventful-bar.fl_button.filter-{$eventful_select_taxonomy} label{
-				margin: {$eventful_margin_between_button['top']}px {$eventful_margin_between_button['right']}px  {$eventful_margin_between_button['bottom']}px {$eventful_margin_between_button['left']}px;
+			#eventful_wrapper-{$eventful_id} .eventful-filter-bar .eventful-filter-by.eventful-bar.fl_button.filter-{$eful_select_taxonomy} label{
+				margin: {$eful_margin_between_button['top']}px {$eful_margin_between_button['right']}px  {$eful_margin_between_button['bottom']}px {$eful_margin_between_button['left']}px;
 			}
-			#eventful_wrapper-{$eventful_id} .eventful-filter-bar .eventful-filter-by.eventful-bar.fl_button.filter-{$eventful_select_taxonomy} input~div{
-				background: {$eventful_filter_btn_color['background']};
-				color: {$eventful_filter_btn_color['text_color']};
-				border-color: {$eventful_filter_btn_color['border_color']};
+			#eventful_wrapper-{$eventful_id} .eventful-filter-bar .eventful-filter-by.eventful-bar.fl_button.filter-{$eful_select_taxonomy} input~div{
+				background: {$eful_filter_btn_color['background']};
+				color: {$eful_filter_btn_color['text_color']};
+				border-color: {$eful_filter_btn_color['border_color']};
 			}
-			#eventful_wrapper-{$eventful_id} .eventful-filter-bar .eventful-filter-by.eventful-bar.fl_button.filter-{$eventful_select_taxonomy} input:checked~div,
+			#eventful_wrapper-{$eventful_id} .eventful-filter-bar .eventful-filter-by.eventful-bar.fl_button.filter-{$eful_select_taxonomy} input:checked~div,
 			.eventful-order-by.eventful-bar.fl-btn input:checked~div{
-				color: {$eventful_filter_btn_color['text_acolor']};
-				background: {$eventful_filter_btn_color['active_background']};
-				border-color: {$eventful_filter_btn_color['border_acolor']};
+				color: {$eful_filter_btn_color['text_acolor']};
+				background: {$eful_filter_btn_color['active_background']};
+				border-color: {$eful_filter_btn_color['border_acolor']};
 			}
-			#eventful_wrapper-{$eventful_id} .eventful-filter-bar .eventful-filter-by.eventful-bar.fl_button.filter-{$eventful_select_taxonomy} input:hover~div,
+			#eventful_wrapper-{$eventful_id} .eventful-filter-bar .eventful-filter-by.eventful-bar.fl_button.filter-{$eful_select_taxonomy} input:hover~div,
 			.eventful-order-by.eventful-bar.fl-btn input:hover~div{
-				color: {$eventful_filter_btn_color['text_acolor']};
-				background: {$eventful_filter_btn_color['active_background']};
-				border-color: {$eventful_filter_btn_color['border_acolor']};
+				color: {$eful_filter_btn_color['text_acolor']};
+				background: {$eful_filter_btn_color['active_background']};
+				border-color: {$eful_filter_btn_color['border_acolor']};
 			}";
 			}
 		}
@@ -671,10 +671,10 @@ if (is_array($taxonomy_types) && !empty($taxonomy_types) && is_array($filter_by)
 }
 
 // Color for Sort by ajax live filter's orderby button.
-$add_orderby_filter_post = isset($view_options['eventful_filter_by_order']['add_orderby_filter_post']) ? $view_options['eventful_filter_by_order']['add_orderby_filter_post'] : false;
-$orderby_options         = isset($view_options['eventful_filter_by_order']['orderby_ajax_filter_options']) && !empty($view_options['eventful_filter_by_order']['orderby_ajax_filter_options']) ? $view_options['eventful_filter_by_order']['orderby_ajax_filter_options'] : '';
+$add_orderby_filter_post = isset($view_options['eful_filter_by_order']['add_orderby_filter_post']) ? $view_options['eful_filter_by_order']['add_orderby_filter_post'] : false;
+$orderby_options         = isset($view_options['eful_filter_by_order']['orderby_ajax_filter_options']) && !empty($view_options['eful_filter_by_order']['orderby_ajax_filter_options']) ? $view_options['eful_filter_by_order']['orderby_ajax_filter_options'] : '';
 
-$orderby_btn_color = isset($orderby_options['eventful_orderby_filter_btn_color']) ? $orderby_options['eventful_orderby_filter_btn_color'] : array(
+$orderby_btn_color = isset($orderby_options['eful_orderby_filter_btn_color']) ? $orderby_options['eful_orderby_filter_btn_color'] : array(
 	'text_color'        => '#5e5e5e',
 	'text_acolor'       => '#ffffff',
 	'border_color'      => '#bbbbbb',
@@ -694,11 +694,11 @@ if (!empty($orderby_btn_color) && $add_orderby_filter_post && is_array($filter_b
 	$custom_css                 .= "#eventful_wrapper-{$eventful_id} .eventful_ex_filter_bar .eventful-order-by.eventful-bar.fl-btn input~div  { background: {$orderby_btn_color['background']};color:{$orderby_btn_color['text_color']}; border-color: {$orderby_btn_color['border_color']}; }#eventful_wrapper-{$eventful_id} .eventful_ex_filter_bar .eventful-order-by.eventful-bar.fl-btn input:checked~div{ color: {$orderby_btn_color['text_acolor']}; background: {$orderby_btn_color['active_background']}; border-color: {$orderby_btn_color['border_acolor']}; }#eventful_wrapper-{$eventful_id} .eventful_ex_filter_bar .eventful-order-by.eventful-bar.fl-btn input:hover~div{ color: {$orderby_btn_color['text_acolor']}; background: {$orderby_btn_color['active_background']}; border-color: {$orderby_btn_color['border_acolor']}; }#eventful_wrapper-{$eventful_id} .eventful_ex_filter_bar .eventful-order-by.eventful-bar.fl-btn .fl_radio{	margin: {$order_margin_between_button['top']}px {$order_margin_between_button['right']}px {$order_margin_between_button['bottom']}px {$order_margin_between_button['left']}px; }";
 }
 
-$add_author_filter_post = isset($view_options['eventful_filter_by_author']['add_author_filter_post']) && !empty($view_options['eventful_filter_by_author']['add_author_filter_post']) ? $view_options['eventful_filter_by_author']['add_author_filter_post'] : '';
-$ajax_filter_style      = isset($view_options['eventful_filter_by_author']['ajax_filter_options']['ajax_filter_style']) ? $view_options['eventful_filter_by_author']['ajax_filter_options']['ajax_filter_style'] : false;
+$add_author_filter_post = isset($view_options['eful_filter_by_author']['add_author_filter_post']) && !empty($view_options['eful_filter_by_author']['add_author_filter_post']) ? $view_options['eful_filter_by_author']['add_author_filter_post'] : '';
+$ajax_filter_style      = isset($view_options['eful_filter_by_author']['ajax_filter_options']['ajax_filter_style']) ? $view_options['eful_filter_by_author']['ajax_filter_options']['ajax_filter_style'] : false;
 if ($ajax_filter_style && $add_author_filter_post && is_array($filter_by) && in_array('author', $filter_by)) {
-	$author_ajax_filter_options   = isset($view_options['eventful_filter_by_author']['ajax_filter_options']) && !empty($view_options['eventful_filter_by_author']['ajax_filter_options']) ? $view_options['eventful_filter_by_author']['ajax_filter_options'] : array();
-	$eventful_author_btn_color         = isset($author_ajax_filter_options['eventful_author_btn_color']) ? $author_ajax_filter_options['eventful_author_btn_color'] : array(
+	$author_ajax_filter_options   = isset($view_options['eful_filter_by_author']['ajax_filter_options']) && !empty($view_options['eful_filter_by_author']['ajax_filter_options']) ? $view_options['eful_filter_by_author']['ajax_filter_options'] : array();
+	$eful_author_btn_color         = isset($author_ajax_filter_options['eful_author_btn_color']) ? $author_ajax_filter_options['eful_author_btn_color'] : array(
 		'text_color'        => '#5e5e5e',
 		'text_acolor'       => '#ffffff',
 		'border_color'      => '#bbbbbb',
@@ -713,11 +713,11 @@ if ($ajax_filter_style && $add_author_filter_post && is_array($filter_by) && in_
 		'left'   => '0',
 		'unit'   => 'px',
 	);
-	$custom_css                  .= "#eventful_wrapper-{$eventful_id} .eventful-author-filter.eventful-bar.fl_button input~div { background: {$eventful_author_btn_color['background']}; color:{$eventful_author_btn_color['text_color']}; border-color: {$eventful_author_btn_color['border_color']}; } #eventful_wrapper-{$eventful_id} .eventful-author-filter.eventful-bar.fl_button input:checked~div{ color: {$eventful_author_btn_color['text_acolor']}; background: {$eventful_author_btn_color['active_background']}; border-color: {$eventful_author_btn_color['border_acolor']}; } #eventful_wrapper-{$eventful_id} .eventful-author-filter.eventful-bar.fl_button input:hover~div{ color: {$eventful_author_btn_color['text_acolor']}; background: {$eventful_author_btn_color['active_background']}; border-color: {$eventful_author_btn_color['border_acolor']};#eventful_wrapper-{$eventful_id} .eventful-author-filter.eventful-bar.fl_button label { margin: {$author_margin_between_button['top']}px {$author_margin_between_button['right']}px {$author_margin_between_button['bottom']}px {$author_margin_between_button['left']}px; } }";
+	$custom_css                  .= "#eventful_wrapper-{$eventful_id} .eventful-author-filter.eventful-bar.fl_button input~div { background: {$eful_author_btn_color['background']}; color:{$eful_author_btn_color['text_color']}; border-color: {$eful_author_btn_color['border_color']}; } #eventful_wrapper-{$eventful_id} .eventful-author-filter.eventful-bar.fl_button input:checked~div{ color: {$eful_author_btn_color['text_acolor']}; background: {$eful_author_btn_color['active_background']}; border-color: {$eful_author_btn_color['border_acolor']}; } #eventful_wrapper-{$eventful_id} .eventful-author-filter.eventful-bar.fl_button input:hover~div{ color: {$eful_author_btn_color['text_acolor']}; background: {$eful_author_btn_color['active_background']}; border-color: {$eful_author_btn_color['border_acolor']};#eventful_wrapper-{$eventful_id} .eventful-author-filter.eventful-bar.fl_button label { margin: {$author_margin_between_button['top']}px {$author_margin_between_button['right']}px {$author_margin_between_button['bottom']}px {$author_margin_between_button['left']}px; } }";
 }
 // Color for Sort by ajax live filter's order button(ASC/DESC).
-$eventful_order_options   = isset($view_options['eventful_filter_by_order']['order_filter_options']) && !empty($view_options['eventful_filter_by_order']['order_filter_options']) ? $view_options['eventful_filter_by_order']['order_filter_options'] : '';
-$eventful_order_btn_color = isset($eventful_order_options['eventful_order_filter_button_color']) ? $eventful_order_options['eventful_order_filter_button_color'] : array(
+$eventful_order_options   = isset($view_options['eful_filter_by_order']['order_filter_options']) && !empty($view_options['eful_filter_by_order']['order_filter_options']) ? $view_options['eful_filter_by_order']['order_filter_options'] : '';
+$eventful_order_btn_color = isset($eventful_order_options['eful_order_filter_button_color']) ? $eventful_order_options['eful_order_filter_button_color'] : array(
 	'text_color'        => '#5e5e5e',
 	'text_acolor'       => '#ffffff',
 	'border_color'      => '#bbbbbb',
@@ -742,7 +742,7 @@ $filer_btn_bg            = isset($view_options['eventful_filer_btn_bg']) ? $view
 	'background'        => 'transparent',
 	'active-background' => '#263ad0',
 );
-$margin_between_button   = isset($view_options['eventful_margin_between_button']) ? $view_options['eventful_margin_between_button'] : array(
+$margin_between_button   = isset($view_options['eful_margin_between_button']) ? $view_options['eful_margin_between_button'] : array(
 	'top'    => '0',
 	'right'  => '8',
 	'bottom' => '8',

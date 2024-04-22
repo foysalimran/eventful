@@ -228,7 +228,7 @@ function eventful_custom_field_html(  $object, $post_content_sorter, $is_post = 
 	if ( ! empty( $custom_field_groups ) ) {
 		$the_cfields_html = array();
 		foreach ( $custom_field_groups as $cf_group ) {
-			$key               = $cf_group['eventful_select_custom_field_key'];
+			$key               = $cf_group['eful_select_custom_field_key'];
 			$show_field_name   = $cf_group['show_custom_field_name'];
 			$custom_meta_icon  = $cf_group['eventful_custom_meta_icon'];
 			$colon_after_name  = $cf_group['colon_after_custom_field_name'];
