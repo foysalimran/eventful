@@ -240,7 +240,7 @@ class EFUL_Functions
 	 * @param  string $lang current lang.
 	 * @return array
 	 */
-	public static function modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $post_in = array(), $lang = '')
+	public static function eful_modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $post_in = array(), $lang = '')
 	{
 		if (!empty($keyword)) {
 			$query_args['s'] = $keyword;

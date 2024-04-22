@@ -30,7 +30,7 @@ class EFUL_QueryInside
 	 * @param integer $eventful_gl_id Shortcode ID.
 	 * @return statement
 	 */
-	public static function get_filtered_content($view_options, $id = '', $layout_preset = 'default', $on_screen = null)
+	public static function eful_get_filtered_content($view_options, $id = '', $layout_preset = 'default', $on_screen = null)
 	{
 		$eventful_post_type                 = 'tribe_events';
 

@@ -764,7 +764,7 @@ class EFUL_HTML
 			$eventful_query        = $query;
 			$total_post_count = $eventful_query->post_count;
 		} else {
-			$query_args       = EFUL_QueryInside::get_filtered_content($view_options, $eventful_gl_id, $layout_preset);
+			$query_args       = EFUL_QueryInside::eful_get_filtered_content($view_options, $eventful_gl_id, $layout_preset);
 			$eventful_query        = new WP_Query($query_args);
 			$total_post_count = $eventful_query->post_count;
 		}
