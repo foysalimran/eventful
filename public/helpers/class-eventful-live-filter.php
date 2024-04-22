@@ -200,7 +200,6 @@ class EFUL_Live_Filter
 		self::eventful_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
 		self::eful_author_filter($view_options, $query_args, $author_id);
 		self::eful_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
-
 		wp_die();
 	}
 
@@ -357,6 +356,7 @@ class EFUL_Live_Filter
 					'p'     => array(),
 					'div'   => array(
 						'class' => array(),
+						'style' => array(),
 					),
 					'label' => array(),
 					'input' => array(
@@ -367,11 +367,8 @@ class EFUL_Live_Filter
 						'value'         => array(),
 					),
 				);
-				// echo wp_kses(
-				// 	$output,
-				// 	$allowed_tags
-				// );
-				echo $output;
+
+				echo wp_kses($output, $allowed_tags);
 			}
 		}
 	}
@@ -478,10 +475,14 @@ class EFUL_Live_Filter
 				$output   = '';
 				$output   = $output . force_balance_tags($tax_html);
 				$allowed_tags = array(
+					'form'  => array(
+						'class' => array(),
+						'style' => array(),
+					),
 					'p'     => array(),
 					'div'   => array(
-						'style' => array(),
 						'class' => array(),
+						'style' => array(),
 					),
 					'label' => array(),
 					'input' => array(
@@ -493,11 +494,7 @@ class EFUL_Live_Filter
 					),
 				);
 
-				// echo wp_kses(
-				// 	$output,
-				// 	$allowed_tags
-				// );
-				echo $output;
+				echo wp_kses($output, $allowed_tags);
 			}
 		}
 	}
@@ -603,7 +600,27 @@ class EFUL_Live_Filter
 					}
 					$index++;
 				}
-				echo $output; //phpcs:ignore
+				$allowed_tags = array(
+					'form'  => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'p'     => array(),
+					'div'   => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'label' => array(),
+					'input' => array(
+						'checked'       => array(),
+						'type'          => array(),
+						'name'          => array(),
+						'data-taxonomy' => array(),
+						'value'         => array(),
+					),
+				);
+
+				echo wp_kses($output, $allowed_tags);
 			}
 		}
 	}
@@ -637,7 +654,27 @@ class EFUL_Live_Filter
 				$tax_html = implode('', $newterm_array);
 				$output   = '';
 				$output   = $output . force_balance_tags($tax_html);
-				echo $output; //phpcs:ignore
+				$allowed_tags = array(
+					'form'  => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'p'     => array(),
+					'div'   => array(
+						'class' => array(),
+						'style' => array(),
+					),
+					'label' => array(),
+					'input' => array(
+						'checked'       => array(),
+						'type'          => array(),
+						'name'          => array(),
+						'data-taxonomy' => array(),
+						'value'         => array(),
+					),
+				);
+
+				echo wp_kses($output, $allowed_tags);
 			}
 		}
 	}
@@ -690,7 +727,7 @@ class EFUL_Live_Filter
 					),
 				);
 
-				echo $output;
+				echo wp_kses($output, $allowed_tags);
 			}
 		}
 	}
@@ -743,23 +780,6 @@ class EFUL_Live_Filter
 			'push_item'  => $push_item,
 		);
 
-		// $allowed_html = array(
-		// 	'div'    => array(
-		// 		'class' => array(),
-		// 		'style' => array(),
-		// 	),
-		// 	'p'      => array(),
-		// 	'label'  => array(
-		// 		'input'  => array(
-		// 			'checked' => array(),
-		// 			'type'    => array(),
-		// 			'name'    => array(),
-		// 			'value'   => array(),
-		// 		),	
-		// 	),
-
-		// );
-
 		return $filter_output;
 	}
 
@@ -806,25 +826,7 @@ class EFUL_Live_Filter
 			'first_item' => $first_item,
 			'push_item'  => $push_item,
 		);
-		$allowed_tags = array(
-			'form'  => array(
-				'class' => array(),
-				'style' => array(),
-			),
-			'p'     => array(),
-			'div'   => array(
-				'class' => array(),
-			),
-			'label' => array(),
-			'input' => array(
-				'checked'       => array(),
-				'type'          => array(),
-				'name'          => array(),
-				'data-taxonomy' => array(),
-				'value'         => array(),
-			),
-		);
-
+		
 		return $filter_output;
 	}
 
