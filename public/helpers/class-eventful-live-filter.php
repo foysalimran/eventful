@@ -55,7 +55,7 @@ class EFUL_Live_Filter
 		$is_selected      = $pre_selected;
 		$checked          = $pre_checked;
 		$selected         = $pre_selected;
-		$filter_url_value = isset($_SERVER['QUERY_STRING']) ? sanitize_text_field(wp_unslash($_SERVER['QUERY_STRING'])) : '';
+		$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash(sanitize_text_field($_SERVER['QUERY_STRING'])) : '';
 		if (!empty($filter_url_value)) {
 			$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 			if ($shortcode_id == $id) {
@@ -181,23 +181,25 @@ class EFUL_Live_Filter
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$last_filter         = isset($_POST['last_filter']) ? sanitize_text_field(wp_unslash($_POST['last_filter'])) : '';
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
-		$selected_term_list  = isset($_POST['term_list']) ? sanitize_term(wp_unslash($_POST['term_list'])) : '';
+		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : ''; //phpcs:ignore
+		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash(sanitize_text_field($_POST['term_list'])) : ''; //phpcs:ignore
 
 		$view_options                 = get_post_meta($eventful_gl_id, 'eful_view_options', true);
 		$query_args                   = EFUL_QueryInside::get_filtered_content($view_options, $eventful_gl_id);
 		$query_args['fields']         = 'ids';
-		$post_limit                   = isset($view_options['eful_post_limit']) && !empty($view_options['eful_post_limit']) ? $view_options['eful_post_limit'] : 10000;
+		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$query_args['posts_per_page'] = $post_limit;
 		$query_post_ids               = get_posts($query_args);
-		$relation                     = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation'] : 'AND';
+		$relation                     = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 		$is_term_intersect            = true;
 		if ('AND' !== $relation) {
 			$is_term_intersect = false;
 		}
-		$query_args = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
+		$query_args = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
 		$eventful_query  = array();
 		self::eventful_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
 		self::eful_author_filter($view_options, $query_args, $author_id);
+		self::eful_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
 
 		wp_die();
 	}
@@ -215,13 +217,13 @@ class EFUL_Live_Filter
 	 */
 	public static function eventful_live_filter($view_options, $query_args = '', $id = '', $is_term_intersect = true, $selected_term_list = array(), $last_filter = '')
 	{
-		$filter_by                    = isset($view_options['eful_advanced_filter']) ? $view_options['eful_advanced_filter'] : array();
-		$post_limit                   = isset($view_options['eful_post_limit']) && !empty($view_options['eful_post_limit']) ? $view_options['eful_post_limit'] : 10000;
+		$filter_by                    = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
+		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$query_args['posts_per_page'] = $post_limit;
 		$query_args['fields']         = 'ids';
 		if (in_array('taxonomy', $filter_by, true)) {
-			$taxonomy_types = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms']) && !empty($view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms'] : '';
-			$relation       = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation'] : 'AND';
+			$taxonomy_types = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) && !empty($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms'] : '';
+			$relation       = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 			if (!empty($taxonomy_types)) {
 				$output         = '';
 				$newterm_array  = array();
@@ -231,14 +233,14 @@ class EFUL_Live_Filter
 				while ($index < $taxonomy_count) {
 					$add_filter = isset($taxonomy_types[$index]['add_filter_post']) ? $taxonomy_types[$index]['add_filter_post'] : '';
 					if ($add_filter) {
-						$taxonomy        = isset($taxonomy_types[$index]['eful_select_taxonomy']) ? $taxonomy_types[$index]['eful_select_taxonomy'] : '';
+						$taxonomy        = isset($taxonomy_types[$index]['eventful_select_taxonomy']) ? $taxonomy_types[$index]['eventful_select_taxonomy'] : '';
 						$all_terms = get_terms($taxonomy);
 						$all_terms = wp_list_pluck($all_terms, 'term_id');
 
-						$terms           = isset($taxonomy_types[$index]['eful_select_terms']) ? $taxonomy_types[$index]['eful_select_terms'] : $all_terms;
+						$terms           = isset($taxonomy_types[$index]['eventful_select_terms']) ? $taxonomy_types[$index]['eventful_select_terms'] : $all_terms;
 						$all_post_ids    = get_posts($query_args);
 						$post_limit      = count($all_post_ids);
-						$url_last_filter = isset($_GET['slf']) ? wp_unslash(sanitize_text_field($_GET['slf'])) : '';
+						$url_last_filter = isset($_GET['slf']) ? wp_unslash(sanitize_text_field($_GET['slf'])) : ''; //phpcs:ignore
 
 						if (!empty($selected_term_list) && is_array($selected_term_list)) {
 							if ($last_filter == $taxonomy && 'AND' === $relation) {
@@ -289,9 +291,9 @@ class EFUL_Live_Filter
 						$hide_empty = isset($filter_options['ajax_hide_empty']) ? $filter_options['ajax_hide_empty'] : '';
 						$show_count = isset($filter_options['ajax_show_count']) ? $filter_options['ajax_show_count'] : '';
 
-						$eful_live_filter_align = isset($filter_options['eful_live_filter_align']) ? $filter_options['eful_live_filter_align'] : 'center';
+						$eventful_live_filter_align = isset($filter_options['eventful_live_filter_align']) ? $filter_options['eventful_live_filter_align'] : 'center';
 						if ($add_filter && !empty($terms) && !empty($taxonomy)) {
-							$filter_item             = self::eful_filter_style($btn_style, $taxonomy, $label, $all_text, $eful_live_filter_align);
+							$filter_item             = self::eful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align);
 							$newterm_array[$index] = array($filter_item['first_item']);
 							foreach ($terms as $term) {
 								$selected = '';
@@ -330,10 +332,10 @@ class EFUL_Live_Filter
 									}
 
 									if (!$hide_empty) {
-										$push_item = self::eful_filter_style($btn_style, $taxonomy, $label, $all_text, $eful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
+										$push_item = self::eful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
 										array_push($newterm_array[$index], $push_item);
 									} elseif ($hide_empty && $term_post_count > 0) {
-										$push_item = self::eful_filter_style($btn_style, $taxonomy, $label, $all_text, $eful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
+										$push_item = self::eful_filter_style($btn_style, $taxonomy, $label, $all_text, $eventful_live_filter_align, $show_count, $term, $p_term->name, $term_post_count, $id, $selected, $checked)['push_item'];
 										array_push($newterm_array[$index], $push_item);
 									}
 								}
@@ -365,10 +367,11 @@ class EFUL_Live_Filter
 						'value'         => array(),
 					),
 				);
-				echo wp_kses(
-					$output,
-					$allowed_tags
-				);
+				// echo wp_kses(
+				// 	$output,
+				// 	$allowed_tags
+				// );
+				echo $output;
 			}
 		}
 	}
@@ -394,27 +397,29 @@ class EFUL_Live_Filter
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$last_filter         = isset($_POST['last_filter']) ? sanitize_text_field(wp_unslash($_POST['last_filter'])) : '';
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
-		$selected_term_list  = isset($_POST['term_list']) ? sanitize_term(wp_unslash($_POST['term_list'])) : '';
+		$custom_fields_array = isset($_POST['custom_fields_array']) ? sanitize_text_field(wp_unslash($_POST['custom_fields_array'])) : '';
+		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash(sanitize_text_field($_POST['term_list'])) : '';
 		$settings            = array();
 		parse_str(wp_kses_post($_POST['data']), $settings);
 		$layout                       = $settings['eful_layouts'];
-		$layout_preset                = isset($layout['eful_layout_preset']) ? $layout['eful_layout_preset'] : '';
+		$layout_preset                = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$view_options                 = $settings['eful_view_options'];
 		$query_args                   = EFUL_QueryInside::get_filtered_content($view_options, $eventful_gl_id);
 		$query_args['fields']         = 'ids';
 		$new_query_args               = $query_args;
-		$post_limit                   = isset($view_options['eful_post_limit']) && !empty($view_options['eful_post_limit']) ? $view_options['eful_post_limit'] : 10000;
+		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$query_args['posts_per_page'] = $post_limit;
 		$query_post_ids               = get_posts($new_query_args);
 
-		$relation          = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation'] : 'AND';
+		$relation          = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 		$is_term_intersect = true;
 		if ('AND' !== $relation) {
 			$is_term_intersect = false;
 		}
-		$query_args = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
+		$query_args = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, 0, $relation, $query_post_ids, $eventful_lang);
 		self::eventful_live_filter($view_options, $query_args, $eventful_gl_id, $is_term_intersect, $selected_term_list, $last_filter);
 		self::eful_author_filter($view_options, $query_args, $author_id);
+		self::eful_custom_filter_filter($view_options, $query_args, '', $custom_fields_array, $last_filter);
 		wp_die();
 	}
 
@@ -428,24 +433,24 @@ class EFUL_Live_Filter
 	 */
 	public static function eful_author_filter($view_options, $query_args, $current_author = '')
 	{
-		$filter_by            = isset($view_options['eful_advanced_filter']) ? $view_options['eful_advanced_filter'] : array();
-		$post_limit           = isset($view_options['eful_post_limit']) && !empty($view_options['eful_post_limit']) ? $view_options['eful_post_limit'] : 10000;
+		$filter_by            = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
+		$post_limit           = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 
 		if (in_array('author', $filter_by, true)) {
-			$eful_filter_by_author  = isset($view_options['eful_filter_by_author']) ? $view_options['eful_filter_by_author'] : '';
-			$add_filter_post       = isset($eful_filter_by_author['add_author_filter_post']) ? $eful_filter_by_author['add_author_filter_post'] : '';
-			$eful_select_author_by  = isset($eful_filter_by_author['eful_select_author_by']) ? $eful_filter_by_author['eful_select_author_by'] : '';
-			$ajax_filter_options   = isset($eful_filter_by_author['ajax_filter_options']) ? $eful_filter_by_author['ajax_filter_options'] : '';
+			$eventful_filter_by_author  = isset($view_options['eventful_filter_by_author']) ? $view_options['eventful_filter_by_author'] : '';
+			$add_filter_post       = isset($eventful_filter_by_author['add_author_filter_post']) ? $eventful_filter_by_author['add_author_filter_post'] : '';
+			$eventful_select_author_by  = isset($eventful_filter_by_author['eventful_select_author_by']) ? $eventful_filter_by_author['eventful_select_author_by'] : '';
+			$ajax_filter_options   = isset($eventful_filter_by_author['ajax_filter_options']) ? $eventful_filter_by_author['ajax_filter_options'] : '';
 			$btn_type              = isset($ajax_filter_options['ajax_filter_style']) ? $ajax_filter_options['ajax_filter_style'] : '';
 			$label                 = isset($ajax_filter_options['ajax_filter_label']) && !empty($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : 'Author';
 			$all_text              = isset($ajax_filter_options['ajax_rename_all_text']) ? $ajax_filter_options['ajax_rename_all_text'] : '';
 			$hide_empty            = isset($ajax_filter_options['ajax_hide_empty']) ? $ajax_filter_options['ajax_hide_empty'] : '';
 			$show_count            = isset($ajax_filter_options['ajax_show_count']) ? $ajax_filter_options['ajax_show_count'] : '';
-			$eful_live_filter_align = isset($ajax_filter_options['eful_live_filter_align']) ? $ajax_filter_options['eful_live_filter_align'] : 'center';
-			if ($add_filter_post && is_array($eful_select_author_by)) {
-				$filter_item   = self::eful_author_filter_style($btn_type, $label, $all_text, $eful_live_filter_align);
+			$eventful_live_filter_align = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
+			if ($add_filter_post && is_array($eventful_select_author_by)) {
+				$filter_item   = self::eful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
-				foreach ($eful_select_author_by as $author_id) {
+				foreach ($eventful_select_author_by as $author_id) {
 					$author_name = get_the_author_meta('nicename', $author_id);
 					// Prepare the query arguments.
 					$query_args['posts_per_page'] = (int) $post_limit;
@@ -462,10 +467,10 @@ class EFUL_Live_Filter
 					$author_posts      = get_posts($query_args);
 					$author_post_count = count($author_posts);
 					if (!$hide_empty) {
-						$push_item = self::eful_author_filter_style($btn_type, $label, $all_text, $eful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
+						$push_item = self::eful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
 						array_push($newterm_array, $push_item);
 					} elseif ($hide_empty && $author_post_count > 0) {
-						$push_item = self::eful_author_filter_style($btn_type, $label, $all_text, $eful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
+						$push_item = self::eful_author_filter_style($btn_type, $label, $all_text, $eventful_live_filter_align, $author_id, $author_name, $author_post_count, $show_count, $selected, $checked)['push_item'];
 						array_push($newterm_array, $push_item);
 					}
 				}
@@ -488,14 +493,120 @@ class EFUL_Live_Filter
 					),
 				);
 
-				echo wp_kses(
-					$output,
-					$allowed_tags
-				);
+				// echo wp_kses(
+				// 	$output,
+				// 	$allowed_tags
+				// );
+				echo $output;
 			}
 		}
 	}
 
+	/**
+	 * Custom filter
+	 *
+	 * @param  array  $view_options options.
+	 * @param  array  $query_args query args.
+	 * @param  string $sid shortcode id.
+	 * @param  array  $custom_fields_array fields array.
+	 * @param  string $last_filter last filter.
+	 * @return void
+	 */
+	public static function eful_custom_filter_filter($view_options, $query_args, $sid = '', $custom_fields_array = array(), $last_filter = '')
+	{
+		$filter_by                    = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
+		$post_limit                   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
+
+		$query_args['fields']         = 'ids';
+		$query_args['posts_per_page'] = $post_limit;
+		$old_all_post_ids             = get_posts($query_args);
+		if (in_array('custom_field', $filter_by)) {
+			$custom_field_groups = isset($view_options['eventful_filter_custom_field']['eventful_filter_by_custom_field_group']) ? $view_options['eventful_filter_custom_field']['eventful_filter_by_custom_field_group'] : '';
+			if (!empty($custom_field_groups)) {
+				$groups_count    = count($custom_field_groups);
+				$newcustom_array = array();
+				$output          = '';
+				$index           = 0;
+
+				while ($index < $groups_count) {
+					$add_filter = isset($custom_field_groups[$index]['add_filter_post']) ? $custom_field_groups[$index]['add_filter_post'] : '';
+					if ($add_filter) {
+						$all_post_ids = get_posts($query_args);
+						$field_key    = isset($custom_field_groups[$index]['eventful_select_custom_field_key']) ? $custom_field_groups[$index]['eventful_select_custom_field_key'] : '';
+
+						$ajax_filter_options   = isset($custom_field_groups[$index]['ajax_filter_options']) ? $custom_field_groups[$index]['ajax_filter_options'] : '';
+						$btn_style             = isset($ajax_filter_options['ajax_filter_style']) ? $ajax_filter_options['ajax_filter_style'] : 'fl_btn';
+						$ajax_filter_label     = isset($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : '';
+						$all_text              = isset($ajax_filter_options['ajax_rename_all_text']) ? $ajax_filter_options['ajax_rename_all_text'] : '';
+						$eventful_live_filter_align = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : '';
+						$hide_empty            = isset($ajax_filter_options['ajax_hide_empty']) ? $ajax_filter_options['ajax_hide_empty'] : '';
+						$show_count            = isset($ajax_filter_options['ajax_show_count']) ? $ajax_filter_options['ajax_show_count'] : '';
+						$meta_values           = array();
+						$url_last_filter       = isset($_GET['slf']) ? wp_unslash(sanitize_text_field($_GET['slf'])) : '';
+
+						if ($last_filter == $field_key || $url_last_filter == $field_key) {
+							$new_query  = $query_args;
+							$meta_query = isset($new_query['meta_query']) ? $new_query['meta_query'] : '';
+							if (!empty($meta_query)) {
+								foreach ($meta_query as $key => $value) {
+									if (is_array($value)) {
+										if ($value['key'] == $field_key) {
+											unset($meta_query[$key]);
+										}
+									}
+								}
+								$new_query['meta_query'] = $meta_query;
+								$all_post_ids            = get_posts($new_query);
+							}
+						}
+						if (!empty($all_post_ids)) {
+							foreach ($all_post_ids as $key => $id) {
+								$meta_value = get_post_meta($id, $field_key, true);
+								if (!empty($meta_value) && !is_array($meta_value)) {
+									$meta_values[] = $meta_value;
+								}
+							}
+						}
+
+						$post_counts_by_value = array_count_values($meta_values);
+						$meta_values          = array_unique($meta_values);
+						if ('fl_slider' == $btn_style) {
+							$total_meta_values = array();
+							if (!empty($old_all_post_ids)) {
+								foreach ($old_all_post_ids as $key => $id) {
+									$meta_value = get_post_meta($id, $field_key, true);
+									if (!empty($meta_value) && !is_array($meta_value)) {
+										$total_meta_values[] = $meta_value;
+									}
+								}
+							}
+							if (is_array($total_meta_values) && is_array($meta_values) && !empty($meta_values)) {
+								$crmin = absint(min($meta_values));
+								$crmax = absint(max($meta_values));
+								$max   = absint(max($total_meta_values));
+								$min   = absint(min($total_meta_values));
+								if (!wp_script_is('jquery-ui-slider')) {
+									wp_enqueue_script('jquery-ui-slider');
+								}
+								$newcustom_array[$index] = array(
+									'<div class="eventful-custom-field-filter-slider eventful-bar" style="text-align:' . $eventful_live_filter_align . ';"><p>
+							<label>' . esc_html($ajax_filter_label) . '</label>
+							<input value="' . $min . '-' . $max . '" type="text" name=' . esc_attr($field_key) . ' class="eventful-input" data-crmin="' . $crmin . '" data-min="' . $min . '" data-crmax="' . $crmax . '" data-max="' . $max . '" readonly>
+						 </p> <div class="eventful-slider"></div></div>',
+								);
+							}
+						}
+					}
+					if (isset($newcustom_array[$index]) && !empty($newcustom_array[$index])) {
+						$newcustom_html = implode('', $newcustom_array[$index]);
+						$output         = $output . force_balance_tags($newcustom_html);
+					}
+					$index++;
+				}
+				echo $output; //phpcs:ignore
+			}
+		}
+	}
 	/**
 	 * Orderby filter bar
 	 *
@@ -506,27 +617,27 @@ class EFUL_Live_Filter
 	 */
 	public static function eful_orderby_filter_bar($view_options, $query_args, $sid = null)
 	{
-		$filter_by = isset($view_options['eful_advanced_filter']) ? $view_options['eful_advanced_filter'] : array();
+		$filter_by = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		if (in_array('sortby', $filter_by, true)) {
-			$eful_filter_by_order    = isset($view_options['eful_filter_by_order']) ? $view_options['eful_filter_by_order'] : '';
-			$add_filter_post        = isset($eful_filter_by_order['add_orderby_filter_post']) ? $eful_filter_by_order['add_orderby_filter_post'] : '';
-			$ajax_filter_options    = isset($eful_filter_by_order['orderby_ajax_filter_options']) ? $eful_filter_by_order['orderby_ajax_filter_options'] : '';
-			$eful_add_filter_orderby = isset($ajax_filter_options['eful_add_filter_orderby']) ? $ajax_filter_options['eful_add_filter_orderby'] : '';
+			$eventful_filter_by_order    = isset($view_options['eventful_filter_by_order']) ? $view_options['eventful_filter_by_order'] : '';
+			$add_filter_post        = isset($eventful_filter_by_order['add_orderby_filter_post']) ? $eventful_filter_by_order['add_orderby_filter_post'] : '';
+			$ajax_filter_options    = isset($eventful_filter_by_order['orderby_ajax_filter_options']) ? $eventful_filter_by_order['orderby_ajax_filter_options'] : '';
+			$eventful_add_filter_orderby = isset($ajax_filter_options['eventful_add_filter_orderby']) ? $ajax_filter_options['eventful_add_filter_orderby'] : '';
 			$btn_type               = isset($ajax_filter_options['orderby_filter_style']) ? $ajax_filter_options['orderby_filter_style'] : 'fl_dropdown';
 			$label                  = isset($ajax_filter_options['ajax_filter_label']) && !empty($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : 'Filter by';
 			$all_text               = isset($ajax_filter_options['ajax_rename_all_text']) ? $ajax_filter_options['ajax_rename_all_text'] : '';
-			$eful_live_filter_align  = isset($ajax_filter_options['eful_live_filter_align']) ? $ajax_filter_options['eful_live_filter_align'] : 'center';
-			if ($add_filter_post && is_array($eful_add_filter_orderby)) {
-				$filter_item   = self::eful_orderby_filter_style($btn_type, $label, $eful_live_filter_align);
+			$eventful_live_filter_align  = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
+			if ($add_filter_post && is_array($eventful_add_filter_orderby)) {
+				$filter_item   = self::eful_orderby_filter_style($btn_type, $label, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
-				foreach ($eful_add_filter_orderby as $orderby) {
-					$push_item = self::eful_orderby_filter_style($btn_type, $label, $eful_live_filter_align, $orderby, $sid)['push_item'];
+				foreach ($eventful_add_filter_orderby as $orderby) {
+					$push_item = self::eful_orderby_filter_style($btn_type, $label, $eventful_live_filter_align, $orderby, $sid)['push_item'];
 					array_push($newterm_array, $push_item);
 				}
 				$tax_html = implode('', $newterm_array);
 				$output   = '';
 				$output   = $output . force_balance_tags($tax_html);
-				echo $output;
+				echo $output; //phpcs:ignore
 			}
 		}
 	}
@@ -540,21 +651,21 @@ class EFUL_Live_Filter
 	 */
 	public static function eful_order_filter_bar($view_options, $sid = null)
 	{
-		$filter_by = isset($view_options['eful_advanced_filter']) ? $view_options['eful_advanced_filter'] : array();
+		$filter_by = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		if (in_array('sortby', $filter_by)) {
-			$eful_filter_by_order     = isset($view_options['eful_filter_by_order']) ? $view_options['eful_filter_by_order'] : '';
-			$add_filter_post         = isset($eful_filter_by_order['add_order_filter_post']) ? $eful_filter_by_order['add_order_filter_post'] : '';
-			$ajax_filter_options     = isset($eful_filter_by_order['order_filter_options']) ? $eful_filter_by_order['order_filter_options'] : '';
-			$eful_select_filter_order = isset($eful_filter_by_order['eful_select_filter_order']) ? $eful_filter_by_order['eful_select_filter_order'] : '';
-			$eful_add_filter_orderby  = array('DESC', 'ASC');
+			$eventful_filter_by_order     = isset($view_options['eventful_filter_by_order']) ? $view_options['eventful_filter_by_order'] : '';
+			$add_filter_post         = isset($eventful_filter_by_order['add_order_filter_post']) ? $eventful_filter_by_order['add_order_filter_post'] : '';
+			$ajax_filter_options     = isset($eventful_filter_by_order['order_filter_options']) ? $eventful_filter_by_order['order_filter_options'] : '';
+			$eventful_select_filter_order = isset($eventful_filter_by_order['eventful_select_filter_order']) ? $eventful_filter_by_order['eventful_select_filter_order'] : '';
+			$eventful_add_filter_orderby  = array('DESC', 'ASC');
 			$btn_type                = isset($ajax_filter_options['order_filter_style']) ? $ajax_filter_options['order_filter_style'] : '';
 			$label                   = isset($ajax_filter_options['order_filter_label']) ? $ajax_filter_options['order_filter_label'] : '';
-			$eful_live_filter_align   = isset($ajax_filter_options['eful_live_filter_align']) ? $ajax_filter_options['eful_live_filter_align'] : 'center';
+			$eventful_live_filter_align   = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
 			if ($add_filter_post) {
-				$filter_item   = self::eful_order_filter_style($btn_type, $label, $eful_live_filter_align);
+				$filter_item   = self::eful_order_filter_style($btn_type, $label, $eventful_live_filter_align);
 				$newterm_array = array($filter_item['first_item']);
-				foreach ($eful_add_filter_orderby as $order) {
-					$push_item = self::eful_order_filter_style($btn_type, $label, $eful_live_filter_align, $order, $eful_select_filter_order, $sid)['push_item'];
+				foreach ($eventful_add_filter_orderby as $order) {
+					$push_item = self::eful_order_filter_style($btn_type, $label, $eventful_live_filter_align, $order, $eventful_select_filter_order, $sid)['push_item'];
 					array_push($newterm_array, $push_item);
 				}
 				$tax_html = implode('', $newterm_array);
@@ -579,10 +690,7 @@ class EFUL_Live_Filter
 					),
 				);
 
-				echo wp_kses(
-					$output,
-					$allowed_tags
-				);
+				echo $output;
 			}
 		}
 	}
@@ -634,7 +742,24 @@ class EFUL_Live_Filter
 			'first_item' => $first_item,
 			'push_item'  => $push_item,
 		);
-		
+
+		// $allowed_html = array(
+		// 	'div'    => array(
+		// 		'class' => array(),
+		// 		'style' => array(),
+		// 	),
+		// 	'p'      => array(),
+		// 	'label'  => array(
+		// 		'input'  => array(
+		// 			'checked' => array(),
+		// 			'type'    => array(),
+		// 			'name'    => array(),
+		// 			'value'   => array(),
+		// 		),	
+		// 	),
+
+		// );
+
 		return $filter_output;
 	}
 
@@ -650,7 +775,7 @@ class EFUL_Live_Filter
 	 */
 	public static function eful_orderby_filter_style($btn_type, $label, $align = 'center', $orderby = null, $sid = null)
 	{
-		$filter_url_value        = isset($_SERVER['QUERY_STRING']) ? sanitize_text_field(wp_unslash($_SERVER['QUERY_STRING'])) : '';
+		$filter_url_value        = isset($_SERVER['QUERY_STRING']) ? wp_unslash(sanitize_text_field($_SERVER['QUERY_STRING'])) : '';
 		$final_orderby_url_value = '';
 		if (!empty($filter_url_value)) {
 			$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
@@ -700,10 +825,7 @@ class EFUL_Live_Filter
 			),
 		);
 
-		echo wp_kses(
-			$filter_output,
-			$allowed_tags
-		);
+		return $filter_output;
 	}
 
 	/**
@@ -719,7 +841,7 @@ class EFUL_Live_Filter
 	public static function eful_order_filter_style($btn_type, $label, $align = 'center', $order = null, $select_order = null, $sid = null)
 	{
 		$final_order_url_value = '';
-		$filter_url_value      = isset($_SERVER['QUERY_STRING']) ? sanitize_text_field(wp_unslash($_SERVER['QUERY_STRING'])) : '';
+		$filter_url_value      = isset($_SERVER['QUERY_STRING']) ? wp_unslash(sanitize_text_field($_SERVER['QUERY_STRING'])) : '';
 		if (!empty($filter_url_value)) {
 			$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 			if ($shortcode_id == $sid) {
@@ -760,9 +882,9 @@ class EFUL_Live_Filter
 	 */
 	public static function eful_live_search_bar($view_options, $sid = null)
 	{
-		$filter_by        = isset($view_options['eful_advanced_filter']) ? $view_options['eful_advanced_filter'] : array();
+		$filter_by        = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : array();
 		$final_keyword    = '';
-		$filter_url_value = isset($_SERVER['QUERY_STRING']) ? sanitize_text_field(wp_unslash($_SERVER['QUERY_STRING'])) : '';
+		$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash(sanitize_text_field($_SERVER['QUERY_STRING'])) : '';
 		if (!empty($filter_url_value)) {
 			$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 			if ($shortcode_id == $sid) {
@@ -770,13 +892,13 @@ class EFUL_Live_Filter
 			}
 		}
 		if (in_array('keyword', $filter_by, true)) {
-			$eful_filter_by_keyword = isset($view_options['eful_filter_by_keyword']) ? $view_options['eful_filter_by_keyword'] : '';
-			$add_filter_post       = isset($eful_filter_by_keyword['add_search_filter_post']) ? $eful_filter_by_keyword['add_search_filter_post'] : '';
+			$eventful_filter_by_keyword = isset($view_options['eventful_filter_by_keyword']) ? $view_options['eventful_filter_by_keyword'] : '';
+			$add_filter_post       = isset($eventful_filter_by_keyword['add_search_filter_post']) ? $eventful_filter_by_keyword['add_search_filter_post'] : '';
 			if ($add_filter_post) {
-				$ajax_filter_options   = isset($eful_filter_by_keyword['ajax_filter_options']) ? $eful_filter_by_keyword['ajax_filter_options'] : '';
+				$ajax_filter_options   = isset($eventful_filter_by_keyword['ajax_filter_options']) ? $eventful_filter_by_keyword['ajax_filter_options'] : '';
 				$label                 = isset($ajax_filter_options['ajax_filter_label']) && !empty($ajax_filter_options['ajax_filter_label']) ? $ajax_filter_options['ajax_filter_label'] : '';
-				$eful_live_filter_align = isset($ajax_filter_options['eful_live_filter_align']) ? $ajax_filter_options['eful_live_filter_align'] : 'center';
-				echo '<div class="eventful-ajax-search eventful-bar" style="text-align:' . esc_attr($eful_live_filter_align) . ';"><label class="eventful-label">' . wp_kses_post($label) . ' <input type="text" value="' . esc_attr($final_keyword) . '" class="eventful-search-field" placeholder="Search..."></label></div>';
+				$eventful_live_filter_align = isset($ajax_filter_options['eventful_live_filter_align']) ? $ajax_filter_options['eventful_live_filter_align'] : 'center';
+				echo '<div class="eventful-ajax-search eventful-bar" style="text-align:' . esc_attr($eventful_live_filter_align) . ';"><label class="eventful-label">' . wp_kses_post($label) . ' <input type="text" value="' . esc_attr($final_keyword) . '" class="eventful-search-field" placeholder="Search..."></label></div>';
 			}
 		}
 	}

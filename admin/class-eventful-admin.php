@@ -170,7 +170,7 @@ class Eventful_Admin
 		$eventful_layouts     = get_post_meta($post_id, 'eful_layouts', true);
 
 
-		$eventfuls_types = isset($eventful_layouts['eful_layout_preset']) ? $eventful_layouts['eful_layout_preset'] : '';
+		$eventfuls_types = isset($eventful_layouts['eventful_layout_preset']) ? $eventful_layouts['eventful_layout_preset'] : '';
 		switch ($column) {
 			case 'shortcode':
 				$allowed_tags = array(

@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<?php
 	if ( $show_post_content ) {
 
-		echo wp_kses( EFUL_Functions::eventful_content( $post_content_setting, $eventful_content_type, $post ), apply_filters( 'eful_allowed_tags', EFUL_Functions::allowed_tags() ) );
+		echo wp_kses( EFUL_Functions::eventful_content( $post_content_setting, $eventful_content_type, $post ), apply_filters( 'ta_wp_eventful_allowed_tags', EFUL_Functions::allowed_tags() ) );
 	}
 	?>
 </div>

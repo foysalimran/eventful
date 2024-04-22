@@ -14,9 +14,6 @@
   //
   // Constants
   //
-
-  var eventful_media_buttons = eventful_media_json?.media_content ? eventful_media_json.media_content : '';
-
   var EFUL   = EFUL || {};
 
   EFUL.funcs = {};
@@ -612,7 +609,7 @@
 
           }
 
-          CodeMirror.modeURL = data_editor.cdnURL +'/js/%N/%N.min.js';
+          CodeMirror.modeURL = data_editor.cdnURL +'/js/%N.min.js';
           CodeMirror.autoLoadMode(code_editor, data_editor.mode);
 
           code_editor.on( 'change', function( editor, event ) {

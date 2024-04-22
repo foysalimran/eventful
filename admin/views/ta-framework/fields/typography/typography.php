@@ -441,6 +441,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 			$multiple_name = ( $is_multiple ) ? '[]' : '';
 			$multiple_attr = ( $is_multiple ) ? ' multiple data-multiple="true"' : '';
 			$chosen_rtl    = ( $this->chosen && is_rtl() ) ? ' chosen-rtl' : '';
+
 			$output  = '<select name="' . $this->field_name( '[' . $name . ']' . $multiple_name ) . '" class="eventful--' . $name . $chosen_rtl . '" data-placeholder="' . $placeholder . '"' . $multiple_attr . '>';
 			$output .= ( ! empty( $placeholder ) ) ? '<option value="">' . ( ( ! $this->chosen ) ? $placeholder : '' ) . '</option>' : '';
 
@@ -462,7 +463,6 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 			return $output;
 
 		}
-
 
 		/**
 		 * Enqueue

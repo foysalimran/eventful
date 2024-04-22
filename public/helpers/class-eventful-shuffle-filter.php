@@ -73,16 +73,16 @@ class Eventful_Shuffle_Filter
 	 */
 	public static function eventful_shuffle_filter($view_options, $layout_preset, $eventful_query, $filter_type)
 	{
-		$filter_by    = isset($view_options['eful_advanced_filter']) ? $view_options['eful_advanced_filter'] : '';
+		$filter_by    = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : '';
 		$filter_type  = isset($view_options['eventful_filter_type']) ? $view_options['eventful_filter_type'] : '';
 		$filer_align  = isset($view_options['eventful_filer_align']) ? $view_options['eventful_filer_align'] : 'eventful-align-center';
 		$all_text_btn = isset($view_options['eventful_filter_all_btn_switch']) ? $view_options['eventful_filter_all_btn_switch'] : true;
 		$all_text     = isset($view_options['eventful_rename_all_text']) ? $view_options['eventful_rename_all_text'] : 'All';
 		$all_text     = $all_text_btn ? $all_text : '';
 		$show_count   = isset($view_options['eventful_post_count']) ? $view_options['eventful_post_count'] : '';
-		$post_limit   = isset($view_options['eful_post_limit']) && !empty($view_options['eful_post_limit']) ? $view_options['eful_post_limit'] : 10000;
+		$post_limit   = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		if ('filter_layout' === $layout_preset && in_array('taxonomy', $filter_by, true)) {
-			$taxonomy_types   = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms']) && !empty($view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms'] : '';
+			$taxonomy_types   = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) && !empty($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms'] : '';
 			$total_post_count = $eventful_query->post_count;
 			if (!empty($taxonomy_types)) {
 				$output         = '';
@@ -91,11 +91,11 @@ class Eventful_Shuffle_Filter
 				$taxonomies     = array();
 				$taxonomy_count = count($taxonomy_types);
 				while ($count < $taxonomy_count) {
-					$taxonomy = isset($taxonomy_types[$count]['eful_select_taxonomy']) ? $taxonomy_types[$count]['eful_select_taxonomy'] : '';
+					$taxonomy = isset($taxonomy_types[$count]['eventful_select_taxonomy']) ? $taxonomy_types[$count]['eventful_select_taxonomy'] : '';
 
 					$all_terms = get_terms($taxonomy);
 					$all_terms = wp_list_pluck($all_terms, 'term_id');
-					$terms     = isset($taxonomy_types[$count]['eful_select_terms']) ? $taxonomy_types[$count]['eful_select_terms'] : $all_terms;
+					$terms     = isset($taxonomy_types[$count]['eventful_select_terms']) ? $taxonomy_types[$count]['eventful_select_terms'] : $all_terms;
 
 					if (!empty($terms)) {
 						$filter_item             = self::eful_filter_style($filter_type, $taxonomy, $all_text);

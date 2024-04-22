@@ -401,14 +401,14 @@ class EFUL_HTML
 	public static function eventful_pagination_bar($loop, $view_options, $layout, $views_id, $paged = null, $on_screen = null)
 	{
 		$posts_found   = $loop->found_posts;
-		$post_offset   = isset($view_options['eful_post_offset']) ? $view_options['eful_post_offset'] : 0;
+		$post_offset   = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
 		$posts_found   = (int) $posts_found - (int) $post_offset;
-		$post_limit    = isset($view_options['eful_post_limit']) ? $view_options['eful_post_limit'] : 100000;
+		$post_limit    = isset($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 100000;
 		$post_limit    = ($post_limit > 0 && $posts_found > $post_limit) ? $post_limit : $posts_found;
 		$post_per_page = isset($view_options['post_per_page']) ? $view_options['post_per_page'] : 12;
 		$post_per_page = ($post_per_page > $post_limit) ? $post_limit : $post_per_page;
 
-		$layout_preset = isset($layout['eful_layout_preset']) ? $layout['eful_layout_preset'] : '';
+		$layout_preset = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		// Post display settings.
 		if ('filter_layout' === $layout_preset) {
 			$pagination_type = isset($view_options['filter_pagination_type']) ? $view_options['filter_pagination_type'] : '';
@@ -427,7 +427,7 @@ class EFUL_HTML
 		$big = 999999999; // need an unlikely integer.
 		if ($pages > 1) {
 			$page_current     = max(1, get_query_var('paged'));
-			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? sanitize_text_field(wp_unslash($_SERVER['QUERY_STRING'])) : ''; //phpcs:ignore
+			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash(sanitize_text_field($_SERVER['QUERY_STRING'])) : ''; //phpcs:ignore
 			if (!empty($filter_url_value)) {
 				$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : ''; //phpcs:ignore
 				if ($shortcode_id == $views_id) {
@@ -748,7 +748,7 @@ class EFUL_HTML
 	public static function eventful_html_show($view_options, $layout, $eventful_gl_id, $section_title = '', $query = array())
 	{
 		$options              = $view_options;
-		$layout_preset        = isset($layout['eful_layout_preset']) ? $layout['eful_layout_preset'] : 'carousel_layout';
+		$layout_preset        = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : 'carousel_layout';
 		$eventful_settings         = get_option('eful_settings');
 		$grid_style           = isset($view_options['eventful_grid_style']) ? $view_options['eventful_grid_style'] : 'even';
 		$post_content_sorter  = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';
@@ -778,7 +778,7 @@ class EFUL_HTML
 			$pagination_type_mobile = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : 'infinite_scroll';
 		}
 		$accordion_mode  = isset($view_options['accordion_mode']) ? $view_options['accordion_mode'] : '';
-		$advanced_filter = isset($view_options['eful_advanced_filter']) ? $view_options['eful_advanced_filter'] : false;
+		$advanced_filter = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : false;
 		// Enqueue Settings.
 		$swiper_js   = isset($eventful_settings['eventful_swiper_js']) ? $eventful_settings['eventful_swiper_js'] : true;
 		$bx_js       = isset($eventful_settings['eventful_bx_js']) ? $eventful_settings['eventful_bx_js'] : true;

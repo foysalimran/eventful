@@ -239,10 +239,11 @@ class Eventful_Public
 		$eventful_lang            = isset($_POST['lang']) ? sanitize_text_field(wp_unslash($_POST['lang'])) : '';
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
-		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash($_POST['term_list']) : '';
+		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
+		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash(sanitize_text_field($_POST['term_list'])) : '';
 		// $eventful_search_url     = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ) : '';
 		$layout        = get_post_meta($views_id, 'eful_layouts', true);
-		$layout_preset = isset($layout['eful_layout_preset']) ? $layout['eful_layout_preset'] : '';
+		$layout_preset = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$view_options  = get_post_meta($views_id, 'eful_view_options', true);
 		// Post display settings.
 		if ('filter_layout' === $layout_preset) {
@@ -260,14 +261,14 @@ class Eventful_Public
 		}
 		$post_content_sorter              = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';
 		$query_args                       = EFUL_QueryInside::get_filtered_content($view_options, $views_id, $layout_preset);
-		$post_limit                       = isset($view_options['eful_post_limit']) && !empty($view_options['eful_post_limit']) ? $view_options['eful_post_limit'] : 10000;
-		$post_offset                      = isset($view_options['eful_post_offset']) ? $view_options['eful_post_offset'] : 0;
+		$post_limit                       = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
+		$post_offset                      = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
 		$new_query_args                   = $query_args;
 		$new_query_args['fields']         = 'ids';
 		$new_query_args['posts_per_page'] = $post_limit;
 		$query_post_ids                   = get_posts($new_query_args);
-		$relation                         = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation'] : 'AND';
-		$query_args                       = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
+		$relation                         = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
+		$query_args                       = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$new_query_args                   = $query_args;
 		$new_query_args['fields']         = 'ids';
 		$new_query_args['posts_per_page'] = $post_limit;
@@ -318,23 +319,24 @@ class Eventful_Public
 		$eventful_lang            = isset($_POST['lang']) ? sanitize_text_field(wp_unslash($_POST['lang'])) : '';
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
-		$selected_term_list  = isset($_POST['term_list']) ? sanitize_term(wp_unslash($_POST['term_list'])) : '';
+		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
+		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash(sanitize_text_field($_POST['term_list'])) : '';
 		$view_options        = get_post_meta($views_id, 'eful_view_options', true);
 		$layout              = get_post_meta($views_id, 'eful_layouts', true);
-		$layout_preset       = isset($layout['eful_layout_preset']) ? $layout['eful_layout_preset'] : '';
+		$layout_preset       = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
 		$query_args          = EFUL_QueryInside::get_filtered_content($view_options, $views_id, $layout_preset);
 
-		$post_offset                      = isset($view_options['eful_post_offset']) ? $view_options['eful_post_offset'] : 0;
+		$post_offset                      = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
 		$new_query_args                   = $query_args;
 		$new_query_args['fields']         = 'ids';
-		$post_limit                       = isset($view_options['eful_post_limit']) && !empty($view_options['eful_post_limit']) ? $view_options['eful_post_limit'] : 10000;
+		$post_limit                       = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$new_query_args['posts_per_page'] = $post_limit;
 		$query_post_ids                   = get_posts($new_query_args);
 
-		$relation           = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation'] : 'AND';
-		$query_args         = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
+		$relation           = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
+		$query_args         = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$query_args['lang'] = '';
 		$eventful_query          = new WP_Query($query_args);
 		EFUL_HTML::eventful_pagination_bar($eventful_query, $view_options, $layout, $views_id, $paged);
@@ -358,25 +360,26 @@ class Eventful_Public
 		$eventful_lang            = isset($_POST['lang']) ? sanitize_text_field(wp_unslash($_POST['lang'])) : '';
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
-		$selected_term_list  = isset($_POST['term_list']) ? sanitize_term(wp_unslash($_POST['term_list'])) : '';
+		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash(sanitize_text_field($_POST['term_list'])) : '';
+		$custom_fields_array = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$view_options        = get_post_meta($views_id, 'eful_view_options', true);
 		$layout              = get_post_meta($views_id, 'eful_layouts', true);
-		$layout_preset       = isset($layout['eful_layout_preset']) ? $layout['eful_layout_preset'] : '';
+		$layout_preset       = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
 		$pagination_type     = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
 		$query_args          = EFUL_QueryInside::get_filtered_content($view_options, $views_id, $layout_preset, 'on_mobile');
 		$tax_settings        = array();
-		$post_offset         = isset($view_options['eful_post_offset']) ? $view_options['eful_post_offset'] : 0;
+		$post_offset         = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
 
 		$new_query_args                   = $query_args;
 		$new_query_args['fields']         = 'ids';
-		$post_limit                       = isset($view_options['eful_post_limit']) && !empty($view_options['eful_post_limit']) ? $view_options['eful_post_limit'] : 10000;
+		$post_limit                       = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$new_query_args['posts_per_page'] = $post_limit;
 		$query_post_ids                   = get_posts($new_query_args);
 		$query_post_ids                   = array('');
 
-		$relation   = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation'] : 'AND';
-		$query_args = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
+		$relation   = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
+		$query_args = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$eventful_query  = new WP_Query($query_args);
 		EFUL_HTML::eventful_pagination_bar($eventful_query, $view_options, $layout, $views_id, $paged, 'on_mobile');
 		die();
@@ -398,23 +401,24 @@ class Eventful_Public
 		$term_id                = isset($_POST['term_id']) ? sanitize_text_field(wp_unslash($_POST['term_id'])) : '';
 		$eventful_lang               = isset($_POST['lang']) ? sanitize_text_field(wp_unslash($_POST['lang'])) : '';
 		$author_id              = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
-		$selected_term_list     = isset($_POST['term_list']) ? sanitize_term(wp_unslash($_POST['term_list'])) : '';
+		$selected_term_list     = isset($_POST['term_list']) ? wp_unslash(sanitize_text_field($_POST['term_list'])) : '';
+		$custom_fields_array    = isset($_POST['custom_fields_array']) ? wp_unslash($_POST['custom_fields_array']) : '';
 		$layout                 = get_post_meta($views_id, 'eful_layouts', true);
-		$layout_preset          = isset($layout['eful_layout_preset']) ? $layout['eful_layout_preset'] : '';
+		$layout_preset          = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : '';
 		$view_options           = get_post_meta($views_id, 'eful_view_options', true);
 		$pagination_type        = isset($view_options['post_pagination_type']) ? $view_options['post_pagination_type'] : '';
 		$pagination_type_mobile = isset($view_options['post_pagination_type_mobile']) ? $view_options['post_pagination_type_mobile'] : '';
 		$post_content_sorter    = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';
 		$query_args             = EFUL_QueryInside::get_filtered_content($view_options, $views_id, $layout_preset);
-		$post_offset            = isset($view_options['eful_post_offset']) ? $view_options['eful_post_offset'] : 0;
+		$post_offset            = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
 
 		$new_query_args                   = $query_args;
 		$new_query_args['fields']         = 'ids';
-		$post_limit                       = isset($view_options['eful_post_limit']) && !empty($view_options['eful_post_limit']) ? $view_options['eful_post_limit'] : 10000;
+		$post_limit                       = isset($view_options['eventful_post_limit']) && !empty($view_options['eventful_post_limit']) ? $view_options['eventful_post_limit'] : 10000;
 		$new_query_args['posts_per_page'] = $post_limit;
 		$query_post_ids                   = get_posts($new_query_args);
-		$relation                         = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomies_relation'] : 'AND';
-		$query_args                       = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
+		$relation                         = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
+		$query_args                       = EFUL_Functions::modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$eventful_query                        = new WP_Query($query_args);
 		EFUL_HTML::eventful_get_posts($view_options, $layout_preset, $post_content_sorter, $eventful_query, $views_id);
 		die();

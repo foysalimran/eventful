@@ -11,6 +11,7 @@
 if ( ! class_exists( 'EFUL_Field_wp_editor' ) ) {
 	class EFUL_Field_wp_editor extends EFUL_Fields {
 
+
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 
 			parent::__construct( $field, $value, $unique, $where, $parent );

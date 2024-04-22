@@ -9,7 +9,7 @@ $(window).load(function () {
     }
   })
 })
-$('.eventful-field-checkbox.eful_advanced_filter').change(function (event) {
+$('.eventful-field-checkbox.eventful_advanced_filter').change(function (event) {
   $('.eventful-opened-accordion').each(function () {
     if ($(this).hasClass('hidden')) {
       $(this).removeClass('eventful_saved_filter')

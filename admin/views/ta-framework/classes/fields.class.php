@@ -316,7 +316,7 @@ if (!class_exists('EFUL_Fields')) {
             $field_index = '';
           }
 
-          $eventful_taxonomy = isset($view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms'][$field_index]['eful_select_taxonomy']) ? $view_options['eful_filter_by_taxonomy']['eful_taxonomy_and_terms'][$field_index]['eful_select_taxonomy'] : get_object_taxonomies($eventful_post_types, 'names');
+          $eventful_taxonomy = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms'][$field_index]['eventful_select_taxonomy']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomy_and_terms'][$field_index]['eventful_select_taxonomy'] : get_object_taxonomies($eventful_post_types, 'names');
           if (version_compare(get_bloginfo('version'), '4.5', '>=')) {
             $terms = get_terms(array('taxonomy' => $eventful_taxonomy));
           } else {

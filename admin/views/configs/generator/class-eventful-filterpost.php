@@ -28,8 +28,10 @@ class EFUL_FilterPost {
 				'icon'   => 'fas fa-filter',
 				'fields' => array(
 
+
+
 					array(
-						'id'          => 'eful_include_only_posts',
+						'id'          => 'eventful_include_only_posts',
 						'type'        => 'select',
 						'title'       => esc_html__( 'Include Only', 'eventful' ),
 						'subtitle'    => esc_html__( 'Choose posts to include by title.', 'eventful' ),
@@ -47,14 +49,14 @@ class EFUL_FilterPost {
 						),
 					),
 					array(
-						'id'       => 'eful_exclude_post_set',
+						'id'       => 'eventful_exclude_post_set',
 						'type'     => 'fieldset',
 						'title'    => esc_html__( 'Exclude', 'eventful' ),
 						'subtitle' => esc_html__( 'Choose posts to exclude by title.', 'eventful' ),
 						'class'    => 'eful_exclude_post_set',
 						'fields'   => array(
 							array(
-								'id'          => 'eful_exclude_posts',
+								'id'          => 'eventful_exclude_posts',
 								'type'        => 'select',
 								'options'     => 'posts',
 								'chosen'      => true,
@@ -67,10 +69,10 @@ class EFUL_FilterPost {
 									'cache_results' => false,
 									'no_found_rows' => true,
 								),
-								'dependency'  => array( 'eful_include_only_posts', '==', '', true ),
+								'dependency'  => array( 'eventful_include_only_posts', '==', '', true ),
 							),
 							array(
-								'id'      => 'eful_exclude_too',
+								'id'      => 'eventful_exclude_too',
 								'type'    => 'checkbox',
 								'class'   => 'eful_exclude_too',
 								'options' => array(
@@ -82,20 +84,20 @@ class EFUL_FilterPost {
 						),
 					),
 					array(
-						'id'       => 'eful_post_limit',
+						'id'       => 'eventful_post_limit',
 						'title'    => esc_html__( 'Limit', 'eventful' ),
 						'type'     => 'spinner',
 						'subtitle' => esc_html__( 'Number of total items to display. Leave it empty to show all found items.', 'eventful' ),
-						'sanitize' => 'eful_sanitize_number_field',
+						'sanitize' => 'eventful_sanitize_number_field',
 						'default'  => '15',
 						'min'      => 1,
 					),
 					array(
-						'id'       => 'eful_post_offset',
+						'id'       => 'eventful_post_offset',
 						'type'     => 'spinner',
 						'title'    => esc_html__( 'Offset', 'eventful' ),
 						'subtitle' => esc_html__( 'Number of items to skip.', 'eventful' ),
-						'sanitize' => 'eful_sanitize_number_field',
+						'sanitize' => 'eventful_sanitize_number_field',
 						'default'  => 0,
 					),
 					array(
@@ -103,9 +105,9 @@ class EFUL_FilterPost {
 						'content' => esc_html__( 'Advanced Filtering', 'eventful' ),
 					),
 					array(
-						'id'       => 'eful_advanced_filter',
+						'id'       => 'eventful_advanced_filter',
 						'type'     => 'checkbox',
-						'class'    => 'eful_column_2 eful_advanced_filter',
+						'class'    => 'eventful_column_2 eventful_advanced_filter',
 						'title'    => esc_html__( 'Filter by', 'eventful' ),
 						'subtitle' => esc_html__( 'Check the option(s) to filter by.', 'eventful' ),
 						'options'  => array(
@@ -117,7 +119,7 @@ class EFUL_FilterPost {
 						),
 					),
 					array(
-						'id'         => 'eful_filter_by_taxonomy',
+						'id'         => 'eventful_filter_by_taxonomy',
 						'type'       => 'accordion',
 						'class'      => 'padding-t-0 eventful-opened-accordion',
 						'accordions' => array(
@@ -127,13 +129,13 @@ class EFUL_FilterPost {
 								'fields' => array(
 									// The Group Fields.
 									array(
-										'id'     => 'eful_taxonomy_and_terms',
+										'id'     => 'eventful_taxonomy_and_terms',
 										'type'   => 'group',
-										'class'  => 'eful_taxonomy_terms_group eful_custom_group_design',
+										'class'  => 'eventful_taxonomy_terms_group eventful_custom_group_design',
 										'accordion_title_auto' => true,
 										'fields' => array(
 											array(
-												'id'      => 'eful_select_taxonomy',
+												'id'      => 'eventful_select_taxonomy',
 												'type'    => 'select',
 												'title'   => esc_html__( 'Select Taxonomy', 'eventful' ),
 												'class'   => 'eful_post_taxonomy',
@@ -154,7 +156,7 @@ class EFUL_FilterPost {
 												'default' => false,
 											),
 											array(
-												'id'       => 'eful_select_terms',
+												'id'       => 'eventful_select_terms',
 												'type'     => 'select',
 												'title'    => esc_html__( 'Choose Term(s)', 'eventful' ),
 												'title_help' => esc_html__( 'Choose the taxonomy term(s) to show the posts from. Leave empty to show all found taxonomy term(s).', 'eventful' ),
@@ -168,7 +170,7 @@ class EFUL_FilterPost {
 												'chosen'   => true,
 											),
 											array(
-												'id'      => 'eful_taxonomy_term_operator',
+												'id'      => 'eventful_taxonomy_term_operator',
 												'type'    => 'select',
 												'title'   => esc_html__( 'Operator', 'eventful' ),
 												'options' => array(
@@ -205,7 +207,7 @@ class EFUL_FilterPost {
 														'default'  => 'fl_btn',
 													),
 													array(
-														'id'       => 'eful_filter_btn_color',
+														'id'       => 'eventful_filter_btn_color',
 														'type'     => 'color_group',
 														'title'    => esc_html__( 'Button Color', 'eventful' ),
 														'dependency' => array( 'ajax_filter_style', '==', 'fl_btn' ),
@@ -227,10 +229,10 @@ class EFUL_FilterPost {
 														),
 													),
 													array(
-														'id'         => 'eful_margin_between_button',
+														'id'         => 'eventful_margin_between_button',
 														'type'       => 'spacing',
 														'title'      => esc_html__( 'Margin Between Buttons', 'eventful' ),
-														'sanitize'   => 'eful_sanitize_number_array_field',
+														'sanitize'   => 'eventful_sanitize_number_array_field',
 														'subtitle'   => esc_html__( 'Set margin between buttons.', 'eventful' ),
 														'units'      => array( 'px' ),
 														'default'    => array(
@@ -270,7 +272,7 @@ class EFUL_FilterPost {
 														'default'  => false,
 													),
 													array(
-														'id'       => 'eful_live_filter_align',
+														'id'       => 'eventful_live_filter_align',
 														'type'     => 'button_set',
 														'title'    => esc_html__( 'Alignment', 'eventful' ),
 														'options'    => array(
@@ -286,9 +288,10 @@ class EFUL_FilterPost {
 										),
 									), // Group field end.
 									array(
-										'id'         => 'eful_taxonomies_relation',
+										'id'         => 'eventful_taxonomies_relation',
 										'type'       => 'select',
 										'title'      => esc_html__( 'Relation', 'eventful' ),
+										'class'      => 'eventful_relate_among_taxonomies',
 										'options'    => array(
 											'AND' => esc_html__( 'AND', 'eventful' ),
 											'OR'  => esc_html__( 'OR', 'eventful' ),
@@ -300,10 +303,10 @@ class EFUL_FilterPost {
 								), // Fields array.
 							),
 						), // Accordions end.
-						'dependency' => array( 'eful_advanced_filter', 'not-any', 'author,sortby,custom_field,status,keyword' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'author,sortby,custom_field,status,keyword' ),
 					),
 					array(
-						'id'         => 'eful_filter_by_author',
+						'id'         => 'eventful_filter_by_author',
 						'type'       => 'accordion',
 						'class'      => 'padding-t-0 eventful-opened-accordion',
 						'accordions' => array(
@@ -312,7 +315,7 @@ class EFUL_FilterPost {
 								'icon'   => 'fas fa-user',
 								'fields' => array(
 									array(
-										'id'      => 'eful_select_author_by',
+										'id'      => 'eventful_select_author_by',
 										'type'    => 'checkbox',
 										'title'   => esc_html__( 'Post by Author', 'eventful' ),
 										'options' => 'users',
@@ -322,7 +325,7 @@ class EFUL_FilterPost {
 										'type'       => 'checkbox',
 										'title'      => esc_html__( 'Add to Ajax Live Filters', 'eventful' ),
 										'title_help' => esc_html__( 'Check to add ajax live filters.', 'eventful' ),
-										'dependency' => array( 'eful_layout_preset', '!=', 'filter_layout', true ),
+										'dependency' => array( 'eventful_layout_preset', '!=', 'filter_layout', true ),
 									),
 									array(
 										'id'         => 'ajax_filter_options',
@@ -343,7 +346,7 @@ class EFUL_FilterPost {
 												'default' => 'fl_btn',
 											),
 											array(
-												'id'       => 'eful_author_btn_color',
+												'id'       => 'eventful_author_btn_color',
 												'type'     => 'color_group',
 												'title'    => esc_html__( 'Button Color', 'eventful' ),
 												'dependency' => array( 'ajax_filter_style', '==', 'fl_btn' ),
@@ -368,7 +371,7 @@ class EFUL_FilterPost {
 												'id'         => 'author_margin_between_button',
 												'type'       => 'spacing',
 												'title'      => esc_html__( 'Margin Between Buttons', 'eventful' ),
-												'sanitize'   => 'eful_sanitize_number_array_field',
+												'sanitize'   => 'eventful_sanitize_number_array_field',
 												'subtitle'   => esc_html__( 'Set margin between buttons.', 'eventful' ),
 												'units'      => array( 'px' ),
 												'default'    => array(
@@ -406,7 +409,7 @@ class EFUL_FilterPost {
 												'title_help' => esc_html__( 'Check to show post count.', 'eventful' ),
 											),
 											array(
-												'id'      => 'eful_live_filter_align',
+												'id'      => 'eventful_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'eventful' ),
 												'options'    => array(
@@ -419,7 +422,7 @@ class EFUL_FilterPost {
 										),
 									),
 									array(
-										'id'      => 'eful_select_author_not_by',
+										'id'      => 'eventful_select_author_not_by',
 										'type'    => 'checkbox',
 										'title'   => esc_html__( 'Post Not by Author ', 'eventful' ),
 										'options' => 'users',
@@ -427,10 +430,10 @@ class EFUL_FilterPost {
 								),
 							),
 						),
-						'dependency' => array( 'eful_advanced_filter', 'not-any', 'taxonomy,sortby,custom_field,status,keyword' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,sortby,custom_field,status,keyword' ),
 					),
 					array(
-						'id'         => 'eful_filter_by_order',
+						'id'         => 'eventful_filter_by_order',
 						'type'       => 'accordion',
 						'class'      => 'padding-t-0 eventful-opened-accordion',
 						'accordions' => array(
@@ -439,7 +442,7 @@ class EFUL_FilterPost {
 								'icon'   => 'fas fa-sort',
 								'fields' => array(
 									array(
-										'id'      => 'eful_select_filter_orderby',
+										'id'      => 'eventful_select_filter_orderby',
 										'type'    => 'select',
 										'title'   => esc_html__( 'Order by', 'eventful' ),
 										'options' => array(
@@ -462,10 +465,10 @@ class EFUL_FilterPost {
 										'id'         => 'orderby_custom_field_options',
 										'type'       => 'fieldset',
 										'title'      => esc_html__( 'Order by Custom Field', 'eventful' ),
-										'dependency' => array( 'eful_select_filter_orderby', '==', 'custom_field', true ),
+										'dependency' => array( 'eventful_select_filter_orderby', '==', 'custom_field', true ),
 										'fields'     => array(
 											array(
-												'id'      => 'eful_select_custom_field_key',
+												'id'      => 'eventful_select_custom_field_key',
 												'type'    => 'select',
 												'title'   => esc_html__( 'Custom Fields Keys', 'eventful' ),
 												'title_help' => esc_html__( 'Select custom fields key.', 'eventful' ),
@@ -477,7 +480,7 @@ class EFUL_FilterPost {
 												'empty_message' => esc_html__( 'No custom field keys found.', 'eventful' ),
 											),
 											array(
-												'id'      => 'eful_select_custom_field_value_type',
+												'id'      => 'eventful_select_custom_field_value_type',
 												'type'    => 'select',
 												'title'   => esc_html__( 'Value Type', 'eventful' ),
 												'title_help' => esc_html__( 'Select a value type.', 'eventful' ),
@@ -496,7 +499,7 @@ class EFUL_FilterPost {
 										'type'       => 'checkbox',
 										'title'      => esc_html__( 'Add to Ajax Live Filters', 'eventful' ),
 										'title_help' => esc_html__( 'Check to add ajax live filter for Order by.', 'eventful' ),
-										'dependency' => array( 'eful_layout_preset', '!=', 'filter_layout', true ),
+										'dependency' => array( 'eventful_layout_preset', '!=', 'filter_layout', true ),
 									),
 									array(
 										'id'         => 'orderby_ajax_filter_options',
@@ -513,10 +516,10 @@ class EFUL_FilterPost {
 													'fl_radio'    => esc_html__( 'Radio', 'eventful' ),
 													'fl_btn'      => esc_html__( 'Button', 'eventful' ),
 												),
-												'default' => 'fl_dropdown',
+												'default' => 'fl_btn',
 											),
 											array(
-												'id'      => 'eful_orderby_filter_btn_color',
+												'id'      => 'eventful_orderby_filter_btn_color',
 												'type'    => 'color_group',
 												'title'   => esc_html__( 'Button Color', 'eventful' ),
 												'dependency' => array( 'orderby_filter_style', '==', 'fl_btn' ),
@@ -541,7 +544,7 @@ class EFUL_FilterPost {
 												'id'         => 'order_margin_between_button',
 												'type'       => 'spacing',
 												'title'      => esc_html__( 'Margin Between Buttons', 'eventful' ),
-												'sanitize'   => 'eful_sanitize_number_array_field',
+												'sanitize'   => 'eventful_sanitize_number_array_field',
 												'subtitle'   => esc_html__( 'Set margin between buttons.', 'eventful' ),
 												'units'      => array( 'px' ),
 												'default'    => array(
@@ -554,7 +557,7 @@ class EFUL_FilterPost {
 												'dependency' => array( 'orderby_filter_style', '==', 'fl_btn' ),
 											),
 											array(
-												'id'       => 'eful_add_filter_orderby',
+												'id'       => 'eventful_add_filter_orderby',
 												'type'     => 'select',
 												'title'    => esc_html__( 'Order by', 'eventful' ),
 												'title_help' => esc_html__( 'Choose order by options to show to the visitors.', 'eventful' ),
@@ -583,7 +586,7 @@ class EFUL_FilterPost {
 												'default' => esc_html__( 'Order by', 'eventful' ),
 											),
 											array(
-												'id'      => 'eful_live_filter_align',
+												'id'      => 'eventful_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'eventful' ),
 												'options'    => array(
@@ -597,7 +600,7 @@ class EFUL_FilterPost {
 										'dependency' => array( 'add_orderby_filter_post', '==', 'true' ),
 									),
 									array(
-										'id'         => 'eful_select_filter_order',
+										'id'         => 'eventful_select_filter_order',
 										'type'       => 'select',
 										'title'      => esc_html__( 'Order', 'eventful' ),
 										'options'    => array(
@@ -605,20 +608,20 @@ class EFUL_FilterPost {
 											'DESC' => esc_html__( 'Descending', 'eventful' ),
 										),
 										'default'    => 'DESC',
-										'dependency' => array( 'eful_select_filter_orderby', '!=', 'post__in' ),
+										'dependency' => array( 'eventful_select_filter_orderby', '!=', 'post__in' ),
 									),
 									array(
 										'id'         => 'add_order_filter_post',
 										'type'       => 'checkbox',
 										'title'      => esc_html__( 'Add to Ajax Live Filters', 'eventful' ),
 										'title_help' => esc_html__( 'Check to add ajax live filter for order.', 'eventful' ),
-										'dependency' => array( 'eful_select_filter_orderby|eful_layout_preset', '!=|!=', 'post__in|filter_layout', true ),
+										'dependency' => array( 'eventful_select_filter_orderby|eventful_layout_preset', '!=|!=', 'post__in|filter_layout', true ),
 									),
 									array(
 										'id'         => 'order_filter_options',
 										'type'       => 'fieldset',
 										'title'      => esc_html__( 'Ajax Live Filters', 'eventful' ),
-										'dependency' => array( 'add_order_filter_post|eful_select_filter_orderby', '==|!=', 'true|post__in', true ),
+										'dependency' => array( 'add_order_filter_post|eventful_select_filter_orderby', '==|!=', 'true|post__in', true ),
 										'fields'     => array(
 											array(
 												'id'      => 'order_filter_style',
@@ -633,7 +636,7 @@ class EFUL_FilterPost {
 												'default' => 'fl_btn',
 											),
 											array(
-												'id'      => 'eful_order_filter_button_color',
+												'id'      => 'eventful_order_filter_button_color',
 												'type'    => 'color_group',
 												'title'   => esc_html__( 'Button Color', 'eventful' ),
 												'dependency' => array( 'order_filter_style', '==', 'fl_btn' ),
@@ -662,7 +665,7 @@ class EFUL_FilterPost {
 												'default' => esc_html__( 'Order', 'eventful' ),
 											),
 											array(
-												'id'      => 'eful_live_filter_align',
+												'id'      => 'eventful_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'eventful' ),
 												'options'    => array(
@@ -678,10 +681,10 @@ class EFUL_FilterPost {
 								),
 							),
 						),
-						'dependency' => array( 'eful_advanced_filter', 'not-any', 'taxonomy,author,status,date,keyword' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,status,date,keyword' ),
 					),
 					array(
-						'id'         => 'eful_filter_by_status',
+						'id'         => 'eventful_filter_by_status',
 						'type'       => 'accordion',
 						'class'      => 'padding-t-0 eventful-opened-accordion',
 						'accordions' => array(
@@ -690,7 +693,7 @@ class EFUL_FilterPost {
 								'icon'   => 'fas fa-lock',
 								'fields' => array(
 									array(
-										'id'       => 'eful_select_post_status',
+										'id'       => 'eventful_select_post_status',
 										'type'     => 'select',
 										'title'    => esc_html__( 'Post Status', 'eventful' ),
 										'options'  => 'post_statuses',
@@ -700,10 +703,10 @@ class EFUL_FilterPost {
 								),
 							),
 						),
-						'dependency' => array( 'eful_advanced_filter', 'not-any', 'taxonomy,author,custom_field,sortby,date,keyword' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,custom_field,sortby,date,keyword' ),
 					),
 					array(
-						'id'         => 'eful_filter_by_date',
+						'id'         => 'eventful_filter_by_date',
 						'type'       => 'accordion',
 						'class'      => 'padding-t-0 eventful-opened-accordion',
 						'accordions' => array(
@@ -712,9 +715,9 @@ class EFUL_FilterPost {
 								'icon'   => 'fas fa-calendar',
 								'fields' => array(
 									array(
-										'id'      => 'eful_select_post_date_type',
+										'id'      => 'eventful_select_post_date_type',
 										'type'    => 'radio',
-										'class'   => 'eful_column_2',
+										'class'   => 'eventful_column_2',
 										'options' => array(
 											'yesterday'  => esc_html__( 'Yesterday', 'eventful' ),
 											'today_only' => esc_html__( 'Today Only', 'eventful' ),
@@ -733,7 +736,7 @@ class EFUL_FilterPost {
 										'default' => 'today_only',
 									),
 									array(
-										'id'          => 'eful_select_post_date_from_to',
+										'id'          => 'eventful_select_post_date_from_to',
 										'type'        => 'date',
 										'title'       => esc_html__( 'Set Period', 'eventful' ),
 										'from_to'     => true,
@@ -745,10 +748,10 @@ class EFUL_FilterPost {
 											'changeYear'  => true,
 										),
 										'placeholder' => esc_html__( 'yy-mm-dd', 'eventful' ),
-										'dependency'  => array( 'eful_select_post_date_type', '==', 'specific_period' ),
+										'dependency'  => array( 'eventful_select_post_date_type', '==', 'specific_period' ),
 									),
 									array(
-										'id'          => 'eful_select_post_specific_date',
+										'id'          => 'eventful_select_post_specific_date',
 										'type'        => 'date',
 										'title'       => esc_html__( 'Select Date', 'eventful' ),
 										'settings'    => array(
@@ -757,10 +760,10 @@ class EFUL_FilterPost {
 											'changeYear'  => true,
 										),
 										'placeholder' => esc_html__( 'yy-mm-dd', 'eventful' ),
-										'dependency'  => array( 'eful_select_post_date_type', '==', 'specific_date' ),
+										'dependency'  => array( 'eventful_select_post_date_type', '==', 'specific_date' ),
 									),
 									array(
-										'id'         => 'eful_select_specific_month',
+										'id'         => 'eventful_select_specific_month',
 										'type'       => 'select',
 										'title'      => esc_html__( 'Select Month', 'eventful' ),
 										'options'    => array(
@@ -777,13 +780,13 @@ class EFUL_FilterPost {
 											'11' => esc_html__( 'November', 'eventful' ),
 											'12' => esc_html__( 'December', 'eventful' ),
 										),
-										'dependency' => array( 'eful_select_post_date_type', '==', 'specific_month' ),
+										'dependency' => array( 'eventful_select_post_date_type', '==', 'specific_month' ),
 									),
 									array(
-										'id'              => 'eful_select_post_specific_year',
+										'id'              => 'eventful_select_post_specific_year',
 										'type'            => 'spacing',
 										'title'           => esc_html__( 'Set Year', 'eventful' ),
-										'sanitize'        => 'eful_sanitize_number_array_field',
+										'sanitize'        => 'eventful_sanitize_number_array_field',
 										'all'             => true,
 										'all_icon'        => false,
 										'all_placeholder' => '2019',
@@ -792,15 +795,15 @@ class EFUL_FilterPost {
 											'all' => '2019',
 										),
 										'min'             => '1990',
-										'dependency'      => array( 'eful_select_post_date_type', '==', 'specific_year' ),
+										'dependency'      => array( 'eventful_select_post_date_type', '==', 'specific_year' ),
 									),
 								), // Fields.
 							),
 						), // Accordions.
-						'dependency' => array( 'eful_advanced_filter', 'not-any', 'taxonomy,author,custom_field,sortby,status,keyword' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,custom_field,sortby,status,keyword' ),
 					),
 					array(
-						'id'         => 'eful_filter_by_keyword',
+						'id'         => 'eventful_filter_by_keyword',
 						'type'       => 'accordion',
 						'class'      => 'padding-t-0 eventful-opened-accordion',
 						'accordions' => array(
@@ -809,7 +812,7 @@ class EFUL_FilterPost {
 								'icon'   => 'fas fa-key',
 								'fields' => array(
 									array(
-										'id'         => 'eful_set_post_keyword',
+										'id'         => 'eventful_set_post_keyword',
 										'type'       => 'text',
 										'title'      => esc_html__( 'Type Keyword', 'eventful' ),
 										'title_help' => esc_html__( 'Enter keyword(s) for searching the posts.', 'eventful' ),
@@ -820,7 +823,7 @@ class EFUL_FilterPost {
 										'type'       => 'checkbox',
 										'title'      => esc_html__( 'Add to Ajax Live Filters', 'eventful' ),
 										'title_help' => esc_html__( 'Check to add ajax live filter.', 'eventful' ),
-										'dependency' => array( 'eful_layout_preset', '!=', 'filter_layout', true ),
+										'dependency' => array( 'eventful_layout_preset', '!=', 'filter_layout', true ),
 									),
 									array(
 										'id'         => 'ajax_filter_options',
@@ -835,7 +838,7 @@ class EFUL_FilterPost {
 												'title_help' => esc_html__( 'Type live filter label.', 'eventful' ),
 											),
 											array(
-												'id'      => 'eful_live_filter_align',
+												'id'      => 'eventful_live_filter_align',
 												'type'    => 'button_set',
 												'title'   => esc_html__( 'Alignment', 'eventful' ),
 												'options'    => array(
@@ -850,7 +853,7 @@ class EFUL_FilterPost {
 								),
 							),
 						),
-						'dependency' => array( 'eful_advanced_filter', 'not-any', 'taxonomy,author,custom_field,sortby,date,status' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,custom_field,sortby,date,status' ),
 					),
 				),
 			)
