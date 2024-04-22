@@ -11,6 +11,7 @@ if ( ! class_exists( 'EFUL_Field_code_editor' ) ) {
 	class EFUL_Field_code_editor extends EFUL_Fields {
 
 		public $version = '1.0.0';
+		public $cdn_url = EFUL_URL . 'admin/views/ta-framework/assets';
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
 			parent::__construct( $field, $value, $unique, $where, $parent );
@@ -23,6 +24,7 @@ if ( ! class_exists( 'EFUL_Field_code_editor' ) ) {
 				'lineNumbers' => true,
 				'theme'       => 'default',
 				'mode'        => 'htmlmixed',
+				'cdnURL'        => $this->cdn_url,
 			);
 
 			$settings = ( ! empty( $this->field['settings'] ) ) ? $this->field['settings'] : array();
@@ -41,14 +43,14 @@ if ( ! class_exists( 'EFUL_Field_code_editor' ) ) {
 			if ( in_array( $page, array( 'revslider' ) ) ) {
 				return; }
 
-			if ( ! wp_script_is( 'eventful-codemirror' ) ) {
-				wp_enqueue_script('wp-codemirror-js', 'path_to_wp_codemirror_js_file', array('jquery'), null, true);
-				wp_enqueue_script( 'loadmode', EFUL_URL . 'admin/views/ta-framework/assets/js/loadmode.min.js', array( 'eventful-codemirror' ), $this->version, true );
-			}
-
-			if ( ! wp_style_is( 'eventful-codemirror' ) ) {
-				wp_enqueue_style('wp-codemirror', 'path_to_wp_codemirror_css_file');
-			}
+				if (!wp_script_is('eful-codemirror')) {
+					wp_enqueue_script('eful-codemirror', EFUL_URL . 'admin/views/ta-framework/assets/js/codemirror.min.js', array('eventful'),  $this->version, true);
+					wp_enqueue_script('eful-codemirror-loadmode', EFUL_URL . 'admin/views/ta-framework/assets/js/loadmode.min.js', array('eful-codemirror'), $this->version, true);
+				}
+	
+				if (!wp_style_is('eful-codemirror')) {
+					wp_enqueue_style('eful-codemirror', EFUL_URL . 'admin/views/ta-framework/assets/css/codemirror.min.css', array(), $this->version);
+				}
 		}
 	}
 }

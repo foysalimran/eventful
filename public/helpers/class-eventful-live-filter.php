@@ -634,7 +634,7 @@ class EFUL_Live_Filter
 			'first_item' => $first_item,
 			'push_item'  => $push_item,
 		);
-
+		
 		return $filter_output;
 	}
 

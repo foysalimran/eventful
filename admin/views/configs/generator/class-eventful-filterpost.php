@@ -28,8 +28,6 @@ class EFUL_FilterPost {
 				'icon'   => 'fas fa-filter',
 				'fields' => array(
 
-
-
 					array(
 						'id'          => 'eventful_include_only_posts',
 						'type'        => 'select',

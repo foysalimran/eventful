@@ -14,6 +14,9 @@
   //
   // Constants
   //
+
+  var eventful_media_buttons = eventful_media_json?.media_content ? eventful_media_json.media_content : '';
+
   var EFUL   = EFUL || {};
 
   EFUL.funcs = {};
@@ -595,12 +598,12 @@
 
             var $cssLink = $('<link>');
 
-            $('#eventful-codemirror-css').after( $cssLink );
+            $('#eful-codemirror-css').after( $cssLink );
 
             $cssLink.attr({
               rel: 'stylesheet',
-              id: 'eventful-codemirror-'+ data_editor.theme +'-css',
-              href: data_editor.cdnURL +'/theme/'+ data_editor.theme +'.min.css',
+              id: 'eful-codemirror-'+ data_editor.theme +'-css',
+              href: data_editor.cdnURL +'/css/'+ data_editor.theme +'.min.css',
               type: 'text/css',
               media: 'all'
             });
@@ -609,7 +612,7 @@
 
           }
 
-          CodeMirror.modeURL = data_editor.cdnURL +'/mode/%N/%N.min.js';
+          CodeMirror.modeURL = data_editor.cdnURL +'/js/%N/%N.min.js';
           CodeMirror.autoLoadMode(code_editor, data_editor.mode);
 
           code_editor.on( 'change', function( editor, event ) {
