@@ -20,11 +20,11 @@ if (!function_exists('eventful_get_icons')) {
 
 		ob_start();
 
-		$icon_library = (apply_filters('eventful_fa4', false)) ? 'fa4' : 'fa5';
+		$icon_library = (apply_filters('eful_fa4', false)) ? 'fa4' : 'fa5';
 
 		EFUL::include_plugin_file('fields/icon/' . $icon_library . '-icons.php');
 
-		$icon_lists = apply_filters('eventful_field_icon_add_icons', eventful_get_default_icons());
+		$icon_lists = apply_filters('eful_field_icon_add_icons', eventful_get_default_icons());
 
 		if (!empty($icon_lists)) {
 
@@ -172,7 +172,7 @@ if (!function_exists('eventful_chosen_ajax')) {
 			wp_send_json_error(array('error' => esc_html__('Error: Invalid term ID.', 'eventful' )));
 		}
 
-		$capability = apply_filters('eventful_chosen_ajax_capability', 'manage_options');
+		$capability = apply_filters('eful_chosen_ajax_capability', 'manage_options');
 
 		if (!current_user_can($capability)) {
 			wp_send_json_error(array('error' => esc_html__('Error: You do not have permission to do that.', 'eventful' )));

@@ -452,7 +452,6 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
         'textarea',
         'typography',
         'upload',
-        'wp_editor',
       ) );
 
       if ( ! empty( $fields ) ) {
@@ -576,7 +575,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
       wp_enqueue_script( 'wp-color-picker' );
 
       // Font awesome 4 and 5 loader
-      if ( apply_filters( 'eventful_fa4', false ) ) {
+      if ( apply_filters( 'eful_fa4', false ) ) {
         wp_enqueue_style( 'font-awesome_v4-fa', EFUL_URL . 'admin/views/ta-framework/assets/css/font-awesome_v4.min.css', array(), '4.7.0', 'all' );
       } else {
         wp_enqueue_style( 'font-awesome_v5-fa5', EFUL_URL .'admin/views/ta-framework/assets/css/font-awesome_v5.min.css', array(), '5.15.5', 'all' );
@@ -609,7 +608,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
 
       // Main variables
       wp_localize_script( 'eventful', 'eventful_vars', array(
-        'color_palette'     => apply_filters( 'eventful_color_palette', array() ),
+        'color_palette'     => apply_filters( 'eful_color_palette', array() ),
         'i18n'              => array(
           'confirm'         => esc_html__( 'Are you sure?', 'eventful' ),
           'typing_text'     => esc_html__( 'Please enter %s or more characters', 'eventful' ),
@@ -689,7 +688,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
     // Add admin body class
     public static function add_admin_body_class( $classes ) {
 
-      if ( apply_filters( 'eventful_fa4', false ) ) {
+      if ( apply_filters( 'eful_fa4', false ) ) {
         $classes .= 'eventful-fa5-shims';
       }
 

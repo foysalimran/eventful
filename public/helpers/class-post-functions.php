@@ -143,7 +143,7 @@ class EFUL_Functions
 		$allowed_tags                 = explode(',', $eventful_allow_tag_name);
 
 		$is_page_content = false;
-		$is_page_content = apply_filters('eventful_strip_shortcode_in_page_content', $is_page_content);
+		$is_page_content = apply_filters('eful_strip_shortcode_in_page_content', $is_page_content);
 		global $wp_embed;
 		if ('excerpt' === $type) {
 			$eventful_post_content = get_the_excerpt($post);
@@ -319,7 +319,7 @@ class EFUL_Functions
 		}
 
 		$placeholder_img = EFUL_URL . 'public/assets/img/placeholder.png';
-		$placeholder_img = apply_filters('eventful_no_thumb_placeholder', $placeholder_img);
+		$placeholder_img = apply_filters('eful_no_thumb_placeholder', $placeholder_img);
 
 		if (empty($thumb_id) && !empty($placeholder_img)) {
 			$thumb_id = attachment_url_to_postid($placeholder_img);
@@ -512,7 +512,7 @@ class EFUL_Functions
 		// For audio post type - grab.
 		$post    = get_post($slide_id);
 		$content = do_shortcode(apply_filters('eful_the_content', $post->post_content));
-		$embeds  = apply_filters('eventful_get_post_audio', get_media_embedded_in_content($content));
+		$embeds  = apply_filters('eful_get_post_audio', get_media_embedded_in_content($content));
 		if (empty($embeds)) {
 			return '';
 		}

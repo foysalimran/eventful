@@ -165,7 +165,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 			];
 				echo wp_kses($this->create_select(
 					apply_filters(
-						'eventful_field_typography_backup_font_family',
+						'eful_field_typography_backup_font_family',
 						array(
 							'Arial, Helvetica, sans-serif',
 							"'Arial Black', Gadget, sans-serif",
@@ -606,15 +606,15 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 				$webfonts['google'] = array(
 					'label' => esc_html__( 'Google Web Fonts', 'eventful' ),
 					'fonts' => apply_filters(
-						'eventful_field_typography_googlewebfonts',
+						'eful_field_typography_googlewebfonts',
 						eventful_get_google_fonts()
 					),
 				);
 
-				$defaultstyles = apply_filters( 'eventful_field_typography_defaultstyles', array( 'normal', 'italic', '700', '700italic' ) );
+				$defaultstyles = apply_filters( 'eful_field_typography_defaultstyles', array( 'normal', 'italic', '700', '700italic' ) );
 
 				$googlestyles = apply_filters(
-					'eventful_field_typography_googlestyles',
+					'eful_field_typography_googlestyles',
 					array(
 						'100'       => 'Thin 100',
 						'100italic' => 'Thin 100 Italic',
@@ -637,7 +637,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 					)
 				);
 
-				$webfonts = apply_filters( 'eventful_field_typography_webfonts', $webfonts );
+				$webfonts = apply_filters( 'eful_field_typography_webfonts', $webfonts );
 
 				wp_localize_script(
 					'eventful',

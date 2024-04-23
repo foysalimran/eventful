@@ -362,7 +362,7 @@ class EFUL_Display
 												'dependency' => array('post_thumb_show', '==', 'true'),
 											),
 											array(
-												'id'       => 'eventful_img_lazy_load',
+												'id'       => 'eful_img_lazy_load',
 												'type'     => 'switcher',
 												'class'    => 'custom_help_text',
 												'title'    => esc_html__('Lazy Load', 'eventful'),

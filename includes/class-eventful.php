@@ -192,7 +192,7 @@ class Eventful
 	private function define_common_hooks()
 	{
 		$common_hooks = new Eventful_Post_Type(EFUL_PLUGIN_NAME, EFUL_VERSION);
-		$this->loader->add_action('init', $common_hooks, 'register_eventful_post_type', 10);
+		$this->loader->add_action('init', $common_hooks, 'eful_register_post_type', 10);
 	}
 
 	/**

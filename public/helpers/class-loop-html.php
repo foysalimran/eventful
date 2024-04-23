@@ -48,7 +48,7 @@ class EFUL_HTML
 						if ($terms) {
 							ob_start();
 							include EFUL_Functions::eful_locate_template('item/meta-over-title.php');
-							$meta_over_title = apply_filters('eventful_meta_over_title', ob_get_clean());
+							$meta_over_title = apply_filters('eful_meta_over_title', ob_get_clean());
 							echo wp_kses_post($meta_over_title);
 						};
 					}
@@ -89,7 +89,7 @@ class EFUL_HTML
 			echo wp_kses($td['start'], $allow_tag);
 			include EFUL_Functions::eful_locate_template('item/title.php');
 			echo wp_kses($td['end'], $allow_tag);
-			$title = apply_filters('eventful_item_title', ob_get_clean());
+			$title = apply_filters('eful_item_title', ob_get_clean());
 			echo wp_kses_post($title);
 		}
 	}
@@ -114,7 +114,7 @@ class EFUL_HTML
 			echo wp_kses($td['start'], $allow_tag);
 			include EFUL_Functions::eful_locate_template('item/content.php');
 			echo wp_kses($td['end'], $allow_tag);
-			$description = apply_filters('eventful_item_description', ob_get_clean());
+			$description = apply_filters('eful_item_description', ob_get_clean());
 			echo wp_kses_post($description);
 		}
 	}
@@ -162,7 +162,7 @@ class EFUL_HTML
 
 		ob_start();
 		include EFUL_Functions::eful_locate_template('item/read-more.php');
-		$read_more_button = apply_filters('eventful_read_more_btn', ob_get_clean(), $link = get_permalink($post));
+		$read_more_button = apply_filters('eful_read_more_btn', ob_get_clean(), $link = get_permalink($post));
 		echo wp_kses_post($read_more_button);
 	}
 
@@ -214,7 +214,7 @@ class EFUL_HTML
 				echo wp_kses($td['start'], $allow_tag);
 				include EFUL_Functions::eful_locate_template('item/thumbnail.php');
 				echo wp_kses($td['end'], $allow_tag);
-				$item_thumb = apply_filters('eventful_item_thumbnail', ob_get_clean());
+				$item_thumb = apply_filters('eful_item_thumbnail', ob_get_clean());
 				echo $item_thumb; // phpcs:ignore
 			}
 		}
@@ -241,8 +241,8 @@ class EFUL_HTML
 						if ($terms) {
 							ob_start();
 							include EFUL_Functions::eful_locate_template('item/over-thumb-taxonomy.php');
-							$item_over_thumb_taxonomy = apply_filters('item_over_thumb_taxonomy', ob_get_clean(), $terms);
-							echo wp_kses_post($item_over_thumb_taxonomy);
+							$eful_item_over_thumb_taxonomy = apply_filters('eful_item_over_thumb_taxonomy', ob_get_clean(), $terms);
+							echo wp_kses_post($eful_item_over_thumb_taxonomy);
 						}
 					}
 				}
@@ -268,7 +268,7 @@ class EFUL_HTML
 
 			ob_start();
 			include EFUL_Functions::eful_locate_template('item/meta.php');
-			$item_meta = apply_filters('eventful_item_meta', ob_get_clean());
+			$item_meta = apply_filters('eful_item_meta', ob_get_clean());
 			echo wp_kses_post($item_meta);
 		}
 	}
@@ -290,7 +290,7 @@ class EFUL_HTML
 			
 			ob_start();
 			include EFUL_Functions::eful_locate_template('item/event-fildes.php');
-			$item_meta = apply_filters('eventful_item_meta', ob_get_clean());
+			$item_meta = apply_filters('eful_item_meta', ob_get_clean());
 			echo wp_kses_post($item_meta);
 		}
 	}
@@ -385,7 +385,7 @@ class EFUL_HTML
 		} else {
 			$eful_alt_post_class = 'eventful__item';
 		}
-		return apply_filters('post_post_class_name', $eful_alt_post_class);
+		return apply_filters('eful_post_post_class_name', $eful_alt_post_class);
 	}
 
 	/**
@@ -489,7 +489,7 @@ class EFUL_HTML
 						'format'    => '?' . $paged_var . '=%#%',
 						'current'   => $page_current,
 						'total'     => $pages,
-						'show_all'  => apply_filters('eventful_show_all_normal_pagination', true),
+						'show_all'  => apply_filters('eful_show_all_normal_pagination', true),
 						'prev_next' => true,
 						'end_size'  => 2,
 						'mid_size'  => 1,
@@ -556,7 +556,7 @@ class EFUL_HTML
 			do_action('eventful_before_section_title');
 			include EFUL_Functions::eful_locate_template('section-title.php');
 			do_action('eventful_after_section_title');
-			$section_title = apply_filters('eventful_filter_section_title', ob_get_clean());
+			$section_title = apply_filters('eful_filter_section_title', ob_get_clean());
 			echo wp_kses_post($section_title);
 		}
 	}
