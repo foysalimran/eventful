@@ -78,27 +78,8 @@ class EFUL_CustomFieldProcess {
 		$this->object       = $object;
 		$this->is_post      = $is_post;
 		$this->cf_by_plugin = $cf_by_plugin;
-
-		$this->custom_field_output();
 	}
 
-	/**
-	 * Output of the Custom fields.
-	 *
-	 * @return void
-	 */
-	private function custom_field_output() {
-
-		if ( 'auto' === $this->cf_by_plugin ) {
-			$this->cf_from_default_post( $this->cf_by_plugin );
-		} elseif ( 'auto' !== $this->cf_by_plugin ) {
-			$this->select_plugin( $this->cf_by_plugin );
-		} else {
-			foreach ( array_keys( eful_cf_supported_plugins() ) as $_supported_plugin ) {
-				$this->select_plugin( $_supported_plugin, empty( $this->field_value ) );
-			}
-		}
-	}
 
 	/**
 	 * Switch output as per plugin.
@@ -192,7 +173,7 @@ class EFUL_CustomFieldProcess {
 	private function cf_from_toolset_plugin() {
 		if ( shortcode_exists( 'types' ) ) {
 			$wpcf_key   = str_replace( 'wpcf-', '', $this->key );
-			$shortcode  = apply_filters( 'speventful_toolset_sc', "[types field='$wpcf_key' separator=', ']", $wpcf_key, $this->object );
+			$shortcode  = apply_filters( 'eful_speventful_toolset_sc', "[types field='$wpcf_key' separator=', ']", $wpcf_key, $this->object );
 			$wpcf_value = do_shortcode( $shortcode );
 			if ( 0 !== strcmp( $wpcf_value, $shortcode ) ) {
 				$this->field_value = $wpcf_value;
@@ -201,82 +182,6 @@ class EFUL_CustomFieldProcess {
 	}
 
 } // End of the class.
-
-/**
- * The function to provide custom meta output.
- *
- * @param object  $object The post object.
- * @param array   $post_content_sorter Get the shortcode ID.
- * @param boolean $is_post Check whether it is a post or not.
- * @param boolean $is_table Check table layout or not.
- */
-function eventful_custom_field_html(  $object, $post_content_sorter, $is_post = true, $is_table = false ) {
-
-	$eventful_custom_fields = $post_content_sorter['eventful_custom_fields'];
-
-	$plugin_used = EFUL_Functions::eventful_metabox_value( 'which_plugin_used', $eventful_custom_fields );
-
-	$set_oembed = EFUL_Functions::eventful_metabox_value( 'eventful_embed_cf_content', $eventful_custom_fields );
-
-	$cf_by_plugin        = eful_cf_multiple_plugins() && 'auto' !== $plugin_used ? $plugin_used : 'auto';
-	$custom_field_groups = EFUL_Functions::eventful_metabox_value( 'eventful_custom_fields_group', $eventful_custom_fields );
-	
-	// Get all meta data of this post.
-	$metadata = $is_post ? get_metadata( 'post', $object->ID ) : array();
-
-	$eventful_cf_html = '';
-	if ( ! empty( $custom_field_groups ) ) {
-		$the_cfields_html = array();
-		foreach ( $custom_field_groups as $cf_group ) {
-			$key               = $cf_group['eventful_select_custom_field_key'];
-			$show_field_name   = $cf_group['show_custom_field_name'];
-			$custom_meta_icon  = $cf_group['eventful_custom_meta_icon'];
-			$colon_after_name  = $cf_group['colon_after_custom_field_name'];
-			$cf_arbitrary_name = $cf_group['customize_custom_field_name'];
-			$key               = apply_filters( 'eful_cf_common_key', $is_post ) && in_array( $key, array_keys( $metadata ), true ) ? $key : '';
-
-			if ( ! empty( $key ) ) {
-				$cf_process_obj = new EFUL_CustomFieldProcess( $key, $object, $is_post, $cf_by_plugin );
-
-				$cf_value = $cf_process_obj->field_value;
-				$cf_name  = $cf_process_obj->field_name;
-				$cf_type  = $cf_process_obj->field_type;
-				// Icon before name.
-				$meta_icon = ! empty( $custom_meta_icon ) ? '<i class="' . $custom_meta_icon . '"></i>' : '';
-
-				if ( ! empty( $cf_value ) ) :
-					$cf_value  = apply_filters( 'eful_custom_meta_value', $cf_value, $key, $cf_type );
-					$name_html = '';
-					if ( $show_field_name ) {
-						// Field name.
-						$cf_name   = $cf_name ? $cf_name : esc_html( $key );
-						$name_text = ! empty( $cf_arbitrary_name ) ? $cf_arbitrary_name : EFUL_Functions::slug_string_to_name( $cf_name );
-						// Colon after CF name.
-						$meta_colon = $colon_after_name ? ' :' : '';
-						$name_html  = sprintf( '<span class="%s">%s%s</span>', 'ta-eventful-cf-name', $name_text, $meta_colon );
-					}
-					if ( in_array( $cf_type, array( 'text', 'oembed', 'url', 'email' ), true ) ) {
-						$cf_value = eful_cf_data( $cf_value, $key, $set_oembed );
-					}
-
-					$the_cfields_html[] = sprintf( '<div class="%1$s">%2$s%3$s%4$s</div>', 'eful_ctf-' . sanitize_html_class( $key ), $meta_icon, $name_html, $cf_value );
-				endif;
-			}
-		} // End of foreach.
-		if ( ! empty( $the_cfields_html ) ) {
-			$eventful_cf_html = sprintf( '<div class="%s">%s</div>', 'eful_cf_list', implode( '', $the_cfields_html ) );
-		}
-	}
-	$td_before = $is_table ? '<td>' : '';
-	$td_after  = $is_table ? '</td>' : '';
-
-	if ( $eventful_cf_html ) {
-		echo wp_kses_post($td_before);
-		echo wp_kses_post($eventful_cf_html);
-		echo wp_kses_post($td_after);
-	}
-
-}
 
 
 /**

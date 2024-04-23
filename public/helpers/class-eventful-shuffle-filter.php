@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 2.0.0
  */
-class Eventful_Shuffle_Filter
+class eful_shuffle_filter
 {
 
 
@@ -71,7 +71,7 @@ class Eventful_Shuffle_Filter
 	 * @param string $filter_type Filter type.
 	 * @return void
 	 */
-	public static function eventful_shuffle_filter($view_options, $layout_preset, $eventful_query, $filter_type)
+	public static function eful_shuffle_filter($view_options, $layout_preset, $eventful_query, $filter_type)
 	{
 		$filter_by    = isset($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : '';
 		$filter_type  = isset($view_options['eventful_filter_type']) ? $view_options['eventful_filter_type'] : '';

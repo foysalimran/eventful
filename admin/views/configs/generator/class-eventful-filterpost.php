@@ -131,7 +131,7 @@ class EFUL_FilterPost {
 									array(
 										'id'     => 'eventful_taxonomy_and_terms',
 										'type'   => 'group',
-										'class'  => 'eventful_taxonomy_terms_group eventful_custom_group_design',
+										'class'  => 'eful_taxonomy_terms_group eventful_custom_group_design',
 										'accordion_title_auto' => true,
 										'fields' => array(
 											array(
@@ -303,7 +303,7 @@ class EFUL_FilterPost {
 								), // Fields array.
 							),
 						), // Accordions end.
-						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'author,sortby,custom_field,status,keyword' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'author,sortby,status,keyword' ),
 					),
 					array(
 						'id'         => 'eventful_filter_by_author',
@@ -430,7 +430,7 @@ class EFUL_FilterPost {
 								),
 							),
 						),
-						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,sortby,custom_field,status,keyword' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,sortby,status,keyword' ),
 					),
 					array(
 						'id'         => 'eventful_filter_by_order',
@@ -461,39 +461,7 @@ class EFUL_FilterPost {
 										),
 										'default' => 'date',
 									),
-									array(
-										'id'         => 'orderby_custom_field_options',
-										'type'       => 'fieldset',
-										'title'      => esc_html__( 'Order by Custom Field', 'eventful' ),
-										'dependency' => array( 'eventful_select_filter_orderby', '==', 'custom_field', true ),
-										'fields'     => array(
-											array(
-												'id'      => 'eventful_select_custom_field_key',
-												'type'    => 'select',
-												'title'   => esc_html__( 'Custom Fields Keys', 'eventful' ),
-												'title_help' => esc_html__( 'Select custom fields key.', 'eventful' ),
-												'options' => 'custom_fields',
-												'chosen'  => true,
-												'attributes' => array(
-													'style' => 'width: 200px;',
-												),
-												'empty_message' => esc_html__( 'No custom field keys found.', 'eventful' ),
-											),
-											array(
-												'id'      => 'eventful_select_custom_field_value_type',
-												'type'    => 'select',
-												'title'   => esc_html__( 'Value Type', 'eventful' ),
-												'title_help' => esc_html__( 'Select a value type.', 'eventful' ),
-												'options' => array(
-													'CHAR' => esc_html__( 'Text', 'eventful' ),
-													'NUMERIC' => esc_html__( 'Number', 'eventful' ),
-													'DATE' => esc_html__( 'Date', 'eventful' ),
-													'BOOLEAN' => esc_html__( 'True/False', 'eventful' ),
-												),
-												'default' => 'NUMERIC',
-											),
-										),
-									),
+									
 									array(
 										'id'         => 'add_orderby_filter_post',
 										'type'       => 'checkbox',
@@ -703,10 +671,10 @@ class EFUL_FilterPost {
 								),
 							),
 						),
-						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,custom_field,sortby,date,keyword' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,sortby,date,keyword' ),
 					),
 					array(
-						'id'         => 'eventful_filter_by_date',
+						'id'         => 'eful_filter_by_date',
 						'type'       => 'accordion',
 						'class'      => 'padding-t-0 eventful-opened-accordion',
 						'accordions' => array(
@@ -800,7 +768,7 @@ class EFUL_FilterPost {
 								), // Fields.
 							),
 						), // Accordions.
-						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,custom_field,sortby,status,keyword' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,sortby,status,keyword' ),
 					),
 					array(
 						'id'         => 'eventful_filter_by_keyword',
@@ -853,7 +821,7 @@ class EFUL_FilterPost {
 								),
 							),
 						),
-						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,custom_field,sortby,date,status' ),
+						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,sortby,date,status' ),
 					),
 				),
 			)

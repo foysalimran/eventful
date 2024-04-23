@@ -220,7 +220,7 @@ class EFUL_User_Like
 	 * @param  mixed $is_comment comment.
 	 * @return statement
 	 */
-	public static function get_eventful_likes_button($post_id, $is_comment = null)
+	public static function eful_get_likes_button($post_id, $is_comment = null)
 	{
 		$is_comment = (null === $is_comment) ? 0 : 1;
 		$output     = '';
@@ -262,7 +262,7 @@ class EFUL_User_Like
 	 */
 	public static function eventfull_shortcode()
 	{
-		return self::get_eventful_likes_button(get_the_ID(), 0);
+		return self::eful_get_likes_button(get_the_ID(), 0);
 	}
 
 	/**

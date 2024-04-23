@@ -339,33 +339,6 @@ if (!class_exists('EFUL_Fields')) {
           }
 
           break;
-        case 'custom_field':
-        case 'custom_fields':
-          global $wpdb;
-          $keys = $wpdb->get_col(
-            "SELECT meta_key
-            FROM $wpdb->postmeta
-            GROUP BY meta_key
-            ORDER BY meta_key"
-          );
-          if ($keys) {
-            natcasesort($keys);
-          }
-          // Remove empty custom field.
-          $keys = array_filter($keys);
-          foreach ($keys as $key) {
-            /**
-             * Don't hide protected meta fields, to able to select data of The Events Calendar...
-             *
-             * @since 2.0.0
-             * if ( is_protected_meta( $key, 'post' ) ) {
-             * continue;
-             * }
-             */
-            $options[esc_attr($key)] = esc_html($key);
-          }
-
-          break;
         case 'location':
         case 'locations':
 

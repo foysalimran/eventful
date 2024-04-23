@@ -197,29 +197,6 @@ class EFUL_Typography {
 						),
 						'dependency' => array( 'show_read_more', '==', 'true', 'all' ),
 					),
-					array(
-						'id'       => 'custom_fields_typography',
-						'type'     => 'typography',
-						'title'    => esc_html__( 'Custom Fields', 'eventful' ),
-						'subtitle' => esc_html__( 'Set custom fields font properties.', 'eventful' ),
-						'default'  => array(
-							'color'              => '#888',
-							'font-family'        => '',
-							'font-weight'        => '',
-							'subset'             => '',
-							'font-size'          => '14',
-							'tablet-font-size'   => '14',
-							'mobile-font-size'   => '12',
-							'line-height'        => '18',
-							'tablet-line-height' => '18',
-							'mobile-line-height' => '16',
-							'letter-spacing'     => '0',
-							'text-align'         => 'left',
-							'text-transform'     => 'none',
-							'type'               => '',
-							'unit'               => 'px',
-						),
-					),
 				), // End of fields array.
 			)
 		);

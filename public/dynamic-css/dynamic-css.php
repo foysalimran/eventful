@@ -15,7 +15,6 @@ $view_options = get_post_meta($eventful_id, 'eful_view_options', true);
 $layouts      = get_post_meta($eventful_id, 'eful_layouts', true);
 $layout = isset($layouts['eventful_layout_preset']) ? $layouts['eventful_layout_preset'] : '';
 $popup_content_color       = isset( $view_options['popup_content_color'] ) ? $view_options['popup_content_color'] : '';
-$popup_custom_fields_color = isset( $popup_content_color['custom-fields'] ) ? $popup_content_color['custom-fields'] : '#888';
 
 $show_section_title        = isset($view_options['section_title']) ? $view_options['section_title'] : false;
 if ($show_section_title) {
@@ -61,16 +60,16 @@ if ( 'large_with_small' === $layouts['eventful_layout_preset'] ) {
 // Post Title.
 $post_sorter     = isset($view_options['post_content_sorter']) ? $view_options['post_content_sorter'] : '';
 $eventful_event_fildes  = isset($post_sorter['eventful_event_fildes']) ? $post_sorter['eventful_event_fildes'] : '';
-$eventful_post_title  = isset($post_sorter['eventful_post_title']) ? $post_sorter['eventful_post_title'] : '';
+$eful_post_title  = isset($post_sorter['eful_post_title']) ? $post_sorter['eful_post_title'] : '';
 
-$show_post_title = isset($eventful_post_title['show_post_title']) ? $eventful_post_title['show_post_title'] : '';
+$show_post_title = isset($eful_post_title['show_post_title']) ? $eful_post_title['show_post_title'] : '';
 // PCP Post Content.
 $eventful_post_content  = isset($post_sorter['eventful_post_content']) ? $post_sorter['eventful_post_content'] : '';
 $show_post_content = isset($eventful_post_content['show_post_content']) ? $eventful_post_content['show_post_content'] : '';
 
 // Post Title.
 if ($show_post_title) {
-	$post_title_margin = isset($eventful_post_title['post_title_margin']) ? $eventful_post_title['post_title_margin'] : array(
+	$post_title_margin = isset($eful_post_title['post_title_margin']) ? $eful_post_title['post_title_margin'] : array(
 		'top'    => '0',
 		'right'  => '0',
 		'bottom' => '9',
@@ -154,7 +153,7 @@ $post_content_orientation   = $view_options['post_content_orientation'];
 $post_details_class         = 'overlay-box' === $post_content_orientation ? '.ta-eventful-post-details' : '';
 $post_details_content_class = 'overlay-box' === $post_content_orientation ? '.ta-eventful-post-details-content' : '';
 if ('overlay' !== $post_content_orientation) {
-	$_post_inner_padding       = EFUL_Functions::eventful_metabox_value('post_inner_padding_property', $view_options);
+	$_post_inner_padding       = EFUL_Functions::eful_metabox_value('post_inner_padding_property', $view_options);
 	$post_inner_padding_unit   = $_post_inner_padding['unit'];
 	$post_inner_padding_top    = $_post_inner_padding['top'] > 0 ? $_post_inner_padding['top'] . $post_inner_padding_unit : '0';
 	$post_inner_padding_right  = $_post_inner_padding['right'] > 0 ? $_post_inner_padding['right'] . $post_inner_padding_unit : '0';
@@ -173,9 +172,9 @@ if ('none' !== $post_border_style) {
 }
 
 // Post box shadow.
-$show_post_box_shadow = EFUL_Functions::eventful_metabox_value( 'show_post_box_shadow', $view_options, false );
+$show_post_box_shadow = EFUL_Functions::eful_metabox_value( 'show_post_box_shadow', $view_options, false );
 if ( $show_post_box_shadow ) {
-	$post_box_shadow_property = EFUL_Functions::eventful_metabox_value(
+	$post_box_shadow_property = EFUL_Functions::eful_metabox_value(
 		'post_box_shadow_property',
 		$view_options,
 		array(
@@ -186,11 +185,11 @@ if ( $show_post_box_shadow ) {
 			'color'      => 'rgb(187, 187, 187)',
 		)
 	);
-	$box_shadow_h             = EFUL_Functions::eventful_metabox_value( 'horizontal', $post_box_shadow_property );
-	$box_shadow_v             = EFUL_Functions::eventful_metabox_value( 'vertical', $post_box_shadow_property );
-	$box_shadow_blur          = EFUL_Functions::eventful_metabox_value( 'blur', $post_box_shadow_property );
-	$box_shadow_spread        = EFUL_Functions::eventful_metabox_value( 'spread', $post_box_shadow_property );
-	$box_shadow_color         = EFUL_Functions::eventful_metabox_value( 'color', $post_box_shadow_property );
+	$box_shadow_h             = EFUL_Functions::eful_metabox_value( 'horizontal', $post_box_shadow_property );
+	$box_shadow_v             = EFUL_Functions::eful_metabox_value( 'vertical', $post_box_shadow_property );
+	$box_shadow_blur          = EFUL_Functions::eful_metabox_value( 'blur', $post_box_shadow_property );
+	$box_shadow_spread        = EFUL_Functions::eful_metabox_value( 'spread', $post_box_shadow_property );
+	$box_shadow_color         = EFUL_Functions::eful_metabox_value( 'color', $post_box_shadow_property );
 	$box_shadow_style         = 'outset' === $post_box_shadow_property['style'] ? '' : $post_box_shadow_property['style'];
 	$box_shadow_margin_top    = 'inset' === $box_shadow_style ? '0' : ( $box_shadow_spread - $box_shadow_v + 0.5 * $box_shadow_blur );
 	$box_shadow_margin_right  = 'inset' === $box_shadow_style ? '0' : ( $box_shadow_spread + $box_shadow_h + 0.5 * $box_shadow_blur );
@@ -200,19 +199,19 @@ if ( $show_post_box_shadow ) {
 }
 
 // Post background color.
-$post_background_property = EFUL_Functions::eventful_metabox_value('post_background_property', $view_options);
-$post_background_overlay = EFUL_Functions::eventful_metabox_value('post_background_overlay', $view_options);
-$post_background_blur = EFUL_Functions::eventful_metabox_value('post_background_blur', $view_options);
+$post_background_property = EFUL_Functions::eful_metabox_value('post_background_property', $view_options);
+$post_background_overlay = EFUL_Functions::eful_metabox_value('post_background_overlay', $view_options);
+$post_background_blur = EFUL_Functions::eful_metabox_value('post_background_blur', $view_options);
 
-$_post_border_radius         = EFUL_Functions::eventful_metabox_value(
+$_post_border_radius         = EFUL_Functions::eful_metabox_value(
 	'post_border_radius_property',
 	$view_options,
 	array(
 		'all' => '0',
 	)
 );
-$post_border_radius_unit     = EFUL_Functions::eventful_metabox_value('unit', $_post_border_radius);
-$post_border_radius_length   = EFUL_Functions::eventful_metabox_value('all', $_post_border_radius);
+$post_border_radius_unit     = EFUL_Functions::eful_metabox_value('unit', $_post_border_radius);
+$post_border_radius_length   = EFUL_Functions::eful_metabox_value('all', $_post_border_radius);
 $post_border_radius_property = $post_border_radius_length > 0 ? $post_border_radius_length . $post_border_radius_unit : '0';
 $custom_css              .= "#eventful_wrapper-{$eventful_id} .eventful__item {border-radius: {$post_border_radius_property};}";
 if (!in_array($post_content_orientation, array('overlay', 'overlay-box'), true)) {
@@ -342,7 +341,7 @@ $show_post_meta  = isset($eventful_post_meta['show_post_meta']) ? $eventful_post
 if (is_array($post_meta_group) && $show_post_meta) {
 	foreach ($post_meta_group as $key => $post_meta) {
 		$selected_meta      = $post_meta['select_post_meta'];
-		$meta_position      = isset($post_meta['eventful_meta_position']) ? $post_meta['eventful_meta_position'] : '';
+		$meta_position      = isset($post_meta['eful_meta_position']) ? $post_meta['eful_meta_position'] : '';
 		$meta_pill_color    = isset($post_meta['eventful_meta_pill_color']) ? $post_meta['eventful_meta_pill_color'] : array(
 			'text' => '#fff',
 			'bg'   => '#0015b5',
@@ -443,7 +442,7 @@ $show_event_fildes  = isset($eventful_event_fildes['show_event_fildes']) ? $even
 if (is_array($event_fildes_group) && $show_event_fildes) {
 	foreach ($event_fildes_group as $key => $event_fildes) {
 		$selected_meta      = $event_fildes['select_event_fildes'];
-		$meta_position      = isset($event_fildes['eventful_meta_position']) ? $event_fildes['eventful_meta_position'] : '';
+		$meta_position      = isset($event_fildes['eful_meta_position']) ? $event_fildes['eful_meta_position'] : '';
 		$meta_pill_color    = isset($event_fildes['eventful_meta_pill_color']) ? $event_fildes['eventful_meta_pill_color'] : array(
 			'text' => '#fff',
 			'bg'   => '#0015b5',

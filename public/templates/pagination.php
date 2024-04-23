@@ -27,11 +27,11 @@ if ( $show_pagination && ! $eventful_query->is_main_query() ) {
 	<span class="ta-eventful-pagination-data" style="display:none;" data-loadmoretext="<?php echo esc_attr( $load_more_button_text ); ?>" data-endingtext="<?php echo esc_attr( $load_more_ending_message ); ?>"></span>
 
 		<nav class="eventful-post-pagination eventful-on-desktop <?php echo esc_attr( $pagination_type ); ?>">
-		<?php EFUL_HTML::eventful_pagination_bar( $eventful_query, $view_options, $layout, $eventful_gl_id, $eventful_paged ); ?>
+		<?php EFUL_HTML::eful_pagination_bar( $eventful_query, $view_options, $layout, $eventful_gl_id, $eventful_paged ); ?>
 		</nav>
 		<?php if ( 'filter_layout' !== $layout_preset ) { ?>
 			<nav class="eventful-post-pagination eventful-on-mobile <?php echo esc_attr( $pagination_type_mobile ); ?>">
-				<?php EFUL_HTML::eventful_pagination_bar( $eventful_query, $view_options, $layout, $eventful_gl_id, $eventful_paged, 'on_mobile' ); ?>
+				<?php EFUL_HTML::eful_pagination_bar( $eventful_query, $view_options, $layout, $eventful_gl_id, $eventful_paged, 'on_mobile' ); ?>
 			</nav>
 			<?php
 		}

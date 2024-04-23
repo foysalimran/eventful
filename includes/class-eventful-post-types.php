@@ -52,15 +52,15 @@ class Eventful_Post_Type
 	/**
 	 * Eventful post type
 	 */
-	public function register_eventful_post_type()
+	public function eful_register_post_type()
 	{
 		if (post_type_exists('eventful')) {
 			return;
 		}
-		$capability = eventful_dashboard_capability();
+		$capability = eful_dashboard_capability();
 		// Set the Eventful post type labels.
 		$labels = apply_filters(
-			'eventful_post_type_labels',
+			'eful_post_type_labels',
 			array(
 				'name'               => esc_html__('Eventful Shortcode', 'eventful'),
 				'singular_name'      => esc_html__('Shortcode', 'eventful'),
@@ -80,7 +80,7 @@ class Eventful_Post_Type
 		);
 
 		$args      = apply_filters(
-			'eventful_post_type_args',
+			'eful_post_type_args',
 			array(
 				'label'           => esc_html__('Eventful Shortcode', 'eventful'),
 				'description'     => esc_html__('Eventful Shortcode', 'eventful'),

@@ -192,7 +192,7 @@ class Eventful
 	private function define_common_hooks()
 	{
 		$common_hooks = new Eventful_Post_Type(EFUL_PLUGIN_NAME, EFUL_VERSION);
-		$this->loader->add_action('init', $common_hooks, 'register_eventful_post_type', 10);
+		$this->loader->add_action('init', $common_hooks, 'eful_register_post_type', 10);
 	}
 
 	/**
@@ -210,8 +210,8 @@ class Eventful
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 
-		$this->loader->add_filter('manage_eventful_posts_columns', $plugin_admin, 'filter_eventful_admin_column');
-		$this->loader->add_action('manage_eventful_posts_custom_column', $plugin_admin, 'display_eventful_admin_fields', 10, 2);
+		$this->loader->add_filter('manage_eventful_posts_columns', $plugin_admin, 'eful_filter_admin_column');
+		$this->loader->add_action('manage_eventful_posts_custom_column', $plugin_admin, 'eful_display_admin_fields', 10, 2);
 	}
 
 	/**

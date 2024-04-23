@@ -44,7 +44,7 @@ class EFUL_Functions
 	 */
 	public static function limit_post_title($eventful_title, $limit_length, $eventful_after_string = '...')
 	{
-		return mb_strimwidth($eventful_title, 0, $limit_length, apply_filters('eventful_post_title_ellipsis', $eventful_after_string));
+		return mb_strimwidth($eventful_title, 0, $limit_length, apply_filters('eful_post_title_ellipsis', $eventful_after_string));
 	}
 
 	/**
@@ -70,7 +70,7 @@ class EFUL_Functions
 	 * @param string $ellipsis The ellipsis at the end of the text.
 	 * @return statement
 	 */
-	public static function eventful_limit_text($text, $limit, $ellipsis = '...')
+	public static function eful_limit_text($text, $limit, $ellipsis = '...')
 	{
 		$word_arr = explode(' ', $text);
 		if (count($word_arr) > $limit) {
@@ -89,7 +89,7 @@ class EFUL_Functions
 	 * @param string $ellipsis The ellipsis at the end of the text.
 	 * @return statement
 	 */
-	public static function limit_content_chr($text, $limit, $ellipsis = '...')
+	public static function eful_limit_content_chr($text, $limit, $ellipsis = '...')
 	{
 		$length = $limit;
 		if (strlen($text) < $length + 10) {
@@ -131,19 +131,19 @@ class EFUL_Functions
 	 * @param  mixed  $post post.
 	 * @return content
 	 */
-	public static function eventful_content($view_options, $type, $post)
+	public static function eful_content($view_options, $type, $post)
 	{
 
-		$eventful_content_length_type      = isset($view_options['eventful_content_length_type']) ? $view_options['eventful_content_length_type'] : 'words';
-		$post_content_length          = isset($view_options['eventful_content_limit']) ? $view_options['eventful_content_limit'] : '';
-		$eventful_content_characters_limit = isset($view_options['eventful_content_characters_limit']) ? $view_options['eventful_content_characters_limit'] : '';
+		$eful_content_length_type      = isset($view_options['eful_content_length_type']) ? $view_options['eful_content_length_type'] : 'words';
+		$post_content_length          = isset($view_options['eful_content_limit']) ? $view_options['eful_content_limit'] : '';
+		$eful_content_characters_limit = isset($view_options['eful_content_characters_limit']) ? $view_options['eful_content_characters_limit'] : '';
 		$post_content_ellipsis        = isset($view_options['post_content_ellipsis']) ? $view_options['post_content_ellipsis'] : '';
 		$eventful_strip_tags               = isset($view_options['eventful_strip_tags']) ? $view_options['eventful_strip_tags'] : '';
 		$eventful_allow_tag_name           = isset($view_options['eventful_allow_tag_name']) ? $view_options['eventful_allow_tag_name'] : '';
 		$allowed_tags                 = explode(',', $eventful_allow_tag_name);
 
 		$is_page_content = false;
-		$is_page_content = apply_filters('eventful_strip_shortcode_in_page_content', $is_page_content);
+		$is_page_content = apply_filters('eful_strip_shortcode_in_page_content', $is_page_content);
 		global $wp_embed;
 		if ('excerpt' === $type) {
 			$eventful_post_content = get_the_excerpt($post);
@@ -168,10 +168,10 @@ class EFUL_Functions
 			} else {
 				$post_content = apply_filters('eful_the_content', $post->post_content);
 			}
-			if ('characters' === $eventful_content_length_type) {
-				$_trimmed_content = ('strip_all' === $eventful_strip_tags) ? wp_html_excerpt($post_content, $eventful_content_characters_limit, $post_content_ellipsis) : self::limit_content_chr($post_content, $eventful_content_characters_limit, $post_content_ellipsis);
+			if ('characters' === $eful_content_length_type) {
+				$_trimmed_content = ('strip_all' === $eventful_strip_tags) ? wp_html_excerpt($post_content, $eful_content_characters_limit, $post_content_ellipsis) : self::eful_limit_content_chr($post_content, $eful_content_characters_limit, $post_content_ellipsis);
 			} else {
-				$_trimmed_content = self::eventful_limit_text($post_content, $post_content_length, $post_content_ellipsis);
+				$_trimmed_content = self::eful_limit_text($post_content, $post_content_length, $post_content_ellipsis);
 			}
 			if ('allow_some' === $eventful_strip_tags) {
 				$eventful_post_content = strip_tags($_trimmed_content, self::short_tag_to_html($allowed_tags));
@@ -193,13 +193,13 @@ class EFUL_Functions
 	 * @param int   $post_id The image url.
 	 * @return statement
 	 */
-	public static function eventful_image_id_by_url($url, $post_id = null)
+	public static function eful_image_id_by_url($url, $post_id = null)
 	{
 		global $wpdb;
 
 		// If the URL is auto-generated thumbnail, remove the sizes and get the URL of the original image.
 		$url       = preg_replace('/-\d+x\d+(?=\.(png|jp(e|g|eg)|gif|bmp|ico|webp|svg)$)/i', '', $url);
-		$cache_key = 'eventful_content_img_url_to_id' . $post_id;
+		$cache_key = 'eful_content_img_url_to_id' . $post_id;
 		$img_cache = wp_cache_get($cache_key);
 		if (false === $img_cache) {
 			$image = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid=%s;", $url));
@@ -217,7 +217,7 @@ class EFUL_Functions
 	 *
 	 * @return string
 	 */
-	public static function eventful_thumb_alter_text($slide_id)
+	public static function eful_thumb_alter_text($slide_id)
 	{
 		$image_id = get_post_thumbnail_id($slide_id);
 		$alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
@@ -230,7 +230,6 @@ class EFUL_Functions
 	 * @param  array  $query_args query_args.
 	 * @param  string $keyword keyword.
 	 * @param  int    $author_id author id.
-	 * @param  array  $custom_fields_array custom fields array.
 	 * @param  string $orderby orderby.
 	 * @param  string $order order.
 	 * @param  array  $selected_term_list term_list.
@@ -240,7 +239,7 @@ class EFUL_Functions
 	 * @param  string $lang current lang.
 	 * @return array
 	 */
-	public static function modify_query_params($query_args, $keyword, $author_id, $custom_fields_array, $orderby, $order, $selected_term_list, $post_offset, $relation, $post_in = array(), $lang = '')
+	public static function eful_modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, $post_offset, $relation, $post_in = array(), $lang = '')
 	{
 		if (!empty($keyword)) {
 			$query_args['s'] = $keyword;
@@ -254,35 +253,6 @@ class EFUL_Functions
 			$query_args['lang'] = $lang;
 		}
 		$query_args['post__in'] = $post_in;
-		if (!empty($custom_fields_array)) {
-			$eventful_meta_query = array();
-			foreach ($custom_fields_array as $_custom_field) {
-				$c_field_key   = $_custom_field['custom_field_key'];
-				$c_field_value = $_custom_field['custom_field_value'];
-				if (strpos($c_field_value, ' ') !== false) {
-					$c_field_value    = explode(' ', $c_field_value);
-					$eventful_meta_query[] = array(
-						'key'     => $c_field_key,
-						'value'   => $c_field_value,
-						'compare' => 'BETWEEN',
-						'type'    => 'numeric',
-					);
-				} else {
-					if (strpos($c_field_value, ',') !== false) {
-						$c_field_value = explode(',', $c_field_value);
-					}
-					$eventful_meta_query[] = array(
-						'key'     => $c_field_key,
-						'compare' => 'IN',
-						'value'   => $c_field_value,
-					);
-				}
-			}
-			if (count($eventful_meta_query) > 1) {
-				$eventful_meta_query['relation'] = 'AND';
-			}
-			$query_args['meta_query'] = $eventful_meta_query;
-		}
 
 		if (!empty($orderby)) {
 			$query_args['orderby'] = ('rand' === $orderby) ? 'rand(' . get_transient('eventful_rand') . ')' : $orderby;
@@ -328,7 +298,7 @@ class EFUL_Functions
 	 *
 	 * @return string
 	 */
-	public static function eventful_sized_thumb($post_thumb_setting, $slide_id, $is_attachment = false)
+	public static function eful_sized_thumb($post_thumb_setting, $slide_id, $is_attachment = false)
 	{
 		$thumb_id                  = '';
 		$image                     = '';
@@ -337,10 +307,10 @@ class EFUL_Functions
 		$show_2x_image             = isset($post_thumb_setting['load_2x_image']) ? $post_thumb_setting['load_2x_image'] : false;
 		$image_resize_2x_url       = '';
 		if ('even_featured_img_found' === $post_featured_thumb_found && is_array($eventful_thumb_src_replace)) {
-			$replace_thumb = self::eventful_thumb_replace($post_thumb_setting, $slide_id);
+			$replace_thumb = self::eful_thumb_replace($post_thumb_setting, $slide_id);
 			$thumb_id      = $replace_thumb['id'];
 		} elseif (!has_post_thumbnail($slide_id) && 'no_featured_img_found' === $post_featured_thumb_found) {
-			$replace_thumb = self::eventful_thumb_replace($post_thumb_setting, $slide_id);
+			$replace_thumb = self::eful_thumb_replace($post_thumb_setting, $slide_id);
 			$thumb_id      = $replace_thumb['id'];
 		} else {
 			if (has_post_thumbnail($slide_id)) {
@@ -349,7 +319,7 @@ class EFUL_Functions
 		}
 
 		$placeholder_img = EFUL_URL . 'public/assets/img/placeholder.png';
-		$placeholder_img = apply_filters('eventful_no_thumb_placeholder', $placeholder_img);
+		$placeholder_img = apply_filters('eful_no_thumb_placeholder', $placeholder_img);
 
 		if (empty($thumb_id) && !empty($placeholder_img)) {
 			$thumb_id = attachment_url_to_postid($placeholder_img);
@@ -411,7 +381,7 @@ class EFUL_Functions
 	 *
 	 * @return string
 	 */
-	public static function eventful_thumb_replace($post_thumb_setting, $slide_id)
+	public static function eful_thumb_replace($post_thumb_setting, $slide_id)
 	{
 		$eventful_thumb_src_replace = isset($post_thumb_setting['eventful_thumb_src_replace']) ? $post_thumb_setting['eventful_thumb_src_replace'] : '';
 
@@ -442,7 +412,7 @@ class EFUL_Functions
 					$first_content = 'audio';
 				}
 			}
-			$image_id = 'image' === $first_content ? self::eventful_get_img_from_post($post_thumb_setting, $slide_id) : '';
+			$image_id = 'image' === $first_content ? self::eful_get_img_from_post($post_thumb_setting, $slide_id) : '';
 			$is_video = 'video' === $first_content ? self::eful_get_video_from_post($slide_id) : '';
 			$is_audio = 'audio' === $first_content ? self::eful_get_audios_from_post($slide_id) : '';
 
@@ -464,7 +434,7 @@ class EFUL_Functions
 				$audio_thumb = $is_audio;
 			}
 			if ($image_src) {
-				$thumb_id = self::eventful_get_img_from_post($post_thumb_setting, $slide_id);
+				$thumb_id = self::eful_get_img_from_post($post_thumb_setting, $slide_id);
 			}
 			if ($video_src && (empty($matches[1][0]) || !$image_src)) {
 				$video_thumb = self::eful_get_video_from_post($slide_id);
@@ -490,7 +460,7 @@ class EFUL_Functions
 	 * @param  number $slide_id Post id.
 	 * @return mixed
 	 */
-	public static function eventful_get_img_from_post($post_thumb_setting, $slide_id)
+	public static function eful_get_img_from_post($post_thumb_setting, $slide_id)
 	{
 		$eventful_thumb_src = isset($post_thumb_setting['eventful_thumb_src']) ? $post_thumb_setting['eventful_thumb_src'] : 'featured_image';
 		$content_post  = get_post($slide_id);
@@ -498,7 +468,7 @@ class EFUL_Functions
 		$images        = preg_match_all('/<img[^>]* src=\"([^\"]*)\"[^>]*>/i', $content, $matches);
 		if ($images) {
 			$img_url  = 'last_img_content' === $eventful_thumb_src ? array_values(array_slice($matches[1], -1)) : $matches[1][0];
-			$thumb_id = self::eventful_image_id_by_url($img_url, $slide_id);
+			$thumb_id = self::eful_image_id_by_url($img_url, $slide_id);
 		}
 		if (!empty($thumb_id)) {
 			return $thumb_id;
@@ -517,7 +487,7 @@ class EFUL_Functions
 
 		$post    = get_post($slide_id);
 		$content = do_shortcode(apply_filters('the_content', $post->post_content));
-		$embeds  = apply_filters('eventful_get_post_video', get_media_embedded_in_content($content));
+		$embeds  = apply_filters('eful_get_post_video', get_media_embedded_in_content($content));
 
 		if (empty($embeds)) {
 			return '';
@@ -542,7 +512,7 @@ class EFUL_Functions
 		// For audio post type - grab.
 		$post    = get_post($slide_id);
 		$content = do_shortcode(apply_filters('eful_the_content', $post->post_content));
-		$embeds  = apply_filters('eventful_get_post_audio', get_media_embedded_in_content($content));
+		$embeds  = apply_filters('eful_get_post_audio', get_media_embedded_in_content($content));
 		if (empty($embeds)) {
 			return '';
 		}
@@ -565,12 +535,12 @@ class EFUL_Functions
 	 * @param string $is_table the table layout check.
 	 * @return void
 	 */
-	public static function eventful_get_post_meta($post, $post_meta_fields, $visitor_count, $meta_separator, $is_table)
+	public static function eful_get_post_meta($post, $post_meta_fields, $visitor_count, $meta_separator, $is_table)
 	{
 
 
-		$meta_wrapper_start_tag = !$is_table ? apply_filters('eventful_post_meta_wrapper_start', '<ul>') : '';
-		$meta_wrapper_end_tag   = !$is_table ? apply_filters('eventful_post_meta_wrapper_end', '</ul>') : '';
+		$meta_wrapper_start_tag = !$is_table ? apply_filters('eful_post_meta_wrapper_start', '<ul>') : '';
+		$meta_wrapper_end_tag   = !$is_table ? apply_filters('eful_post_meta_wrapper_end', '</ul>') : '';
 		echo wp_kses_post($meta_wrapper_start_tag);
 		$i = 0;
 		foreach ($post_meta_fields as $each_meta) {
@@ -578,15 +548,15 @@ class EFUL_Functions
 			$taxonomy_name        = isset($each_meta['post_meta_taxonomy']) ? $each_meta['post_meta_taxonomy'] : '';
 			$author_avatar        = isset($each_meta['post_meta_author_avatar']) ? $each_meta['post_meta_author_avatar'] : 'name_with_icon';
 			$meta_date_format     = isset($each_meta['post_meta_date_format']) ? $each_meta['post_meta_date_format'] : 'default';
-			$custom_date_format   = isset($each_meta['eventful_custom_meta_date_format']) ? $each_meta['eventful_custom_meta_date_format'] : 'F j, Y';
-			$word_per_minute      = isset($each_meta['eventful_word_per_minute']) ? $each_meta['eventful_word_per_minute'] : 300;
+			$custom_date_format   = isset($each_meta['eful_custom_meta_date_format']) ? $each_meta['eful_custom_meta_date_format'] : 'F j, Y';
+			$word_per_minute      = isset($each_meta['eful_word_per_minute']) ? $each_meta['eful_word_per_minute'] : 300;
 			$reading_time_postfix = isset($each_meta['reading_time_postfix']) ? $each_meta['reading_time_postfix'] : ' Min Read';
 
 			$meta_icon      = !empty($each_meta['select_meta_icon']) ? sprintf('<i class="' . $each_meta['select_meta_icon'] . '"></i>') : '';
 			$start_tag      = $is_table ? '<td class="ta-eventful-post-meta">' : '<li>';
 			$end_tag        = $is_table ? '</td>' : '</li>';
-			$meta_tag_start = apply_filters('eventful_post_meta_html_tag_start', $start_tag);
-			$meta_tag_end   = apply_filters('eventful_post_meta_html_tag_end', $end_tag);
+			$meta_tag_start = apply_filters('eful_post_meta_html_tag_start', $start_tag);
+			$meta_tag_end   = apply_filters('eful_post_meta_html_tag_end', $end_tag);
 			$allowed_html   = array(
 				'a'    => array(
 					'href'  => array(),
@@ -654,8 +624,8 @@ class EFUL_Functions
 					echo wp_kses_post($meta_tag_end);
 					break;
 				case 'taxonomy':
-					if ('beside_meta' === $each_meta['eventful_meta_position']) {
-						$term = self::eventful_taxonomy_terms($taxonomy_name, $post->ID, $meta_icon);
+					if ('beside_meta' === $each_meta['eful_meta_position']) {
+						$term = self::eful_taxonomy_terms($taxonomy_name, $post->ID, $meta_icon);
 						if (!empty($term)) {
 							if (0 < $i) {
 					?>
@@ -709,7 +679,7 @@ class EFUL_Functions
 					?>
 					<?php
 					echo wp_kses(
-						EFUL_User_Like::get_eventful_likes_button($post->ID),
+						EFUL_User_Like::eful_get_likes_button($post->ID),
 						array(
 							'a'    => array(
 								'href'           => true,
@@ -735,7 +705,7 @@ class EFUL_Functions
 					}
 					echo wp_kses_post($meta_tag_start);
 					?>
-					<?php echo wp_kses($meta_icon, $allowed_html); ?> <span><?php self::eventful_reading_time($post->ID, $word_per_minute, $reading_time_postfix); ?></span>
+					<?php echo wp_kses($meta_icon, $allowed_html); ?> <span><?php self::eful_reading_time($post->ID, $word_per_minute, $reading_time_postfix); ?></span>
 					<?php
 					echo wp_kses_post($meta_tag_end);
 					break;
@@ -756,8 +726,8 @@ class EFUL_Functions
 	 */
 	public static function eful_get_event_fildes($post, $event_fildes_fields, $visitor_count, $meta_separator, $is_table)
 	{
-		$meta_wrapper_start_tag = !$is_table ? apply_filters('eventful_event_fildes_wrapper_start', '<ul>') : '';
-		$meta_wrapper_end_tag   = !$is_table ? apply_filters('eventful_event_fildes_wrapper_end', '</ul>') : '';
+		$meta_wrapper_start_tag = !$is_table ? apply_filters('eful_event_fildes_wrapper_start', '<ul>') : '';
+		$meta_wrapper_end_tag   = !$is_table ? apply_filters('eful_event_fildes_wrapper_end', '</ul>') : '';
 		echo wp_kses_post($meta_wrapper_start_tag);
 		$i = 0;
 		foreach ($event_fildes_fields as $each_meta) {
@@ -766,7 +736,7 @@ class EFUL_Functions
 			$venue_phone_icon        = isset($each_meta['venue_phone_icon']) ? $each_meta['venue_phone_icon'] : '';
 			$meta_date_format     = isset($each_meta['event_fildes_date_format']) ? $each_meta['event_fildes_date_format'] : 'j F, Y g:i A';
 			$event_date_style   = isset($each_meta['event_fildes_date_type']) ? $each_meta['event_fildes_date_type'] : 'start_date';
-			$custom_date_format   = isset($each_meta['eventful_custom_event_date_format']) ? $each_meta['eventful_custom_event_date_format'] : 'j F, Y g:i A';
+			$custom_date_format   = isset($each_meta['eful_custom_event_date_format']) ? $each_meta['eful_custom_event_date_format'] : 'j F, Y g:i A';
 
 			$meta_icon      = !empty($each_meta['select_event_fildes_icon']) ? sprintf('<i class="' . $each_meta['select_event_fildes_icon'] . '"></i>') : '';
 			$start_tag      = $is_table ? '<td class="ta-eventful-post-meta">' : '<li>';
@@ -949,7 +919,7 @@ class EFUL_Functions
 	 *
 	 * @return void
 	 */
-	public static function eventful_reading_time($post_id, $word_per_minute, $reading_time_postfix)
+	public static function eful_reading_time($post_id, $word_per_minute, $reading_time_postfix)
 	{
 		$content      = get_post_field('post_content', $post_id);
 		$word_count   = str_word_count(wp_strip_all_tags($content));
@@ -968,7 +938,7 @@ class EFUL_Functions
 	 * @param mixed $meta_icon The meta icon html.
 	 * @return statement
 	 */
-	public static function eventful_taxonomy_terms($taxonomy, $id, $meta_icon = null)
+	public static function eful_taxonomy_terms($taxonomy, $id, $meta_icon = null)
 	{
 		$terms = get_the_term_list($id, $taxonomy, '', ', ');
 		if (!empty($terms) && !is_wp_error($terms)) {
@@ -1001,7 +971,7 @@ class EFUL_Functions
 	 * @param integer $post_id The post ID.
 	 * @return statement.
 	 */
-	public static function eventful_post_tags($post_id)
+	public static function eful_post_tags($post_id)
 	{
 		$post_tags = get_the_tags($post_id);
 		$separator = ', ';
@@ -1022,7 +992,7 @@ class EFUL_Functions
 	 *
 	 * @return void
 	 */
-	public static function eventful_max_pages($total_post, $post_per_page)
+	public static function eful_max_pages($total_post, $post_per_page)
 	{
 		if (!$total_post) {
 			return;
@@ -1040,7 +1010,7 @@ class EFUL_Functions
 	 *
 	 * @return int
 	 */
-	public static function eventful_post_per_page($limit, $post_per_page, $page)
+	public static function eful_post_per_page($limit, $post_per_page, $page)
 	{
 		$limit               = (empty($limit) || '-1' === $limit) ? 10000000 : $limit;
 		$offset              = (int) $post_per_page * ($page - 1);
@@ -1060,12 +1030,12 @@ class EFUL_Functions
 	 *
 	 * @return int.
 	 */
-	public static function eventful_last_page_post($limit, $post_per_page, $total_page)
+	public static function eful_last_page_post($limit, $post_per_page, $total_page)
 	{
 		$limit              = (empty($limit) || '-1' === $limit) ? 10000000 : $limit;
 		$offset             = $post_per_page * ($total_page - 1);
-		$eventful_last_page_post = $limit - $offset;
-		return $eventful_last_page_post;
+		$eful_last_page_post = $limit - $offset;
+		return $eful_last_page_post;
 	}
 
 	/**
@@ -1091,7 +1061,7 @@ class EFUL_Functions
 	 * @param array      $array_to_get Array to get values of wanted setting.
 	 * @param mixed|null $assign       The value to assign if setting is not found.
 	 */
-	public static function eventful_metabox_value($field, $array_to_get = null, $assign = null)
+	public static function eful_metabox_value($field, $array_to_get = null, $assign = null)
 	{
 		global $eventful_gl_id;
 		if (empty($array_to_get)) {
@@ -1121,7 +1091,7 @@ class EFUL_Functions
 	 * @param  mixed $default_path default path .
 	 * @return string
 	 */
-	public static function eventful_locate_template($template_name, $template_path = '', $default_path = '')
+	public static function eful_locate_template($template_name, $template_path = '', $default_path = '')
 	{
 		if (!$template_path) {
 			$template_path = 'eventful/templates';

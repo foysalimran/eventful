@@ -8,7 +8,7 @@
     "use strict";
     var $window = $(window);
 
-    $.fn.eventful_lazyload = function(options) {
+    $.fn.eful_lazyload = function(options) {
         var elements = this;
         var $container;
         var settings = {
