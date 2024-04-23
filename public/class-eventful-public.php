@@ -278,13 +278,13 @@ class Eventful_Public
 			if ($post_limit < 1) {
 				$total_page = 0;
 			} else {
-				$total_page = EFUL_Functions::eventful_max_pages($post_limit, $post_per_page);
+				$total_page = EFUL_Functions::eful_max_pages($post_limit, $post_per_page);
 			}
-			$eventful_last_page_post   = EFUL_Functions::eventful_last_page_post($post_limit, $post_per_page, $total_page);
+			$eful_last_page_post   = EFUL_Functions::eful_last_page_post($post_limit, $post_per_page, $total_page);
 			$offset               = (int) $post_per_page * ($paged - 1);
 			$query_args['offset'] = (int) $offset + (int) $post_offset;
 			if ($total_page == $paged) {
-				$query_args['posts_per_page'] = $eventful_last_page_post;
+				$query_args['posts_per_page'] = $eful_last_page_post;
 			}
 			if ($paged > $total_page) {
 				return false;
@@ -292,7 +292,7 @@ class Eventful_Public
 		}
 		$query_args['paged'] = $paged;
 		$eventful_query           = new WP_Query($query_args);
-		EFUL_HTML::eventful_get_posts($view_options, $layout_preset, $post_content_sorter, $eventful_query, $views_id);
+		EFUL_HTML::eful_get_posts($view_options, $layout_preset, $post_content_sorter, $eventful_query, $views_id);
 		die();
 	}
 
@@ -336,7 +336,7 @@ class Eventful_Public
 		$query_args         = EFUL_Functions::eful_modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$query_args['lang'] = '';
 		$eventful_query          = new WP_Query($query_args);
-		EFUL_HTML::eventful_pagination_bar($eventful_query, $view_options, $layout, $views_id, $paged);
+		EFUL_HTML::eful_pagination_bar($eventful_query, $view_options, $layout, $views_id, $paged);
 		die();
 	}
 
@@ -377,7 +377,7 @@ class Eventful_Public
 		$relation   = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 		$query_args = EFUL_Functions::eful_modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$eventful_query  = new WP_Query($query_args);
-		EFUL_HTML::eventful_pagination_bar($eventful_query, $view_options, $layout, $views_id, $paged, 'on_mobile');
+		EFUL_HTML::eful_pagination_bar($eventful_query, $view_options, $layout, $views_id, $paged, 'on_mobile');
 		die();
 	}
 
@@ -415,7 +415,7 @@ class Eventful_Public
 		$relation                         = isset($view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation']) ? $view_options['eventful_filter_by_taxonomy']['eventful_taxonomies_relation'] : 'AND';
 		$query_args                       = EFUL_Functions::eful_modify_query_params($query_args, $keyword, $author_id, $orderby, $order, $selected_term_list, $post_offset, $relation, $query_post_ids, $eventful_lang);
 		$eventful_query                        = new WP_Query($query_args);
-		EFUL_HTML::eventful_get_posts($view_options, $layout_preset, $post_content_sorter, $eventful_query, $views_id);
+		EFUL_HTML::eful_get_posts($view_options, $layout_preset, $post_content_sorter, $eventful_query, $views_id);
 		die();
 	}
 
@@ -438,7 +438,7 @@ class Eventful_Public
 		$view_options  = get_post_meta($eventful_gl_id, 'eful_view_options', true);
 		$section_title = get_the_title($eventful_gl_id);
 		ob_start();
-		EFUL_HTML::eventful_html_show($view_options, $layout, $eventful_gl_id, $section_title);
+		EFUL_HTML::eful_html_show($view_options, $layout, $eventful_gl_id, $section_title);
 		return ob_get_clean();
 	}
 }

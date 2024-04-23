@@ -455,7 +455,7 @@ class EFUL_Display
 								),
 							),
 							array(
-								'id'         => 'eventful_post_title',
+								'id'         => 'eful_post_title',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(

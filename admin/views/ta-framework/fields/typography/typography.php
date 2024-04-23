@@ -129,7 +129,19 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 			if ( ! empty( $args['font_family'] ) ) {
 				echo '<div class="eventful--block">';
 				echo '<div class="eventful--title">' . esc_html__( 'Font Family', 'eventful' ) . '</div>';
-				echo $this->create_select( array( $this->value['font-family'] => $this->value['font-family'] ), 'font-family', esc_html__( 'Select a font', 'eventful' ) );// phpcs:ignore
+				$allowed_tags  = [
+					'select' => array(
+						'style' => array(),
+						'class' => array(),
+						'name' => array()
+					),
+					'option' => array(),
+					'optgroup' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+				];
+				echo wp_kses($this->create_select( array( $this->value['font-family'] => $this->value['font-family'] ), 'font-family', esc_html__( 'Select a font', 'eventful' ) ), $allowed_tags);
 				echo '</div>';
 			}
 
@@ -138,8 +150,20 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 			if ( ! empty( $args['backup_font_family'] ) ) {
 				echo '<div class="eventful--block eventful--block-backup-font-family hidden">';
 				echo '<div class="eventful--title">' . esc_html__( 'Backup Font Family', 'eventful' ) . '</div>';
-				// phpcs:ignore
-				echo $this->create_select(
+				
+				$allowed_tags  = [
+				'select' => array(
+					'style' => array(),
+					'class' => array(),
+					'name' => array()
+				),
+				'option' => array(),
+				'optgroup' => array(),
+				'div' => array(
+					'class' => array(),
+				),
+			];
+				echo wp_kses($this->create_select(
 					apply_filters(
 						'eventful_field_typography_backup_font_family',
 						array(
@@ -159,7 +183,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 					),
 					'backup-font-family',
 					esc_html__( 'Default', 'eventful' )
-				);
+				), $allowed_tags);
 				echo '</div>';
 			}
 
@@ -172,9 +196,9 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 				echo '<div class="eventful--block eventful--block-font-style hidden">';
 				echo '<div class="eventful--title">' . esc_html__( 'Font Style', 'eventful' ) . '</div>';
 				echo '<select class="eventful--font-style-select" data-placeholder="Default">';
-				echo '<option value="">' . ( ! $this->chosen ? esc_html__( 'Default', 'eventful' ) : '' ) . '</option>';// phpcs:ignore
+				echo '<option value="">' . ( ! $this->chosen ? esc_html__( 'Default', 'eventful' ) : '' ) . '</option>';
 				if ( ! empty( $this->value['font-weight'] ) || ! empty( $this->value['font-style'] ) ) {
-					echo '<option value="' . strtolower( $this->value['font-weight'] . $this->value['font-style'] ) . '" selected></option>';// phpcs:ignore
+					echo '<option value="' . strtolower( $this->value['font-weight'] . $this->value['font-style'] ) . '" selected></option>';
 				}
 				echo '</select>';
 				echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[font-weight]' ) ) . '" class="eventful--font-weight" value="' . esc_attr( $this->value['font-weight'] ) . '" />';
@@ -186,7 +210,19 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 					echo '<div class="eventful--block-extra-styles hidden">';
 					echo ( ! $this->chosen ) ? '<div class="eventful--title">' . esc_html__( 'Load Extra Styles', 'eventful' ) . '</div>' : '';
 					$placeholder = ( $this->chosen ) ? esc_html__( 'Load Extra Styles', 'eventful' ) : esc_html__( 'Default', 'eventful' );
-					echo $this->create_select( $this->value['extra-styles'], 'extra-styles', $placeholder, true );// phpcs:ignore
+					$allowed_tags  = [
+						'select' => array(
+							'style' => array(),
+							'class' => array(),
+							'name' => array()
+						),
+						'option' => array(),
+						'optgroup' => array(),
+						'div' => array(
+							'class' => array(),
+						),
+					];
+					echo wp_kses($this->create_select( $this->value['extra-styles'], 'extra-styles', $placeholder, true ), $allowed_tags);
 					echo '</div>';
 				}
 
@@ -200,7 +236,19 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 				echo '<div class="eventful--block eventful--block-subset hidden">';
 				echo '<div class="eventful--title">' . esc_html__( 'Subset', 'eventful' ) . '</div>';
 				$subset = ( is_array( $this->value['subset'] ) ) ? $this->value['subset'] : array_filter( (array) $this->value['subset'] );
-				echo $this->create_select( $subset, 'subset', esc_html__( 'Default', 'eventful' ), $args['multi_subset'] );// phpcs:ignore
+				$allowed_tags  = [
+					'select' => array(
+						'style' => array(),
+						'class' => array(),
+						'name' => array()
+					),
+					'option' => array(),
+					'optgroup' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+				];
+				echo wp_kses($this->create_select( $subset, 'subset', esc_html__( 'Default', 'eventful' ), $args['multi_subset'] ), $allowed_tags);
 				echo '</div>';
 			}
 
@@ -209,8 +257,19 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 			if ( ! empty( $args['text_align'] ) ) {
 				echo '<div class="eventful--block">';
 				echo '<div class="eventful--title">' . esc_html__( 'Text Align', 'eventful' ) . '</div>';
-				// phpcs:ignore
-				echo $this->create_select(
+				$allowed_tags  = [
+					'select' => array(
+						'style' => array(),
+						'class' => array(),
+						'name' => array()
+					),
+					'option' => array(),
+					'optgroup' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+				];
+				echo wp_kses($this->create_select(
 					array(
 						'inherit' => esc_html__( 'Inherit', 'eventful' ),
 						'left'    => esc_html__( 'Left', 'eventful' ),
@@ -221,7 +280,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 					),
 					'text-align',
 					esc_html__( 'Default', 'eventful' )
-				);
+				), $allowed_tags);
 				echo '</div>';
 			}
 
@@ -230,8 +289,19 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 			if ( ! empty( $args['font_variant'] ) ) {
 				echo '<div class="eventful--block">';
 				echo '<div class="eventful--title">' . esc_html__( 'Font Variant', 'eventful' ) . '</div>';
-				// phpcs:ignore
-				echo $this->create_select(
+				$allowed_tags  = [
+					'select' => array(
+						'style' => array(),
+						'class' => array(),
+						'name' => array()
+					),
+					'option' => array(),
+					'optgroup' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+				];
+				echo wp_kses($this->create_select(
 					array(
 						'normal'         => esc_html__( 'Normal', 'eventful' ),
 						'small-caps'     => esc_html__( 'Small Caps', 'eventful' ),
@@ -239,7 +309,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 					),
 					'font-variant',
 					esc_html__( 'Default', 'eventful' )
-				);
+				), $allowed_tags);
 				echo '</div>';
 			}
 
@@ -248,8 +318,19 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 			if ( ! empty( $args['text_transform'] ) ) {
 				echo '<div class="eventful--block">';
 				echo '<div class="eventful--title">' . esc_html__( 'Text Transform', 'eventful' ) . '</div>';
-				// phpcs:ignore
-				echo $this->create_select(
+				$allowed_tags  = [
+					'select' => array(
+						'style' => array(),
+						'class' => array(),
+						'name' => array()
+					),
+					'option' => array(),
+					'optgroup' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+				];
+				echo wp_kses($this->create_select(
 					array(
 						'none'       => esc_html__( 'None', 'eventful' ),
 						'capitalize' => esc_html__( 'Capitalize', 'eventful' ),
@@ -258,7 +339,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 					),
 					'text-transform',
 					esc_html__( 'Default', 'eventful' )
-				);
+				), $allowed_tags);
 				echo '</div>';
 			}
 
@@ -267,8 +348,19 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 			if ( ! empty( $args['text_decoration'] ) ) {
 				echo '<div class="eventful--block">';
 				echo '<div class="eventful--title">' . esc_html__( 'Text Decoration', 'eventful' ) . '</div>';
-				// phpcs:ignore
-				echo $this->create_select(
+				$allowed_tags  = [
+					'select' => array(
+						'style' => array(),
+						'class' => array(),
+						'name' => array()
+					),
+					'option' => array(),
+					'optgroup' => array(),
+					'div' => array(
+						'class' => array(),
+					),
+				];
+				echo wp_kses($this->create_select(
 					array(
 						'none'               => esc_html__( 'None', 'eventful' ),
 						'underline'          => esc_html__( 'Solid', 'eventful' ),
@@ -281,7 +373,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 					),
 					'text-decoration',
 					esc_html__( 'Default', 'eventful' )
-				);
+				), $allowed_tags);
 				echo '</div>';
 			}
 
@@ -446,14 +538,14 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 			$output .= ( ! empty( $placeholder ) ) ? '<option value="">' . ( ( ! $this->chosen ) ? $placeholder : '' ) . '</option>' : '';
 
 			if ( ! empty( $options ) ) {
-				foreach ( $options as $option_key => $eventful_metabox_value ) {
+				foreach ( $options as $option_key => $eful_metabox_value ) {
 					if ( $is_multiple ) {
-						$selected = ( in_array( $eventful_metabox_value, $this->value[ $name ] ) ) ? ' selected' : '';
-						$output  .= '<option value="' . $eventful_metabox_value . '"' . $selected . '>' . $eventful_metabox_value . '</option>';
+						$selected = ( in_array( $eful_metabox_value, $this->value[ $name ] ) ) ? ' selected' : '';
+						$output  .= '<option value="' . $eful_metabox_value . '"' . $selected . '>' . $eful_metabox_value . '</option>';
 					} else {
-						$option_key = ( is_numeric( $option_key ) ) ? $eventful_metabox_value : $option_key;
+						$option_key = ( is_numeric( $option_key ) ) ? $eful_metabox_value : $option_key;
 						$selected   = ( $option_key === $this->value[ $name ] ) ? ' selected' : '';
-						$output    .= '<option value="' . $option_key . '"' . $selected . '>' . $eventful_metabox_value . '</option>';
+						$output    .= '<option value="' . $option_key . '"' . $selected . '>' . $eful_metabox_value . '</option>';
 					}
 				}
 			}

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	$carousel_mode                 = isset( $view_options['eventful_carousel_mode'] ) ? $view_options['eventful_carousel_mode'] : 'standard';
 	$title_text                    = get_the_title( $eventful_id );
 	$view_options['section_title'] = empty( $title_text ) ? false : $view_options['section_title'];
-	$_nav_colors                   = EFUL_Functions::eventful_metabox_value(
+	$_nav_colors                   = EFUL_Functions::eful_metabox_value(
 		'eventful_nav_colors',
 		$view_options,
 		array(
@@ -24,14 +24,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			'hover-border-color' => '#263ad0',
 		)
 	);
-	$nav_color                     = EFUL_Functions::eventful_metabox_value( 'color', $_nav_colors );
-	$nav_color_hover               = EFUL_Functions::eventful_metabox_value( 'hover-color', $_nav_colors );
-	$nav_color_bg                  = EFUL_Functions::eventful_metabox_value( 'bg', $_nav_colors );
-	$nav_color_bg_hover            = EFUL_Functions::eventful_metabox_value( 'hover-bg', $_nav_colors );
-	$nav_color_border              = EFUL_Functions::eventful_metabox_value( 'border-color', $_nav_colors );
-	$nav_color_border_hover        = EFUL_Functions::eventful_metabox_value( 'hover-border-color', $_nav_colors );
-	$nav_icon_size                 = EFUL_Functions::eventful_metabox_value( 'eventful_nav_icon_size', $view_options );
-	$_nav_icon_radius              = EFUL_Functions::eventful_metabox_value(
+	$nav_color                     = EFUL_Functions::eful_metabox_value( 'color', $_nav_colors );
+	$nav_color_hover               = EFUL_Functions::eful_metabox_value( 'hover-color', $_nav_colors );
+	$nav_color_bg                  = EFUL_Functions::eful_metabox_value( 'bg', $_nav_colors );
+	$nav_color_bg_hover            = EFUL_Functions::eful_metabox_value( 'hover-bg', $_nav_colors );
+	$nav_color_border              = EFUL_Functions::eful_metabox_value( 'border-color', $_nav_colors );
+	$nav_color_border_hover        = EFUL_Functions::eful_metabox_value( 'hover-border-color', $_nav_colors );
+	$nav_icon_size                 = EFUL_Functions::eful_metabox_value( 'eventful_nav_icon_size', $view_options );
+	$_nav_icon_radius              = EFUL_Functions::eful_metabox_value(
 		'navigation_icons_border_radius',
 		$view_options,
 		array(
@@ -77,7 +77,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			$custom_css .= "@media (max-width: 480px) { #et-boc .et-l #eventful_wrapper-{$eventful_id} .eventful-pagination{ display: none; } }";
 		} $custom_css .= "#et-boc .et-l #eventful_wrapper-{$eventful_id} .dots .swiper-pagination-bullet{ background: {$pagination_color}; } #et-boc .et-l #eventful_wrapper-{$eventful_id} .dots .swiper-pagination-bullet-active { background: {$pagination_color_active}; } #et-boc .et-l #eventful_wrapper-{$eventful_id} .number .swiper-pagination-bullet{ color: {$pagination_number_color}; background: {$pagination_number_bg}; } #et-boc .et-l #eventful_wrapper-{$eventful_id} .number .swiper-pagination-bullet-active, #et-boc .et-l #eventful_wrapper-{$eventful_id} .number .swiper-pagination-bullet:hover{ color: {$pagination_number_hover_color}; background: {$pagination_number_hover_bg}; } #et-boc .et-l #eventful_wrapper-{$eventful_id} .eventful-pagination{text-align:center;} #et-boc .et-l #eventful_wrapper-{$eventful_id} .eventful-pagination .swiper-pagination-bullet{ border-radius: 50%; margin: 0 4px;}";
 
-		$carousel_nav_position = EFUL_Functions::eventful_metabox_value( 'eventful_carousel_nav_position', $view_options, 'top_right' );
+		$carousel_nav_position = EFUL_Functions::eful_metabox_value( 'eventful_carousel_nav_position', $view_options, 'top_right' );
 		if ( 'vertically_center_outer' === $carousel_nav_position ) {
 			$custom_css .= "#et-boc .et-l .eventful-wrapper-{$eventful_id} .swiper-container{ position: static; }";
 		}
@@ -109,7 +109,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 		$custom_css .= "#eventful_wrapper-{$eventful_id} .eventful-filter-bar ~ .ta-eventful-carousel.top_right, #eventful_wrapper-{$eventful_id} .eventful-filter-bar ~ .ta-eventful-carousel.top_center, #eventful_wrapper-{$eventful_id} .eventful-filter-bar ~ .ta-eventful-carousel.top_left {padding-top: 0px;}";
 
-		$carousel_nav_position = EFUL_Functions::eventful_metabox_value( 'eventful_carousel_nav_position', $view_options, 'top_right' );
+		$carousel_nav_position = EFUL_Functions::eful_metabox_value( 'eventful_carousel_nav_position', $view_options, 'top_right' );
 		if ( 'vertically_center_outer' === $carousel_nav_position ) {
 			$custom_css .= ".eventful-wrapper-{$eventful_id} .swiper-container{ position: static; }";
 		}

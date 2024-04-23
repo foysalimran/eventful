@@ -674,7 +674,7 @@ class EFUL_FilterPost {
 						'dependency' => array( 'eventful_advanced_filter', 'not-any', 'taxonomy,author,sortby,date,keyword' ),
 					),
 					array(
-						'id'         => 'eventful_filter_by_date',
+						'id'         => 'eful_filter_by_date',
 						'type'       => 'accordion',
 						'class'      => 'padding-t-0 eventful-opened-accordion',
 						'accordions' => array(

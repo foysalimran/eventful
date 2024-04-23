@@ -44,7 +44,7 @@ class EFUL_Functions
 	 */
 	public static function limit_post_title($eventful_title, $limit_length, $eventful_after_string = '...')
 	{
-		return mb_strimwidth($eventful_title, 0, $limit_length, apply_filters('eventful_post_title_ellipsis', $eventful_after_string));
+		return mb_strimwidth($eventful_title, 0, $limit_length, apply_filters('eful_post_title_ellipsis', $eventful_after_string));
 	}
 
 	/**
@@ -971,7 +971,7 @@ class EFUL_Functions
 	 * @param integer $post_id The post ID.
 	 * @return statement.
 	 */
-	public static function eventful_post_tags($post_id)
+	public static function eful_post_tags($post_id)
 	{
 		$post_tags = get_the_tags($post_id);
 		$separator = ', ';
@@ -992,7 +992,7 @@ class EFUL_Functions
 	 *
 	 * @return void
 	 */
-	public static function eventful_max_pages($total_post, $post_per_page)
+	public static function eful_max_pages($total_post, $post_per_page)
 	{
 		if (!$total_post) {
 			return;
@@ -1010,7 +1010,7 @@ class EFUL_Functions
 	 *
 	 * @return int
 	 */
-	public static function eventful_post_per_page($limit, $post_per_page, $page)
+	public static function eful_post_per_page($limit, $post_per_page, $page)
 	{
 		$limit               = (empty($limit) || '-1' === $limit) ? 10000000 : $limit;
 		$offset              = (int) $post_per_page * ($page - 1);
@@ -1030,12 +1030,12 @@ class EFUL_Functions
 	 *
 	 * @return int.
 	 */
-	public static function eventful_last_page_post($limit, $post_per_page, $total_page)
+	public static function eful_last_page_post($limit, $post_per_page, $total_page)
 	{
 		$limit              = (empty($limit) || '-1' === $limit) ? 10000000 : $limit;
 		$offset             = $post_per_page * ($total_page - 1);
-		$eventful_last_page_post = $limit - $offset;
-		return $eventful_last_page_post;
+		$eful_last_page_post = $limit - $offset;
+		return $eful_last_page_post;
 	}
 
 	/**
@@ -1061,7 +1061,7 @@ class EFUL_Functions
 	 * @param array      $array_to_get Array to get values of wanted setting.
 	 * @param mixed|null $assign       The value to assign if setting is not found.
 	 */
-	public static function eventful_metabox_value($field, $array_to_get = null, $assign = null)
+	public static function eful_metabox_value($field, $array_to_get = null, $assign = null)
 	{
 		global $eventful_gl_id;
 		if (empty($array_to_get)) {

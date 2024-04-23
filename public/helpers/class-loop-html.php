@@ -27,17 +27,17 @@ class EFUL_HTML
 	 * @param string $layout layout preset.
 	 * @return void
 	 */
-	public static function eventful_post_title($sorter, $layout, $options, $post, $is_table = false)
+	public static function eful_post_title($sorter, $layout, $options, $post, $is_table = false)
 	{
 
-		$_meta_settings     = EFUL_Functions::eventful_metabox_value('eventful_post_meta', $sorter);
-		$post_meta_fields   = EFUL_Functions::eventful_metabox_value('eventful_post_meta_group', $_meta_settings);
-		$show_post_meta     = EFUL_Functions::eventful_metabox_value('show_post_meta', $_meta_settings, true);
-		$eventful_page_link_type = EFUL_Functions::eventful_metabox_value('eventful_page_link_type', $options);
-		$eventful_link_rel       = EFUL_Functions::eventful_metabox_value('eventful_link_rel', $options);
+		$_meta_settings     = EFUL_Functions::eful_metabox_value('eventful_post_meta', $sorter);
+		$post_meta_fields   = EFUL_Functions::eful_metabox_value('eventful_post_meta_group', $_meta_settings);
+		$show_post_meta     = EFUL_Functions::eful_metabox_value('show_post_meta', $_meta_settings, true);
+		$eventful_page_link_type = EFUL_Functions::eful_metabox_value('eventful_page_link_type', $options);
+		$eventful_link_rel       = EFUL_Functions::eful_metabox_value('eventful_link_rel', $options);
 		$eventful_link_rel_text  = '1' === $eventful_link_rel ? "rel='nofollow'" : '';
 
-		$eventful_link_target = EFUL_Functions::eventful_metabox_value('eventful_link_target', $options);
+		$eventful_link_target = EFUL_Functions::eful_metabox_value('eventful_link_target', $options);
 		if (is_array($post_meta_fields) && 'accordion_layout' !== $layout && $show_post_meta) {
 			foreach ($post_meta_fields as $each_meta) {
 				if ('taxonomy' === $each_meta['select_post_meta']) {
@@ -56,18 +56,18 @@ class EFUL_HTML
 			}
 		}
 
-		$post_title_setting = isset($sorter['eventful_post_title']) ? $sorter['eventful_post_title'] : '';
-		$show_post_title    = EFUL_Functions::eventful_metabox_value('show_post_title', $post_title_setting);
+		$post_title_setting = isset($sorter['eful_post_title']) ? $sorter['eful_post_title'] : '';
+		$show_post_title    = EFUL_Functions::eful_metabox_value('show_post_title', $post_title_setting);
 
-		$eventful_post_title = get_the_title($post->ID);
+		$eful_post_title = get_the_title($post->ID);
 
-		if ($show_post_title && !empty($eventful_post_title)) {
+		if ($show_post_title && !empty($eful_post_title)) {
 			// Post Title Settings.
-			$post_title_tag    = EFUL_Functions::eventful_metabox_value('post_title_tag', $post_title_setting, 'h2');
-			$limit_post_title = EFUL_Functions::eventful_metabox_value('post_title_limit', $post_title_setting);
+			$post_title_tag    = EFUL_Functions::eful_metabox_value('post_title_tag', $post_title_setting, 'h2');
+			$limit_post_title = EFUL_Functions::eful_metabox_value('post_title_limit', $post_title_setting);
 			if ($limit_post_title) {
 				$post_title_length = (int) isset($post_title_setting['eventful_title_length']) ? $post_title_setting['eventful_title_length'] : '';
-				$eventful_post_title    = EFUL_Functions::limit_post_title($eventful_post_title, $post_title_length);
+				$eful_post_title    = EFUL_Functions::limit_post_title($eful_post_title, $post_title_length);
 			}
 
 			$allowed_html_tags = array(
@@ -103,10 +103,10 @@ class EFUL_HTML
 	 */
 	public static function eful_content_html($sorter, $options, $post, $is_table = false)
 	{
-		$post_content_setting = EFUL_Functions::eventful_metabox_value('eventful_post_content', $sorter);
-		$show_post_content    = EFUL_Functions::eventful_metabox_value('show_post_content', $post_content_setting);
-		$show_read_more                = EFUL_Functions::eventful_metabox_value('show_read_more', $post_content_setting);
-		$eful_content_type              = EFUL_Functions::eventful_metabox_value('post_content_type', $post_content_setting);
+		$post_content_setting = EFUL_Functions::eful_metabox_value('eventful_post_content', $sorter);
+		$show_post_content    = EFUL_Functions::eful_metabox_value('show_post_content', $post_content_setting);
+		$show_read_more                = EFUL_Functions::eful_metabox_value('show_read_more', $post_content_setting);
+		$eful_content_type              = EFUL_Functions::eful_metabox_value('post_content_type', $post_content_setting);
 		$td                            = self::table_td($is_table);
 		$allow_tag                     = array('td' => array());
 		if ($show_post_content || $show_read_more) {
@@ -127,13 +127,13 @@ class EFUL_HTML
 	 */
 	public static function eful_read_more_html($sorter, $options, $post, $is_table = false)
 	{
-		$post_content_setting = EFUL_Functions::eventful_metabox_value('eventful_post_content_readmore', $sorter);
-		$show_read_more                = EFUL_Functions::eventful_metabox_value('show_read_more', $post_content_setting);
-		$eful_content_type              = EFUL_Functions::eventful_metabox_value('post_content_type', $post_content_setting);
+		$post_content_setting = EFUL_Functions::eful_metabox_value('eventful_post_content_readmore', $sorter);
+		$show_read_more                = EFUL_Functions::eful_metabox_value('show_read_more', $post_content_setting);
+		$eful_content_type              = EFUL_Functions::eful_metabox_value('post_content_type', $post_content_setting);
 		$td                            = self::table_td($is_table);
 		$allow_tag                     = array('td' => array());
 		if ($show_read_more) {
-			self::eventful_readmore( $post_content_setting, $eful_content_type, $options, $post );
+			self::eful_readmore( $post_content_setting, $eful_content_type, $options, $post );
 		}
 	}
 
@@ -144,7 +144,7 @@ class EFUL_HTML
 	 * @param array $content_type The content type.
 	 * @param array $options The parent of this field.
 	 */
-	public static function eventful_readmore($view_options, $content_type, $options, $post)
+	public static function eful_readmore($view_options, $content_type, $options, $post)
 	{
 		$show_read_more = isset($view_options['show_read_more']) ? $view_options['show_read_more'] : '';
 		if (!$show_read_more || 'full_content' === $content_type) {
@@ -152,13 +152,13 @@ class EFUL_HTML
 		}
 		$read_more_type     = isset($view_options['read_more_type']) ? $view_options['read_more_type'] : '';
 		$eventful_read_label     = isset($view_options['eventful_read_label']) ? $view_options['eventful_read_label'] : '';
-		$eventful_page_link_type = EFUL_Functions::eventful_metabox_value('eventful_page_link_type', $options);
-		$eventful_link_rel       = EFUL_Functions::eventful_metabox_value('eventful_link_rel', $options);
+		$eventful_page_link_type = EFUL_Functions::eful_metabox_value('eventful_page_link_type', $options);
+		$eventful_link_rel       = EFUL_Functions::eful_metabox_value('eventful_link_rel', $options);
 		$eventful_link_rel_text  = '';
 		if ($eventful_link_rel) {
 			$eventful_link_rel_text = "rel='nofollow'";
 		}
-		$readmore_target = EFUL_Functions::eventful_metabox_value('eventful_link_target', $options);
+		$readmore_target = EFUL_Functions::eful_metabox_value('eventful_link_target', $options);
 
 		ob_start();
 		include EFUL_Functions::eful_locate_template('item/read-more.php');
@@ -177,9 +177,9 @@ class EFUL_HTML
 	 */
 	public static function eful_post_thumb_html($sorter, $scode_id, $post, $options, $layout, $is_table = false)
 	{
-		$_post_thumb_setting = EFUL_Functions::eventful_metabox_value('eventful_post_thumb', $sorter);
-		$eventful_page_link_type  = EFUL_Functions::eventful_metabox_value('eventful_page_link_type', $options);
-		$eventful_link_rel        = EFUL_Functions::eventful_metabox_value('eventful_link_rel', $options);
+		$_post_thumb_setting = EFUL_Functions::eful_metabox_value('eventful_post_thumb', $sorter);
+		$eventful_page_link_type  = EFUL_Functions::eful_metabox_value('eventful_page_link_type', $options);
+		$eventful_link_rel        = EFUL_Functions::eful_metabox_value('eventful_link_rel', $options);
 		$eventful_post_type       = 'tribe_events';
 
 		$post_thumb_meta 	= $_post_thumb_setting['post_thumb_meta'];
@@ -191,8 +191,8 @@ class EFUL_HTML
 			$is_attachment = true;
 		}
 		$eventful_link_rel_text    = '1' === $eventful_link_rel ? "rel='nofollow'" : '';
-		$eventful_link_target      = EFUL_Functions::eventful_metabox_value('eventful_link_target', $options);
-		if (EFUL_Functions::eventful_metabox_value('post_thumb_show', $_post_thumb_setting)) {
+		$eventful_link_target      = EFUL_Functions::eful_metabox_value('eventful_link_target', $options);
+		if (EFUL_Functions::eful_metabox_value('post_thumb_show', $_post_thumb_setting)) {
 			$eventful_image_attr  = EFUL_Functions::eful_sized_thumb($_post_thumb_setting, $post->ID, $is_attachment);
 
 			$thumb_url       = $eventful_image_attr['src'];
@@ -204,9 +204,9 @@ class EFUL_HTML
 			}
 
 			$alter_text       = EFUL_Functions::eful_thumb_alter_text($post->ID);
-			$_meta_settings   = EFUL_Functions::eventful_metabox_value('eventful_post_meta', $sorter);
-			$post_meta_fields = EFUL_Functions::eventful_metabox_value('eventful_post_meta_group', $_meta_settings);
-			$show_post_meta   = EFUL_Functions::eventful_metabox_value('show_post_meta', $_meta_settings, true);
+			$_meta_settings   = EFUL_Functions::eful_metabox_value('eventful_post_meta', $sorter);
+			$post_meta_fields = EFUL_Functions::eful_metabox_value('eventful_post_meta_group', $_meta_settings);
+			$show_post_meta   = EFUL_Functions::eful_metabox_value('show_post_meta', $_meta_settings, true);
 			$td               = self::table_td($is_table);
 			$allow_tag        = array('td' => array());
 			if (!empty($thumb_url)) {
@@ -257,12 +257,12 @@ class EFUL_HTML
 	 * @param int   $visitor_count views count.
 	 * @return void
 	 */
-	public static function eventful_post_meta_html($sorter, $visitor_count, $post, $is_table = false)
+	public static function eful_post_meta_html($sorter, $visitor_count, $post, $is_table = false)
 	{
-		$_meta_settings   = EFUL_Functions::eventful_metabox_value('eventful_post_meta', $sorter);
-		$post_meta_fields = EFUL_Functions::eventful_metabox_value('eventful_post_meta_group', $_meta_settings);
-		$show_post_meta   = EFUL_Functions::eventful_metabox_value('show_post_meta', $_meta_settings, true);
-		$_meta_separator  = EFUL_Functions::eventful_metabox_value('meta_separator', $_meta_settings);
+		$_meta_settings   = EFUL_Functions::eful_metabox_value('eventful_post_meta', $sorter);
+		$post_meta_fields = EFUL_Functions::eful_metabox_value('eventful_post_meta_group', $_meta_settings);
+		$show_post_meta   = EFUL_Functions::eful_metabox_value('show_post_meta', $_meta_settings, true);
+		$_meta_separator  = EFUL_Functions::eful_metabox_value('meta_separator', $_meta_settings);
 
 		if ($post_meta_fields && $show_post_meta) {
 
@@ -281,10 +281,10 @@ class EFUL_HTML
 	 */
 	public static function eful_event_fildes_html($sorter, $visitor_count, $post, $is_table = false)
 	{
-		$_meta_settings   = EFUL_Functions::eventful_metabox_value('eventful_event_fildes', $sorter);
-		$event_fildes_fields = EFUL_Functions::eventful_metabox_value('eventful_event_fildes_group', $_meta_settings);
-		$show_event_fildes   = EFUL_Functions::eventful_metabox_value('show_event_fildes', $_meta_settings, true);
-		$_event_meta_separator  = EFUL_Functions::eventful_metabox_value('event_meta_separator', $_meta_settings);
+		$_meta_settings   = EFUL_Functions::eful_metabox_value('eventful_event_fildes', $sorter);
+		$event_fildes_fields = EFUL_Functions::eful_metabox_value('eventful_event_fildes_group', $_meta_settings);
+		$show_event_fildes   = EFUL_Functions::eful_metabox_value('show_event_fildes', $_meta_settings, true);
+		$_event_meta_separator  = EFUL_Functions::eful_metabox_value('event_meta_separator', $_meta_settings);
 
 		if ($event_fildes_fields && $show_event_fildes) {
 			
@@ -314,8 +314,8 @@ class EFUL_HTML
 					case 'eventful_post_thumb':
 						self::eful_post_thumb_html($sorter, $scode_id, $post, $options, $layout, $is_table);
 						break;
-					case 'eventful_post_title':
-						self::eventful_post_title($sorter, $layout, $options, $post, $is_table);
+					case 'eful_post_title':
+						self::eful_post_title($sorter, $layout, $options, $post, $is_table);
 						break;
 					case 'eventful_post_content':
 						self::eful_content_html($sorter, $options, $post, $is_table);
@@ -324,7 +324,7 @@ class EFUL_HTML
 						self::eful_read_more_html($sorter, $options, $post, $is_table);
 						break;
 					case 'eventful_post_meta':
-						self::eventful_post_meta_html($sorter, $visitor_count, $post, $is_table);
+						self::eful_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'eventful_event_fildes':
 						self::eful_event_fildes_html($sorter, $visitor_count, $post, $is_table);
@@ -349,8 +349,8 @@ class EFUL_HTML
 		if ($sorter) {
 			foreach ($sorter as $style_key => $style_value) {
 				switch ($style_key) {
-					case 'eventful_post_title':
-						self::eventful_post_title($sorter, $layout, $options, $post, $is_table);
+					case 'eful_post_title':
+						self::eful_post_title($sorter, $layout, $options, $post, $is_table);
 						break;
 					case 'eventful_post_content':
 						self::eful_content_html($sorter, $options, $post, $is_table);
@@ -359,7 +359,7 @@ class EFUL_HTML
 						self::eful_read_more_html($sorter, $options, $post, $is_table);
 						break;
 					case 'eventful_post_meta':
-						self::eventful_post_meta_html($sorter, $visitor_count, $post, $is_table);
+						self::eful_post_meta_html($sorter, $visitor_count, $post, $is_table);
 						break;
 					case 'eventful_event_fildes':
 						self::eful_event_fildes_html($sorter, $visitor_count, $post, $is_table);
@@ -377,7 +377,7 @@ class EFUL_HTML
 	public static function eful_alt_post_class($options, $layout_preset)
 	{
 		if ('carousel_layout' === $layout_preset || 'grid_layout' === $layout_preset) {
-			if ('overlay' === EFUL_Functions::eventful_metabox_value('post_content_orientation', $options)) {
+			if ('overlay' === EFUL_Functions::eful_metabox_value('post_content_orientation', $options)) {
 				$eful_alt_post_class = 'ta-overlay eventful__item';
 			} else {
 				$eful_alt_post_class = 'eventful__item';
@@ -398,7 +398,7 @@ class EFUL_HTML
 	 * @param array  $paged paged.
 	 * @param array  $on_screen screen type.
 	 */
-	public static function eventful_pagination_bar($loop, $view_options, $layout, $views_id, $paged = null, $on_screen = null)
+	public static function eful_pagination_bar($loop, $view_options, $layout, $views_id, $paged = null, $on_screen = null)
 	{
 		$posts_found   = $loop->found_posts;
 		$post_offset   = isset($view_options['eventful_post_offset']) ? $view_options['eventful_post_offset'] : 0;
@@ -422,7 +422,7 @@ class EFUL_HTML
 		if ($post_limit < 1) {
 			$pages = 0;
 		} else {
-			$pages = EFUL_Functions::eventful_max_pages($post_limit, $post_per_page);
+			$pages = EFUL_Functions::eful_max_pages($post_limit, $post_per_page);
 		}
 		$big = 999999999; // need an unlikely integer.
 		if ($pages > 1) {
@@ -567,12 +567,12 @@ class EFUL_HTML
 	 * @param bool $preloader show preloader.
 	 * @return void
 	 */
-	public static function eventful_preloader($preloader)
+	public static function eful_preloader($preloader)
 	{
 		if ($preloader) {
 			ob_start();
 			include EFUL_Functions::eful_locate_template('preloader.php');
-			$preloader = apply_filters('eventful_preloader', ob_get_clean());
+			$preloader = apply_filters('eful_preloader', ob_get_clean());
 			echo wp_kses_post($preloader);
 		}
 	}
@@ -587,13 +587,13 @@ class EFUL_HTML
 	 * @param int   $view_id Shortcode ID.
 	 * @return void
 	 */
-	public static function eventful_get_posts($options, $layout, $sorter, $eventful_query, $view_id)
+	public static function eful_get_posts($options, $layout, $sorter, $eventful_query, $view_id)
 	{
 		$eventful_count = 1;
 		$all_posts = $eventful_query->posts;
 		foreach ($all_posts as $key => $post) {
 			$visitor_count = get_post_meta($post->ID, '_post_views_count', true);
-			self::eventful_post_loop($options, $layout, $sorter, $eventful_count, $view_id, $post);
+			self::eful_post_loop($options, $layout, $sorter, $eventful_count, $view_id, $post);
 			$eventful_count++;
 		}
 	}
@@ -646,16 +646,16 @@ class EFUL_HTML
 	 * @param int    $scode_id Shortcode ID.
 	 * @return void
 	 */
-	public static function eventful_post_loop($options, $layout, $sorter, $eventful_count, $scode_id, $post)
+	public static function eful_post_loop($options, $layout, $sorter, $eventful_count, $scode_id, $post)
 	{
-		$number_of_columns = EFUL_Functions::eventful_metabox_value('eventful_number_of_columns', $options);
-		$slide_effect      = EFUL_Functions::eventful_metabox_value('eventful_slide_effect', $options);
+		$number_of_columns = EFUL_Functions::eful_metabox_value('eventful_number_of_columns', $options);
+		$slide_effect      = EFUL_Functions::eful_metabox_value('eventful_slide_effect', $options);
 		$visitor_count     = get_post_meta($post->ID, '_post_views_count', true);
-		$lazy_load         = EFUL_Functions::eventful_metabox_value('eventful_lazy_load', $options);
+		$lazy_load         = EFUL_Functions::eful_metabox_value('eventful_lazy_load', $options);
 		if ('cube' === $slide_effect || 'flip' === $slide_effect) {
 			$lazy_load = 'false';
 		}
-		if (('carousel_layout' === $layout || 'grid_layout' === $layout || 'filter_layout' === $layout) && ('default' === EFUL_Functions::eventful_metabox_value('post_content_orientation', $options))) {
+		if (('carousel_layout' === $layout || 'grid_layout' === $layout || 'filter_layout' === $layout) && ('default' === EFUL_Functions::eful_metabox_value('post_content_orientation', $options))) {
 		?>
 			<div class="<?php echo esc_attr(self::eful_post_responsive_columns($layout, $number_of_columns, $post->ID)); ?>">
 				<div class="eventful__item eventful-item-<?php echo esc_attr($post->ID); ?>" data-id="<?php echo esc_attr($post->ID); ?>">
@@ -663,15 +663,15 @@ class EFUL_HTML
 					self::eful_post_content_with_thumb($sorter, $layout, $visitor_count, $scode_id, $post, $options);
 					?>
 				</div>
-				<?php if ('carousel_layout' === $layout && $lazy_load && 'ticker' !== EFUL_Functions::eventful_metabox_value('eventful_carousel_mode', $options)) { ?>
+				<?php if ('carousel_layout' === $layout && $lazy_load && 'ticker' !== EFUL_Functions::eful_metabox_value('eventful_carousel_mode', $options)) { ?>
 					<!-- <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div> -->
 				<?php } ?>
 			</div>
 		<?php
 		} else {
 			$animation_class = '';
-			if (('overlay' === EFUL_Functions::eventful_metabox_value('post_content_orientation', $options) || 'overlay-box' === EFUL_Functions::eventful_metabox_value('post_content_orientation', $options))) {
-				$animation_class = ('on_hover' === EFUL_Functions::eventful_metabox_value('post_overlay_content_visibility', $options)) ? EFUL_Functions::eventful_metabox_value('post_animation', $options) . ' animated' : '';
+			if (('overlay' === EFUL_Functions::eful_metabox_value('post_content_orientation', $options) || 'overlay-box' === EFUL_Functions::eful_metabox_value('post_content_orientation', $options))) {
+				$animation_class = ('on_hover' === EFUL_Functions::eful_metabox_value('post_overlay_content_visibility', $options)) ? EFUL_Functions::eful_metabox_value('post_animation', $options) . ' animated' : '';
 			}
 			if ('zigzag_layout' === $layout) {
 				$animation_class = '';
@@ -700,7 +700,7 @@ class EFUL_HTML
 	 * @param int    $shortcode_id The shortcode ID.
 	 *
 	 */
-	public static function eventful_wrapper_classes($layout_preset, $shortcode_id, $grid_style = null, $item_same_height_class = '')
+	public static function eful_wrapper_classes($layout_preset, $shortcode_id, $grid_style = null, $item_same_height_class = '')
 	{
 		$wrapper_class = "ta-eventful-section ta-container eventful-wrapper-{$shortcode_id}";
 		switch ($layout_preset) {
@@ -745,7 +745,7 @@ class EFUL_HTML
 	 * @param array  $section_title section title.
 	 * @param object $query layout query.
 	 */
-	public static function eventful_html_show($view_options, $layout, $eventful_gl_id, $section_title = '', $query = array())
+	public static function eful_html_show($view_options, $layout, $eventful_gl_id, $section_title = '', $query = array())
 	{
 		$options              = $view_options;
 		$layout_preset        = isset($layout['eventful_layout_preset']) ? $layout['eventful_layout_preset'] : 'carousel_layout';

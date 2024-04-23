@@ -68,7 +68,7 @@ class EFUL_QueryInside
 			}
 		}
 
-		$post_per_page = EFUL_Functions::eventful_post_per_page($post_limit, $post_per_page, $paged);
+		$post_per_page = EFUL_Functions::eful_post_per_page($post_limit, $post_per_page, $paged);
 		if ($post_per_page < 1) {
 			$post_per_page = isset($view_options['post_per_page']) ? $view_options['post_per_page'] : 12;
 		}
@@ -216,7 +216,7 @@ class EFUL_QueryInside
 						$args            = array_merge($args, array('post_status' => $eventful_post_status));
 						break;
 					case 'date':
-						self::eventful_filter_by_date($args, $view_options);
+						self::eful_filter_by_date($args, $view_options);
 						break;
 					case 'keyword':
 						$keyword_value = isset($view_options['eventful_filter_by_keyword']['eventful_set_post_keyword']) && !empty($view_options['eventful_filter_by_keyword']['eventful_set_post_keyword']) ? $view_options['eventful_filter_by_keyword']['eventful_set_post_keyword'] : '';
@@ -298,13 +298,13 @@ class EFUL_QueryInside
 	 * @param array $view_options The Array of the Metabox fields.
 	 * @return void
 	 */
-	public static function eventful_filter_by_date(&$args, $view_options)
+	public static function eful_filter_by_date(&$args, $view_options)
 	{
 
 		$advanced_filters = isset($view_options['eventful_advanced_filter']) && !empty($view_options['eventful_advanced_filter']) ? $view_options['eventful_advanced_filter'] : '';
 
 		if (in_array('date', $advanced_filters, true)) {
-			$_date_type_to_filter = isset($view_options['eventful_filter_by_date']['eventful_select_post_date_type']) && !empty($view_options['eventful_filter_by_date']['eventful_select_post_date_type']) ? $view_options['eventful_filter_by_date']['eventful_select_post_date_type'] : '';
+			$_date_type_to_filter = isset($view_options['eful_filter_by_date']['eventful_select_post_date_type']) && !empty($view_options['eful_filter_by_date']['eventful_select_post_date_type']) ? $view_options['eful_filter_by_date']['eventful_select_post_date_type'] : '';
 			$now                  = new \DateTime('now');
 			$today                = $now->format('j'); // A numeric representation of a month without 0.
 			$this_month           = $now->format('n'); // A numeric representation of a month without 0.
@@ -368,7 +368,7 @@ class EFUL_QueryInside
 						break;
 
 					case 'specific_date':
-						$_specific_date = isset($view_options['eventful_filter_by_date']['eventful_select_post_specific_date']) && !empty($view_options['eventful_filter_by_date']['eventful_select_post_specific_date']) ? $view_options['eventful_filter_by_date']['eventful_select_post_specific_date'] : '';
+						$_specific_date = isset($view_options['eful_filter_by_date']['eventful_select_post_specific_date']) && !empty($view_options['eful_filter_by_date']['eventful_select_post_specific_date']) ? $view_options['eful_filter_by_date']['eventful_select_post_specific_date'] : '';
 						$specific_date  = date_parse($_specific_date);
 						$date_query     = array(
 							'year'  => $specific_date['year'],
@@ -378,14 +378,14 @@ class EFUL_QueryInside
 						break;
 
 					case 'specific_month':
-						$post_published_in_month = isset($view_options['eventful_filter_by_date']['eventful_select_specific_month']) && !empty($view_options['eventful_filter_by_date']['eventful_select_specific_month']) ? $view_options['eventful_filter_by_date']['eventful_select_specific_month'] : '';
+						$post_published_in_month = isset($view_options['eful_filter_by_date']['eventful_select_specific_month']) && !empty($view_options['eful_filter_by_date']['eventful_select_specific_month']) ? $view_options['eful_filter_by_date']['eventful_select_specific_month'] : '';
 						$date_query              = array(
 							'month' => $post_published_in_month,
 						);
 						break;
 
 					case 'specific_year':
-						$post_published_in_year = isset($view_options['eventful_filter_by_date']['eventful_select_post_specific_year']['all']) && !empty($view_options['eventful_filter_by_date']['eventful_select_post_specific_year']['all']) ? $view_options['eventful_filter_by_date']['eventful_select_post_specific_year']['all'] : '';
+						$post_published_in_year = isset($view_options['eful_filter_by_date']['eventful_select_post_specific_year']['all']) && !empty($view_options['eful_filter_by_date']['eventful_select_post_specific_year']['all']) ? $view_options['eful_filter_by_date']['eventful_select_post_specific_year']['all'] : '';
 
 						$date_query = array(
 							'year' => $post_published_in_year,
@@ -393,7 +393,7 @@ class EFUL_QueryInside
 						break;
 
 					case 'specific_period':
-						$_date_from_to = isset($view_options['eventful_filter_by_date']['eventful_select_post_date_from_to']) && !empty($view_options['eventful_filter_by_date']['eventful_select_post_date_from_to']) ? $view_options['eventful_filter_by_date']['eventful_select_post_date_from_to'] : '';
+						$_date_from_to = isset($view_options['eful_filter_by_date']['eventful_select_post_date_from_to']) && !empty($view_options['eful_filter_by_date']['eventful_select_post_date_from_to']) ? $view_options['eful_filter_by_date']['eventful_select_post_date_from_to'] : '';
 						$_date_from    = isset($_date_from_to) ? $_date_from_to['from'] : $today;
 						$_date_to      = isset($_date_from_to) ? $_date_from_to['to'] : $today;
 						$date_from     = date_parse($_date_from);
