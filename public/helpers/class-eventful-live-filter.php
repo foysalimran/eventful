@@ -181,7 +181,7 @@ class EFUL_Live_Filter
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$last_filter         = isset($_POST['last_filter']) ? sanitize_text_field(wp_unslash($_POST['last_filter'])) : '';
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
-		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash(sanitize_text_field($_POST['term_list'])) : ''; 
+		$selected_term_list  = isset($_POST['term_list']) ? rest_sanitize_array(wp_unslash($_POST['term_list'])) : '';
 
 		$view_options                 = get_post_meta($eventful_gl_id, 'eful_view_options', true);
 		$query_args                   = EFUL_QueryInside::eful_get_filtered_content($view_options, $eventful_gl_id);
@@ -392,7 +392,7 @@ class EFUL_Live_Filter
 		$author_id           = isset($_POST['author_id']) ? sanitize_text_field(wp_unslash($_POST['author_id'])) : '';
 		$last_filter         = isset($_POST['last_filter']) ? sanitize_text_field(wp_unslash($_POST['last_filter'])) : '';
 		$paged               = isset($_POST['page']) ? sanitize_text_field(wp_unslash($_POST['page'])) : '';
-		$selected_term_list  = isset($_POST['term_list']) ? wp_unslash(sanitize_text_field($_POST['term_list'])) : '';
+		$selected_term_list  = isset($_POST['term_list']) ? rest_sanitize_array(wp_unslash($_POST['term_list'])) : '';
 		$settings            = array();
 		parse_str(wp_kses_post($_POST['data']), $settings);
 		$layout                       = $settings['eful_layouts'];
