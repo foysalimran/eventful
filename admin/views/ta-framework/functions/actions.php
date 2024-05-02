@@ -97,7 +97,7 @@ if (!function_exists('eventful_import_ajax')) {
 
 		$nonce  = (!empty($_POST['nonce'])) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
 		$unique = (!empty($_POST['unique'])) ? sanitize_text_field(wp_unslash($_POST['unique'])) : '';
-		$data   = (!empty($_POST['data'])) ? wp_kses_post_deep(json_decode(wp_unslash(trim($_POST['data'])), true)) : array();
+		$data   = (!empty($_POST['data'])) ? sanitize_post(json_decode(wp_unslash(trim($_POST['data'])), true)) : array();
 
 		if (!wp_verify_nonce($nonce, 'eventful_backup_nonce')) {
 			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'eventful' )));

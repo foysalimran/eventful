@@ -198,7 +198,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 				echo '<select class="eventful--font-style-select" data-placeholder="Default">';
 				echo '<option value="">' . ( ! $this->chosen ? esc_html__( 'Default', 'eventful' ) : '' ) . '</option>';
 				if ( ! empty( $this->value['font-weight'] ) || ! empty( $this->value['font-style'] ) ) {
-					echo '<option value="' . strtolower( $this->value['font-weight'] . $this->value['font-style'] ) . '" selected></option>';
+					echo '<option value="' . esc_attr(strtolower( $this->value['font-weight'] . $this->value['font-style'] )) . '" selected></option>';
 				}
 				echo '</select>';
 				echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[font-weight]' ) ) . '" class="eventful--font-weight" value="' . esc_attr( $this->value['font-weight'] ) . '" />';

@@ -215,7 +215,7 @@ class EFUL_HTML
 				include EFUL_Functions::eful_locate_template('item/thumbnail.php');
 				echo wp_kses($td['end'], $allow_tag);
 				$item_thumb = apply_filters('eful_item_thumbnail', ob_get_clean());
-				echo $item_thumb; // phpcs:ignore
+				echo wp_kses_post($item_thumb); // phpcs:ignore
 			}
 		}
 	}
@@ -427,11 +427,11 @@ class EFUL_HTML
 		$big = 999999999; // need an unlikely integer.
 		if ($pages > 1) {
 			$page_current     = max(1, get_query_var('paged'));
-			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash(sanitize_text_field($_SERVER['QUERY_STRING'])) : ''; //phpcs:ignore
+			$filter_url_value = isset($_SERVER['QUERY_STRING']) ? wp_unslash(sanitize_text_field($_SERVER['QUERY_STRING'])) : '';
 			if (!empty($filter_url_value)) {
-				$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : ''; //phpcs:ignore
+				$shortcode_id = isset($_GET['eventful']) ? wp_unslash(sanitize_text_field($_GET['eventful'])) : '';
 				if ($shortcode_id == $views_id) {
-					$eventful_page = isset($_GET['eventful_page']) ? wp_unslash(sanitize_text_field($_GET['eventful_page'])) : ''; //phpcs:ignore
+					$eventful_page = isset($_GET['eventful_page']) ? wp_unslash(sanitize_text_field($_GET['eventful_page'])) : '';
 					if (!empty($eventful_page)) {
 						$page_current = $eventful_page;
 					}
@@ -478,7 +478,8 @@ class EFUL_HTML
 					$html .= $link;
 					$p_num++;
 				}
-				echo wp_kses_post($html); //phpcs:ignore
+				
+				echo wp_kses_post($html);
 			} elseif ('no_ajax' === $pagination_type) {
 
 				$paged_var    = 'paged' . $views_id;
@@ -498,7 +499,25 @@ class EFUL_HTML
 						'next_text' => '<i class="fa fa-angle-right"></i>',
 					)
 				);
-				echo implode($page_links); //phpcs:ignore
+				$allowed_html = array(
+					'nav' => array(
+						'class' => array()
+					),
+					'span' => array(
+						'aria-current' => array(),
+						'class' => array()
+					),
+					'a' => array(
+						'href' => array(),
+						'class' => array()
+					),
+					'i' => array(
+						'class' => array()
+					)
+				);
+				
+				// Escape the content using wp_kses
+				echo wp_kses(implode($page_links), $allowed_html);
 			} else {
 				$page_links = paginate_links(
 					array(
@@ -535,7 +554,7 @@ class EFUL_HTML
 					$html .= $link;
 					$p_num++;
 				}
-				echo wp_kses_post($html); //phpcs:ignore
+				echo wp_kses_post($html);
 			}
 		}
 	}
