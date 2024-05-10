@@ -5,18 +5,18 @@
 $(window).load(function () {
   $('.eventful-opened-accordion').each(function () {
     if (!$(this).hasClass('hidden')) {
-      $(this).addClass('eventful_saved_filter')
+      $(this).addClass('eful_saved_filter')
     }
   })
 })
-$('.eventful-field-checkbox.eventful_advanced_filter').change(function (event) {
+$('.eventful-field-checkbox.eful_advanced_filter').change(function (event) {
   $('.eventful-opened-accordion').each(function () {
     if ($(this).hasClass('hidden')) {
-      $(this).removeClass('eventful_saved_filter')
+      $(this).removeClass('eful_saved_filter')
     } else {
-      $(this).addClass('eventful_saved_filter')
+      $(this).addClass('eful_saved_filter')
     }
-    if (!$(this).hasClass('eventful_saved_filter')) {
+    if (!$(this).hasClass('eful_saved_filter')) {
       if (
         $(this)
           .find('.eventful-accordion-title')

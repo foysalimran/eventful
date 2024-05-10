@@ -115,7 +115,7 @@ class Eventful
 	 *
 	 * - Eventful_Loader. Orchestrates the hooks of the plugin.
 	 * - Eventful_i18n. Defines internationalization functionality.
-	 * - Eventful_Admin. Defines all hooks for the admin area.
+	 * - Eful_Admin. Defines all hooks for the admin area.
 	 * - Eventful_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
@@ -205,13 +205,13 @@ class Eventful
 	private function define_admin_hooks()
 	{
 
-		$plugin_admin = new Eventful_Admin(EFUL_PLUGIN_NAME, EFUL_VERSION);
+		$plugin_admin = new Eful_Admin(EFUL_PLUGIN_NAME, EFUL_VERSION);
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 
-		$this->loader->add_filter('manage_eventful_posts_columns', $plugin_admin, 'eful_filter_admin_column');
-		$this->loader->add_action('manage_eventful_posts_custom_column', $plugin_admin, 'eful_display_admin_fields', 10, 2);
+		$this->loader->add_filter('manage_eful_posts_columns', $plugin_admin, 'eful_filter_admin_column');
+		$this->loader->add_action('manage_eful_posts_custom_column', $plugin_admin, 'eful_display_admin_fields', 10, 2);
 	}
 
 	/**

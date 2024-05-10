@@ -21,8 +21,8 @@ class EFUL_DetailSettings {
 				'icon'   => 'fas fa-external-link-square-alt',
 				'fields' => array(
 					array(
-						'id'       => 'eventful_page_link_type',
-						'class'    => 'eventful_page_link_type',
+						'id'       => 'eful_page_link_type',
+						'class'    => 'eful_page_link_type',
 						'type'     => 'radio',
 						'title'    => esc_html__( 'Detail Page Link Type', 'eventful' ),
 						'subtitle' => esc_html__( 'Choose a link type for the (item) detail page.', 'eventful' ),
@@ -34,7 +34,7 @@ class EFUL_DetailSettings {
 						'default'  => 'single_page',
 					),
 					array(
-						'id'         => 'eventful_link_target',
+						'id'         => 'eful_link_target',
 						'type'       => 'radio',
 						'title'      => esc_html__( 'Target', 'eventful' ),
 						'subtitle'   => esc_html__( 'Set a target for the item link.', 'eventful' ),
@@ -45,10 +45,10 @@ class EFUL_DetailSettings {
 							'_top'    => esc_html__( 'Top', 'eventful' ),
 						),
 						'default'    => '_self',
-						'dependency' => array( 'eventful_page_link_type', '==', 'single_page' ),
+						'dependency' => array( 'eful_page_link_type', '==', 'single_page' ),
 					),
 					array(
-						'id'      => 'eventful_link_rel',
+						'id'      => 'eful_link_rel',
 						'type'    => 'checkbox',
 						'title'   => esc_html__( 'Add rel="nofollow" to item links', 'eventful' ),
 						'default' => 'false',

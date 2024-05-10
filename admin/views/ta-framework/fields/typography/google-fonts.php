@@ -2,8 +2,8 @@
 	die;
 } // Cannot access directly.
 
-if ( ! function_exists( 'eventful_get_google_fonts' ) ) {
-	function eventful_get_google_fonts() {
+if ( ! function_exists( 'eful_get_google_fonts' ) ) {
+	function eful_get_google_fonts() {
 		return array(
       'ABeeZee'                       => array(
 				array( 'normal', 'italic' ),

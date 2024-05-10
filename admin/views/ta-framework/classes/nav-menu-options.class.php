@@ -25,8 +25,8 @@ if ( ! class_exists( 'EFUL_Nav_Menu_Options' ) ) {
     public function __construct( $key, $params ) {
 
       $this->unique     = $key;
-      $this->args       = apply_filters( "eventful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections   = apply_filters( "eventful_{$this->unique}_sections", $params['sections'], $this );
+      $this->args       = apply_filters( "eful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections   = apply_filters( "eful_{$this->unique}_sections", $params['sections'], $this );
       $this->pre_fields = $this->pre_fields( $this->sections );
 
       add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'wp_nav_menu_item_custom_fields' ), 10, 4 );
@@ -96,12 +96,12 @@ if ( ! class_exists( 'EFUL_Nav_Menu_Options' ) ) {
     //
     public function wp_nav_menu_item_custom_fields( $menu_item_id, $item, $depth, $args ) {
 
-      $errors = ( ! empty( $menu_item_id ) ) ? get_post_meta( $menu_item_id, '_eventful_errors_'. $this->unique, true ) : array();
+      $errors = ( ! empty( $menu_item_id ) ) ? get_post_meta( $menu_item_id, '_eful_errors_'. $this->unique, true ) : array();
       $errors = ( ! empty( $errors ) ) ? $errors : array();
       $class  = ( $this->args['class'] ) ? ' '. $this->args['class'] : '';
 
       if ( ! empty( $errors ) ) {
-        delete_post_meta( $menu_item_id, '_eventful_errors_'. $this->unique );
+        delete_post_meta( $menu_item_id, '_eful_errors_'. $this->unique );
       }
 
       echo '<div class="eventful eventful-nav-menu-options'. esc_attr( $class ) .'">';
@@ -217,9 +217,9 @@ if ( ! class_exists( 'EFUL_Nav_Menu_Options' ) ) {
 
       }
 
-      $data = apply_filters( "eventful_{$this->unique}_save", $data, $menu_item_db_id, $this );
+      $data = apply_filters( "eful_{$this->unique}_save", $data, $menu_item_db_id, $this );
 
-      do_action( "eventful_{$this->unique}_save_before", $data, $menu_item_db_id, $this );
+      do_action( "eful_{$this->unique}_save_before", $data, $menu_item_db_id, $this );
 
       if ( empty( $data ) ) {
 
@@ -244,14 +244,14 @@ if ( ! class_exists( 'EFUL_Nav_Menu_Options' ) ) {
         }
 
         if ( ! empty( $errors ) ) {
-          update_post_meta( $menu_item_db_id, '_eventful_errors_'. $this->unique, $errors );
+          update_post_meta( $menu_item_db_id, '_eful_errors_'. $this->unique, $errors );
         }
 
       }
 
-      do_action( "eventful_{$this->unique}_saved", $data, $menu_item_db_id, $this );
+      do_action( "eful_{$this->unique}_saved", $data, $menu_item_db_id, $this );
 
-      do_action( "eventful_{$this->unique}_save_after", $data, $menu_item_db_id, $this );
+      do_action( "eful_{$this->unique}_save_after", $data, $menu_item_db_id, $this );
 
     }
 

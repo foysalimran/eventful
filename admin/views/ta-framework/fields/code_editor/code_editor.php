@@ -48,15 +48,14 @@ if (!class_exists('EFUL_Field_code_editor')) {
 			if (in_array($page, array('revslider'))) {
 				return;
 			}
-			if (!wp_script_is('codemirror')) {
-				wp_enqueue_script('codemirror');
+			if(!wp_enqueue_script('wp-codemirror')) {
+				wp_enqueue_script("wp-codemirror", true);
+				wp_enqueue_script('eful-codemirror-loadmode', EFUL_URL . 'admin/views/ta-framework/assets/js/loadmode.min.js', array('wp-codemirror'), $this->version, true);
 			}
-			if (!wp_script_is('eful-codemirror')) {
-				wp_enqueue_script('eful-codemirror-loadmode', EFUL_URL . 'admin/views/ta-framework/assets/js/loadmode.min.js', array('eful-codemirror'), $this->version, true);
-			}
+
 			// Enqueue Codemirror style if it's not already enqueued
-			if (!wp_style_is('codemirror')) {
-				wp_enqueue_style('codemirror');
+			if (!wp_style_is('eful-codemirror')) {
+				wp_enqueue_style('eful-codemirror', EFUL_URL . 'admin/views/ta-framework/assets/css/codemirror.min.css', array(), $this->version);
 			}
 		}
 	}

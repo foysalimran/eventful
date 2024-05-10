@@ -16,32 +16,32 @@ $lazy_load = apply_filters('eful_img_lazy_load', $lazy_load);
 if ('carousel_layout' !== $layout && $lazy_load && !is_admin()) {
 
 	wp_enqueue_script('eventful-lazy');
-	$image = sprintf('<img data-eventful_src="%1$s" %5$s class="eventful-lazyload" width="%2$s"  height="%3$s" alt="%4$s">', $thumb_url, $eventful_image_attr['width'], $eventful_image_attr['height'], $alter_text, $retina_img_attr);
+	$image = sprintf('<img data-eful_src="%1$s" %5$s class="eventful-lazyload" width="%2$s"  height="%3$s" alt="%4$s">', $thumb_url, $eful_image_attr['width'], $eful_image_attr['height'], $alter_text, $retina_img_attr);
 
 } else {
 
-	$image = sprintf('<img %5$s src="%1$s" width="%2$s" height="%3$s" alt="%4$s">', $thumb_url, $eventful_image_attr['width'], $eventful_image_attr['height'], $alter_text, $retina_img_attr);
+	$image = sprintf('<img %5$s src="%1$s" width="%2$s" height="%3$s" alt="%4$s">', $thumb_url, $eful_image_attr['width'], $eful_image_attr['height'], $alter_text, $retina_img_attr);
 }
 
 
 
 ?>
-<div class="eventful__item--thumbnail">
-	<?php if ('none' === $eventful_page_link_type) { ?>
-		<a class="ta-eventful-thumb" aria-label="<?php echo esc_attr($eventful_image_attr['aria_label']); ?>" <?php echo esc_attr($eventful_link_rel_text); ?>>
+<div class="eful__item--thumbnail">
+	<?php if ('none' === $eful_page_link_type) { ?>
+		<a class="ta-eventful-thumb" aria-label="<?php echo esc_attr($eful_image_attr['aria_label']); ?>" <?php echo esc_attr($eful_link_rel_text); ?>>
 		<?php } else { ?>
-			<a class="ta-eventful-thumb" aria-label="<?php echo esc_attr($eventful_image_attr['aria_label']); ?>" href="<?php the_permalink($post); ?>" target="<?php echo esc_attr($eventful_link_target); ?>" <?php echo esc_attr($eventful_link_rel_text); ?>>
+			<a class="ta-eventful-thumb" aria-label="<?php echo esc_attr($eful_image_attr['aria_label']); ?>" href="<?php the_permalink($post); ?>" target="<?php echo esc_attr($eful_link_target); ?>" <?php echo esc_attr($eful_link_rel_text); ?>>
 			<?php
 		}
-		if (empty($eventful_image_attr['video']) && empty($eventful_image_attr['audio'])) {
+		if (empty($eful_image_attr['video']) && empty($eful_image_attr['audio'])) {
 			echo wp_kses_post($image);
-		} elseif ($eventful_image_attr['video']) {
+		} elseif ($eful_image_attr['video']) {
 			?>
-				<div class='ta-eventful-post-video-thumb-area'><?php echo wp_kses_post($eventful_image_attr['video']); ?></div>
+				<div class='ta-eventful-post-video-thumb-area'><?php echo wp_kses_post($eful_image_attr['video']); ?></div>
 			<?php
-		} elseif ($eventful_image_attr['audio']) {
+		} elseif ($eful_image_attr['audio']) {
 			?>
-				<div class='ta-eventful-post-audio-thumb-area'><?php echo wp_kses_post($eventful_image_attr['audio']); ?></div>
+				<div class='ta-eventful-post-audio-thumb-area'><?php echo wp_kses_post($eful_image_attr['audio']); ?></div>
 			<?php } ?>
 			</a>
 			<?php

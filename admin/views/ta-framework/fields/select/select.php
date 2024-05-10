@@ -37,7 +37,7 @@ if ( ! class_exists( 'EFUL_Field_select' ) ) {
 
 				if ( ! empty( $args['ajax'] ) ) {
 					$args['settings']['data']['type']  = $args['options'];
-					$args['settings']['data']['nonce'] = wp_create_nonce( 'eventful_chosen_ajax_nonce' );
+					$args['settings']['data']['nonce'] = wp_create_nonce( 'eful_chosen_ajax_nonce' );
 					if ( ! empty( $args['query_args'] ) ) {
 						$args['settings']['data']['query_args'] = $args['query_args'];
 					}

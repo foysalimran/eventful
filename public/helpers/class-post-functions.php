@@ -37,14 +37,14 @@ class EFUL_Functions
 	/**
 	 * Post title character limit.
 	 *
-	 * @param string  $eventful_title The post title.
+	 * @param string  $eful_title The post title.
 	 * @param integer $limit_length The length for the title.
-	 * @param string  $eventful_after_string The string after title.
+	 * @param string  $eful_after_string The string after title.
 	 * @return statement
 	 */
-	public static function limit_post_title($eventful_title, $limit_length, $eventful_after_string = '...')
+	public static function limit_post_title($eful_title, $limit_length, $eful_after_string = '...')
 	{
-		return mb_strimwidth($eventful_title, 0, $limit_length, apply_filters('eful_post_title_ellipsis', $eventful_after_string));
+		return mb_strimwidth($eful_title, 0, $limit_length, apply_filters('eful_post_title_ellipsis', $eful_after_string));
 	}
 
 	/**
@@ -138,15 +138,15 @@ class EFUL_Functions
 		$post_content_length          = isset($view_options['eful_content_limit']) ? $view_options['eful_content_limit'] : '';
 		$eful_content_characters_limit = isset($view_options['eful_content_characters_limit']) ? $view_options['eful_content_characters_limit'] : '';
 		$post_content_ellipsis        = isset($view_options['post_content_ellipsis']) ? $view_options['post_content_ellipsis'] : '';
-		$eventful_strip_tags               = isset($view_options['eventful_strip_tags']) ? $view_options['eventful_strip_tags'] : '';
-		$eventful_allow_tag_name           = isset($view_options['eventful_allow_tag_name']) ? $view_options['eventful_allow_tag_name'] : '';
-		$allowed_tags                 = explode(',', $eventful_allow_tag_name);
+		$eful_strip_tags               = isset($view_options['eful_strip_tags']) ? $view_options['eful_strip_tags'] : '';
+		$eful_allow_tag_name           = isset($view_options['eful_allow_tag_name']) ? $view_options['eful_allow_tag_name'] : '';
+		$allowed_tags                 = explode(',', $eful_allow_tag_name);
 
 		$is_page_content = false;
 		$is_page_content = apply_filters('eful_strip_shortcode_in_page_content', $is_page_content);
 		global $wp_embed;
 		if ('excerpt' === $type) {
-			$eventful_post_content = get_the_excerpt($post);
+			$eful_post_content = get_the_excerpt($post);
 		} elseif ('full_content' === $type) {
 
 
@@ -155,12 +155,12 @@ class EFUL_Functions
 			} else {
 				$post_content = apply_filters('eful_the_content', $post->post_content);
 			}
-			if ('allow_some' === $eventful_strip_tags) {
-				$eventful_post_content = strip_tags($post_content, self::short_tag_to_html($allowed_tags));
-			} elseif ('strip_all' === $eventful_strip_tags) {
-				$eventful_post_content = wp_strip_all_tags($post_content);
+			if ('allow_some' === $eful_strip_tags) {
+				$eful_post_content = strip_tags($post_content, self::short_tag_to_html($allowed_tags));
+			} elseif ('strip_all' === $eful_strip_tags) {
+				$eful_post_content = wp_strip_all_tags($post_content);
 			} else {
-				$eventful_post_content = $post_content;
+				$eful_post_content = $post_content;
 			}
 		} else {
 			if ($is_page_content) {
@@ -169,21 +169,21 @@ class EFUL_Functions
 				$post_content = apply_filters('eful_the_content', $post->post_content);
 			}
 			if ('characters' === $eful_content_length_type) {
-				$_trimmed_content = ('strip_all' === $eventful_strip_tags) ? wp_html_excerpt($post_content, $eful_content_characters_limit, $post_content_ellipsis) : self::eful_limit_content_chr($post_content, $eful_content_characters_limit, $post_content_ellipsis);
+				$_trimmed_content = ('strip_all' === $eful_strip_tags) ? wp_html_excerpt($post_content, $eful_content_characters_limit, $post_content_ellipsis) : self::eful_limit_content_chr($post_content, $eful_content_characters_limit, $post_content_ellipsis);
 			} else {
 				$_trimmed_content = self::eful_limit_text($post_content, $post_content_length, $post_content_ellipsis);
 			}
-			if ('allow_some' === $eventful_strip_tags) {
-				$eventful_post_content = strip_tags($_trimmed_content, self::short_tag_to_html($allowed_tags));
-			} elseif ('strip_all' === $eventful_strip_tags) {
-				$eventful_post_content = wp_strip_all_tags($_trimmed_content);
+			if ('allow_some' === $eful_strip_tags) {
+				$eful_post_content = strip_tags($_trimmed_content, self::short_tag_to_html($allowed_tags));
+			} elseif ('strip_all' === $eful_strip_tags) {
+				$eful_post_content = wp_strip_all_tags($_trimmed_content);
 			} else {
-				$eventful_post_content = $_trimmed_content;
+				$eful_post_content = $_trimmed_content;
 			}
-			$eventful_post_content = force_balance_tags($eventful_post_content);
+			$eful_post_content = force_balance_tags($eful_post_content);
 		}
-		$eventful_post_content = do_shortcode($wp_embed->autoembed($eventful_post_content));
-		return $eventful_post_content;
+		$eful_post_content = do_shortcode($wp_embed->autoembed($eful_post_content));
+		return $eful_post_content;
 	}
 
 	/**
@@ -255,7 +255,7 @@ class EFUL_Functions
 		$query_args['post__in'] = $post_in;
 
 		if (!empty($orderby)) {
-			$query_args['orderby'] = ('rand' === $orderby) ? 'rand(' . get_transient('eventful_rand') . ')' : $orderby;
+			$query_args['orderby'] = ('rand' === $orderby) ? 'rand(' . get_transient('eful_rand') . ')' : $orderby;
 		}
 		if (!empty($order)) {
 			$query_args['order'] = $order;
@@ -302,11 +302,11 @@ class EFUL_Functions
 	{
 		$thumb_id                  = '';
 		$image                     = '';
-		$eventful_thumb_src_replace     = isset($post_thumb_setting['eventful_thumb_src_replace']) ? $post_thumb_setting['eventful_thumb_src_replace'] : '';
+		$eful_thumb_src_replace     = isset($post_thumb_setting['eful_thumb_src_replace']) ? $post_thumb_setting['eful_thumb_src_replace'] : '';
 		$post_featured_thumb_found = isset($post_thumb_setting['post_featured_thumb_found']) ? $post_thumb_setting['post_featured_thumb_found'] : 'no_featured_img_found';
 		$show_2x_image             = isset($post_thumb_setting['load_2x_image']) ? $post_thumb_setting['load_2x_image'] : false;
 		$image_resize_2x_url       = '';
-		if ('even_featured_img_found' === $post_featured_thumb_found && is_array($eventful_thumb_src_replace)) {
+		if ('even_featured_img_found' === $post_featured_thumb_found && is_array($eful_thumb_src_replace)) {
 			$replace_thumb = self::eful_thumb_replace($post_thumb_setting, $slide_id);
 			$thumb_id      = $replace_thumb['id'];
 		} elseif (!has_post_thumbnail($slide_id) && 'no_featured_img_found' === $post_featured_thumb_found) {
@@ -328,10 +328,10 @@ class EFUL_Functions
 			$thumb_id = $slide_id;
 		}
 		if (!empty($thumb_id)) {
-			$image_sizes       = isset($post_thumb_setting['eventful_thumb_sizes']) ? $post_thumb_setting['eventful_thumb_sizes'] : 'large';
-			$post_image_width  = isset($post_thumb_setting['eventful_image_crop_size']['top']) ? $post_thumb_setting['eventful_image_crop_size']['top'] : '';
-			$post_image_height = isset($post_thumb_setting['eventful_image_crop_size']['right']) ? $post_thumb_setting['eventful_image_crop_size']['right'] : '';
-			$post_image_crop   = isset($post_thumb_setting['eventful_image_crop_size']['style']) ? $post_thumb_setting['eventful_image_crop_size']['style'] : '';
+			$image_sizes       = isset($post_thumb_setting['eful_thumb_sizes']) ? $post_thumb_setting['eful_thumb_sizes'] : 'large';
+			$post_image_width  = isset($post_thumb_setting['eful_image_crop_size']['top']) ? $post_thumb_setting['eful_image_crop_size']['top'] : '';
+			$post_image_height = isset($post_thumb_setting['eful_image_crop_size']['right']) ? $post_thumb_setting['eful_image_crop_size']['right'] : '';
+			$post_image_crop   = isset($post_thumb_setting['eful_image_crop_size']['style']) ? $post_thumb_setting['eful_image_crop_size']['style'] : '';
 			$thumb_full_src    = wp_get_attachment_image_src($thumb_id, 'full');
 			$thumb_full_src    = is_array($thumb_full_src) ? $thumb_full_src : array('', '', '');
 			$image_src         = wp_get_attachment_image_src($thumb_id, $image_sizes);
@@ -358,7 +358,7 @@ class EFUL_Functions
 			$image_width  = 600;
 			$image_height = 450;
 		}
-		$eventful_image_attr = array(
+		$eful_image_attr = array(
 			'src'        => $image,
 			'2x_src'     => $image_resize_2x_url,
 			'width'      => $image_width,
@@ -368,7 +368,7 @@ class EFUL_Functions
 			'aria_label' => !empty($replace_thumb['aria_label']) ? $replace_thumb['aria_label'] : 'feature_image',
 		);
 
-		return $eventful_image_attr;
+		return $eful_image_attr;
 	}
 
 
@@ -383,12 +383,12 @@ class EFUL_Functions
 	 */
 	public static function eful_thumb_replace($post_thumb_setting, $slide_id)
 	{
-		$eventful_thumb_src_replace = isset($post_thumb_setting['eventful_thumb_src_replace']) ? $post_thumb_setting['eventful_thumb_src_replace'] : '';
+		$eful_thumb_src_replace = isset($post_thumb_setting['eful_thumb_src_replace']) ? $post_thumb_setting['eful_thumb_src_replace'] : '';
 
-		if (is_array($eventful_thumb_src_replace)) {
-			$image_src    = in_array('image', $eventful_thumb_src_replace, true) ? true : false;
-			$video_src    = in_array('video', $eventful_thumb_src_replace, true) ? true : false;
-			$audio_src    = in_array('audio', $eventful_thumb_src_replace, true) ? true : false;
+		if (is_array($eful_thumb_src_replace)) {
+			$image_src    = in_array('image', $eful_thumb_src_replace, true) ? true : false;
+			$video_src    = in_array('video', $eful_thumb_src_replace, true) ? true : false;
+			$audio_src    = in_array('audio', $eful_thumb_src_replace, true) ? true : false;
 			$content_post = get_post($slide_id);
 			$content      = $content_post->post_content;
 
@@ -443,13 +443,13 @@ class EFUL_Functions
 				$audio_thumb = self::eful_get_audios_from_post($slide_id);
 			}
 		}
-		$eventful_thumbs_replace_src = array(
+		$eful_thumbs_replace_src = array(
 			'id'         => !empty($thumb_id) ? $thumb_id : '',
 			'video'      => !empty($video_thumb) ? $video_thumb : '',
 			'audio'      => !empty($audio_thumb) ? $audio_thumb : '',
 			'aria_label' => !empty($first_content) ? $first_content : '',
 		);
-		return $eventful_thumbs_replace_src;
+		return $eful_thumbs_replace_src;
 	}
 
 	/**
@@ -462,12 +462,12 @@ class EFUL_Functions
 	 */
 	public static function eful_get_img_from_post($post_thumb_setting, $slide_id)
 	{
-		$eventful_thumb_src = isset($post_thumb_setting['eventful_thumb_src']) ? $post_thumb_setting['eventful_thumb_src'] : 'featured_image';
+		$eful_thumb_src = isset($post_thumb_setting['eful_thumb_src']) ? $post_thumb_setting['eful_thumb_src'] : 'featured_image';
 		$content_post  = get_post($slide_id);
 		$content       = $content_post->post_content;
 		$images        = preg_match_all('/<img[^>]* src=\"([^\"]*)\"[^>]*>/i', $content, $matches);
 		if ($images) {
-			$img_url  = 'last_img_content' === $eventful_thumb_src ? array_values(array_slice($matches[1], -1)) : $matches[1][0];
+			$img_url  = 'last_img_content' === $eful_thumb_src ? array_values(array_slice($matches[1], -1)) : $matches[1][0];
 			$thumb_id = self::eful_image_id_by_url($img_url, $slide_id);
 		}
 		if (!empty($thumb_id)) {
@@ -1041,16 +1041,16 @@ class EFUL_Functions
 	/**
 	 * Get view option from view ID
 	 *
-	 * @param string $eventful_gl_id ID of custom field.
+	 * @param string $eful_gl_id ID of custom field.
 	 *
 	 * @return array
 	 */
-	public static function view_options($eventful_gl_id)
+	public static function view_options($eful_gl_id)
 	{
-		if (!$eventful_gl_id) {
+		if (!$eful_gl_id) {
 			return;
 		}
-		$view_options = get_post_meta($eventful_gl_id, 'eful_view_options', true);
+		$view_options = get_post_meta($eful_gl_id, 'eful_view_options', true);
 		return $view_options;
 	}
 
@@ -1063,9 +1063,9 @@ class EFUL_Functions
 	 */
 	public static function eful_metabox_value($field, $array_to_get = null, $assign = null)
 	{
-		global $eventful_gl_id;
+		global $eful_gl_id;
 		if (empty($array_to_get)) {
-			$array_to_get = self::view_options($eventful_gl_id);
+			$array_to_get = self::view_options($eful_gl_id);
 		}
 		return isset($array_to_get[$field]) ? $array_to_get[$field] : $assign;
 	}

@@ -17,7 +17,7 @@
             event           : "scroll",
             effect          : "show",
             container       : window,
-            data_attribute  : "eventful_src",
+            data_attribute  : "eful_src",
             skip_invisible  : true,
             appear          : null,
             load            : null,

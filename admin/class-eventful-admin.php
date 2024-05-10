@@ -20,7 +20,7 @@
  * @subpackage Eventful/admin
  * @author     ThemeAtelier <themeatelierbd@gmail.com>
  */
-class Eventful_Admin
+class Eful_Admin
 {
 
 	protected $suffix;
@@ -77,8 +77,8 @@ class Eventful_Admin
 		$name = explode('_', $class);
 		if (isset($name[1])) {
 			$class_name       = strtolower($name[1]);
-			$eventful_config_paths = array('views/', 'views/configs/settings/', 'views/configs/generator/');
-			foreach ($eventful_config_paths as $eful_path) {
+			$eful_config_paths = array('views/', 'views/configs/settings/', 'views/configs/generator/');
+			foreach ($eful_config_paths as $eful_path) {
 				$filename = plugin_dir_path(__FILE__) . '/' . $eful_path . 'class-eventful-' . $class_name . '.php';
 				if (file_exists($filename)) {
 					require_once $filename;
@@ -135,7 +135,7 @@ class Eventful_Admin
 		$current_screen        	= get_current_screen();
 		$the_current_post_type 	= $current_screen->post_type;
 		if ('eventful' == $the_current_post_type) {
-			wp_enqueue_script('eventful-admin', EFUL_URL . 'admin/assets/js/eventful-admin' . $this->suffix . '.js', array('jquery'), $this->version, false);
+			wp_enqueue_script('eventful-admin', EFUL_URL . 'admin/assets/js/eventful-admin' . $this->suffix . '.js', array('jquery'), $this->version, true);
 		}
 	}
 
@@ -151,7 +151,7 @@ class Eventful_Admin
 		$admin_columns['cb']         = '<input type="checkbox" />';
 		$admin_columns['title']      = esc_html__('Title', 'eventful');
 		$admin_columns['shortcode']  = esc_html__('Shortcode', 'eventful');
-		$admin_columns['eventful_layout'] = esc_html__('Layout', 'eventful');
+		$admin_columns['eful_layout'] = esc_html__('Layout', 'eventful');
 		$admin_columns['date']       = esc_html__('Date', 'eventful');
 
 		return $admin_columns;
@@ -166,9 +166,9 @@ class Eventful_Admin
 	 */
 	public function eful_display_admin_fields($column, $post_id)
 	{
-		$eventful_layouts     = get_post_meta($post_id, 'eful_layouts', true);
+		$eful_layouts     = get_post_meta($post_id, 'eful_layouts', true);
 
-		$eventfuls_types = isset($eventful_layouts['eventful_layout_preset']) ? $eventful_layouts['eventful_layout_preset'] : '';
+		$eventfuls_types = isset($eful_layouts['eful_layout_preset']) ? $eful_layouts['eful_layout_preset'] : '';
 		switch ($column) {
 			case 'shortcode':
 				$allowed_tags = array(
@@ -190,7 +190,7 @@ class Eventful_Admin
 				$column_field = '<input  class="eful_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="eventful-after-copy-text"><i class="far fa-check-circle"></i> ' . esc_html('Shortcode Copied to Clipboard!', 'eventful') . ' </div>';
 				echo wp_kses($column_field, $allowed_tags);
 				break;
-			case 'eventful_layout':
+			case 'eful_layout':
 				$layout = ucwords(str_replace('_layout', ' ', $eventfuls_types));
 				esc_html($layout);
 				break;

@@ -89,7 +89,7 @@ if ( ! class_exists( 'EFUL_Customize_Control' ) && class_exists( 'WP_Customize_C
 		public function render_field_content() {
 
 			$complex = apply_filters(
-				'eventful_customize_complex_fields',
+				'eful_customize_complex_fields',
 				array(
 					'accordion',
 					'background',

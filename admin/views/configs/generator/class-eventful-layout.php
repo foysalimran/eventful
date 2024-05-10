@@ -28,7 +28,7 @@ class EFUL_Layout
 						'class' => 'eventful-admin-header',
 					),
 					array(
-						'id'      => 'eventful_layout_preset',
+						'id'      => 'eful_layout_preset',
 						'type'    => 'layout_preset',
 						'title'   => esc_html__('Layout Preset', 'eventful'),
 						'class'   => 'eventful-layout-preset',

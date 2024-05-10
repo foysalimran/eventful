@@ -3,8 +3,8 @@
 //
 // Font Awesome 5 Free Icons
 //
-if ( ! function_exists( 'eventful_get_default_icons' ) ) {
-	function eventful_get_default_icons() {
+if ( ! function_exists( 'eful_get_default_icons' ) ) {
+	function eful_get_default_icons() {
 		return array(
 			array(
 				'title' => 'Font Awesome 5 Free',

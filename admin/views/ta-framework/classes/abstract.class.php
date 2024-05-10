@@ -18,7 +18,7 @@ if ( ! class_exists( 'EFUL_Abstract' ) ) {
       // Collect output css and typography
       if ( ! empty( $this->args['output_css'] ) || ! empty( $this->args['enqueue_webfont'] ) ) {
         add_action( 'wp_enqueue_scripts', array( $this, 'collect_output_css_and_typography' ), 10 );
-        EFUL::$css = apply_filters( "eventful_{$this->unique}_output_css", EFUL::$css, $this );
+        EFUL::$css = apply_filters( "eful_{$this->unique}_output_css", EFUL::$css, $this );
       }
 
     }

@@ -31,8 +31,8 @@ if ( ! class_exists( 'EFUL_Comment_Metabox' ) ) {
     public function __construct( $key, $params = array() ) {
 
       $this->unique     = $key;
-      $this->args       = apply_filters( "eventful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections   = apply_filters( "eventful_{$this->unique}_sections", $params['sections'], $this );
+      $this->args       = apply_filters( "eful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections   = apply_filters( "eful_{$this->unique}_sections", $params['sections'], $this );
       $this->pre_fields = $this->pre_fields( $this->sections );
 
       add_action( 'add_meta_boxes_comment', array( $this, 'add_comment_meta_box' ) );
@@ -105,16 +105,16 @@ if ( ! class_exists( 'EFUL_Comment_Metabox' ) ) {
 
       $has_nav  = ( count( $this->sections ) > 1 ) ? true : false;
       $show_all = ( ! $has_nav ) ? ' eventful-show-all' : '';
-      $errors   = ( is_object ( $comment ) ) ? get_comment_meta( $comment->comment_ID, '_eventful_errors_'. $this->unique, true ) : array();
+      $errors   = ( is_object ( $comment ) ) ? get_comment_meta( $comment->comment_ID, '_eful_errors_'. $this->unique, true ) : array();
       $errors   = ( ! empty( $errors ) ) ? $errors : array();
       $theme    = ( $this->args['theme'] ) ? ' eventful-theme-'. $this->args['theme'] : '';
       $nav_type = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 
       if ( is_object( $comment ) && ! empty( $errors ) ) {
-        delete_comment_meta( $comment->comment_ID, '_eventful_errors_'. $this->unique );
+        delete_comment_meta( $comment->comment_ID, '_eful_errors_'. $this->unique );
       }
 
-      wp_nonce_field( 'eventful_comment_metabox_nonce', 'eventful_comment_metabox_nonce'. $this->unique );
+      wp_nonce_field( 'eful_comment_metabox_nonce', 'eful_comment_metabox_nonce'. $this->unique );
 
       echo '<div class="eventful eventful-comment-metabox'. esc_attr( $theme ) .'">';
 
@@ -223,10 +223,10 @@ if ( ! class_exists( 'EFUL_Comment_Metabox' ) ) {
       $count    = 1;
       $data     = array();
       $errors   = array();
-      $noncekey = 'eventful_comment_metabox_nonce'. $this->unique;
+      $noncekey = 'eful_comment_metabox_nonce'. $this->unique;
       $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
 
-      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'eventful_comment_metabox_nonce' ) ) {
+      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'eful_comment_metabox_nonce' ) ) {
         return $comment_id;
       }
 
@@ -293,9 +293,9 @@ if ( ! class_exists( 'EFUL_Comment_Metabox' ) ) {
 
       }
 
-      $data = apply_filters( "eventful_{$this->unique}_save", $data, $comment_id, $this );
+      $data = apply_filters( "eful_{$this->unique}_save", $data, $comment_id, $this );
 
-      do_action( "eventful_{$this->unique}_save_before", $data, $comment_id, $this );
+      do_action( "eful_{$this->unique}_save_before", $data, $comment_id, $this );
 
       if ( empty( $data ) || ! empty( $request['_reset'] ) ) {
 
@@ -320,14 +320,14 @@ if ( ! class_exists( 'EFUL_Comment_Metabox' ) ) {
         }
 
         if ( ! empty( $errors ) ) {
-          update_comment_meta( $comment_id, '_eventful_errors_'. $this->unique, $errors );
+          update_comment_meta( $comment_id, '_eful_errors_'. $this->unique, $errors );
         }
 
       }
 
-      do_action( "eventful_{$this->unique}_saved", $data, $comment_id, $this );
+      do_action( "eful_{$this->unique}_saved", $data, $comment_id, $this );
 
-      do_action( "eventful_{$this->unique}_save_after", $data, $comment_id, $this );
+      do_action( "eful_{$this->unique}_save_after", $data, $comment_id, $this );
 
     }
   }

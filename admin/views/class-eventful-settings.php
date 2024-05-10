@@ -30,7 +30,7 @@ class EFUL_Settings {
 				'menu_title'       => esc_html__( 'Settings', 'eventful' ),
 				'menu_parent'      => 'edit.php?post_type=eventful',
 				'menu_type'        => 'submenu', // menu, submenu, options, theme, etc.
-				'menu_slug'        => 'eventful_settings',
+				'menu_slug'        => 'eful_settings',
 				'theme'            => 'light',
 				'show_all_options' => false,
 				'show_search'      => false,

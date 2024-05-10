@@ -10,9 +10,9 @@
  */
 ( function( blocks, blockEditor, element, components ) {
 
-  if ( !window.eventful_gutenberg_blocks ) { return; }
+  if ( !window.eful_gutenberg_blocks ) { return; }
 
-  Object.values(window.eventful_gutenberg_blocks).forEach( function( block ) {
+  Object.values(window.eful_gutenberg_blocks).forEach( function( block ) {
 
     var registerBlockType = blocks.registerBlockType;
     var PlainText         = blockEditor.PlainText;
@@ -46,7 +46,7 @@
               'data-gutenberg-id': block.name,
               className: 'is-secondary eventful-shortcode-button',
               onClick: function () {
-                window.eventful_gutenberg_props = props;
+                window.eful_gutenberg_props = props;
               },
             }, block.button_title ),
 

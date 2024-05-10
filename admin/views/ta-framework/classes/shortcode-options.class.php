@@ -39,8 +39,8 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
     public function __construct( $key, $params = array() ) {
 
       $this->unique       = $key;
-      $this->args         = apply_filters( "eventful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections     = apply_filters( "eventful_{$this->unique}_sections", $params['sections'], $this );
+      $this->args         = apply_filters( "eful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections     = apply_filters( "eful_{$this->unique}_sections", $params['sections'], $this );
       $this->pre_tabs     = $this->pre_tabs( $this->sections );
       $this->pre_sections = $this->pre_sections( $this->sections );
 
@@ -92,7 +92,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
       $hide_header  = ( ! $has_select ) ? ' hidden' : '';
 
     ?>
-      <div id="eventful-modal-<?php echo esc_attr( $this->unique ); ?>" class="wp-core-ui eventful-modal eventful-shortcode hidden<?php echo esc_attr( $single_usage . $class ); ?>" data-modal-id="<?php echo esc_attr( $this->unique ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'eventful_shortcode_nonce' ) ); ?>">
+      <div id="eventful-modal-<?php echo esc_attr( $this->unique ); ?>" class="wp-core-ui eventful-modal eventful-shortcode hidden<?php echo esc_attr( $single_usage . $class ); ?>" data-modal-id="<?php echo esc_attr( $this->unique ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'eful_shortcode_nonce' ) ); ?>">
         <div class="eventful-modal-table">
           <div class="eventful-modal-table-cell">
             <div class="eventful-modal-overlay"></div>
@@ -166,7 +166,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
       $nonce         = ( ! empty( $_POST[ 'nonce' ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ 'nonce' ] ) ) : '';
       $shortcode_key = ( ! empty( $_POST[ 'shortcode_key' ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ 'shortcode_key' ] ) ) : '';
 
-      if ( ! empty( $shortcode_key ) && wp_verify_nonce( $nonce, 'eventful_shortcode_nonce' ) ) {
+      if ( ! empty( $shortcode_key ) && wp_verify_nonce( $nonce, 'eful_shortcode_nonce' ) ) {
 
         $unallows  = array( 'group', 'repeater', 'sorter' );
         $section   = $this->pre_sections[$shortcode_key-1];
@@ -277,7 +277,7 @@ if ( ! class_exists( 'EFUL_Shortcoder' ) ) {
 
       wp_enqueue_script( 'eventful-gutenberg-block', EFUL::include_plugin_url( 'assets/js/gutenberg.js' ), $depends );
 
-      wp_localize_script( 'eventful-gutenberg-block', 'eventful_gutenberg_blocks', EFUL::$shortcode_instances );
+      wp_localize_script( 'eventful-gutenberg-block', 'eful_gutenberg_blocks', EFUL::$shortcode_instances );
 
       foreach ( EFUL::$shortcode_instances as $block ) {
 

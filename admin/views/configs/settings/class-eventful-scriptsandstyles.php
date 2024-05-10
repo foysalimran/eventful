@@ -32,7 +32,7 @@ class EFUL_ScriptsAndStyles {
 						'content' => esc_html__( 'Enqueue or Dequeue JS', 'eventful' ),
 					),
 					array(
-						'id'         => 'eventful_swiper_js',
+						'id'         => 'eful_swiper_js',
 						'type'       => 'switcher',
 						'title'      => esc_html__( 'Swiper JS', 'eventful' ),
 						'text_on'    => esc_html__( 'Enqueued', 'eventful' ),
@@ -41,7 +41,7 @@ class EFUL_ScriptsAndStyles {
 						'default'    => true,
 					),
 					array(
-						'id'         => 'eventful_bx_js',
+						'id'         => 'eful_bx_js',
 						'type'       => 'switcher',
 						'title'      => esc_html__( 'bxSlider JS', 'eventful' ),
 						'text_on'    => esc_html__( 'Enqueued', 'eventful' ),
@@ -54,7 +54,7 @@ class EFUL_ScriptsAndStyles {
 						'content' => esc_html__( 'Enqueue or Dequeue CSS', 'eventful' ),
 					),
 					array(
-						'id'         => 'eventful_swiper_css',
+						'id'         => 'eful_swiper_css',
 						'type'       => 'switcher',
 						'title'      => esc_html__( 'Swiper CSS', 'eventful' ),
 						'text_on'    => esc_html__( 'Enqueued', 'eventful' ),
@@ -63,7 +63,7 @@ class EFUL_ScriptsAndStyles {
 						'default'    => true,
 					),
 					array(
-						'id'         => 'eventful_fontawesome_css',
+						'id'         => 'eful_fontawesome_css',
 						'type'       => 'switcher',
 						'title'      => esc_html__( 'Font Awesome CSS', 'eventful' ),
 						'text_on'    => esc_html__( 'Enqueued', 'eventful' ),

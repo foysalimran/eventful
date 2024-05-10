@@ -173,7 +173,7 @@ class EFUL_CustomFieldProcess {
 	private function cf_from_toolset_plugin() {
 		if ( shortcode_exists( 'types' ) ) {
 			$wpcf_key   = str_replace( 'wpcf-', '', $this->key );
-			$shortcode  = apply_filters( 'eful_speventful_toolset_sc', "[types field='$wpcf_key' separator=', ']", $wpcf_key, $this->object );
+			$shortcode  = apply_filters( 'eful_speful_toolset_sc', "[types field='$wpcf_key' separator=', ']", $wpcf_key, $this->object );
 			$wpcf_value = do_shortcode( $shortcode );
 			if ( 0 !== strcmp( $wpcf_value, $shortcode ) ) {
 				$this->field_value = $wpcf_value;

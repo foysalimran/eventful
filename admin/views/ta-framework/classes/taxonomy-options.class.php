@@ -31,8 +31,8 @@ if ( ! class_exists( 'EFUL_Taxonomy_Options' ) ) {
     public function __construct( $key, $params ) {
 
       $this->unique     = $key;
-      $this->args       = apply_filters( "eventful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections   = apply_filters( "eventful_{$this->unique}_sections", $params['sections'], $this );
+      $this->args       = apply_filters( "eful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections   = apply_filters( "eful_{$this->unique}_sections", $params['sections'], $this );
       $this->taxonomies = ( is_array( $this->args['taxonomy'] ) ) ? $this->args['taxonomy'] : array_filter( (array) $this->args['taxonomy'] );
       $this->taxonomy   = ( ! empty( $_REQUEST[ 'taxonomy' ] ) ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'taxonomy' ] ) ) : '';
       $this->pre_fields = $this->pre_fields( $this->sections );
@@ -105,15 +105,15 @@ if ( ! class_exists( 'EFUL_Taxonomy_Options' ) ) {
       $term_id   = ( $is_term ) ? $term->term_id : 0;
       $taxonomy  = ( $is_term ) ? $term->taxonomy : $term;
       $classname = ( $is_term ) ? 'edit' : 'add';
-      $errors    = ( ! empty( $term_id ) ) ? get_term_meta( $term_id, '_eventful_errors_'. $this->unique, true ) : array();
+      $errors    = ( ! empty( $term_id ) ) ? get_term_meta( $term_id, '_eful_errors_'. $this->unique, true ) : array();
       $errors    = ( ! empty( $errors ) ) ? $errors : array();
       $class     = ( $this->args['class'] ) ? ' '. $this->args['class'] : '';
 
       if ( ! empty( $errors ) ) {
-        delete_term_meta( $term_id, '_eventful_errors_'. $this->unique );
+        delete_term_meta( $term_id, '_eful_errors_'. $this->unique );
       }
 
-      wp_nonce_field( 'eventful_taxonomy_nonce', 'eventful_taxonomy_nonce'. $this->unique );
+      wp_nonce_field( 'eful_taxonomy_nonce', 'eful_taxonomy_nonce'. $this->unique );
 
       echo '<div class="eventful eventful-taxonomy eventful-show-all eventful-onload eventful-taxonomy-'. esc_attr( $classname ) .'-fields '. esc_attr( $class ) .'">';
 
@@ -156,11 +156,11 @@ if ( ! class_exists( 'EFUL_Taxonomy_Options' ) ) {
       $count    = 1;
       $data     = array();
       $errors   = array();
-      $noncekey = 'eventful_taxonomy_nonce'. $this->unique;
+      $noncekey = 'eful_taxonomy_nonce'. $this->unique;
       $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
       $taxonomy = ( ! empty( $_POST[ 'taxonomy' ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ 'taxonomy' ] ) ) : '';
 
-      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'eventful_taxonomy_nonce' ) ) {
+      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'eful_taxonomy_nonce' ) ) {
         return $term_id;
       }
 
@@ -227,9 +227,9 @@ if ( ! class_exists( 'EFUL_Taxonomy_Options' ) ) {
 
       }
 
-      $data = apply_filters( "eventful_{$this->unique}_save", $data, $term_id, $this );
+      $data = apply_filters( "eful_{$this->unique}_save", $data, $term_id, $this );
 
-      do_action( "eventful_{$this->unique}_save_before", $data, $term_id, $this );
+      do_action( "eful_{$this->unique}_save_before", $data, $term_id, $this );
 
       if ( empty( $data ) ) {
 
@@ -254,14 +254,14 @@ if ( ! class_exists( 'EFUL_Taxonomy_Options' ) ) {
         }
 
         if ( ! empty( $errors ) ) {
-          update_term_meta( $term_id, '_eventful_errors_'. $this->unique, $errors );
+          update_term_meta( $term_id, '_eful_errors_'. $this->unique, $errors );
         }
 
       }
 
-      do_action( "eventful_{$this->unique}_saved", $data, $term_id, $this );
+      do_action( "eful_{$this->unique}_saved", $data, $term_id, $this );
 
-      do_action( "eventful_{$this->unique}_save_after", $data, $term_id, $this );
+      do_action( "eful_{$this->unique}_save_after", $data, $term_id, $this );
 
     }
   }

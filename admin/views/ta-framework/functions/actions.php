@@ -8,13 +8,13 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if (!function_exists('eventful_get_icons')) {
-	function eventful_get_icons()
+if (!function_exists('eful_get_icons')) {
+	function eful_get_icons()
 	{
 
 		$nonce = (!empty($_POST['nonce'])) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
 
-		if (!wp_verify_nonce($nonce, 'eventful_icon_nonce')) {
+		if (!wp_verify_nonce($nonce, 'eful_icon_nonce')) {
 			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'eventful' )));
 		}
 
@@ -24,7 +24,7 @@ if (!function_exists('eventful_get_icons')) {
 
 		EFUL::include_plugin_file('fields/icon/' . $icon_library . '-icons.php');
 
-		$icon_lists = apply_filters('eful_field_icon_add_icons', eventful_get_default_icons());
+		$icon_lists = apply_filters('eful_field_icon_add_icons', eful_get_default_icons());
 
 		if (!empty($icon_lists)) {
 
@@ -45,7 +45,7 @@ if (!function_exists('eventful_get_icons')) {
 
 		wp_send_json_success(array('content' => $content));
 	}
-	add_action('wp_ajax_eventful-get-icons', 'eventful_get_icons');
+	add_action('wp_ajax_eventful-get-icons', 'eful_get_icons');
 }
 
 /**
@@ -55,14 +55,14 @@ if (!function_exists('eventful_get_icons')) {
  * @since 1.0.0
  * @version 1.0.0
  */
-if (!function_exists('eventful_export')) {
-	function eventful_export()
+if (!function_exists('eful_export')) {
+	function eful_export()
 	{
 
 		$nonce  = (!empty($_GET['nonce'])) ? sanitize_text_field(wp_unslash($_GET['nonce'])) : '';
 		$unique = (!empty($_GET['unique'])) ? sanitize_text_field(wp_unslash($_GET['unique'])) : '';
 
-		if (!wp_verify_nonce($nonce, 'eventful_backup_nonce')) {
+		if (!wp_verify_nonce($nonce, 'eful_backup_nonce')) {
 			die(esc_html__('Error: Invalid nonce verification.', 'eventful' ));
 		}
 
@@ -81,7 +81,7 @@ if (!function_exists('eventful_export')) {
 
 		die();
 	}
-	add_action('wp_ajax_eventful-export', 'eventful_export');
+	add_action('wp_ajax_eventful-export', 'eful_export');
 }
 
 /**
@@ -91,18 +91,18 @@ if (!function_exists('eventful_export')) {
  * @since 1.0.0
  * @version 1.0.0
  */
-if (!function_exists('eventful_import_ajax')) {
-	function eventful_import_ajax()
+if (!function_exists('eful_import_ajax')) {
+	function eful_import_ajax()
 	{
 
 		$nonce  = (!empty($_POST['nonce'])) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
-		$unique = (!empty($_POST['unique'])) ? sanitize_text_field(wp_unslash($_POST['unique'])) : '';
-		$data   = (!empty($_POST['data'])) ? sanitize_post(json_decode(wp_unslash(trim($_POST['data'])), true)) : array();
-
-		if (!wp_verify_nonce($nonce, 'eventful_backup_nonce')) {
+		
+		if (!wp_verify_nonce($nonce, 'eful_backup_nonce')) {
 			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'eventful' )));
 		}
-
+		
+		$unique = (!empty($_POST['unique'])) ? sanitize_text_field(wp_unslash($_POST['unique'])) : '';
+		$data   = (!empty($_POST['data'])) ? sanitize_text_field(json_decode(wp_unslash(trim($_POST['data'])), true)) : array();
 		if (empty($unique)) {
 			wp_send_json_error(array('error' => esc_html__('Error: Invalid key.', 'eventful' )));
 		}
@@ -116,7 +116,7 @@ if (!function_exists('eventful_import_ajax')) {
 
 		wp_send_json_success();
 	}
-	add_action('wp_ajax_eventful-import', 'eventful_import_ajax');
+	add_action('wp_ajax_eventful-import', 'eful_import_ajax');
 }
 
 /**
@@ -126,14 +126,14 @@ if (!function_exists('eventful_import_ajax')) {
  * @since 1.0.0
  * @version 1.0.0
  */
-if (!function_exists('eventful_reset_ajax')) {
-	function eventful_reset_ajax()
+if (!function_exists('eful_reset_ajax')) {
+	function eful_reset_ajax()
 	{
 
 		$nonce  = (!empty($_POST['nonce'])) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
 		$unique = (!empty($_POST['unique'])) ? sanitize_text_field(wp_unslash($_POST['unique'])) : '';
 
-		if (!wp_verify_nonce($nonce, 'eventful_backup_nonce')) {
+		if (!wp_verify_nonce($nonce, 'eful_backup_nonce')) {
 			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'eventful' )));
 		}
 
@@ -142,7 +142,7 @@ if (!function_exists('eventful_reset_ajax')) {
 
 		wp_send_json_success();
 	}
-	add_action('wp_ajax_eventful-reset', 'eventful_reset_ajax');
+	add_action('wp_ajax_eventful-reset', 'eful_reset_ajax');
 }
 
 /**
@@ -152,22 +152,21 @@ if (!function_exists('eventful_reset_ajax')) {
  * @since 1.0.0
  * @version 1.0.0
  */
-if (!function_exists('eventful_chosen_ajax')) {
-	function eventful_chosen_ajax()
+if (!function_exists('eful_chosen_ajax')) {
+	function eful_chosen_ajax()
 	{
 		if (!current_user_can('manage_options')) {
 			return;
 		}
 
 		$nonce = (!empty($_POST['nonce'])) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
-		$type  = (!empty($_POST['type'])) ? sanitize_text_field(wp_unslash($_POST['type'])) : '';
-		$term  = (!empty($_POST['term'])) ? sanitize_text_field(wp_unslash($_POST['term'])) : '';
-		$query = (!empty($_POST['query_args'])) ? wp_kses_post_deep($_POST['query_args']) : array();
-
-		if (!wp_verify_nonce($nonce, 'eventful_chosen_ajax_nonce')) {
+		
+		if (!wp_verify_nonce($nonce, 'eful_chosen_ajax_nonce')) {
 			wp_send_json_error(array('error' => esc_html__('Error: Invalid nonce verification.', 'eventful' )));
 		}
-
+		$type  = (!empty($_POST['type'])) ? sanitize_text_field(wp_unslash($_POST['type'])) : '';
+		$term  = (!empty($_POST['term'])) ? sanitize_text_field(wp_unslash($_POST['term'])) : '';
+		
 		if (empty($type) || empty($term)) {
 			wp_send_json_error(array('error' => esc_html__('Error: Invalid term ID.', 'eventful' )));
 		}
@@ -177,11 +176,12 @@ if (!function_exists('eventful_chosen_ajax')) {
 		if (!current_user_can($capability)) {
 			wp_send_json_error(array('error' => esc_html__('Error: You do not have permission to do that.', 'eventful' )));
 		}
+		$query = (!empty($_POST['query_args'])) ? wp_kses_post_deep($_POST['query_args']) : array();
 
 		// Success
 		$options = EFUL_Fields::field_data($type, $term, $query);
 
 		wp_send_json_success($options);
 	}
-	add_action('wp_ajax_eventful-chosen', 'eventful_chosen_ajax');
+	add_action('wp_ajax_eventful-chosen', 'eful_chosen_ajax');
 }

@@ -40,8 +40,8 @@ if ( ! class_exists( 'EFUL_Metabox' ) ) {
     public function __construct( $key, $params = array() ) {
 
       $this->unique         = $key;
-      $this->args           = apply_filters( "eventful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections       = apply_filters( "eventful_{$this->unique}_sections", $params['sections'], $this );
+      $this->args           = apply_filters( "eful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections       = apply_filters( "eful_{$this->unique}_sections", $params['sections'], $this );
       $this->post_type      = ( is_array( $this->args['post_type'] ) ) ? $this->args['post_type'] : array_filter( (array) $this->args['post_type'] );
       $this->post_formats   = ( is_array( $this->args['post_formats'] ) ) ? $this->args['post_formats'] : array_filter( (array) $this->args['post_formats'] );
       $this->page_templates = ( is_array( $this->args['page_templates'] ) ) ? $this->args['page_templates'] : array_filter( (array) $this->args['page_templates'] );
@@ -174,16 +174,16 @@ if ( ! class_exists( 'EFUL_Metabox' ) ) {
       $has_nav   = ( count( $this->sections ) > 1 && $this->args['context'] !== 'side' ) ? true : false;
       $show_all  = ( ! $has_nav ) ? ' eventful-show-all' : '';
       $post_type = ( is_object ( $post ) ) ? $post->post_type : '';
-      $errors    = ( is_object ( $post ) ) ? get_post_meta( $post->ID, '_eventful_errors_'. $this->unique, true ) : array();
+      $errors    = ( is_object ( $post ) ) ? get_post_meta( $post->ID, '_eful_errors_'. $this->unique, true ) : array();
       $errors    = ( ! empty( $errors ) ) ? $errors : array();
       $theme     = ( $this->args['theme'] ) ? ' eventful-theme-'. $this->args['theme'] : '';
       $nav_type  = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
 
       if ( is_object ( $post ) && ! empty( $errors ) ) {
-        delete_post_meta( $post->ID, '_eventful_errors_'. $this->unique );
+        delete_post_meta( $post->ID, '_eful_errors_'. $this->unique );
       }
 
-      wp_nonce_field( 'eventful_metabox_nonce', 'eventful_metabox_nonce'. $this->unique );
+      wp_nonce_field( 'eful_metabox_nonce', 'eful_metabox_nonce'. $this->unique );
 
       echo '<div class="eventful eventful-metabox'. esc_attr( $theme ) .'">';
 
@@ -300,10 +300,10 @@ if ( ! class_exists( 'EFUL_Metabox' ) ) {
       $count    = 1;
       $data     = array();
       $errors   = array();
-      $noncekey = 'eventful_metabox_nonce'. $this->unique;
+      $noncekey = 'eful_metabox_nonce'. $this->unique;
       $nonce    = ( ! empty( $_POST[ $noncekey ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $noncekey ] ) ) : '';
 
-      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'eventful_metabox_nonce' ) ) {
+      if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! wp_verify_nonce( $nonce, 'eful_metabox_nonce' ) ) {
         return $post_id;
       }
 
@@ -370,9 +370,9 @@ if ( ! class_exists( 'EFUL_Metabox' ) ) {
 
       }
 
-      $data = apply_filters( "eventful_{$this->unique}_save", $data, $post_id, $this );
+      $data = apply_filters( "eful_{$this->unique}_save", $data, $post_id, $this );
 
-      do_action( "eventful_{$this->unique}_save_before", $data, $post_id, $this );
+      do_action( "eful_{$this->unique}_save_before", $data, $post_id, $this );
 
       if ( empty( $data ) || ! empty( $request['_reset'] ) ) {
 
@@ -397,14 +397,14 @@ if ( ! class_exists( 'EFUL_Metabox' ) ) {
         }
 
         if ( ! empty( $errors ) ) {
-          update_post_meta( $post_id, '_eventful_errors_'. $this->unique, $errors );
+          update_post_meta( $post_id, '_eful_errors_'. $this->unique, $errors );
         }
 
       }
 
-      do_action( "eventful_{$this->unique}_saved", $data, $post_id, $this );
+      do_action( "eful_{$this->unique}_saved", $data, $post_id, $this );
 
-      do_action( "eventful_{$this->unique}_save_after", $data, $post_id, $this );
+      do_action( "eful_{$this->unique}_save_after", $data, $post_id, $this );
 
     }
   }

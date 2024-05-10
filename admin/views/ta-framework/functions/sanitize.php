@@ -8,8 +8,8 @@
  * @since 1.0.0
  * @version 1.0.0
  */
-if ( ! function_exists( 'eventful_sanitize_replace_a_to_b' ) ) {
-	function eventful_sanitize_replace_a_to_b( $value ) {
+if ( ! function_exists( 'eful_sanitize_replace_a_to_b' ) ) {
+	function eful_sanitize_replace_a_to_b( $value ) {
 		return str_replace( 'a', 'b', $value );
 	}
 }

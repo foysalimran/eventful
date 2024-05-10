@@ -65,7 +65,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
     public function __construct() {
 
       // Init action
-      do_action( 'eventful_init' );
+      do_action( 'eful_init' );
 
       add_action( 'after_setup_theme', array( 'EFUL', 'setup' ) );
       add_action( 'init', array( 'EFUL', 'setup' ) );
@@ -244,7 +244,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
 
       }
 
-      do_action( 'eventful_loaded' );
+      do_action( 'eful_loaded' );
 
     }
 
@@ -325,7 +325,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
 
       $path     = '';
       $file     = ltrim( $file, '/' );
-      $override = apply_filters( 'eventful_override', 'eventful-override' );
+      $override = apply_filters( 'eful_override', 'eventful-override' );
 
       if ( file_exists( get_parent_theme_file_path( $override .'/'. $file ) ) ) {
         $path = get_parent_theme_file_path( $override .'/'. $file );
@@ -401,7 +401,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
       }
 
       // Include all framework fields
-      $fields = apply_filters( 'eventful_fields', array(
+      $fields = apply_filters( 'eful_fields', array(
         'accordion',
         'background',
         'backup',
@@ -563,7 +563,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
 
       }
 
-      if ( ! apply_filters( 'eventful_enqueue_assets', self::$enqueue ) ) {
+      if ( ! apply_filters( 'eful_enqueue_assets', self::$enqueue ) ) {
         return;
       }
 
@@ -607,7 +607,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
       wp_enqueue_script( 'eventful-custom', self::include_plugin_url( 'assets/js/taf-custom'. $min .'.js' ), array( 'eventful-plugins' ), self::$version, true );
 
       // Main variables
-      wp_localize_script( 'eventful', 'eventful_vars', array(
+      wp_localize_script( 'eventful', 'eful_vars', array(
         'color_palette'     => apply_filters( 'eful_color_palette', array() ),
         'i18n'              => array(
           'confirm'         => esc_html__( 'Are you sure?', 'eventful' ),
@@ -635,7 +635,7 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
         }
       }
 
-      do_action( 'eventful_enqueue' );
+      do_action( 'eful_enqueue' );
 
     }
 

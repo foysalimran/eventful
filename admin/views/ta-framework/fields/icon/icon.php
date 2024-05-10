@@ -26,7 +26,7 @@ if ( ! class_exists( 'EFUL_Field_icon' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 
-			$nonce  = wp_create_nonce( 'eventful_icon_nonce' );
+			$nonce  = wp_create_nonce( 'eful_icon_nonce' );
 			$hidden = ( empty( $this->value ) ) ? ' hidden' : '';
 
 			echo '<div class="eventful-icon-select">';

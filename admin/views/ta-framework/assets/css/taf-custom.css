@@ -79,7 +79,7 @@
   max-width: 100%;
 }
 
-#eventful-section-ta-eventful_layouts_1 .eventful-field-layout_preset span {
+#eventful-section-ta-eful_layouts_1 .eventful-field-layout_preset span {
   font-size: 13px;
 }
 
@@ -101,15 +101,15 @@
  *Custom Style for the SP PCP
  *
  **/
-.eventful_column_2 ul,
-.eventful_column_2 .eventful-fieldset ul {
+.eful_column_2 ul,
+.eful_column_2 .eventful-fieldset ul {
   -webkit-columns: 2;
   -moz-columns: 2;
   columns: 2;
 }
 
-.eventful_column_2 ul li,
-.eventful_column_2 .eventful-fieldset ul li {
+.eful_column_2 ul li,
+.eful_column_2 .eventful-fieldset ul li {
   width: 50%;
 }
 
@@ -137,7 +137,7 @@
 
 #eventful-section-eful_layouts_1 .eventful-field-layout_preset .eventful-title,
 #eventful-section-eful_layouts_1 .eventful-field-gallery .eventful-title,
-.eventful_carousel_content_wrapper .eventful-title,
+.eful_carousel_content_wrapper .eventful-title,
 .eventful-video-description .eventful-title,
 .eventful-video-field-wrapper > .eventful-title {
   width: 100%;
@@ -145,7 +145,7 @@
 
 #eventful-section-eful_layouts_1 .eventful-field-layout_preset .eventful-fieldset,
 #eventful-section-eful_layouts_1 .eventful-field-gallery .eventful-fieldset,
-.eventful_carousel_content_wrapper .eventful-fieldset,
+.eful_carousel_content_wrapper .eventful-fieldset,
 .eventful-video-description .eventful-fieldset,
 .eventful-video-field-wrapper > .eventful-fieldset {
   margin-top: 30px;

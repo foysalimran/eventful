@@ -25,8 +25,8 @@ class EFUL_User_Like
 	 */
 	public function __construct()
 	{
-		add_action('wp_ajax_process_eventful_like', array($this, 'process_eventful_like'));
-		add_action('wp_ajax_nopriv_process_eventful_like', array($this, 'process_eventful_like'));
+		add_action('wp_ajax_process_eful_like', array($this, 'process_eful_like'));
+		add_action('wp_ajax_nopriv_process_eful_like', array($this, 'process_eful_like'));
 		add_action('wp_enqueue_scripts', array($this, 'likes_enqueue_scripts'));
 	}
 
@@ -56,7 +56,7 @@ class EFUL_User_Like
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function process_eventful_like()
+	public function process_eful_like()
 	{
 
 		// Security.

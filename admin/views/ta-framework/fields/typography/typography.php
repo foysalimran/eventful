@@ -571,7 +571,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 
 				$webfonts = array();
 
-				$customwebfonts = apply_filters( 'eventful_field_typography_customwebfonts', array() );
+				$customwebfonts = apply_filters( 'eful_field_typography_customwebfonts', array() );
 
 				if ( ! empty( $customwebfonts ) ) {
 					$webfonts['custom'] = array(
@@ -583,7 +583,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 				$webfonts['safe'] = array(
 					'label' => esc_html__( 'Safe Web Fonts', 'eventful' ),
 					'fonts' => apply_filters(
-						'eventful_field_typography_safewebfonts',
+						'eful_field_typography_safewebfonts',
 						array(
 							'Arial',
 							'Arial Black',
@@ -607,7 +607,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 					'label' => esc_html__( 'Google Web Fonts', 'eventful' ),
 					'fonts' => apply_filters(
 						'eful_field_typography_googlewebfonts',
-						eventful_get_google_fonts()
+						eful_get_google_fonts()
 					),
 				);
 
@@ -641,7 +641,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 
 				wp_localize_script(
 					'eventful',
-					'eventful_typography_json',
+					'eful_typography_json',
 					array(
 						'webfonts'      => $webfonts,
 						'defaultstyles' => $defaultstyles,
@@ -668,7 +668,7 @@ if ( ! class_exists( 'EFUL_Field_typography' ) ) {
 				$is_google = ( 'google' === $this->value['type'] ) ? true : false;
 			} else {
 				EFUL::include_plugin_file( 'fields/typography/google-fonts.php' );
-				$is_google = ( array_key_exists( $this->value['font-family'], eventful_get_google_fonts() ) ) ? true : false;
+				$is_google = ( array_key_exists( $this->value['font-family'], eful_get_google_fonts() ) ) ? true : false;
 			}
 
 			if ( $is_google ) {

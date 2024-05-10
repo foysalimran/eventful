@@ -8,12 +8,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$eventful_settings                  = get_option( 'eful_settings' );
-$eventful_responsive_screen_setting = isset( $eventful_settings['eventful_responsive_screen_setting'] ) ? $eventful_settings['eventful_responsive_screen_setting'] : '';
-$desktop_screen_size           = isset( $eventful_responsive_screen_setting ['desktop'] ) ? $eventful_responsive_screen_setting ['desktop'] : '1200';
-$tablet_screen_size            = isset( $eventful_responsive_screen_setting ['tablet'] ) ? $eventful_responsive_screen_setting ['tablet'] : '992';
-$mobile_land_screen_size       = isset( $eventful_responsive_screen_setting ['mobile_landscape'] ) ? $eventful_responsive_screen_setting ['mobile_landscape'] : '768';
-$mobile_screen_size            = isset( $eventful_responsive_screen_setting ['mobile'] ) ? $eventful_responsive_screen_setting ['mobile'] : '576';
+$eful_settings                  = get_option( 'eful_settings' );
+$eful_responsive_screen_setting = isset( $eful_settings['eful_responsive_screen_setting'] ) ? $eful_settings['eful_responsive_screen_setting'] : '';
+$desktop_screen_size           = isset( $eful_responsive_screen_setting ['desktop'] ) ? $eful_responsive_screen_setting ['desktop'] : '1200';
+$tablet_screen_size            = isset( $eful_responsive_screen_setting ['tablet'] ) ? $eful_responsive_screen_setting ['tablet'] : '992';
+$mobile_land_screen_size       = isset( $eful_responsive_screen_setting ['mobile_landscape'] ) ? $eful_responsive_screen_setting ['mobile_landscape'] : '768';
+$mobile_screen_size            = isset( $eful_responsive_screen_setting ['mobile'] ) ? $eful_responsive_screen_setting ['mobile'] : '576';
 $classes                       = get_body_class();
 if ( in_array( 'et_divi_builder', $classes, true ) ) {
 	$custom_css .= '#et-boc .et-l .eventful-filter-bar .eventful-bar {
@@ -49,10 +49,10 @@ if ( in_array( 'et_divi_builder', $classes, true ) ) {
 #et-boc .et-l .eventful-hide {
   display: none;
 }
-#et-boc .et-l .ta-eventful-post.left-thumb .eventful__item__content {
+#et-boc .et-l .ta-eventful-post.left-thumb .eful__item__content {
   margin-left: 20px;
 }
-#et-boc .et-l .zigzag-container .ta-col-xs-1 .eventful__item__content {
+#et-boc .et-l .zigzag-container .ta-col-xs-1 .eful__item__content {
   margin-left: 20px;
   margin-right: 0;
 }
@@ -75,7 +75,7 @@ if ( in_array( 'et_divi_builder', $classes, true ) ) {
   margin-left: auto;
   position: relative;
 }
-#et-boc .et-l .ta-eventful-post.right-thumb .eventful__item__content {
+#et-boc .et-l .ta-eventful-post.right-thumb .eful__item__content {
   text-align: right;
   margin-right: 20px;
 }

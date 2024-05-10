@@ -11,7 +11,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 ?>
-<div class="eventful__item--archive <?php echo esc_attr($post_thumb_meta_position); ?>">
+<div class="eful__item--archive <?php echo esc_attr($post_thumb_meta_position); ?>">
     <?php
     $term = EFUL_Functions::eful_post_thumb_taxonomy($taxonomy_name, $post->ID);
     $start_tag      = $is_table ? '<td class="ta-eventful-post-meta">' : '<li>';

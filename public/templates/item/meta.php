@@ -9,7 +9,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
- echo '<div class="eventful__item--meta">';
+ echo '<div class="eful__item--meta">';
 
 EFUL_Functions::eful_get_post_meta( $post, $post_meta_fields, $visitor_count, $_meta_separator, $is_table );
 

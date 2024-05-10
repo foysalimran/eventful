@@ -56,7 +56,7 @@ class EFUL_Display
 						),
 					),
 					array(
-						'id'       => 'eventful_number_of_columns',
+						'id'       => 'eful_number_of_columns',
 						'type'     => 'column',
 						'title'    => esc_html__('Column(s)', 'eventful'),
 						'subtitle' => esc_html__('Set number of column(s) in different devices for responsive view.', 'eventful'),
@@ -68,7 +68,7 @@ class EFUL_Display
 							'mobile'           => '1',
 						),
 						'min'      => '1',
-						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
+						'dependency' => array('eful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 						'help'       => wp_kses(esc_html__('<i class="fa fa-television"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class="fa fa-desktop"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class="fa fa-tablet"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class="fa fa-mobile"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class="fa fa-mobile"></i> <b> Mobile </b> - size is smaller than 576px.', 'eventful'), array('i' => array('class' => array()), 'br' => array())),
 					),
 					array(
@@ -105,7 +105,7 @@ class EFUL_Display
 							),
 						),
 						'default'  => 'default',
-						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
+						'dependency' => array('eful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 					),
 					array(
 						'id'         => 'item_same_height',
@@ -113,7 +113,7 @@ class EFUL_Display
 						'title'      => esc_html__('Same Height', 'eventful'),
 						'subtitle'   => esc_html__('Check to make all items/slides the same height as the tallest one.', 'eventful'),
 						'default'    => false,
-						'dependency' => array('eventful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
+						'dependency' => array('eful_layout_preset', 'any', 'carousel_layout,grid_layout,filter_layout,large_with_small', true),
 					),
 					
 					array(
@@ -210,7 +210,7 @@ class EFUL_Display
 						'class'    => 'post_content_sorter',
 						'fields'   => array(
 							array(
-								'id'         => 'eventful_post_thumb',
+								'id'         => 'eful_post_thumb',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -226,14 +226,14 @@ class EFUL_Display
 												'text_width' => 80,
 											),
 											array(
-												'id'      => 'eventful_thumb_sizes',
+												'id'      => 'eful_thumb_sizes',
 												'type'    => 'image_sizes',
 												'title'   => esc_html__('Size', 'eventful'),
 												'default' => 'full',
 												'dependency' => array('post_thumb_show', '==', 'true', true),
 											),
 											array(
-												'id'       => 'eventful_image_crop_size',
+												'id'       => 'eful_image_crop_size',
 												'type'     => 'dimensions_advanced',
 												'title'    => esc_html__('Custom Size', 'eventful'),
 												'chosen'   => true,
@@ -257,7 +257,7 @@ class EFUL_Display
 												'attributes' => array(
 													'min' => 0,
 												),
-												'dependency' => array('post_thumb_show|eventful_thumb_sizes', '==|==', 'true|custom'),
+												'dependency' => array('post_thumb_show|eful_thumb_sizes', '==|==', 'true|custom'),
 											),
 											array(
 												'id'       => 'load_2x_image',
@@ -267,13 +267,13 @@ class EFUL_Display
 												'text_off' => esc_html__('Disabled', 'eventful'),
 												'text_width' => 94,
 												'default'  => false,
-												'dependency' => array('post_thumb_show|eventful_thumb_sizes', '==|==', 'true|custom'),
+												'dependency' => array('post_thumb_show|eful_thumb_sizes', '==|==', 'true|custom'),
 											),
 											array(
 												'id'       => 'post_thumb_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'default'  => array(
@@ -285,7 +285,7 @@ class EFUL_Display
 												'dependency' => array('post_thumb_show', '==', 'true'),
 											),
 											array(
-												'id'      => 'eventful_thumb_src_replace',
+												'id'      => 'eful_thumb_src_replace',
 												'type'    => 'checkbox',
 												'title'   => esc_html__('Replace With', 'eventful'),
 												'class'   => 'custom_help_text',
@@ -306,11 +306,11 @@ class EFUL_Display
 													'even_featured_img_found' => esc_html__('Even featured image was found', 'eventful'),
 												),
 												'default' => 'no_featured_img_found',
-												'dependency' => array('post_thumb_show|eventful_thumb_src_replace', '==|any', 'true|image,video,audio'),
+												'dependency' => array('post_thumb_show|eful_thumb_src_replace', '==|any', 'true|image,video,audio'),
 											),
 
 											array(
-												'id'      => 'eventful_thumb_border',
+												'id'      => 'eful_thumb_border',
 												'type'    => 'border',
 												'title'   => esc_html__('Border', 'eventful'),
 												'all'     => true,
@@ -325,7 +325,7 @@ class EFUL_Display
 												'id'       => 'post_thumb_border_radius',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Border Radius', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'default'  => array(
 													'top'    => '0',
 													'right'  => '0',
@@ -371,7 +371,7 @@ class EFUL_Display
 												'text_on'  => esc_html__('Enabled', 'eventful'),
 												'text_off' => esc_html__('Disabled', 'eventful'),
 												'text_width' => 100,
-												'dependency' => array('post_thumb_show|eventful_layout_preset', '==|!=', 'true|carousel_layout', true),
+												'dependency' => array('post_thumb_show|eful_layout_preset', '==|!=', 'true|carousel_layout', true),
 											),
 											array(
 												'id'       => 'post_thumb_meta',
@@ -496,11 +496,11 @@ class EFUL_Display
 												'dependency' => array('show_post_title', '==', 'true'),
 											),
 											array(
-												'id'       => 'eventful_title_length',
+												'id'       => 'eful_title_length',
 												'type'     => 'spinner',
 												'title'    => esc_html__('Length', 'eventful'),
 												'default'  => '30',
-												'sanitize' => 'eventful_sanitize_number_field',
+												'sanitize' => 'eful_sanitize_number_field',
 												'unit'     => esc_html__('chars', 'eventful'),
 												'dependency' => array('post_title_limit|show_post_title', '==|==', 'true|true'),
 											),
@@ -508,7 +508,7 @@ class EFUL_Display
 												'id'       => 'post_title_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'min'      => -100,
 												'units'    => array('px'),
 												'default'  => array(
@@ -525,8 +525,8 @@ class EFUL_Display
 							),
 
 							array(
-								'id'         => 'eventful_post_meta',
-								'class'      => 'eventful_post_meta ta-product-not-fields',
+								'id'         => 'eful_post_meta',
+								'class'      => 'eful_post_meta ta-product-not-fields',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -542,8 +542,8 @@ class EFUL_Display
 												'text_width' => 80,
 											),
 											array(
-												'id'      => 'eventful_post_meta_group',
-												'class'   => 'eventful_custom_group_design',
+												'id'      => 'eful_post_meta_group',
+												'class'   => 'eful_custom_group_design',
 												'type'    => 'group',
 												'button_title' => esc_html__('Add New Meta', 'eventful'),
 												'dependency' => array('show_post_meta', '==', 'true'),
@@ -633,7 +633,7 @@ class EFUL_Display
 														'dependency' => array('select_post_meta', '==', 'taxonomy'),
 													),
 													array(
-														'id'      => 'eventful_meta_over_thump_position',
+														'id'      => 'eful_meta_over_thump_position',
 														'type'    => 'select',
 														'title'   => esc_html__('Over Thumbnail Position', 'eventful'),
 														'options' => array(
@@ -646,7 +646,7 @@ class EFUL_Display
 														'dependency' => array('select_post_meta|eful_meta_position', '==|==', 'taxonomy|over_thumb'),
 													),
 													array(
-														'id'      => 'eventful_meta_pill_color',
+														'id'      => 'eful_meta_pill_color',
 														'type'    => 'color_group',
 														'title'   => esc_html__('Meta Color', 'eventful'),
 														'options' => array(
@@ -665,7 +665,7 @@ class EFUL_Display
 														'title'   => esc_html__('Per Minute', 'eventful'),
 														'class'   => 'eful_reading_time_meta',
 														'title_help'   => esc_html__('Default 300 words, the average reading speed for adults.', 'eventful'),
-														'sanitize'        => 'eventful_sanitize_number_field',
+														'sanitize'        => 'eful_sanitize_number_field',
 														'unit'   => esc_html__('words', 'eventful'),
 														'default' => '300',
 														'dependency' => array('select_post_meta', '==', 'reading_time'),
@@ -745,7 +745,7 @@ class EFUL_Display
 												'id'       => 'post_meta_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'dependency' => array('show_post_meta', '==', 'true'),
@@ -760,7 +760,7 @@ class EFUL_Display
 												'id'       => 'post_meta_between_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin Between Post Meta', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -5,
 												'dependency' => array('show_post_meta', '==', 'true'),
@@ -776,8 +776,8 @@ class EFUL_Display
 								),
 							),
 							array(
-								'id'         => 'eventful_event_fildes',
-								'class'      => 'eventful_event_fildes ta-product-not-fields',
+								'id'         => 'eful_event_fildes',
+								'class'      => 'eful_event_fildes ta-product-not-fields',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -793,8 +793,8 @@ class EFUL_Display
 												'text_width' => 80,
 											),
 											array(
-												'id'      => 'eventful_event_fildes_group',
-												'class'   => 'eventful_custom_group_design',
+												'id'      => 'eful_event_fildes_group',
+												'class'   => 'eful_custom_group_design',
 												'type'    => 'group',
 												'button_title' => esc_html__('Add New Meta', 'eventful'),
 												'dependency' => array('show_event_fildes', '==', 'true'),
@@ -958,7 +958,7 @@ class EFUL_Display
 												'id'       => 'event_fildes_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'dependency' => array('show_event_fildes', '==', 'true'),
@@ -973,7 +973,7 @@ class EFUL_Display
 												'id'       => 'event_fildes_between_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin Between Post Meta', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -5,
 												'dependency' => array('show_event_fildes', '==', 'true'),
@@ -989,7 +989,7 @@ class EFUL_Display
 								),
 							),
 							array(
-								'id'         => 'eventful_post_content',
+								'id'         => 'eful_post_content',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -1031,7 +1031,7 @@ class EFUL_Display
 												'id'       => 'eful_content_limit',
 												'type'     => 'spinner',
 												'title'    => esc_html__('Words Length', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_field',
+												'sanitize' => 'eful_sanitize_number_field',
 												'default'  => 30,
 												'max'      => 10000,
 												'dependency' => array('show_post_content|post_content_type|eful_content_length_type', '==|==|==', 'true|limit_content|words'),
@@ -1040,7 +1040,7 @@ class EFUL_Display
 												'id'       => 'eful_content_characters_limit',
 												'type'     => 'spinner',
 												'title'    => esc_html__('Characters Length', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_field',
+												'sanitize' => 'eful_sanitize_number_field',
 												'default'  => 300,
 												'max'      => 10000,
 												'dependency' => array('show_post_content|post_content_type|eful_content_length_type', '==|==|==', 'true|limit_content|characters'),
@@ -1049,7 +1049,7 @@ class EFUL_Display
 												'id'       => 'post_content_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'default'  => array(
@@ -1061,7 +1061,7 @@ class EFUL_Display
 												'dependency' => array('show_post_content', '==', 'true'),
 											),
 											array(
-												'id'      => 'eventful_strip_tags',
+												'id'      => 'eful_strip_tags',
 												'type'    => 'radio',
 												'title'   => esc_html__('HTML Tags', 'eventful'),
 												'options' => array(
@@ -1073,11 +1073,11 @@ class EFUL_Display
 												'dependency' => array('show_post_content|post_content_type', '==|!=', 'true|excerpt'),
 											),
 											array(
-												'id'    => 'eventful_allow_tag_name',
+												'id'    => 'eful_allow_tag_name',
 												'type'  => 'text',
 												'title' => esc_html__('Allow HTML Tags Names', 'eventful'),
 												'title_help' => esc_html__('Separate multiple tags by comma, e.g. h1,h2', 'eventful'),
-												'dependency' => array('show_post_content|eventful_strip_tags', '==|==', 'true|allow_some'),
+												'dependency' => array('show_post_content|eful_strip_tags', '==|==', 'true|allow_some'),
 											),
 											array(
 												'id'      => 'post_content_ellipsis',
@@ -1091,7 +1091,7 @@ class EFUL_Display
 								),
 							),
 							array(
-								'id'         => 'eventful_post_content_readmore',
+								'id'         => 'eful_post_content_readmore',
 								'type'       => 'accordion',
 								'accordions' => array(
 									array(
@@ -1119,7 +1119,7 @@ class EFUL_Display
 												'dependency' => array('show_read_more', '==', 'true'),
 											),
 											array(
-												'id'      => 'eventful_read_label',
+												'id'      => 'eful_read_label',
 												'type'    => 'text',
 												'title'   => esc_html__('Read More Label', 'eventful'),
 												'default' => 'Read More',
@@ -1151,7 +1151,7 @@ class EFUL_Display
 												'id'       => 'readmore_padding',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Padding', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'default'  => array(
@@ -1166,7 +1166,7 @@ class EFUL_Display
 												'id'       => 'readmore_margin',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Margin', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'units'    => array('px'),
 												'min'      => -100,
 												'default'  => array(
@@ -1181,7 +1181,7 @@ class EFUL_Display
 												'id'       => 'readmore_button_radius',
 												'type'     => 'spacing',
 												'title'    => esc_html__('Border Radius', 'eventful'),
-												'sanitize' => 'eventful_sanitize_number_array_field',
+												'sanitize' => 'eful_sanitize_number_array_field',
 												'all'      => true,
 												'default'  => array(
 													'all'  => '0',
@@ -1220,7 +1220,7 @@ class EFUL_Display
 						'title'      => esc_html__('Pagination', 'eventful'),
 						'subtitle'   => esc_html__('Enabled/Disabled item pagination.', 'eventful'),
 						'default'    => true,
-						'dependency' => array('eventful_layout_preset', '!=', 'carousel_layout', true),
+						'dependency' => array('eful_layout_preset', '!=', 'carousel_layout', true),
 					),
 					array(
 						'id'         => 'post_pagination_type',
@@ -1234,7 +1234,7 @@ class EFUL_Display
 							'no_ajax'         => esc_html__('No Ajax (Normal Pagination)', 'eventful'),
 						),
 						'default'    => 'ajax_load_more',
-						'dependency' => array('eventful_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
+						'dependency' => array('eful_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
 					),
 					array(
 						'id'         => 'filter_pagination_type',
@@ -1246,7 +1246,7 @@ class EFUL_Display
 							'infinite_scroll' => esc_html__('Infinite Scroll (Ajax)', 'eventful'),
 						),
 						'default'    => 'ajax_load_more',
-						'dependency' => array('eventful_layout_preset|show_post_pagination', '==|==', 'filter_layout|true', true),
+						'dependency' => array('eful_layout_preset|show_post_pagination', '==|==', 'filter_layout|true', true),
 					),
 					array(
 						'id'         => 'post_pagination_type_mobile',
@@ -1260,7 +1260,7 @@ class EFUL_Display
 							'no_ajax'         => esc_html__('No Ajax (Normal Pagination)', 'eventful'),
 						),
 						'default'    => 'infinite_scroll',
-						'dependency' => array('eventful_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
+						'dependency' => array('eful_layout_preset|show_post_pagination', 'not-any|==', 'carousel_layout,filter_layout|true', true),
 					),
 					array(
 						'id'         => 'load_more_button_text',
@@ -1268,7 +1268,7 @@ class EFUL_Display
 						'title'      => esc_html__('Load More Button Label', 'eventful'),
 						'subtitle'   => esc_html__('Set the label for load more button.', 'eventful'),
 						'default'    => esc_html__('Load More', 'eventful'),
-						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
 						'id'         => 'load_more_ending_message',
@@ -1276,10 +1276,10 @@ class EFUL_Display
 						'title'      => esc_html__('Ending Message', 'eventful'),
 						'subtitle'   => esc_html__('Set ending message for load more/infinite scroll.', 'eventful'),
 						'default'    => esc_html__('No more events available', 'eventful'),
-						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
-						'id'         => 'eventful_pagination_btn_color',
+						'id'         => 'eful_pagination_btn_color',
 						'type'       => 'color_group',
 						'title'      => esc_html__('Pagination  Color', 'eventful'),
 						'subtitle'   => esc_html__('Set Pagination color', 'eventful'),
@@ -1299,10 +1299,10 @@ class EFUL_Display
 							'background'        => '#ffffff',
 							'active_background' => '#0015b5',
 						),
-						'dependency' => array('eventful_layout_preset|show_post_pagination|post_pagination_type', '!=|==|any', 'carousel_layout|true|ajax_pagination,no_ajax', true),
+						'dependency' => array('eful_layout_preset|show_post_pagination|post_pagination_type', '!=|==|any', 'carousel_layout|true|ajax_pagination,no_ajax', true),
 					),
 					array(
-						'id'         => 'eventful_loadmore_btn_color',
+						'id'         => 'eful_loadmore_btn_color',
 						'type'       => 'color_group',
 						'title'      => esc_html__('Load More Button Color', 'eventful'),
 						'subtitle'   => esc_html__('Set load more button color.', 'eventful'),
@@ -1318,7 +1318,7 @@ class EFUL_Display
 							'background'        => '#0015b5',
 							'active_background' => '#ffffff',
 						),
-						'dependency' => array('eventful_layout_preset|show_post_pagination|post_pagination_type', '!=|==|==', 'carousel_layout|true|ajax_load_more', true),
+						'dependency' => array('eful_layout_preset|show_post_pagination|post_pagination_type', '!=|==|==', 'carousel_layout|true|ajax_load_more', true),
 					),
 					array(
 						'id'         => 'pagination_alignment',
@@ -1331,7 +1331,7 @@ class EFUL_Display
 							'right'  => wp_kses(__('<i class="fas fa-align-right" title="Right"></i>', 'eventful'), array('i' => array('class' => array()))),
 						),
 						'default'    => 'left',
-						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
 						'id'         => 'post_per_page',
@@ -1339,9 +1339,9 @@ class EFUL_Display
 						'title'      => esc_html__('Items Per Page', 'eventful'),
 						'subtitle'   => esc_html__('Set number of items to show per page.', 'eventful'),
 						'title_help' => esc_html__('This value should be lesser than that <strong> Limit </strong> from <strong>Filter Content  </strong> tab.', 'eventful'),
-						'sanitize'   => 'eventful_sanitize_number_field',
+						'sanitize'   => 'eful_sanitize_number_field',
 						'default'    => 12,
-						'dependency' => array('eventful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
+						'dependency' => array('eful_layout_preset|show_post_pagination', '!=|==', 'carousel_layout|true', true),
 					),
 					array(
 						'id'         => 'show_preloader',
@@ -1355,7 +1355,7 @@ class EFUL_Display
 					),
 					array(
 						'type'    => 'subheading',
-						'class'   => 'eventful_filter_btn_color hidden',
+						'class'   => 'eful_filter_btn_color hidden',
 						'content' => esc_html__('Live Filter Button', 'eventful'),
 					),
 				), // End of fields array.

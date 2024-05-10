@@ -92,8 +92,8 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
     public function __construct( $key, $params = array() ) {
 
       $this->unique   = $key;
-      $this->args     = apply_filters( "eventful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
-      $this->sections = apply_filters( "eventful_{$this->unique}_sections", $params['sections'], $this );
+      $this->args     = apply_filters( "eful_{$this->unique}_args", wp_parse_args( $params['args'], $this->args ), $this );
+      $this->sections = apply_filters( "eful_{$this->unique}_sections", $params['sections'], $this );
 
       // run only is admin panel options, avoid performance loss
       $this->pre_tabs     = $this->pre_tabs( $this->sections );
@@ -106,7 +106,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
 
       add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
       add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu' ), $this->args['admin_bar_menu_priority'] );
-      add_action( 'wp_ajax_eventful_'. $this->unique .'_ajax_save', array( $this, 'ajax_save' ) );
+      add_action( 'wp_ajax_eful_'. $this->unique .'_ajax_save', array( $this, 'ajax_save' ) );
 
       if ( $this->args['database'] === 'network' && ! empty( $this->args['show_in_network'] ) ) {
         add_action( 'network_admin_menu', array( $this, 'add_admin_menu' ) );
@@ -206,27 +206,25 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
         return;
       }
 
-      // XSS ok.
-      // No worries, This "POST" requests is sanitizing in the below foreach. see #L337 - #L341
-      $response  = ( $ajax && ! empty( $_POST['data']) ) ? json_decode( wp_unslash( trim( sanitize_post($_POST['data']) ) ), true ) : sanitize_post($_POST);
+      $response = ($ajax && !empty($_POST['data'])) ? json_decode(wp_unslash(trim(sanitize_text_field($_POST['data']))), true) : array();
 
       // Set variables.
       $data      = array();
-      $noncekey  = 'eventful_options_nonce'. $this->unique;
+      $noncekey  = 'eful_options_nonce'. $this->unique;
       $nonce     = ( ! empty( $response[$noncekey] ) ) ? $response[$noncekey] : '';
       $options   = ( ! empty( $response[$this->unique] ) ) ? $response[$this->unique] : array();
-      $transient = ( ! empty( $response['eventful_transient'] ) ) ? $response['eventful_transient'] : array();
+      $transient = ( ! empty( $response['eful_transient'] ) ) ? $response['eful_transient'] : array();
 
-      if ( wp_verify_nonce( $nonce, 'eventful_options_nonce' ) ) {
+      if ( wp_verify_nonce( $nonce, 'eful_options_nonce' ) ) {
 
         $importing  = false;
         $section_id = ( ! empty( $transient['section'] ) ) ? $transient['section'] : '';
 
-        if ( ! $ajax && ! empty( $response[ 'eventful_import_data' ] ) ) {
+        if ( ! $ajax && ! empty( $response[ 'eful_import_data' ] ) ) {
 
           // XSS ok.
           // No worries, This "POST" requests is sanitizing in the below foreach. see #L337 - #L341
-          $import_data  = json_decode( wp_unslash( trim( $response[ 'eventful_import_data' ] ) ), true );
+          $import_data  = json_decode( wp_unslash( trim( $response[ 'eful_import_data' ] ) ), true );
           $options      = ( is_array( $import_data ) && ! empty( $import_data ) ) ? $import_data : array();
           $importing    = true;
           $this->notice = esc_html__( 'Settings successfully imported.', 'eventful' );
@@ -317,15 +315,15 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
 
         }
 
-        $data = apply_filters( "eventful_{$this->unique}_save", $data, $this );
+        $data = apply_filters( "eful_{$this->unique}_save", $data, $this );
 
-        do_action( "eventful_{$this->unique}_save_before", $data, $this );
+        do_action( "eful_{$this->unique}_save_before", $data, $this );
 
         $this->options = $data;
 
         $this->save_options( $data );
 
-        do_action( "eventful_{$this->unique}_save_after", $data, $this );
+        do_action( "eful_{$this->unique}_save_after", $data, $this );
 
         if ( empty( $this->notice ) ) {
           $this->notice = esc_html__( 'Settings saved.', 'eventful' );
@@ -352,7 +350,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
         update_option( $this->unique, $data );
       }
 
-      do_action( "eventful_{$this->unique}_saved", $data, $this );
+      do_action( "eful_{$this->unique}_saved", $data, $this );
 
     }
 
@@ -483,7 +481,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
       $nav_type      = ( $this->args['nav'] === 'inline' ) ? 'inline' : 'normal';
       $form_action   = ( $this->args['form_action'] ) ? $this->args['form_action'] : '';
 
-      do_action( 'eventful_options_before' );
+      do_action( 'eful_options_before' );
 
       echo '<div class="eventful eventful-options'. esc_attr( $theme . $class . $wrapper_class ) .'" data-slug="'. esc_attr( $this->args['menu_slug'] ) .'" data-unique="'. esc_attr( $this->unique ) .'">';
 
@@ -491,9 +489,9 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
 
         echo '<form method="post" action="'. esc_attr( $form_action ) .'" enctype="multipart/form-data" id="eventful-form" autocomplete="off" novalidate="novalidate">';
 
-        echo '<input type="hidden" class="eventful-section-id" name="eventful_transient[section]" value="1">';
+        echo '<input type="hidden" class="eventful-section-id" name="eful_transient[section]" value="1">';
 
-        wp_nonce_field( 'eventful_options_nonce', 'eventful_options_nonce'. $this->unique );
+        wp_nonce_field( 'eful_options_nonce', 'eful_options_nonce'. $this->unique );
 
         echo '<div class="eventful-header'. esc_attr( $sticky_class ) .'">';
         echo '<div class="eventful-header-inner">';
@@ -517,8 +515,8 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
 
             echo '<div class="eventful-buttons">';
             echo '<input type="submit" name="'. esc_attr( $this->unique ) .'[_nonce][save]" class="button button-primary eventful-top-save eventful-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'eventful' ) .'" data-save="'. esc_html__( 'Saving...', 'eventful' ) .'">';
-            echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="eventful_transient[reset_section]" class="button button-secondary eventful-reset-section eventful-confirm" value="'. esc_html__( 'Reset Section', 'eventful' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'eventful' ) .'">' : '';
-            echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="eventful_transient[reset]" class="button eventful-warning-primary eventful-reset-all eventful-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'eventful' ) : esc_html__( 'Reset', 'eventful' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'eventful' ) .'">' : '';
+            echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="eful_transient[reset_section]" class="button button-secondary eventful-reset-section eventful-confirm" value="'. esc_html__( 'Reset Section', 'eventful' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'eventful' ) .'">' : '';
+            echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="eful_transient[reset]" class="button eventful-warning-primary eventful-reset-all eventful-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'eventful' ) : esc_html__( 'Reset', 'eventful' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'eventful' ) .'">' : '';
             echo '</div>';
 
           echo '</div>';
@@ -639,9 +637,9 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
           echo '<div class="eventful-footer">';
 
           echo '<div class="eventful-buttons">';
-          echo '<input type="submit" name="eventful_transient[save]" class="button button-primary eventful-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'eventful' ) .'" data-save="'. esc_html__( 'Saving...', 'eventful' ) .'">';
-          echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="eventful_transient[reset_section]" class="button button-secondary eventful-reset-section eventful-confirm" value="'. esc_html__( 'Reset Section', 'eventful' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'eventful' ) .'">' : '';
-          echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="eventful_transient[reset]" class="button eventful-warning-primary eventful-reset-all eventful-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'eventful' ) : esc_html__( 'Reset', 'eventful' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'eventful' ) .'">' : '';
+          echo '<input type="submit" name="eful_transient[save]" class="button button-primary eventful-save'. esc_attr( $ajax_class ) .'" value="'. esc_html__( 'Save', 'eventful' ) .'" data-save="'. esc_html__( 'Saving...', 'eventful' ) .'">';
+          echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="eful_transient[reset_section]" class="button button-secondary eventful-reset-section eventful-confirm" value="'. esc_html__( 'Reset Section', 'eventful' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'eventful' ) .'">' : '';
+          echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="eful_transient[reset]" class="button eventful-warning-primary eventful-reset-all eventful-confirm" value="'. ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'eventful' ) : esc_html__( 'Reset', 'eventful' ) ) .'" data-confirm="'. esc_html__( 'Are you sure you want to reset all settings to default values?', 'eventful' ) .'">' : '';
           echo '</div>';
 
           echo ( ! empty( $this->args['footer_text'] ) ) ? '<div class="eventful-copyright">'. wp_kses_post($this->args['footer_text']) .'</div>' : '';
@@ -661,7 +659,7 @@ if ( ! class_exists( 'EFUL_Options' ) ) {
 
       echo '</div>';
 
-      do_action( 'eventful_options_after' );
+      do_action( 'eful_options_after' );
 
     }
   }

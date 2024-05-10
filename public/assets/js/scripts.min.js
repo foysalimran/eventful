@@ -1,15 +1,15 @@
 jQuery(document).ready(function ($) {
   "use strict";
-  var eventful_myScript = function () {
+  var eful_myScript = function () {
     if ($(".ta-container").length > 0) {
       $(".ta-container").each(function () {
-        var eventful_container = $(this),
-          eventful_container_id = eventful_container.attr("id"),
-          eventful_Wrapper_ID = "#" + eventful_container_id,
-          pc_sid = $(eventful_Wrapper_ID).data("sid"), // The Shortcode ID.
-          eventfulCarousel = $("#" + eventful_container_id + " .ta-eventful-carousel"),
-          eventfulAccordion = $("#" + eventful_container_id + " .ta-collapse"),
-          eventfulfilter = $("#" + eventful_container_id + ".eventful-filter-wrapper"),
+        var eful_container = $(this),
+          eful_container_id = eful_container.attr("id"),
+          eful_Wrapper_ID = "#" + eful_container_id,
+          pc_sid = $(eful_Wrapper_ID).data("sid"), // The Shortcode ID.
+          eventfulCarousel = $("#" + eful_container_id + " .ta-eventful-carousel"),
+          eventfulAccordion = $("#" + eful_container_id + " .ta-collapse"),
+          eventfulfilter = $("#" + eful_container_id + ".eventful-filter-wrapper"),
           ajaxurl = speventful.ajaxurl,
           nonce = speventful.nonce,
           eventfulCarouselDir = eventfulCarousel.attr("dir"),
@@ -65,13 +65,13 @@ jQuery(document).ready(function ($) {
                 slidePerView = eventfulCarouselData.slidesPerView.mobile_landscape;
               }
               $(
-                eventful_Wrapper_ID +
+                eful_Wrapper_ID +
                   " .ta-eventful-carousel .swiper-wrapper > .ta-eventful-item"
               )
                 .css("width", 100 / slidePerView + "%")
                 .removeClass("swiper-slide");
               var fade_items = $(
-                eventful_Wrapper_ID +
+                eful_Wrapper_ID +
                   " .ta-eventful-carousel .swiper-wrapper > .ta-eventful-item"
               );
               var style =
@@ -83,7 +83,7 @@ jQuery(document).ready(function ($) {
                 fade_items.eq(i - 1).css(style, 0);
               }
               eventfulSwiper = new Swiper(
-                "#" + eventful_container_id + " .ta-eventful-carousel",
+                "#" + eful_container_id + " .ta-eventful-carousel",
                 {
                   speed: eventfulCarouselData.speed,
                   slidesPerView: 1,
@@ -167,7 +167,7 @@ jQuery(document).ready(function ($) {
               );
             } else {
               eventfulSwiper = new Swiper(
-                "#" + eventful_container_id + " .ta-eventful-carousel",
+                "#" + eful_container_id + " .ta-eventful-carousel",
                 {
                   speed: eventfulCarouselData.speed,
                   slidesPerView: eventfulCarouselData.slidesPerView.mobile,
@@ -329,11 +329,11 @@ jQuery(document).ready(function ($) {
         }
         $(
           ".ta-overlay.ta-eventful-post,.ta-content-box.ta-eventful-post",
-          eventful_Wrapper_ID
+          eful_Wrapper_ID
         ).on("mouseover", function () {
           $(this)
-            .find(".eventful__item__content.animated:not(.eventful_hover)")
-            .addClass("eventful_hover");
+            .find(".eful__item__content.animated:not(.eful_hover)")
+            .addClass("eful_hover");
         });
 
         
@@ -346,7 +346,7 @@ jQuery(document).ready(function ($) {
           } else {
             var layoutMode = "fitRows";
           }
-          var $grid = $(".grid", eventful_Wrapper_ID).isotope({
+          var $grid = $(".grid", eful_Wrapper_ID).isotope({
             itemSelector: ".item",
             //layoutMode: 'fitRows'
             layoutMode: layoutMode,
@@ -371,7 +371,7 @@ jQuery(document).ready(function ($) {
 
           // Store filter for each group.
           var filters = {};
-          $(".eventful-shuffle-filter .taxonomy-group", eventful_Wrapper_ID).on(
+          $(".eventful-shuffle-filter .taxonomy-group", eful_Wrapper_ID).on(
             "change",
             function (event) {
               var $select = $(event.target);
@@ -389,7 +389,7 @@ jQuery(document).ready(function ($) {
             }
           );
 
-          $(".eventful-shuffle-filter", eventful_Wrapper_ID).on(
+          $(".eventful-shuffle-filter", eful_Wrapper_ID).on(
             "click",
             ".eventful-button",
             function (event) {
@@ -411,7 +411,7 @@ jQuery(document).ready(function ($) {
             }
           );
           // Change is-active class on buttons.
-          $(".taxonomy-group", eventful_Wrapper_ID).each(function (
+          $(".taxonomy-group", eful_Wrapper_ID).each(function (
             i,
             taxonomyGroup
           ) {
@@ -441,15 +441,15 @@ jQuery(document).ready(function ($) {
 
         function eful_item_same_height() {
           var maxHeight = 0;
-          $(eventful_Wrapper_ID + ".eventful_same_height .item").each(function () {
+          $(eful_Wrapper_ID + ".eful_same_height .item").each(function () {
             if ($(this).find(".ta-eventful-post").height() > maxHeight) {
               maxHeight = $(this).find(".ta-eventful-post").height();
             }
           });
-          $(eventful_Wrapper_ID + ".eventful_same_height .ta-eventful-post").height(maxHeight);
+          $(eful_Wrapper_ID + ".eful_same_height .ta-eventful-post").height(maxHeight);
         }
         if (
-          $(eventful_Wrapper_ID + ".eventful_same_height").hasClass("eventful-filter-wrapper")
+          $(eful_Wrapper_ID + ".eful_same_height").hasClass("eventful-filter-wrapper")
         ) {
           eful_item_same_height();
         }
@@ -461,10 +461,10 @@ jQuery(document).ready(function ($) {
           order = "",
           term_id = "",
           page = "",
-          spsp_lang = $(eventful_Wrapper_ID).data("lang");
+          spsp_lang = $(eful_Wrapper_ID).data("lang");
           var author_id = "",
-          eventful_hash_url = Array(),
-          eventful_last_filter = "",
+          eful_hash_url = Array(),
+          eful_last_filter = "",
           is_pagination_url_change = true;
         function eful_ajax_action(selected_term_list = null) {
           jQuery.ajax({
@@ -487,16 +487,16 @@ jQuery(document).ready(function ($) {
               var $data = $(data);
               var $newElements = $data;
 
-              if ($(eventful_Wrapper_ID).hasClass("eventful-masonry")) {
-                var $post_wrapper = $(".ta-row", eventful_Wrapper_ID);
+              if ($(eful_Wrapper_ID).hasClass("eventful-masonry")) {
+                var $post_wrapper = $(".ta-row", eful_Wrapper_ID);
                 $post_wrapper.masonry("destroy");
                 $post_wrapper.html($newElements).imagesLoaded(function () {
                   $post_wrapper.masonry();
                 });
-              } else if ($(eventful_Wrapper_ID).hasClass("eventful-filter-wrapper")) {
+              } else if ($(eful_Wrapper_ID).hasClass("eventful-filter-wrapper")) {
                 $(
                   ".ta-row, .eventful-timeline-grid, .ta-collapse, .table-responsive tbody",
-                  eventful_Wrapper_ID
+                  eful_Wrapper_ID
                 ).html($newElements);
                 $grid
                   .append($newElements)
@@ -508,12 +508,12 @@ jQuery(document).ready(function ($) {
               } else if (eventfulCarousel.length > 0) {
                 if (eventfulCarouselData.mode == "ticker") {
                   eventfulSwiper.destroySlider();
-                  $(".swiper-wrapper", eventful_Wrapper_ID).html($newElements);
+                  $(".swiper-wrapper", eful_Wrapper_ID).html($newElements);
                   eful_carousel_init();
                   eventfulSwiper.reloadSlider();
                 } else {
                   eventfulSwiper.destroy(true, true);
-                  $(".swiper-wrapper", eventful_Wrapper_ID).html($newElements);
+                  $(".swiper-wrapper", eful_Wrapper_ID).html($newElements);
                   eful_carousel_init();
                 }
               } else {
@@ -522,7 +522,7 @@ jQuery(document).ready(function ($) {
                 });
                 $(
                   ".ta-row, .eventful-timeline-grid, .ta-collapse, .table-responsive tbody",
-                  eventful_Wrapper_ID
+                  eful_Wrapper_ID
                 ).html($newElements);
                 if (eventfulAccordion.length > 0) {
                   eventfulAccordion.accordion("refresh");
@@ -548,10 +548,10 @@ jQuery(document).ready(function ($) {
 
         // Pagination.
         function eful_pagination_action(selected_term_list = null) {
-          var LoadMoreText = $(".ta-eventful-pagination-data", eventful_Wrapper_ID).data(
+          var LoadMoreText = $(".ta-eventful-pagination-data", eful_Wrapper_ID).data(
             "loadmoretext"
           );
-          var EndingMessage = $(".ta-eventful-pagination-data", eventful_Wrapper_ID).data(
+          var EndingMessage = $(".ta-eventful-pagination-data", eful_Wrapper_ID).data(
             "endingtext"
           );
           jQuery.ajax({
@@ -576,26 +576,26 @@ jQuery(document).ready(function ($) {
               var $newElements = $data;
               $(
                 ".eventful-post-pagination.eventful-on-mobile:not(.no_ajax)",
-                eventful_Wrapper_ID
+                eful_Wrapper_ID
               ).html($newElements);
               if (
                 Pagination_Type == "infinite_scroll" ||
                 Pagination_Type == "ajax_load_more"
               ) {
-                $(".eventful-load-more", eventful_Wrapper_ID)
+                $(".eventful-load-more", eful_Wrapper_ID)
                   .removeClass("finished")
                   .removeClass("eventful-hide")
                   .html(
                     '<button eventfulcessing="0">' + LoadMoreText + "</button>"
                   );
-                if (!$(".eventful-post-pagination a", eventful_Wrapper_ID).length) {
-                  $(".eventful-load-more", eventful_Wrapper_ID)
+                if (!$(".eventful-post-pagination a", eful_Wrapper_ID).length) {
+                  $(".eventful-load-more", eful_Wrapper_ID)
                     .show()
                     .html(EndingMessage);
                 }
               }
               if (Pagination_Type == "infinite_scroll") {
-                $(".eventful-load-more", eventful_Wrapper_ID).addClass("eventful-hide");
+                $(".eventful-load-more", eful_Wrapper_ID).addClass("eventful-hide");
               }
             },
           });
@@ -621,13 +621,13 @@ jQuery(document).ready(function ($) {
               var $newElements = $data;
               $(
                 ".eventful-post-pagination.eventful-on-desktop:not(.no_ajax)",
-                eventful_Wrapper_ID
+                eful_Wrapper_ID
               ).html($newElements);
               if (
                 Pagination_Type == "infinite_scroll" ||
                 Pagination_Type == "ajax_load_more"
               ) {
-                $(".eventful-load-more", eventful_Wrapper_ID)
+                $(".eventful-load-more", eful_Wrapper_ID)
                   .removeClass("finished")
                   .removeClass("eventful-hide")
                   .html(
@@ -635,10 +635,10 @@ jQuery(document).ready(function ($) {
                   );
               }
               if (Pagination_Type == "infinite_scroll") {
-                $(".eventful-load-more", eventful_Wrapper_ID).addClass("eventful-hide");
+                $(".eventful-load-more", eful_Wrapper_ID).addClass("eventful-hide");
               }
-              if (!$(".eventful-post-pagination a", eventful_Wrapper_ID).length) {
-                $(".eventful-load-more", eventful_Wrapper_ID).show().html(EndingMessage);
+              if (!$(".eventful-post-pagination a", eful_Wrapper_ID).length) {
+                $(".eventful-load-more", eful_Wrapper_ID).show().html(EndingMessage);
               }
               eful_lazyload();
             },
@@ -661,14 +661,14 @@ jQuery(document).ready(function ($) {
               author_id: author_id,
               nonce: nonce,
               term_list: selected_term_list,
-              last_filter: eventful_last_filter,
+              last_filter: eful_last_filter,
             },
             success: function (data) {
               var $data = $(data);
               var $newElements = $data.animate({
                 opacity: 0.5,
               });
-              $(".eventful-filter-bar", eventful_Wrapper_ID).html($newElements);
+              $(".eventful-filter-bar", eful_Wrapper_ID).html($newElements);
               $newElements.animate({
                 opacity: 1,
               });
@@ -676,25 +676,25 @@ jQuery(document).ready(function ($) {
           });
         }
         // Update Hash url array.
-        function eful_hash_update_arr(eventful_filter_keyword, filter_arr, key) {
-          if (eventful_hash_url.length > 0) {
-            eventful_hash_url.forEach(function (row) {
-              if ($.inArray(eventful_filter_keyword, row.eventful_filter_keyword)) {
-                row[key] = eventful_filter_keyword;
+        function eful_hash_update_arr(eful_filter_keyword, filter_arr, key) {
+          if (eful_hash_url.length > 0) {
+            eful_hash_url.forEach(function (row) {
+              if ($.inArray(eful_filter_keyword, row.eful_filter_keyword)) {
+                row[key] = eful_filter_keyword;
               } else {
-                eventful_hash_url.push(filter_arr);
+                eful_hash_url.push(filter_arr);
               }
             });
           } else {
-            eventful_hash_url.push(filter_arr);
+            eful_hash_url.push(filter_arr);
           }
-          return eventful_hash_url;
+          return eful_hash_url;
         }
         // On normal pagination go to current shortcode.
         var url_hash = window.location.search;
         if (url_hash.indexOf("paged") >= 0) {
           var s_id = /paged(\d+)/.exec(url_hash)[1];
-          var spscurrent_id = document.getElementById("eventful_wrapper-" + s_id);
+          var spscurrent_id = document.getElementById("eful_wrapper-" + s_id);
           spscurrent_id.scrollIntoView();
         }
         // Update url.
@@ -702,13 +702,13 @@ jQuery(document).ready(function ($) {
         function eful_update_url() {
           var p_search = window.location.search;
           if (p_search.indexOf("page_id") >= 0) {
-            var eventful_page = /page_id\=(\d+)/.exec(p_search)[1];
-            var eventful_url = "?page_id=" + eventful_page + "&";
+            var eful_page = /page_id\=(\d+)/.exec(p_search)[1];
+            var eful_url = "?page_id=" + eful_page + "&";
           } else {
-            var eventful_url = "&";
+            var eful_url = "&";
           }
-          if (eventful_hash_url.length > 0) {
-            $.map(eventful_hash_url, function (value, index) {
+          if (eful_hash_url.length > 0) {
+            $.map(eful_hash_url, function (value, index) {
               $.map(value, function (value2, index2) {
                 if (
                   value2 == "all" ||
@@ -716,9 +716,9 @@ jQuery(document).ready(function ($) {
                   value2 == "" ||
                   value2 == "page"
                 ) {
-                  eventful_url += "";
+                  eful_url += "";
                 } else {
-                  eventful_url += "eventful_" + index2 + "=" + value2 + "&";
+                  eful_url += "eful_" + index2 + "=" + value2 + "&";
                 }
               });
             });
@@ -727,28 +727,28 @@ jQuery(document).ready(function ($) {
             var term_total_length = selected_term_list.length;
             $.map(selected_term_list, function (value, index) {
               if (value.term_id == "all" || value.term_id == "") {
-                eventful_url += "";
+                eful_url += "";
               } else {
                 if (index == term_total_length - 1) {
-                  eventful_url += "tx_" + value.taxonomy + "=" + value.term_id + "";
+                  eful_url += "tx_" + value.taxonomy + "=" + value.term_id + "";
                 } else {
-                  eventful_url += "tx_" + value.taxonomy + "=" + value.term_id + "&";
+                  eful_url += "tx_" + value.taxonomy + "=" + value.term_id + "&";
                 }
               }
             });
           }
           
-          if (eventful_hash_url.length < 0 || selected_term_list.length < 0) {
-            eventful_url = "";
+          if (eful_hash_url.length < 0 || selected_term_list.length < 0) {
+            eful_url = "";
           }
-          if (eventful_url.length > 1) {
+          if (eful_url.length > 1) {
             var slf = "";
-            if (eventful_last_filter.length > 0) {
-              var slf = "&slf=" + eventful_last_filter;
+            if (eful_last_filter.length > 0) {
+              var slf = "&slf=" + eful_last_filter;
             }
 
-            eventful_url = "?eventful=" + pc_sid + slf + eventful_url;
-            history.pushState(null, null, encodeURI(eventful_url));
+            eful_url = "?eventful=" + pc_sid + slf + eful_url;
+            history.pushState(null, null, encodeURI(eful_url));
           } else {
             var uri = window.location.toString();
             if (uri.indexOf("?") > 0) {
@@ -759,13 +759,13 @@ jQuery(document).ready(function ($) {
         }
 
         // Ajax post search.
-        $("input.eventful-search-field", eventful_Wrapper_ID).on("keyup", function () {
+        $("input.eventful-search-field", eful_Wrapper_ID).on("keyup", function () {
           var that = $(this);
           keyword = that.val();
-          eventful_last_filter = "keyword";
-          var eventful_search_arr = { keyword, keyword };
+          eful_last_filter = "keyword";
+          var eful_search_arr = { keyword, keyword };
           eful_live_filter_reset(selected_term_list);
-          eful_hash_update_arr(keyword, eventful_search_arr, "keyword");
+          eful_hash_update_arr(keyword, eful_search_arr, "keyword");
           eful_update_url();
           eful_ajax_action(selected_term_list);
           eful_pagination_action();
@@ -775,7 +775,7 @@ jQuery(document).ready(function ($) {
         });
 
         // Post order by.
-        $(".eventful-order-by", eventful_Wrapper_ID).on("change", function () {
+        $(".eventful-order-by", eful_Wrapper_ID).on("change", function () {
           var that;
           $(this)
             .find("option:selected, input:radio:checked")
@@ -810,7 +810,7 @@ jQuery(document).ready(function ($) {
 
         // Pre Filter Init.
         var tax_list = Array();
-        $(".eventful-filter-by", eventful_Wrapper_ID)
+        $(".eventful-filter-by", eful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
             term_id = $(this).val();
@@ -855,32 +855,32 @@ jQuery(document).ready(function ($) {
               tax_list = Array(taxonomy);
             }
           });
-        $(".eventful-author-filter", eventful_Wrapper_ID)
+        $(".eventful-author-filter", eful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
             var that;
             that = $(this);
             author_id = that.val();
           });
-        $(".eventful-order", eventful_Wrapper_ID)
+        $(".eventful-order", eful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
             var that;
             that = $(this);
             order = $(this).val();
           });
-        $(".eventful-order-by", eventful_Wrapper_ID)
+        $(".eventful-order-by", eful_Wrapper_ID)
           .find("option:selected, input:radio:checked")
           .each(function () {
             var that;
             that = $(this);
             orderby = that.val();
           });
-        $("input.eventful-search-field", eventful_Wrapper_ID).each(function () {
+        $("input.eventful-search-field", eful_Wrapper_ID).each(function () {
           var that = $(this);
           keyword = that.val();
         });
-        $(".eventful-filter-by-checkbox", eventful_Wrapper_ID).each(function () {
+        $(".eventful-filter-by-checkbox", eful_Wrapper_ID).each(function () {
           var current_tax = $(this).data("taxonomy");
           var term_ids = "";
           $(this)
@@ -912,10 +912,10 @@ jQuery(document).ready(function ($) {
           .reverse()
           .map(JSON.parse);
         // Filter by checkbox.
-        $(eventful_Wrapper_ID).on("change", ".eventful-filter-by-checkbox", function (e) {
+        $(eful_Wrapper_ID).on("change", ".eventful-filter-by-checkbox", function (e) {
           e.stopPropagation();
           e.preventDefault();
-          $(".eventful-filter-by-checkbox", eventful_Wrapper_ID).each(function () {
+          $(".eventful-filter-by-checkbox", eful_Wrapper_ID).each(function () {
             var current_tax = $(this).data("taxonomy");
             var term_ids = "";
             $(this)
@@ -956,9 +956,9 @@ jQuery(document).ready(function ($) {
           taxonomy = $(this).data("taxonomy");
           term_id = term_ids.replace(/,(?=\s*$)/, "");
           if (term_id.length > 0) {
-            eventful_last_filter = taxonomy;
+            eful_last_filter = taxonomy;
           } else {
-            eventful_last_filter = eventful_last_filter;
+            eful_last_filter = eful_last_filter;
           }
           eful_hash_update_arr("page", { page: "" }, "page");
           eful_update_url();
@@ -968,7 +968,7 @@ jQuery(document).ready(function ($) {
         });
 
         // Filter by taxonomy.
-        $(eventful_Wrapper_ID).on("change", ".eventful-filter-by", function (e) {
+        $(eful_Wrapper_ID).on("change", ".eventful-filter-by", function (e) {
           e.stopPropagation();
           e.preventDefault();
           $(this)
@@ -1017,9 +1017,9 @@ jQuery(document).ready(function ($) {
               }
             });
           if (term_id == "all") {
-            eventful_last_filter = eventful_last_filter;
+            eful_last_filter = eful_last_filter;
           } else {
-            eventful_last_filter = taxonomy;
+            eful_last_filter = taxonomy;
           }
           selected_term_list = selected_term_list
             .map(JSON.stringify)
@@ -1031,14 +1031,14 @@ jQuery(document).ready(function ($) {
             .map(JSON.parse);
           eful_hash_update_arr("page", { page: "" }, "page");
           eful_update_url();
-          // if ($('.eventful-filter-by', eventful_Wrapper_ID).length > 1) {
+          // if ($('.eventful-filter-by', eful_Wrapper_ID).length > 1) {
           eful_live_filter_reset(selected_term_list);
           //}
           eful_ajax_action(selected_term_list);
           eful_pagination_action(selected_term_list);
         });
         // Author filter.
-        $(eventful_Wrapper_ID).on("change", ".eventful-author-filter", function (e) {
+        $(eful_Wrapper_ID).on("change", ".eventful-author-filter", function (e) {
           var that;
           $(this)
             .find("option:selected, input:radio:checked")
@@ -1049,9 +1049,9 @@ jQuery(document).ready(function ($) {
             });
           var author_arr = { author_id, author_id };
           if (author_id == "all") {
-            eventful_last_filter = eventful_last_filter;
+            eful_last_filter = eful_last_filter;
           } else {
-            eventful_last_filter = "author_id";
+            eful_last_filter = "author_id";
           }
           eful_hash_update_arr(author_id, author_arr, "author_id");
           eful_update_url();
@@ -1061,7 +1061,7 @@ jQuery(document).ready(function ($) {
         });
 
         // Post order asc/dsc.
-        $(eventful_Wrapper_ID).on("change", ".eventful-order", function (e) {
+        $(eful_Wrapper_ID).on("change", ".eventful-order", function (e) {
           var that;
           $(this)
             .find("option:selected, input:radio:checked")
@@ -1081,8 +1081,8 @@ jQuery(document).ready(function ($) {
         /**
          * Grid masonry.
          */
-        if ($(eventful_Wrapper_ID).hasClass("eventful-masonry")) {
-          var $post_wrapper = $(".ta-row", eventful_Wrapper_ID);
+        if ($(eful_Wrapper_ID).hasClass("eventful-masonry")) {
+          var $post_wrapper = $(".ta-row", eful_Wrapper_ID);
           $post_wrapper.imagesLoaded(function () {
             $post_wrapper.masonry(/* {
                 itemSelector: 'div[class*=ta-col-]',
@@ -1097,53 +1097,53 @@ jQuery(document).ready(function ($) {
          *
          * The effects for pagination to work for both mobile and other screens.
          */
-        var Pagination_Type = $(eventful_Wrapper_ID).data("pagination");
+        var Pagination_Type = $(eful_Wrapper_ID).data("pagination");
         if ($(window).width() <= 480) {
-          var Pagination_Type = $(eventful_Wrapper_ID).data("pagination_mobile");
+          var Pagination_Type = $(eful_Wrapper_ID).data("pagination_mobile");
         }
         // Ajax number pagination
         if (Pagination_Type == "ajax_pagination") {
-          $(eventful_Wrapper_ID).on("click", ".eventful-post-pagination a", function (e) {
+          $(eful_Wrapper_ID).on("click", ".eventful-post-pagination a", function (e) {
             e.preventDefault();
             var that = $(this);
             var totalPage = $(
-                ".eventful-post-pagination.eventful-on-desktop a:not(.eventful_next, .eventful_prev)",
-                eventful_Wrapper_ID
+                ".eventful-post-pagination.eventful-on-desktop a:not(.eful_next, .eful_prev)",
+                eful_Wrapper_ID
               ).length,
               currentPage = parseInt(
                 $(
-                  ".eventful-post-pagination.eventful-on-desktop .active:not(.eventful_next, .eventful_prev)",
-                  eventful_Wrapper_ID
+                  ".eventful-post-pagination.eventful-on-desktop .active:not(.eful_next, .eful_prev)",
+                  eful_Wrapper_ID
                 ).data("page")
               );
             if ($(window).width() <= 480) {
               var totalPage = $(
-                  ".eventful-post-pagination.eventful-on-mobile a:not(.eventful_next, .eventful_prev)",
-                  eventful_Wrapper_ID
+                  ".eventful-post-pagination.eventful-on-mobile a:not(.eful_next, .eful_prev)",
+                  eful_Wrapper_ID
                 ).length,
                 currentPage = parseInt(
                   $(
-                    ".eventful-post-pagination.eventful-on-mobile .active:not(.eventful_next, .eventful_prev)",
-                    eventful_Wrapper_ID
+                    ".eventful-post-pagination.eventful-on-mobile .active:not(.eful_next, .eful_prev)",
+                    eful_Wrapper_ID
                   ).data("page")
                 );
             }
             page = parseInt(that.data("page"));
-            if (that.hasClass("eventful_next")) {
+            if (that.hasClass("eful_next")) {
               if (totalPage > currentPage) {
                 var page = currentPage + 1;
               } else {
                 return;
               }
             }
-            if (that.hasClass("eventful_prev")) {
+            if (that.hasClass("eful_prev")) {
               if (currentPage > 1) {
                 var page = currentPage - 1;
               } else {
                 return;
               }
             }
-            var eventful_paged = { page, page };
+            var eful_paged = { page, page };
             $.ajax({
               url: ajaxurl,
               type: "post",
@@ -1166,13 +1166,13 @@ jQuery(document).ready(function ($) {
               success: function (response) {
                 var $data = $(response);
                 var $newElements = $data;
-                if ($(eventful_Wrapper_ID).hasClass("eventful-masonry")) {
-                  var $post_wrapper = $(".ta-row", eventful_Wrapper_ID);
+                if ($(eful_Wrapper_ID).hasClass("eventful-masonry")) {
+                  var $post_wrapper = $(".ta-row", eful_Wrapper_ID);
                   $post_wrapper.masonry("destroy");
                   $post_wrapper.html($newElements).imagesLoaded(function () {
                     $post_wrapper.masonry();
                   });
-                } else if ($(eventful_Wrapper_ID).hasClass("eventful-filter-wrapper")) {
+                } else if ($(eful_Wrapper_ID).hasClass("eventful-filter-wrapper")) {
                   $grid
                     .html($newElements)
                     .isotope("appended", $newElements)
@@ -1183,7 +1183,7 @@ jQuery(document).ready(function ($) {
                 } else {
                   $(
                     ".ta-row, .eventful-timeline-grid, .ta-collapse, .table-responsive tbody",
-                    eventful_Wrapper_ID
+                    eful_Wrapper_ID
                   ).html($newElements);
                   if (eventfulAccordion.length > 0) {
                     eventfulAccordion.accordion("refresh");
@@ -1202,24 +1202,24 @@ jQuery(document).ready(function ($) {
                     opacity: 1,
                   });
                 }
-                $(".page-numbers", eventful_Wrapper_ID).removeClass("active");
-                $(".page-numbers", eventful_Wrapper_ID).each(function () {
+                $(".page-numbers", eful_Wrapper_ID).removeClass("active");
+                $(".page-numbers", eful_Wrapper_ID).each(function () {
                   // if (parseInt($('.eventful-post-pagination a').data('page')) === page) {
                   $(
                     ".eventful-post-pagination a[data-page=" + page + "]",
-                    eventful_Wrapper_ID
+                    eful_Wrapper_ID
                   ).addClass("active");
                   // }
                 });
-                $(".eventful_next", eventful_Wrapper_ID).removeClass("active");
-                $(".eventful_prev", eventful_Wrapper_ID).removeClass("active");
-                $(".eventful-post-pagination a.active", eventful_Wrapper_ID).each(
+                $(".eful_next", eful_Wrapper_ID).removeClass("active");
+                $(".eful_prev", eful_Wrapper_ID).removeClass("active");
+                $(".eventful-post-pagination a.active", eful_Wrapper_ID).each(
                   function () {
                     if (parseInt($(this).data("page")) === totalPage) {
-                      $(".eventful_next", eventful_Wrapper_ID).addClass("active");
+                      $(".eful_next", eful_Wrapper_ID).addClass("active");
                     }
                     if (parseInt($(this).data("page")) === 1) {
-                      $(".eventful_prev", eventful_Wrapper_ID).addClass("active");
+                      $(".eful_prev", eful_Wrapper_ID).addClass("active");
                     }
                   }
                 );
@@ -1242,14 +1242,14 @@ jQuery(document).ready(function ($) {
                 eful_lazyload();
                 // Ajax Number pagination go to current shortcode top.
                 var url_hash = window.location.search;
-                if (url_hash.indexOf("eventful_page") >= 0) {
+                if (url_hash.indexOf("eful_page") >= 0) {
                   var current_screen_id =
-                    document.querySelector(eventful_Wrapper_ID);
+                    document.querySelector(eful_Wrapper_ID);
                   current_screen_id.scrollIntoView();
                 }
               },
             });
-            eful_hash_update_arr(page, eventful_paged, "page");
+            eful_hash_update_arr(page, eful_paged, "page");
             eful_update_url();
           });
         }
@@ -1261,7 +1261,7 @@ jQuery(document).ready(function ($) {
           Pagination_Type == "infinite_scroll" ||
           Pagination_Type == "ajax_load_more"
         ) {
-          $(eventful_Wrapper_ID).each(function () {
+          $(eful_Wrapper_ID).each(function () {
             var EndingMessage = $(this)
               .find(".ta-eventful-pagination-data")
               .data("endingtext");
@@ -1273,8 +1273,8 @@ jQuery(document).ready(function ($) {
                 .find(".eventful-load-more")
                 .hasClass("eventful-load-more-initialize")
             ) {
-              if ($(".eventful-post-pagination a", eventful_Wrapper_ID).length) {
-                $(".eventful-post-pagination", eventful_Wrapper_ID)
+              if ($(".eventful-post-pagination a", eful_Wrapper_ID).length) {
+                $(".eventful-post-pagination", eful_Wrapper_ID)
                   .eq(0)
                   .before(
                     '<div class="eventful-load-more"><button eventfulcessing="0">' +
@@ -1283,10 +1283,10 @@ jQuery(document).ready(function ($) {
                   );
               }
               if (Pagination_Type == "infinite_scroll") {
-                $(".eventful-load-more", eventful_Wrapper_ID).addClass("eventful-hide");
+                $(".eventful-load-more", eful_Wrapper_ID).addClass("eventful-hide");
               }
-              $(".eventful-post-pagination", eventful_Wrapper_ID).addClass("eventful-hide");
-              $(".ta-row div[class*=ta-col-]", eventful_Wrapper_ID).addClass(
+              $(".eventful-post-pagination", eful_Wrapper_ID).addClass("eventful-hide");
+              $(".ta-row div[class*=ta-col-]", eful_Wrapper_ID).addClass(
                 "eventful-added"
               );
               $(this)
@@ -1296,32 +1296,32 @@ jQuery(document).ready(function ($) {
                 e.preventDefault();
                 if (
                   $(
-                    ".eventful-post-pagination a.active:not(.eventful_next, .eventful_prev)",
-                    eventful_Wrapper_ID
+                    ".eventful-post-pagination a.active:not(.eful_next, .eful_prev)",
+                    eful_Wrapper_ID
                   ).length
                 ) {
                   $(".eventful-load-more button").attr("eventfulcessing", 1);
                   var current_page = parseInt(
                     $(
-                      ".eventful-post-pagination a.active:not(.eventful_next, .eventful_prev)",
-                      eventful_Wrapper_ID
+                      ".eventful-post-pagination a.active:not(.eful_next, .eful_prev)",
+                      eful_Wrapper_ID
                     ).data("page")
                   );
                   current_page = current_page + 1;
-                  $(".eventful-load-more", eventful_Wrapper_ID).hide();
-                  $(".eventful-post-pagination", eventful_Wrapper_ID)
+                  $(".eventful-load-more", eful_Wrapper_ID).hide();
+                  $(".eventful-post-pagination", eful_Wrapper_ID)
                     .eq(0)
                     .before(
                       '<div class="eventful-infinite-scroll-loader"><svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#444"><g fill="none" fill-rule="evenodd" stroke-width="2"><circle cx="22" cy="22" r="1"><animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" /> <animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite" /> </circle> <circle cx="22" cy="22" r="1"> <animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" /> <animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite"/></circle></g></svg></div>'
                     );
                   var totalPage = $(
-                    ".eventful-post-pagination.eventful-on-desktop.infinite_scroll a:not(.eventful_next, .eventful_prev), .eventful-post-pagination.eventful-on-desktop.ajax_load_more a:not(.eventful_next, .eventful_prev)",
-                    eventful_Wrapper_ID
+                    ".eventful-post-pagination.eventful-on-desktop.infinite_scroll a:not(.eful_next, .eful_prev), .eventful-post-pagination.eventful-on-desktop.ajax_load_more a:not(.eful_next, .eful_prev)",
+                    eful_Wrapper_ID
                   ).length;
                   if ($(window).width() <= 480) {
                     var totalPage = $(
-                      ".eventful-post-pagination.eventful-on-mobile.infinite_scroll a:not(.eventful_next, .eventful_prev), .eventful-post-pagination.ajax_load_more.eventful-on-mobile  a:not(.eventful_next, .eventful_prev)",
-                      eventful_Wrapper_ID
+                      ".eventful-post-pagination.eventful-on-mobile.infinite_scroll a:not(.eful_next, .eful_prev), .eventful-post-pagination.ajax_load_more.eventful-on-mobile  a:not(.eful_next, .eful_prev)",
+                      eful_Wrapper_ID
                     ).length;
                   }
                   page = current_page;
@@ -1347,8 +1347,8 @@ jQuery(document).ready(function ($) {
                     success: function (response) {
                       var $data = $(response);
                       var $newElements = $data;
-                      if ($(eventful_Wrapper_ID).hasClass("eventful-masonry")) {
-                        var $post_wrapper = $(".ta-row", eventful_Wrapper_ID);
+                      if ($(eful_Wrapper_ID).hasClass("eventful-masonry")) {
+                        var $post_wrapper = $(".ta-row", eful_Wrapper_ID);
                         $post_wrapper.masonry("destroy");
                         $post_wrapper
                           .append($newElements)
@@ -1356,7 +1356,7 @@ jQuery(document).ready(function ($) {
                             $post_wrapper.masonry();
                           });
                       } else if (
-                        $(eventful_Wrapper_ID).hasClass("eventful-filter-wrapper")
+                        $(eful_Wrapper_ID).hasClass("eventful-filter-wrapper")
                       ) {
                         $grid
                           .append($newElements)
@@ -1371,7 +1371,7 @@ jQuery(document).ready(function ($) {
                         });
                         $(
                           ".ta-row, .eventful-timeline-grid, .ta-collapse, .table-responsive tbody",
-                          eventful_Wrapper_ID
+                          eful_Wrapper_ID
                         ).append($newElements);
                         if (eventfulAccordion.length > 0) {
                           eventfulAccordion.accordion("refresh");
@@ -1390,19 +1390,19 @@ jQuery(document).ready(function ($) {
                           opacity: 1,
                         });
                       }
-                      $(".page-numbers", eventful_Wrapper_ID).removeClass("active");
-                      $(".page-numbers", eventful_Wrapper_ID).each(function () {
+                      $(".page-numbers", eful_Wrapper_ID).removeClass("active");
+                      $(".page-numbers", eful_Wrapper_ID).each(function () {
                         $(
                           ".eventful-post-pagination a[data-page=" + page + "]",
-                          eventful_Wrapper_ID
+                          eful_Wrapper_ID
                         ).addClass("active");
                       });
-                      $(".eventful-infinite-scroll-loader", eventful_Wrapper_ID).remove();
+                      $(".eventful-infinite-scroll-loader", eful_Wrapper_ID).remove();
                       if (Pagination_Type == "ajax_load_more") {
                         $(".eventful-load-more").show();
                       }
                       $(".eventful-load-more button").attr("eventfulcessing", 0);
-                      $(".ta-row div[class*=ta-col-]", eventful_Wrapper_ID)
+                      $(".ta-row div[class*=ta-col-]", eful_Wrapper_ID)
                         .not(".eventful-added")
                         .addClass("animated eventfulFadeIn")
                         .one("webkitAnimationEnd animationEnd", function () {
@@ -1411,10 +1411,10 @@ jQuery(document).ready(function ($) {
                             .addClass("eventful-added");
                         });
                       if (totalPage == current_page) {
-                        $(".eventful-load-more", eventful_Wrapper_ID)
+                        $(".eventful-load-more", eful_Wrapper_ID)
                           .addClass("finished")
                           .removeClass("eventful-hide");
-                        $(".eventful-load-more", eventful_Wrapper_ID)
+                        $(".eventful-load-more", eful_Wrapper_ID)
                           .show()
                           .html(EndingMessage);
                       }
@@ -1422,10 +1422,10 @@ jQuery(document).ready(function ($) {
                     },
                   });
                 } else {
-                  $(".eventful-load-more", eventful_Wrapper_ID)
+                  $(".eventful-load-more", eful_Wrapper_ID)
                     .addClass("finished")
                     .removeClass("eventful-hide");
-                  $(".eventful-load-more", eventful_Wrapper_ID)
+                  $(".eventful-load-more", eful_Wrapper_ID)
                     .show()
                     .html(EndingMessage);
                 }
@@ -1437,26 +1437,26 @@ jQuery(document).ready(function ($) {
                 if (
                   $(
                     ".ta-row, .ta-collapse, .eventful-timeline-grid, .table-responsive tbody",
-                    eventful_Wrapper_ID
+                    eful_Wrapper_ID
                   ).length
                 ) {
                   var TopAndContent =
                     $(
                       ".ta-row, .ta-collapse, .eventful-timeline-grid, .table-responsive tbody",
-                      eventful_Wrapper_ID
+                      eful_Wrapper_ID
                     ).offset().top +
                     $(
                       ".ta-row, .ta-collapse, .eventful-timeline-grid, .table-responsive tbody",
-                      eventful_Wrapper_ID
+                      eful_Wrapper_ID
                     ).outerHeight();
                   var areaLeft = TopAndContent - $(window).scrollTop();
                   if (areaLeft - bufferBefore < $(window).height()) {
                     if (
-                      $(".eventful-load-more button", eventful_Wrapper_ID).attr(
+                      $(".eventful-load-more button", eful_Wrapper_ID).attr(
                         "eventfulcessing"
                       ) == 0
                     ) {
-                      $(".eventful-load-more button", eventful_Wrapper_ID).trigger(
+                      $(".eventful-load-more button", eful_Wrapper_ID).trigger(
                         "click"
                       );
                     }
@@ -1484,14 +1484,14 @@ jQuery(document).ready(function ($) {
 
         /* Preloader js */
         $(document).ready(function () {
-          $(".eventful-preloader", eventful_Wrapper_ID).css({
+          $(".eventful-preloader", eful_Wrapper_ID).css({
             backgroundImage: "none",
             visibility: "hidden",
           });
         });
         // This function added for eventful-Lazyload.
         function eful_lazyload() {
-          var $is_find = $(".eventful__item--thumbnail img").hasClass(
+          var $is_find = $(".eful__item--thumbnail img").hasClass(
             "eventful-lazyload"
           );
           if ($is_find) {
@@ -1506,5 +1506,5 @@ jQuery(document).ready(function ($) {
       });
     }
   };
-  eventful_myScript();
+  eful_myScript();
 });

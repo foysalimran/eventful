@@ -100,7 +100,7 @@
   //
   // Custom clone for textarea and select clone() bug
   //
-  $.fn.eventful_clone = function() {
+  $.fn.eful_clone = function() {
 
     var base   = $.fn.clone.apply(this, arguments),
         clone  = this.find('select').add(this.filter('select')),
@@ -127,13 +127,13 @@
   //
   // Expand All Options
   //
-  $.fn.eventful_expand_all = function() {
+  $.fn.eful_expand_all = function() {
     return this.each( function() {
       $(this).on('click', function( e ) {
 
         e.preventDefault();
         $('.eventful-wrapper').toggleClass('eventful-show-all');
-        $('.eventful-section').eventful_reload_script();
+        $('.eventful-section').eful_reload_script();
         $(this).find('.fa').toggleClass('fa-indent').toggleClass('fa-outdent');
 
       });
@@ -143,7 +143,7 @@
   //
   // Options Navigation
   //
-  $.fn.eventful_nav_options = function() {
+  $.fn.eful_nav_options = function() {
     return this.each( function() {
 
       var $nav    = $(this),
@@ -179,7 +179,7 @@
           var $section = $('[data-section-id="'+slug+'"]');
 
           $section.removeClass('hidden');
-          $section.eventful_reload_script();
+          $section.eful_reload_script();
 
           $('.eventful-section-id').val( $section.index()+1 );
 
@@ -200,7 +200,7 @@
   //
   // Metabox Tabs
   //
-  $.fn.eventful_nav_metabox = function() {
+  $.fn.eful_nav_metabox = function() {
     return this.each( function() {
 
       var $nav      = $(this),
@@ -226,7 +226,7 @@
           var $section = $sections.eq(index);
 
           $section.removeClass('hidden');
-          $section.eventful_reload_script();
+          $section.eful_reload_script();
 
           $last = $section;
 
@@ -242,7 +242,7 @@
   //
   // Metabox Page Templates Listener
   //
-  $.fn.eventful_page_templates = function() {
+  $.fn.eful_page_templates = function() {
     if ( this.length ) {
 
       $(document).on('change', '.editor-page-attributes__template select, #page_template, .edit-post-post-status + div select', function() {
@@ -260,7 +260,7 @@
   //
   // Metabox Post Formats Listener
   //
-  $.fn.eventful_post_formats = function() {
+  $.fn.eful_post_formats = function() {
     if ( this.length ) {
 
       $(document).on('change', '.editor-post-format select, #formatdiv input[name="post_format"]', function() {
@@ -281,7 +281,7 @@
   //
   // Search
   //
-  $.fn.eventful_search = function() {
+  $.fn.eful_search = function() {
     return this.each( function() {
 
       var $this  = $(this),
@@ -309,7 +309,7 @@
               var $field = $title.closest('.eventful-field');
 
               $field.removeClass('eventful-metabox-hide');
-              $field.parent().eventful_reload_script();
+              $field.parent().eful_reload_script();
 
             }
 
@@ -330,7 +330,7 @@
   //
   // Sticky Header
   //
-  $.fn.eventful_sticky = function() {
+  $.fn.eful_sticky = function() {
     return this.each( function() {
 
       var $this     = $(this),
@@ -385,7 +385,7 @@
   //
   // Dependency System
   //
-  $.fn.eventful_dependency = function() {
+  $.fn.eful_dependency = function() {
     return this.each( function() {
 
       var $this   = $(this),
@@ -393,8 +393,8 @@
 
       if( $fields.length ) {
 
-        var normal_ruleset = $.eventful_deps.createRuleset(),
-            global_ruleset = $.eventful_deps.createRuleset(),
+        var normal_ruleset = $.eful_deps.createRuleset(),
+            global_ruleset = $.eful_deps.createRuleset(),
             normal_depends = [],
             global_depends = [];
 
@@ -427,11 +427,11 @@
         });
 
         if ( normal_depends.length ) {
-          $.eventful_deps.enable($this, normal_ruleset, normal_depends);
+          $.eful_deps.enable($this, normal_ruleset, normal_depends);
         }
 
         if ( global_depends.length ) {
-          $.eventful_deps.enable(EFUL.vars.$body, global_ruleset, global_depends);
+          $.eful_deps.enable(EFUL.vars.$body, global_ruleset, global_depends);
         }
 
       }
@@ -442,7 +442,7 @@
   //
   // Field: accordion
   //
-  $.fn.eventful_field_accordion = function() {
+  $.fn.eful_field_accordion = function() {
     return this.each( function() {
 
       var $titles = $(this).find('.eventful-accordion-title');
@@ -461,7 +461,7 @@
 
         if ( !$content.data( 'opened' ) ) {
 
-          $content.eventful_reload_script();
+          $content.eful_reload_script();
           $content.data( 'opened', true );
 
         }
@@ -476,7 +476,7 @@
   //
   // Field: backup
   //
-  $.fn.eventful_field_backup = function() {
+  $.fn.eful_field_backup = function() {
     return this.each( function() {
 
       if ( window.wp.customize === undefined ) { return; }
@@ -499,7 +499,7 @@
           }
 
           // then show a notification overlay
-          wp.customize.notifications.add( new wp.customize.OverlayNotification('eventful_field_backup_notification', {
+          wp.customize.notifications.add( new wp.customize.OverlayNotification('eful_field_backup_notification', {
             type: 'default',
             message: '&nbsp;',
             loading: true
@@ -526,7 +526,7 @@
           })
           .fail( function( response ) {
             alert( response.error );
-            wp.customize.notifications.remove('eventful_field_backup_notification');
+            wp.customize.notifications.remove('eful_field_backup_notification');
           });
 
         }
@@ -549,7 +549,7 @@
             window.location.reload(true);
           }).fail( function( response ) {
             alert( response.error );
-            wp.customize.notifications.remove('eventful_field_backup_notification');
+            wp.customize.notifications.remove('eful_field_backup_notification');
           });
 
         }
@@ -562,16 +562,16 @@
   //
   // Field: background
   //
-  $.fn.eventful_field_background = function() {
+  $.fn.eful_field_background = function() {
     return this.each( function() {
-      $(this).find('.eventful--background-image').eventful_reload_script();
+      $(this).find('.eventful--background-image').eful_reload_script();
     });
   };
 
   //
   // Field: code_editor
   //
-  $.fn.eventful_field_code_editor = function() {
+  $.fn.eful_field_code_editor = function() {
     return this.each( function() {
 
       if ( typeof CodeMirror !== 'function' ) { return; }
@@ -627,7 +627,7 @@
   //
   // Field: date
   //
-  $.fn.eventful_field_date = function() {
+  $.fn.eful_field_date = function() {
     return this.each( function() {
 
       var $this    = $(this),
@@ -682,7 +682,7 @@
   //
   // Field: datetime
   //
-  $.fn.eventful_field_datetime = function() {
+  $.fn.eful_field_datetime = function() {
     return this.each( function() {
 
       var $this    = $(this),
@@ -717,16 +717,16 @@
   //
   // Field: fieldset
   //
-  $.fn.eventful_field_fieldset = function() {
+  $.fn.eful_field_fieldset = function() {
     return this.each( function() {
-      $(this).find('.eventful-fieldset-content').eventful_reload_script();
+      $(this).find('.eventful-fieldset-content').eful_reload_script();
     });
   };
 
   //
   // Field: gallery
   //
-  $.fn.eventful_field_gallery = function() {
+  $.fn.eful_field_gallery = function() {
     return this.each( function() {
 
       var $this  = $(this),
@@ -811,7 +811,7 @@
   //
   // Field: group
   //
-  $.fn.eventful_field_group = function() {
+  $.fn.eful_field_group = function() {
     return this.each( function() {
 
       var $this           = $(this),
@@ -887,13 +887,13 @@
 
             });
 
-            $panel.eventful_reload_script();
+            $panel.eful_reload_script();
             $panel.data( 'opened', true );
             $panel.data( 'retry', false );
 
           } else if ( $panel.data( 'retry' ) ) {
 
-            $panel.eventful_reload_script_retry();
+            $panel.eful_reload_script_retry();
             $panel.data( 'retry', false );
 
           }
@@ -917,7 +917,7 @@
         update: function( event, ui ) {
 
           EFUL.helper.name_nested_replace( $wrapper.children('.eventful-cloneable-item'), field_id );
-          $wrapper.eventful_customizer_refresh();
+          $wrapper.eful_customizer_refresh();
 
           if ( is_number ) {
             update_title_numbers($wrapper);
@@ -939,7 +939,7 @@
           return;
         }
 
-        var $cloned_item = $hidden.eventful_clone(true);
+        var $cloned_item = $hidden.eful_clone(true);
 
         $cloned_item.removeClass('eventful-cloneable-hidden');
 
@@ -950,8 +950,8 @@
         $wrapper.append($cloned_item);
         $wrapper.accordion('refresh');
         $wrapper.accordion({active: count});
-        $wrapper.eventful_customizer_refresh();
-        $wrapper.eventful_customizer_listen({closest: true});
+        $wrapper.eful_customizer_refresh();
+        $wrapper.eful_customizer_listen({closest: true});
 
         if ( is_number ) {
           update_title_numbers($wrapper);
@@ -974,9 +974,9 @@
 
         var $this           = $(this),
             $parent         = $this.parent().parent(),
-            $cloned_helper  = $parent.children('.eventful-cloneable-helper').eventful_clone(true),
-            $cloned_title   = $parent.children('.eventful-cloneable-title').eventful_clone(),
-            $cloned_content = $parent.children('.eventful-cloneable-content').eventful_clone(),
+            $cloned_helper  = $parent.children('.eventful-cloneable-helper').eful_clone(true),
+            $cloned_title   = $parent.children('.eventful-cloneable-title').eful_clone(),
+            $cloned_content = $parent.children('.eventful-cloneable-content').eful_clone(),
             $cloned_item    = $('<div class="eventful-cloneable-item" />');
 
         $cloned_item.append($cloned_helper);
@@ -988,8 +988,8 @@
         EFUL.helper.name_nested_replace( $wrapper.children('.eventful-cloneable-item'), field_id );
 
         $wrapper.accordion('refresh');
-        $wrapper.eventful_customizer_refresh();
-        $wrapper.eventful_customizer_listen({closest: true});
+        $wrapper.eful_customizer_refresh();
+        $wrapper.eful_customizer_listen({closest: true});
 
         if ( is_number ) {
           update_title_numbers($wrapper);
@@ -1018,7 +1018,7 @@
 
         EFUL.helper.name_nested_replace( $wrapper.children('.eventful-cloneable-item'), field_id );
 
-        $wrapper.eventful_customizer_refresh();
+        $wrapper.eful_customizer_refresh();
 
         if ( is_number ) {
           update_title_numbers($wrapper);
@@ -1035,7 +1035,7 @@
   //
   // Field: icon
   //
-  $.fn.eventful_field_icon = function() {
+  $.fn.eful_field_icon = function() {
     return this.each( function() {
 
       var $this = $(this);
@@ -1127,7 +1127,7 @@
   //
   // Field: map
   //
-  $.fn.eventful_field_map = function() {
+  $.fn.eful_field_map = function() {
     return this.each( function() {
 
       if ( typeof L === 'undefined' ) { return; }
@@ -1246,7 +1246,7 @@
   //
   // Field: link
   //
-  $.fn.eventful_field_link = function() {
+  $.fn.eful_field_link = function() {
     return this.each( function() {
 
       var $this   = $(this),
@@ -1319,7 +1319,7 @@
   //
   // Field: media
   //
-  $.fn.eventful_field_media = function() {
+  $.fn.eful_field_media = function() {
     return this.each( function() {
 
       var $this            = $(this),
@@ -1414,7 +1414,7 @@
   //
   // Field: repeater
   //
-  $.fn.eventful_field_repeater = function() {
+  $.fn.eful_field_repeater = function() {
     return this.each( function() {
 
       var $this     = $(this),
@@ -1428,7 +1428,7 @@
           max       = parseInt( $wrapper.data('max') ),
           min       = parseInt( $wrapper.data('min') );
 
-      $wrapper.children('.eventful-repeater-item').children('.eventful-repeater-content').eventful_reload_script();
+      $wrapper.children('.eventful-repeater-item').children('.eventful-repeater-content').eful_reload_script();
 
       $wrapper.sortable({
         axis: 'y',
@@ -1439,8 +1439,8 @@
         update: function( event, ui ) {
 
           EFUL.helper.name_nested_replace( $wrapper.children('.eventful-repeater-item'), field_id );
-          $wrapper.eventful_customizer_refresh();
-          ui.item.eventful_reload_script_retry();
+          $wrapper.eful_customizer_refresh();
+          ui.item.eful_reload_script_retry();
 
         }
       });
@@ -1458,7 +1458,7 @@
           return;
         }
 
-        var $cloned_item = $hidden.eventful_clone(true);
+        var $cloned_item = $hidden.eful_clone(true);
 
         $cloned_item.removeClass('eventful-repeater-hidden');
 
@@ -1467,9 +1467,9 @@
         });
 
         $wrapper.append($cloned_item);
-        $cloned_item.children('.eventful-repeater-content').eventful_reload_script();
-        $wrapper.eventful_customizer_refresh();
-        $wrapper.eventful_customizer_listen({closest: true});
+        $cloned_item.children('.eventful-repeater-content').eful_reload_script();
+        $wrapper.eful_customizer_refresh();
+        $wrapper.eful_customizer_listen({closest: true});
 
       });
 
@@ -1488,8 +1488,8 @@
 
         var $this           = $(this),
             $parent         = $this.parent().parent().parent(),
-            $cloned_content = $parent.children('.eventful-repeater-content').eventful_clone(),
-            $cloned_helper  = $parent.children('.eventful-repeater-helper').eventful_clone(true),
+            $cloned_content = $parent.children('.eventful-repeater-content').eful_clone(),
+            $cloned_helper  = $parent.children('.eventful-repeater-helper').eful_clone(true),
             $cloned_item    = $('<div class="eventful-repeater-item" />');
 
         $cloned_item.append($cloned_content);
@@ -1497,12 +1497,12 @@
 
         $wrapper.children().eq($parent.index()).after($cloned_item);
 
-        $cloned_item.children('.eventful-repeater-content').eventful_reload_script();
+        $cloned_item.children('.eventful-repeater-content').eful_reload_script();
 
         EFUL.helper.name_nested_replace( $wrapper.children('.eventful-repeater-item'), field_id );
 
-        $wrapper.eventful_customizer_refresh();
-        $wrapper.eventful_customizer_listen({closest: true});
+        $wrapper.eful_customizer_refresh();
+        $wrapper.eful_customizer_listen({closest: true});
 
       };
 
@@ -1527,7 +1527,7 @@
 
         EFUL.helper.name_nested_replace( $wrapper.children('.eventful-repeater-item'), field_id );
 
-        $wrapper.eventful_customizer_refresh();
+        $wrapper.eful_customizer_refresh();
 
       };
 
@@ -1540,7 +1540,7 @@
   //
   // Field: slider
   //
-  $.fn.eventful_field_slider = function() {
+  $.fn.eful_field_slider = function() {
     return this.each( function() {
 
       var $this   = $(this),
@@ -1574,7 +1574,7 @@
   //
   // Field: sortable
   //
-  $.fn.eventful_field_sortable = function() {
+  $.fn.eful_field_sortable = function() {
     return this.each( function() {
 
       var $sortable = $(this).find('.eventful-sortable');
@@ -1585,11 +1585,11 @@
         cursor: 'move',
         placeholder: 'widget-placeholder',
         update: function( event, ui ) {
-          $sortable.eventful_customizer_refresh();
+          $sortable.eful_customizer_refresh();
         }
       });
 
-      $sortable.find('.eventful-sortable-content').eventful_reload_script();
+      $sortable.find('.eventful-sortable-content').eful_reload_script();
 
     });
   };
@@ -1597,7 +1597,7 @@
   //
   // Field: sorter
   //
-  $.fn.eventful_field_sorter = function() {
+  $.fn.eful_field_sorter = function() {
     return this.each( function() {
 
       var $this         = $(this),
@@ -1618,7 +1618,7 @@
             $el.attr('name', $el.attr('name').replace('enabled', 'disabled'));
           }
 
-          $this.eventful_customizer_refresh();
+          $this.eful_customizer_refresh();
 
         }
       });
@@ -1629,7 +1629,7 @@
           connectWith: $enabled,
           placeholder: 'ui-sortable-placeholder',
           update: function( event, ui ) {
-            $this.eventful_customizer_refresh();
+            $this.eful_customizer_refresh();
           }
         });
 
@@ -1641,7 +1641,7 @@
   //
   // Field: spinner
   //
-  $.fn.eventful_field_spinner = function() {
+  $.fn.eful_field_spinner = function() {
     return this.each( function() {
 
       var $this   = $(this),
@@ -1673,7 +1673,7 @@
   //
   // Field: switcher
   //
-  $.fn.eventful_field_switcher = function() {
+  $.fn.eful_field_switcher = function() {
     return this.each( function() {
 
       var $switcher = $(this).find('.eventful--switcher');
@@ -1700,14 +1700,14 @@
   //
   // Field: tabbed
   //
-  $.fn.eventful_field_tabbed = function() {
+  $.fn.eful_field_tabbed = function() {
     return this.each( function() {
 
       var $this     = $(this),
           $links    = $this.find('.eventful-tabbed-nav a'),
           $contents = $this.find('.eventful-tabbed-content');
 
-      $contents.eq(0).eventful_reload_script();
+      $contents.eq(0).eful_reload_script();
 
       $links.on( 'click', function( e ) {
 
@@ -1718,7 +1718,7 @@
             $content = $contents.eq(index);
 
         $link.addClass('eventful-tabbed-active').siblings().removeClass('eventful-tabbed-active');
-        $content.eventful_reload_script();
+        $content.eful_reload_script();
         $content.removeClass('hidden').siblings().addClass('hidden');
 
       });
@@ -1729,15 +1729,15 @@
   //
   // Field: typography
   //
-  $.fn.eventful_field_typography = function() {
+  $.fn.eful_field_typography = function() {
     return this.each(function () {
 
       var base          = this;
       var $this         = $(this);
       var loaded_fonts  = [];
-      var webfonts      = eventful_typography_json.webfonts;
-      var googlestyles  = eventful_typography_json.googlestyles;
-      var defaultstyles = eventful_typography_json.defaultstyles;
+      var webfonts      = eful_typography_json.webfonts;
+      var googlestyles  = eful_typography_json.googlestyles;
+      var defaultstyles = eful_typography_json.defaultstyles;
 
       //
       //
@@ -2150,7 +2150,7 @@
   //
   // Field: upload
   //
-  $.fn.eventful_field_upload = function() {
+  $.fn.eful_field_upload = function() {
     return this.each( function() {
 
       var $this          = $(this),
@@ -2233,10 +2233,10 @@
   //
   // Field: wp_editor
   //
-  $.fn.eventful_field_wp_editor = function() {
+  $.fn.eful_field_wp_editor = function() {
     return this.each( function() {
 
-      if ( typeof window.wp.editor === 'undefined' || typeof window.tinyMCEPreInit === 'undefined' || typeof window.tinyMCEPreInit.mceInit.eventful_wp_editor === 'undefined' ) {
+      if ( typeof window.wp.editor === 'undefined' || typeof window.tinyMCEPreInit === 'undefined' || typeof window.tinyMCEPreInit.mceInit.eful_wp_editor === 'undefined' ) {
         return;
       }
 
@@ -2260,8 +2260,8 @@
 
       // Get default editor settings
       var default_editor_settings = {
-        tinymce: window.tinyMCEPreInit.mceInit.eventful_wp_editor,
-        quicktags: window.tinyMCEPreInit.qtInit.eventful_wp_editor
+        tinymce: window.tinyMCEPreInit.mceInit.eful_wp_editor,
+        quicktags: window.tinyMCEPreInit.qtInit.eful_wp_editor
       };
 
       // Get default editor settings
@@ -2308,7 +2308,7 @@
       });
 
       // Add Media buttons
-      if ( field_editor_settings.media_buttons && window.eventful_media_buttons ) {
+      if ( field_editor_settings.media_buttons && window.eful_media_buttons ) {
 
         var $editor_buttons = $editor.find('.wp-media-buttons');
 
@@ -2318,7 +2318,7 @@
 
         } else {
 
-          var $media_buttons = $(window.eventful_media_buttons);
+          var $media_buttons = $(window.eful_media_buttons);
 
           $media_buttons.find('.eventful-shortcode-button').data('editor-id', uid);
 
@@ -2335,11 +2335,11 @@
   //
   // Confirm
   //
-  $.fn.eventful_confirm = function() {
+  $.fn.eful_confirm = function() {
     return this.each( function() {
       $(this).on('click', function( e ) {
 
-        var confirm_text   = $(this).data('confirm') || window.eventful_vars.i18n.confirm;
+        var confirm_text   = $(this).data('confirm') || window.eful_vars.i18n.confirm;
         var confirm_answer = confirm( confirm_text );
 
         if ( confirm_answer ) {
@@ -2374,7 +2374,7 @@
   //
   // Options Save
   //
-  $.fn.eventful_save = function() {
+  $.fn.eful_save = function() {
     return this.each( function() {
 
       var $this    = $(this),
@@ -2399,7 +2399,7 @@
             $panel.addClass('eventful-saving');
             $buttons.prop('disabled', true);
 
-            window.wp.ajax.post( 'eventful_'+ $panel.data('unique') +'_ajax_save', {
+            window.wp.ajax.post( 'eful_'+ $panel.data('unique') +'_ajax_save', {
               data: $('#eventful-form').serializeJSONEFUL()
             })
             .done( function( response ) {
@@ -2470,7 +2470,7 @@
   //
   // Option Framework
   //
-  $.fn.eventful_options = function() {
+  $.fn.eful_options = function() {
     return this.each( function() {
 
       var $this         = $(this),
@@ -2518,7 +2518,7 @@
   //
   // Taxonomy Framework
   //
-  $.fn.eventful_taxonomy = function() {
+  $.fn.eful_taxonomy = function() {
     return this.each( function() {
 
       var $this = $(this),
@@ -2527,7 +2527,7 @@
       if ( $form.attr('id') === 'addtag' ) {
 
         var $submit = $form.find('#submit'),
-            $cloned = $this.children('.eventful-field').eventful_clone();
+            $cloned = $this.children('.eventful-field').eful_clone();
 
         $submit.on( 'click', function() {
 
@@ -2539,9 +2539,9 @@
 
             $this.html( $cloned );
 
-            $cloned = $cloned.eventful_clone();
+            $cloned = $cloned.eful_clone();
 
-            $this.eventful_reload_script();
+            $this.eful_reload_script();
 
           }
 
@@ -2555,7 +2555,7 @@
   //
   // Shortcode Framework
   //
-  $.fn.eventful_shortcode = function() {
+  $.fn.eful_shortcode = function() {
 
     var base = this;
 
@@ -2727,10 +2727,10 @@
 
             $insert.parent().removeClass('hidden');
 
-            $cloned = $appended.find('.eventful--repeat-shortcode').eventful_clone();
+            $cloned = $appended.find('.eventful--repeat-shortcode').eful_clone();
 
-            $appended.eventful_reload_script();
-            $appended.find('.eventful-fields').eventful_reload_script();
+            $appended.eful_reload_script();
+            $appended.find('.eventful-fields').eful_reload_script();
 
           });
 
@@ -2787,8 +2787,8 @@
 
         if ( gutenberg_id ) {
 
-          var content = window.eventful_gutenberg_props.attributes.hasOwnProperty('shortcode') ? window.eventful_gutenberg_props.attributes.shortcode : '';
-          window.eventful_gutenberg_props.setAttributes({shortcode: content + shortcode});
+          var content = window.eful_gutenberg_props.attributes.hasOwnProperty('shortcode') ? window.eful_gutenberg_props.attributes.shortcode : '';
+          window.eful_gutenberg_props.setAttributes({shortcode: content + shortcode});
 
         } else if ( editor_id ) {
 
@@ -2810,12 +2810,12 @@
         e.preventDefault();
 
         var $repeatable = $modal.find('.eventful--repeatable');
-        var $new_clone  = $cloned.eventful_clone();
+        var $new_clone  = $cloned.eful_clone();
         var $remove_btn = $new_clone.find('.eventful-repeat-remove');
 
         var $appended = $new_clone.appendTo( $repeatable );
 
-        $new_clone.find('.eventful-fields').eventful_reload_script();
+        $new_clone.find('.eventful-fields').eful_reload_script();
 
         EFUL.helper.name_nested_replace( $modal.find('.eventful--repeat-shortcode'), sc_group );
 
@@ -2873,12 +2873,12 @@
 
   };
 
-  $.fn.eventful_color = function() {
+  $.fn.eful_color = function() {
     return this.each( function() {
 
       var $input        = $(this),
           picker_color  = EFUL.funcs.parse_color( $input.val() ),
-          palette_color = window.eventful_vars.color_palette.length ? window.eventful_vars.color_palette : true,
+          palette_color = window.eful_vars.color_palette.length ? window.eful_vars.color_palette : true,
           $container;
 
       // Destroy and Reinit
@@ -2986,7 +2986,7 @@
   //
   // ChosenJS
   //
-  $.fn.eventful_chosen = function() {
+  $.fn.eful_chosen = function() {
     return this.each( function() {
 
       var $this       = $(this),
@@ -2999,7 +2999,7 @@
             allow_single_deselect: true,
             disable_search_threshold: 10,
             width: set_width,
-            no_results_text: window.eventful_vars.i18n.no_results_text,
+            no_results_text: window.eful_vars.i18n.no_results_text,
           }, $this.data('chosen-settings'));
 
       if ( $inited.length ) {
@@ -3019,9 +3019,9 @@
           width: '100%',
           min_length: 3,
           type_delay: 500,
-          typing_text: window.eventful_vars.i18n.typing_text,
-          searching_text: window.eventful_vars.i18n.searching_text,
-          no_results_text: window.eventful_vars.i18n.no_results_text,
+          typing_text: window.eful_vars.i18n.typing_text,
+          searching_text: window.eful_vars.i18n.searching_text,
+          no_results_text: window.eful_vars.i18n.no_results_text,
         }, $this.data('chosen-settings'));
 
         $this.EFULAjaxChosen(set_ajax_options);
@@ -3111,7 +3111,7 @@
   //
   // Helper Checkbox Checker
   //
-  $.fn.eventful_checkbox = function() {
+  $.fn.eful_checkbox = function() {
     return this.each( function() {
 
       var $this     = $(this),
@@ -3128,7 +3128,7 @@
   //
   // Helper Check/Uncheck All
   //
-  $.fn.eventful_checkbox_all = function() {
+  $.fn.eful_checkbox_all = function() {
     return this.each( function() {
 
       var $this = $(this);
@@ -3162,7 +3162,7 @@
   //
   // Siblings
   //
-  $.fn.eventful_siblings = function() {
+  $.fn.eful_siblings = function() {
     return this.each( function() {
 
       var $this     = $(this),
@@ -3199,7 +3199,7 @@
   //
   // Help Tooltip
   //
-  $.fn.eventful_help = function() {
+  $.fn.eful_help = function() {
     return this.each( function() {
 
       var $this = $(this),
@@ -3234,7 +3234,7 @@
   //
   // Customize Refresh
   //
-  $.fn.eventful_customizer_refresh = function() {
+  $.fn.eful_customizer_refresh = function() {
     return this.each( function() {
 
       var $this    = $(this),
@@ -3273,7 +3273,7 @@
   //
   // Customize Listen Form Elements
   //
-  $.fn.eventful_customizer_listen = function( options ) {
+  $.fn.eful_customizer_listen = function( options ) {
 
     var settings = $.extend({
       closest: false,
@@ -3317,9 +3317,9 @@
       var $complex = $this.find('.eventful-customize-complex');
 
       if ( $fields.length ) {
-        $this.eventful_dependency();
-        $fields.eventful_reload_script({dependency: false});
-        $complex.eventful_customizer_listen();
+        $this.eful_dependency();
+        $fields.eful_reload_script({dependency: false});
+        $complex.eful_customizer_listen();
       }
 
       $this.data('inited', true);
@@ -3336,7 +3336,7 @@
     var window_width = navigator.userAgent.indexOf('AppleWebKit/') > -1 ? EFUL.vars.$window.width() : window.innerWidth;
 
     if ( window_width <= 782 && !EFUL.vars.onloaded ) {
-      $('.eventful-section').eventful_reload_script();
+      $('.eventful-section').eful_reload_script();
       EFUL.vars.onloaded  = true;
     }
 
@@ -3345,7 +3345,7 @@
   //
   // Widgets Framework
   //
-  $.fn.eventful_widgets = function() {
+  $.fn.eful_widgets = function() {
     return this.each( function() {
 
       $(document).on('widget-added widget-updated', function( event, $widget ) {
@@ -3353,7 +3353,7 @@
         var $fields = $widget.find('.eventful-fields');
 
         if ( $fields.length ) {
-          $fields.eventful_reload_script();
+          $fields.eful_reload_script();
         }
 
       });
@@ -3363,13 +3363,13 @@
         var $fields = $(this).parent().find('.eventful-fields');
 
         if ( $fields.length ) {
-          $fields.eventful_reload_script();
+          $fields.eful_reload_script();
         }
 
       });
 
       $('.widgets-sortables, .control-section-sidebar').on('sortstop', function( event, ui ) {
-        ui.item.find('.eventful-fields').eventful_reload_script_retry();
+        ui.item.find('.eventful-fields').eful_reload_script_retry();
       });
 
     });
@@ -3378,17 +3378,17 @@
   //
   // Nav Menu Options Framework
   //
-  $.fn.eventful_nav_menu = function() {
+  $.fn.eful_nav_menu = function() {
     return this.each( function() {
 
       var $navmenu = $(this);
 
       $navmenu.on('click', 'a.item-edit', function() {
-        $(this).closest('li.menu-item').find('.eventful-fields').eventful_reload_script();
+        $(this).closest('li.menu-item').find('.eventful-fields').eful_reload_script();
       });
 
       $navmenu.on('sortstop', function( event, ui ) {
-        ui.item.find('.eventful-fields').eventful_reload_script_retry();
+        ui.item.find('.eventful-fields').eful_reload_script_retry();
       });
 
     });
@@ -3397,13 +3397,13 @@
   //
   // Retry Plugins
   //
-  $.fn.eventful_reload_script_retry = function() {
+  $.fn.eful_reload_script_retry = function() {
     return this.each( function() {
 
       var $this = $(this);
 
       if ( $this.data('inited') ) {
-        $this.children('.eventful-field-wp_editor').eventful_field_wp_editor();
+        $this.children('.eventful-field-wp_editor').eful_field_wp_editor();
       }
 
     });
@@ -3412,7 +3412,7 @@
   //
   // Reload Plugins
   //
-  $.fn.eventful_reload_script = function( options ) {
+  $.fn.eful_reload_script = function( options ) {
 
     var settings = $.extend({
       dependency: true,
@@ -3426,57 +3426,57 @@
       if ( !$this.data('inited') ) {
 
         // Field plugins
-        $this.children('.eventful-field-accordion').eventful_field_accordion();
-        $this.children('.eventful-field-backup').eventful_field_backup();
-        $this.children('.eventful-field-background').eventful_field_background();
-        $this.children('.eventful-field-code_editor').eventful_field_code_editor();
-        $this.children('.eventful-field-date').eventful_field_date();
-        $this.children('.eventful-field-datetime').eventful_field_datetime();
-        $this.children('.eventful-field-fieldset').eventful_field_fieldset();
-        $this.children('.eventful-field-gallery').eventful_field_gallery();
-        $this.children('.eventful-field-group').eventful_field_group();
-        $this.children('.eventful-field-icon').eventful_field_icon();
-        $this.children('.eventful-field-link').eventful_field_link();
-        $this.children('.eventful-field-media').eventful_field_media();
-        $this.children('.eventful-field-map').eventful_field_map();
-        $this.children('.eventful-field-repeater').eventful_field_repeater();
-        $this.children('.eventful-field-slider').eventful_field_slider();
-        $this.children('.eventful-field-sortable').eventful_field_sortable();
-        $this.children('.eventful-field-sorter').eventful_field_sorter();
-        $this.children('.eventful-field-spinner').eventful_field_spinner();
-        $this.children('.eventful-field-switcher').eventful_field_switcher();
-        $this.children('.eventful-field-tabbed').eventful_field_tabbed();
-        $this.children('.eventful-field-typography').eventful_field_typography();
-        $this.children('.eventful-field-upload').eventful_field_upload();
-        $this.children('.eventful-field-wp_editor').eventful_field_wp_editor();
+        $this.children('.eventful-field-accordion').eful_field_accordion();
+        $this.children('.eventful-field-backup').eful_field_backup();
+        $this.children('.eventful-field-background').eful_field_background();
+        $this.children('.eventful-field-code_editor').eful_field_code_editor();
+        $this.children('.eventful-field-date').eful_field_date();
+        $this.children('.eventful-field-datetime').eful_field_datetime();
+        $this.children('.eventful-field-fieldset').eful_field_fieldset();
+        $this.children('.eventful-field-gallery').eful_field_gallery();
+        $this.children('.eventful-field-group').eful_field_group();
+        $this.children('.eventful-field-icon').eful_field_icon();
+        $this.children('.eventful-field-link').eful_field_link();
+        $this.children('.eventful-field-media').eful_field_media();
+        $this.children('.eventful-field-map').eful_field_map();
+        $this.children('.eventful-field-repeater').eful_field_repeater();
+        $this.children('.eventful-field-slider').eful_field_slider();
+        $this.children('.eventful-field-sortable').eful_field_sortable();
+        $this.children('.eventful-field-sorter').eful_field_sorter();
+        $this.children('.eventful-field-spinner').eful_field_spinner();
+        $this.children('.eventful-field-switcher').eful_field_switcher();
+        $this.children('.eventful-field-tabbed').eful_field_tabbed();
+        $this.children('.eventful-field-typography').eful_field_typography();
+        $this.children('.eventful-field-upload').eful_field_upload();
+        $this.children('.eventful-field-wp_editor').eful_field_wp_editor();
 
         // Field colors
-        $this.children('.eventful-field-box_shadow').find('.eventful-color').eventful_color();
-        $this.children('.eventful-field-border').find('.eventful-color').eventful_color();
-        $this.children('.eventful-field-background').find('.eventful-color').eventful_color();
-        $this.children('.eventful-field-color').find('.eventful-color').eventful_color();
-        $this.children('.eventful-field-color_group').find('.eventful-color').eventful_color();
-        $this.children('.eventful-field-link_color').find('.eventful-color').eventful_color();
-        $this.children('.eventful-field-typography').find('.eventful-color').eventful_color();
+        $this.children('.eventful-field-box_shadow').find('.eventful-color').eful_color();
+        $this.children('.eventful-field-border').find('.eventful-color').eful_color();
+        $this.children('.eventful-field-background').find('.eventful-color').eful_color();
+        $this.children('.eventful-field-color').find('.eventful-color').eful_color();
+        $this.children('.eventful-field-color_group').find('.eventful-color').eful_color();
+        $this.children('.eventful-field-link_color').find('.eventful-color').eful_color();
+        $this.children('.eventful-field-typography').find('.eventful-color').eful_color();
 
         // Field chosenjs
-        $this.children('.eventful-field-select').find('.eventful-chosen').eventful_chosen();
+        $this.children('.eventful-field-select').find('.eventful-chosen').eful_chosen();
 
         // Field Checkbox
-        $this.children('.eventful-field-checkbox').find('.eventful-checkbox').eventful_checkbox();
-        $this.children('.eventful-field-checkbox').find('.eventful-checkbox-all').eventful_checkbox_all();
+        $this.children('.eventful-field-checkbox').find('.eventful-checkbox').eful_checkbox();
+        $this.children('.eventful-field-checkbox').find('.eventful-checkbox-all').eful_checkbox_all();
 
         // Field Siblings
-        $this.children('.eventful-field-button_set').find('.eventful-siblings').eventful_siblings();
-        $this.children('.eventful-field-image_select').find('.eventful-siblings').eventful_siblings();
-        $this.children('.eventful-field-layout_preset').find('.eventful-siblings').eventful_siblings();
-        $this.children('.eventful-field-palette').find('.eventful-siblings').eventful_siblings();
+        $this.children('.eventful-field-button_set').find('.eventful-siblings').eful_siblings();
+        $this.children('.eventful-field-image_select').find('.eventful-siblings').eful_siblings();
+        $this.children('.eventful-field-layout_preset').find('.eventful-siblings').eful_siblings();
+        $this.children('.eventful-field-palette').find('.eventful-siblings').eful_siblings();
 
         // Help Tooptip
-        $this.children('.eventful-field').find('.eventful-help').eventful_help();
+        $this.children('.eventful-field').find('.eventful-help').eful_help();
 
         if ( settings.dependency ) {
-          $this.eventful_dependency();
+          $this.eful_dependency();
         }
 
         $this.data('inited', true);
@@ -3493,22 +3493,22 @@
   //
   $(document).ready( function() {
 
-    $('.eventful-save').eventful_save();
-    $('.eventful-options').eventful_options();
-    $('.eventful-sticky-header').eventful_sticky();
-    $('.eventful-nav-options').eventful_nav_options();
-    $('.eventful-nav-metabox').eventful_nav_metabox();
-    $('.eventful-taxonomy').eventful_taxonomy();
-    $('.eventful-page-templates').eventful_page_templates();
-    $('.eventful-post-formats').eventful_post_formats();
-    $('.eventful-shortcode').eventful_shortcode();
-    $('.eventful-search').eventful_search();
-    $('.eventful-confirm').eventful_confirm();
-    $('.eventful-expand-all').eventful_expand_all();
-    $('.eventful-onload').eventful_reload_script();
-    $('#widgets-editor').eventful_widgets();
-    $('#widgets-right').eventful_widgets();
-    $('#menu-to-edit').eventful_nav_menu();
+    $('.eventful-save').eful_save();
+    $('.eventful-options').eful_options();
+    $('.eventful-sticky-header').eful_sticky();
+    $('.eventful-nav-options').eful_nav_options();
+    $('.eventful-nav-metabox').eful_nav_metabox();
+    $('.eventful-taxonomy').eful_taxonomy();
+    $('.eventful-page-templates').eful_page_templates();
+    $('.eventful-post-formats').eful_post_formats();
+    $('.eventful-shortcode').eful_shortcode();
+    $('.eventful-search').eful_search();
+    $('.eventful-confirm').eful_confirm();
+    $('.eventful-expand-all').eful_expand_all();
+    $('.eventful-onload').eful_reload_script();
+    $('#widgets-editor').eful_widgets();
+    $('#widgets-right').eful_widgets();
+    $('#menu-to-edit').eful_nav_menu();
 
   });
 

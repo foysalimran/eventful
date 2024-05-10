@@ -18,7 +18,7 @@ class EFUL_CustomCSS {
 				'icon'   => 'fas fa-css3',
 				'fields' => array(
 					array(
-						'id'       => 'eventful_custom_css',
+						'id'       => 'eful_custom_css',
 						'type'     => 'code_editor',
 						'title'    => esc_html__( 'Custom CSS', 'eventful' ),
 						'settings' => array(
@@ -28,7 +28,7 @@ class EFUL_CustomCSS {
 						),
 					),
 					array(
-						'id'       => 'eventful_custom_js',
+						'id'       => 'eful_custom_js',
 						'type'     => 'code_editor',
 						'title'    => esc_html__( 'Custom JS', 'eventful' ),
 						'settings' => array(

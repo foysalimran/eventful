@@ -4589,7 +4589,7 @@
     }
   });
 
-  $.eventful_deps = {
+  $.eful_deps = {
 
     createRuleset: function() {
       return new Ruleset();

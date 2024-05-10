@@ -10,7 +10,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
-<div class="eventful__item--archive <?php echo esc_attr($post_thumb_meta_position); ?>">
+<div class="eful__item--archive <?php echo esc_attr($post_thumb_meta_position); ?>">
     <?php
     $start_tag      = $is_table ? '<td>' : '<li>';
     $end_tag        = $is_table ? '</td>' : '</li>';
