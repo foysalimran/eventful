@@ -16,7 +16,7 @@
  * Plugin Name:       Eventful
  * Plugin URI:        https://wp-plugins.themeatelier.net/eventful
  * Description:       Professional Event Post Layouts Addon For WordPress
- * Version:           1.0.3
+ * Version:           1.0.4
  * Author:            ThemeAtelier
  * Author URI:        https://themeatelier.net/
  * License:           GPL-2.0+
@@ -30,14 +30,16 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+require __DIR__ . '/vendor/autoload.php';
+
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'EFUL_VERSION', '1.0.0' );
+define( 'EFUL_VERSION', '1.0.4' );
 define('EFUL_BASENAME', plugin_basename(__FILE__));
-
+define('EFUL_DIR_PATH', plugin_dir_path(__FILE__));
 
 
 /**
@@ -84,3 +86,23 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( ! ( is_plugin_active( 'eventful-pro/eventful-pro.php' ) || is_plugin_active_for_network( 'eventful-pro/eventful-pro.php' ) ) ) {
 	eful_run();
 }
+
+
+// Appsero init
+
+/**
+ * Initialize the plugin tracker
+ *
+ * @return void
+ */
+function appsero_init_tracker_eventful()
+{
+	if (!class_exists('EventfulAppSero\Insights')) {
+		require_once  EFUL_DIR_PATH . 'admin/appsero/Client.php';
+	}
+	$client = new EventfulAppSero\Client('82e15bff-56c3-4809-bee3-51d69e047387', 'Eventful - Events Showcase For The Events Calendar', __FILE__);
+	// Active insights
+	$client->insights()->init();
+}
+
+appsero_init_tracker_eventful();
