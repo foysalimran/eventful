@@ -108,6 +108,9 @@ You can create a topic in our [Support Forum](https://wordpress.org/support/plug
 
 == Changelog ==
 
+= 1.0.4 - 17 Aug, 2024 =
+* Update: Appsero SDK
+
 = 1.0.3 - 13 June, 2024 =
 * Fixed plugins URL
 
