@@ -77,7 +77,7 @@
 		  }, 0);
 		}, 2000);
 	  });
-	  $('.eful_input').on('click',function (e) {
+	  $('.ta_efp_input').on('click',function (e) {
 		e.preventDefault();
 		/* Get the text field */
 		var copyText = $(this);

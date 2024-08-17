@@ -15,7 +15,7 @@ class EFUL_CustomCSS {
 			$prefix,
 			array(
 				'title'  => esc_html__( 'Custom CSS & JS', 'eventful' ),
-				'icon'   => 'fas fa-css3',
+				'icon'   => 'fas fa-code',
 				'fields' => array(
 					array(
 						'id'       => 'eful_custom_css',

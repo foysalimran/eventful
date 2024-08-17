@@ -3,7 +3,7 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       https://https://https://themeatelier.net
+ * @link       https://themeatelier.net
  * @since      1.0.0
  *
  * @package    Eventful

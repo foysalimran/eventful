@@ -578,8 +578,9 @@ if ( ! class_exists( 'EFUL_Setup' ) ) {
       if ( apply_filters( 'eful_fa4', false ) ) {
         wp_enqueue_style( 'font-awesome_v4-fa', EFUL_URL . 'admin/views/ta-framework/assets/css/font-awesome_v4.min.css', array(), '4.7.0', 'all' );
       } else {
+        
         wp_enqueue_style( 'font-awesome_v5-fa5', EFUL_URL .'admin/views/ta-framework/assets/css/font-awesome_v5.min.css', array(), '5.15.5', 'all' );
-        wp_enqueue_style( 'font-awesome_v4-v4-shims', EFUL_URL .'admin/views/ta-framework/assets/css/font-awesome_v4-shims.min.css', array(), '5.15.5', 'all' );
+        wp_enqueue_style( 'font-awesome_v4-fa', EFUL_URL . 'admin/views/ta-framework/assets/css/font-awesome_v4.min.css', array(), '4.7.0', 'all' );
       }
 
       // Check for developer mode

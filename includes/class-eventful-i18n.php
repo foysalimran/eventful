@@ -6,7 +6,7 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://https://https://themeatelier.net
+ * @link       https://themeatelier.net
  * @since      1.0.0
  *
  * @package    Eventful

@@ -3,7 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       https://https://https://themeatelier.net
+ * @link       https://themeatelier.net
  * @since      1.0.0
  *
  * @package    Eventful
@@ -62,6 +62,7 @@ class Eful_Admin
 		$new_links = array(
 			sprintf('<a href="%s">%s</a>', admin_url('post-new.php?post_type=eventful'), esc_html__('Add New', 'eventful')),
 			sprintf('<a href="%s">%s</a>', admin_url('edit.php?post_type=eventful'), esc_html__('Settings', 'eventful')),
+			sprintf('<a target="_blank" style="font-weight:bold;color:#0015B5" href="%s">%s</a>', 'https://1.envato.market/eventful', esc_html__('Get Pro!', 'eventful')),
 		);
 		return array_merge($new_links, $links);
 	}
@@ -197,6 +198,43 @@ class Eful_Admin
 		} // end switch.
 	}
 
+	
+
+	public function filter_eventful_admin_column()
+	{
+
+		$admin_columns['cb']         = '<input type="checkbox" />';
+		$admin_columns['title']      = esc_html__('Title', 'eventful');
+		$admin_columns['shortcode']  = esc_html__('Shortcode', 'eventful');
+		$admin_columns['efp_layout'] = esc_html__('Layout', 'eventful');
+		$admin_columns['date']       = esc_html__('Date', 'eventful');
+
+		return $admin_columns;
+	}
+
+	/**
+	 * Display admin columns for the eventfuls.
+	 *
+	 * @param mix    $column The columns.
+	 * @param string $post_id The post ID.
+	 * @return void
+	 */
+	public function display_eventful_admin_fields($column, $post_id)
+	{
+		$efp_layouts     = get_post_meta($post_id, 'eful_layouts', true);
+		$eventfuls_types = isset($efp_layouts['eful_layout_preset']) ? $efp_layouts['eful_layout_preset'] : '';
+		switch ($column) {
+			case 'shortcode':
+				$column_field = '<input  class="ta_efp_input" style="width: 230px;padding: 4px 8px;cursor: pointer;" type="text" onClick="this.select();" readonly="readonly" value="[eventful id=&quot;' . $post_id . '&quot;]"/> <div class="eventful-after-copy-text"><i class="far fa-check-circle"></i> '.esc_html('Shortcode Copied to Clipboard!', 'eventful').' </div>';
+				echo $column_field;
+				break;
+			case 'efp_layout':
+				$layout = ucwords(str_replace('_layout', ' ', $eventfuls_types));
+				esc_html_e($layout, 'eventful');
+				break;
+		} // end switch.
+	}
+
 	/**
 	 * If it is the plugins page.
 	 *
@@ -207,6 +245,8 @@ class Eful_Admin
 	{
 		return in_array(get_current_screen()->id, ['plugins', 'plugins-network']);
 	}
+
+
 }
 
 /**

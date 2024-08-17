@@ -181,4 +181,6 @@
   #eful_layouts .postbox-header{
       border: none;
   }
-  
+  .eventful-field.eventful-field-layout_preset.eventful-layout-preset .eventful-fieldset {
+    width: 100%;
+}

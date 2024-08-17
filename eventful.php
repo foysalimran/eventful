@@ -8,17 +8,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://https://https://themeatelier.net
+ * @link              https://themeatelier.net
  * @since             1.0.0
  * @package           Eventful
  *
  * @wordpress-plugin
  * Plugin Name:       Eventful
- * Plugin URI:        https://https://wp-plugins.themeatelier.net/eventful
+ * Plugin URI:        https://wp-plugins.themeatelier.net/eventful
  * Description:       Professional Event Post Layouts Addon For WordPress
- * Version:           1.0.0
+ * Version:           1.0.3
  * Author:            ThemeAtelier
- * Author URI:        https://https://https://themeatelier.net/
+ * Author URI:        https://themeatelier.net/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       eventful
@@ -37,6 +37,8 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'EFUL_VERSION', '1.0.0' );
 define('EFUL_BASENAME', plugin_basename(__FILE__));
+
+
 
 /**
  * The code that runs during plugin activation.
@@ -75,9 +77,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-eventful.php';
  * @since    1.0.0
  */
 function eful_run() {
-
 	$plugin = new Eventful();
 	$plugin->run();
-
 }
-eful_run();
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
+if ( ! ( is_plugin_active( 'eventful-pro/eventful-pro.php' ) || is_plugin_active_for_network( 'eventful-pro/eventful-pro.php' ) ) ) {
+	eful_run();
+}

@@ -48,8 +48,8 @@ if (!class_exists('EFUL_Field_code_editor')) {
 			if (in_array($page, array('revslider'))) {
 				return;
 			}
-			if(!wp_enqueue_script('wp-codemirror')) {
-				wp_enqueue_script("wp-codemirror", true);
+			if(!wp_enqueue_script('eful-codemirror')) {
+				wp_enqueue_script('eful-codemirror', EFUL_URL . 'admin/views/ta-framework/assets/js/codemirror.min.js', array('eventful'), $this->version, true);
 				wp_enqueue_script('eful-codemirror-loadmode', EFUL_URL . 'admin/views/ta-framework/assets/js/loadmode.min.js', array('wp-codemirror'), $this->version, true);
 			}
 

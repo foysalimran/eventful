@@ -3,7 +3,7 @@
 /**
  * Fired during plugin activation
  *
- * @link       https://https://https://themeatelier.net
+ * @link       https://themeatelier.net
  * @since      1.0.0
  *
  * @package    Eventful

@@ -26,7 +26,6 @@ class EFUL_DetailSettings {
 						'type'     => 'radio',
 						'title'    => esc_html__( 'Detail Page Link Type', 'eventful' ),
 						'subtitle' => esc_html__( 'Choose a link type for the (item) detail page.', 'eventful' ),
-						'desc'     => esc_html__( 'More amazing Popup Settings', 'eventful' ),
 						'options'  => array(
 							'single_page' => esc_html__( 'Single Page', 'eventful' ),
 							'none'        => esc_html__( 'None (no link action)', 'eventful' ),
