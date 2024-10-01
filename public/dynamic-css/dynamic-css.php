@@ -51,7 +51,7 @@ if ($show_section_title) {
 $margin_between_post      = isset( $view_options['margin_between_post']['all'] ) ? (int) $view_options['margin_between_post']['all'] : 20;
 $margin_between_post_half = $margin_between_post / 2;
 $custom_css              .= "#eful_wrapper-{$eful_id} .ta-row{ margin-right: -{$margin_between_post_half}px;margin-left: -{$margin_between_post_half}px;}#eful_wrapper-{$eful_id} .ta-row [class*='ta-col-']{padding-right: {$margin_between_post_half}px;padding-left: {$margin_between_post_half}px;padding-bottom: {$margin_between_post}px;}";
-if ( 'large_with_small' === $layouts['eful_layout_preset'] ) {
+if ( 'large_with_small' === $layout ) {
 	$custom_css .= "#eful_wrapper-{$eful_id} .ta-eventful-block-8, #eful_wrapper-{$eful_id} .ta-eventful-block-4, #eful_wrapper-{$eful_id} .ta-eventful-block-6, #eful_wrapper-{$eful_id} .ta-eventful-block-3{padding-right: {$margin_between_post_half}px;padding-left: {$margin_between_post_half}px;}#eful_wrapper-{$eful_id} .ta-eventful-block-4 .ta-eventful-block-half,#eful_wrapper-{$eful_id} .ta-eventful-block-8,#eful_wrapper-{$eful_id} .ta-eventful-block-3 .ta-eventful-block-half,#eful_wrapper-{$eful_id} .ta-eventful-block-6{padding-bottom: {$margin_between_post}px;}";
 }
 /**
@@ -149,24 +149,31 @@ if ('carousel_layout' === $layout) {
 }
 
 // Post inner padding.
-$post_content_orientation   = $view_options['post_content_orientation'];
+$post_content_orientation   = isset($view_options['post_content_orientation']) ? $view_options['post_content_orientation'] : '';
 $post_details_class         = 'overlay-box' === $post_content_orientation ? '.ta-eventful-post-details' : '';
 $post_details_content_class = 'overlay-box' === $post_content_orientation ? '.ta-eventful-post-details-content' : '';
 if ('overlay' !== $post_content_orientation) {
 	$_post_inner_padding       = EFUL_Functions::eful_metabox_value('post_inner_padding_property', $view_options);
-	$post_inner_padding_unit   = $_post_inner_padding['unit'];
-	$post_inner_padding_top    = $_post_inner_padding['top'] > 0 ? $_post_inner_padding['top'] . $post_inner_padding_unit : '0';
-	$post_inner_padding_right  = $_post_inner_padding['right'] > 0 ? $_post_inner_padding['right'] . $post_inner_padding_unit : '0';
-	$post_inner_padding_bottom = $_post_inner_padding['bottom'] > 0 ? $_post_inner_padding['bottom'] . $post_inner_padding_unit : '0';
-	$post_inner_padding_left   = $_post_inner_padding['left'] > 0 ? $_post_inner_padding['left'] . $post_inner_padding_unit : '0';
+	$post_inner_padding_top = isset($_post_inner_padding['top']) ? $_post_inner_padding['top'] : '';
+	$post_inner_padding_right = isset($_post_inner_padding['right']) ? $_post_inner_padding['right'] : '';
+	$post_inner_padding_bottom = isset($_post_inner_padding['bottom']) ? $_post_inner_padding['bottom'] : '';
+	$post_inner_padding_left = isset($_post_inner_padding['left']) ? $_post_inner_padding['left'] : '';
+
+
+	$post_inner_padding_unit   = isset($_post_inner_padding['unit']) ? $_post_inner_padding['unit'] : 'px';
+	
+	$post_inner_padding_top    = $post_inner_padding_top > 0 ? $post_inner_padding_top . $post_inner_padding_unit : '0';
+	$post_inner_padding_right  = $post_inner_padding_right > 0 ? $post_inner_padding_right . $post_inner_padding_unit : '0';
+	$post_inner_padding_bottom = $post_inner_padding_bottom > 0 ? $post_inner_padding_bottom . $post_inner_padding_unit : '0';
+	$post_inner_padding_left   = $post_inner_padding_left > 0 ? $post_inner_padding_left . $post_inner_padding_unit : '0';
 	$custom_css               .= "#eful_wrapper-{$eful_id} .eful__item {padding: {$post_inner_padding_top} {$post_inner_padding_right} {$post_inner_padding_bottom} {$post_inner_padding_left};}";
 }
 
 // Post border.
-$_post_border      = $view_options['post_border'];
-$post_border_width = (int) $_post_border['all'];
-$post_border_style = $_post_border['style'];
-$post_border_color = $_post_border['color'];
+$_post_border      = isset($view_options['post_border']) ? $view_options['post_border'] : '';
+$post_border_width = isset($_post_border['all'])? $_post_border['all'] : 0;
+$post_border_style = isset($_post_border['style']) ? $_post_border['style'] : '';
+$post_border_color = isset($_post_border['color']) ? $_post_border['color'] : '';
 if ('none' !== $post_border_style) {
 	$custom_css .= "#eful_wrapper-{$eful_id} .eful__item {border: {$post_border_width}px {$post_border_style} {$post_border_color};}";
 }
@@ -225,7 +232,7 @@ if (in_array($post_content_orientation, array('overlay'), true)) {
 /**
  * Post Thumbnail CSS.
  */
-$post_thumb_css           = $post_sorter['eful_post_thumb'];
+$post_thumb_css           = isset($post_sorter['eful_post_thumb']) ? $post_sorter['eful_post_thumb'] : '';
 $post_thumb_margin        = isset($post_thumb_css['post_thumb_margin']) ? $post_thumb_css['post_thumb_margin'] : array(
 	'top'    => '40',
 	'right'  => '0',
@@ -322,7 +329,7 @@ if (!empty($_post_meta_typography['font-family'])) {
 }
 
 $custom_css .= "text-transform: {$_post_meta_typography['text-transform']};font-size: {$_post_meta_typography['font-size']}px;line-height: {$_post_meta_typography['line-height']}px;letter-spacing: {$_post_meta_typography['letter-spacing']}px;color: {$_post_meta_typography['color']};}#eful_wrapper-{$eful_id} .eful__item--meta{margin: {$post_meta_margin['top']}px {$post_meta_margin['right']}px {$post_meta_margin['bottom']}px {$post_meta_margin['left']}px;";
-if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
+if ('zigzag_layout' !== $layout) {
 	$custom_css .= "text-align: {$_post_meta_typography['text-align']};";
 }
 $custom_css .= '}';
@@ -426,7 +433,7 @@ if (!empty($_event_fildes_typography['font-family'])) {
 }
 
 $custom_css .= "text-transform: {$_event_fildes_typography['text-transform']};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;color: {$_event_fildes_typography['color']};}#eful_wrapper-{$eful_id} .eful__item--meta.event_meta{margin: {$event_fildes_margin['top']}px {$event_fildes_margin['right']}px {$event_fildes_margin['bottom']}px {$event_fildes_margin['left']}px;";
-if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
+if ('zigzag_layout' !== $layout) {
 	$custom_css .= "text-align: {$_event_fildes_typography['text-align']};";
 }
 $custom_css .= '}';
@@ -522,7 +529,7 @@ if ($show_read_more) {
 		$custom_css .= "font-family: {$_read_more_typography['font-family']}; font-weight: {$read_more_font_weight}; font-style: {$read_more_font_style};";
 	}
 	$custom_css .= "text-transform: {$_read_more_typography['text-transform']}; font-size: {$_read_more_typography['font-size']}px; line-height: {$_read_more_typography['line-height']}px; letter-spacing: {$_read_more_typography['letter-spacing']}px; }";
-	if ( 'zigzag_layout' !== $layouts['eful_layout_preset'] ) {
+	if ( 'zigzag_layout' !== $layout ) {
 		$custom_css .= "#eful_wrapper-{$eful_id} .eful__item__content__readmore{ text-align: {$_read_more_typography['text-align']}; }";
 	}
 	if ('button' === $read_more_type) {

@@ -142,23 +142,19 @@ class Eventful_Public
 		foreach ($post_ids as $eful_id) {
 			// Include dynamic style file.
 			$view_options = get_post_meta($eful_id, 'eful_view_options', true);
-
 			$layouts      = get_post_meta($eful_id, 'eful_layouts', true);
 			include 'dynamic-css/dynamic-css.php';
-
 			if ($eful_enqueue_google_font) {
 				// Google fonts.
 				$view_options     = get_post_meta($eful_id, 'eful_view_options', true);
-	
-
 				$all_fonts        = array();
 				$eful_typography   = array();
 			
-				$eful_typography[] = $view_options['section_title_typography'];
+				$eful_typography[] = isset($view_options['section_title_typography']) ? $view_options['section_title_typography'] : array();
 
-				$eful_typography[] = $view_options['post_title_typography'];
-				$eful_typography[] = $view_options['post_meta_typography'];
-				$eful_typography[] = $view_options['post_content_typography'];
+				$eful_typography[] = isset($view_options['post_title_typography']) ? $view_options['post_title_typography'] : '';
+				$eful_typography[] = isset($view_options['post_meta_typography']) ? $view_options['post_meta_typography'] : '';
+				$eful_typography[] = isset($view_options['post_content_typography']) ? $view_options['post_content_typography'] : '';
 				$eful_typography[] = isset($view_options['read_more_typography']) ? $view_options['read_more_typography'] : array(
 					'font-family'        => '',
 					'font-weight'        => '600',

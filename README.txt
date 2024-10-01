@@ -105,7 +105,6 @@ You can create a topic in our [Support Forum](https://wordpress.org/support/plug
 4. Event default carousel
 5. Event carousel centered
 
-
 == Changelog ==
 
 = 1.0.4 - 17 Aug, 2024 =
