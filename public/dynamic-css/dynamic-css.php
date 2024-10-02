@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 }
 
 $view_options = get_post_meta($eful_id, 'eful_view_options', true);
-$layouts      = get_post_meta($eful_id, 'eful_layouts', true);
+$layouts      = get_post_meta($eful_id, 'ta_efp_layouts', true);
 $layout = isset($layouts['eful_layout_preset']) ? $layouts['eful_layout_preset'] : '';
 $popup_content_color       = isset( $view_options['popup_content_color'] ) ? $view_options['popup_content_color'] : '';
 

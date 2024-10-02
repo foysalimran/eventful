@@ -43,7 +43,7 @@ class Eful_Admin
 		// Autoload system.
 		spl_autoload_register(array($this, 'autoload'));
 
-		EFUL_Metaboxes::eful_layout_metabox('eful_layouts');
+		EFUL_Metaboxes::eful_layout_metabox('ta_efp_layouts');
 		EFUL_Metaboxes::eful_option_metabox('eful_view_options');
 		EFUL_Metaboxes::eful_shortcode_metabox('eful_display_shortcode');
 		EFUL_Settings::settings('eful_settings');
@@ -167,9 +167,9 @@ class Eful_Admin
 	 */
 	public function eful_display_admin_fields($column, $post_id)
 	{
-		$eful_layouts     = get_post_meta($post_id, 'eful_layouts', true);
+		$ta_efp_layouts     = get_post_meta($post_id, 'ta_efp_layouts', true);
 
-		$eventfuls_types = isset($eful_layouts['eful_layout_preset']) ? $eful_layouts['eful_layout_preset'] : '';
+		$eventfuls_types = isset($ta_efp_layouts['eful_layout_preset']) ? $ta_efp_layouts['eful_layout_preset'] : '';
 		switch ($column) {
 			case 'shortcode':
 				$allowed_tags = array(
@@ -221,7 +221,7 @@ class Eful_Admin
 	 */
 	public function display_eventful_admin_fields($column, $post_id)
 	{
-		$efp_layouts     = get_post_meta($post_id, 'eful_layouts', true);
+		$efp_layouts     = get_post_meta($post_id, 'ta_efp_layouts', true);
 		$eventfuls_types = isset($efp_layouts['eful_layout_preset']) ? $efp_layouts['eful_layout_preset'] : '';
 		switch ($column) {
 			case 'shortcode':
