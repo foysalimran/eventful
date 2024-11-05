@@ -1,755 +1,177 @@
-#, fuzzy
+# Copyright (C) 2024 Eventful
+# This file is distributed under the same license as the Eventful package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eventful\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-13 06:22+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.10; wp-6.5.4\n"
-"X-Domain: eventful"
+"POT-Creation-Date: 2024-11-05 09:55+0000\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: public/helpers/class-post-functions.php:614
-#: public/templates/item/post-thumb-date.php:25
-msgid " ago"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:130
-msgid "&#8658; left to right"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:129
-msgid "&#8659; top to bottom"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:131
-msgid "&#8664; corner top to right"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:132
-msgid "&#8665; corner top to left"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:697
-msgid "1 month ago to today"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:696
-msgid "1 Week ago to today"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:698
-msgid "1 year ago to today"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:72
-msgid ""
-"<i class=\"fa fa-television\"></i> <b> Large Desktop </b> - is larger than "
-"1200px,<br><i class=\"fa fa-desktop\"></i> <b>Desktop</b> - size is larger "
-"than 992px,<br> <i class=\"fa fa-tablet\"></i> <b>Tablet</b> - Size is "
-"larger than 768,<br> <i class=\"fa fa-mobile\"></i> <b> Mobile Landscape </b>"
-" - size is larger than 576px.,<br> <i class=\"fa fa-mobile\"></i> <b> Mobile "
-"</b> - size is smaller than 576px."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:738
-#: admin/views/configs/generator/class-eventful-display.php:951
-#: admin/views/configs/generator/class-eventful-display.php:1330
-#: admin/views/configs/generator/class-eventful-filterpost.php:280
-#: admin/views/configs/generator/class-eventful-filterpost.php:417
-#: admin/views/configs/generator/class-eventful-filterpost.php:562
-#: admin/views/configs/generator/class-eventful-filterpost.php:641
-#: admin/views/configs/generator/class-eventful-filterpost.php:814
-msgid "<i class=\"fas fa-align-center\" title=\"Center\"></i>"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:737
-#: admin/views/configs/generator/class-eventful-display.php:950
-#: admin/views/configs/generator/class-eventful-display.php:1329
-#: admin/views/configs/generator/class-eventful-filterpost.php:279
-#: admin/views/configs/generator/class-eventful-filterpost.php:416
-#: admin/views/configs/generator/class-eventful-filterpost.php:561
-#: admin/views/configs/generator/class-eventful-filterpost.php:640
-#: admin/views/configs/generator/class-eventful-filterpost.php:813
-msgid "<i class=\"fas fa-align-left\" title=\"Left\"></i>"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:739
-#: admin/views/configs/generator/class-eventful-display.php:952
-#: admin/views/configs/generator/class-eventful-display.php:1331
-#: admin/views/configs/generator/class-eventful-filterpost.php:281
-#: admin/views/configs/generator/class-eventful-filterpost.php:418
-#: admin/views/configs/generator/class-eventful-filterpost.php:563
-#: admin/views/configs/generator/class-eventful-filterpost.php:642
-#: admin/views/configs/generator/class-eventful-filterpost.php:815
-msgid "<i class=\"fas fa-align-right\" title=\"Right\"></i>"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:374
-msgid ""
-"<i class=\"fas fa-television\"></i> <b> Large Desktop </b> - is larger than "
-"1200px,<br><i class=\"fas fa-desktop\"></i> <b>Desktop</b> - size is larger "
-"than 992px,<br> <i class=\"fas fa-tablet-alt\"></i> <b>Tablet</b> - Size is "
-"larger than 768,<br> <i class=\"fas fa-mobile-alt\"></i> <b> Mobile "
-"Landscape </b> - size is larger than 576px.,<br> <i class=\"fas fa-mobile-"
-"alt\"></i> <b> Mobile </b> - size is smaller than 576px."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:628
-msgid "Above Title"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-accessibility.php:22
-msgid "Accessibility"
-msgstr ""
-
-#: admin/views/ta-framework/fields/link_color/link_color.php:41
-msgid "Active"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1292
-msgid "Active BG"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:324
-msgid "Active Color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:220
-#: admin/views/configs/generator/class-eventful-filterpost.php:359
-#: admin/views/configs/generator/class-eventful-filterpost.php:500
-#: admin/views/configs/generator/class-eventful-filterpost.php:617
-msgid "Active/Hover BG"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:385
-msgid "Adaptive Carousel Height"
-msgstr ""
-
-#: admin/views/ta-framework/fields/gallery/gallery.php:22
-msgid "Add Gallery"
-msgstr ""
-
-#: admin/views/ta-framework/fields/icon/icon.php:22
-#: admin/views/ta-framework/fields/icon/icon.php:55
-msgid "Add Icon"
-msgstr ""
-
-#: includes/class-eventful-post-types.php:69
-msgid "Add Layout"
-msgstr ""
-
-#: admin/views/ta-framework/fields/link/link.php:22
-msgid "Add Link"
-msgstr ""
-
-#: admin/class-eventful-admin.php:63
-#: admin/views/ta-framework/classes/shortcode-options.class.php:210
-#: admin/views/ta-framework/fields/group/group.php:25
+#: admin/class-eventful-admin.php:63, admin/views/ta-framework/classes/shortcode-options.class.php:210, admin/views/ta-framework/fields/group/group.php:25
 msgid "Add New"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:548
-#: admin/views/configs/generator/class-eventful-display.php:799
-msgid "Add New Meta"
+#: admin/class-eventful-admin.php:64, admin/views/class-eventful-settings.php:30
+msgid "Settings"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-detailsettings.php:52
-msgid "Add rel=\"nofollow\" to item links"
+#: admin/class-eventful-admin.php:65
+msgid "Get Pro!"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:187
-#: admin/views/configs/generator/class-eventful-filterpost.php:326
-#: admin/views/configs/generator/class-eventful-filterpost.php:468
-#: admin/views/configs/generator/class-eventful-filterpost.php:584
-#: admin/views/configs/generator/class-eventful-filterpost.php:792
-msgid "Add to Ajax Live Filters"
+#: admin/class-eventful-admin.php:153, admin/class-eventful-admin.php:207, admin/views/configs/generator/class-eventful-display.php:462, admin/views/configs/generator/class-eventful-display.php:467, admin/views/configs/generator/class-eventful-filterpost.php:450, admin/views/configs/generator/class-eventful-filterpost.php:537, admin/views/configs/generator/class-eventful-typography.php:77
+msgid "Title"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:824
-msgid "Address"
+#: admin/class-eventful-admin.php:154, admin/class-eventful-admin.php:208, includes/class-eventful-post-types.php:66
+msgid "Shortcode"
 msgstr ""
 
-#: public/helpers/class-eventful-customfieldprocess.php:247
-msgid "Advanced Custom Fields"
+#: admin/class-eventful-admin.php:155, admin/class-eventful-admin.php:209
+msgid "Layout"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:105
-msgid "Advanced Filtering"
+#: admin/class-eventful-admin.php:156, admin/class-eventful-admin.php:210, admin/views/configs/generator/class-eventful-display.php:383, admin/views/configs/generator/class-eventful-display.php:559, admin/views/configs/generator/class-eventful-filterpost.php:451, admin/views/configs/generator/class-eventful-filterpost.php:538
+msgid "Date"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:193
-#: admin/views/configs/generator/class-eventful-filterpost.php:333
-#: admin/views/configs/generator/class-eventful-filterpost.php:475
-#: admin/views/configs/generator/class-eventful-filterpost.php:591
-#: admin/views/configs/generator/class-eventful-filterpost.php:799
-msgid "Ajax Live Filters"
+#: admin/views/class-eventful-metaboxes.php:16, admin/views/class-eventful-metaboxes.php:61, admin/views/class-eventful-settings.php:40, includes/class-eventful-post-types.php:67
+msgid "Eventful"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1232
-msgid "Ajax Number Pagination"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1258
-msgid "Ajax Pagination"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:735
-#: admin/views/configs/generator/class-eventful-display.php:948
-#: admin/views/configs/generator/class-eventful-display.php:1326
-#: admin/views/configs/generator/class-eventful-filterpost.php:277
-#: admin/views/configs/generator/class-eventful-filterpost.php:414
-#: admin/views/configs/generator/class-eventful-filterpost.php:559
-#: admin/views/configs/generator/class-eventful-filterpost.php:638
-#: admin/views/configs/generator/class-eventful-filterpost.php:811
-msgid "Alignment"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:258
-#: admin/views/configs/generator/class-eventful-filterpost.php:397
-msgid "All"
-msgstr ""
-
-#: admin/views/ta-framework/fields/border/border.php:31
-#: admin/views/ta-framework/fields/column/column.php:51
-#: admin/views/ta-framework/fields/spacing/spacing.php:31
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:55
-msgid "all"
-msgstr ""
-
-#: includes/class-eventful-post-types.php:68
-msgid "All Layouts"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:308
-msgid "All Small Caps"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1068
-msgid "Allow All"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1078
-msgid "Allow HTML Tags Names"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1070
-msgid "Allow Some"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:359
-msgid "Always grayscale"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:178
-#: admin/views/configs/generator/class-eventful-filterpost.php:296
-msgid "AND"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:741
-msgid "April"
-msgstr ""
-
-#: admin/views/ta-framework/fields/group/group.php:55
-#: admin/views/ta-framework/fields/group/group.php:110
-#: admin/views/ta-framework/fields/repeater/repeater.php:51
-#: admin/views/ta-framework/fields/repeater/repeater.php:79
-msgid "Are you sure to delete this item?"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:518
-#: admin/views/ta-framework/classes/admin-options.class.php:641
-msgid "Are you sure to reset this section options?"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:519
-#: admin/views/ta-framework/classes/admin-options.class.php:642
-msgid "Are you sure you want to reset all settings to default values?"
-msgstr ""
-
-#: admin/views/ta-framework/classes/setup.class.php:614
-msgid "Are you sure?"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:233
-msgid "Arrow Icon Size"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:575
-msgid "Ascending"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:296
-msgid "Audio"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:745
-msgid "August"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:558
-#: admin/views/configs/generator/class-eventful-filterpost.php:115
-#: admin/views/configs/generator/class-eventful-filterpost.php:314
-#: admin/views/configs/generator/class-eventful-filterpost.php:458
-#: admin/views/configs/generator/class-eventful-filterpost.php:544
-msgid "Author"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:575
-msgid "Author name & gravatar"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:576
-msgid "Author name with an icon"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:260
-msgid "Auto"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:67
-msgid "AutoPlay"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:78
-msgid "AutoPlay Speed"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:570
-msgid "Avatar"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:720
-#: admin/views/configs/generator/class-eventful-display.php:933
-msgid "Back Slash( \\ )"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:166
-#: admin/views/configs/generator/class-eventful-display.php:174
-#: admin/views/configs/generator/class-eventful-display.php:438
-#: admin/views/configs/generator/class-eventful-display.php:654
-#: admin/views/configs/generator/class-eventful-display.php:1135
-#: admin/views/configs/generator/class-eventful-display.php:1291
-#: admin/views/configs/generator/class-eventful-display.php:1312
-#: admin/views/configs/generator/class-eventful-carousel.php:265
-#: admin/views/configs/generator/class-eventful-carousel.php:338
-#: admin/views/configs/generator/class-eventful-filterpost.php:219
-#: admin/views/configs/generator/class-eventful-filterpost.php:358
-#: admin/views/configs/generator/class-eventful-filterpost.php:499
-#: admin/views/configs/generator/class-eventful-filterpost.php:616
-msgid "Background"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:236
-msgid "Background Attachment"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:323
-msgid "Background Blend Mode"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:301
-msgid "Background Clip"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:279
-msgid "Background Origin"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:185
-msgid "Background Position"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:213
-msgid "Background Repeat"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:257
-msgid "Background Size"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:152
-msgid "Backup Font Family"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:627
-msgid "Beside Other Meta"
-msgstr ""
-
-#: admin/views/ta-framework/fields/box_shadow/box_shadow.php:50
-msgid "Blur"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:122
-#: admin/views/configs/generator/class-eventful-display.php:315
-#: admin/views/configs/generator/class-eventful-display.php:440
-#: admin/views/configs/generator/class-eventful-display.php:1137
-#: admin/views/configs/generator/class-eventful-carousel.php:267
-msgid "Border"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1290
-msgid "Border Active Color"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:281
-#: admin/views/ta-framework/fields/background/background.php:302
-msgid "Border Box"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1289
-#: admin/views/configs/generator/class-eventful-filterpost.php:217
-#: admin/views/configs/generator/class-eventful-filterpost.php:356
-#: admin/views/configs/generator/class-eventful-filterpost.php:497
-#: admin/views/configs/generator/class-eventful-filterpost.php:614
-msgid "Border Color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:218
-#: admin/views/configs/generator/class-eventful-filterpost.php:357
-#: admin/views/configs/generator/class-eventful-filterpost.php:498
-#: admin/views/configs/generator/class-eventful-filterpost.php:615
-msgid "Border Hover"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:134
-#: admin/views/configs/generator/class-eventful-display.php:327
-#: admin/views/configs/generator/class-eventful-display.php:1183
-msgid "Border Radius"
-msgstr ""
-
-#: admin/views/ta-framework/fields/border/border.php:29
-#: admin/views/ta-framework/fields/spacing/spacing.php:29
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:53
-msgid "bottom"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:425
-#: admin/views/configs/generator/class-eventful-carousel.php:206
-msgid "Bottom center"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:642
-msgid "Bottom Left"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:424
-#: admin/views/configs/generator/class-eventful-carousel.php:205
-msgid "Bottom left"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:643
-msgid "Bottom Right"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:426
-#: admin/views/configs/generator/class-eventful-carousel.php:207
-msgid "Bottom right"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:145
-msgid "Box-Shadow"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:152
-msgid "Box-Shadow Values"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1115
-#: admin/views/configs/generator/class-eventful-filterpost.php:205
-#: admin/views/configs/generator/class-eventful-filterpost.php:344
-#: admin/views/configs/generator/class-eventful-filterpost.php:485
-#: admin/views/configs/generator/class-eventful-filterpost.php:602
-msgid "Button"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:212
-#: admin/views/configs/generator/class-eventful-filterpost.php:351
-#: admin/views/configs/generator/class-eventful-filterpost.php:492
-#: admin/views/configs/generator/class-eventful-filterpost.php:609
-msgid "Button Color"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:46
-msgid "bxSlider JS"
-msgstr ""
-
-#: admin/views/ta-framework/classes/comment-options.class.php:202
-#: admin/views/ta-framework/classes/metabox-options.class.php:279
-msgid "Cancel"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:336
-msgid "Capitalize"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-layout.php:42
-msgid "Carousel"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-accessibility.php:28
-msgid "Carousel Accessibility"
+#: admin/views/class-eventful-metaboxes.php:37
+msgid "View Options"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-carousel.php:22
 msgid "Carousel Controls"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:137
-msgid "Carousel Direction"
-msgstr ""
-
 #: admin/views/configs/generator/class-eventful-carousel.php:28
 msgid "Carousel Mode"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:40
-#: admin/views/configs/generator/class-eventful-carousel.php:91
-msgid "Carousel Speed"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:382
-msgid "Category"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:32
-#: admin/views/ta-framework/fields/typography/typography.php:276
-msgid "Center"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:191
-msgid "Center Bottom"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:190
-msgid "Center Center"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:189
-msgid "Center Top"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1025
-msgid "Characters"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1042
-msgid "Characters Length"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:504
-msgid "chars"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:112
-msgid "Check the option(s) to filter by."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:469
-msgid "Check to add ajax live filter for Order by."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:585
-msgid "Check to add ajax live filter for order."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:793
-msgid "Check to add ajax live filter."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:188
-#: admin/views/configs/generator/class-eventful-filterpost.php:327
-msgid "Check to add ajax live filters."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:403
-msgid "Check to hide empty author."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:265
-msgid "Check to hide empty terms."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:114
-msgid "Check to make all items/slides the same height as the tallest one."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:356
-msgid "Check to show dynamic pagination."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:271
-#: admin/views/configs/generator/class-eventful-filterpost.php:409
-msgid "Check to show post count."
-msgstr ""
-
-#: admin/views/ta-framework/fields/checkbox/checkbox.php:25
-msgid "Check/Uncheck All"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:204
-msgid "Checkbox"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:81
-msgid "Children Posts"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:138
-msgid "Choose a carousel direction."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:219
-msgid "Choose a carousel navigation icon."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-detailsettings.php:28
-msgid "Choose a link type for the (item) detail page."
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-carousel.php:29
 msgid "Choose a mode for the carousel."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1255
-msgid "Choose a pagination type for mobile view."
+#: admin/views/configs/generator/class-eventful-carousel.php:31
+msgid "Standard"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1229
-#: admin/views/configs/generator/class-eventful-display.php:1243
-msgid "Choose a pagination type."
+#: admin/views/configs/generator/class-eventful-carousel.php:32, admin/views/ta-framework/fields/typography/typography.php:276
+msgid "Center"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:304
-msgid "Choose a type for pagination."
+#: admin/views/configs/generator/class-eventful-carousel.php:33
+msgid "Ticker"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:218
-msgid "Choose an Icon"
+#: admin/views/configs/generator/class-eventful-carousel.php:40, admin/views/configs/generator/class-eventful-carousel.php:91
+msgid "Carousel Speed"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:822
-msgid "Choose an option"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:531
-msgid "Choose order by options to show to the visitors."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1327
-msgid "Choose pagination alignment."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:44
-msgid "Choose posts"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:66
-msgid "Choose posts to exclude"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:55
-msgid "Choose posts to exclude by title."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:37
-msgid "Choose posts to include by title."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:161
-msgid "Choose Term(s)"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:162
-msgid ""
-"Choose the taxonomy term(s) to show the posts from. Leave empty to show all "
-"found taxonomy term(s)."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:825
-msgid "City"
-msgstr ""
-
-#: admin/views/ta-framework/fields/gallery/gallery.php:24
-msgid "Clear"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:263
-#: admin/views/configs/generator/class-eventful-carousel.php:323
-#: admin/views/configs/generator/class-eventful-carousel.php:336
-#: admin/views/ta-framework/fields/background/background.php:332
-msgid "Color"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:330
-msgid "Color Dodge"
+#: admin/views/configs/generator/class-eventful-carousel.php:41, admin/views/configs/generator/class-eventful-carousel.php:92
+msgid "Set carousel speed in millisecond."
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-carousel.php:54
 msgid "Column Width"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:61
-msgid "Column(s)"
+#: admin/views/configs/generator/class-eventful-carousel.php:55
+msgid "Set a width for the column."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:561
-msgid "Comment Count"
+#: admin/views/configs/generator/class-eventful-carousel.php:67
+msgid "AutoPlay"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:456
-#: admin/views/configs/generator/class-eventful-filterpost.php:542
-msgid "Comment count"
+#: admin/views/configs/generator/class-eventful-carousel.php:68
+msgid "Enable/Disable carousel autoplay."
 msgstr ""
 
-#: admin/views/ta-framework/fields/background/background.php:259
-msgid "Contain"
+#: admin/views/configs/generator/class-eventful-carousel.php:69, admin/views/configs/generator/class-eventful-carousel.php:106, admin/views/configs/generator/class-eventful-carousel.php:117, admin/views/configs/generator/class-eventful-carousel.php:128, admin/views/configs/generator/class-eventful-carousel.php:388, admin/views/configs/generator/class-eventful-carousel.php:399, admin/views/configs/generator/class-eventful-carousel.php:410, admin/views/configs/generator/class-eventful-carousel.php:421, admin/views/configs/generator/class-eventful-carousel.php:432, admin/views/configs/generator/class-eventful-display.php:266, admin/views/configs/generator/class-eventful-display.php:371, admin/views/configs/generator/class-eventful-display.php:1217, admin/views/configs/generator/class-eventful-display.php:1351, admin/views/configs/settings/class-eventful-accessibility.php:29, admin/views/ta-framework/fields/sorter/sorter.php:23
+msgid "Enabled"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-typography.php:155
-#: admin/views/configs/generator/class-eventful-display.php:996
-#: admin/views/configs/generator/class-eventful-display.php:1001
-msgid "Content"
+#: admin/views/configs/generator/class-eventful-carousel.php:70, admin/views/configs/generator/class-eventful-carousel.php:107, admin/views/configs/generator/class-eventful-carousel.php:118, admin/views/configs/generator/class-eventful-carousel.php:129, admin/views/configs/generator/class-eventful-carousel.php:389, admin/views/configs/generator/class-eventful-carousel.php:400, admin/views/configs/generator/class-eventful-carousel.php:411, admin/views/configs/generator/class-eventful-carousel.php:422, admin/views/configs/generator/class-eventful-carousel.php:433, admin/views/configs/generator/class-eventful-display.php:267, admin/views/configs/generator/class-eventful-display.php:372, admin/views/configs/generator/class-eventful-display.php:1218, admin/views/configs/generator/class-eventful-display.php:1352, admin/views/configs/settings/class-eventful-accessibility.php:30, admin/views/ta-framework/fields/sorter/sorter.php:24
+msgid "Disabled"
 msgstr ""
 
-#: admin/views/ta-framework/fields/background/background.php:282
-#: admin/views/ta-framework/fields/background/background.php:304
-msgid "Content Box"
+#: admin/views/configs/generator/class-eventful-carousel.php:78
+msgid "AutoPlay Speed"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1010
-msgid "Content Display Type"
+#: admin/views/configs/generator/class-eventful-carousel.php:79
+msgid "Set autoplay speed in millisecond."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:208
-msgid "Content Fields"
+#: admin/views/configs/generator/class-eventful-carousel.php:104
+msgid "Pause on Hover"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1022
-msgid "Content Length Type"
+#: admin/views/configs/generator/class-eventful-carousel.php:105
+msgid "Enable/Disable carousel stop on hover."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:92
-msgid "Content Orientation "
+#: admin/views/configs/generator/class-eventful-carousel.php:115
+msgid "Infinite Loop"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1013
-msgid "Content with Limit"
+#: admin/views/configs/generator/class-eventful-carousel.php:116
+msgid "Enable/Disable carousel infinite loop."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:826
-msgid "Country"
+#: admin/views/configs/generator/class-eventful-carousel.php:126, admin/views/configs/generator/class-eventful-display.php:368
+msgid "Lazy Load"
 msgstr ""
 
-#: admin/views/ta-framework/fields/background/background.php:258
-msgid "Cover"
+#: admin/views/configs/generator/class-eventful-carousel.php:127
+msgid "Enable/Disable lazy load."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:137
+msgid "Carousel Direction"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:138
+msgid "Choose a carousel direction."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:140
+msgid "Right to Left"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:141
+msgid "Left to Right"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:148
+msgid "Transition Effect"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:149
+msgid "Select a slide transition effect."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:150
+msgid "Fade, cube, and flip transition effects work only for the single column view."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:152
+msgid "Slide"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:153
+msgid "Fade"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-carousel.php:154
@@ -760,546 +182,488 @@ msgstr ""
 msgid "Cube"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:79
-msgid "Current Post"
+#: admin/views/configs/generator/class-eventful-carousel.php:156
+msgid "Flip"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-detailsettings.php:41
-msgid "Current Tab"
+#: admin/views/configs/generator/class-eventful-carousel.php:164
+msgid "Row"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:410
-#: admin/views/configs/generator/class-eventful-display.php:591
-#: admin/views/configs/generator/class-eventful-display.php:890
-msgid "Custom"
+#: admin/views/configs/generator/class-eventful-carousel.php:165
+msgid "Set number of row in different devices for responsive view."
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-customcss.php:23
-msgid "Custom CSS"
+#: admin/views/configs/generator/class-eventful-carousel.php:175
+msgid "When multiple <b>Row</b> is set, the above two options <b>Infinite Loop</b> and <b>Auto Height</b> won't work properly."
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-customcss.php:17
-msgid "Custom CSS & JS"
+#: admin/views/configs/generator/class-eventful-carousel.php:179, admin/views/configs/generator/class-eventful-carousel.php:186
+msgid "Navigation"
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-customcss.php:33
-msgid "Custom JS"
+#: admin/views/configs/generator/class-eventful-carousel.php:187
+msgid "Show/Hide carousel navigation."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:238
-msgid "Custom Size"
+#: admin/views/configs/generator/class-eventful-carousel.php:189, admin/views/configs/generator/class-eventful-carousel.php:293, admin/views/configs/generator/class-eventful-display.php:31, admin/views/configs/generator/class-eventful-display.php:223, admin/views/configs/generator/class-eventful-display.php:468, admin/views/configs/generator/class-eventful-display.php:539, admin/views/configs/generator/class-eventful-display.php:790, admin/views/configs/generator/class-eventful-display.php:1002, admin/views/configs/generator/class-eventful-display.php:1105
+msgid "Show"
 msgstr ""
 
-#: admin/views/ta-framework/fields/typography/typography.php:497
-msgid "Custom Style"
+#: admin/views/configs/generator/class-eventful-carousel.php:190, admin/views/configs/generator/class-eventful-carousel.php:294, admin/views/configs/generator/class-eventful-display.php:32, admin/views/configs/generator/class-eventful-display.php:224, admin/views/configs/generator/class-eventful-display.php:469, admin/views/configs/generator/class-eventful-display.php:540, admin/views/configs/generator/class-eventful-display.php:791, admin/views/configs/generator/class-eventful-display.php:1003, admin/views/configs/generator/class-eventful-display.php:1106
+msgid "Hide"
 msgstr ""
 
-#: admin/views/ta-framework/fields/typography/typography.php:578
-msgid "Custom Web Fonts"
+#: admin/views/configs/generator/class-eventful-carousel.php:191, admin/views/configs/generator/class-eventful-carousel.php:295
+msgid "Hide on Mobile"
 msgstr ""
 
-#: admin/views/ta-framework/fields/background/background.php:328
-msgid "Darken"
+#: admin/views/configs/generator/class-eventful-carousel.php:199
+msgid "Select Position"
 msgstr ""
 
-#: admin/views/ta-framework/fields/border/border.php:55
-#: admin/views/ta-framework/fields/typography/typography.php:369
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:83
-msgid "Dashed"
+#: admin/views/configs/generator/class-eventful-carousel.php:200, admin/views/configs/generator/class-eventful-display.php:419
+msgid "Select a position for the navigation arrows."
 msgstr ""
 
-#: admin/class-eventful-admin.php:156 admin/class-eventful-admin.php:210
-#: admin/views/configs/generator/class-eventful-display.php:383
-#: admin/views/configs/generator/class-eventful-display.php:559
-#: admin/views/configs/generator/class-eventful-filterpost.php:451
-#: admin/views/configs/generator/class-eventful-filterpost.php:538
-msgid "Date"
+#: admin/views/configs/generator/class-eventful-carousel.php:202, admin/views/configs/generator/class-eventful-display.php:421
+msgid "Top right"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:406
-#: admin/views/configs/generator/class-eventful-display.php:586
-msgid "Date Format"
+#: admin/views/configs/generator/class-eventful-carousel.php:203, admin/views/configs/generator/class-eventful-display.php:422
+msgid "Top center"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:861
-msgid "Date Type"
+#: admin/views/configs/generator/class-eventful-carousel.php:204, admin/views/configs/generator/class-eventful-display.php:423
+msgid "Top left"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:749
-msgid "December"
+#: admin/views/configs/generator/class-eventful-carousel.php:205, admin/views/configs/generator/class-eventful-display.php:424
+msgid "Bottom left"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:99
-#: admin/views/configs/generator/class-eventful-display.php:408
-#: admin/views/configs/generator/class-eventful-display.php:589
-#: admin/views/ta-framework/fields/typography/typography.php:185
-#: admin/views/ta-framework/fields/typography/typography.php:199
-#: admin/views/ta-framework/fields/typography/typography.php:212
-#: admin/views/ta-framework/fields/typography/typography.php:251
-#: admin/views/ta-framework/fields/typography/typography.php:282
-#: admin/views/ta-framework/fields/typography/typography.php:311
-#: admin/views/ta-framework/fields/typography/typography.php:341
-#: admin/views/ta-framework/fields/typography/typography.php:375
-msgid "Default"
+#: admin/views/configs/generator/class-eventful-carousel.php:206, admin/views/configs/generator/class-eventful-display.php:425
+msgid "Bottom center"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:881
-msgid "Default ( 01 Jan 12:00 AM)"
+#: admin/views/configs/generator/class-eventful-carousel.php:207, admin/views/configs/generator/class-eventful-display.php:426
+msgid "Bottom right"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:880
-msgid "Default ( 01 January 12:00 AM)"
+#: admin/views/configs/generator/class-eventful-carousel.php:208
+msgid "Vertically center outer"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:882
-msgid "Default ( Jan 01 12:00 AM)"
+#: admin/views/configs/generator/class-eventful-carousel.php:209
+msgid "Vertically center inner"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:887
-msgid "Default (01 Jan 2024)"
+#: admin/views/configs/generator/class-eventful-carousel.php:210
+msgid "Vertically center inner on hover"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:877
-msgid "Default (01 January 2024 12:00 AM)"
+#: admin/views/configs/generator/class-eventful-carousel.php:218
+msgid "Choose an Icon"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:883
-#: admin/views/configs/generator/class-eventful-display.php:885
-msgid "Default (01 January 2024)"
+#: admin/views/configs/generator/class-eventful-carousel.php:219
+msgid "Choose a carousel navigation icon."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:888
-msgid "Default (12:50 AM)"
+#: admin/views/configs/generator/class-eventful-carousel.php:233
+msgid "Arrow Icon Size"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:889
-msgid "Default (23:00)"
+#: admin/views/configs/generator/class-eventful-carousel.php:234
+msgid "Set a size for arrow icon."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:886
-msgid "Default (Jan 01 2024)"
+#: admin/views/configs/generator/class-eventful-carousel.php:245
+msgid "Navigation Border Radius"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:879
-msgid "Default (January 01 12:00 AM)"
+#: admin/views/configs/generator/class-eventful-carousel.php:246
+msgid "Set border radius for the navigation icons."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:878
-msgid "Default (January 01 2024 12:00 AM)"
+#: admin/views/configs/generator/class-eventful-carousel.php:260
+msgid "Navigation Color"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:884
-msgid "Default (January 01 2024)"
+#: admin/views/configs/generator/class-eventful-carousel.php:261
+msgid "Set color for the carousel navigation."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:667
-msgid "Default 300 words, the average reading speed for adults."
+#: admin/views/configs/generator/class-eventful-carousel.php:263, admin/views/configs/generator/class-eventful-carousel.php:323, admin/views/configs/generator/class-eventful-carousel.php:336, admin/views/ta-framework/fields/background/background.php:332
+msgid "Color"
 msgstr ""
 
-#: admin/views/ta-framework/classes/admin-options.class.php:242
-#: admin/views/ta-framework/classes/admin-options.class.php:258
-msgid "Default settings restored."
+#: admin/views/configs/generator/class-eventful-carousel.php:264, admin/views/configs/generator/class-eventful-carousel.php:337, admin/views/ta-framework/fields/typography/typography.php:484
+msgid "Hover Color"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:369
-msgid "Defer image loading to improve performance."
+#: admin/views/configs/generator/class-eventful-carousel.php:265, admin/views/configs/generator/class-eventful-carousel.php:338, admin/views/configs/generator/class-eventful-display.php:166, admin/views/configs/generator/class-eventful-display.php:174, admin/views/configs/generator/class-eventful-display.php:438, admin/views/configs/generator/class-eventful-display.php:654, admin/views/configs/generator/class-eventful-display.php:1135, admin/views/configs/generator/class-eventful-display.php:1291, admin/views/configs/generator/class-eventful-display.php:1312, admin/views/configs/generator/class-eventful-filterpost.php:219, admin/views/configs/generator/class-eventful-filterpost.php:358, admin/views/configs/generator/class-eventful-filterpost.php:499, admin/views/configs/generator/class-eventful-filterpost.php:616
+msgid "Background"
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:39
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:48
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:61
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:70
-msgid "Dequeued"
+#: admin/views/configs/generator/class-eventful-carousel.php:266, admin/views/configs/generator/class-eventful-carousel.php:339, admin/views/configs/generator/class-eventful-display.php:439, admin/views/configs/generator/class-eventful-display.php:1136, admin/views/configs/generator/class-eventful-display.php:1313
+msgid "Hover Background"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:576
-msgid "Descending"
+#: admin/views/configs/generator/class-eventful-carousel.php:267, admin/views/configs/generator/class-eventful-display.php:122, admin/views/configs/generator/class-eventful-display.php:315, admin/views/configs/generator/class-eventful-display.php:440, admin/views/configs/generator/class-eventful-display.php:1137
+msgid "Border"
 msgstr ""
 
-#: admin/views/ta-framework/fields/column/column.php:47
-msgid "Desktop"
+#: admin/views/configs/generator/class-eventful-carousel.php:268, admin/views/configs/generator/class-eventful-display.php:441, admin/views/configs/generator/class-eventful-display.php:1138
+msgid "Hover Border"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-detailsettings.php:27
-msgid "Detail Page Link Type"
+#: admin/views/configs/generator/class-eventful-carousel.php:284, admin/views/configs/generator/class-eventful-carousel.php:290, admin/views/configs/generator/class-eventful-display.php:1220
+msgid "Pagination"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-detailsettings.php:20
-msgid "Detail page Settings"
+#: admin/views/configs/generator/class-eventful-carousel.php:291
+msgid "Show/Hide carousel pagination."
 msgstr ""
 
-#: admin/views/ta-framework/fields/background/background.php:121
-msgid "Direction"
+#: admin/views/configs/generator/class-eventful-carousel.php:303, admin/views/configs/generator/class-eventful-display.php:1228
+msgid "Pagination Type"
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-accessibility.php:30
-#: admin/views/configs/generator/class-eventful-display.php:267
-#: admin/views/configs/generator/class-eventful-display.php:372
-#: admin/views/configs/generator/class-eventful-display.php:1218
-#: admin/views/configs/generator/class-eventful-display.php:1352
-#: admin/views/configs/generator/class-eventful-carousel.php:70
-#: admin/views/configs/generator/class-eventful-carousel.php:107
-#: admin/views/configs/generator/class-eventful-carousel.php:118
-#: admin/views/configs/generator/class-eventful-carousel.php:129
-#: admin/views/configs/generator/class-eventful-carousel.php:389
-#: admin/views/configs/generator/class-eventful-carousel.php:400
-#: admin/views/configs/generator/class-eventful-carousel.php:411
-#: admin/views/configs/generator/class-eventful-carousel.php:422
-#: admin/views/configs/generator/class-eventful-carousel.php:433
-#: admin/views/ta-framework/fields/sorter/sorter.php:24
-msgid "Disabled"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:22
-msgid "DISPLAY OPTIONS"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:485
-msgid "div"
+#: admin/views/configs/generator/class-eventful-carousel.php:304
+msgid "Choose a type for pagination."
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-carousel.php:306
 msgid "Dots"
 msgstr ""
 
-#: admin/views/ta-framework/fields/border/border.php:56
-#: admin/views/ta-framework/fields/typography/typography.php:368
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:84
-msgid "Dotted"
+#: admin/views/configs/generator/class-eventful-carousel.php:307
+msgid "Number"
 msgstr ""
 
-#: admin/views/ta-framework/fields/border/border.php:57
-#: admin/views/ta-framework/fields/typography/typography.php:367
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:85
-msgid "Double"
+#: admin/views/configs/generator/class-eventful-carousel.php:316
+msgid "Pagination Color"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:202
-#: admin/views/configs/generator/class-eventful-filterpost.php:342
-#: admin/views/configs/generator/class-eventful-filterpost.php:483
-#: admin/views/configs/generator/class-eventful-filterpost.php:600
-msgid "Dropdown"
+#: admin/views/configs/generator/class-eventful-carousel.php:317
+msgid "Set color for the carousel pagination."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:324
+msgid "Active Color"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-carousel.php:355
 msgid "Dynamic Pagination"
 msgstr ""
 
+#: admin/views/configs/generator/class-eventful-carousel.php:356
+msgid "Check to show dynamic pagination."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:363
+msgid "Slide To Scroll"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:364
+msgid "Number of post(s) to scroll at a time."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:374
+msgid "<i class=\"fas fa-television\"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class=\"fas fa-desktop\"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class=\"fas fa-tablet-alt\"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class=\"fas fa-mobile-alt\"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class=\"fas fa-mobile-alt\"></i> <b> Mobile </b> - size is smaller than 576px."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:379
+msgid "Miscellaneous"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-carousel.php:385
+msgid "Adaptive Carousel Height"
+msgstr ""
+
 #: admin/views/configs/generator/class-eventful-carousel.php:386
 msgid "Dynamically adjust post carousel height based on each slide's height."
 msgstr ""
 
-#: admin/views/ta-framework/fields/gallery/gallery.php:23
-msgid "Edit Gallery"
-msgstr ""
-
-#: includes/class-eventful-post-types.php:72
-msgid "Edit Generated Shortcode"
-msgstr ""
-
-#: admin/views/ta-framework/fields/link/link.php:23
-msgid "Edit Link"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1085
-msgid "Ellipsis Points Ending Excerpt"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:68
-msgid "Enable/Disable carousel autoplay."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:116
-msgid "Enable/Disable carousel infinite loop."
+#: admin/views/configs/generator/class-eventful-carousel.php:396
+msgid "Tab and Key Navigation"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-carousel.php:397
 msgid "Enable/Disable carousel scroll with tab and keyboard."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:105
-msgid "Enable/Disable carousel stop on hover."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:127
-msgid "Enable/Disable lazy load."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:420
-msgid "Enable/Disable mouse draggable mode."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:431
-msgid "Enable/Disable mouse wheel mode."
+#: admin/views/configs/generator/class-eventful-carousel.php:408
+msgid "Touch Swipe"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-carousel.php:409
 msgid "Enable/Disable touch swipe mode."
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-accessibility.php:29
-#: admin/views/configs/generator/class-eventful-display.php:266
-#: admin/views/configs/generator/class-eventful-display.php:371
-#: admin/views/configs/generator/class-eventful-display.php:1217
-#: admin/views/configs/generator/class-eventful-display.php:1351
-#: admin/views/configs/generator/class-eventful-carousel.php:69
-#: admin/views/configs/generator/class-eventful-carousel.php:106
-#: admin/views/configs/generator/class-eventful-carousel.php:117
-#: admin/views/configs/generator/class-eventful-carousel.php:128
-#: admin/views/configs/generator/class-eventful-carousel.php:388
-#: admin/views/configs/generator/class-eventful-carousel.php:399
-#: admin/views/configs/generator/class-eventful-carousel.php:410
-#: admin/views/configs/generator/class-eventful-carousel.php:421
-#: admin/views/configs/generator/class-eventful-carousel.php:432
-#: admin/views/ta-framework/fields/sorter/sorter.php:23
-msgid "Enabled"
+#: admin/views/configs/generator/class-eventful-carousel.php:419
+msgid "Mouse Draggable"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1221
-msgid "Enabled/Disabled item pagination."
+#: admin/views/configs/generator/class-eventful-carousel.php:420
+msgid "Enable/Disable mouse draggable mode."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:865
-msgid "End Date and Time"
+#: admin/views/configs/generator/class-eventful-carousel.php:430
+msgid "Mouse Wheel"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1276
-msgid "Ending Message"
+#: admin/views/configs/generator/class-eventful-carousel.php:431
+msgid "Enable/Disable mouse wheel mode."
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:54
-msgid "Enqueue or Dequeue CSS"
+#: admin/views/configs/generator/class-eventful-detailsettings.php:20
+msgid "Detail page Settings"
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:32
-msgid "Enqueue or Dequeue JS"
+#: admin/views/configs/generator/class-eventful-detailsettings.php:27
+msgid "Detail Page Link Type"
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:38
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:47
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:60
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:69
-msgid "Enqueued"
+#: admin/views/configs/generator/class-eventful-detailsettings.php:28
+msgid "Choose a link type for the (item) detail page."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:786
-msgid "Enter keyword(s) for searching the posts."
+#: admin/views/configs/generator/class-eventful-detailsettings.php:30
+msgid "Single Page"
 msgstr ""
 
-#: admin/views/ta-framework/classes/admin-options.class.php:169
-msgid "Error while saving the changes."
+#: admin/views/configs/generator/class-eventful-detailsettings.php:31
+msgid "None (no link action)"
 msgstr ""
 
-#: admin/views/ta-framework/fields/group/group.php:44
-#: admin/views/ta-framework/fields/repeater/repeater.php:30
-msgid "Error: Field ID conflict."
+#: admin/views/configs/generator/class-eventful-detailsettings.php:38
+msgid "Target"
 msgstr ""
 
-#: admin/views/ta-framework/functions/actions.php:70
-#: admin/views/ta-framework/functions/actions.php:107
-msgid "Error: Invalid key."
+#: admin/views/configs/generator/class-eventful-detailsettings.php:39
+msgid "Set a target for the item link."
 msgstr ""
 
-#: admin/views/ta-framework/classes/shortcode-options.class.php:247
-#: admin/views/ta-framework/functions/actions.php:18
-#: admin/views/ta-framework/functions/actions.php:66
-#: admin/views/ta-framework/functions/actions.php:101
-#: admin/views/ta-framework/functions/actions.php:137
-#: admin/views/ta-framework/functions/actions.php:165
-msgid "Error: Invalid nonce verification."
+#: admin/views/configs/generator/class-eventful-detailsettings.php:41
+msgid "Current Tab"
 msgstr ""
 
-#: admin/views/ta-framework/functions/actions.php:171
-msgid "Error: Invalid term ID."
+#: admin/views/configs/generator/class-eventful-detailsettings.php:42
+msgid "New Tab"
 msgstr ""
 
-#: admin/views/ta-framework/functions/actions.php:111
-msgid "Error: The response is not a valid JSON response."
+#: admin/views/configs/generator/class-eventful-detailsettings.php:43
+msgid "Parent"
 msgstr ""
 
-#: admin/views/ta-framework/functions/actions.php:177
-msgid "Error: You do not have permission to do that."
+#: admin/views/configs/generator/class-eventful-detailsettings.php:44
+msgid "Top"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-detailsettings.php:52
+msgid "Add rel=\"nofollow\" to item links"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:22
+msgid "DISPLAY OPTIONS"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:28
+msgid "Section Title "
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:29
+msgid "Show/Hide item showcase section title."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:38
+msgid "Section Title Margin"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:39
+msgid "Set margin for the section title."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:61
+msgid "Column(s)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:62
+msgid "Set number of column(s) in different devices for responsive view."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:72
+msgid "<i class=\"fa fa-television\"></i> <b> Large Desktop </b> - is larger than 1200px,<br><i class=\"fa fa-desktop\"></i> <b>Desktop</b> - size is larger than 992px,<br> <i class=\"fa fa-tablet\"></i> <b>Tablet</b> - Size is larger than 768,<br> <i class=\"fa fa-mobile\"></i> <b> Mobile Landscape </b> - size is larger than 576px.,<br> <i class=\"fa fa-mobile\"></i> <b> Mobile </b> - size is smaller than 576px."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:77
+msgid "Margin Between Columns"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:78
+msgid "Set margin between columns (items)."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:92
+msgid "Content Orientation "
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:93
+msgid "Set a position for the item content."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:94
+msgid "More amazing Content Orientation and Layout"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:99, admin/views/configs/generator/class-eventful-display.php:408, admin/views/configs/generator/class-eventful-display.php:589, admin/views/ta-framework/fields/typography/typography.php:185, admin/views/ta-framework/fields/typography/typography.php:199, admin/views/ta-framework/fields/typography/typography.php:212, admin/views/ta-framework/fields/typography/typography.php:251, admin/views/ta-framework/fields/typography/typography.php:282, admin/views/ta-framework/fields/typography/typography.php:311, admin/views/ta-framework/fields/typography/typography.php:341, admin/views/ta-framework/fields/typography/typography.php:375
+msgid "Default"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:103, admin/views/ta-framework/fields/background/background.php:327
+msgid "Overlay"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:113
+msgid "Same Height"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:114
+msgid "Check to make all items/slides the same height as the tallest one."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:123
+msgid "Set border for the item."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:134, admin/views/configs/generator/class-eventful-display.php:327, admin/views/configs/generator/class-eventful-display.php:1183
+msgid "Border Radius"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:135
+msgid "Set border radius for item."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:145
+msgid "Box-Shadow"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:146
+msgid "Show box-shadow for the item."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:152
+msgid "Box-Shadow Values"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:153
+msgid "Set box-shadow property values for the item."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:167
+msgid "Set background color for the item."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:175
+msgid "Set background color for the item. test"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:182
+msgid "Slider"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:194
+msgid "Inner Padding"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:195
+msgid "Set inner padding for  item."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:208
+msgid "Content Fields"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:209
+msgid "Item content fields which are draggable to change display order and it's settings."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:217, admin/views/configs/generator/class-eventful-display.php:222
+msgid "Thumbnail"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:231
+msgid "Size"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:238
+msgid "Custom Size"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:254
+msgid "Soft-crop"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:265
+msgid "Load 2x Resolution Image in Retina Display"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:275, admin/views/configs/generator/class-eventful-display.php:510, admin/views/configs/generator/class-eventful-display.php:747, admin/views/configs/generator/class-eventful-display.php:960, admin/views/configs/generator/class-eventful-display.php:1051, admin/views/configs/generator/class-eventful-display.php:1168
+msgid "Margin"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:290
+msgid "Replace With"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:292
+msgid "This option will replace your default/featured post image with first resource ( image/video/audio ) from the content."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:294
+msgid "Image"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:295
+msgid "Video"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:296
+msgid "Audio"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:305
+msgid "If no featured image found"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-display.php:306
 msgid "Even featured image was found"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-typography.php:129
-#: admin/views/configs/generator/class-eventful-display.php:784
-msgid "Event Fields"
+#: admin/views/configs/generator/class-eventful-display.php:342
+msgid "Zoom Effect"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:927
-msgid "Event Meta Separator"
+#: admin/views/configs/generator/class-eventful-display.php:344, admin/views/configs/generator/class-eventful-display.php:384, admin/views/ta-framework/fields/border/border.php:62, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:90, admin/views/ta-framework/fields/typography/typography.php:335, admin/views/ta-framework/fields/typography/typography.php:365
+msgid "None"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:941
-msgid "Event Meta Separator Color"
+#: admin/views/configs/generator/class-eventful-display.php:345
+msgid "Zoom In"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:812
-msgid "Event Time"
+#: admin/views/configs/generator/class-eventful-display.php:346
+msgid "Zoom Out"
 msgstr ""
 
-#. Name of the plugin
-#: includes/class-eventful-post-types.php:67
-#: admin/views/class-eventful-settings.php:40
-#: admin/views/class-eventful-metaboxes.php:16
-#: admin/views/class-eventful-metaboxes.php:61
-msgid "Eventful"
+#: admin/views/configs/generator/class-eventful-display.php:354
+msgid "Image Mode"
 msgstr ""
 
-#: includes/class-eventful-post-types.php:74
-msgid "Eventful Generator"
-msgstr ""
-
-#: includes/class-eventful-post-types.php:65
-#: includes/class-eventful-post-types.php:85
-#: includes/class-eventful-post-types.php:86
-msgid "Eventful Shortcode"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1012
-msgid "Excerpt"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:54
-msgid "Exclude"
-msgstr ""
-
-#: admin/views/ta-framework/fields/backup/backup.php:36
-msgid "Export & Download"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:601
-#: admin/views/configs/generator/class-eventful-display.php:602
-msgid "F j, Y"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:153
-msgid "Fade"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:150
-msgid ""
-"Fade, cube, and flip transition effects work only for the single column view."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:739
-msgid "February"
-msgstr ""
-
-#: admin/views/ta-framework/classes/setup.class.php:786
-#: admin/views/ta-framework/classes/setup.class.php:790
-msgid "Field not found!"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:111
-msgid "Filter by"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:27
-msgid "Filter Content"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1242
-msgid "Filter Pagination Type"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:199
-#: admin/views/configs/generator/class-eventful-filterpost.php:339
-#: admin/views/configs/generator/class-eventful-filterpost.php:480
-#: admin/views/configs/generator/class-eventful-filterpost.php:597
-msgid "Filter Type"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-accessibility.php:51
-msgid "First Slide Message"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:238
-msgid "Fixed"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:156
-msgid "Flip"
-msgstr ""
-
-#: admin/views/ta-framework/fields/link_color/link_color.php:43
-msgid "Focus"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:68
-msgid "Font Awesome CSS"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:473
-msgid "Font Color"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:131
-msgid "Font Family"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:388
-msgid "Font Size"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:424
-msgid "Font Size (Mobile)"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:406
-msgid "Font Size (Tablet)"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:197
-msgid "Font Style"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:291
-msgid "Font Variant"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:75
-#: admin/views/ta-framework/fields/datetime/datetime.php:38
-#: admin/views/ta-framework/fields/date/date.php:33
-msgid "From"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:711
-msgid "From:"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1014
-msgid "Full Content"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:717
-#: admin/views/configs/generator/class-eventful-display.php:930
-msgid "Full Stop ( . ) "
-msgstr ""
-
-#: includes/class-eventful-post-types.php:70
-#: includes/class-eventful-post-types.php:71
-msgid "Generate New Shortcode"
-msgstr ""
-
-#: admin/class-eventful-admin.php:65
-msgid "Get Pro!"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-accessibility.php:66
-msgid "Go to slide {{index}}"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:607
-msgid "Google Web Fonts"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:128
-msgid "Gradient Direction"
+#: admin/views/configs/generator/class-eventful-display.php:356, admin/views/ta-framework/fields/background/background.php:324, admin/views/ta-framework/fields/link_color/link_color.php:39, admin/views/ta-framework/fields/typography/typography.php:306
+msgid "Normal"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-display.php:357
@@ -1310,13 +674,60 @@ msgstr ""
 msgid "Grayscale on hover"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-layout.php:38
-msgid "Grid"
+#: admin/views/configs/generator/class-eventful-display.php:359
+msgid "Always grayscale"
 msgstr ""
 
-#: admin/views/ta-framework/fields/border/border.php:60
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:88
-msgid "Groove"
+#: admin/views/configs/generator/class-eventful-display.php:369
+msgid "Defer image loading to improve performance."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:379
+msgid "Show Post Thumb Meta"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:382
+msgid "Category"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:392, admin/views/configs/generator/class-eventful-display.php:609, admin/views/configs/generator/class-eventful-filterpost.php:140, admin/views/ta-framework/classes/fields.class.php:301
+msgid "Select Taxonomy"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:400, admin/views/configs/generator/class-eventful-display.php:618, admin/views/configs/generator/class-eventful-filterpost.php:149
+msgid "No taxonomies found."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:406, admin/views/configs/generator/class-eventful-display.php:586
+msgid "Date Format"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:409, admin/views/configs/generator/class-eventful-display.php:590
+msgid "Time ago(human time)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:410, admin/views/configs/generator/class-eventful-display.php:591, admin/views/configs/generator/class-eventful-display.php:890
+msgid "Custom"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:418
+msgid "Taxonomy Position"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:434, admin/views/configs/generator/class-eventful-display.php:1131, admin/views/configs/generator/class-eventful-display.php:1196
+msgid "Read More Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:436, admin/views/configs/generator/class-eventful-display.php:1133, admin/views/configs/generator/class-eventful-display.php:1198, admin/views/configs/generator/class-eventful-display.php:1287, admin/views/configs/generator/class-eventful-display.php:1310, admin/views/configs/generator/class-eventful-filterpost.php:215, admin/views/configs/generator/class-eventful-filterpost.php:354, admin/views/configs/generator/class-eventful-filterpost.php:495, admin/views/configs/generator/class-eventful-filterpost.php:612
+msgid "Text Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:437, admin/views/configs/generator/class-eventful-display.php:1134, admin/views/configs/generator/class-eventful-display.php:1199
+msgid "Text Hover Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:476
+msgid "Title HTML Tag"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-display.php:478
@@ -1343,615 +754,108 @@ msgstr ""
 msgid "h6"
 msgstr ""
 
-#: admin/views/ta-framework/fields/dimensions/dimensions.php:25
-msgid "height"
+#: admin/views/configs/generator/class-eventful-display.php:484
+msgid "p"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:32
-#: admin/views/configs/generator/class-eventful-display.php:224
-#: admin/views/configs/generator/class-eventful-display.php:469
-#: admin/views/configs/generator/class-eventful-display.php:540
-#: admin/views/configs/generator/class-eventful-display.php:791
-#: admin/views/configs/generator/class-eventful-display.php:1003
-#: admin/views/configs/generator/class-eventful-display.php:1106
-#: admin/views/configs/generator/class-eventful-carousel.php:190
-#: admin/views/configs/generator/class-eventful-carousel.php:294
-msgid "Hide"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:402
-msgid "Hide Empty author"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:264
-msgid "Hide Empty Term(s)"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:191
-#: admin/views/configs/generator/class-eventful-carousel.php:295
-msgid "Hide on Mobile"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:154
-msgid "Hide Taxonomy Name"
-msgstr ""
-
-#: admin/views/ta-framework/fields/link_color/link_color.php:40
-msgid "Hover"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:439
-#: admin/views/configs/generator/class-eventful-display.php:1136
-#: admin/views/configs/generator/class-eventful-display.php:1313
-#: admin/views/configs/generator/class-eventful-carousel.php:266
-#: admin/views/configs/generator/class-eventful-carousel.php:339
-msgid "Hover Background"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:441
-#: admin/views/configs/generator/class-eventful-display.php:1138
-#: admin/views/configs/generator/class-eventful-carousel.php:268
-msgid "Hover Border"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:264
-#: admin/views/configs/generator/class-eventful-carousel.php:337
-#: admin/views/ta-framework/fields/typography/typography.php:484
-msgid "Hover Color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1066
-msgid "HTML Tags"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://themeatelier.net/"
-msgstr ""
-
-#. URI of the plugin
-msgid "https://wp-plugins.themeatelier.net/eventful"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:449
-#: admin/views/configs/generator/class-eventful-filterpost.php:536
-msgid "ID"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:305
-msgid "If no featured image found"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:294
-msgid "Image"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:354
-msgid "Image Mode"
-msgstr ""
-
-#: admin/views/ta-framework/fields/backup/backup.php:33
-msgid "Import"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:177
-msgid "IN"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:182
-msgid ""
-"IN - Show posts which associate with one or more terms<br>AND - Show posts "
-"which match all terms<br>NOT IN - Show posts which don't match the terms"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:36
-msgid "Include Only"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:115
-msgid "Infinite Loop"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1233
-#: admin/views/configs/generator/class-eventful-display.php:1246
-#: admin/views/configs/generator/class-eventful-display.php:1259
-msgid "Infinite Scroll (Ajax)"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:274
-msgid "Inherit"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:279
-msgid "Initial"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:194
-msgid "Inner Padding"
-msgstr ""
-
-#: admin/views/ta-framework/fields/border/border.php:58
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:86
-msgid "Inset"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:209
-msgid ""
-"Item content fields which are draggable to change display order and it's "
-"settings."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1339
-msgid "Items Per Page"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1350
-msgid "Items will be hidden until page load completed."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:892
-#: admin/views/configs/generator/class-eventful-display.php:901
-#: admin/views/configs/generator/class-eventful-display.php:902
-msgid "j F, Y g:i A"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:738
-msgid "January"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:744
-msgid "July"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:743
-msgid "June"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:278
-msgid "Justify"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:118
-#: admin/views/configs/generator/class-eventful-filterpost.php:779
-msgid "Keyword"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:250
-#: admin/views/configs/generator/class-eventful-filterpost.php:389
-#: admin/views/configs/generator/class-eventful-filterpost.php:552
-#: admin/views/configs/generator/class-eventful-filterpost.php:631
-#: admin/views/configs/generator/class-eventful-filterpost.php:805
-msgid "Label"
-msgstr ""
-
-#: admin/views/ta-framework/fields/column/column.php:46
-msgid "Large Desktop"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-accessibility.php:58
-msgid "Last Slide Message"
-msgstr ""
-
-#: admin/views/ta-framework/fields/map/map.php:25
-msgid "Latitude"
-msgstr ""
-
-#: admin/class-eventful-admin.php:155 admin/class-eventful-admin.php:209
-msgid "Layout"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-layout.php:33
-msgid "Layout Preset"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:368
-#: admin/views/configs/generator/class-eventful-carousel.php:126
-msgid "Lazy Load"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:257
-msgid "Leave it empty to hide \"All\" text."
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:275
-msgid "Left"
-msgstr ""
-
-#: admin/views/ta-framework/fields/border/border.php:30
-#: admin/views/ta-framework/fields/spacing/spacing.php:30
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:54
-msgid "left"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:188
-msgid "Left Bottom"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:187
-msgid "Left Center"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:141
-msgid "Left to Right"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:186
-msgid "Left Top"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:501
-msgid "Length"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:445
-msgid "Letter Spacing"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:329
-msgid "Lighten"
-msgstr ""
-
-#: public/helpers/class-eventful-user-like.php:47
-#: public/helpers/class-eventful-user-like.php:251
-#: public/helpers/class-eventful-user-like.php:396
-#: admin/views/configs/generator/class-eventful-display.php:563
-msgid "Like"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:88
-msgid "Limit"
+#: admin/views/configs/generator/class-eventful-display.php:485
+msgid "div"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-display.php:494
 msgid "Limit Character"
 msgstr ""
 
-#: admin/views/ta-framework/fields/typography/typography.php:397
-msgid "Line Height"
+#: admin/views/configs/generator/class-eventful-display.php:501
+msgid "Length"
 msgstr ""
 
-#: admin/views/ta-framework/fields/typography/typography.php:433
-msgid "Line Height (Mobile)"
+#: admin/views/configs/generator/class-eventful-display.php:504
+msgid "chars"
 msgstr ""
 
-#: admin/views/ta-framework/fields/typography/typography.php:415
-msgid "Line Height (Tablet)"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:372
-msgid "Line-through"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1359
-msgid "Live Filter Button"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:265
-msgid "Load 2x Resolution Image in Retina Display"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:211
-#: admin/views/ta-framework/fields/typography/typography.php:212
-msgid "Load Extra Styles"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1270
-msgid "Load More"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1231
-#: admin/views/configs/generator/class-eventful-display.php:1245
-#: admin/views/configs/generator/class-eventful-display.php:1257
-msgid "Load More Button (Ajax)"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1307
-msgid "Load More Button Color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1268
-msgid "Load More Button Label"
-msgstr ""
-
-#: admin/views/ta-framework/fields/map/map.php:26
-msgid "Longitude"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:338
-msgid "Lowercase"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:333
-msgid "Luminosity"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:740
-msgid "March"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:275
-#: admin/views/configs/generator/class-eventful-display.php:510
-#: admin/views/configs/generator/class-eventful-display.php:747
-#: admin/views/configs/generator/class-eventful-display.php:960
-#: admin/views/configs/generator/class-eventful-display.php:1051
-#: admin/views/configs/generator/class-eventful-display.php:1168
-msgid "Margin"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:234
-#: admin/views/configs/generator/class-eventful-filterpost.php:373
-#: admin/views/configs/generator/class-eventful-filterpost.php:514
-msgid "Margin Between Buttons"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:77
-msgid "Margin Between Columns"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:762
-#: admin/views/configs/generator/class-eventful-display.php:975
-msgid "Margin Between Post Meta"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:742
-msgid "May"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:457
-#: admin/views/configs/generator/class-eventful-filterpost.php:543
-msgid "Menu order"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:651
-msgid "Meta Color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:103
-#: admin/views/configs/generator/class-eventful-display.php:533
-#: admin/views/configs/generator/class-eventful-display.php:538
-#: admin/views/configs/generator/class-eventful-display.php:789
+#: admin/views/configs/generator/class-eventful-display.php:533, admin/views/configs/generator/class-eventful-display.php:538, admin/views/configs/generator/class-eventful-display.php:789, admin/views/configs/generator/class-eventful-typography.php:103
 msgid "Meta Fields"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:678
-#: admin/views/configs/generator/class-eventful-display.php:855
-msgid "Meta Icon"
+#: admin/views/configs/generator/class-eventful-display.php:548, admin/views/configs/generator/class-eventful-display.php:799
+msgid "Add New Meta"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:714
-msgid "Meta Separator"
+#: admin/views/configs/generator/class-eventful-display.php:555, admin/views/configs/generator/class-eventful-display.php:806
+msgid "Select Meta"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:728
-msgid "Meta Separator Color"
+#: admin/views/configs/generator/class-eventful-display.php:556, admin/views/configs/generator/class-eventful-display.php:807
+msgid "Select a meta"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:379
-msgid "Miscellaneous"
+#: admin/views/configs/generator/class-eventful-display.php:558, admin/views/configs/generator/class-eventful-filterpost.php:115, admin/views/configs/generator/class-eventful-filterpost.php:314, admin/views/configs/generator/class-eventful-filterpost.php:458, admin/views/configs/generator/class-eventful-filterpost.php:544
+msgid "Author"
 msgstr ""
 
-#: admin/views/ta-framework/fields/column/column.php:50
-msgid "Mobile"
+#: admin/views/configs/generator/class-eventful-display.php:560, admin/views/configs/generator/class-eventful-filterpost.php:114, admin/views/configs/generator/class-eventful-filterpost.php:127
+msgid "Taxonomy"
 msgstr ""
 
-#: admin/views/ta-framework/fields/column/column.php:49
-msgid "Mobile Landscape"
+#: admin/views/configs/generator/class-eventful-display.php:561
+msgid "Comment Count"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:452
-#: admin/views/configs/generator/class-eventful-filterpost.php:539
-msgid "Modified date"
+#: admin/views/configs/generator/class-eventful-display.php:562
+msgid "View Count"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:94
-msgid "More amazing Content Orientation and Layout"
+#: admin/views/configs/generator/class-eventful-display.php:563, public/helpers/class-eventful-user-like.php:47, public/helpers/class-eventful-user-like.php:251, public/helpers/class-eventful-user-like.php:396
+msgid "Like"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:459
-#: admin/views/configs/generator/class-eventful-filterpost.php:545
-msgid "Most Liked"
+#: admin/views/configs/generator/class-eventful-display.php:564
+msgid "Reading Time"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:460
-#: admin/views/configs/generator/class-eventful-filterpost.php:546
-msgid "Most Viewed"
+#: admin/views/configs/generator/class-eventful-display.php:570
+msgid "Avatar"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:419
-msgid "Mouse Draggable"
+#: admin/views/configs/generator/class-eventful-display.php:573
+msgid "Show name"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:430
-msgid "Mouse Wheel"
+#: admin/views/configs/generator/class-eventful-display.php:574
+msgid "Show gravatar"
 msgstr ""
 
-#: admin/views/ta-framework/fields/background/background.php:325
-msgid "Multiply"
+#: admin/views/configs/generator/class-eventful-display.php:575
+msgid "Author name & gravatar"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:179
-#: admin/views/configs/generator/class-eventful-carousel.php:186
-msgid "Navigation"
+#: admin/views/configs/generator/class-eventful-display.php:576
+msgid "Author name with an icon"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:245
-msgid "Navigation Border Radius"
+#: admin/views/configs/generator/class-eventful-display.php:579
+msgid "To show gravatar, you must <a href=\"https://wordpress.org/support/article/how-to-use-gravatars/\" target=\"_blank\" rel=\"noopener noreferrer nofollow\"><em>enable it</em></a>."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:260
-msgid "Navigation Color"
+#: admin/views/configs/generator/class-eventful-display.php:601, admin/views/configs/generator/class-eventful-display.php:602
+msgid "F j, Y"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-detailsettings.php:42
-msgid "New Tab"
+#: admin/views/configs/generator/class-eventful-display.php:603, admin/views/configs/generator/class-eventful-display.php:893, admin/views/configs/generator/class-eventful-display.php:903
+msgid "To define format, check <a href=\"https://wordpress.org/support/article/formatting-date-and-time/\" target=\"_blank\" rel=\"noopener noreferrer nofollow\"><em>this doc</em></a>."
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-accessibility.php:45
-msgid "Next slide"
+#: admin/views/configs/generator/class-eventful-display.php:625
+msgid "Position"
 msgstr ""
 
-#: admin/views/configs/settings/class-eventful-accessibility.php:44
-msgid "Next Slide Message"
+#: admin/views/configs/generator/class-eventful-display.php:627
+msgid "Beside Other Meta"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1234
-#: admin/views/configs/generator/class-eventful-display.php:1260
-msgid "No Ajax (Normal Pagination)"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:617
-#: admin/views/ta-framework/classes/comment-options.class.php:184
-#: admin/views/ta-framework/classes/metabox-options.class.php:261
-#: admin/views/ta-framework/functions/actions.php:41
-#: admin/views/ta-framework/fields/radio/radio.php:77
-#: admin/views/ta-framework/fields/checkbox/checkbox.php:83
-#: admin/views/ta-framework/fields/button_set/button_set.php:59
-#: admin/views/ta-framework/fields/select/select.php:115
-msgid "No data available."
-msgstr ""
-
-#: admin/views/ta-framework/fields/image_sizes/image_sizes.php:130
-msgid "No image sizes found."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1278
-msgid "No more events available"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:215
-msgid "No Repeat"
-msgstr ""
-
-#: admin/views/ta-framework/classes/setup.class.php:617
-msgid "No results found."
-msgstr ""
-
-#: includes/class-eventful-post-types.php:78
-msgid "No Shortcode found in Trash."
-msgstr ""
-
-#: includes/class-eventful-post-types.php:77
-msgid "No Shortcode found."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:400
-#: admin/views/configs/generator/class-eventful-display.php:618
-#: admin/views/configs/generator/class-eventful-filterpost.php:149
-msgid "No taxonomies found."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:168
-msgid "No terms found."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:344
-#: admin/views/configs/generator/class-eventful-display.php:384
-#: admin/views/ta-framework/fields/border/border.php:62
-#: admin/views/ta-framework/fields/typography/typography.php:335
-#: admin/views/ta-framework/fields/typography/typography.php:365
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:90
-msgid "None"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-detailsettings.php:31
-msgid "None (no link action)"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:356
-#: admin/views/ta-framework/fields/background/background.php:324
-#: admin/views/ta-framework/fields/link_color/link_color.php:39
-#: admin/views/ta-framework/fields/typography/typography.php:306
-msgid "Normal"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:716
-#: admin/views/configs/generator/class-eventful-display.php:929
-msgid "Normal Space "
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:179
-msgid "NOT IN"
-msgstr ""
-
-#: public/helpers/class-eventful-user-like.php:64
-msgid "Not permitted"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:38
-#: admin/views/ta-framework/fields/media/media.php:62
-msgid "Not selected"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:748
-msgid "November"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:307
-msgid "Number"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:99
-msgid "Number of items to skip."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:364
-msgid "Number of post(s) to scroll at a time."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:90
-msgid ""
-"Number of total items to display. Leave it empty to show all found items."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:747
-msgid "October"
-msgstr ""
-
-#: admin/views/ta-framework/fields/switcher/switcher.php:21
-msgid "Off"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:98
-msgid "Offset"
-msgstr ""
-
-#: admin/views/ta-framework/fields/switcher/switcher.php:20
-msgid "On"
-msgstr ""
-
-#: admin/views/ta-framework/classes/setup.class.php:718
-msgid "Oops! Not allowed."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:175
-msgid "Operator"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:297
-msgid "OR"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:573
-#: admin/views/configs/generator/class-eventful-filterpost.php:633
-msgid "Order"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:447
-#: admin/views/configs/generator/class-eventful-filterpost.php:530
-#: admin/views/configs/generator/class-eventful-filterpost.php:554
-msgid "Order by"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:810
-msgid "Organizer"
-msgstr ""
-
-#: admin/views/ta-framework/fields/image_sizes/image_sizes.php:82
-msgid "Original uploaded image"
-msgstr ""
-
-#: admin/views/ta-framework/fields/border/border.php:59
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:87
-msgid "Outset"
+#: admin/views/configs/generator/class-eventful-display.php:628
+msgid "Above Title"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-display.php:629
@@ -1962,73 +866,148 @@ msgstr ""
 msgid "Over Thumbnail Position"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:103
-#: admin/views/ta-framework/fields/background/background.php:327
-msgid "Overlay"
+#: admin/views/configs/generator/class-eventful-display.php:640
+msgid "Top Left"
 msgstr ""
 
-#: admin/views/ta-framework/fields/typography/typography.php:371
-msgid "Overline"
+#: admin/views/configs/generator/class-eventful-display.php:641
+msgid "Top Right"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:484
-msgid "p"
+#: admin/views/configs/generator/class-eventful-display.php:642
+msgid "Bottom Left"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1153
-msgid "Padding"
+#: admin/views/configs/generator/class-eventful-display.php:643
+msgid "Bottom Right"
 msgstr ""
 
-#: admin/views/ta-framework/fields/background/background.php:280
-#: admin/views/ta-framework/fields/background/background.php:303
-msgid "Padding Box"
+#: admin/views/configs/generator/class-eventful-display.php:651
+msgid "Meta Color"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1220
-#: admin/views/configs/generator/class-eventful-carousel.php:284
-#: admin/views/configs/generator/class-eventful-carousel.php:290
-msgid "Pagination"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1284
-msgid "Pagination  Color"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-accessibility.php:65
-msgid "Pagination Bullet Message"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:316
-msgid "Pagination Color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1228
-#: admin/views/configs/generator/class-eventful-carousel.php:303
-msgid "Pagination Type"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1254
-msgid "Pagination Type for Mobile"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-detailsettings.php:43
-msgid "Parent"
-msgstr ""
-
-#: includes/class-eventful-post-types.php:76
-msgid "Parent Generated Shortcode:"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:80
-msgid "Password Protected Posts"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:104
-msgid "Pause on Hover"
+#: admin/views/configs/generator/class-eventful-display.php:653
+msgid "Text"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-display.php:665
 msgid "Per Minute"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:667
+msgid "Default 300 words, the average reading speed for adults."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:669
+msgid "words"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:678, admin/views/configs/generator/class-eventful-display.php:855
+msgid "Meta Icon"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:685
+msgid "Reading Time Postfix"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:687
+msgid "Text after time. Leave empty for nothing."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:714
+msgid "Meta Separator"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:716, admin/views/configs/generator/class-eventful-display.php:929
+msgid "Normal Space "
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:717, admin/views/configs/generator/class-eventful-display.php:930
+msgid "Full Stop ( . ) "
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:718, admin/views/configs/generator/class-eventful-display.php:931
+msgid "Straight Line ( | )"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:719, admin/views/configs/generator/class-eventful-display.php:932
+msgid "Slash ( / )"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:720, admin/views/configs/generator/class-eventful-display.php:933
+msgid "Back Slash( \ )"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:728
+msgid "Meta Separator Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:735, admin/views/configs/generator/class-eventful-display.php:948, admin/views/configs/generator/class-eventful-display.php:1326, admin/views/configs/generator/class-eventful-filterpost.php:277, admin/views/configs/generator/class-eventful-filterpost.php:414, admin/views/configs/generator/class-eventful-filterpost.php:559, admin/views/configs/generator/class-eventful-filterpost.php:638, admin/views/configs/generator/class-eventful-filterpost.php:811
+msgid "Alignment"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:737, admin/views/configs/generator/class-eventful-display.php:950, admin/views/configs/generator/class-eventful-display.php:1329, admin/views/configs/generator/class-eventful-filterpost.php:279, admin/views/configs/generator/class-eventful-filterpost.php:416, admin/views/configs/generator/class-eventful-filterpost.php:561, admin/views/configs/generator/class-eventful-filterpost.php:640, admin/views/configs/generator/class-eventful-filterpost.php:813
+msgid "<i class=\"fas fa-align-left\" title=\"Left\"></i>"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:738, admin/views/configs/generator/class-eventful-display.php:951, admin/views/configs/generator/class-eventful-display.php:1330, admin/views/configs/generator/class-eventful-filterpost.php:280, admin/views/configs/generator/class-eventful-filterpost.php:417, admin/views/configs/generator/class-eventful-filterpost.php:562, admin/views/configs/generator/class-eventful-filterpost.php:641, admin/views/configs/generator/class-eventful-filterpost.php:814
+msgid "<i class=\"fas fa-align-center\" title=\"Center\"></i>"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:739, admin/views/configs/generator/class-eventful-display.php:952, admin/views/configs/generator/class-eventful-display.php:1331, admin/views/configs/generator/class-eventful-filterpost.php:281, admin/views/configs/generator/class-eventful-filterpost.php:418, admin/views/configs/generator/class-eventful-filterpost.php:563, admin/views/configs/generator/class-eventful-filterpost.php:642, admin/views/configs/generator/class-eventful-filterpost.php:815
+msgid "<i class=\"fas fa-align-right\" title=\"Right\"></i>"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:762, admin/views/configs/generator/class-eventful-display.php:975
+msgid "Margin Between Post Meta"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:784, admin/views/configs/generator/class-eventful-typography.php:129
+msgid "Event Fields"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:809
+msgid "Venue"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:810
+msgid "Organizer"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:811
+msgid "Price"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:812
+msgid "Event Time"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:818
+msgid "Venue Settings"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:822
+msgid "Choose an option"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:824
+msgid "Address"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:825
+msgid "City"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:826
+msgid "Country"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:827
+msgid "State"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:828
+msgid "Postal Code"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-display.php:829
@@ -2039,601 +1018,664 @@ msgstr ""
 msgid "Phone Icon"
 msgstr ""
 
-#: admin/views/ta-framework/classes/setup.class.php:615
-#, php-format
-msgid "Please enter %s or more characters"
-msgstr ""
-
-#: admin/views/ta-framework/functions/validate.php:14
-#: admin/views/ta-framework/functions/validate.php:78
-msgid "Please enter a valid email address."
-msgstr ""
-
-#: admin/views/ta-framework/functions/validate.php:30
-#: admin/views/ta-framework/functions/validate.php:96
-msgid "Please enter a valid number."
-msgstr ""
-
-#: admin/views/ta-framework/functions/validate.php:62
-#: admin/views/ta-framework/functions/validate.php:132
-msgid "Please enter a valid URL."
-msgstr ""
-
-#: public/helpers/class-eventful-customfieldprocess.php:245
-msgid "Pods"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:625
-msgid "Position"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:320
-msgid "Post by Author"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:427
-msgid "Post Not by Author "
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:453
-msgid "Post slug"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:666
-msgid "Post Status"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:454
-#: admin/views/configs/generator/class-eventful-filterpost.php:540
-msgid "Post type"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:828
-msgid "Postal Code"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1349
-msgid "Preloader"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-accessibility.php:38
-msgid "Previous slide"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-accessibility.php:37
-msgid "Previous Slide Message"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:811
-msgid "Price"
-msgstr ""
-
-#. Description of the plugin
-msgid "Professional Event Post Layouts Addon For WordPress"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:682
-msgid "Published Date"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:203
-#: admin/views/configs/generator/class-eventful-filterpost.php:343
-#: admin/views/configs/generator/class-eventful-filterpost.php:484
-#: admin/views/configs/generator/class-eventful-filterpost.php:601
-msgid "Radio"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:455
-#: admin/views/configs/generator/class-eventful-filterpost.php:541
-msgid "Random"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:179
-#: admin/views/configs/generator/class-eventful-display.php:1104
-msgid "Read More"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:434
-#: admin/views/configs/generator/class-eventful-display.php:1131
-#: admin/views/configs/generator/class-eventful-display.php:1196
-msgid "Read More Color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1124
-msgid "Read More Label"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1113
-msgid "Read More Type"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:564
-msgid "Reading Time"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:685
-msgid "Reading Time Postfix"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:293
-msgid "Relation"
-msgstr ""
-
-#: admin/views/ta-framework/fields/upload/upload.php:27
-#: admin/views/ta-framework/fields/media/media.php:28
-msgid "Remove"
-msgstr ""
-
-#: admin/views/ta-framework/fields/icon/icon.php:23
-msgid "Remove Icon"
-msgstr ""
-
-#: admin/views/ta-framework/fields/link/link.php:24
-msgid "Remove Link"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:256
-#: admin/views/configs/generator/class-eventful-filterpost.php:395
-msgid "Rename \"All\" Text"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:396
-msgid "Rename \"All\" text."
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:214
-msgid "Repeat"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:216
-msgid "Repeat Horizontally"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:217
-msgid "Repeat Vertically"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:290
-msgid "Replace With"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:519
-#: admin/views/ta-framework/classes/admin-options.class.php:642
-#: admin/views/ta-framework/classes/comment-options.class.php:201
-#: admin/views/ta-framework/classes/metabox-options.class.php:278
-#: admin/views/ta-framework/fields/backup/backup.php:38
-msgid "Reset"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:519
-#: admin/views/ta-framework/classes/admin-options.class.php:642
-msgid "Reset All"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:518
-#: admin/views/ta-framework/classes/admin-options.class.php:641
-msgid "Reset Section"
-msgstr ""
-
-#: admin/views/ta-framework/fields/border/border.php:61
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:89
-msgid "ridge"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:277
-msgid "Right"
-msgstr ""
-
-#: admin/views/ta-framework/fields/border/border.php:28
-#: admin/views/ta-framework/fields/spacing/spacing.php:28
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:52
-msgid "right"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:194
-msgid "Right Bottom"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:193
-msgid "Right Center"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:140
-msgid "Right to Left"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:192
-msgid "Right Top"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:164
-msgid "Row"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:584
-msgid "Safe Web Fonts"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:113
-msgid "Same Height"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:331
-msgid "Saturation"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:517
-#: admin/views/ta-framework/classes/admin-options.class.php:640
-msgid "Save"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:517
-#: admin/views/ta-framework/classes/admin-options.class.php:640
-msgid "Saving..."
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:326
-msgid "Screen"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:27
-msgid "Scripts & Styles"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:237
-msgid "Scroll"
-msgstr ""
-
-#: includes/class-eventful-post-types.php:75
-msgid "Search Generated Shortcode"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:514
-#: admin/views/ta-framework/fields/map/map.php:24
-#: admin/views/ta-framework/fields/icon/icon.php:59
-msgid "Search..."
-msgstr ""
-
-#: admin/views/ta-framework/classes/setup.class.php:616
-msgid "Searching..."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:27
-msgid "Section Title"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:28
-msgid "Section Title "
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:38
-msgid "Section Title Margin"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:144
-msgid "Select a font"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:556
-#: admin/views/configs/generator/class-eventful-display.php:807
-msgid "Select a meta"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:419
-#: admin/views/configs/generator/class-eventful-carousel.php:200
-msgid "Select a position for the navigation arrows."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:149
-msgid "Select a slide transition effect."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:200
-#: admin/views/configs/generator/class-eventful-filterpost.php:340
-#: admin/views/configs/generator/class-eventful-filterpost.php:481
-#: admin/views/configs/generator/class-eventful-filterpost.php:598
-msgid "Select a type for live filter."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:724
-msgid "Select Date"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:555
-#: admin/views/configs/generator/class-eventful-display.php:806
-msgid "Select Meta"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:736
-msgid "Select Month"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:199
-msgid "Select Position"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:392
-#: admin/views/configs/generator/class-eventful-display.php:609
-#: admin/views/configs/generator/class-eventful-filterpost.php:140
-#: admin/views/ta-framework/classes/fields.class.php:301
-msgid "Select Taxonomy"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:169
-msgid "Select Term(s)"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1079
-msgid "Separate multiple tags by comma, e.g. h1,h2"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:746
-msgid "September"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:93
-msgid "Set a position for the item content."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:234
-msgid "Set a size for arrow icon."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-detailsettings.php:39
-msgid "Set a target for the item link."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:55
-msgid "Set a width for the column."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:79
-msgid "Set autoplay speed in millisecond."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:167
-msgid "Set background color for the item."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:175
-msgid "Set background color for the item. test"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:123
-msgid "Set border for the item."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:135
-msgid "Set border radius for item."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:246
-msgid "Set border radius for the navigation icons."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:153
-msgid "Set box-shadow property values for the item."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:41
-#: admin/views/configs/generator/class-eventful-carousel.php:92
-msgid "Set carousel speed in millisecond."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:261
-msgid "Set color for the carousel navigation."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:317
-msgid "Set color for the carousel pagination."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:156
-msgid "Set content font properties."
-msgstr ""
-
-#: admin/views/ta-framework/fields/image_sizes/image_sizes.php:83
-msgid "Set custom size"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1277
-msgid "Set ending message for load more/infinite scroll."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:130
-msgid "Set event fields font properties."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:195
-msgid "Set inner padding for  item."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:28
-msgid "Set item showcase section title font properties."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1308
-msgid "Set load more button color."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:236
-#: admin/views/configs/generator/class-eventful-filterpost.php:375
-#: admin/views/configs/generator/class-eventful-filterpost.php:516
-msgid "Set margin between buttons."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:78
-msgid "Set margin between columns (items)."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:39
-msgid "Set margin for the section title."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:104
-msgid "Set meta fields font properties."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:62
-msgid "Set number of column(s) in different devices for responsive view."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1340
-msgid "Set number of items to show per page."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:165
-msgid "Set number of row in different devices for responsive view."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1285
-msgid "Set Pagination color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:709
-msgid "Set Period"
-msgstr ""
-
 #: admin/views/configs/generator/class-eventful-display.php:838
 msgid "Set phone icon."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:180
-msgid "Set read more font properties."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:847
-msgid "Set show map link."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1269
-msgid "Set the label for load more button."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:52
-msgid "Set thumb archive font properties."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:78
-msgid "Set title font properties."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:756
-msgid "Set Year"
-msgstr ""
-
-#: admin/class-eventful-admin.php:64 admin/views/class-eventful-settings.php:30
-msgid "Settings"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:329
-msgid "Settings saved."
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:230
-msgid "Settings successfully imported."
-msgstr ""
-
-#: includes/class-eventful-post-types.php:66 admin/class-eventful-admin.php:154
-#: admin/class-eventful-admin.php:208
-msgid "Shortcode"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:31
-#: admin/views/configs/generator/class-eventful-display.php:223
-#: admin/views/configs/generator/class-eventful-display.php:468
-#: admin/views/configs/generator/class-eventful-display.php:539
-#: admin/views/configs/generator/class-eventful-display.php:790
-#: admin/views/configs/generator/class-eventful-display.php:1002
-#: admin/views/configs/generator/class-eventful-display.php:1105
-#: admin/views/configs/generator/class-eventful-carousel.php:189
-#: admin/views/configs/generator/class-eventful-carousel.php:293
-msgid "Show"
-msgstr ""
-
-#: admin/views/ta-framework/classes/admin-options.class.php:512
-msgid "show all settings"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:146
-msgid "Show box-shadow for the item."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:574
-msgid "Show gravatar"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-display.php:845
 msgid "Show Map Link"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:573
-msgid "Show name"
+#: admin/views/configs/generator/class-eventful-display.php:847
+msgid "Set show map link."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:270
-#: admin/views/configs/generator/class-eventful-filterpost.php:408
+#: admin/views/configs/generator/class-eventful-display.php:861
+msgid "Date Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:864
+msgid "Start Date and Time"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:865
+msgid "End Date and Time"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:866
+msgid "Start Date Time With End Date Time"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:877
+msgid "Default (01 January 2024 12:00 AM)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:878
+msgid "Default (January 01 2024 12:00 AM)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:879
+msgid "Default (January 01 12:00 AM)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:880
+msgid "Default ( 01 January 12:00 AM)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:881
+msgid "Default ( 01 Jan 12:00 AM)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:882
+msgid "Default ( Jan 01 12:00 AM)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:883, admin/views/configs/generator/class-eventful-display.php:885
+msgid "Default (01 January 2024)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:884
+msgid "Default (January 01 2024)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:886
+msgid "Default (Jan 01 2024)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:887
+msgid "Default (01 Jan 2024)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:888
+msgid "Default (12:50 AM)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:889
+msgid "Default (23:00)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:892, admin/views/configs/generator/class-eventful-display.php:901, admin/views/configs/generator/class-eventful-display.php:902
+msgid "j F, Y g:i A"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:927
+msgid "Event Meta Separator"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:941
+msgid "Event Meta Separator Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:996, admin/views/configs/generator/class-eventful-display.php:1001, admin/views/configs/generator/class-eventful-typography.php:155
+msgid "Content"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1010
+msgid "Content Display Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1012
+msgid "Excerpt"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1013
+msgid "Content with Limit"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1014
+msgid "Full Content"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1022
+msgid "Content Length Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1024
+msgid "Words"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1025
+msgid "Characters"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1033
+msgid "Words Length"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1042
+msgid "Characters Length"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1066
+msgid "HTML Tags"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1068
+msgid "Allow All"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1069
+msgid "Strip All"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1070
+msgid "Allow Some"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1078
+msgid "Allow HTML Tags Names"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1079
+msgid "Separate multiple tags by comma, e.g. h1,h2"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1085
+msgid "Ellipsis Points Ending Excerpt"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1104, admin/views/configs/generator/class-eventful-typography.php:179
+msgid "Read More"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1113
+msgid "Read More Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1115, admin/views/configs/generator/class-eventful-filterpost.php:205, admin/views/configs/generator/class-eventful-filterpost.php:344, admin/views/configs/generator/class-eventful-filterpost.php:485, admin/views/configs/generator/class-eventful-filterpost.php:602
+msgid "Button"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1116
+msgid "Text Link"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1124
+msgid "Read More Label"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1153
+msgid "Padding"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1221
+msgid "Enabled/Disabled item pagination."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1229, admin/views/configs/generator/class-eventful-display.php:1243
+msgid "Choose a pagination type."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1231, admin/views/configs/generator/class-eventful-display.php:1245, admin/views/configs/generator/class-eventful-display.php:1257
+msgid "Load More Button (Ajax)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1232
+msgid "Ajax Number Pagination"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1233, admin/views/configs/generator/class-eventful-display.php:1246, admin/views/configs/generator/class-eventful-display.php:1259
+msgid "Infinite Scroll (Ajax)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1234, admin/views/configs/generator/class-eventful-display.php:1260
+msgid "No Ajax (Normal Pagination)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1242
+msgid "Filter Pagination Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1254
+msgid "Pagination Type for Mobile"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1255
+msgid "Choose a pagination type for mobile view."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1258
+msgid "Ajax Pagination"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1268
+msgid "Load More Button Label"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1269
+msgid "Set the label for load more button."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1270
+msgid "Load More"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1276
+msgid "Ending Message"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1277
+msgid "Set ending message for load more/infinite scroll."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1278
+msgid "No more events available"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1284
+msgid "Pagination  Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1285
+msgid "Set Pagination color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1288
+msgid "Text Active Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1289, admin/views/configs/generator/class-eventful-filterpost.php:217, admin/views/configs/generator/class-eventful-filterpost.php:356, admin/views/configs/generator/class-eventful-filterpost.php:497, admin/views/configs/generator/class-eventful-filterpost.php:614
+msgid "Border Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1290
+msgid "Border Active Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1292
+msgid "Active BG"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1307
+msgid "Load More Button Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1308
+msgid "Set load more button color."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1311
+msgid "Text hover Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1327
+msgid "Choose pagination alignment."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1339
+msgid "Items Per Page"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1340
+msgid "Set number of items to show per page."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1341
+msgid "This value should be lesser than that <strong> Limit </strong> from <strong>Filter Content  </strong> tab."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1349
+msgid "Preloader"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1350
+msgid "Items will be hidden until page load completed."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-display.php:1359
+msgid "Live Filter Button"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:27
+msgid "Filter Content"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:36
+msgid "Include Only"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:37
+msgid "Choose posts to include by title."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:44
+msgid "Choose posts"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:54
+msgid "Exclude"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:55
+msgid "Choose posts to exclude by title."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:66
+msgid "Choose posts to exclude"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:79
+msgid "Current Post"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:80
+msgid "Password Protected Posts"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:81
+msgid "Children Posts"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:88
+msgid "Limit"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:90
+msgid "Number of total items to display. Leave it empty to show all found items."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:98
+msgid "Offset"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:99
+msgid "Number of items to skip."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:105
+msgid "Advanced Filtering"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:111
+msgid "Filter by"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:112
+msgid "Check the option(s) to filter by."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:116, admin/views/configs/generator/class-eventful-filterpost.php:441
+msgid "Sort By"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:117, admin/views/configs/generator/class-eventful-filterpost.php:660
+msgid "Status"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:118, admin/views/configs/generator/class-eventful-filterpost.php:779
+msgid "Keyword"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:154
+msgid "Hide Taxonomy Name"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:161
+msgid "Choose Term(s)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:162
+msgid "Choose the taxonomy term(s) to show the posts from. Leave empty to show all found taxonomy term(s)."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:168
+msgid "No terms found."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:169
+msgid "Select Term(s)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:175
+msgid "Operator"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:177
+msgid "IN"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:178, admin/views/configs/generator/class-eventful-filterpost.php:296
+msgid "AND"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:179
+msgid "NOT IN"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:182
+msgid "IN - Show posts which associate with one or more terms<br>AND - Show posts which match all terms<br>NOT IN - Show posts which don't match the terms"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:187, admin/views/configs/generator/class-eventful-filterpost.php:326, admin/views/configs/generator/class-eventful-filterpost.php:468, admin/views/configs/generator/class-eventful-filterpost.php:584, admin/views/configs/generator/class-eventful-filterpost.php:792
+msgid "Add to Ajax Live Filters"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:188, admin/views/configs/generator/class-eventful-filterpost.php:327
+msgid "Check to add ajax live filters."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:193, admin/views/configs/generator/class-eventful-filterpost.php:333, admin/views/configs/generator/class-eventful-filterpost.php:475, admin/views/configs/generator/class-eventful-filterpost.php:591, admin/views/configs/generator/class-eventful-filterpost.php:799
+msgid "Ajax Live Filters"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:199, admin/views/configs/generator/class-eventful-filterpost.php:339, admin/views/configs/generator/class-eventful-filterpost.php:480, admin/views/configs/generator/class-eventful-filterpost.php:597
+msgid "Filter Type"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:200, admin/views/configs/generator/class-eventful-filterpost.php:340, admin/views/configs/generator/class-eventful-filterpost.php:481, admin/views/configs/generator/class-eventful-filterpost.php:598
+msgid "Select a type for live filter."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:202, admin/views/configs/generator/class-eventful-filterpost.php:342, admin/views/configs/generator/class-eventful-filterpost.php:483, admin/views/configs/generator/class-eventful-filterpost.php:600
+msgid "Dropdown"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:203, admin/views/configs/generator/class-eventful-filterpost.php:343, admin/views/configs/generator/class-eventful-filterpost.php:484, admin/views/configs/generator/class-eventful-filterpost.php:601
+msgid "Radio"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:204
+msgid "Checkbox"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:212, admin/views/configs/generator/class-eventful-filterpost.php:351, admin/views/configs/generator/class-eventful-filterpost.php:492, admin/views/configs/generator/class-eventful-filterpost.php:609
+msgid "Button Color"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:216, admin/views/configs/generator/class-eventful-filterpost.php:355, admin/views/configs/generator/class-eventful-filterpost.php:496, admin/views/configs/generator/class-eventful-filterpost.php:613
+msgid "Text Hover"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:218, admin/views/configs/generator/class-eventful-filterpost.php:357, admin/views/configs/generator/class-eventful-filterpost.php:498, admin/views/configs/generator/class-eventful-filterpost.php:615
+msgid "Border Hover"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:220, admin/views/configs/generator/class-eventful-filterpost.php:359, admin/views/configs/generator/class-eventful-filterpost.php:500, admin/views/configs/generator/class-eventful-filterpost.php:617
+msgid "Active/Hover BG"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:234, admin/views/configs/generator/class-eventful-filterpost.php:373, admin/views/configs/generator/class-eventful-filterpost.php:514
+msgid "Margin Between Buttons"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:236, admin/views/configs/generator/class-eventful-filterpost.php:375, admin/views/configs/generator/class-eventful-filterpost.php:516
+msgid "Set margin between buttons."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:250, admin/views/configs/generator/class-eventful-filterpost.php:389, admin/views/configs/generator/class-eventful-filterpost.php:552, admin/views/configs/generator/class-eventful-filterpost.php:631, admin/views/configs/generator/class-eventful-filterpost.php:805
+msgid "Label"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:251, admin/views/configs/generator/class-eventful-filterpost.php:390, admin/views/configs/generator/class-eventful-filterpost.php:553, admin/views/configs/generator/class-eventful-filterpost.php:632, admin/views/configs/generator/class-eventful-filterpost.php:806
+msgid "Type live filter label."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:256, admin/views/configs/generator/class-eventful-filterpost.php:395
+msgid "Rename \"All\" Text"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:257
+msgid "Leave it empty to hide \"All\" text."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:258, admin/views/configs/generator/class-eventful-filterpost.php:397
+msgid "All"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:264
+msgid "Hide Empty Term(s)"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:265
+msgid "Check to hide empty terms."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:270, admin/views/configs/generator/class-eventful-filterpost.php:408
 msgid "Show Post Count"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:379
-msgid "Show Post Thumb Meta"
+#: admin/views/configs/generator/class-eventful-filterpost.php:271, admin/views/configs/generator/class-eventful-filterpost.php:409
+msgid "Check to show post count."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:187
-msgid "Show/Hide carousel navigation."
+#: admin/views/configs/generator/class-eventful-filterpost.php:293
+msgid "Relation"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:291
-msgid "Show/Hide carousel pagination."
+#: admin/views/configs/generator/class-eventful-filterpost.php:297
+msgid "OR"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:29
-msgid "Show/Hide item showcase section title."
+#: admin/views/configs/generator/class-eventful-filterpost.php:300
+msgid "The logical relationship between/among above taxonomies."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-detailsettings.php:30
-msgid "Single Page"
+#: admin/views/configs/generator/class-eventful-filterpost.php:320
+msgid "Post by Author"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:231
-msgid "Size"
+#: admin/views/configs/generator/class-eventful-filterpost.php:396
+msgid "Rename \"All\" text."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:719
-#: admin/views/configs/generator/class-eventful-display.php:932
-msgid "Slash ( / )"
+#: admin/views/configs/generator/class-eventful-filterpost.php:402
+msgid "Hide Empty author"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:152
-msgid "Slide"
+#: admin/views/configs/generator/class-eventful-filterpost.php:403
+msgid "Check to hide empty author."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:363
-msgid "Slide To Scroll"
+#: admin/views/configs/generator/class-eventful-filterpost.php:427
+msgid "Post Not by Author "
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:182
-msgid "Slider"
+#: admin/views/configs/generator/class-eventful-filterpost.php:447, admin/views/configs/generator/class-eventful-filterpost.php:530, admin/views/configs/generator/class-eventful-filterpost.php:554
+msgid "Order by"
 msgstr ""
 
-#: admin/views/ta-framework/fields/typography/typography.php:307
-msgid "Small Caps"
+#: admin/views/configs/generator/class-eventful-filterpost.php:449, admin/views/configs/generator/class-eventful-filterpost.php:536
+msgid "ID"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:254
-msgid "Soft-crop"
+#: admin/views/configs/generator/class-eventful-filterpost.php:452, admin/views/configs/generator/class-eventful-filterpost.php:539
+msgid "Modified date"
 msgstr ""
 
-#: admin/views/ta-framework/fields/border/border.php:54
-#: admin/views/ta-framework/fields/typography/typography.php:366
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:82
-msgid "Solid"
+#: admin/views/configs/generator/class-eventful-filterpost.php:453
+msgid "Post slug"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:116
-#: admin/views/configs/generator/class-eventful-filterpost.php:441
-msgid "Sort By"
+#: admin/views/configs/generator/class-eventful-filterpost.php:454, admin/views/configs/generator/class-eventful-filterpost.php:540
+msgid "Post type"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:455, admin/views/configs/generator/class-eventful-filterpost.php:541
+msgid "Random"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:456, admin/views/configs/generator/class-eventful-filterpost.php:542
+msgid "Comment count"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:457, admin/views/configs/generator/class-eventful-filterpost.php:543
+msgid "Menu order"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:459, admin/views/configs/generator/class-eventful-filterpost.php:545
+msgid "Most Liked"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:460, admin/views/configs/generator/class-eventful-filterpost.php:546
+msgid "Most Viewed"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:469
+msgid "Check to add ajax live filter for Order by."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:531
+msgid "Choose order by options to show to the visitors."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:573, admin/views/configs/generator/class-eventful-filterpost.php:633
+msgid "Order"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:575
+msgid "Ascending"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:576
+msgid "Descending"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:585
+msgid "Check to add ajax live filter for order."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:666
+msgid "Post Status"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:682
+msgid "Published Date"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:690
+msgid "Yesterday"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:691
+msgid "Today Only"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:692
+msgid "Today and Onwards"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:693
+msgid "This Week"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:694
+msgid "This Month"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:695
+msgid "This Year"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:696
+msgid "1 Week ago to today"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:697
+msgid "1 month ago to today"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:698
+msgid "1 year ago to today"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-filterpost.php:699
@@ -2644,397 +1686,580 @@ msgstr ""
 msgid "Specific Month"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:702
-msgid "Specific Period ( From & To )"
-msgstr ""
-
 #: admin/views/configs/generator/class-eventful-filterpost.php:701
 msgid "Specific Year"
 msgstr ""
 
-#: admin/views/ta-framework/fields/box_shadow/box_shadow.php:51
-msgid "Spread"
+#: admin/views/configs/generator/class-eventful-filterpost.php:702
+msgid "Specific Period ( From & To )"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:31
-msgid "Standard"
+#: admin/views/configs/generator/class-eventful-filterpost.php:709
+msgid "Set Period"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:864
-msgid "Start Date and Time"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:866
-msgid "Start Date Time With End Date Time"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:827
-msgid "State"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:117
-#: admin/views/configs/generator/class-eventful-filterpost.php:660
-msgid "Status"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:718
-#: admin/views/configs/generator/class-eventful-display.php:931
-msgid "Straight Line ( | )"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1069
-msgid "Strip All"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:237
-msgid "Subset"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:59
-msgid "Swiper CSS"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:37
-msgid "Swiper JS"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:396
-msgid "Tab and Key Navigation"
-msgstr ""
-
-#: admin/views/ta-framework/fields/column/column.php:48
-msgid "Tablet"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-detailsettings.php:38
-msgid "Target"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:560
-#: admin/views/configs/generator/class-eventful-filterpost.php:114
-#: admin/views/configs/generator/class-eventful-filterpost.php:127
-msgid "Taxonomy"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:418
-msgid "Taxonomy Position"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:653
-msgid "Text"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1288
-msgid "Text Active Color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:687
-msgid "Text after time. Leave empty for nothing."
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:259
-msgid "Text Align"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:436
-#: admin/views/configs/generator/class-eventful-display.php:1133
-#: admin/views/configs/generator/class-eventful-display.php:1198
-#: admin/views/configs/generator/class-eventful-display.php:1287
-#: admin/views/configs/generator/class-eventful-display.php:1310
-#: admin/views/configs/generator/class-eventful-filterpost.php:215
-#: admin/views/configs/generator/class-eventful-filterpost.php:354
-#: admin/views/configs/generator/class-eventful-filterpost.php:495
-#: admin/views/configs/generator/class-eventful-filterpost.php:612
-msgid "Text Color"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:350
-msgid "Text Decoration"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:216
-#: admin/views/configs/generator/class-eventful-filterpost.php:355
-#: admin/views/configs/generator/class-eventful-filterpost.php:496
-#: admin/views/configs/generator/class-eventful-filterpost.php:613
-msgid "Text Hover"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:437
-#: admin/views/configs/generator/class-eventful-display.php:1134
-#: admin/views/configs/generator/class-eventful-display.php:1199
-msgid "Text Hover Color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1311
-msgid "Text hover Color"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1116
-msgid "Text Link"
-msgstr ""
-
-#: admin/views/ta-framework/fields/typography/typography.php:320
-msgid "Text Transform"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:300
-msgid "The logical relationship between/among above taxonomies."
-msgstr ""
-
-#. Author of the plugin
-msgid "ThemeAtelier"
-msgstr ""
-
-#: admin/views/ta-framework/functions/validate.php:46
-#: admin/views/ta-framework/functions/validate.php:114
-msgid "This field is required."
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-accessibility.php:52
-msgid "This is the first slide"
-msgstr ""
-
-#: admin/views/configs/settings/class-eventful-accessibility.php:59
-msgid "This is the last slide"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:694
-msgid "This Month"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:292
-msgid ""
-"This option will replace your default/featured post image with first "
-"resource ( image/video/audio ) from the content."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:1341
-msgid ""
-"This value should be lesser than that <strong> Limit </strong> from <strong>"
-"Filter Content  </strong> tab."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:693
-msgid "This Week"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-filterpost.php:695
-msgid "This Year"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-typography.php:51
-msgid "Thumb Archive"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:217
-#: admin/views/configs/generator/class-eventful-display.php:222
-msgid "Thumbnail"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-carousel.php:33
-msgid "Ticker"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:409
-#: admin/views/configs/generator/class-eventful-display.php:590
-msgid "Time ago(human time)"
-msgstr ""
-
-#: admin/class-eventful-admin.php:153 admin/class-eventful-admin.php:207
-#: admin/views/configs/generator/class-eventful-typography.php:77
-#: admin/views/configs/generator/class-eventful-display.php:462
-#: admin/views/configs/generator/class-eventful-display.php:467
-#: admin/views/configs/generator/class-eventful-filterpost.php:450
-#: admin/views/configs/generator/class-eventful-filterpost.php:537
-msgid "Title"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:476
-msgid "Title HTML Tag"
-msgstr ""
-
-#: admin/views/ta-framework/fields/background/background.php:98
-#: admin/views/ta-framework/fields/datetime/datetime.php:39
-#: admin/views/ta-framework/fields/date/date.php:34
-msgid "To"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:603
-#: admin/views/configs/generator/class-eventful-display.php:893
-#: admin/views/configs/generator/class-eventful-display.php:903
-msgid ""
-"To define format, check <a href=\"https://wordpress."
-"org/support/article/formatting-date-and-time/\" target=\"_blank\" "
-"rel=\"noopener noreferrer nofollow\"><em>this doc</em></a>."
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:579
-msgid ""
-"To show gravatar, you must <a href=\"https://wordpress."
-"org/support/article/how-to-use-gravatars/\" target=\"_blank\" rel=\"noopener "
-"noreferrer nofollow\"><em>enable it</em></a>."
+#: admin/views/configs/generator/class-eventful-filterpost.php:711
+msgid "From:"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-filterpost.php:712
 msgid "To:"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:692
-msgid "Today and Onwards"
+#: admin/views/configs/generator/class-eventful-filterpost.php:718, admin/views/configs/generator/class-eventful-filterpost.php:730
+msgid "yy-mm-dd"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:691
-msgid "Today Only"
+#: admin/views/configs/generator/class-eventful-filterpost.php:724
+msgid "Select Date"
 msgstr ""
 
-#: public/helpers/class-eventful-customfieldprocess.php:246
-msgid "Toolset"
+#: admin/views/configs/generator/class-eventful-filterpost.php:736
+msgid "Select Month"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-detailsettings.php:44
-msgid "Top"
+#: admin/views/configs/generator/class-eventful-filterpost.php:738
+msgid "January"
 msgstr ""
 
-#: admin/views/ta-framework/fields/border/border.php:27
-#: admin/views/ta-framework/fields/spacing/spacing.php:27
-#: admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:51
-msgid "top"
+#: admin/views/configs/generator/class-eventful-filterpost.php:739
+msgid "February"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:422
-#: admin/views/configs/generator/class-eventful-carousel.php:203
-msgid "Top center"
+#: admin/views/configs/generator/class-eventful-filterpost.php:740
+msgid "March"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:640
-msgid "Top Left"
+#: admin/views/configs/generator/class-eventful-filterpost.php:741
+msgid "April"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:423
-#: admin/views/configs/generator/class-eventful-carousel.php:204
-msgid "Top left"
+#: admin/views/configs/generator/class-eventful-filterpost.php:742
+msgid "May"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:641
-msgid "Top Right"
+#: admin/views/configs/generator/class-eventful-filterpost.php:743
+msgid "June"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:421
-#: admin/views/configs/generator/class-eventful-carousel.php:202
-msgid "Top right"
+#: admin/views/configs/generator/class-eventful-filterpost.php:744
+msgid "July"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:408
-msgid "Touch Swipe"
+#: admin/views/configs/generator/class-eventful-filterpost.php:745
+msgid "August"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:148
-msgid "Transition Effect"
+#: admin/views/configs/generator/class-eventful-filterpost.php:746
+msgid "September"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:747
+msgid "October"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:748
+msgid "November"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:749
+msgid "December"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:756
+msgid "Set Year"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-filterpost.php:785
 msgid "Type Keyword"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:251
-#: admin/views/configs/generator/class-eventful-filterpost.php:390
-#: admin/views/configs/generator/class-eventful-filterpost.php:553
-#: admin/views/configs/generator/class-eventful-filterpost.php:632
-#: admin/views/configs/generator/class-eventful-filterpost.php:806
-msgid "Type live filter label."
+#: admin/views/configs/generator/class-eventful-filterpost.php:786
+msgid "Enter keyword(s) for searching the posts."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-filterpost.php:793
+msgid "Check to add ajax live filter."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-layout.php:33
+msgid "Layout Preset"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-layout.php:38
+msgid "Grid"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-layout.php:42
+msgid "Carousel"
 msgstr ""
 
 #: admin/views/configs/generator/class-eventful-typography.php:20
 msgid "Typography"
 msgstr ""
 
-#: public/helpers/class-eventful-user-like.php:48
-#: public/helpers/class-eventful-user-like.php:247
-msgid "Unlike"
+#: admin/views/configs/generator/class-eventful-typography.php:27
+msgid "Section Title"
 msgstr ""
 
-#: admin/views/ta-framework/classes/comment-options.class.php:202
-#: admin/views/ta-framework/classes/metabox-options.class.php:279
+#: admin/views/configs/generator/class-eventful-typography.php:28
+msgid "Set item showcase section title font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-typography.php:51
+msgid "Thumb Archive"
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-typography.php:52
+msgid "Set thumb archive font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-typography.php:78
+msgid "Set title font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-typography.php:104
+msgid "Set meta fields font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-typography.php:130
+msgid "Set event fields font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-typography.php:156
+msgid "Set content font properties."
+msgstr ""
+
+#: admin/views/configs/generator/class-eventful-typography.php:180
+msgid "Set read more font properties."
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:22
+msgid "Accessibility"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:28
+msgid "Carousel Accessibility"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:37
+msgid "Previous Slide Message"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:38
+msgid "Previous slide"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:44
+msgid "Next Slide Message"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:45
+msgid "Next slide"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:51
+msgid "First Slide Message"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:52
+msgid "This is the first slide"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:58
+msgid "Last Slide Message"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:59
+msgid "This is the last slide"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:65
+msgid "Pagination Bullet Message"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-accessibility.php:66
+msgid "Go to slide {{index}}"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-customcss.php:17
+msgid "Custom CSS & JS"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-customcss.php:23
+msgid "Custom CSS"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-customcss.php:33
+msgid "Custom JS"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:27
+msgid "Scripts & Styles"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:32
+msgid "Enqueue or Dequeue JS"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:37
+msgid "Swiper JS"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:38, admin/views/configs/settings/class-eventful-scriptsandstyles.php:47, admin/views/configs/settings/class-eventful-scriptsandstyles.php:60, admin/views/configs/settings/class-eventful-scriptsandstyles.php:69
+msgid "Enqueued"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:39, admin/views/configs/settings/class-eventful-scriptsandstyles.php:48, admin/views/configs/settings/class-eventful-scriptsandstyles.php:61, admin/views/configs/settings/class-eventful-scriptsandstyles.php:70
+msgid "Dequeued"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:46
+msgid "bxSlider JS"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:54
+msgid "Enqueue or Dequeue CSS"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:59
+msgid "Swiper CSS"
+msgstr ""
+
+#: admin/views/configs/settings/class-eventful-scriptsandstyles.php:68
+msgid "Font Awesome CSS"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:169
+msgid "Error while saving the changes."
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:230
+msgid "Settings successfully imported."
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:258, admin/views/ta-framework/classes/admin-options.class.php:242
+msgid "Default settings restored."
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:329
+msgid "Settings saved."
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:510
+msgid "You have unsaved changes, save your changes!"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:512
+msgid "show all settings"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:514, admin/views/ta-framework/fields/icon/icon.php:59, admin/views/ta-framework/fields/map/map.php:24
+msgid "Search..."
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:517, admin/views/ta-framework/classes/admin-options.class.php:640
+msgid "Save"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:517, admin/views/ta-framework/classes/admin-options.class.php:640
+msgid "Saving..."
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:518, admin/views/ta-framework/classes/admin-options.class.php:641
+msgid "Reset Section"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:518, admin/views/ta-framework/classes/admin-options.class.php:641
+msgid "Are you sure to reset this section options?"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:519, admin/views/ta-framework/classes/admin-options.class.php:642
+msgid "Reset All"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:519, admin/views/ta-framework/classes/admin-options.class.php:642, admin/views/ta-framework/classes/comment-options.class.php:201, admin/views/ta-framework/classes/metabox-options.class.php:278, admin/views/ta-framework/fields/backup/backup.php:38
+msgid "Reset"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:519, admin/views/ta-framework/classes/admin-options.class.php:642
+msgid "Are you sure you want to reset all settings to default values?"
+msgstr ""
+
+#: admin/views/ta-framework/classes/admin-options.class.php:617, admin/views/ta-framework/classes/comment-options.class.php:184, admin/views/ta-framework/classes/metabox-options.class.php:261, admin/views/ta-framework/fields/button_set/button_set.php:59, admin/views/ta-framework/fields/checkbox/checkbox.php:83, admin/views/ta-framework/fields/radio/radio.php:77, admin/views/ta-framework/fields/select/select.php:115, admin/views/ta-framework/functions/actions.php:41
+msgid "No data available."
+msgstr ""
+
+#: admin/views/ta-framework/classes/comment-options.class.php:202, admin/views/ta-framework/classes/metabox-options.class.php:279
 msgid "update post"
 msgstr ""
 
-#: admin/views/ta-framework/fields/upload/upload.php:26
-#: admin/views/ta-framework/fields/media/media.php:27
-msgid "Upload"
+#: admin/views/ta-framework/classes/comment-options.class.php:202, admin/views/ta-framework/classes/metabox-options.class.php:279
+msgid "Cancel"
 msgstr ""
 
-#: admin/views/ta-framework/fields/typography/typography.php:337
-msgid "Uppercase"
+#: admin/views/ta-framework/classes/setup.class.php:614
+msgid "Are you sure?"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:809
-msgid "Venue"
+#: admin/views/ta-framework/classes/setup.class.php:615
+msgid "Please enter %s or more characters"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:818
-msgid "Venue Settings"
+#: admin/views/ta-framework/classes/setup.class.php:616
+msgid "Searching..."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:209
-msgid "Vertically center inner"
+#: admin/views/ta-framework/classes/setup.class.php:617
+msgid "No results found."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:210
-msgid "Vertically center inner on hover"
+#: admin/views/ta-framework/classes/setup.class.php:718
+msgid "Oops! Not allowed."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:208
-msgid "Vertically center outer"
+#: admin/views/ta-framework/classes/setup.class.php:790, admin/views/ta-framework/classes/setup.class.php:786
+msgid "Field not found!"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:295
-msgid "Video"
+#: admin/views/ta-framework/classes/shortcode-options.class.php:247, admin/views/ta-framework/functions/actions.php:18, admin/views/ta-framework/functions/actions.php:66, admin/views/ta-framework/functions/actions.php:101, admin/views/ta-framework/functions/actions.php:137, admin/views/ta-framework/functions/actions.php:165
+msgid "Error: Invalid nonce verification."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:562
-msgid "View Count"
+#: admin/views/ta-framework/fields/background/background.php:38, admin/views/ta-framework/fields/media/media.php:62
+msgid "Not selected"
 msgstr ""
 
-#: includes/class-eventful-post-types.php:73
-msgid "View Generated Shortcode"
+#: admin/views/ta-framework/fields/background/background.php:75, admin/views/ta-framework/fields/datetime/datetime.php:38, admin/views/ta-framework/fields/date/date.php:33
+msgid "From"
 msgstr ""
 
-#: admin/views/class-eventful-metaboxes.php:37
-msgid "View Options"
+#: admin/views/ta-framework/fields/background/background.php:98, admin/views/ta-framework/fields/datetime/datetime.php:39, admin/views/ta-framework/fields/date/date.php:34
+msgid "To"
 msgstr ""
 
-#: admin/views/ta-framework/fields/link_color/link_color.php:42
-msgid "Visited"
+#: admin/views/ta-framework/fields/background/background.php:121
+msgid "Direction"
 msgstr ""
 
-#: admin/views/ta-framework/fields/typography/typography.php:370
-msgid "Wavy"
+#: admin/views/ta-framework/fields/background/background.php:128
+msgid "Gradient Direction"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-carousel.php:175
-msgid ""
-"When multiple <b>Row</b> is set, the above two options <b>Infinite Loop</b> "
-"and <b>Auto Height</b> won't work properly."
+#: admin/views/ta-framework/fields/background/background.php:129
+msgid "&#8659; top to bottom"
 msgstr ""
 
-#: admin/views/ta-framework/fields/dimensions/dimensions.php:24
-msgid "width"
+#: admin/views/ta-framework/fields/background/background.php:130
+msgid "&#8658; left to right"
 msgstr ""
 
-#: admin/views/ta-framework/fields/typography/typography.php:457
-msgid "Word Spacing"
+#: admin/views/ta-framework/fields/background/background.php:131
+msgid "&#8664; corner top to right"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1024
-msgid "Words"
+#: admin/views/ta-framework/fields/background/background.php:132
+msgid "&#8665; corner top to left"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:669
-msgid "words"
+#: admin/views/ta-framework/fields/background/background.php:185
+msgid "Background Position"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:1033
-msgid "Words Length"
+#: admin/views/ta-framework/fields/background/background.php:186
+msgid "Left Top"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:187
+msgid "Left Center"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:188
+msgid "Left Bottom"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:189
+msgid "Center Top"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:190
+msgid "Center Center"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:191
+msgid "Center Bottom"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:192
+msgid "Right Top"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:193
+msgid "Right Center"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:194
+msgid "Right Bottom"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:213
+msgid "Background Repeat"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:214
+msgid "Repeat"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:215
+msgid "No Repeat"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:216
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:217
+msgid "Repeat Vertically"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:236
+msgid "Background Attachment"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:237
+msgid "Scroll"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:238
+msgid "Fixed"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:257
+msgid "Background Size"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:258
+msgid "Cover"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:259
+msgid "Contain"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:260
+msgid "Auto"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:279
+msgid "Background Origin"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:280, admin/views/ta-framework/fields/background/background.php:303
+msgid "Padding Box"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:281, admin/views/ta-framework/fields/background/background.php:302
+msgid "Border Box"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:282, admin/views/ta-framework/fields/background/background.php:304
+msgid "Content Box"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:301
+msgid "Background Clip"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:323
+msgid "Background Blend Mode"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:325
+msgid "Multiply"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:326
+msgid "Screen"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:328
+msgid "Darken"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:329
+msgid "Lighten"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:330
+msgid "Color Dodge"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:331
+msgid "Saturation"
+msgstr ""
+
+#: admin/views/ta-framework/fields/background/background.php:333
+msgid "Luminosity"
+msgstr ""
+
+#: admin/views/ta-framework/fields/backup/backup.php:33
+msgid "Import"
+msgstr ""
+
+#: admin/views/ta-framework/fields/backup/backup.php:36
+msgid "Export & Download"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:27, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:51, admin/views/ta-framework/fields/spacing/spacing.php:27
+msgid "top"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:28, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:52, admin/views/ta-framework/fields/spacing/spacing.php:28
+msgid "right"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:29, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:53, admin/views/ta-framework/fields/spacing/spacing.php:29
+msgid "bottom"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:30, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:54, admin/views/ta-framework/fields/spacing/spacing.php:30
+msgid "left"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:31, admin/views/ta-framework/fields/column/column.php:51, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:55, admin/views/ta-framework/fields/spacing/spacing.php:31
+msgid "all"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:54, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:82, admin/views/ta-framework/fields/typography/typography.php:366
+msgid "Solid"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:55, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:83, admin/views/ta-framework/fields/typography/typography.php:369
+msgid "Dashed"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:56, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:84, admin/views/ta-framework/fields/typography/typography.php:368
+msgid "Dotted"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:57, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:85, admin/views/ta-framework/fields/typography/typography.php:367
+msgid "Double"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:58, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:86
+msgid "Inset"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:59, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:87
+msgid "Outset"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:60, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:88
+msgid "Groove"
+msgstr ""
+
+#: admin/views/ta-framework/fields/border/border.php:61, admin/views/ta-framework/fields/dimensions_advanced/dimensions_advanced.php:89
+msgid "ridge"
 msgstr ""
 
 #: admin/views/ta-framework/fields/box_shadow/box_shadow.php:48
@@ -3045,45 +2270,394 @@ msgstr ""
 msgid "Y offset"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:690
-msgid "Yesterday"
+#: admin/views/ta-framework/fields/box_shadow/box_shadow.php:50
+msgid "Blur"
 msgstr ""
 
-#: admin/views/ta-framework/fields/group/group.php:143
-#: admin/views/ta-framework/fields/repeater/repeater.php:91
+#: admin/views/ta-framework/fields/box_shadow/box_shadow.php:51
+msgid "Spread"
+msgstr ""
+
+#: admin/views/ta-framework/fields/checkbox/checkbox.php:25
+msgid "Check/Uncheck All"
+msgstr ""
+
+#: admin/views/ta-framework/fields/column/column.php:46
+msgid "Large Desktop"
+msgstr ""
+
+#: admin/views/ta-framework/fields/column/column.php:47
+msgid "Desktop"
+msgstr ""
+
+#: admin/views/ta-framework/fields/column/column.php:48
+msgid "Tablet"
+msgstr ""
+
+#: admin/views/ta-framework/fields/column/column.php:49
+msgid "Mobile Landscape"
+msgstr ""
+
+#: admin/views/ta-framework/fields/column/column.php:50
+msgid "Mobile"
+msgstr ""
+
+#: admin/views/ta-framework/fields/dimensions/dimensions.php:24
+msgid "width"
+msgstr ""
+
+#: admin/views/ta-framework/fields/dimensions/dimensions.php:25
+msgid "height"
+msgstr ""
+
+#: admin/views/ta-framework/fields/gallery/gallery.php:22
+msgid "Add Gallery"
+msgstr ""
+
+#: admin/views/ta-framework/fields/gallery/gallery.php:23
+msgid "Edit Gallery"
+msgstr ""
+
+#: admin/views/ta-framework/fields/gallery/gallery.php:24
+msgid "Clear"
+msgstr ""
+
+#: admin/views/ta-framework/fields/group/group.php:55, admin/views/ta-framework/fields/group/group.php:110, admin/views/ta-framework/fields/repeater/repeater.php:51, admin/views/ta-framework/fields/repeater/repeater.php:79
+msgid "Are you sure to delete this item?"
+msgstr ""
+
+#: admin/views/ta-framework/fields/group/group.php:143, admin/views/ta-framework/fields/repeater/repeater.php:91
 msgid "You cannot add more."
 msgstr ""
 
-#: admin/views/ta-framework/fields/group/group.php:144
-#: admin/views/ta-framework/fields/repeater/repeater.php:92
+#: admin/views/ta-framework/fields/group/group.php:144, admin/views/ta-framework/fields/repeater/repeater.php:92
 msgid "You cannot remove more."
 msgstr ""
 
-#: public/helpers/class-eventful-user-like.php:448
-msgid "You do not like anything yet."
+#: admin/views/ta-framework/fields/group/group.php:44, admin/views/ta-framework/fields/repeater/repeater.php:30
+msgid "Error: Field ID conflict."
 msgstr ""
 
-#: admin/views/ta-framework/classes/admin-options.class.php:510
-msgid "You have unsaved changes, save your changes!"
+#: admin/views/ta-framework/fields/icon/icon.php:22, admin/views/ta-framework/fields/icon/icon.php:55
+msgid "Add Icon"
+msgstr ""
+
+#: admin/views/ta-framework/fields/icon/icon.php:23
+msgid "Remove Icon"
+msgstr ""
+
+#: admin/views/ta-framework/fields/image_sizes/image_sizes.php:82
+msgid "Original uploaded image"
+msgstr ""
+
+#: admin/views/ta-framework/fields/image_sizes/image_sizes.php:83
+msgid "Set custom size"
+msgstr ""
+
+#: admin/views/ta-framework/fields/image_sizes/image_sizes.php:130
+msgid "No image sizes found."
+msgstr ""
+
+#: admin/views/ta-framework/fields/link/link.php:22
+msgid "Add Link"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link/link.php:23
+msgid "Edit Link"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link/link.php:24
+msgid "Remove Link"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link_color/link_color.php:40
+msgid "Hover"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link_color/link_color.php:41
+msgid "Active"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link_color/link_color.php:42
+msgid "Visited"
+msgstr ""
+
+#: admin/views/ta-framework/fields/link_color/link_color.php:43
+msgid "Focus"
+msgstr ""
+
+#: admin/views/ta-framework/fields/map/map.php:25
+msgid "Latitude"
+msgstr ""
+
+#: admin/views/ta-framework/fields/map/map.php:26
+msgid "Longitude"
+msgstr ""
+
+#: admin/views/ta-framework/fields/media/media.php:27, admin/views/ta-framework/fields/upload/upload.php:26
+msgid "Upload"
+msgstr ""
+
+#: admin/views/ta-framework/fields/media/media.php:28, admin/views/ta-framework/fields/upload/upload.php:27
+msgid "Remove"
+msgstr ""
+
+#: admin/views/ta-framework/fields/switcher/switcher.php:20
+msgid "On"
+msgstr ""
+
+#: admin/views/ta-framework/fields/switcher/switcher.php:21
+msgid "Off"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:131
+msgid "Font Family"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:144
+msgid "Select a font"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:152
+msgid "Backup Font Family"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:197
+msgid "Font Style"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:211, admin/views/ta-framework/fields/typography/typography.php:212
+msgid "Load Extra Styles"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:237
+msgid "Subset"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:259
+msgid "Text Align"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:274
+msgid "Inherit"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:275
+msgid "Left"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:277
+msgid "Right"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:278
+msgid "Justify"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:279
+msgid "Initial"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:291
+msgid "Font Variant"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:307
+msgid "Small Caps"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:308
+msgid "All Small Caps"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:320
+msgid "Text Transform"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:336
+msgid "Capitalize"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:337
+msgid "Uppercase"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:338
+msgid "Lowercase"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:350
+msgid "Text Decoration"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:370
+msgid "Wavy"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:371
+msgid "Overline"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:372
+msgid "Line-through"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:388
+msgid "Font Size"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:397
+msgid "Line Height"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:406
+msgid "Font Size (Tablet)"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:415
+msgid "Line Height (Tablet)"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:424
+msgid "Font Size (Mobile)"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:433
+msgid "Line Height (Mobile)"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:445
+msgid "Letter Spacing"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:457
+msgid "Word Spacing"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:473
+msgid "Font Color"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:497
+msgid "Custom Style"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:578
+msgid "Custom Web Fonts"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:584
+msgid "Safe Web Fonts"
+msgstr ""
+
+#: admin/views/ta-framework/fields/typography/typography.php:607
+msgid "Google Web Fonts"
+msgstr ""
+
+#: admin/views/ta-framework/functions/actions.php:70, admin/views/ta-framework/functions/actions.php:107
+msgid "Error: Invalid key."
+msgstr ""
+
+#: admin/views/ta-framework/functions/actions.php:111
+msgid "Error: The response is not a valid JSON response."
+msgstr ""
+
+#: admin/views/ta-framework/functions/actions.php:171
+msgid "Error: Invalid term ID."
+msgstr ""
+
+#: admin/views/ta-framework/functions/actions.php:177
+msgid "Error: You do not have permission to do that."
+msgstr ""
+
+#: admin/views/ta-framework/functions/validate.php:14, admin/views/ta-framework/functions/validate.php:78
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: admin/views/ta-framework/functions/validate.php:30, admin/views/ta-framework/functions/validate.php:96
+msgid "Please enter a valid number."
+msgstr ""
+
+#: admin/views/ta-framework/functions/validate.php:46, admin/views/ta-framework/functions/validate.php:114
+msgid "This field is required."
+msgstr ""
+
+#: admin/views/ta-framework/functions/validate.php:62, admin/views/ta-framework/functions/validate.php:132
+msgid "Please enter a valid URL."
+msgstr ""
+
+#: includes/class-eventful-post-types.php:65, includes/class-eventful-post-types.php:85, includes/class-eventful-post-types.php:86
+msgid "Eventful Shortcode"
+msgstr ""
+
+#: includes/class-eventful-post-types.php:68
+msgid "All Layouts"
+msgstr ""
+
+#: includes/class-eventful-post-types.php:69
+msgid "Add Layout"
+msgstr ""
+
+#: includes/class-eventful-post-types.php:70, includes/class-eventful-post-types.php:71
+msgid "Generate New Shortcode"
+msgstr ""
+
+#: includes/class-eventful-post-types.php:72
+msgid "Edit Generated Shortcode"
+msgstr ""
+
+#: includes/class-eventful-post-types.php:73
+msgid "View Generated Shortcode"
+msgstr ""
+
+#: includes/class-eventful-post-types.php:74
+msgid "Eventful Generator"
+msgstr ""
+
+#: includes/class-eventful-post-types.php:75
+msgid "Search Generated Shortcode"
+msgstr ""
+
+#: includes/class-eventful-post-types.php:76
+msgid "Parent Generated Shortcode:"
+msgstr ""
+
+#: includes/class-eventful-post-types.php:77
+msgid "No Shortcode found."
+msgstr ""
+
+#: includes/class-eventful-post-types.php:78
+msgid "No Shortcode found in Trash."
+msgstr ""
+
+#: public/helpers/class-eventful-customfieldprocess.php:245
+msgid "Pods"
+msgstr ""
+
+#: public/helpers/class-eventful-customfieldprocess.php:246
+msgid "Toolset"
+msgstr ""
+
+#: public/helpers/class-eventful-customfieldprocess.php:247
+msgid "Advanced Custom Fields"
+msgstr ""
+
+#: public/helpers/class-eventful-user-like.php:48, public/helpers/class-eventful-user-like.php:247
+msgid "Unlike"
+msgstr ""
+
+#: public/helpers/class-eventful-user-like.php:64
+msgid "Not permitted"
 msgstr ""
 
 #: public/helpers/class-eventful-user-like.php:416
 msgid "You Like:"
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-filterpost.php:718
-#: admin/views/configs/generator/class-eventful-filterpost.php:730
-msgid "yy-mm-dd"
+#: public/helpers/class-eventful-user-like.php:448
+msgid "You do not like anything yet."
 msgstr ""
 
-#: admin/views/configs/generator/class-eventful-display.php:342
-msgid "Zoom Effect"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:345
-msgid "Zoom In"
-msgstr ""
-
-#: admin/views/configs/generator/class-eventful-display.php:346
-msgid "Zoom Out"
+#: public/helpers/class-post-functions.php:614, public/templates/item/post-thumb-date.php:25
+msgid " ago"
 msgstr ""

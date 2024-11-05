@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 $view_options = get_post_meta($eful_id, 'eful_view_options', true);
 $layouts      = get_post_meta($eful_id, 'ta_efp_layouts', true);
 $layout = isset($layouts['eful_layout_preset']) ? $layouts['eful_layout_preset'] : '';
-$popup_content_color       = isset( $view_options['popup_content_color'] ) ? $view_options['popup_content_color'] : '';
+$popup_content_color       = isset($view_options['popup_content_color']) ? $view_options['popup_content_color'] : '';
 
 $show_section_title        = isset($view_options['section_title']) ? $view_options['section_title'] : false;
 if ($show_section_title) {
@@ -45,13 +45,14 @@ if ($show_section_title) {
 	if (!empty($_section_title_typography['font-family'])) {
 		$custom_css .= "font-family: {$_section_title_typography['font-family']};font-weight: {$section_title_font_weight};font-style: {$section_title_font_style};";
 	}
-	$custom_css .= "text-align: {$_section_title_typography['text-align']};text-transform: {$_section_title_typography['text-transform']};font-size: {$_section_title_typography['font-size']}px;line-height: {$_section_title_typography['line-height']}px;letter-spacing: {$_section_title_typography['letter-spacing']}px;color: {$_section_title_typography['color']};margin: {$section_title_margin_top} {$section_title_margin_right} {$section_title_margin_bottom} {$section_title_margin_left}}";
+	$section_title_text_transform = isset($_section_title_typography['text-transform']) ? $_section_title_typography['text-transform'] : '';
+	$custom_css .= "text-align: {$_section_title_typography['text-align']};text-transform: {$section_title_text_transform};font-size: {$_section_title_typography['font-size']}px;line-height: {$_section_title_typography['line-height']}px;letter-spacing: {$_section_title_typography['letter-spacing']}px;color: {$_section_title_typography['color']};margin: {$section_title_margin_top} {$section_title_margin_right} {$section_title_margin_bottom} {$section_title_margin_left}}";
 }
 
-$margin_between_post      = isset( $view_options['margin_between_post']['all'] ) ? (int) $view_options['margin_between_post']['all'] : 20;
+$margin_between_post      = isset($view_options['margin_between_post']['all']) ? (int) $view_options['margin_between_post']['all'] : 20;
 $margin_between_post_half = $margin_between_post / 2;
 $custom_css              .= "#eful_wrapper-{$eful_id} .ta-row{ margin-right: -{$margin_between_post_half}px;margin-left: -{$margin_between_post_half}px;}#eful_wrapper-{$eful_id} .ta-row [class*='ta-col-']{padding-right: {$margin_between_post_half}px;padding-left: {$margin_between_post_half}px;padding-bottom: {$margin_between_post}px;}";
-if ( 'large_with_small' === $layouts['eful_layout_preset'] ) {
+if ('large_with_small' === $layout) {
 	$custom_css .= "#eful_wrapper-{$eful_id} .ta-eventful-block-8, #eful_wrapper-{$eful_id} .ta-eventful-block-4, #eful_wrapper-{$eful_id} .ta-eventful-block-6, #eful_wrapper-{$eful_id} .ta-eventful-block-3{padding-right: {$margin_between_post_half}px;padding-left: {$margin_between_post_half}px;}#eful_wrapper-{$eful_id} .ta-eventful-block-4 .ta-eventful-block-half,#eful_wrapper-{$eful_id} .ta-eventful-block-8,#eful_wrapper-{$eful_id} .ta-eventful-block-3 .ta-eventful-block-half,#eful_wrapper-{$eful_id} .ta-eventful-block-6{padding-bottom: {$margin_between_post}px;}";
 }
 /**
@@ -103,7 +104,9 @@ if ($show_post_title) {
 	if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
 		$custom_css .= "text-align: {$_post_title_typography['text-align']};";
 	}
-	$custom_css .= "text-transform: {$_post_title_typography['text-transform']};font-size: {$_post_title_typography['font-size']}px;line-height: {$_post_title_typography['line-height']}px;letter-spacing: {$_post_title_typography['letter-spacing']}px;color: {$_post_title_typography['color']};display: inherit;}#eful_wrapper-{$eful_id} .eful__item--title {margin: {$post_title_margin['top']}px {$post_title_margin['right']}px {$post_title_margin['bottom']}px {$post_title_margin['left']}px;}#eful_wrapper-{$eful_id} .eventful-collapse-header a{display: inline-block;}";
+
+	$post_title_text_transform = !empty($_post_title_typography['text-transform']) ? $_post_title_typography['text-transform'] : 'none';
+	$custom_css .= "text-transform: {$post_title_text_transform};font-size: {$_post_title_typography['font-size']}px;line-height: {$_post_title_typography['line-height']}px;letter-spacing: {$_post_title_typography['letter-spacing']}px;color: {$_post_title_typography['color']};display: inherit;}#eful_wrapper-{$eful_id} .eful__item--title {margin: {$post_title_margin['top']}px {$post_title_margin['right']}px {$post_title_margin['bottom']}px {$post_title_margin['left']}px;}#eful_wrapper-{$eful_id} .eventful-collapse-header a{display: inline-block;}";
 	$custom_css .= "#eful_wrapper-{$eful_id} .eful__item--title a:hover,#eful_wrapper-{$eful_id} .eventful-collapse-header:hover a{color: {$_post_title_typography['hover_color']};}";
 }
 
@@ -141,7 +144,8 @@ if ($show_post_content) {
 	if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
 		$custom_css .= "text-align: {$_post_content_typography['text-align']};";
 	}
-	$custom_css .= "text-transform: {$_post_content_typography['text-transform']};font-size: {$_post_content_typography['font-size']}px;line-height: {$_post_content_typography['line-height']}px;letter-spacing: {$_post_content_typography['letter-spacing']}px;margin: {$post_content_margin['top']}px {$post_content_margin['right']}px {$post_content_margin['bottom']}px {$post_content_margin['left']}px;color: {$_post_content_typography['color']}; }";
+	$post_content_text_transform = !empty($_post_content_typography['text-transform']) ? $_post_content_typography['text-transform'] : 'none';
+	$custom_css .= "text-transform: {$post_content_text_transform};font-size: {$_post_content_typography['font-size']}px;line-height: {$_post_content_typography['line-height']}px;letter-spacing: {$_post_content_typography['letter-spacing']}px;margin: {$post_content_margin['top']}px {$post_content_margin['right']}px {$post_content_margin['bottom']}px {$post_content_margin['left']}px;color: {$_post_content_typography['color']}; }";
 }
 
 if ('carousel_layout' === $layout) {
@@ -149,31 +153,38 @@ if ('carousel_layout' === $layout) {
 }
 
 // Post inner padding.
-$post_content_orientation   = $view_options['post_content_orientation'];
+$post_content_orientation   = isset($view_options['post_content_orientation']) ? $view_options['post_content_orientation'] : '';
 $post_details_class         = 'overlay-box' === $post_content_orientation ? '.ta-eventful-post-details' : '';
 $post_details_content_class = 'overlay-box' === $post_content_orientation ? '.ta-eventful-post-details-content' : '';
 if ('overlay' !== $post_content_orientation) {
 	$_post_inner_padding       = EFUL_Functions::eful_metabox_value('post_inner_padding_property', $view_options);
-	$post_inner_padding_unit   = $_post_inner_padding['unit'];
-	$post_inner_padding_top    = $_post_inner_padding['top'] > 0 ? $_post_inner_padding['top'] . $post_inner_padding_unit : '0';
-	$post_inner_padding_right  = $_post_inner_padding['right'] > 0 ? $_post_inner_padding['right'] . $post_inner_padding_unit : '0';
-	$post_inner_padding_bottom = $_post_inner_padding['bottom'] > 0 ? $_post_inner_padding['bottom'] . $post_inner_padding_unit : '0';
-	$post_inner_padding_left   = $_post_inner_padding['left'] > 0 ? $_post_inner_padding['left'] . $post_inner_padding_unit : '0';
+	$post_inner_padding_top = isset($_post_inner_padding['top']) ? $_post_inner_padding['top'] : '';
+	$post_inner_padding_right = isset($_post_inner_padding['right']) ? $_post_inner_padding['right'] : '';
+	$post_inner_padding_bottom = isset($_post_inner_padding['bottom']) ? $_post_inner_padding['bottom'] : '';
+	$post_inner_padding_left = isset($_post_inner_padding['left']) ? $_post_inner_padding['left'] : '';
+
+
+	$post_inner_padding_unit   = isset($_post_inner_padding['unit']) ? $_post_inner_padding['unit'] : 'px';
+
+	$post_inner_padding_top    = $post_inner_padding_top > 0 ? $post_inner_padding_top . $post_inner_padding_unit : '0';
+	$post_inner_padding_right  = $post_inner_padding_right > 0 ? $post_inner_padding_right . $post_inner_padding_unit : '0';
+	$post_inner_padding_bottom = $post_inner_padding_bottom > 0 ? $post_inner_padding_bottom . $post_inner_padding_unit : '0';
+	$post_inner_padding_left   = $post_inner_padding_left > 0 ? $post_inner_padding_left . $post_inner_padding_unit : '0';
 	$custom_css               .= "#eful_wrapper-{$eful_id} .eful__item {padding: {$post_inner_padding_top} {$post_inner_padding_right} {$post_inner_padding_bottom} {$post_inner_padding_left};}";
 }
 
 // Post border.
-$_post_border      = $view_options['post_border'];
-$post_border_width = (int) $_post_border['all'];
-$post_border_style = $_post_border['style'];
-$post_border_color = $_post_border['color'];
+$_post_border      = isset($view_options['post_border']) ? $view_options['post_border'] : '';
+$post_border_width = isset($_post_border['all']) ? $_post_border['all'] : 0;
+$post_border_style = isset($_post_border['style']) ? $_post_border['style'] : '';
+$post_border_color = isset($_post_border['color']) ? $_post_border['color'] : '';
 if ('none' !== $post_border_style) {
 	$custom_css .= "#eful_wrapper-{$eful_id} .eful__item {border: {$post_border_width}px {$post_border_style} {$post_border_color};}";
 }
 
 // Post box shadow.
-$show_post_box_shadow = EFUL_Functions::eful_metabox_value( 'show_post_box_shadow', $view_options, false );
-if ( $show_post_box_shadow ) {
+$show_post_box_shadow = EFUL_Functions::eful_metabox_value('show_post_box_shadow', $view_options, false);
+if ($show_post_box_shadow) {
 	$post_box_shadow_property = EFUL_Functions::eful_metabox_value(
 		'post_box_shadow_property',
 		$view_options,
@@ -185,16 +196,16 @@ if ( $show_post_box_shadow ) {
 			'color'      => 'rgb(187, 187, 187)',
 		)
 	);
-	$box_shadow_h             = EFUL_Functions::eful_metabox_value( 'horizontal', $post_box_shadow_property );
-	$box_shadow_v             = EFUL_Functions::eful_metabox_value( 'vertical', $post_box_shadow_property );
-	$box_shadow_blur          = EFUL_Functions::eful_metabox_value( 'blur', $post_box_shadow_property );
-	$box_shadow_spread        = EFUL_Functions::eful_metabox_value( 'spread', $post_box_shadow_property );
-	$box_shadow_color         = EFUL_Functions::eful_metabox_value( 'color', $post_box_shadow_property );
+	$box_shadow_h             = EFUL_Functions::eful_metabox_value('horizontal', $post_box_shadow_property);
+	$box_shadow_v             = EFUL_Functions::eful_metabox_value('vertical', $post_box_shadow_property);
+	$box_shadow_blur          = EFUL_Functions::eful_metabox_value('blur', $post_box_shadow_property);
+	$box_shadow_spread        = EFUL_Functions::eful_metabox_value('spread', $post_box_shadow_property);
+	$box_shadow_color         = EFUL_Functions::eful_metabox_value('color', $post_box_shadow_property);
 	$box_shadow_style         = 'outset' === $post_box_shadow_property['style'] ? '' : $post_box_shadow_property['style'];
-	$box_shadow_margin_top    = 'inset' === $box_shadow_style ? '0' : ( $box_shadow_spread - $box_shadow_v + 0.5 * $box_shadow_blur );
-	$box_shadow_margin_right  = 'inset' === $box_shadow_style ? '0' : ( $box_shadow_spread + $box_shadow_h + 0.5 * $box_shadow_blur );
-	$box_shadow_margin_bottom = 'inset' === $box_shadow_style ? '0' : ( $box_shadow_spread + $box_shadow_v + 0.5 * $box_shadow_blur );
-	$box_shadow_margin_left   = 'inset' === $box_shadow_style ? '0' : ( $box_shadow_spread - $box_shadow_h + 0.5 * $box_shadow_blur );
+	$box_shadow_margin_top    = 'inset' === $box_shadow_style ? '0' : ($box_shadow_spread - $box_shadow_v + 0.5 * $box_shadow_blur);
+	$box_shadow_margin_right  = 'inset' === $box_shadow_style ? '0' : ($box_shadow_spread + $box_shadow_h + 0.5 * $box_shadow_blur);
+	$box_shadow_margin_bottom = 'inset' === $box_shadow_style ? '0' : ($box_shadow_spread + $box_shadow_v + 0.5 * $box_shadow_blur);
+	$box_shadow_margin_left   = 'inset' === $box_shadow_style ? '0' : ($box_shadow_spread - $box_shadow_h + 0.5 * $box_shadow_blur);
 	$custom_css              .= "#eful_wrapper-{$eful_id} .eful__item {$post_details_class} {$post_details_content_class}{box-shadow: {$box_shadow_h}px {$box_shadow_v}px {$box_shadow_blur}px {$box_shadow_spread}px {$box_shadow_color} {$box_shadow_style};margin: {$box_shadow_margin_top}px {$box_shadow_margin_right}px {$box_shadow_margin_bottom}px {$box_shadow_margin_left}px;}";
 }
 
@@ -225,7 +236,7 @@ if (in_array($post_content_orientation, array('overlay'), true)) {
 /**
  * Post Thumbnail CSS.
  */
-$post_thumb_css           = $post_sorter['eful_post_thumb'];
+$post_thumb_css           = isset($post_sorter['eful_post_thumb']) ? $post_sorter['eful_post_thumb'] : '';
 $post_thumb_margin        = isset($post_thumb_css['post_thumb_margin']) ? $post_thumb_css['post_thumb_margin'] : array(
 	'top'    => '40',
 	'right'  => '0',
@@ -239,10 +250,10 @@ $post_thumb_border_radius = isset($post_thumb_css['post_thumb_border_radius']) ?
 	'left'   => '0',
 	'unit'   => 'px',
 );
-$post_thumb_border_radius_top = $post_thumb_border_radius['top'].$post_thumb_border_radius['unit'];
-$post_thumb_border_radius_left = $post_thumb_border_radius['left'].$post_thumb_border_radius['unit'];
-$post_thumb_border_radius_bottom = $post_thumb_border_radius['bottom'].$post_thumb_border_radius['unit'];
-$post_thumb_border_radius_right = $post_thumb_border_radius['right'].$post_thumb_border_radius['unit'];
+$post_thumb_border_radius_top = $post_thumb_border_radius['top'] . $post_thumb_border_radius['unit'];
+$post_thumb_border_radius_left = $post_thumb_border_radius['left'] . $post_thumb_border_radius['unit'];
+$post_thumb_border_radius_bottom = $post_thumb_border_radius['bottom'] . $post_thumb_border_radius['unit'];
+$post_thumb_border_radius_right = $post_thumb_border_radius['right'] . $post_thumb_border_radius['unit'];
 // Post thumb border radius.
 $custom_css .= "#eful_wrapper-{$eful_id} .eful__item .eful__item--thumbnail img{border-radius: {$post_thumb_border_radius_top} {$post_thumb_border_radius_right} {$post_thumb_border_radius_bottom} {$post_thumb_border_radius_left};} #eful_wrapper-{$eful_id} .eful__item .eful__item--thumbnail{margin: {$post_thumb_margin['top']}px {$post_thumb_margin['right']}px {$post_thumb_margin['bottom']}px {$post_thumb_margin['left']}px;}#eful_wrapper-{$eful_id} .ta-overlay.eful__item .eful__item--thumbnail,#eful_wrapper-{$eful_id} .left-thumb.eful__item .eful__item--thumbnail,#eful_wrapper-{$eful_id} .right-thumb.eful__item .eful__item--thumbnail,#eful_wrapper-{$eful_id} .ta-eventful-content-box.eful__item .eful__item--thumbnail{margin: 0;}";
 
@@ -320,14 +331,14 @@ $custom_css .= "#eful_wrapper-{$eful_id} .eful__item--meta li,#eful_wrapper-{$ef
 if (!empty($_post_meta_typography['font-family'])) {
 	$custom_css .= "font-family: {$_post_meta_typography['font-family']};font-weight: {$post_meta_font_weight};font-style: {$post_meta_font_style};";
 }
-
-$custom_css .= "text-transform: {$_post_meta_typography['text-transform']};font-size: {$_post_meta_typography['font-size']}px;line-height: {$_post_meta_typography['line-height']}px;letter-spacing: {$_post_meta_typography['letter-spacing']}px;color: {$_post_meta_typography['color']};}#eful_wrapper-{$eful_id} .eful__item--meta{margin: {$post_meta_margin['top']}px {$post_meta_margin['right']}px {$post_meta_margin['bottom']}px {$post_meta_margin['left']}px;";
-if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
+$text_transform = !empty($_post_meta_typography['text-transform']) ? $_post_meta_typography['text-transform'] : 'none';
+$custom_css .= "text-transform: {$text_transform};font-size: {$_post_meta_typography['font-size']}px;line-height: {$_post_meta_typography['line-height']}px;letter-spacing: {$_post_meta_typography['letter-spacing']}px;color: {$_post_meta_typography['color']};}#eful_wrapper-{$eful_id} .eful__item--meta{margin: {$post_meta_margin['top']}px {$post_meta_margin['right']}px {$post_meta_margin['bottom']}px {$post_meta_margin['left']}px;";
+if ('zigzag_layout' !== $layout) {
 	$custom_css .= "text-align: {$_post_meta_typography['text-align']};";
 }
 $custom_css .= '}';
 
-$event_meta_alignment 	= isset( $eful_post_meta['post_meta_alignment'] ) ? $eful_post_meta['post_meta_alignment'] : '';
+$event_meta_alignment 	= isset($eful_post_meta['post_meta_alignment']) ? $eful_post_meta['post_meta_alignment'] : '';
 $custom_css         	.= "#eful_wrapper-{$eful_id} .eful__item--meta ul, #eful_wrapper-{$eful_id} .eful__item--meta ul li{justify-content:{$event_meta_alignment}}";
 
 $custom_css .= "#eful_wrapper-{$eful_id} .eful__item--meta li a:hover{color: {$_post_meta_typography['hover_color']};}";
@@ -357,7 +368,7 @@ if (is_array($post_meta_group) && $show_post_meta) {
 				if (!empty($_post_meta_typography['font-family'])) {
 					$custom_css .= "font-family: {$_post_meta_typography['font-family']};font-weight: {$post_meta_font_weight};font-style: {$post_meta_font_style};";
 				}
-				$custom_css .= "text-transform: {$_post_meta_typography['text-transform']};font-size: {$_post_meta_typography['font-size']}px;line-height: {$_post_meta_typography['line-height']}px;letter-spacing: {$_post_meta_typography['letter-spacing']}px;
+				$custom_css .= "text-transform: {$text_transform};font-size: {$_post_meta_typography['font-size']}px;line-height: {$_post_meta_typography['line-height']}px;letter-spacing: {$_post_meta_typography['letter-spacing']}px;
 			}";
 				++$over_thumb;
 			}
@@ -368,7 +379,7 @@ if (is_array($post_meta_group) && $show_post_meta) {
 				if (!empty($_post_meta_typography['font-family'])) {
 					$custom_css .= "font-family: {$_post_meta_typography['font-family']};font-weight: {$post_meta_font_weight};font-style: {$post_meta_font_style};";
 				}
-				$custom_css .= "text-transform: {$_post_meta_typography['text-transform']};font-size: {$_post_meta_typography['font-size']}px;line-height: {$_post_meta_typography['line-height']}px;letter-spacing: {$_post_meta_typography['letter-spacing']}px;
+				$custom_css .= "text-transform: {$text_transform};font-size: {$_post_meta_typography['font-size']}px;line-height: {$_post_meta_typography['line-height']}px;letter-spacing: {$_post_meta_typography['letter-spacing']}px;
 			}";
 				++$title_above;
 			}
@@ -424,9 +435,10 @@ $custom_css .= "#eful_wrapper-{$eful_id} .eful__item--meta li,#eful_wrapper-{$ef
 if (!empty($_event_fildes_typography['font-family'])) {
 	$custom_css .= "font-family: {$_event_fildes_typography['font-family']};font-weight: {$event_fildes_font_weight};font-style: {$event_fildes_font_style};";
 }
+$event_fildes_text_transform = !empty($_event_fildes_typography['text-transform']) ? $_event_fildes_typography['text-transform'] : 'none';
 
-$custom_css .= "text-transform: {$_event_fildes_typography['text-transform']};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;color: {$_event_fildes_typography['color']};}#eful_wrapper-{$eful_id} .eful__item--meta.event_meta{margin: {$event_fildes_margin['top']}px {$event_fildes_margin['right']}px {$event_fildes_margin['bottom']}px {$event_fildes_margin['left']}px;";
-if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
+$custom_css .= "text-transform: {$event_fildes_text_transform};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;color: {$_event_fildes_typography['color']};}#eful_wrapper-{$eful_id} .eful__item--meta.event_meta{margin: {$event_fildes_margin['top']}px {$event_fildes_margin['right']}px {$event_fildes_margin['bottom']}px {$event_fildes_margin['left']}px;";
+if ('zigzag_layout' !== $layout) {
 	$custom_css .= "text-align: {$_event_fildes_typography['text-align']};";
 }
 $custom_css .= '}';
@@ -458,7 +470,7 @@ if (is_array($event_fildes_group) && $show_event_fildes) {
 				if (!empty($_event_fildes_typography['font-family'])) {
 					$custom_css .= "font-family: {$_event_fildes_typography['font-family']};font-weight: {$event_fildes_font_weight};font-style: {$event_fildes_font_style};";
 				}
-				$custom_css .= "text-transform: {$_event_fildes_typography['text-transform']};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;
+				$custom_css .= "text-transform: {$event_fildes_text_transform};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;
 			}";
 				++$over_thumb;
 			}
@@ -469,7 +481,7 @@ if (is_array($event_fildes_group) && $show_event_fildes) {
 				if (!empty($_event_fildes_typography['font-family'])) {
 					$custom_css .= "font-family: {$_event_fildes_typography['font-family']};font-weight: {$event_fildes_font_weight};font-style: {$event_fildes_font_style};";
 				}
-				$custom_css .= "text-transform: {$_event_fildes_typography['text-transform']};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;
+				$custom_css .= "text-transform: {$event_fildes_text_transform};font-size: {$_event_fildes_typography['font-size']}px;line-height: {$_event_fildes_typography['line-height']}px;letter-spacing: {$_event_fildes_typography['letter-spacing']}px;
 			}";
 				++$title_above;
 			}
@@ -521,8 +533,9 @@ if ($show_read_more) {
 	if (!empty($_read_more_typography['font-family'])) {
 		$custom_css .= "font-family: {$_read_more_typography['font-family']}; font-weight: {$read_more_font_weight}; font-style: {$read_more_font_style};";
 	}
-	$custom_css .= "text-transform: {$_read_more_typography['text-transform']}; font-size: {$_read_more_typography['font-size']}px; line-height: {$_read_more_typography['line-height']}px; letter-spacing: {$_read_more_typography['letter-spacing']}px; }";
-	if ( 'zigzag_layout' !== $layouts['eful_layout_preset'] ) {
+	$read_more_text_transform = !empty($_read_more_typography['text-transform']) ? $_read_more_typography['text-transform'] : 'none';
+	$custom_css .= "text-transform: {$read_more_text_transform}; font-size: {$_read_more_typography['font-size']}px; line-height: {$_read_more_typography['line-height']}px; letter-spacing: {$_read_more_typography['letter-spacing']}px; }";
+	if ('zigzag_layout' !== $layout) {
 		$custom_css .= "#eful_wrapper-{$eful_id} .eful__item__content__readmore{ text-align: {$_read_more_typography['text-align']}; }";
 	}
 	if ('button' === $read_more_type) {
@@ -574,8 +587,9 @@ if ($post_thumb_show && $post_thumb_meta != 'none') {
 	if (!empty($_thumb_archive_typography['font-family'])) {
 		$custom_css .= "font-family: {$_thumb_archive_typography['font-family']}; font-weight: {$post_thumb_font_weight}; font-style: {$post_thumb_font_style};";
 	}
-	$custom_css .= "text-transform: {$_thumb_archive_typography['text-transform']}; font-size: {$_thumb_archive_typography['font-size']}px; line-height: {$_thumb_archive_typography['line-height']}px; letter-spacing: {$_thumb_archive_typography['letter-spacing']}px; }";
- 	if ('button' === $post_thumb_type) {
+	$thumb_archive_text_transform = !empty($_thumb_archive_typography['text-transform']) ? $_thumb_archive_typography['text-transform'] : 'none';
+	$custom_css .= "text-transform: {$thumb_archive_text_transform}; font-size: {$_thumb_archive_typography['font-size']}px; line-height: {$_thumb_archive_typography['line-height']}px; letter-spacing: {$_thumb_archive_typography['letter-spacing']}px; }";
+	if ('button' === $post_thumb_type) {
 		$_post_thumb_button  = isset($eful_post_thumb['post_thumb_meta_button']) ? $eful_post_thumb['post_thumb_meta_button'] : array(
 			'standard'     => '#111',
 			'hover'        => '#fff',

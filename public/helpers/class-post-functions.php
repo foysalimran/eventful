@@ -739,8 +739,8 @@ class EFUL_Functions
 			$custom_date_format   = isset($each_meta['eful_custom_event_date_format']) ? $each_meta['eful_custom_event_date_format'] : 'j F, Y g:i A';
 
 			$meta_icon      = !empty($each_meta['select_event_fildes_icon']) ? sprintf('<i class="' . $each_meta['select_event_fildes_icon'] . '"></i>') : '';
-			$start_tag      = $is_table ? '<td class="ta-eventful-post-meta">' : '<li>';
-			$end_tag        = $is_table ? '</td>' : '</li>';
+			$start_tag      = '<li>';
+			$end_tag        = '</li>';
 			$meta_tag_start = apply_filters('eful_event_fildes_html_tag_start', $start_tag);
 			$meta_tag_end   = apply_filters('eful_event_fildes_html_tag_end', $end_tag);
 			$allowed_html   = array(
@@ -861,11 +861,11 @@ class EFUL_Functions
 						echo wp_kses($meta_icon, $allowed_html);
 						if ($venue_map_link) {
 						?>
-							<span><?php echo esc_html( tribe_get_cost($post->ID) ) ?></span>
+							<span><?php echo esc_html(tribe_get_cost($post->ID)) ?></span>
 						<?php
 						} else {
 						?>
-							<span><?php echo esc_html( tribe_get_cost($post->ID) ) ?></span>
+							<span><?php echo esc_html(tribe_get_cost($post->ID)) ?></span>
 						<?php
 						}
 						echo wp_kses_post($meta_tag_end);

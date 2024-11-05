@@ -4,7 +4,7 @@ Donate link: https://themeatelier.net/
 Tags: Events, Showcase, Events Grid, Events Carousel, The Event Calendar, 
 Requires at least: 5.0
 Tested up to: 6.6.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,15 +105,15 @@ You can create a topic in our [Support Forum](https://wordpress.org/support/plug
 4. Event default carousel
 5. Event carousel centered
 
-
 == Changelog ==
+= 1.0.5 - 05 Nov, 2024 =
+* Fixed: Some CSS Issue
 
 = 1.0.4 - 17 Aug, 2024 =
 * Update: Appsero SDK
 
 = 1.0.3 - 13 June, 2024 =
 * Fixed plugins URL
-
 
 = 1.0.2 - 13 June, 2024 =
 * Fixed codemirror issue for code editor field
