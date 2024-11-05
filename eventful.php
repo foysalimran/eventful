@@ -16,7 +16,7 @@
  * Plugin Name:       Eventful
  * Plugin URI:        https://wp-plugins.themeatelier.net/eventful
  * Description:       Professional Event Post Layouts Addon For WordPress
- * Version:           1.0.4
+ * Version:           1.0.5
  * Author:            ThemeAtelier
  * Author URI:        https://themeatelier.net/
  * License:           GPL-2.0+
@@ -37,7 +37,7 @@ require __DIR__ . '/vendor/autoload.php';
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'EFUL_VERSION', '1.0.4' );
+define( 'EFUL_VERSION', '1.0.5' );
 define('EFUL_BASENAME', plugin_basename(__FILE__));
 define('EFUL_DIR_PATH', plugin_dir_path(__FILE__));
 

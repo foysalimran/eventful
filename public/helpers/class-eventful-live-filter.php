@@ -395,7 +395,7 @@ class EFUL_Live_Filter
 		$selected_term_list  = isset($_POST['term_list']) ? rest_sanitize_array(wp_unslash($_POST['term_list'])) : '';
 		$settings            = array();
 		parse_str(wp_kses_post($_POST['data']), $settings);
-		$layout                       = $settings['eful_layouts'];
+		$layout                       = $settings['ta_efp_layouts'];
 		$layout_preset                = isset($layout['eful_layout_preset']) ? $layout['eful_layout_preset'] : '';
 		$view_options                 = $settings['eful_view_options'];
 		$query_args                   = EFUL_QueryInside::eful_get_filtered_content($view_options, $eful_gl_id);
