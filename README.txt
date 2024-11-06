@@ -3,8 +3,8 @@ Contributors: ThemeAtelier
 Donate link: https://themeatelier.net/
 Tags: Events, Showcase, Events Grid, Events Carousel, The Event Calendar, 
 Requires at least: 5.0
-Tested up to: 6.6.1
-Stable tag: 1.0.4
+Tested up to: 6.6.2
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,8 @@ You can create a topic in our [Support Forum](https://wordpress.org/support/plug
 = 1.0.5  – Nov 06, 2024
 * Fixed: Carousel and navigation issue.
 * Fixed: Minor CSS issues.
+* Update: Code compatibility with latest WordPress version
+* Update: Code compatibility with latest PHP version
 
 = 1.0.4 - 17 Aug, 2024 =
 * Update: Appsero SDK
