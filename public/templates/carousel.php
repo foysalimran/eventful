@@ -80,6 +80,8 @@ if ($eful_settings['eful_bx_js']) {
 }
 // Navigation.
 $_navigation = isset($view_options['eful_navigation']) ? $view_options['eful_navigation'] : 'hide';
+$navigation        = 'true';
+$navigation_mobile = 'true';
 switch ($_navigation) {
 	case 'show':
 		$navigation        = 'true';
@@ -100,6 +102,8 @@ $carousel_nav_position = isset( $view_options['eful_carousel_nav_position'] ) ? 
 
 // Pagination Settings.
 $_pagination = isset($view_options['eful_pagination']) ? $view_options['eful_pagination'] : 'hide';
+$pagination        = 'true';
+$pagination_mobile = 'true';
 switch ($_pagination) {
 	case 'show':
 		$pagination        = 'true';
