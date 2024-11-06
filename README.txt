@@ -107,6 +107,9 @@ You can create a topic in our [Support Forum](https://wordpress.org/support/plug
 
 
 == Changelog ==
+= 1.0.5  – Nov 06, 2024
+* Fixed: Carousel and navigation issue.
+* Fixed: Minor CSS issues.
 
 = 1.0.4 - 17 Aug, 2024 =
 * Update: Appsero SDK

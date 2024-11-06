@@ -154,11 +154,11 @@ class Eventful_Public
 				$all_fonts        = array();
 				$eful_typography   = array();
 			
-				$eful_typography[] = $view_options['section_title_typography'];
+				$eful_typography[] = isset($view_options['section_title_typography']) ? $view_options['section_title_typography'] : '';
 
-				$eful_typography[] = $view_options['post_title_typography'];
-				$eful_typography[] = $view_options['post_meta_typography'];
-				$eful_typography[] = $view_options['post_content_typography'];
+				$eful_typography[] = isset($view_options['post_title_typography']) ? $view_options['post_title_typography'] : '';
+				$eful_typography[] = isset($view_options['post_meta_typography']) ? $view_options['post_meta_typography'] : '';
+				$eful_typography[] = isset($view_options['post_content_typography']) ? $view_options['post_content_typography'] : '';
 				$eful_typography[] = isset($view_options['read_more_typography']) ? $view_options['read_more_typography'] : array(
 					'font-family'        => '',
 					'font-weight'        => '600',
