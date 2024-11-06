@@ -101,7 +101,7 @@ if ($show_post_title) {
 	if (!empty($_post_title_typography['font-family'])) {
 		$custom_css .= "font-family: {$_post_title_typography['font-family']};font-weight: {$post_title_font_weight};font-style: {$post_title_font_style};";
 	}
-	if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
+	if ('zigzag_layout' !== $layout) {
 		$custom_css .= "text-align: {$_post_title_typography['text-align']};";
 	}
 
@@ -140,9 +140,6 @@ if ($show_post_content) {
 	$custom_css              .= "#eful_wrapper-{$eful_id} .eful__item__content{";
 	if (!empty($_post_content_typography['font-family'])) {
 		$custom_css .= "font-family: {$_post_content_typography['font-family']};font-weight: {$post_content_font_weight};font-style: {$post_content_font_style};";
-	}
-	if ('zigzag_layout' !== $layouts['eful_layout_preset']) {
-		$custom_css .= "text-align: {$_post_content_typography['text-align']};";
 	}
 	$post_content_text_transform = !empty($_post_content_typography['text-transform']) ? $_post_content_typography['text-transform'] : 'none';
 	$custom_css .= "text-transform: {$post_content_text_transform};font-size: {$_post_content_typography['font-size']}px;line-height: {$_post_content_typography['line-height']}px;letter-spacing: {$_post_content_typography['letter-spacing']}px;margin: {$post_content_margin['top']}px {$post_content_margin['right']}px {$post_content_margin['bottom']}px {$post_content_margin['left']}px;color: {$_post_content_typography['color']}; }";
